@@ -1,0 +1,11 @@
+{
+  "symbol": "AAPL",
+  "company_name": "Apple Inc.",
+  "week_start": "2025-11-16",
+  "week_end": "2025-11-23",
+  "reasons": [
+    "Starkt nyhetsflöde efter senaste kvartalsrapporten med positiv analytikerreaktion.",
+    "Stabil intjäning och kassaflöde med historiskt lägre volatilitet än många tech-peers.",
+    "Teknisk bild visar positiv kortsiktig trend över sitt 20-dagars glidande medelvärde."
+  ]
+}

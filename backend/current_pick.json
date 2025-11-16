@@ -1,11 +1,12 @@
 {
-  "symbol": "AAPL",
-  "company_name": "Apple Inc.",
+  "symbol": "MSFT",
+  "company_name": "Microsoft Corporation",
   "week_start": "2025-11-16",
   "week_end": "2025-11-23",
   "reasons": [
-    "Starkt nyhetsflöde efter senaste kvartalsrapporten med positiv analytikerreaktion.",
-    "Stabil intjäning och kassaflöde med historiskt lägre volatilitet än många tech-peers.",
-    "Teknisk bild visar positiv kortsiktig trend över sitt 20-dagars glidande medelvärde."
-  ]
+    "Positivt momentum inom molnverksamheten enligt senaste rapporter.",
+    "Hög lönsamhet och stark balansräkning med nettokassa.",
+    "Brett diversifierad intäktsbas inom både företags- och konsumentsegment."
+  ],
+  "score": 0.88
 }

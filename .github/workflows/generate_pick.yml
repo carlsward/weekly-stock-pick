@@ -29,7 +29,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Generate current_pick.json
+      - name: Generate news_scores.json
+        working-directory: backend
+        run: python generate_news_scores.py
+
+      - name: Generate current_pick.json and risk_picks.json
         working-directory: backend
         run: python generate_pick.py
 
@@ -38,10 +42,9 @@ jobs:
           if [[ -n "$(git status --porcelain backend)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add backend/current_pick.json backend/risk_picks.json backend/history.json
+            git add backend/news_scores.json backend/current_pick.json backend/risk_picks.json backend/history.json
             git commit -m "Update picks JSON [skip ci]"
             git push
           else
             echo "No changes to commit"
           fi
-

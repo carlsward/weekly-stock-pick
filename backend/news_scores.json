@@ -1,15 +1,23 @@
 {
-  "MSFT": {
-    "news_score": 0.7,
+  "AAPL": {
+    "news_score": 0.3,
     "news_reasons": [
-      "Flera positiva analyser kring molnverksamheten senaste veckan.",
-      "Nyhetsflödet domineras av uppsidor snarare än regulatoriska risker."
+      "Nyhetsflödet är blandat med viss osäkerhet kring konsumentefterfrågan.",
+      "Få riktigt starka positiva katalysatorer i senaste veckans rubriker."
+    ]
+  },
+  "MSFT": {
+    "news_score": 0.8,
+    "news_reasons": [
+      "Flera positiva artiklar om fortsatt tillväxt i molnverksamheten.",
+      "Analytikerkommentarer betonar stark lönsamhet och AI-satsningar."
     ]
   },
   "GOOGL": {
-    "news_score": 0.4,
+    "news_score": 0.6,
     "news_reasons": [
-      "Blandat sentiment kring annonsering men överlag konstruktiv ton."
+      "Konstruktivt sentiment kring annonsering och moln – men viss regulatorisk osäkerhet.",
+      "Flera nyheter om satsningar inom AI och infrastruktur."
     ]
   }
 }

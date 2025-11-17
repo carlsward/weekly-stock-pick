@@ -7,18 +7,10 @@
     "Senaste 5 handelsdagarna: cirka 2.7% prisutveckling.",
     "Uppmätt dagsvolatilitet kring 1.3%, klassad som low risk.",
     "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-<<<<<<< HEAD
-    "Nyhetsanalys (AI-modell) indikerar övervägande positivt sentiment för bolaget (news_score=0.40).",
-    "Flera positiva analyser kring molnverksamheten.",
-    "Uppgraderingar från analytiker och höjda riktkurser."
-  ],
-  "score": 0.21391913827265618,
-=======
-    "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
+    "Nyhetsanalys (AI-modell) indikerar övervägande positivt sentiment för bolaget (news_score=0.50).",
     "Placeholder-analys för Microsoft Corporation.",
     "Här kommer AI-genererade nyhetsargument senare."
   ],
-  "score": 0.15974339679085933,
->>>>>>> f064796409284b24689667dba8ba961465582eb3
+  "score": 0.2639191382726562,
   "risk": "low"
 }

@@ -8,11 +8,11 @@
       "Senaste 5 handelsdagarna: cirka 2.7% prisutveckling.",
       "Uppmätt dagsvolatilitet kring 1.3%, klassad som low risk.",
       "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-      "Nyhetsanalys (AI-modell) indikerar övervägande positivt sentiment för bolaget (news_score=0.40).",
-      "Flera positiva analyser kring molnverksamheten.",
-      "Uppgraderingar från analytiker och höjda riktkurser."
+      "Nyhetsanalys (AI-modell) indikerar övervägande positivt sentiment för bolaget (news_score=0.50).",
+      "Placeholder-analys för Microsoft Corporation.",
+      "Här kommer AI-genererade nyhetsargument senare."
     ],
-    "score": 0.21391913827265618,
+    "score": 0.2639191382726562,
     "risk": "low"
   },
   "medium": {
@@ -24,11 +24,11 @@
       "Senaste 5 handelsdagarna: cirka -0.9% prisutveckling.",
       "Uppmätt dagsvolatilitet kring 2.1%, klassad som medium risk.",
       "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-      "Nyhetsanalys (AI-modell) indikerar övervägande positivt sentiment för bolaget (news_score=0.10).",
-      "Blandad men något positiv nyhetsbild kring annonsmarknaden.",
-      "Regulatoriska risker kvarstår men inga nya större bakslag."
+      "Nyhetsanalys (AI-modell) indikerar övervägande positivt sentiment för bolaget (news_score=0.50).",
+      "Placeholder-analys för Alphabet Inc..",
+      "Här kommer AI-genererade nyhetsargument senare."
     ],
-    "score": 0.020734896001374993,
+    "score": 0.220734896001375,
     "risk": "medium"
   }
 }

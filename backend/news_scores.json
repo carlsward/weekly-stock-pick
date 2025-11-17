@@ -1,23 +1,23 @@
 {
   "AAPL": {
-    "news_score": 0.2,
+    "news_score": 0.5,
     "news_reasons": [
-      "Stabilt nyhetsflöde med viss övervikt positiva artiklar.",
-      "Inga större negativa händelser senaste veckan."
+      "Placeholder-analys för Apple Inc..",
+      "Här kommer AI-genererade nyhetsargument senare."
     ]
   },
   "MSFT": {
-    "news_score": 0.4,
+    "news_score": 0.5,
     "news_reasons": [
-      "Flera positiva analyser kring molnverksamheten.",
-      "Uppgraderingar från analytiker och höjda riktkurser."
+      "Placeholder-analys för Microsoft Corporation.",
+      "Här kommer AI-genererade nyhetsargument senare."
     ]
   },
   "GOOGL": {
-    "news_score": 0.1,
+    "news_score": 0.5,
     "news_reasons": [
-      "Blandad men något positiv nyhetsbild kring annonsmarknaden.",
-      "Regulatoriska risker kvarstår men inga nya större bakslag."
+      "Placeholder-analys för Alphabet Inc..",
+      "Här kommer AI-genererade nyhetsargument senare."
     ]
   }
 }

@@ -1,3 +1,5 @@
-python-dateutil
-yfinance
 pandas
+yfinance
+transformers
+torch
+sentencepiece

@@ -39,11 +39,11 @@ jobs:
 
       - name: Commit and push if changed
         run: |
-          if [[ -n "$(git status --porcelain backend)" ]]; then
+          if [[ -n "$(git status --porcelain backend/current_pick.json backend/risk_picks.json backend/history.json backend/news_scores.json)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add backend/news_scores.json backend/current_pick.json backend/risk_picks.json backend/history.json
-            git commit -m "Update picks JSON [skip ci]"
+            git add backend/current_pick.json backend/risk_picks.json backend/history.json backend/news_scores.json
+            git commit -m "Update picks and news_scores [skip ci]"
             git push
           else
             echo "No changes to commit"

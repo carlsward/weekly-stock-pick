@@ -5,7 +5,11 @@
     "company_name": "Microsoft Corporation",
     "week_start": "2025-11-17",
     "week_end": "2025-11-24",
+<<<<<<< HEAD
     "score": 0.21391913827265618,
+=======
+    "score": 0.15974339679085933,
+>>>>>>> f064796409284b24689667dba8ba961465582eb3
     "risk": "low"
   }
 ]

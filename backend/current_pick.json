@@ -7,9 +7,10 @@
     "Senaste 5 handelsdagarna: cirka 2.7% prisutveckling.",
     "Uppmätt dagsvolatilitet kring 1.3%, klassad som low risk.",
     "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-    "Placeholder-analys för Microsoft Corporation.",
-    "Här kommer AI-genererade nyhetsargument senare."
+    "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
+    "Flera positiva analyser kring molnplattformen Azure senaste veckan.",
+    "Stabil guidning från ledningen trots osäker makromiljö."
   ],
-  "score": 0.2083514829635937,
+  "score": 0.24974339679085933,
   "risk": "low"
 }

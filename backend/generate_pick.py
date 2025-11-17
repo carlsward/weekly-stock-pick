@@ -2,10 +2,11 @@ import json
 import math
 from dataclasses import dataclass
 from datetime import date, timedelta
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 import pandas as pd
 import yfinance as yf
+
 
 # Liten watchlist – kan utökas senare
 WATCHLIST = [
@@ -115,13 +116,19 @@ def classify_risk(vol: float) -> str:
         return "high"
 
 
-def compute_score(momentum: float, vol: float) -> float:
+def compute_score(momentum: float, vol: float, news_score: Optional[float] = None) -> float:
     """
-    Enkel riskjusterad teknisk score:
+    Enkel riskjusterad score:
     - Belönar positivt momentum
     - Straffar hög volatilitet
+    - Kan justeras upp/ner av ett nyhetsbaserat news_score (0–1)
     """
-    return momentum - vol
+    base = momentum - vol
+    if news_score is None:
+        return base
+
+    # Viktning kan justeras. Här 70 % tekniskt, 30 % nyheter.
+    return 0.7 * base + 0.3 * news_score
 
 
 def format_pct(x: float) -> str:
@@ -131,43 +138,45 @@ def format_pct(x: float) -> str:
 def build_candidate(
     symbol: str,
     company_name: str,
-    news_info: dict | None = None,
+    news_info: Optional[dict] = None
 ) -> StockCandidate:
-    """
-    Bygger en kandidat med teknisk score + ev. nyhetsbaserad score.
-    """
+
     closes = fetch_daily_closes(symbol)
     momentum, vol = compute_metrics(closes)
     risk_level = classify_risk(vol)
 
-    # Teknisk komponent
-    technical_score = compute_score(momentum, vol)
-
-    # Nyhetskomponent
-    news_score = 0.0
+    # Plocka ut nyhetsinfo om det finns
+    news_score: Optional[float] = None
     news_reasons: List[str] = []
+
     if news_info is not None:
-        news_score = float(news_info.get("news_score", 0.0))
-        raw_reasons = news_info.get("news_reasons") or []
-        news_reasons = [str(r) for r in raw_reasons][:2]  # max 2 nyhetsskäl
+        try:
+            news_score = float(news_info.get("news_score", 0.0))
+        except (TypeError, ValueError):
+            news_score = None
 
-    # Kombinera teknik + nyheter (vikter kan justeras senare)
-    total_score = 0.6 * technical_score + 0.4 * news_score
+        raw_reasons = news_info.get("news_reasons", [])
+        if isinstance(raw_reasons, list):
+            news_reasons = [str(r) for r in raw_reasons]
 
-    reasons = [
+    # Kombinera teknisk modell med nyhets-score
+    score = compute_score(momentum, vol, news_score)
+
+    reasons: List[str] = [
         f"Senaste 5 handelsdagarna: cirka {format_pct(momentum)} prisutveckling.",
         f"Uppmätt dagsvolatilitet kring {format_pct(vol)}, klassad som {risk_level} risk.",
         "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
     ]
 
-    # Lägg på AI-genererade nyhetsskäl sist
-    reasons.extend(news_reasons)
+    if news_reasons:
+        reasons.append("Nyhetsanalys (AI-modell, sammanfattning av flera källor):")
+        reasons.extend(news_reasons)
 
     return StockCandidate(
         symbol=symbol,
         company_name=company_name,
         reasons=reasons,
-        score=total_score,
+        score=score,
         risk_level=risk_level,
     )
 
@@ -186,11 +195,12 @@ def get_candidates() -> List[StockCandidate]:
 
     if not candidates:
         raise RuntimeError("Inga kandidater kunde genereras")
+
     return candidates
 
 
 def select_best_candidate(candidates: List[StockCandidate]) -> StockCandidate:
-    # Bästa totala score (teknik + nyheter) oavsett risknivå
+    # Bästa riskjusterade score oavsett risknivå
     return max(candidates, key=lambda c: c.score)
 
 
@@ -275,7 +285,7 @@ def update_history(current_pick: dict, history_path: str = "history.json") -> No
 def main():
     candidates = get_candidates()
 
-    # Bästa totalt
+    # Bästa totalt (samma som tidigare)
     best_overall = select_best_candidate(candidates)
     current_pick = build_output_json(best_overall)
 

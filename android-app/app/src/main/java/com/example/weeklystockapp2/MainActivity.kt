@@ -3,12 +3,14 @@ package com.example.weeklystockapp2
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -29,16 +31,25 @@ class MainActivity : ComponentActivity() {
                         is UiState.Loading -> LoadingView()
                         is UiState.Error -> ErrorView(message = state.message)
                         is UiState.Content -> {
-                            Column {
-                                WeeklyPickScreen(
-                                    pick = state.pick,
-                                    availableRisks = state.availableRisks,
-                                    onRiskSelected = { riskKey ->
-                                        vm.onRiskSelected(riskKey)
-                                    }
-                                )
-                                Spacer(modifier = Modifier.height(16.dp))
-                                HistorySection(historyState = vm.historyState)
+                            // Hela sidan är nu scrollbar
+                            LazyColumn(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .padding(16.dp),
+                                verticalArrangement = Arrangement.spacedBy(16.dp)
+                            ) {
+                                item {
+                                    WeeklyPickScreen(
+                                        pick = state.pick,
+                                        availableRisks = state.availableRisks,
+                                        onRiskSelected = { riskKey ->
+                                            vm.onRiskSelected(riskKey)
+                                        }
+                                    )
+                                }
+                                item {
+                                    HistorySection(historyState = vm.historyState)
+                                }
                             }
                         }
                     }
@@ -69,7 +80,6 @@ fun ErrorView(message: String) {
 fun HistorySection(historyState: HistoryUiState) {
     when (historyState) {
         is HistoryUiState.Loading -> {
-            // Diskret text, vill inte ta över hela skärmen
             Text(
                 text = "Loading history...",
                 style = MaterialTheme.typography.bodySmall
@@ -97,10 +107,12 @@ fun HistorySection(historyState: HistoryUiState) {
                 )
                 Spacer(modifier = Modifier.height(4.dp))
 
-                LazyColumn {
-                    items(entries) { entry ->
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    entries.forEach { entry ->
                         HistoryRow(entry)
-                        Divider()
+                        HorizontalDivider()
                     }
                 }
             }
@@ -110,7 +122,7 @@ fun HistorySection(historyState: HistoryUiState) {
 
 @Composable
 fun HistoryRow(entry: HistoryEntry) {
-    Column(modifier = Modifier.height(72.dp)) {
+    Column {
         Text(
             text = "${entry.symbol} – ${entry.companyName}",
             style = MaterialTheme.typography.bodyMedium

@@ -104,16 +104,17 @@ fun WeeklyPickScreen(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                LazyColumn(
+                Column(
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
-                    items(pick.reasons) { reason ->
+                    pick.reasons.forEach { reason ->
                         Text(
                             text = "• $reason",
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
                 }
+
             }
         }
     }

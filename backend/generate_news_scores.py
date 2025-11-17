@@ -1,9 +1,11 @@
 import json
-from datetime import date, timedelta
-from typing import List, Dict
+from dataclasses import dataclass
+from datetime import datetime, timedelta, timezone
+from typing import List, Dict, Any
 
 import yfinance as yf
 from transformers import pipeline
+
 
 # Samma watchlist som i generate_pick.py
 WATCHLIST = [
@@ -12,206 +14,213 @@ WATCHLIST = [
     ("GOOGL", "Alphabet Inc."),
 ]
 
-# Hur många dagar bakåt vi tittar på nyheter
-NEWS_DAYS = 5
-# Max antal artiklar per bolag som vi analyserar
-MAX_ARTICLES_PER_SYMBOL = 15
+# Hur långt tillbaka vi accepterar nyheter
+MAX_NEWS_AGE_DAYS = 14
+MAX_ARTICLES_PER_SYMBOL = 10
 
-# -----------------------------
-# Initiera modeller (öppna & gratis)
-# -----------------------------
-
-# Finansiell sentiment-modell (FinBERT)
-sentiment_analyzer = pipeline(
-    "sentiment-analysis",
-    model="ProsusAI/finbert"
-)
-
-# Kompakt sammanfattningsmodell (distilbart)
-summarizer = pipeline(
-    "summarization",
-    model="sshleifer/distilbart-cnn-6-6"
-)
-
-# Engelska -> svenska översättning
-translator = pipeline(
-    "translation",
-    model="Helsinki-NLP/opus-mt-en-sv"
-)
+# Modellnamn – öppna, gratis HuggingFace-modeller
+FINBERT_MODEL_NAME = "ProsusAI/finbert"
+SUMMARIZER_MODEL_NAME = "facebook/bart-large-cnn"
 
 
-def fetch_news_for_symbol(symbol: str) -> List[Dict]:
+@dataclass
+class NewsResult:
+    symbol: str
+    news_score: float          # 0–1, 0.5 = neutralt
+    news_reasons: List[str]
+    raw_sentiment: float       # -1..1
+    article_count: int
+    last_updated: str
+
+
+def unix_to_datetime(ts: Any) -> datetime | None:
+    """Försök tolka providerPublishTime till datetime i UTC."""
+    if isinstance(ts, (int, float)):
+        try:
+            return datetime.fromtimestamp(ts, tz=timezone.utc)
+        except Exception:
+            return None
+    if isinstance(ts, str):
+        # Bästa gissning – många APIs ger ISO 8601
+        try:
+            return datetime.fromisoformat(ts.replace("Z", "+00:00"))
+        except Exception:
+            return None
+    return None
+
+
+def fetch_news_texts(symbol: str) -> List[str]:
     """
-    Hämtar nyheter via yfinance.Ticker.news.
-    Returnerar en lista av dicts med title/summary/publishTime.
+    Hämta nyhetstexter för ett bolag via yfinance.
+    Returnerar en lista av textstycken (headline + summary).
     """
+    print(f"\n=== Hämtar nyheter för {symbol} ===")
     ticker = yf.Ticker(symbol)
-    news_items = ticker.news or []
 
-    # Sortera efter publiceringstid, senaste först
-    news_items = sorted(
-        news_items,
-        key=lambda x: x.get("providerPublishTime", 0),
-        reverse=True,
-    )
+    raw_news = getattr(ticker, "news", []) or []
+    print(f"[{symbol}] raw news count: {len(raw_news)}")
 
-    # Begränsa antal artiklar
-    return news_items[:MAX_ARTICLES_PER_SYMBOL]
+    cutoff = datetime.now(timezone.utc) - timedelta(days=MAX_NEWS_AGE_DAYS)
 
-
-def is_recent(item: Dict, days: int = NEWS_DAYS) -> bool:
-    """
-    Filtrera bort gammal info baserat på providerPublishTime (unix-sekunder).
-    """
-    ts = item.get("providerPublishTime")
-    if not ts:
-        return True  # om okänt – ta med
-    published = date.fromtimestamp(ts)
-    return (date.today() - published) <= timedelta(days=days)
-
-
-def analyse_sentiment(texts: List[str]) -> float:
-    """
-    Kör FinBERT på en lista av texter.
-    Returnerar ett sentimentvärde i intervallet [-1, 1].
-    """
-    if not texts:
-        return 0.0
-
-    results = sentiment_analyzer(texts)
-    scores = []
-
-    for res in results:
-        label = res["label"].lower()
-        score = float(res["score"])
-        if label == "positive":
-            scores.append(score)
-        elif label == "negative":
-            scores.append(-score)
-        else:  # neutral
-            scores.append(0.0)
-
-    if not scores:
-        return 0.0
-
-    avg = sum(scores) / len(scores)
-    # Klipp till [-1, 1] för säkerhets skull
-    return max(-1.0, min(1.0, avg))
-
-
-def summarise_news_sv(symbol: str, company_name: str, texts: List[str]) -> str:
-    """
-    Sammanfatta nyhetsflödet till en kort svensk text.
-    Steg:
-    1) slå ihop rubriker och snippets
-    2) kör engelsk sammanfattning
-    3) översätt till svenska
-    """
-    if not texts:
-        return "Inga tydliga nyhetsdrivare identifierades den här perioden."
-
-    # Bygg en engelsk text att sammanfatta
-    joined = " ".join(texts)
-    # Sammanfatta (engelska)
-    summary_en = summarizer(
-        joined,
-        max_length=120,
-        min_length=40,
-        do_sample=False,
-    )[0]["summary_text"]
-
-    # Översätt till svenska
-    summary_sv = translator(summary_en)[0]["translation_text"]
-
-    return f"Nyhetsanalys (AI-modell) för {symbol} / {company_name}: {summary_sv}"
-
-
-def analyse_symbol_news(symbol: str, company_name: str) -> Dict:
-    """
-    Komplett AI-analys per bolag:
-    - hämtar nyheter
-    - filtrerar på senaste dagarna
-    - sentimentanalys
-    - sammanfattning (svenska)
-    - bygger strukturen som används i news_scores.json
-    """
-    items = fetch_news_for_symbol(symbol)
-    recent_items = [n for n in items if is_recent(n)]
-
-    # Bygg texter av rubrik + ev. summary
     texts: List[str] = []
-    for item in recent_items:
+    for item in raw_news:
         title = item.get("title") or ""
         summary = item.get("summary") or ""
-        if summary:
-            txt = f"{title}. {summary}"
-        else:
-            txt = title
-        # Kort trimming så inte allt blir för långt
-        txt = txt.strip()
-        if txt:
-            texts.append(txt)
+        provider_time = unix_to_datetime(item.get("providerPublishTime"))
 
-    if not texts:
-        return {
-            "news_score": 0.5,
-            "news_reasons": [
-                "Inga nyligen identifierade nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
-            ],
-            "raw_sentiment": 0.0,
-            "article_count": 0,
-            "last_updated": date.today().isoformat(),
-        }
+        if provider_time is not None:
+            if provider_time < cutoff:
+                continue
+        # Om vi inte kan tolka tid – ta hellre med än kasta
+        if not (title or summary):
+            continue
 
-    sentiment_value = analyse_sentiment(texts)
-    # Normalisera till [0,1]
-    news_score = 0.5 + 0.5 * sentiment_value
+        combined = f"{title}. {summary}".strip()
+        texts.append(combined)
 
-    # Skapa ett par reasons
-    sentiment_label_sv = (
-        "övervägande positiv"
-        if sentiment_value > 0.15
-        else "övervägande negativ"
-        if sentiment_value < -0.15
-        else "nära neutral"
+        if len(texts) >= MAX_ARTICLES_PER_SYMBOL:
+            break
+
+    print(f"[{symbol}] recent texts used: {len(texts)}")
+    return texts
+
+
+def build_pipelines():
+    """
+    Ladda FinBERT och summarizer som pipelines.
+    Körs en gång, återanvänds för alla bolag.
+    """
+    print("Laddar FinBERT-modell...")
+    sentiment_pipe = pipeline(
+        "sentiment-analysis",
+        model=FINBERT_MODEL_NAME,
+        tokenizer=FINBERT_MODEL_NAME,
+        truncation=True,
     )
 
-    summary_sv = summarise_news_sv(symbol, company_name, texts)
+    print("Laddar summarizer-modell...")
+    summarizer_pipe = pipeline(
+        "summarization",
+        model=SUMMARIZER_MODEL_NAME,
+        tokenizer=SUMMARIZER_MODEL_NAME,
+    )
 
-    reasons = [
-        f"Nyhetsflödet senaste {NEWS_DAYS} dagarna bedöms som {sentiment_label_sv} (news_score={news_score:.2f}).",
-        summary_sv,
+    return sentiment_pipe, summarizer_pipe
+
+
+def analyse_symbol_news(
+    symbol: str,
+    company_name: str,
+    sentiment_pipe,
+    summarizer_pipe,
+) -> NewsResult:
+    """
+    Kör hela nyhets-analysen för ett bolag.
+    Om inga texter finns -> neutral score 0.50 + placeholder-reason.
+    """
+    texts = fetch_news_texts(symbol)
+
+    if not texts:
+        print(f"[{symbol}] Inga nyhetstexter – sätter neutral 0.50")
+        neutral_reason = (
+            "Inga nyligen identifierade nyhetsartiklar för bolaget "
+            "– nyhetsbidraget sätts till neutralt (0.50)."
+        )
+        return NewsResult(
+            symbol=symbol,
+            news_score=0.5,
+            news_reasons=[neutral_reason],
+            raw_sentiment=0.0,
+            article_count=0,
+            last_updated=datetime.now().date().isoformat(),
+        )
+
+    # Slå ihop texterna till ett längre dokument
+    combined = " ".join(texts)
+    # Begränsa längd för summarizer/sentiment (annars kan det bli väldigt långt)
+    combined_for_models = combined[:4000]
+
+    # 1) Summarization
+    print(f"[{symbol}] Kör summarizer på {len(combined_for_models)} tecken...")
+    summary_output = summarizer_pipe(
+        combined_for_models,
+        max_length=180,
+        min_length=60,
+        do_sample=False,
+    )
+    summary_text = summary_output[0]["summary_text"].strip()
+
+    # 2) Sentiment med FinBERT
+    print(f"[{symbol}] Kör FinBERT-sentiment...")
+    sentiment_output = sentiment_pipe(combined_for_models[:512])[0]
+    label = sentiment_output["label"].lower()
+    score = float(sentiment_output["score"])
+
+    # Mappa till -1..1
+    if "positive" in label:
+        raw_sentiment = +score
+    elif "negative" in label:
+        raw_sentiment = -score
+    else:
+        raw_sentiment = 0.0
+
+    # Normalisera till 0..1
+    news_score = 0.5 + 0.5 * raw_sentiment
+    news_score = max(0.0, min(1.0, news_score))
+
+    reasons: List[str] = [
+        f"Nyhetsanalys (AI-modell) för {company_name}:",
+        f"Sammanfattning: {summary_text}",
+        f"Sentiment enligt FinBERT: {label} (score={score:.2f}).",
     ]
 
-    return {
-        "news_score": news_score,
-        "news_reasons": reasons,
-        "raw_sentiment": sentiment_value,
-        "article_count": len(texts),
-        "last_updated": date.today().isoformat(),
-    }
+    return NewsResult(
+        symbol=symbol,
+        news_score=news_score,
+        news_reasons=reasons,
+        raw_sentiment=raw_sentiment,
+        article_count=len(texts),
+        last_updated=datetime.now().date().isoformat(),
+    )
 
 
 def main():
-    """
-    Körs en gång per dag/vecka:
-    - analyserar alla bolag i WATCHLIST
-    - skriver news_scores.json som används av generate_pick.py
-    """
-    result: Dict[str, Dict] = {}
+    sentiment_pipe, summarizer_pipe = build_pipelines()
 
-    for symbol, name in WATCHLIST:
+    results: Dict[str, Dict[str, Any]] = {}
+
+    for symbol, company_name in WATCHLIST:
         try:
-            print(f"[INFO] Analyserar nyheter för {symbol}...")
-            analysis = analyse_symbol_news(symbol, name)
-            result[symbol] = analysis
+            res = analyse_symbol_news(
+                symbol=symbol,
+                company_name=company_name,
+                sentiment_pipe=sentiment_pipe,
+                summarizer_pipe=summarizer_pipe,
+            )
+            results[symbol] = {
+                "news_score": res.news_score,
+                "news_reasons": res.news_reasons,
+                "raw_sentiment": res.raw_sentiment,
+                "article_count": res.article_count,
+                "last_updated": res.last_updated,
+            }
         except Exception as e:
-            print(f"[WARN] Kunde inte analysera nyheter för {symbol}: {e}")
+            print(f"[{symbol}] Fel i nyhetsanalys: {e}")
+            neutral_reason = (
+                "Tekniskt fel vid nyhetsanalys – nyhetsbidraget sätts till neutralt (0.50)."
+            )
+            results[symbol] = {
+                "news_score": 0.5,
+                "news_reasons": [neutral_reason],
+                "raw_sentiment": 0.0,
+                "article_count": 0,
+                "last_updated": datetime.now().date().isoformat(),
+            }
 
     with open("news_scores.json", "w", encoding="utf-8") as f:
-        json.dump(result, f, ensure_ascii=False, indent=2)
+        json.dump(results, f, ensure_ascii=False, indent=2)
 
-    print("[INFO] news_scores.json uppdaterad.")
+    print("\nnews_scores.json uppdaterad.")
 
 
 if __name__ == "__main__":

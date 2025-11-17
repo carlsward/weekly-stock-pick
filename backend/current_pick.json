@@ -4,12 +4,12 @@
   "week_start": "2025-11-17",
   "week_end": "2025-11-24",
   "reasons": [
-    "Senaste 5 handelsdagarna: cirka 2.7% prisutveckling.",
+    "Senaste 5 handelsdagarna: cirka 1.1% prisutveckling.",
     "Uppmätt dagsvolatilitet kring 1.3%, klassad som low risk.",
     "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
     "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
     "Inga nyligen identifierade nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
   ],
-  "score": 0.013919138272656185,
+  "score": -0.001600450514517425,
   "risk": "low"
 }

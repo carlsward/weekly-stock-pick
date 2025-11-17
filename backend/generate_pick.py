@@ -184,6 +184,45 @@ def build_output_json(candidate: StockCandidate) -> dict:
         "risk": candidate.risk_level,
     }
 
+def update_history(current_pick: dict, history_path: str = "history.json") -> None:
+    """
+    Lägg till/uppdatera en rad i historiken för veckans pick.
+    Sparas som en lista av entries i history.json.
+    """
+    entry = {
+        "logged_at": date.today().isoformat(),
+        "symbol": current_pick["symbol"],
+        "company_name": current_pick["company_name"],
+        "week_start": current_pick["week_start"],
+        "week_end": current_pick["week_end"],
+        "score": current_pick.get("score"),
+        "risk": current_pick.get("risk"),
+    }
+
+    try:
+        with open(history_path, "r", encoding="utf-8") as f:
+            history = json.load(f)
+            if not isinstance(history, list):
+                history = []
+    except FileNotFoundError:
+        history = []
+
+    # Ta bort ev. tidigare entry för samma vecka + symbol
+    history = [
+        h for h in history
+        if not (h.get("week_start") == entry["week_start"] and h.get("symbol") == entry["symbol"])
+    ]
+
+    history.append(entry)
+
+    # Sortera på week_start, behåll bara senaste 100 posterna
+    history.sort(key=lambda h: h.get("week_start", ""))
+    history = history[-100:]
+
+    with open(history_path, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+
+
 
 def main():
     candidates = get_candidates()
@@ -204,6 +243,10 @@ def main():
 
     with open("risk_picks.json", "w", encoding="utf-8") as f:
         json.dump(risk_output, f, ensure_ascii=False, indent=2)
+
+    # Uppdatera historik
+    update_history(current_pick)
+
 
 
 if __name__ == "__main__":

@@ -1,0 +1,28 @@
+{
+  "low": {
+    "symbol": "MSFT",
+    "company_name": "Microsoft Corporation",
+    "week_start": "2025-11-17",
+    "week_end": "2025-11-24",
+    "reasons": [
+      "Senaste 5 handelsdagarna: cirka 2.7% prisutveckling.",
+      "Uppmätt dagsvolatilitet kring 1.3%, klassad som low risk.",
+      "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil."
+    ],
+    "score": 0.013919138272656185,
+    "risk": "low"
+  },
+  "medium": {
+    "symbol": "GOOGL",
+    "company_name": "Alphabet Inc.",
+    "week_start": "2025-11-17",
+    "week_end": "2025-11-24",
+    "reasons": [
+      "Senaste 5 handelsdagarna: cirka -0.9% prisutveckling.",
+      "Uppmätt dagsvolatilitet kring 2.1%, klassad som medium risk.",
+      "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil."
+    ],
+    "score": -0.02926510399862501,
+    "risk": "medium"
+  }
+}

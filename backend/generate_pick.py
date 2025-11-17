@@ -2,10 +2,9 @@ import json
 import math
 from dataclasses import dataclass
 from datetime import date, timedelta
-from typing import List
-import pandas as pd
-from typing import Dict  # högst upp om det inte redan finns
+from typing import List, Dict
 
+import pandas as pd
 import yfinance as yf
 
 
@@ -41,7 +40,7 @@ def fetch_daily_closes(symbol: str, max_days: int = 20) -> List[float]:
 
     closes = data["Close"]
 
-    # Om vi får en DataFrame (t.ex. fler kolumner), ta första kolumnen
+    # Om vi får en DataFrame, ta första kolumnen
     if isinstance(closes, pd.DataFrame):
         closes = closes.iloc[:, 0]
 
@@ -143,9 +142,8 @@ def get_candidates() -> List[StockCandidate]:
 
 
 def select_best_candidate(candidates: List[StockCandidate]) -> StockCandidate:
-    # Nu: bästa riskjusterade score oavsett risknivå
+    # Bästa riskjusterade score oavsett risknivå
     return max(candidates, key=lambda c: c.score)
-
 
 
 def select_best_per_risk(candidates: List[StockCandidate]) -> Dict[str, StockCandidate]:
@@ -160,7 +158,6 @@ def select_best_per_risk(candidates: List[StockCandidate]) -> Dict[str, StockCan
     }
 
     for c in candidates:
-        # säkerställ att okända risknivåer inte kraschar
         key = c.risk_level if c.risk_level in buckets else "high"
         buckets[key].append(c)
 
@@ -170,7 +167,6 @@ def select_best_per_risk(candidates: List[StockCandidate]) -> Dict[str, StockCan
             best_per_risk[risk] = max(lst, key=lambda x: x.score)
 
     return best_per_risk
-
 
 
 def build_output_json(candidate: StockCandidate) -> dict:

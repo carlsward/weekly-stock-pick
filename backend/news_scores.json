@@ -1,23 +1,23 @@
 {
-  "MSFT": {
-    "news_score": 0.8,
-    "news_reasons": [
-      "Flera positiva analyser kring molnplattformen Azure senaste veckan.",
-      "Stabil guidning från ledningen trots osäker makromiljö."
-    ]
-  },
-  "GOOGL": {
-    "news_score": 0.6,
-    "news_reasons": [
-      "Ökad fokus på kostnadskontroll och lönsamhet i senaste nyhetsflödet.",
-      "Regulatoriska risker nämns, men marknaden tolkar dem som hanterbara."
-    ]
-  },
   "AAPL": {
     "news_score": 0.5,
     "news_reasons": [
-      "Blandad bild i nyheterna med viss oro kring hårdvaruförsäljning.",
-      "Tjänsteintäkter fortsätter att lyftas fram som långsiktig styrka."
+      "Placeholder-analys för Apple Inc..",
+      "Här kommer AI-genererade nyhetsargument senare."
+    ]
+  },
+  "MSFT": {
+    "news_score": 0.5,
+    "news_reasons": [
+      "Placeholder-analys för Microsoft Corporation.",
+      "Här kommer AI-genererade nyhetsargument senare."
+    ]
+  },
+  "GOOGL": {
+    "news_score": 0.5,
+    "news_reasons": [
+      "Placeholder-analys för Alphabet Inc..",
+      "Här kommer AI-genererade nyhetsargument senare."
     ]
   }
 }

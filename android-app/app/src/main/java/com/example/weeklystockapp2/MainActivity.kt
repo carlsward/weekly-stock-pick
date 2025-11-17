@@ -72,9 +72,12 @@ class MainActivity : ComponentActivity() {
             companyName = obj.getString("company_name"),
             weekStart = obj.getString("week_start"),
             weekEnd = obj.getString("week_end"),
-            reasons = reasons
+            reasons = reasons,
+            score = obj.optDouble("score", Double.NaN),
+            risk = obj.optString("risk", "unknown")
         )
     }
+
 }
 
 @Composable

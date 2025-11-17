@@ -54,7 +54,16 @@ fun WeeklyPickScreen(pick: WeeklyPick) {
                     style = MaterialTheme.typography.bodyMedium
                 )
 
-                Spacer(modifier = Modifier.Companion.height(16.dp))
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Text(
+                    text = "Risknivå: ${pick.risk}",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.SemiBold
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
 
                 Text(
                     text = "Why this stock:",

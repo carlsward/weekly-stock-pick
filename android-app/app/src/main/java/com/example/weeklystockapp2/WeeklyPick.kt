@@ -5,5 +5,7 @@ data class WeeklyPick(
     val companyName: String,
     val weekStart: String,
     val weekEnd: String,
-    val reasons: List<String>
+    val reasons: List<String>,
+    val score: Double,
+    val risk: String
 )

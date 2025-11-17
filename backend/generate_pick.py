@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from datetime import date, timedelta
 from typing import List
 import pandas as pd
+from typing import Dict  # högst upp om det inte redan finns
 
 import yfinance as yf
 
@@ -146,6 +147,32 @@ def select_best_candidate(candidates: List[StockCandidate]) -> StockCandidate:
     return max(candidates, key=lambda c: c.score)
 
 
+
+def select_best_per_risk(candidates: List[StockCandidate]) -> Dict[str, StockCandidate]:
+    """
+    Välj bästa kandidat per risknivå ("low", "medium", "high") baserat på score.
+    Returnerar en dict: risk -> kandidat.
+    """
+    buckets: Dict[str, List[StockCandidate]] = {
+        "low": [],
+        "medium": [],
+        "high": [],
+    }
+
+    for c in candidates:
+        # säkerställ att okända risknivåer inte kraschar
+        key = c.risk_level if c.risk_level in buckets else "high"
+        buckets[key].append(c)
+
+    best_per_risk: Dict[str, StockCandidate] = {}
+    for risk, lst in buckets.items():
+        if lst:
+            best_per_risk[risk] = max(lst, key=lambda x: x.score)
+
+    return best_per_risk
+
+
+
 def build_output_json(candidate: StockCandidate) -> dict:
     today = date.today()
     week_start = today.isoformat()
@@ -164,11 +191,23 @@ def build_output_json(candidate: StockCandidate) -> dict:
 
 def main():
     candidates = get_candidates()
-    best = select_best_candidate(candidates)
-    output = build_output_json(best)
+
+    # Bästa totalt (samma som tidigare)
+    best_overall = select_best_candidate(candidates)
+    current_pick = build_output_json(best_overall)
 
     with open("current_pick.json", "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
+        json.dump(current_pick, f, ensure_ascii=False, indent=2)
+
+    # Bästa per risknivå – ny fil
+    best_per_risk = select_best_per_risk(candidates)
+    risk_output = {
+        risk: build_output_json(candidate)
+        for risk, candidate in best_per_risk.items()
+    }
+
+    with open("risk_picks.json", "w", encoding="utf-8") as f:
+        json.dump(risk_output, f, ensure_ascii=False, indent=2)
 
 
 if __name__ == "__main__":

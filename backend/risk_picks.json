@@ -8,11 +8,11 @@
       "Senaste 5 handelsdagarna: cirka 2.7% prisutveckling.",
       "Uppmätt dagsvolatilitet kring 1.3%, klassad som low risk.",
       "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-      "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-      "Flera positiva analyser kring molnplattformen Azure senaste veckan.",
-      "Stabil guidning från ledningen trots osäker makromiljö."
+      "Nyhetsanalys (AI-modell) indikerar övervägande positivt sentiment för bolaget (news_score=0.40).",
+      "Flera positiva analyser kring molnverksamheten.",
+      "Uppgraderingar från analytiker och höjda riktkurser."
     ],
-    "score": 0.24974339679085933,
+    "score": 0.21391913827265618,
     "risk": "low"
   },
   "medium": {
@@ -24,11 +24,11 @@
       "Senaste 5 handelsdagarna: cirka -0.9% prisutveckling.",
       "Uppmätt dagsvolatilitet kring 2.1%, klassad som medium risk.",
       "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-      "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-      "Ökad fokus på kostnadskontroll och lönsamhet i senaste nyhetsflödet.",
-      "Regulatoriska risker nämns, men marknaden tolkar dem som hanterbara."
+      "Nyhetsanalys (AI-modell) indikerar övervägande positivt sentiment för bolaget (news_score=0.10).",
+      "Blandad men något positiv nyhetsbild kring annonsmarknaden.",
+      "Regulatoriska risker kvarstår men inga nya större bakslag."
     ],
-    "score": 0.15951442720096248,
+    "score": 0.020734896001374993,
     "risk": "medium"
   }
 }

@@ -1,23 +1,23 @@
 {
-  "MSFT": {
-    "news_score": 0.8,
+  "AAPL": {
+    "news_score": 0.2,
     "news_reasons": [
-      "Flera positiva analyser kring molnplattformen Azure senaste veckan.",
-      "Stabil guidning från ledningen trots osäker makromiljö."
+      "Stabilt nyhetsflöde med viss övervikt positiva artiklar.",
+      "Inga större negativa händelser senaste veckan."
+    ]
+  },
+  "MSFT": {
+    "news_score": 0.4,
+    "news_reasons": [
+      "Flera positiva analyser kring molnverksamheten.",
+      "Uppgraderingar från analytiker och höjda riktkurser."
     ]
   },
   "GOOGL": {
-    "news_score": 0.6,
+    "news_score": 0.1,
     "news_reasons": [
-      "Ökad fokus på kostnadskontroll och lönsamhet i senaste nyhetsflödet.",
-      "Regulatoriska risker nämns, men marknaden tolkar dem som hanterbara."
-    ]
-  },
-  "AAPL": {
-    "news_score": 0.5,
-    "news_reasons": [
-      "Blandad bild i nyheterna med viss oro kring hårdvaruförsäljning.",
-      "Tjänsteintäkter fortsätter att lyftas fram som långsiktig styrka."
+      "Blandad men något positiv nyhetsbild kring annonsmarknaden.",
+      "Regulatoriska risker kvarstår men inga nya större bakslag."
     ]
   }
 }

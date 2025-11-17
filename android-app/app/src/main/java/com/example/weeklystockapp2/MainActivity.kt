@@ -26,12 +26,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             WeeklyStockApp2Theme {
                 val vm: MainViewModel = viewModel()
+
                 Surface(color = MaterialTheme.colorScheme.background) {
                     when (val state = vm.uiState) {
                         is UiState.Loading -> LoadingView()
                         is UiState.Error -> ErrorView(message = state.message)
                         is UiState.Content -> {
-                            // Hela sidan är nu scrollbar
+                            // Hela sidan är scrollbar
                             LazyColumn(
                                 modifier = Modifier
                                     .fillMaxSize()

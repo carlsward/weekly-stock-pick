@@ -1,5 +1,6 @@
 package com.example.weeklystockapp2
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,8 +27,16 @@ class MainActivity : ComponentActivity() {
     private val riskPicksUrl =
         "https://raw.githubusercontent.com/carlsward/weekly-stock-pick/main/backend/risk_picks.json"
 
+    private val prefsName = "weekly_picks_prefs"
+    private val keyDefaultRisk = "default_risk"
+    private val keyCachedRiskPicks = "cached_risk_picks"
+    private val keyCachedSinglePick = "cached_current_pick"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val prefs = getSharedPreferences(prefsName, Context.MODE_PRIVATE)
+        val savedRisk = prefs.getString(keyDefaultRisk, null)
 
         var pickState: MutableState<WeeklyPick?>? = null
         var riskMapState: MutableState<Map<String, WeeklyPick>>? = null
@@ -50,6 +59,8 @@ class MainActivity : ComponentActivity() {
                             val candidate = riskMap.value[riskKey]
                             if (candidate != null) {
                                 state.value = candidate
+                                // spara preferens
+                                prefs.edit().putString(keyDefaultRisk, riskKey).apply()
                             }
                         }
                     } else {
@@ -64,13 +75,21 @@ class MainActivity : ComponentActivity() {
             try {
                 // Försök använda risk_picks.json först
                 val jsonText = URL(riskPicksUrl).readText()
+
+                // Cacha rå JSON för offline-användning
+                prefs.edit().putString(keyCachedRiskPicks, jsonText).apply()
+
                 val riskMap = parseRiskPicks(jsonText)
 
                 withContext(Dispatchers.Main) {
                     riskMapState?.value = riskMap
 
                     val defaultPick =
-                        riskMap["medium"] ?: riskMap["low"] ?: riskMap.values.firstOrNull()
+                        if (savedRisk != null && riskMap.containsKey(savedRisk)) {
+                            riskMap[savedRisk]
+                        } else {
+                            riskMap["medium"] ?: riskMap["low"] ?: riskMap.values.firstOrNull()
+                        }
 
                     if (defaultPick != null) {
                         pickState?.value = defaultPick
@@ -79,15 +98,57 @@ class MainActivity : ComponentActivity() {
             } catch (e: Exception) {
                 e.printStackTrace()
 
-                // Fallback: gammal current_pick.json
+                // 1) Försök använda cached risk_picks.json
+                val cachedRisk = prefs.getString(keyCachedRiskPicks, null)
+                var resolved = false
+                if (cachedRisk != null) {
+                    try {
+                        val riskMap = parseRiskPicks(cachedRisk)
+                        withContext(Dispatchers.Main) {
+                            riskMapState?.value = riskMap
+
+                            val defaultPick =
+                                if (savedRisk != null && riskMap.containsKey(savedRisk)) {
+                                    riskMap[savedRisk]
+                                } else {
+                                    riskMap["medium"] ?: riskMap["low"] ?: riskMap.values.firstOrNull()
+                                }
+
+                            if (defaultPick != null) {
+                                pickState?.value = defaultPick
+                                resolved = true
+                            }
+                        }
+                    } catch (_: Exception) {
+                        // Om parsning misslyckas fortsätter vi nedåt
+                    }
+                }
+
+                if (resolved) return@launch
+
+                // 2) Försök nätverks-hämta current_pick.json
                 try {
                     val jsonText = URL(jsonUrl).readText()
+                    prefs.edit().putString(keyCachedSinglePick, jsonText).apply()
                     val pick = parseWeeklyPick(jsonText)
                     withContext(Dispatchers.Main) {
                         pickState?.value = pick
                     }
                 } catch (e2: Exception) {
                     e2.printStackTrace()
+
+                    // 3) Sista fallback: cached current_pick.json
+                    val cachedSingle = prefs.getString(keyCachedSinglePick, null)
+                    if (cachedSingle != null) {
+                        try {
+                            val pick = parseWeeklyPick(cachedSingle)
+                            withContext(Dispatchers.Main) {
+                                pickState?.value = pick
+                            }
+                        } catch (_: Exception) {
+                            // absolut sista läget – då får LoadingView stå kvar
+                        }
+                    }
                 }
             }
         }

@@ -7,7 +7,6 @@ from typing import List, Dict
 import pandas as pd
 import yfinance as yf
 
-
 # Liten watchlist – kan utökas senare
 WATCHLIST = [
     ("AAPL", "Apple Inc."),
@@ -21,7 +20,7 @@ class StockCandidate:
     symbol: str
     company_name: str
     reasons: List[str]
-    score: float          # högre = bättre
+    score: float          # total score (teknik + nyheter)
     risk_level: str       # "low" / "medium" / "high"
 
 
@@ -52,6 +51,28 @@ def fetch_daily_closes(symbol: str, max_days: int = 20) -> List[float]:
     values = closes.tail(max_days).values  # numpy-array
     closes_list = list(values)[::-1]       # index 0 = senaste
     return closes_list
+
+
+def load_news_scores(path: str = "news_scores.json") -> Dict[str, dict]:
+    """
+    Läser in nyhetsbaserade scores per symbol.
+    Struktur:
+    {
+      "MSFT": {
+        "news_score": 0.7,
+        "news_reasons": ["...", "..."]
+      },
+      ...
+    }
+    """
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            if isinstance(data, dict):
+                return data
+    except FileNotFoundError:
+        pass
+    return {}
 
 
 def compute_metrics(closes: List[float]) -> tuple[float, float]:
@@ -96,7 +117,7 @@ def classify_risk(vol: float) -> str:
 
 def compute_score(momentum: float, vol: float) -> float:
     """
-    Enkel riskjusterad score:
+    Enkel riskjusterad teknisk score:
     - Belönar positivt momentum
     - Straffar hög volatilitet
     """
@@ -107,11 +128,31 @@ def format_pct(x: float) -> str:
     return f"{x * 100:.1f}%"
 
 
-def build_candidate(symbol: str, company_name: str) -> StockCandidate:
+def build_candidate(
+    symbol: str,
+    company_name: str,
+    news_info: dict | None = None,
+) -> StockCandidate:
+    """
+    Bygger en kandidat med teknisk score + ev. nyhetsbaserad score.
+    """
     closes = fetch_daily_closes(symbol)
     momentum, vol = compute_metrics(closes)
     risk_level = classify_risk(vol)
-    score = compute_score(momentum, vol)
+
+    # Teknisk komponent
+    technical_score = compute_score(momentum, vol)
+
+    # Nyhetskomponent
+    news_score = 0.0
+    news_reasons: List[str] = []
+    if news_info is not None:
+        news_score = float(news_info.get("news_score", 0.0))
+        raw_reasons = news_info.get("news_reasons") or []
+        news_reasons = [str(r) for r in raw_reasons][:2]  # max 2 nyhetsskäl
+
+    # Kombinera teknik + nyheter (vikter kan justeras senare)
+    total_score = 0.6 * technical_score + 0.4 * news_score
 
     reasons = [
         f"Senaste 5 handelsdagarna: cirka {format_pct(momentum)} prisutveckling.",
@@ -119,30 +160,37 @@ def build_candidate(symbol: str, company_name: str) -> StockCandidate:
         "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
     ]
 
+    # Lägg på AI-genererade nyhetsskäl sist
+    reasons.extend(news_reasons)
+
     return StockCandidate(
         symbol=symbol,
         company_name=company_name,
         reasons=reasons,
-        score=score,
+        score=total_score,
         risk_level=risk_level,
     )
 
 
 def get_candidates() -> List[StockCandidate]:
+    news_scores = load_news_scores()
     candidates: List[StockCandidate] = []
+
     for symbol, name in WATCHLIST:
         try:
-            candidate = build_candidate(symbol, name)
+            news_info = news_scores.get(symbol)
+            candidate = build_candidate(symbol, name, news_info=news_info)
             candidates.append(candidate)
         except Exception as e:
             print(f"Hoppar över {symbol}: {e}")
+
     if not candidates:
         raise RuntimeError("Inga kandidater kunde genereras")
     return candidates
 
 
 def select_best_candidate(candidates: List[StockCandidate]) -> StockCandidate:
-    # Bästa riskjusterade score oavsett risknivå
+    # Bästa totala score (teknik + nyheter) oavsett risknivå
     return max(candidates, key=lambda c: c.score)
 
 
@@ -184,6 +232,7 @@ def build_output_json(candidate: StockCandidate) -> dict:
         "risk": candidate.risk_level,
     }
 
+
 def update_history(current_pick: dict, history_path: str = "history.json") -> None:
     """
     Lägg till/uppdatera en rad i historiken för veckans pick.
@@ -223,11 +272,10 @@ def update_history(current_pick: dict, history_path: str = "history.json") -> No
         json.dump(history, f, ensure_ascii=False, indent=2)
 
 
-
 def main():
     candidates = get_candidates()
 
-    # Bästa totalt (samma som tidigare)
+    # Bästa totalt
     best_overall = select_best_candidate(candidates)
     current_pick = build_output_json(best_overall)
 
@@ -246,7 +294,6 @@ def main():
 
     # Uppdatera historik
     update_history(current_pick)
-
 
 
 if __name__ == "__main__":

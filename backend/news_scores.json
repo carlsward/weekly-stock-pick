@@ -1,0 +1,15 @@
+{
+  "MSFT": {
+    "news_score": 0.7,
+    "news_reasons": [
+      "Flera positiva analyser kring molnverksamheten senaste veckan.",
+      "Nyhetsflödet domineras av uppsidor snarare än regulatoriska risker."
+    ]
+  },
+  "GOOGL": {
+    "news_score": 0.4,
+    "news_reasons": [
+      "Blandat sentiment kring annonsering men överlag konstruktiv ton."
+    ]
+  }
+}

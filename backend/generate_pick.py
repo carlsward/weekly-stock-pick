@@ -3,6 +3,7 @@ import math
 from dataclasses import dataclass
 from datetime import date, timedelta
 from typing import List
+import pandas as pd
 
 import yfinance as yf
 
@@ -37,14 +38,20 @@ def fetch_daily_closes(symbol: str, max_days: int = 20) -> List[float]:
         progress=False,
     )
 
-    closes_series = data["Close"].dropna()
-    if len(closes_series) == 0:
+    closes = data["Close"]
+
+    # Om vi får en DataFrame (t.ex. fler kolumner), ta första kolumnen
+    if isinstance(closes, pd.DataFrame):
+        closes = closes.iloc[:, 0]
+
+    closes = closes.dropna()
+    if len(closes) == 0:
         raise RuntimeError(f"Inga prisdata för {symbol}")
 
     # Ta de senaste max_days värdena, gör ordningen: senaste först
-    values = closes_series.tail(max_days).tolist()
-    closes = list(reversed(values))  # index 0 = senaste
-    return closes
+    values = closes.tail(max_days).values  # numpy-array
+    closes_list = list(values)[::-1]       # index 0 = senaste
+    return closes_list
 
 
 def compute_metrics(closes: List[float]) -> tuple[float, float]:

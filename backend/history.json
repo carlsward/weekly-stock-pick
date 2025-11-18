@@ -7,5 +7,14 @@
     "week_end": "2025-11-24",
     "score": -0.001600450514517425,
     "risk": "low"
+  },
+  {
+    "logged_at": "2025-11-18",
+    "symbol": "MSFT",
+    "company_name": "Microsoft Corporation",
+    "week_start": "2025-11-18",
+    "week_end": "2025-11-25",
+    "score": -0.01005593428923459,
+    "risk": "low"
   }
 ]

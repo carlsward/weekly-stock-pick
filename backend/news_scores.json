@@ -6,7 +6,7 @@
     ],
     "raw_sentiment": 0.0,
     "article_count": 0,
-    "last_updated": "2025-11-17"
+    "last_updated": "2025-11-18"
   },
   "MSFT": {
     "news_score": 0.5,
@@ -15,7 +15,7 @@
     ],
     "raw_sentiment": 0.0,
     "article_count": 0,
-    "last_updated": "2025-11-17"
+    "last_updated": "2025-11-18"
   },
   "GOOGL": {
     "news_score": 0.5,
@@ -24,6 +24,6 @@
     ],
     "raw_sentiment": 0.0,
     "article_count": 0,
-    "last_updated": "2025-11-17"
+    "last_updated": "2025-11-18"
   }
 }

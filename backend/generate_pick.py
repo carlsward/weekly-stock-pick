@@ -2,7 +2,7 @@ import json
 import math
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple
 
 import pandas as pd
 import yfinance as yf
@@ -11,13 +11,7 @@ import yfinance as yf
 
 MODEL_VERSION = "v1.0"  # uppdatera när du ändrar scoring-logik
 
-# Liten watchlist – kan utökas senare
-WATCHLIST = [
-    ("AAPL", "Apple Inc."),
-    ("MSFT", "Microsoft Corporation"),
-    ("GOOGL", "Alphabet Inc."),
-]
-
+UNIVERSE_CSV_PATH = "universe.csv"
 NEWS_SCORES_PATH = "news_scores.json"
 
 
@@ -37,6 +31,25 @@ class StockCandidate:
 
 
 # ======= Hjälpfunktioner =======
+
+def load_universe(path: str = UNIVERSE_CSV_PATH) -> List[Tuple[str, str]]:
+    """
+    Läser in aktieuniverset från CSV.
+    Förväntat format: symbol,company_name,active
+    """
+    df = pd.read_csv(path)
+    df = df[df.get("active", 1) == 1]
+    df = df.dropna(subset=["symbol", "company_name"])
+    rows: List[Tuple[str, str]] = []
+    for _, row in df.iterrows():
+        symbol = str(row["symbol"]).strip().upper()
+        name = str(row["company_name"]).strip()
+        if symbol and name:
+            rows.append((symbol, name))
+    if not rows:
+        raise RuntimeError("Inga aktier i universe.csv med active=1")
+    return rows
+
 
 def fetch_daily_closes(symbol: str, max_days: int = 20) -> List[float]:
     """
@@ -166,10 +179,8 @@ def build_candidate(
             news_reasons = [str(r) for r in reasons]
 
     # Kombinera teknisk + nyhetsscore
-    # Exempel: teknisk score * (0.5 + news_score) / 1.0
-    #   - om news_score = 0.5 -> faktor 1.0 (neutral)
-    #   - >0.5 boostar
-    #   - <0.5 drar ned
+    #  - news_score ~0.5 neutralt
+    #  - >0.5 boostar, <0.5 drar ned
     news_factor = 0.5 + news_score  # 0.5..1.5 ungefär
     total_score = base_score * news_factor
 
@@ -198,9 +209,10 @@ def build_candidate(
 
 
 def get_candidates() -> List[StockCandidate]:
+    universe = load_universe()
     news_scores = load_news_scores()
     candidates: List[StockCandidate] = []
-    for symbol, name in WATCHLIST:
+    for symbol, name in universe:
         try:
             candidate = build_candidate(
                 symbol=symbol,
@@ -256,7 +268,7 @@ def build_output_json(candidate: StockCandidate) -> dict:
 
     return {
         "symbol": candidate.symbol,
-        "company_name": candidate.company_name,
+        "company_name": candidate.companyName,
         "week_start": week_start,
         "week_end": week_end,
         "reasons": candidate.reasons,
@@ -315,14 +327,14 @@ def main():
     print("[INFO] Genererar kandidater...")
     candidates = get_candidates()
 
-    # Bästa totalt (samma som tidigare, men nu inkl. nyhetsscore)
+    # Bästa totalt
     best_overall = select_best_candidate(candidates)
     current_pick = build_output_json(best_overall)
 
     with open("current_pick.json", "w", encoding="utf-8") as f:
         json.dump(current_pick, f, ensure_ascii=False, indent=2)
 
-    # Bästa per risknivå – ny fil
+    # Bästa per risknivå
     best_per_risk = select_best_per_risk(candidates)
     risk_output = {
         risk: build_output_json(candidate)

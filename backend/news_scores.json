@@ -1,29 +1,32 @@
 {
   "AAPL": {
-    "news_score": 0.5,
+    "news_score": 0.71,
     "news_reasons": [
-      "Inga nyligen identifierade nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
+      "Sammanfattning: Apple Reclaims China Market -- iPhone 17 Drives Share to 25%. Apple Hits 25% Share in China as New Models Outperform. Stagwell Inc. (STGW) is a must-buy penny stock to buy now. Berkshire Hathaway is spreading its wings into new Magnificent Seven stocks."
     ],
-    "raw_sentiment": 0.0,
-    "article_count": 0,
+    "raw_sentiment": 0.4293,
+    "article_count": 10,
     "last_updated": "2025-11-18"
   },
   "MSFT": {
-    "news_score": 0.5,
+    "news_score": 0.48,
     "news_reasons": [
-      "Inga nyligen identifierade nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
+      "Sammanfattning: N Nvidia to report Q3 earnings amid investor concerns of AI overbuilding. Nvidia will report its Q3 Earnings after the bell on Wednesday. US equity futures were tracking in the red on Tuesday amid broader weakness in the technology sector. Blue Origin CEO says data centers are headed to space 'in our lifetime'"
     ],
-    "raw_sentiment": 0.0,
-    "article_count": 0,
+    "raw_sentiment": -0.0451,
+    "article_count": 10,
     "last_updated": "2025-11-18"
   },
   "GOOGL": {
-    "news_score": 0.5,
+    "news_score": 0.37,
     "news_reasons": [
-      "Inga nyligen identifierade nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
+      "Sammanfattning: Stagwell Inc. (STGW) is a Buy at Needham Amid Deals with Tech Giants. Nvidia to report Q3 earnings amid investor concerns of AI overbuilding. Blue Origin's Dave Limp says AI's energy crunch will push the world's biggest compute clusters off Earth and into space."
     ],
-    "raw_sentiment": 0.0,
-    "article_count": 0,
+    "raw_sentiment": -0.2651,
+    "article_count": 10,
     "last_updated": "2025-11-18"
   }
 }

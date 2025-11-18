@@ -52,7 +52,9 @@ def unix_to_datetime(ts: Any) -> datetime | None:
 def fetch_news_texts(symbol: str) -> List[str]:
     """
     Hämta nyhetstexter för ett bolag via yfinance.
-    Returnerar en lista av textstycken (headline + summary).
+    Just nu *ingen* datumfiltrering – vi tar de första upp till
+    MAX_ARTICLES_PER_SYMBOL som har titel/summary.
+    Vi loggar tiderna för att kunna sätta ett vettigt cutoff senare.
     """
     print(f"\n=== Hämtar nyheter för {symbol} ===")
     ticker = yf.Ticker(symbol)
@@ -60,18 +62,19 @@ def fetch_news_texts(symbol: str) -> List[str]:
     raw_news = getattr(ticker, "news", []) or []
     print(f"[{symbol}] raw news count: {len(raw_news)}")
 
-    cutoff = datetime.now(timezone.utc) - timedelta(days=MAX_NEWS_AGE_DAYS)
-
     texts: List[str] = []
-    for item in raw_news:
-        title = item.get("title") or ""
-        summary = item.get("summary") or ""
-        provider_time = unix_to_datetime(item.get("providerPublishTime"))
 
-        if provider_time is not None:
-            if provider_time < cutoff:
-                continue
-        # Om vi inte kan tolka tid – ta hellre med än kasta
+    for idx, item in enumerate(raw_news):
+        title = (item.get("title") or "").strip()
+        summary = (item.get("summary") or "").strip()
+        ts = item.get("providerPublishTime")
+        dt = unix_to_datetime(ts)
+
+        # Debug: se vilken tid yfinance faktiskt ger
+        short_title = title if len(title) <= 60 else title[:57] + "..."
+        print(f"[{symbol}] item {idx}: time={ts} -> {dt}, title=\"{short_title}\"")
+
+        # Skippa helt tomma poster
         if not (title or summary):
             continue
 
@@ -81,8 +84,9 @@ def fetch_news_texts(symbol: str) -> List[str]:
         if len(texts) >= MAX_ARTICLES_PER_SYMBOL:
             break
 
-    print(f"[{symbol}] recent texts used: {len(texts)}")
+    print(f"[{symbol}] texts used: {len(texts)}")
     return texts
+
 
 
 def build_pipelines():

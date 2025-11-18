@@ -3,29 +3,29 @@
     "news_score": 0.71,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning: Apple Reclaims China Market -- iPhone 17 Drives Share to 25%. Apple Hits 25% Share in China as New Models Outperform. Stagwell Inc. (STGW) is a must-buy penny stock to buy now. Berkshire Hathaway is spreading its wings into new Magnificent Seven stocks."
+      "Sammanfattning: Apple Jumps to 25% Market Share in China. iPhone 17 lineup sparks a major rebound for Apple. Stagwell Inc. (STGW) is a Buy at Needham Amid Deals with Tech Giants. Berkshire Hathaway is spreading its wings into new Magnificent Seven stocks. Back to the page you came from."
     ],
-    "raw_sentiment": 0.4293,
+    "raw_sentiment": 0.4261,
     "article_count": 10,
     "last_updated": "2025-11-18"
   },
   "MSFT": {
-    "news_score": 0.48,
+    "news_score": 0.41,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning: N Nvidia to report Q3 earnings amid investor concerns of AI overbuilding. Nvidia will report its Q3 Earnings after the bell on Wednesday. US equity futures were tracking in the red on Tuesday amid broader weakness in the technology sector. Blue Origin CEO says data centers are headed to space 'in our lifetime'"
+      "Sammanfattning: Microsoft and Amazon are downgraded as Redburn Breaks Ranks With Peers. Nvidia to report Q3 earnings amid investor concerns of AI overbuilding. Blue Origin CEO says data centers are headed to space 'in our lifetime' Microsoft Corp. and Amazon.com, Inc. saw their ratings cut to neutral from buy."
     ],
-    "raw_sentiment": -0.0451,
+    "raw_sentiment": -0.1788,
     "article_count": 10,
     "last_updated": "2025-11-18"
   },
   "GOOGL": {
-    "news_score": 0.37,
+    "news_score": 0.33,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning: Stagwell Inc. (STGW) is a Buy at Needham Amid Deals with Tech Giants. Nvidia to report Q3 earnings amid investor concerns of AI overbuilding. Blue Origin's Dave Limp says AI's energy crunch will push the world's biggest compute clusters off Earth and into space."
+      "Sammanfattning: Nvidia to report Q3 earnings amid investor concerns of AI overbuilding. Stagwell Inc. (STGW) is a must-buy penny stock to buy now. Blue Origin's Dave Limp says AI's energy crunch will push the world's biggest compute clusters off Earth and into space 'in our lifetime'"
     ],
-    "raw_sentiment": -0.2651,
+    "raw_sentiment": -0.3464,
     "article_count": 10,
     "last_updated": "2025-11-18"
   }

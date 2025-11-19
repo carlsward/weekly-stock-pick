@@ -235,18 +235,19 @@ def compute_finbert_sentiment(pipe, texts: List[str]) -> float:
 
 def summarize_texts(pipe, texts: List[str]) -> str:
     """
-    Summerar alla texter till en relativt kort sammanfattning.
+    Summerar alla texter till en kort sammanfattning (1–2 meningar).
     """
     if not texts:
         return ""
 
     joined = " ".join(texts)
-    joined = joined[:4000]  # grov begränsning
+    joined = joined[:3000]  # grov begränsning
+
     try:
         out = pipe(
             joined,
             max_length=80,   # kortare sammanfattning
-            min_length=30,   # fortfarande minst några meningar
+            min_length=30,
             do_sample=False,
             truncation=True,
         )
@@ -254,8 +255,10 @@ def summarize_texts(pipe, texts: List[str]) -> str:
             return out[0].get("summary_text", "").strip()
     except Exception as e:
         print(f"[WARN] Summarization failed: {e}")
-    # Fallback: använd bara ihopslagna titlar
-    return " ".join(t[:200] for t in texts[:3])
+
+    # Fallback: ta bara de första titlarna
+    return " ".join(t[:120] for t in texts[:2])
+
 
 
 

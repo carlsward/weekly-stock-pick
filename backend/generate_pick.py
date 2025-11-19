@@ -268,16 +268,12 @@ def build_output_json(candidate: StockCandidate) -> dict:
 
     return {
         "symbol": candidate.symbol,
-        "company_name": candidate.companyName,
+        "company_name": candidate.company_name, 
         "week_start": week_start,
         "week_end": week_end,
         "reasons": candidate.reasons,
         "score": candidate.score,
         "risk": candidate.risk_level,
-        "base_score": candidate.base_score,
-        "news_score": candidate.news_score,
-        "model_version": MODEL_VERSION,
-        "generated_at": now_utc_iso(),
     }
 
 

@@ -25,5 +25,15 @@
     "week_end": "2025-11-25",
     "score": 0.0875960623592939,
     "risk": "low"
+  },
+  {
+    "logged_at": "2025-11-19",
+    "symbol": "CSCO",
+    "company_name": "Cisco Systems Inc.",
+    "week_start": "2025-11-19",
+    "week_end": "2025-11-26",
+    "score": 0.07154177912456902,
+    "risk": "medium",
+    "model_version": "v1.0"
   }
 ]

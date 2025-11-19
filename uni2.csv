@@ -1,0 +1,120 @@
+symbol,company_name,active
+AAPL,Apple Inc.,1
+MSFT,Microsoft Corporation,1
+GOOGL,Alphabet Inc.,1
+AMZN,Amazon.com Inc.,1
+TSLA,Tesla Inc.,1
+FB,Meta Platforms Inc.,1
+BRK.B,Berkshire Hathaway Inc.,1
+NVDA,NVIDIA Corporation,1
+JPM,JP Morgan Chase & Co.,1
+JNJ,Johnson & Johnson,1
+V,Visa Inc.,1
+WMT,Walmart Inc.,1
+PG,Procter & Gamble Company,1
+MA,Mastercard Incorporated,1
+DIS,The Walt Disney Company,1
+HD,The Home Depot Inc.,1
+BAC,Bank of America Corporation,1
+XOM,Exxon Mobil Corporation,1
+PFE,Pfizer Inc.,1
+VZ,Verizon Communications Inc.,1
+NFLX,Netflix Inc.,1
+ADBE,Adobe Inc.,1
+CMCSA,Comcast Corporation,1
+KO,The Coca-Cola Company,1
+T,AT&T Inc.,1
+NKE,Nike Inc.,1
+MRK,Merck & Co. Inc.,1
+ABT,Abbott Laboratories,1
+PEP,PepsiCo Inc.,1
+CSCO,Cisco Systems Inc.,1
+ORCL,Oracle Corporation,1
+INTC,Intel Corporation,1
+CRM,Salesforce Inc.,1
+COST,Costco Wholesale Corporation,1
+ACN,Accenture plc,1
+CVX,Chevron Corporation,1
+MCD,McDonald's Corporation,1
+DHR,Danaher Corporation,1
+MDT,Medtronic plc,1
+LLY,Eli Lilly and Company,1
+TXN,Texas Instruments Incorporated,1
+UNH,UnitedHealth Group Incorporated,1
+BMY,Bristol-Myers Squibb Company,1
+QCOM,QUALCOMM Incorporated,1
+HON,Honeywell International Inc.,1
+AMGN,Amgen Inc.,1
+SBUX,Starbucks Corporation,1
+LOW,Lowe's Companies Inc.,1
+GE,General Electric Company,1
+IBM,International Business Machines Corporation,1
+CAT,Caterpillar Inc.,1
+MMM,3M Company,1
+DE,Deere & Company,1
+GS,The Goldman Sachs Group Inc.,1
+AXP,American Express Company,1
+BLK,BlackRock Inc.,1
+SCHW,The Charles Schwab Corporation,1
+SPGI,S&P Global Inc.,1
+ADP,Automatic Data Processing Inc.,1
+ISRG,Intuitive Surgical Inc.,1
+NOW,ServiceNow Inc.,1
+LMT,Lockheed Martin Corporation,1
+BA,Boeing Company,1
+CVS,CVS Health Corporation,1
+ZTS,Zoetis Inc.,1
+MDLZ,Mondelez International Inc.,1
+TMO,Thermo Fisher Scientific Inc.,1
+AMT,American Tower Corporation,1
+PLD,Prologis Inc.,1
+CCI,Crown Castle International Corp.,1
+EQIX,Equinix Inc.,1
+DUK,Duke Energy Corporation,1
+SO,The Southern Company,1
+NEE,NextEra Energy Inc.,1
+AEP,American Electric Power Company Inc.,1
+BSX,Boston Scientific Corporation,1
+ISRG,Intuitive Surgical Inc.,1
+REGN,Regeneron Pharmaceuticals Inc.,1
+VRTX,Vertex Pharmaceuticals Incorporated,1
+ALGN,Align Technology Inc.,1
+IDXX,IDEXX Laboratories Inc.,1
+MELI,MercadoLibre Inc.,1
+PYPL,PayPal Holdings Inc.,1
+SQ,Block Inc.,1
+ZM,Zoom Video Communications Inc.,1
+DOCU,DocuSign Inc.,1
+NET,Cloudflare Inc.,1
+CRWD,CrowdStrike Holdings Inc.,1
+OKTA,Okta Inc.,1
+FSLY,Fastly Inc.,1
+DDOG,Datadog Inc.,1
+SNOW,Snowflake Inc.,1
+TEAM,Atlassian Corporation Plc,1
+AYX,Alteryx Inc.,1
+TWLO,Twilio Inc.,1
+ZS,Zscaler Inc.,1
+FTNT,Fortinet Inc.,1
+PANW,Palo Alto Networks Inc.,1
+CHTR,Charter Communications Inc.,1
+DLTR,Dollar Tree Inc.,1
+ROST,Ross Stores Inc.,1
+KMX,CarMax Inc.,1
+ULTA,Ulta Beauty Inc.,1
+LULU,Lululemon Athletica Inc.,1
+EBAY,eBay Inc.,1
+ANSS,ANSYS Inc.,1
+CDNS,Cadence Design Systems Inc.,1
+SNPS,Synopsys Inc.,1
+MCHP,Microchip Technology Incorporated,1
+XLNX,Xilinx Inc.,1
+AVGO,Broadcom Inc.,1
+TXN,Texas Instruments Incorporated,1
+ADI,Analog Devices Inc.,1
+MU,Micron Technology Inc.,1
+QCOM,QUALCOMM Incorporated,1
+APH,Amphenol Corporation,1
+KEYS,Keysight Technologies Inc.,1
+SWKS,Skyworks Solutions Inc.,1
+ON,ON Semiconductor Corporation,1

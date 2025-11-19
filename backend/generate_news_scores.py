@@ -1,268 +1,319 @@
-# backend/generate_news_scores.py
-
 import json
 from datetime import datetime, timedelta, timezone
-from typing import List, Dict, Any, Tuple
+from typing import List, Dict, Tuple
 
-import torch
-from transformers import (
-    AutoTokenizer,
-    AutoModelForSequenceClassification,
-    pipeline,
-)
+import pandas as pd
 import yfinance as yf
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForSeq2SeqLM, pipeline
 
-from generate_pick import WATCHLIST  # (symbol, company_name)
-
-
-# ----------------------------
-#  Device-val (CPU / MPS / CUDA)
-# ----------------------------
-
-def get_device() -> Tuple[int, str]:
-    if torch.backends.mps.is_available():
-        print("Device set to use mps:0")
-        return 0, "mps"
-    if torch.cuda.is_available():
-        print("Device set to use cuda:0")
-        return 0, "cuda"
-    print("Device set to use cpu")
-    return -1, "cpu"
-
-
-print("Laddar FinBERT-modell...")
-device_index, _device_name = get_device()
+NEWS_SCORES_PATH = "news_scores.json"
+UNIVERSE_CSV_PATH = "universe.csv"
 
 FINBERT_MODEL_NAME = "ProsusAI/finbert"
-
-_finbert_tokenizer = AutoTokenizer.from_pretrained(FINBERT_MODEL_NAME)
-_finbert_model = AutoModelForSequenceClassification.from_pretrained(FINBERT_MODEL_NAME)
-finbert_pipeline = pipeline(
-    "sentiment-analysis",
-    model=_finbert_model,
-    tokenizer=_finbert_tokenizer,
-    device=device_index,
-)
-
-print("Laddar summarizer-modell...")
 SUMMARIZER_MODEL_NAME = "facebook/bart-large-cnn"
-summarizer_pipeline = pipeline(
-    "summarization",
-    model=SUMMARIZER_MODEL_NAME,
-    device=device_index,
-)
+
+# Hur långt tillbaka vi tittar på nyheter
+NEWS_LOOKBACK_DAYS = 5
+MAX_ARTICLES_PER_SYMBOL = 10
 
 
-# ----------------------------
-#  Hjälpfunktioner
-# ----------------------------
+# ---------- Hjälpfunktioner för universet ----------
 
-def parse_item_datetime(item: Dict[str, Any]) -> datetime | None:
+def load_universe(path: str = UNIVERSE_CSV_PATH) -> List[Tuple[str, str]]:
     """
-    Försöker tolka tid från både nya och gamla yfinance-format:
-
-    Nya: item["content"]["pubDate"] = "2025-11-18T11:00:42Z"
-    Gamla: item["providerPublishTime"] = epoch-sekunder
+    Läser in aktieuniverset från CSV.
+    Förväntat format: symbol,company_name,active
     """
-    content = item.get("content") or {}
-    iso_str = content.get("pubDate") or item.get("pubDate")
-    if iso_str:
-        try:
-            # Ex: "2025-11-18T11:00:42Z"
-            if iso_str.endswith("Z"):
-                iso_str = iso_str.replace("Z", "+00:00")
-            return datetime.fromisoformat(iso_str).astimezone(timezone.utc)
-        except Exception:
-            pass
-
-    ts = item.get("providerPublishTime")
-    if isinstance(ts, (int, float)):
-        try:
-            return datetime.fromtimestamp(ts, tz=timezone.utc)
-        except Exception:
-            return None
-    return None
+    df = pd.read_csv(path)
+    df = df[df.get("active", 1) == 1]
+    df = df.dropna(subset=["symbol", "company_name"])
+    rows: List[Tuple[str, str]] = []
+    for _, row in df.iterrows():
+        symbol = str(row["symbol"]).strip().upper()
+        name = str(row["company_name"]).strip()
+        if symbol and name:
+            rows.append((symbol, name))
+    if not rows:
+        raise RuntimeError("Inga aktier i universe.csv med active=1")
+    return rows
 
 
-def extract_title_and_text(item: Dict[str, Any]) -> Tuple[str, str]:
+# ---------- Device-hantering (enkel) ----------
+
+def detect_device_for_logs() -> None:
     """
-    Plockar ut title + summary från både nya och gamla format.
-    Returnerar (title, full_text).
+    Bara logging – vi låter pipelines köra på CPU (device=-1) för robusthet.
     """
-    content = item.get("content") or {}
+    try:
+        import torch
 
-    title = (
-        content.get("title")
-        or item.get("title")
-        or ""
-    ).strip()
-
-    summary = (
-        content.get("summary")
-        or item.get("summary")
-        or ""
-    ).strip()
-
-    # vi kan även falla tillbaka till "description" om summary saknas
-    if not summary:
-        summary = (
-            content.get("description")
-            or item.get("description")
-            or ""
-        ).strip()
-
-    if summary:
-        full_text = f"{title}. {summary}" if title else summary
-    else:
-        full_text = title
-
-    return title, full_text.strip()
+        if getattr(torch.backends, "mps", None) and torch.backends.mps.is_available():
+            print("Device set to use mps:0")
+        elif torch.cuda.is_available():
+            print("Device set to use cuda:0")
+        else:
+            print("Device set to use cpu")
+    except Exception:
+        print("Device detection failed, using CPU")
 
 
-def fetch_news_texts_for_symbol(
+# ---------- Nyhets-hantering ----------
+
+def parse_news_time(raw: dict) -> datetime | None:
+    """
+    Försöker plocka ut tid från yfinance-nyhetsobjekt.
+    """
+    content = raw.get("content") or {}
+    ts = content.get("pubDate") or content.get("displayTime")
+    if not ts:
+        return None
+    try:
+        # Ex: "2025-11-18T11:00:42Z"
+        if ts.endswith("Z"):
+            ts = ts.replace("Z", "+00:00")
+        return datetime.fromisoformat(ts)
+    except Exception:
+        return None
+
+
+def build_symbol_keywords(symbol: str, company_name: str) -> List[str]:
+    """
+    Bygger en lista med nyckelord som vi använder för att avgöra
+    om en nyhetsartikel verkligen handlar om bolaget.
+    """
+    sym = symbol.lower()
+
+    # Plocka ut "viktiga" ord ur company_name
+    stop_words = {"inc", "corp", "corporation", "plc", "sa", "co", "ltd", "company", "&"}
+    name_parts = [
+        w.lower()
+        for w in company_name.replace(",", " ").replace(".", " ").split()
+        if w.lower() not in stop_words and len(w) > 2
+    ]
+
+    # Special-synonymer för vissa tickers
+    manual: Dict[str, List[str]] = {
+        "GOOGL": ["google", "alphabet"],
+        "GOOG": ["google", "alphabet"],
+        "META": ["meta", "facebook"],
+        "BRK.B": ["berkshire"],
+        "BRK.A": ["berkshire"],
+        "NVDA": ["nvidia"],
+        "TSLA": ["tesla"],
+        "MSFT": ["microsoft"],
+        "AAPL": ["apple"],
+        "AMZN": ["amazon"],
+    }
+
+    extra = manual.get(symbol.upper(), [])
+    keywords = set([sym] + name_parts + extra)
+    return [k for k in keywords if k]
+
+
+def is_relevant_news_item(
+    item: dict,
     symbol: str,
-    max_items: int = 20,
-    max_age_days: int = 3,
-) -> List[str]:
+    company_name: str,
+) -> bool:
     """
-    Hämtar nyheter via yfinance.Ticker(symbol).news och
-    returnerar en lista med textsträngar (title + summary)
-    för artiklar senaste max_age_days dagarna.
+    Filtrerar bort generella marknadsartiklar.
+    Kräver att någon nyckelfras kopplad till bolaget finns i titel/summary/description.
+    """
+    content = item.get("content") or {}
+    title = (content.get("title") or "").lower()
+    summary = (content.get("summary") or "").lower()
+    desc = (content.get("description") or "").lower()
+    text = " ".join([title, summary, desc])
+
+    keywords = build_symbol_keywords(symbol, company_name)
+    if not text.strip():
+        return False
+
+    return any(k in text for k in keywords)
+
+
+def fetch_symbol_news(symbol: str, company_name: str) -> List[str]:
+    """
+    Hämtar nyhetstexter (titel + summary) för ett bolag, filtrerar på datum och relevans.
+    Returnerar en lista med textstycken som kan sentimentanalyseras/summeras.
     """
     ticker = yf.Ticker(symbol)
     raw_news = ticker.news or []
+
+    print(f"\n=== Hämtar nyheter för {symbol} ===")
     print(f"[{symbol}] raw news count: {len(raw_news)}")
 
-    cutoff = datetime.now(tz=timezone.utc) - timedelta(days=max_age_days)
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(days=NEWS_LOOKBACK_DAYS)
+
     texts: List[str] = []
+    for idx, item in enumerate(raw_news[: MAX_ARTICLES_PER_SYMBOL * 2]):
+        t = parse_news_time(item)
+        content = item.get("content") or {}
+        title = content.get("title") or ""
+        summary = content.get("summary") or ""
+        desc = content.get("description") or ""
 
-    for idx, item in enumerate(raw_news[:max_items]):
-        dt = parse_item_datetime(item)
-        title, full_text = extract_title_and_text(item)
+        print(f"[{symbol}] item {idx}: time={t} title='{title}'")
 
-        print(f"[{symbol}] item {idx}: time={dt} title={repr(title)}")
-
-        if dt is None or dt < cutoff:
+        # Tidfilter
+        if t is not None and t < cutoff:
             continue
-        if not full_text:
+
+        # Relevansfilter
+        if not is_relevant_news_item(item, symbol, company_name):
             continue
 
-        texts.append(full_text)
+        combined = " ".join([title, summary, desc]).strip()
+        if combined:
+            texts.append(combined)
+
+        if len(texts) >= MAX_ARTICLES_PER_SYMBOL:
+            break
 
     print(f"[{symbol}] texts used: {len(texts)}")
     return texts
 
 
-def sentiment_to_scalar(label: str, score: float) -> float:
-    """
-    Mappa FinBERTs label + score till ett tal i intervallet [-1, 1].
-    """
-    label = label.lower()
-    if label == "positive":
-        return +score
-    if label == "negative":
-        return -score
-    # neutral
-    return 0.0
+# ---------- Modellinit ----------
+
+def init_models():
+    print("Laddar FinBERT-modell...")
+    detect_device_for_logs()
+
+    finbert_tokenizer = AutoTokenizer.from_pretrained(FINBERT_MODEL_NAME)
+    finbert_model = AutoModelForSequenceClassification.from_pretrained(FINBERT_MODEL_NAME)
+    sentiment_pipe = pipeline(
+        "sentiment-analysis",
+        model=finbert_model,
+        tokenizer=finbert_tokenizer,
+        device=-1,  # CPU för robusthet
+    )
+
+    print("Laddar summarizer-modell...")
+    detect_device_for_logs()
+    summarizer_model = AutoModelForSeq2SeqLM.from_pretrained(SUMMARIZER_MODEL_NAME)
+    summarizer_tokenizer = AutoTokenizer.from_pretrained(SUMMARIZER_MODEL_NAME)
+    summarizer_pipe = pipeline(
+        "summarization",
+        model=summarizer_model,
+        tokenizer=summarizer_tokenizer,
+        device=-1,
+    )
+
+    return sentiment_pipe, summarizer_pipe
 
 
-def analyze_news_with_finbert(texts: List[str]) -> Tuple[float, float]:
+# ---------- Sentiment + sammanfattning ----------
+
+def compute_finbert_sentiment(pipe, texts: List[str]) -> float:
     """
-    Kör FinBERT på varje text och returnerar:
-    - avg_raw: medelvärde i [-1, 1]
-    - normalized: mappad till [0, 1]
+    Kör FinBERT på varje text och beräknar ett snitt i intervallet [-1, 1].
     """
     if not texts:
-        return 0.0, 0.5
+        return 0.0
 
-    scores: List[float] = []
-    for t in texts:
-        try:
-            res = finbert_pipeline(t[:512])[0]  # klipp för säkerhets skull
-            raw = sentiment_to_scalar(res["label"], float(res["score"]))
-            scores.append(raw)
-        except Exception as e:
-            print(f"[WARN] FinBERT fel på text: {e}")
+    scored: List[float] = []
+    # Begränsa längden per text (tecken) för säkerhets skull
+    inputs = [t[:512] for t in texts]
 
-    if not scores:
-        return 0.0, 0.5
+    results = pipe(inputs, truncation=True)
+    for res in results:
+        label = res["label"].lower()
+        score = float(res["score"])
+        if "positive" in label:
+            scored.append(+score)
+        elif "negative" in label:
+            scored.append(-score)
+        else:
+            scored.append(0.0)
 
-    avg_raw = sum(scores) / len(scores)
-    # mappa [-1, 1] -> [0, 1]
-    normalized = 0.5 + 0.5 * max(-1.0, min(1.0, avg_raw))
-    return avg_raw, normalized
+    if not scored:
+        return 0.0
+    return sum(scored) / len(scored)
 
 
-def summarize_texts(texts: List[str], max_chars: int = 4000) -> str:
+def summarize_texts(pipe, texts: List[str]) -> str:
     """
-    Slår ihop texter och kör en enkel summarization.
+    Summerar alla texter till en relativt kort sammanfattning.
     """
     if not texts:
         return ""
 
-    combined = "\n".join(texts)
-    combined = combined[:max_chars]
-
+    joined = " ".join(texts)
+    joined = joined[:4000]  # grov begränsning
     try:
-        summary = summarizer_pipeline(
-            combined,
-            max_length=180,
-            min_length=60,
+        out = pipe(
+            joined,
+            max_length=80,   # kortare sammanfattning
+            min_length=30,   # fortfarande minst några meningar
             do_sample=False,
-        )[0]["summary_text"]
-        return summary.strip()
+            truncation=True,
+        )
+        if out and isinstance(out, list):
+            return out[0].get("summary_text", "").strip()
     except Exception as e:
-        print(f"[WARN] Summarizer fel: {e}")
-        return ""
+        print(f"[WARN] Summarization failed: {e}")
+    # Fallback: använd bara ihopslagna titlar
+    return " ".join(t[:200] for t in texts[:3])
 
 
-def build_news_entry(symbol: str) -> Dict[str, Any]:
-    texts = fetch_news_texts_for_symbol(symbol)
 
-    if not texts:
-        # fallback – exakt samma text som du har idag
-        return {
-            "news_score": 0.50,
-            "news_reasons": [
-                "Inga nyligen identifierade nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
-            ],
-            "raw_sentiment": 0.0,
-            "article_count": 0,
-            "last_updated": datetime.today().date().isoformat(),
+def sentiment_to_news_score(raw_sent: float) -> float:
+    """
+    Mappar råsentiment [-1, 1] till [0, 1].
+    0 = starkt negativt, 0.5 = neutralt, 1 = starkt positivt.
+    """
+    x = max(-1.0, min(1.0, raw_sent))
+    return 0.5 + 0.5 * x
+
+
+# ---------- Huvudlogik ----------
+
+def main():
+    sentiment_pipe, summarizer_pipe = init_models()
+    universe = load_universe()
+
+    out: Dict[str, dict] = {}
+    today_str = datetime.now(timezone.utc).date().isoformat()
+
+    for symbol, company_name in universe:
+        texts = fetch_symbol_news(symbol, company_name)
+
+        if not texts:
+            print(f"[{symbol}] Inga relevanta nyheter – sätter neutral 0.50")
+            out[symbol] = {
+                "news_score": 0.5,
+                "news_reasons": [
+                    "Inga nyligen identifierade relevanta nyhetsartiklar för bolaget – "
+                    "nyhetsbidraget sätts till neutralt (0.50)."
+                ],
+                "raw_sentiment": 0.0,
+                "article_count": 0,
+                "last_updated": today_str,
+            }
+            continue
+
+        raw_sent = compute_finbert_sentiment(sentiment_pipe, texts)
+        news_score = sentiment_to_news_score(raw_sent)
+        summary = summarize_texts(summarizer_pipe, texts)
+
+        reasons = [
+            f"Nyhetsanalys (AI-modell, FinBERT) baserad på {len(texts)} artiklar senaste dagarna.",
+            f"Sammanfattning för {symbol} ({company_name}): {summary}",
+        ]
+
+        out[symbol] = {
+            "news_score": round(news_score, 2),
+            "news_reasons": reasons,
+            "raw_sentiment": round(raw_sent, 4),
+            "article_count": len(texts),
+            "last_updated": today_str,
         }
 
-    avg_raw, normalized = analyze_news_with_finbert(texts)
-    summary = summarize_texts(texts)
 
-    reasons = [
-        f"Nyhetsanalys (AI-modell, FinBERT) baserad på {len(texts)} artiklar senaste dagarna.",
-    ]
-    if summary:
-        reasons.append(f"Sammanfattning: {summary}")
-
-    return {
-        "news_score": round(normalized, 2),
-        "news_reasons": reasons,
-        "raw_sentiment": round(avg_raw, 4),
-        "article_count": len(texts),
-        "last_updated": datetime.today().date().isoformat(),
-    }
-
-
-# ----------------------------
-#  Huvudflöde
-# ----------------------------
-
-def main() -> None:
-    result: Dict[str, Dict[str, Any]] = {}
-
-    for symbol, company_name in WATCHLIST:
-        print(f"\n=== Hämtar nyheter för {symbol} ===")
-        entry = build_news_entry(symbol)
-        result[symbol] = entry
-
-    with open("news_scores.json", "w", encoding="utf-8") as f:
-        json.dump(result, f, ensure_ascii=False, indent=2)
+    with open(NEWS_SCORES_PATH, "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=2)
 
     print("\nnews_scores.json uppdaterad.")
 

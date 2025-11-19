@@ -1,52 +1,52 @@
 {
   "AAPL": {
-    "news_score": 0.48,
+    "news_score": 0.38,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 3 artiklar senaste dagarna.",
-      "Sammanfattning för AAPL (Apple Inc.): Cloudflare (NET) stating that it has resolved its outage that impacted various platforms and websites. Apple (AAPL) iPhone sales reportedly surging in China. Apple’s latest share price has settled at $267.46 after a modest pullback this week."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 4 artiklar senaste dagarna.",
+      "Sammanfattning för AAPL (Apple Inc.): Yahoo Finance's John Hyland tracks today's top moving stocks and biggest market stories in this Market Minute. Cloudflare (NET) stating that it has resolved its outage that impacted various platforms and websites. Apple (AAPL) iPhone sales reportedly surging in China."
     ],
-    "raw_sentiment": -0.0417,
-    "article_count": 3,
+    "raw_sentiment": -0.2303,
+    "article_count": 4,
     "last_updated": "2025-11-19"
   },
   "MSFT": {
-    "news_score": 0.5,
+    "news_score": 0.43,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
       "Sammanfattning för MSFT (Microsoft Corporation): Redburn analysts downgrade Amazon (AMZN) and Microsoft (MSFT), raising AI concerns. Akzo Nobel (AKUP.SG) and Axalta Coating Systems (AXTA) are merging to form a $17 billion paint giant. Cloudflare outage hits OpenAI, the mega paint merger worth $17B."
     ],
-    "raw_sentiment": -0.0065,
+    "raw_sentiment": -0.1498,
     "article_count": 6,
     "last_updated": "2025-11-19"
   },
   "GOOGL": {
-    "news_score": 0.57,
+    "news_score": 0.75,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
       "Sammanfattning för GOOGL (Alphabet Inc.): Julie Hyman takes a look at three of the trending stories on Wall Street. Google unveils Gemini 3, Klarna & Medtronic stocks react to earnings. Stay up to date on the latest market action, minute-by-minute."
     ],
-    "raw_sentiment": 0.1384,
+    "raw_sentiment": 0.5072,
     "article_count": 5,
     "last_updated": "2025-11-19"
   },
   "AMZN": {
-    "news_score": 0.17,
+    "news_score": 0.19,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
       "Sammanfattning för AMZN (Amazon.com Inc.): Market Catalysts host Julie Hyman tracks several of the day's top trending stock tickers. Kroger takes on $2.6B charge, Amazon's robotaxi in San Francisco. Intuit inking a $100 million deal with OpenAI."
     ],
-    "raw_sentiment": -0.6557,
-    "article_count": 7,
+    "raw_sentiment": -0.6203,
+    "article_count": 6,
     "last_updated": "2025-11-19"
   },
   "TSLA": {
-    "news_score": 0.47,
+    "news_score": 0.69,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 2 artiklar senaste dagarna.",
-      "Sammanfattning för TSLA (Tesla Inc.): Zoox is expanding its service to San Francisco. Amazon's Zoox to begin robotaxi service in San Francisco, challenging Google's Waymo, Tesla's Robotaxi."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 4 artiklar senaste dagarna.",
+      "Sammanfattning för TSLA (Tesla Inc.): Tesla stock rose on Monday after CEO Elon Musk caught up with one of his “true and tested friends” on Friday. “Ultimately [there will] be billions of humanoid robots,” said Musk early in the hourlong interview."
     ],
-    "raw_sentiment": -0.0692,
-    "article_count": 2,
+    "raw_sentiment": 0.39,
+    "article_count": 4,
     "last_updated": "2025-11-19"
   },
   "FB": {
@@ -69,13 +69,13 @@
     "last_updated": "2025-11-19"
   },
   "NVDA": {
-    "news_score": 0.31,
+    "news_score": 0.32,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 9 artiklar senaste dagarna.",
       "Sammanfattning för NVDA (NVIDIA Corporation): Market Domination Overtime host Josh Lipton previews several of the biggest stories to come tomorrow, Wednesday, November 19. The S&P 500 closed in the red for the fourth day in a row. Saudi Arabia's Crown Prince Mohammed bin Salman's trip to Washington D.C. will see the attendance of several top CEOs."
     ],
-    "raw_sentiment": -0.3755,
-    "article_count": 10,
+    "raw_sentiment": -0.3699,
+    "article_count": 9,
     "last_updated": "2025-11-19"
   },
   "JPM": {
@@ -112,7 +112,7 @@
     "news_score": 0.48,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för WMT (Walmart Inc.): Home Depot (HD) stock slides on Tuesday morning after releasing mixed third quarter results. Target (TGT) is the next chain retailer to release its quarterly results on Wednesday. Portfolio Wealth Advisors president and CIO Lee Munson shares his expert perspective on Target's biggest challenges. Yahoo Finance senior reporter Brooke DiPalma outlines Home Depot's own obstacles in navigating a sluggish housing market"
+      "Sammanfattning för WMT (Walmart Inc.): Home Depot (HD) stock slides on Tuesday morning after releasing mixed third quarter results and cutting its full-year outlook. Target (TGT) is the next chain retailer to release its quarterly results on Wednesday. Portfolio Wealth Advisors president and CIO Lee Munson shares his expert perspective on Target's biggest challenges as it competes with other retail giants. Yahoo Finance senior reporter Brooke"
     ],
     "raw_sentiment": -0.0453,
     "article_count": 6,
@@ -129,13 +129,13 @@
     "last_updated": "2025-11-19"
   },
   "MA": {
-    "news_score": 0.77,
+    "news_score": 0.87,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 8 artiklar senaste dagarna.",
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
       "Sammanfattning för MA (Mastercard Incorporated): Mastercard picks Polygon to bring Verified Usernames to Self-Custody Wallets. Move introduces verified aliases for crypto transfers and adds an ID layer to self-custody tools. Tigress Financial lifted the price target on the company’s stock to $730 from $685."
     ],
-    "raw_sentiment": 0.5498,
-    "article_count": 8,
+    "raw_sentiment": 0.7461,
+    "article_count": 7,
     "last_updated": "2025-11-19"
   },
   "DIS": {
@@ -149,12 +149,12 @@
     "last_updated": "2025-11-19"
   },
   "HD": {
-    "news_score": 0.02,
+    "news_score": 0.01,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
       "Sammanfattning för HD (The Home Depot Inc.): Home Depot (HD) stock is sliding in Tuesday's pre-market trading after the home improvement retailer released third quarter results that missed earnings expectations. The chain cut its full-year profit outlook on a sluggish US housing market and slowdowns in home improvement projects. Telsey Advisory Group senior managing director Joe Feldman explains to Julie Hyman why Home Depot's forecast for its second half was likely"
     ],
-    "raw_sentiment": -0.969,
+    "raw_sentiment": -0.9718,
     "article_count": 10,
     "last_updated": "2025-11-19"
   },
@@ -199,12 +199,12 @@
     "last_updated": "2025-11-19"
   },
   "NFLX": {
-    "news_score": 0.46,
+    "news_score": 0.44,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning för NFLX (Netflix Inc.): Shares of streaming video giant Netflix (NASDAQ: NFLX) jumped 3.7% in the afternoon session after sentiment toward the stock improved. JPMorgan cut its price target on Netflix stock as the streaming video leader faces concerns about subscribers and competition."
+      "Sammanfattning för NFLX (Netflix Inc.): Shares of streaming video giant Netflix (NASDAQ: NFLX) jumped 3.7% in the afternoon session after sentiment toward the stock improved. JPMorgan cut its price target on Netflix stock as the streaming video leader faces concerns about subscribers and competition. NFLX's 90% price drop stems solely from its 10-for-1 split."
     ],
-    "raw_sentiment": -0.0715,
+    "raw_sentiment": -0.1251,
     "article_count": 10,
     "last_updated": "2025-11-19"
   },
@@ -229,22 +229,22 @@
     "last_updated": "2025-11-19"
   },
   "KO": {
-    "news_score": 0.67,
+    "news_score": 0.65,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 8 artiklar senaste dagarna.",
-      "Sammanfattning för KO (The Coca-Cola Company): Coca-Cola (KO) stock draws steady attention in the market, with recent performance data showing a mild uptick. KO’s recent momentum looks promising, with a 15% year-to-date share price return and a one-year total shareholder return of nearly 18.5%."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 9 artiklar senaste dagarna.",
+      "Sammanfattning för KO (The Coca-Cola Company): Jim Cramer highlights Coca-Cola as one of the Top Dividend Stock Picks. KO’s recent momentum looks promising, with a 15% year-to-date share price return and a one-year total shareholder return of nearly 18.5%."
     ],
-    "raw_sentiment": 0.339,
-    "article_count": 8,
+    "raw_sentiment": 0.3014,
+    "article_count": 9,
     "last_updated": "2025-11-19"
   },
   "T": {
-    "news_score": 0.67,
+    "news_score": 0.75,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning för T (AT&T Inc.): Zacks.com users have been paying close attention to AT&T (T) This makes it worthwhile to examine what the stock has in store. Fortis, Verizon and Atmos Energy have stood the test of time and do well as long-term strategic plays."
+      "Sammanfattning för T (AT&T Inc.): Tutor Perini Corporation (TPC) announced the initiation of a US$0.06 per share quarterly cash dividend, with the first payment scheduled for December 23, 2025. The company also authorized a $200 million share repurchase program. Tutor Perini has quickly become a hot topic among growth-focused investors. The stock has pulled back 5.8% over the last"
     ],
-    "raw_sentiment": 0.3339,
+    "raw_sentiment": 0.4938,
     "article_count": 10,
     "last_updated": "2025-11-19"
   },
@@ -309,13 +309,13 @@
     "last_updated": "2025-11-19"
   },
   "INTC": {
-    "news_score": 0.38,
+    "news_score": 0.5,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 3 artiklar senaste dagarna.",
-      "Sammanfattning för INTC (Intel Corporation): Nvidia shares down 7.9% so far in November, after a 1,200% surge in the past three years. Tech billionaire Peter Thiel's hedge fund sold ‌its entire stake in Nvidia in the third quarter. SoftBank CEO Masayoshi Son has plowed those returns into a massive bet on OpenAI."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 4 artiklar senaste dagarna.",
+      "Sammanfattning för INTC (Intel Corporation): Billionaire fund manager exits stake in soaring tech giant. David Tepper sent a clear signal by walking away from Intel (INTC) stock entirely."
     ],
-    "raw_sentiment": -0.2336,
-    "article_count": 3,
+    "raw_sentiment": -0.0028,
+    "article_count": 4,
     "last_updated": "2025-11-19"
   },
   "CRM": {
@@ -349,23 +349,23 @@
     "last_updated": "2025-11-19"
   },
   "CVX": {
-    "news_score": 0.57,
+    "news_score": 0.66,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
-      "Sammanfattning för CVX (Chevron Corporation): consensus analyst price target for Chevron now stands at $172.80, up from $ 172.04. This modest increase reflects a balance of optimism over Chevron’s recent earnings beats and robust cash flow. Piper Sandler Lowers Chevron (CVX) Price Target to $168, Keeps Overweight Rating."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
+      "Sammanfattning för CVX (Chevron Corporation): consensus analyst price target for Chevron now stands at $172.80. Chevron is exploring the purchase of some global assets from the sanctioned Russian oil company Lukoil. Chevron Teams Up With TGS on Three-year Seismic Services Deal."
     ],
-    "raw_sentiment": 0.1372,
-    "article_count": 7,
+    "raw_sentiment": 0.3116,
+    "article_count": 6,
     "last_updated": "2025-11-19"
   },
   "MCD": {
-    "news_score": 0.26,
+    "news_score": 0.5,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 2 artiklar senaste dagarna.",
-      "Sammanfattning för MCD (McDonald's Corporation): The Trend Of High Returns At McDonald's Has Us Very Interested. McDonald's is losing its low-income customers. Economists call it a symptom of the stark wealth divide."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 1 artiklar senaste dagarna.",
+      "Sammanfattning för MCD (McDonald's Corporation): The Trend Of High Returns At McDonald's (NYSE:MCD) Has Us Very Interested. If we want to find a stock that could multiply over the long term, what are the underlying trends we should look for..."
     ],
-    "raw_sentiment": -0.486,
-    "article_count": 2,
+    "raw_sentiment": 0.0,
+    "article_count": 1,
     "last_updated": "2025-11-19"
   },
   "DHR": {

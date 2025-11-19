@@ -1,18 +1,18 @@
 {
   "low": {
-    "symbol": "JNJ",
-    "company_name": "Johnson & Johnson",
+    "symbol": "ABT",
+    "company_name": "Abbott Laboratories",
     "week_start": "2025-11-19",
     "week_end": "2025-11-26",
     "reasons": [
-      "Senaste 5 handelsdagarna: cirka 3.2% prisutveckling.",
-      "Uppmätt dagsvolatilitet kring 1.1%, klassad som low risk.",
+      "Senaste 5 handelsdagarna: cirka 2.4% prisutveckling.",
+      "Uppmätt dagsvolatilitet kring 0.9%, klassad som low risk.",
       "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
       "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för JNJ (Johnson & Johnson): J&J this year lost its patent exclusivity for Stelara, its longtime top-selling drug that treats psoriasis and inflammatory bowel disease. The acquisition brings Halda's candidate HLD-0915, a clinical-stage treatment for prostate cancer, into J&J's oncology portfolio."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 2 artiklar senaste dagarna.",
+      "Sammanfattning för ABT (Abbott Laboratories): Abbott Laboratories (NYSE:ABT) jumps 3.3% this week, though earnings growth is still tracking behind three-year shareholder returns. Abbott reported earnings 30 days ago. What's next for the stock? We take a look at earnings estimates for some clues."
     ],
-    "score": 0.02682904171882997,
+    "score": 0.017892249273677184,
     "risk": "low"
   },
   "medium": {
@@ -25,10 +25,26 @@
       "Uppmätt dagsvolatilitet kring 1.7%, klassad som medium risk.",
       "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
       "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 8 artiklar senaste dagarna.",
-      "Sammanfattning för CSCO (Cisco Systems Inc.): Even Cisco’s 2% Dividend Can’t Save Them From Investor Hate Shares of Cisco(NASDAQ:CSCO) are trading just under $78 per share. They’ve done well, up 37% over the past year and still near a 52-week high. Despite this, retail investors on Reddit have turned starkly bearish. Social"
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
+      "Sammanfattning för CSCO (Cisco Systems Inc.): Cisco Systems Inc. (NASDAQ:CSCO) also reported earnings the day this show was aired. Cramer had asserted that the stock was cheap and its valuation. Shares of Cisco are trading just under $78 per share. Despite this, retail investors on Reddit have turned starkly bearish."
     ],
-    "score": 0.07154177912456902,
+    "score": 0.07277525807499263,
     "risk": "medium"
+  },
+  "high": {
+    "symbol": "AMGN",
+    "company_name": "Amgen Inc.",
+    "week_start": "2025-11-19",
+    "week_end": "2025-11-26",
+    "reasons": [
+      "Senaste 5 handelsdagarna: cirka 1.6% prisutveckling.",
+      "Uppmätt dagsvolatilitet kring 2.1%, klassad som high risk.",
+      "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
+      "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 4 artiklar senaste dagarna.",
+      "Sammanfattning för AMGN (Amgen Inc.): Jim Cramer has started to discuss pharmaceutical giant Amgen Inc. (NASDAQ:AMGN) more frequently. Most of his discussions surround the firm’s Repatha drug that aims to reduce cholesterol and prevent heart attacks. Investors are starting to re-evaluate the pharmaceutical giant's current valuation in light of recent gains."
+    ],
+    "score": -0.005747945281801761,
+    "risk": "high"
   }
 }

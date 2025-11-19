@@ -8,9 +8,9 @@
     "Uppmätt dagsvolatilitet kring 1.7%, klassad som medium risk.",
     "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
     "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-    "Nyhetsanalys (AI-modell, FinBERT) baserad på 8 artiklar senaste dagarna.",
-    "Sammanfattning för CSCO (Cisco Systems Inc.): Even Cisco’s 2% Dividend Can’t Save Them From Investor Hate Shares of Cisco(NASDAQ:CSCO) are trading just under $78 per share. They’ve done well, up 37% over the past year and still near a 52-week high. Despite this, retail investors on Reddit have turned starkly bearish. Social"
+    "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
+    "Sammanfattning för CSCO (Cisco Systems Inc.): Cisco Systems Inc. (NASDAQ:CSCO) also reported earnings the day this show was aired. Cramer had asserted that the stock was cheap and its valuation. Shares of Cisco are trading just under $78 per share. Despite this, retail investors on Reddit have turned starkly bearish."
   ],
-  "score": 0.07154177912456902,
+  "score": 0.07277525807499263,
   "risk": "medium"
 }

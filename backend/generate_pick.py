@@ -135,14 +135,21 @@ def compute_metrics(closes: List[float]) -> tuple[float, float]:
 def classify_risk(vol: float) -> str:
     """
     Klassificera enkel risknivå baserat på volatilitet (std på dagsavkastningar).
-    Trösklarna kan justeras senare.
+
+    Nuvarande trösklar (daglig stdavkastning):
+    - < 1.0%  -> low
+    - 1.0–2.0% -> medium
+    - > 2.0%  -> high
+
+    Justera vid behov om för få/för många aktier hamnar i high.
     """
-    if vol < 0.015:
+    if vol < 0.01:
         return "low"
-    elif vol < 0.035:
+    elif vol < 0.02:
         return "medium"
     else:
         return "high"
+
 
 
 def compute_base_score(momentum: float, vol: float) -> float:

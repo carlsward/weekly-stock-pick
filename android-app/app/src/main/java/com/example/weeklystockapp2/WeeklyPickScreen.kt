@@ -1,5 +1,9 @@
 package com.example.weeklystockapp2
 
+
+
+
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,14 +14,22 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -27,6 +39,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -43,14 +58,31 @@ fun WeeklyPickScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(
+                Brush.verticalGradient(
+                    listOf(
+                        MaterialTheme.colorScheme.surface,
+                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f)
+                    )
+                )
+            )
             .padding(16.dp),
         contentAlignment = Alignment.TopCenter
     ) {
         Card(
             modifier = Modifier.fillMaxWidth(),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            shape = RoundedCornerShape(24.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface
+            ),
+            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
         ) {
-            Column(modifier = Modifier.padding(16.dp)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
 
                 // Risk selector
                 if (availableRisks.isNotEmpty()) {
@@ -59,38 +91,54 @@ fun WeeklyPickScreen(
                             availableRisks.filter { it !in ordered }
 
                     Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 8.dp),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         displayOrder.forEach { riskKey ->
+                            val isSelected = riskKey.equals(pick.risk, ignoreCase = true)
+
                             Text(
                                 text = riskKey.replaceFirstChar { it.uppercase() },
                                 modifier = Modifier
                                     .clickable { onRiskSelected(riskKey) }
-                                    .padding(vertical = 4.dp),
+                                    .background(
+                                        color = if (isSelected)
+                                            MaterialTheme.colorScheme.primary.copy(alpha = 0.12f)
+                                        else
+                                            Color.Transparent,
+                                        shape = RoundedCornerShape(999.dp)
+                                    )
+                                    .padding(horizontal = 10.dp, vertical = 4.dp),
                                 style = MaterialTheme.typography.bodyMedium,
-                                fontWeight = FontWeight.SemiBold
+                                fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
+                                color = if (isSelected)
+                                    MaterialTheme.colorScheme.primary
+                                else
+                                    MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
                     }
                 }
 
-                // Title + info icon
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
+                // Titel + info-ikon (utan weight)
+                Box(
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
                         text = "Best stock to hold this week",
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.weight(1f)
+                        modifier = Modifier
+                            .align(Alignment.CenterStart)
+                            .padding(end = 40.dp), // marginal så texten inte hamnar under ikonen
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
 
-                    IconButton(onClick = { showInfoDialog = true }) {
+                    IconButton(
+                        onClick = { showInfoDialog = true },
+                        modifier = Modifier.align(Alignment.CenterEnd)
+                    ) {
                         Icon(
                             imageVector = Icons.Filled.Info,
                             contentDescription = "About the model"
@@ -98,7 +146,7 @@ fun WeeklyPickScreen(
                     }
                 }
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
                     text = "${pick.symbol} – ${pick.companyName}",
@@ -106,14 +154,15 @@ fun WeeklyPickScreen(
                     fontWeight = FontWeight.SemiBold
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
                     text = "Period: ${pick.weekStart} to ${pick.weekEnd}",
-                    style = MaterialTheme.typography.bodyMedium
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(2.dp))
 
                 Text(
                     text = "Risk level: ${pick.risk}",
@@ -121,7 +170,9 @@ fun WeeklyPickScreen(
                     fontWeight = FontWeight.SemiBold
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(12.dp))
+                HorizontalDivider()
+                Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
                     text = "Why this stock:",
@@ -129,17 +180,13 @@ fun WeeklyPickScreen(
                     fontWeight = FontWeight.SemiBold
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
-
-                // Base reasons + summary reason
+                // Dela upp orsaker + lång nyhetssammanfattning
                 val reasons = pick.reasons
                 val baseReasons = if (reasons.size >= 2) reasons.dropLast(1) else reasons
                 val summaryReason = if (reasons.size >= 2) reasons.last() else null
 
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(4.dp)
-                ) {
-                    // Normal bullet points
+                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+
                     baseReasons.forEach { reason ->
                         Text(
                             text = "• $reason",
@@ -147,7 +194,6 @@ fun WeeklyPickScreen(
                         )
                     }
 
-                    // Summary with "Show more"
                     summaryReason?.let { summary ->
                         Text(
                             text = "• $summary",
@@ -162,7 +208,8 @@ fun WeeklyPickScreen(
                             fontWeight = FontWeight.SemiBold,
                             modifier = Modifier
                                 .padding(top = 2.dp)
-                                .clickable { showFullSummary = !showFullSummary }
+                                .clickable { showFullSummary = !showFullSummary },
+                            color = MaterialTheme.colorScheme.primary
                         )
                     }
                 }

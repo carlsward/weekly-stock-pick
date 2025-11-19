@@ -10,43 +10,43 @@
     "last_updated": "2025-11-19"
   },
   "MSFT": {
-    "news_score": 0.42,
+    "news_score": 0.5,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för MSFT (Microsoft Corporation): Two AI stocks this analyst expects to double from sell-off lows Redburn analysts downgrade Amazon (AMZN) and Microsoft (MSFT), saying the bull case for generative AI is \"no longer clear.\" Freedom Capi Cloudflare outage hits OpenAI, the mega paint merger worth $17B Julie Hyman takes a closer look at the stories behind some of the trending tickers on Yahoo Finance's platform. A Cloudflare (NET) outag AI boom will continue despite bubble fears: Arm CMO Arm (ARM) Holdings, the semiconductor design company that lists Microsoft (MSFT), Nvidia (NVDA), Meta (META) and Apple (AAPL) among its many partner"
+      "Sammanfattning för MSFT (Microsoft Corporation): Redburn analysts downgrade Amazon (AMZN) and Microsoft (MSFT), raising AI concerns. Akzo Nobel (AKUP.SG) and Axalta Coating Systems (AXTA) are merging to form a $17 billion paint giant. Cloudflare outage hits OpenAI, the mega paint merger worth $17B."
     ],
-    "raw_sentiment": -0.1692,
+    "raw_sentiment": -0.0065,
     "article_count": 6,
     "last_updated": "2025-11-19"
   },
   "GOOGL": {
-    "news_score": 0.75,
+    "news_score": 0.57,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
       "Sammanfattning för GOOGL (Alphabet Inc.): Julie Hyman takes a look at three of the trending stories on Wall Street. Google unveils Gemini 3, Klarna & Medtronic stocks react to earnings. Stay up to date on the latest market action, minute-by-minute."
     ],
-    "raw_sentiment": 0.5053,
+    "raw_sentiment": 0.1384,
     "article_count": 5,
     "last_updated": "2025-11-19"
   },
   "AMZN": {
-    "news_score": 0.19,
+    "news_score": 0.17,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för AMZN (Amazon.com Inc.): Kroger takes on $2.6B charge, Amazon's robotaxi in San Francisco Market Catalysts host Julie Hyman tracks several of the day's top trending stock tickers. Intuit (INTU) inking a $100 million deal with OpenAI (OPAI.PVT)"
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
+      "Sammanfattning för AMZN (Amazon.com Inc.): Market Catalysts host Julie Hyman tracks several of the day's top trending stock tickers. Kroger takes on $2.6B charge, Amazon's robotaxi in San Francisco. Intuit inking a $100 million deal with OpenAI."
     ],
-    "raw_sentiment": -0.6123,
-    "article_count": 6,
+    "raw_sentiment": -0.6557,
+    "article_count": 7,
     "last_updated": "2025-11-19"
   },
   "TSLA": {
-    "news_score": 0.33,
+    "news_score": 0.47,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 3 artiklar senaste dagarna.",
-      "Sammanfattning för TSLA (Tesla Inc.): Tesla and other tech stocks fall as investors brace for Nvidia's AI earnings. Zoox is expanding its service to San Francisco. Amazon's Zoox to begin robotaxi service in San Francisco, challenging Waymo."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 2 artiklar senaste dagarna.",
+      "Sammanfattning för TSLA (Tesla Inc.): Zoox is expanding its service to San Francisco. Amazon's Zoox to begin robotaxi service in San Francisco, challenging Google's Waymo, Tesla's Robotaxi."
     ],
-    "raw_sentiment": -0.343,
-    "article_count": 3,
+    "raw_sentiment": -0.0692,
+    "article_count": 2,
     "last_updated": "2025-11-19"
   },
   "FB": {
@@ -69,13 +69,13 @@
     "last_updated": "2025-11-19"
   },
   "NVDA": {
-    "news_score": 0.39,
+    "news_score": 0.31,
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 9 artiklar senaste dagarna.",
-      "Sammanfattning för NVDA (NVIDIA Corporation): Nvidia earnings, Fed minutes, MBS visit: What to Watch Market Domination Overtime host Josh Lipton previews several of the biggest stories to come tomorrow, Wednesday, November 19, including earnings  S&P 500 closes lower for 4th day: 3 key market takeaways The S&P 500 (^GSPC) closed in the red for the fourth day in a row. Yahoo Finance markets and data editor Jared Blikre breaks down the biggest m Stock market today: Dow slides 500 points, S&P 500 notches 4th day of losses as Nvidia earnings loom This year's AI-fueled stock rally faces two key tests this week."
+      "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
+      "Sammanfattning för NVDA (NVIDIA Corporation): Market Domination Overtime host Josh Lipton previews several of the biggest stories to come tomorrow, Wednesday, November 19. The S&P 500 closed in the red for the fourth day in a row. Saudi Arabia's Crown Prince Mohammed bin Salman's trip to Washington D.C. will see the attendance of several top CEOs."
     ],
-    "raw_sentiment": -0.2137,
-    "article_count": 9,
+    "raw_sentiment": -0.3755,
+    "article_count": 10,
     "last_updated": "2025-11-19"
   },
   "JPM": {
@@ -142,7 +142,7 @@
     "news_score": 0.44,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning för DIS (The Walt Disney Company): Carolyn Everson, a Walt Disney Co. board member, discusses how companies are utilizing AI, the impact of tariffs on supply chains and Disney's succession plan to replace CEO Bob Iger on \"Bloomberg The Close\" Disney Investors Are Looking for More Than Just Streaming Growth. Keep an Eye on Cruises."
+      "Sammanfattning för DIS (The Walt Disney Company): Carolyn Everson, a Walt Disney Co. board member, discusses how companies are utilizing AI, the impact of tariffs on supply chains and Disney's succession plan to replace CEO Bob Iger. Disney Investors are Looking for More Than Just Streaming Growth. Wall Street is keeping a close eye on the cruise segment at the House of Mouse."
     ],
     "raw_sentiment": -0.1221,
     "article_count": 10,
@@ -152,7 +152,7 @@
     "news_score": 0.02,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning för HD (The Home Depot Inc.): Earnings live: Home Depot, Klarna stocks fall as impending Nvidia earnings rise to the forefront The third quarter earnings season has been mostly positive, with most of the reports in the rearview mi Home Depot earnings: How housing prices weigh on the retailer Home Depot (HD) stock slips lower on Tuesday after the home improvement retailer shared mixed third quarter results that missed adjusted e Home Depot cuts 2025 outlook on housing headwinds. Stock slides. Home Depot (HD) stock is sliding in Tuesday's pre-market trading after the home improvement retailer released third quarter results tha"
+      "Sammanfattning för HD (The Home Depot Inc.): Home Depot (HD) stock is sliding in Tuesday's pre-market trading after the home improvement retailer released third quarter results that missed earnings expectations. The chain cut its full-year profit outlook on a sluggish US housing market and slowdowns in home improvement projects. Telsey Advisory Group senior managing director Joe Feldman explains to Julie Hyman why Home Depot's forecast for its second half was likely"
     ],
     "raw_sentiment": -0.969,
     "article_count": 10,
@@ -202,7 +202,7 @@
     "news_score": 0.46,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning för NFLX (Netflix Inc.): Shares of streaming video giant Netflix (NASDAQ: NFLX) jumped 3.7% in the afternoon session after sentiment toward the stock improved. JPMorgan cut its price target on Netflix stock as the streaming video leader faces concerns about subscribers and competition. Amazon seeks $12B in bond sale, Netflix trades after stock split."
+      "Sammanfattning för NFLX (Netflix Inc.): Shares of streaming video giant Netflix (NASDAQ: NFLX) jumped 3.7% in the afternoon session after sentiment toward the stock improved. JPMorgan cut its price target on Netflix stock as the streaming video leader faces concerns about subscribers and competition."
     ],
     "raw_sentiment": -0.0715,
     "article_count": 10,
@@ -242,7 +242,7 @@
     "news_score": 0.67,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning för T (AT&T Inc.): Zacks.com users have been paying close attention to AT&T (T) This makes it worthwhile to examine what the stock has in store. Fortis, Verizon and Atmos Energy have stood the test of time and do well as strategic plays."
+      "Sammanfattning för T (AT&T Inc.): Zacks.com users have been paying close attention to AT&T (T) This makes it worthwhile to examine what the stock has in store. Fortis, Verizon and Atmos Energy have stood the test of time and do well as long-term strategic plays."
     ],
     "raw_sentiment": 0.3339,
     "article_count": 10,
@@ -252,7 +252,7 @@
     "news_score": 0.55,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 9 artiklar senaste dagarna.",
-      "Sammanfattning för NKE (Nike Inc.): Wells Fargo raised its outlook on Nike, Inc., highlighting increased confidence in the company's turnaround efforts and improved visibility into sales and margins. Under Armour, Inc. (NYSE:UA) is another sports apparel firm that is in the midst of a turnaround. Cramer is not as enthusiastic about the firm’s turnaround as he is with Nike."
+      "Sammanfattning för NKE (Nike Inc.): Wells Fargo raised its outlook on Nike, Inc., highlighting increased confidence in the company's turnaround efforts and improved visibility into sales and margins. Under Armour, Inc. (NYSE:UA) is another sports apparel firm that is in the midst of a turnaround. Jim Cramer has expressed faith in the firm's CEO, Elliott Hill."
     ],
     "raw_sentiment": 0.0918,
     "article_count": 9,
@@ -472,7 +472,7 @@
     "news_score": 0.28,
     "news_reasons": [
       "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
-      "Sammanfattning för LOW (Lowe's Companies Inc.): Nvidia earnings, Fed minutes, MBS visit: What to Watch Market Domination Overtime host Josh Lipton previews several of the biggest stories to come tomorrow, Wednesday, November 19, including earnings  Walmart 'wins' in this tight consumer environment. Here's why. It's a big earnings week as a handful of major retailers share their quarterly results. But as the holiday shopping season inches closer, The Home Improvement Sector Recovery Is Delayed. What That Means for Lowe’s Earnings. Home Depot’s lackluster results confirm that the long-awaited rebound in home improvement spending hasn’t material"
+      "Sammanfattning för LOW (Lowe's Companies Inc.): Market Domination Overtime host Josh Lipton previews several of the biggest stories to come tomorrow, Wednesday, November 19, including earnings results from companies like Nvidia, Target, and Lowe's. The release of the Federal Reserve's October FOMC meeting minutes; and the second day of Saudi Arabia's Crown Prince Mohammed bin Salman's trip to Washington D.C."
     ],
     "raw_sentiment": -0.4314,
     "article_count": 7,

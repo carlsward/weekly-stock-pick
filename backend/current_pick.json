@@ -1,16 +1,16 @@
 {
   "symbol": "CSCO",
   "company_name": "Cisco Systems Inc.",
-  "week_start": "2025-11-19",
-  "week_end": "2025-11-26",
+  "week_start": "2025-11-20",
+  "week_end": "2025-11-27",
   "reasons": [
-    "Senaste 5 handelsdagarna: cirka 7.9% prisutveckling.",
+    "Senaste 5 handelsdagarna: cirka 6.0% prisutveckling.",
     "Uppmätt dagsvolatilitet kring 1.7%, klassad som medium risk.",
     "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
     "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
     "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-    "Sammanfattning för CSCO (Cisco Systems Inc.): Cisco Systems Inc. (NASDAQ:CSCO) also reported earnings the day this show was aired. Cramer had asserted that the stock was cheap and its valuation. Shares of Cisco are trading just under $78 per share. Despite this, retail investors on Reddit have turned starkly bearish."
+    "Sammanfattning för CSCO (Cisco Systems Inc.): Advanced Micro Devices, Cisco Systems and Saudi Arabian artificial intelligence startup Humain are forming a joint venture to build data centers in the Middle East. The yet-to-be-named joint venture will kick off with a 100-megawatt data center project in Saudi Arabia. Humain has contracted to supply generative video startup Luma AI."
   ],
-  "score": 0.07277525807499263,
+  "score": 0.054271279990408546,
   "risk": "medium"
 }

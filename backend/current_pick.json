@@ -1,16 +1,16 @@
 {
-  "symbol": "CSCO",
-  "company_name": "Cisco Systems Inc.",
-  "week_start": "2025-11-20",
-  "week_end": "2025-11-27",
+  "symbol": "JNJ",
+  "company_name": "Johnson & Johnson",
+  "week_start": "2025-11-21",
+  "week_end": "2025-11-28",
   "reasons": [
-    "Senaste 5 handelsdagarna: cirka 6.0% prisutveckling.",
-    "Uppmätt dagsvolatilitet kring 1.7%, klassad som medium risk.",
-    "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-    "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-    "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-    "Sammanfattning för CSCO (Cisco Systems Inc.): Advanced Micro Devices, Cisco Systems and Saudi Arabian artificial intelligence startup Humain are forming a joint venture to build data centers in the Middle East. The yet-to-be-named joint venture will kick off with a 100-megawatt data center project in Saudi Arabia. Humain has contracted to supply generative video startup Luma AI."
+    "Price performance over the last 5 trading days: about 4.0%.",
+    "Measured daily volatility around 1.0%, classified as medium risk.",
+    "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
+    "News analysis (AI model, summary across multiple sources):",
+    "News sentiment (AI model, FinBERT) based on 2 articles from the last few days.",
+    "News summary for JNJ (Johnson & Johnson): Johnson & Johnson (JNJ) has received quite a bit of attention from Zacks.com users lately. It is wise to be aware of the facts that can impact the stock's prospects."
   ],
-  "score": 0.054271279990408546,
+  "score": 0.03366414444379637,
   "risk": "medium"
 }

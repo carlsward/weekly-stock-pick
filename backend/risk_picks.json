@@ -2,48 +2,48 @@
   "low": {
     "symbol": "FB",
     "company_name": "Meta Platforms Inc.",
-    "week_start": "2025-11-20",
-    "week_end": "2025-11-27",
+    "week_start": "2025-11-21",
+    "week_end": "2025-11-28",
     "reasons": [
-      "Senaste 5 handelsdagarna: cirka -0.5% prisutveckling.",
-      "Uppmätt dagsvolatilitet kring 0.2%, klassad som low risk.",
-      "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-      "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-      "Inga nyligen identifierade relevanta nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
+      "Price performance over the last 5 trading days: about -0.3%.",
+      "Measured daily volatility around 0.2%, classified as low risk.",
+      "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
+      "News analysis (AI model, summary across multiple sources):",
+      "No recently identified relevant news articles for this company – the news contribution is set to neutral (0.50)."
     ],
-    "score": -0.007657108086456215,
+    "score": -0.005317801378084264,
     "risk": "low"
   },
   "medium": {
-    "symbol": "CSCO",
-    "company_name": "Cisco Systems Inc.",
-    "week_start": "2025-11-20",
-    "week_end": "2025-11-27",
+    "symbol": "JNJ",
+    "company_name": "Johnson & Johnson",
+    "week_start": "2025-11-21",
+    "week_end": "2025-11-28",
     "reasons": [
-      "Senaste 5 handelsdagarna: cirka 6.0% prisutveckling.",
-      "Uppmätt dagsvolatilitet kring 1.7%, klassad som medium risk.",
-      "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-      "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för CSCO (Cisco Systems Inc.): Advanced Micro Devices, Cisco Systems and Saudi Arabian artificial intelligence startup Humain are forming a joint venture to build data centers in the Middle East. The yet-to-be-named joint venture will kick off with a 100-megawatt data center project in Saudi Arabia. Humain has contracted to supply generative video startup Luma AI."
+      "Price performance over the last 5 trading days: about 4.0%.",
+      "Measured daily volatility around 1.0%, classified as medium risk.",
+      "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
+      "News analysis (AI model, summary across multiple sources):",
+      "News sentiment (AI model, FinBERT) based on 2 articles from the last few days.",
+      "News summary for JNJ (Johnson & Johnson): Johnson & Johnson (JNJ) has received quite a bit of attention from Zacks.com users lately. It is wise to be aware of the facts that can impact the stock's prospects."
     ],
-    "score": 0.054271279990408546,
+    "score": 0.03366414444379637,
     "risk": "medium"
   },
   "high": {
     "symbol": "GOOGL",
     "company_name": "Alphabet Inc.",
-    "week_start": "2025-11-20",
-    "week_end": "2025-11-27",
+    "week_start": "2025-11-21",
+    "week_end": "2025-11-28",
     "reasons": [
-      "Senaste 5 handelsdagarna: cirka 2.1% prisutveckling.",
-      "Uppmätt dagsvolatilitet kring 2.1%, klassad som high risk.",
-      "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-      "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 1 artiklar senaste dagarna.",
-      "Sammanfattning för GOOGL (Alphabet Inc.): Alphabet Stock Climbed to an All-Time High Today. The internet search king is quickly becoming a dominant supplier of artificial intelligence (AI)"
+      "Price performance over the last 5 trading days: about 3.9%.",
+      "Measured daily volatility around 2.1%, classified as high risk.",
+      "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
+      "News analysis (AI model, summary across multiple sources):",
+      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
+      "News summary for GOOGL (Alphabet Inc.): Palo Alto Networks (PANW) stock is under pressure despite reporting fiscal first quarter earnings that beat estimates. Cipher Mining (CIFR) is reportedly raising funds in the bond market to fund its data center buildout. TikTok owner ByteDance's valuation climbed to $480 billion, Bloomberg reports."
     ],
-    "score": 0.00026667175294589526,
+    "score": 0.014808088232059114,
     "risk": "high"
   }
 }

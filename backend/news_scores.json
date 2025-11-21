@@ -1,12 +1,12 @@
 {
   "AAPL": {
-    "news_score": 0.52,
+    "news_score": 0.53,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-      "News summary for AAPL (Apple Inc.): Google Launches Unauthorized Pixel-to-iPhone File Sharing With Apple’s AirDrop AirDrop, which has been around for over a decade, is built into Apple's software platforms. Citi analysts do not expect any of the possible engagements to become meaningful."
+      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
+      "News summary for AAPL (Apple Inc.): Google Launches Unauthorized Pixel-to-iPhone File Sharing With Apple’s AirDrop. Warren Buffett Is Selling Apple and Piling Into This \"Magnificent Seven\" Stock Trading at a Fraction of Tesla's Valuation."
     ],
-    "raw_sentiment": 0.0484,
-    "article_count": 6,
+    "raw_sentiment": 0.0581,
+    "article_count": 5,
     "last_updated": "2025-11-21"
   },
   "MSFT": {
@@ -20,33 +20,33 @@
     "last_updated": "2025-11-21"
   },
   "GOOGL": {
-    "news_score": 0.32,
+    "news_score": 0.42,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
       "News summary for GOOGL (Alphabet Inc.): Palo Alto Networks (PANW) stock is under pressure despite reporting fiscal first quarter earnings that beat estimates. Cipher Mining (CIFR) is reportedly raising funds in the bond market to fund its data center buildout. TikTok owner ByteDance's valuation climbed to $480 billion, Bloomberg reports."
     ],
-    "raw_sentiment": -0.3633,
+    "raw_sentiment": -0.1685,
     "article_count": 5,
     "last_updated": "2025-11-21"
   },
   "AMZN": {
-    "news_score": 0.28,
+    "news_score": 0.26,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
-      "News summary for AMZN (Amazon.com Inc.): Three-team race appears to be developing at the top of the autonomous vehicle market. Tesla Robotaxi, Amazon's Zoox, and Alphabet's Waymo have all made headlines recently. Amazon executive Melis del Rey named CEO of Supergoop."
+      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
+      "News summary for AMZN (Amazon.com Inc.): Billionaire Sam Altman’s Iris Orb Dream Crumbles: $240M From Khosla Ventures Fuels 1B User Hunt, But Just 2% There As Bans Mount Worldwide. Waymo pulls ahead of Tesla Robotaxi, Amazon Zoox with latest move."
     ],
-    "raw_sentiment": -0.4391,
-    "article_count": 7,
+    "raw_sentiment": -0.4898,
+    "article_count": 8,
     "last_updated": "2025-11-21"
   },
   "TSLA": {
-    "news_score": 0.39,
+    "news_score": 0.32,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 9 articles from the last few days.",
-      "News summary for TSLA (Tesla Inc.): Waymo pulls ahead of Tesla Robotaxi, Amazon Zoox with latest move. A three-team race appears to be developing at the top of the autonomous vehicle market. Early on, the entire market seemed to breathe a sigh of relief after Nvidia’s fiscal third-quarter earnings report."
+      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
+      "News summary for TSLA (Tesla Inc.): Waymo pulls ahead of Tesla Robotaxi, Amazon Zoox with latest move. A three-team race appears to be developing at the top of the autonomous vehicle market. In July, Zoox cut the ribbon on a new serial production facility for ..."
     ],
-    "raw_sentiment": -0.2253,
-    "article_count": 9,
+    "raw_sentiment": -0.3694,
+    "article_count": 8,
     "last_updated": "2025-11-21"
   },
   "FB": {
@@ -68,12 +68,12 @@
     "last_updated": "2025-11-21"
   },
   "NVDA": {
-    "news_score": 0.51,
+    "news_score": 0.59,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 10 articles from the last few days.",
       "News summary for NVDA (NVIDIA Corporation): US stocks are falling ahead of Thursday's closing bell coming off of Nvidia's (NVDA) third quarter earnings and this morning's release of the long-delayed September jobs report. The latter of which is raising Wall Street's concerns over whether the Federal Reserve will cut interest rates at its December FOMC meeting. Baird Investment Strategist Ross Mayfield sits down with Josh Lipton"
     ],
-    "raw_sentiment": 0.013,
+    "raw_sentiment": 0.1872,
     "article_count": 10,
     "last_updated": "2025-11-21"
   },
@@ -138,22 +138,22 @@
     "last_updated": "2025-11-21"
   },
   "DIS": {
-    "news_score": 0.52,
+    "news_score": 0.56,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
-      "News summary for DIS (The Walt Disney Company): ESPN, NBCUniversal, Netflix Secure MLB Broadcast Rights From 2026. 'You're Driving Most People's 401(k)' Personal finance expert George Kamel of ‘The Ramsey Show’ recently hit the streets of Disney World in Orlando."
+      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
+      "News summary for DIS (The Walt Disney Company): Disney has increased its 2026 dividend by 50% and the payout has risen 1.5X since 2023. ESPN, NBCUniversal, Netflix Secure MLB Broadcast Rights From 2026. Disney’s share price return over the past year has stayed in negative territory."
     ],
-    "raw_sentiment": 0.0466,
-    "article_count": 8,
+    "raw_sentiment": 0.1171,
+    "article_count": 7,
     "last_updated": "2025-11-21"
   },
   "HD": {
-    "news_score": 0.35,
+    "news_score": 0.4,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 9 articles from the last few days.",
-      "News summary for HD (The Home Depot Inc.): Wells Fargo Retail Finance Managing Director Lauren Murphy anticipates retailer inventory prices to be driven even higher by tariffs. Murphy speaks with Josh Lipton on Asking for a Trend on her consumer sales forecasts."
+      "News summary for HD (The Home Depot Inc.): Wells Fargo Retail Finance Managing Director Lauren Murphy anticipates retailer inventory prices to be driven even higher by tariffs. Murphy speaks with Josh Lipton on Asking for a Trend on her consumer sales forecasts and what to expect from Black Friday."
     ],
-    "raw_sentiment": -0.3038,
+    "raw_sentiment": -0.1962,
     "article_count": 9,
     "last_updated": "2025-11-21"
   },
@@ -198,13 +198,13 @@
     "last_updated": "2025-11-21"
   },
   "NFLX": {
-    "news_score": 0.47,
+    "news_score": 0.53,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
-      "News summary for NFLX (Netflix Inc.): ESPN, NBCUniversal, Netflix Secure MLB Broadcast Rights From 2026. Netflix (NFLX) Down 1.5% Since Last Earnings Report: Can It Rebound? We take a look at earnings estimates for some clues."
+      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
+      "News summary for NFLX (Netflix Inc.): Paramount, Comcast and Netflix have submitted bids for Warner Bros. Discovery. The bids submitted are nonbinding, and additional rounds are expected. ESPN, NBCUniversal, Netflix Secure MLB Broadcast Rights From 2026."
     ],
-    "raw_sentiment": -0.0552,
-    "article_count": 7,
+    "raw_sentiment": 0.0557,
+    "article_count": 8,
     "last_updated": "2025-11-21"
   },
   "ADBE": {
@@ -221,7 +221,7 @@
     "news_score": 0.59,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
-      "News summary for CMCSA (Comcast Corporation): Disney-owned ESPN, Comcast (CMCSA) unit NBCUniversal, and Netflix (NFLX) signed new three Bids for Warner Bros. Discovery are due Thursday Paramount, Netflix, and Comcast are all expected to submit offers. Comcast is being squeezed on multiple fronts as its legacy cable and broadband businesses mature."
+      "News summary for CMCSA (Comcast Corporation): Paramount, Comcast and Netflix Submit Bids for Warner Bros. Discovery. ESPN, NBCUniversal, Netflix Secure MLB Broadcast Rights From 2026. Amphenol and Comcast have been highlighted as Zacks Bull and Bear of the Day."
     ],
     "raw_sentiment": 0.1851,
     "article_count": 7,
@@ -308,13 +308,13 @@
     "last_updated": "2025-11-21"
   },
   "INTC": {
-    "news_score": 0.61,
+    "news_score": 0.73,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
+      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
       "News summary for INTC (Intel Corporation): N Nvidia's Q3 earnings beat has lifted stocks across the tech sector. But there are four stocks that are particularly closely linked to Nvidia - and benefitting from its strong performance. Ramzan Karmali explains."
     ],
-    "raw_sentiment": 0.2187,
-    "article_count": 6,
+    "raw_sentiment": 0.4559,
+    "article_count": 5,
     "last_updated": "2025-11-21"
   },
   "CRM": {

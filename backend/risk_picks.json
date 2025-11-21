@@ -11,7 +11,7 @@
       "News analysis (AI model, summary across multiple sources):",
       "No recently identified relevant news articles for this company – the news contribution is set to neutral (0.50)."
     ],
-    "score": -0.005317801378084264,
+    "score": -0.005315279411533568,
     "risk": "low"
   },
   "medium": {
@@ -43,7 +43,7 @@
       "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
       "News summary for GOOGL (Alphabet Inc.): Palo Alto Networks (PANW) stock is under pressure despite reporting fiscal first quarter earnings that beat estimates. Cipher Mining (CIFR) is reportedly raising funds in the bond market to fund its data center buildout. TikTok owner ByteDance's valuation climbed to $480 billion, Bloomberg reports."
     ],
-    "score": 0.014808088232059114,
+    "score": 0.016613952650602906,
     "risk": "high"
   }
 }

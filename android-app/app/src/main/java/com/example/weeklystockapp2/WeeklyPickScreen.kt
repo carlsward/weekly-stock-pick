@@ -1,24 +1,22 @@
 package com.example.weeklystockapp2
 
-
-
-
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
@@ -29,22 +27,29 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.weeklystockapp2.ui.theme.RiskHighColor
+import com.example.weeklystockapp2.ui.theme.RiskLowColor
+import com.example.weeklystockapp2.ui.theme.RiskMediumColor
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.size
+
+
 
 @Composable
 fun WeeklyPickScreen(
@@ -55,14 +60,28 @@ fun WeeklyPickScreen(
     var showInfoDialog by remember { mutableStateOf(false) }
     var showFullSummary by remember { mutableStateOf(false) }
 
+    // Card in-animation
+    var cardVisible by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        cardVisible = true
+    }
+    val cardScale by animateFloatAsState(
+        targetValue = if (cardVisible) 1f else 0.95f,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        ),
+        label = "cardScale"
+    )
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(
                 Brush.verticalGradient(
                     listOf(
-                        MaterialTheme.colorScheme.surface,
-                        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.4f)
+                        MaterialTheme.colorScheme.background,
+                        MaterialTheme.colorScheme.surfaceVariant
                     )
                 )
             )
@@ -70,12 +89,14 @@ fun WeeklyPickScreen(
         contentAlignment = Alignment.TopCenter
     ) {
         Card(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .scale(cardScale),
             shape = RoundedCornerShape(24.dp),
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surface
             ),
-            elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+            elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
         ) {
             Column(
                 modifier = Modifier
@@ -97,30 +118,83 @@ fun WeeklyPickScreen(
                         displayOrder.forEach { riskKey ->
                             val isSelected = riskKey.equals(pick.risk, ignoreCase = true)
 
+                            val targetBg = when {
+                                isSelected && riskKey.equals("low", ignoreCase = true) ->
+                                    RiskLowColor.copy(alpha = 0.18f)
+                                isSelected && riskKey.equals("medium", ignoreCase = true) ->
+                                    RiskMediumColor.copy(alpha = 0.22f)
+                                isSelected && riskKey.equals("high", ignoreCase = true) ->
+                                    RiskHighColor.copy(alpha = 0.20f)
+                                else -> Color.Transparent
+                            }
+
+                            val targetBorder = when {
+                                isSelected && riskKey.equals("low", ignoreCase = true) ->
+                                    RiskLowColor
+                                isSelected && riskKey.equals("medium", ignoreCase = true) ->
+                                    RiskMediumColor
+                                isSelected && riskKey.equals("high", ignoreCase = true) ->
+                                    RiskHighColor
+                                else -> MaterialTheme.colorScheme.outline.copy(alpha = 0.4f)
+                            }
+
+                            val targetTextColor = when {
+                                isSelected && riskKey.equals("low", ignoreCase = true) ->
+                                    RiskLowColor
+                                isSelected && riskKey.equals("medium", ignoreCase = true) ->
+                                    RiskMediumColor
+                                isSelected && riskKey.equals("high", ignoreCase = true) ->
+                                    RiskHighColor
+                                isSelected -> MaterialTheme.colorScheme.primary
+                                else -> MaterialTheme.colorScheme.onSurfaceVariant
+                            }
+
+                            val bgColor by animateColorAsState(
+                                targetValue = targetBg,
+                                label = "chipBg"
+                            )
+                            val borderColor by animateColorAsState(
+                                targetValue = targetBorder,
+                                label = "chipBorder"
+                            )
+                            val textColor by animateColorAsState(
+                                targetValue = targetTextColor,
+                                label = "chipText"
+                            )
+
+                            val chipScale by animateFloatAsState(
+                                targetValue = if (isSelected) 1.05f else 1f,
+                                animationSpec = spring(
+                                    dampingRatio = Spring.DampingRatioMediumBouncy,
+                                    stiffness = Spring.StiffnessMedium
+                                ),
+                                label = "chipScale"
+                            )
+
                             Text(
                                 text = riskKey.replaceFirstChar { it.uppercase() },
                                 modifier = Modifier
-                                    .clickable { onRiskSelected(riskKey) }
-                                    .background(
-                                        color = if (isSelected)
-                                            MaterialTheme.colorScheme.primary.copy(alpha = 0.12f)
-                                        else
-                                            Color.Transparent,
+                                    .scale(chipScale)
+                                    .border(
+                                        width = 1.dp,
+                                        color = borderColor,
                                         shape = RoundedCornerShape(999.dp)
                                     )
-                                    .padding(horizontal = 10.dp, vertical = 4.dp),
+                                    .background(
+                                        color = bgColor,
+                                        shape = RoundedCornerShape(999.dp)
+                                    )
+                                    .clickable { onRiskSelected(riskKey) }
+                                    .padding(horizontal = 12.dp, vertical = 6.dp),
                                 style = MaterialTheme.typography.bodyMedium,
                                 fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-                                color = if (isSelected)
-                                    MaterialTheme.colorScheme.primary
-                                else
-                                    MaterialTheme.colorScheme.onSurfaceVariant
+                                color = textColor
                             )
                         }
                     }
                 }
 
-                // Titel + info-ikon (utan weight)
+                // Titel + info-ikon
                 Box(
                     modifier = Modifier.fillMaxWidth()
                 ) {
@@ -130,9 +204,10 @@ fun WeeklyPickScreen(
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .align(Alignment.CenterStart)
-                            .padding(end = 40.dp), // marginal så texten inte hamnar under ikonen
+                            .padding(end = 40.dp),
                         maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
+                        overflow = TextOverflow.Ellipsis,
+                        color = MaterialTheme.colorScheme.onSurface
                     )
 
                     IconButton(
@@ -141,18 +216,35 @@ fun WeeklyPickScreen(
                     ) {
                         Icon(
                             imageVector = Icons.Filled.Info,
-                            contentDescription = "About the model"
+                            contentDescription = "About the model",
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 }
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
-                    text = "${pick.symbol} – ${pick.companyName}",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.SemiBold
-                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    StockLogoBadge(
+                        symbol = pick.symbol,
+                        risk = pick.risk
+                    )
+
+                    Text(
+                        text = pick.companyName,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+
+
 
                 Spacer(modifier = Modifier.height(4.dp))
 
@@ -164,20 +256,34 @@ fun WeeklyPickScreen(
 
                 Spacer(modifier = Modifier.height(2.dp))
 
+                val riskColor = when (pick.risk.lowercase()) {
+                    "low" -> RiskLowColor
+                    "medium" -> RiskMediumColor
+                    "high" -> RiskHighColor
+                    else -> MaterialTheme.colorScheme.onSurface
+                }
+
                 Text(
                     text = "Risk level: ${pick.risk}",
                     style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.SemiBold
+                    fontWeight = FontWeight.SemiBold,
+                    color = riskColor
                 )
 
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // NYTT: animerad model-score-mätare
+                ScoreMeter(score = pick.score)
+
                 Spacer(modifier = Modifier.height(12.dp))
-                HorizontalDivider()
+                HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
                     text = "Why this stock:",
                     style = MaterialTheme.typography.titleSmall,
-                    fontWeight = FontWeight.SemiBold
+                    fontWeight = FontWeight.SemiBold,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
 
                 // Dela upp orsaker + lång nyhetssammanfattning
@@ -190,7 +296,8 @@ fun WeeklyPickScreen(
                     baseReasons.forEach { reason ->
                         Text(
                             text = "• $reason",
-                            style = MaterialTheme.typography.bodyMedium
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                     }
 
@@ -199,7 +306,8 @@ fun WeeklyPickScreen(
                             text = "• $summary",
                             style = MaterialTheme.typography.bodyMedium,
                             maxLines = if (showFullSummary) Int.MAX_VALUE else 4,
-                            overflow = TextOverflow.Ellipsis
+                            overflow = TextOverflow.Ellipsis,
+                            color = MaterialTheme.colorScheme.onSurface
                         )
 
                         Text(
@@ -253,5 +361,126 @@ fun WeeklyPickScreen(
                 }
             }
         )
+    }
+}
+
+
+@Composable
+private fun StockLogoBadge(
+    symbol: String,
+    risk: String
+) {
+    val baseColor = when (risk.lowercase()) {
+        "low" -> RiskLowColor
+        "medium" -> RiskMediumColor
+        "high" -> RiskHighColor
+        else -> MaterialTheme.colorScheme.primary
+    }
+
+    Box(
+        modifier = Modifier
+            .size(54.dp) // lite större för längre tickers
+            .background(
+                color = baseColor.copy(alpha = 0.12f),
+                shape = CircleShape
+            ),
+        contentAlignment = Alignment.Center
+    ) {
+        Box(
+            modifier = Modifier
+                .size(46.dp)
+                .background(
+                    color = baseColor,
+                    shape = CircleShape
+                ),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = symbol.uppercase(),   // hela tickern
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            )
+        }
+    }
+}
+
+
+@Composable
+private fun ScoreMeter(score: Double) {
+    // Hantera NaN och klampa till ett rimligt intervall för visualisering
+    val safeScore = if (score.isNaN()) 0.0 else score
+    val clamped = safeScore.coerceIn(-0.10, 0.10) // -10% .. +10% ungefär
+    // Normalisera till [0,1]
+    val normalized = ((clamped + 0.10) / 0.20).toFloat().coerceIn(0f, 1f)
+
+    val animatedFill by animateFloatAsState(
+        targetValue = normalized,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioNoBouncy,
+            stiffness = Spring.StiffnessMedium
+        ),
+        label = "scoreFill"
+    )
+
+    val gradient = Brush.horizontalGradient(
+        listOf(
+            RiskLowColor,
+            RiskMediumColor,
+            RiskHighColor
+        )
+    )
+
+    val sentimentLabel = when {
+        safeScore < -0.02 -> "Bearish"
+        safeScore > 0.02 -> "Bullish"
+        else -> "Neutral"
+    }
+
+    Column(
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        Text(
+            text = "Model score",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(10.dp)
+                .background(
+                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    shape = RoundedCornerShape(999.dp)
+                )
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(fraction = animatedFill)
+                    .background(
+                        brush = gradient,
+                        shape = RoundedCornerShape(999.dp)
+                    )
+            )
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = String.format("%.3f", safeScore),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+            Text(
+                text = sentimentLabel,
+                style = MaterialTheme.typography.bodySmall,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
     }
 }

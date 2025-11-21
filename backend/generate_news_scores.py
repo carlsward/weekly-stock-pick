@@ -284,12 +284,12 @@ def main():
         texts = fetch_symbol_news(symbol, company_name)
 
         if not texts:
-            print(f"[{symbol}] Inga relevanta nyheter – sätter neutral 0.50")
+            print(f"[{symbol}] No relevant recent news – setting neutral 0.50")
             out[symbol] = {
                 "news_score": 0.5,
                 "news_reasons": [
-                    "Inga nyligen identifierade relevanta nyhetsartiklar för bolaget – "
-                    "nyhetsbidraget sätts till neutralt (0.50)."
+                    "No recently identified relevant news articles for this company – "
+                    "the news contribution is set to neutral (0.50)."
                 ],
                 "raw_sentiment": 0.0,
                 "article_count": 0,
@@ -297,14 +297,16 @@ def main():
             }
             continue
 
+
         raw_sent = compute_finbert_sentiment(sentiment_pipe, texts)
         news_score = sentiment_to_news_score(raw_sent)
         summary = summarize_texts(summarizer_pipe, texts)
 
         reasons = [
-            f"Nyhetsanalys (AI-modell, FinBERT) baserad på {len(texts)} artiklar senaste dagarna.",
-            f"Sammanfattning för {symbol} ({company_name}): {summary}",
+            f"News sentiment (AI model, FinBERT) based on {len(texts)} articles from the last few days.",
+            f"News summary for {symbol} ({company_name}): {summary}",
         ]
+
 
         out[symbol] = {
             "news_score": round(news_score, 2),

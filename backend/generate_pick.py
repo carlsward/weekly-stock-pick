@@ -192,15 +192,16 @@ def build_candidate(
     total_score = base_score * news_factor
 
     reasons = [
-        f"Senaste 5 handelsdagarna: cirka {format_pct(momentum)} prisutveckling.",
-        f"Uppmätt dagsvolatilitet kring {format_pct(vol)}, klassad som {risk_level} risk.",
-        "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
+        f"Price performance over the last 5 trading days: about {format_pct(momentum)}.",
+        f"Measured daily volatility around {format_pct(vol)}, classified as {risk_level} risk.",
+        "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
     ]
 
     if news_info:
-        reasons.append("Nyhetsanalys (AI-modell, sammanfattning av flera källor):")
+        reasons.append("News analysis (AI model, summary across multiple sources):")
         if news_reasons:
             reasons.extend(news_reasons)
+
 
     return StockCandidate(
         symbol=symbol,

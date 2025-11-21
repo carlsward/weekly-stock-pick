@@ -19,6 +19,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.weeklystockapp2.ui.theme.WeeklyStockApp2Theme
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import com.example.weeklystockapp2.ui.theme.RiskHighColor
+import com.example.weeklystockapp2.ui.theme.RiskLowColor
+import com.example.weeklystockapp2.ui.theme.RiskMediumColor
+import androidx.compose.foundation.layout.Box
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,18 +135,52 @@ fun HistorySection(historyState: HistoryUiState) {
 
 @Composable
 fun HistoryRow(entry: HistoryEntry) {
-    Column {
-        Text(
-            text = "${entry.symbol} – ${entry.companyName}",
-            style = MaterialTheme.typography.bodyMedium
-        )
-        Text(
-            text = "Week: ${entry.weekStart} to ${entry.weekEnd}",
-            style = MaterialTheme.typography.bodySmall
-        )
-        Text(
-            text = "Risk: ${entry.risk}  •  Score: ${entry.score ?: Double.NaN}",
-            style = MaterialTheme.typography.bodySmall
-        )
+    val riskColor = when (entry.risk.lowercase()) {
+        "low" -> RiskLowColor
+        "medium" -> RiskMediumColor
+        "high" -> RiskHighColor
+        else -> MaterialTheme.colorScheme.onSurfaceVariant
+    }
+
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .width(4.dp)
+                    .height(40.dp)
+                    .background(
+                        color = riskColor,
+                        shape = RoundedCornerShape(999.dp)
+                    )
+            )
+
+            Column {
+                Text(
+                    text = "${entry.symbol} – ${entry.companyName}",
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Text(
+                    text = "Week: ${entry.weekStart} to ${entry.weekEnd}",
+                    style = MaterialTheme.typography.bodySmall
+                )
+                Text(
+                    text = "Risk: ${entry.risk}  •  Score: ${entry.score ?: Double.NaN}",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = riskColor
+                )
+            }
+        }
     }
 }
+

@@ -30,6 +30,12 @@ import com.example.weeklystockapp2.ui.theme.RiskHighColor
 import com.example.weeklystockapp2.ui.theme.RiskLowColor
 import com.example.weeklystockapp2.ui.theme.RiskMediumColor
 import androidx.compose.foundation.layout.Box
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.example.weeklystockapp2.SplashScreen
+
 
 
 class MainActivity : ComponentActivity() {
@@ -38,30 +44,36 @@ class MainActivity : ComponentActivity() {
         setContent {
             WeeklyStockApp2Theme {
                 val vm: MainViewModel = viewModel()
+                var showSplash by remember { mutableStateOf(true) }
 
-                Surface(color = MaterialTheme.colorScheme.background) {
-                    when (val state = vm.uiState) {
-                        is UiState.Loading -> LoadingView()
-                        is UiState.Error -> ErrorView(message = state.message)
-                        is UiState.Content -> {
-                            // Hela sidan är scrollbar
-                            LazyColumn(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .padding(16.dp),
-                                verticalArrangement = Arrangement.spacedBy(16.dp)
-                            ) {
-                                item {
-                                    WeeklyPickScreen(
-                                        pick = state.pick,
-                                        availableRisks = state.availableRisks,
-                                        onRiskSelected = { riskKey ->
-                                            vm.onRiskSelected(riskKey)
-                                        }
-                                    )
-                                }
-                                item {
-                                    HistorySection(historyState = vm.historyState)
+                if (showSplash) {
+                    SplashScreen(
+                        onFinished = { showSplash = false }
+                    )
+                } else {
+                    Surface(color = MaterialTheme.colorScheme.background) {
+                        when (val state = vm.uiState) {
+                            is UiState.Loading -> LoadingView()
+                            is UiState.Error -> ErrorView(message = state.message)
+                            is UiState.Content -> {
+                                LazyColumn(
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                        .padding(16.dp),
+                                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                                ) {
+                                    item {
+                                        WeeklyPickScreen(
+                                            pick = state.pick,
+                                            availableRisks = state.availableRisks,
+                                            onRiskSelected = { riskKey ->
+                                                vm.onRiskSelected(riskKey)
+                                            }
+                                        )
+                                    }
+                                    item {
+                                        HistorySection(historyState = vm.historyState)
+                                    }
                                 }
                             }
                         }
@@ -69,6 +81,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
     }
 }
 

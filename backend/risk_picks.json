@@ -2,48 +2,48 @@
   "low": {
     "symbol": "FB",
     "company_name": "Meta Platforms Inc.",
-    "week_start": "2025-11-21",
-    "week_end": "2025-11-28",
+    "week_start": "2025-11-22",
+    "week_end": "2025-11-29",
     "reasons": [
-      "Price performance over the last 5 trading days: about -0.3%.",
+      "Price performance over the last 5 trading days: about -0.2%.",
       "Measured daily volatility around 0.2%, classified as low risk.",
       "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
       "News analysis (AI model, summary across multiple sources):",
       "No recently identified relevant news articles for this company – the news contribution is set to neutral (0.50)."
     ],
-    "score": -0.005315279411533568,
+    "score": -0.004232049544031773,
     "risk": "low"
   },
   "medium": {
-    "symbol": "JNJ",
-    "company_name": "Johnson & Johnson",
-    "week_start": "2025-11-21",
-    "week_end": "2025-11-28",
+    "symbol": "MDT",
+    "company_name": "Medtronic plc",
+    "week_start": "2025-11-22",
+    "week_end": "2025-11-29",
     "reasons": [
-      "Price performance over the last 5 trading days: about 4.0%.",
-      "Measured daily volatility around 1.0%, classified as medium risk.",
+      "Price performance over the last 5 trading days: about 5.6%.",
+      "Measured daily volatility around 1.5%, classified as medium risk.",
       "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
       "News analysis (AI model, summary across multiple sources):",
-      "News sentiment (AI model, FinBERT) based on 2 articles from the last few days.",
-      "News summary for JNJ (Johnson & Johnson): Johnson & Johnson (JNJ) has received quite a bit of attention from Zacks.com users lately. It is wise to be aware of the facts that can impact the stock's prospects."
+      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
+      "News summary for MDT (Medtronic plc): Medtronic plc (NYSE:MDT) is a medical technology company that makes and sells devices for cardiovascular, neuroscience, and surgical applications. Medtronic’s share price has climbed 3.3% in the last week and is up a notable 23.8% year-to-date, suggesting either confidence in its long-term prospects or changing attitudes around risk"
     ],
-    "score": 0.03366414444379637,
+    "score": 0.04850839727561345,
     "risk": "medium"
   },
   "high": {
     "symbol": "GOOGL",
     "company_name": "Alphabet Inc.",
-    "week_start": "2025-11-21",
-    "week_end": "2025-11-28",
+    "week_start": "2025-11-22",
+    "week_end": "2025-11-29",
     "reasons": [
-      "Price performance over the last 5 trading days: about 3.9%.",
+      "Price performance over the last 5 trading days: about 8.4%.",
       "Measured daily volatility around 2.1%, classified as high risk.",
       "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
       "News analysis (AI model, summary across multiple sources):",
-      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
-      "News summary for GOOGL (Alphabet Inc.): Palo Alto Networks (PANW) stock is under pressure despite reporting fiscal first quarter earnings that beat estimates. Cipher Mining (CIFR) is reportedly raising funds in the bond market to fund its data center buildout. TikTok owner ByteDance's valuation climbed to $480 billion, Bloomberg reports."
+      "News sentiment (AI model, FinBERT) based on 3 articles from the last few days.",
+      "News summary for GOOGL (Alphabet Inc.): Alphabet overtook Microsoft as the third-largest company by market value. Small stocks outperformed, with the Russell 2000 rising 2.8%. New York Fed President John Williams made the case for a near-term cut to interest rates."
     ],
-    "score": 0.016613952650602906,
+    "score": 0.07074855338635751,
     "risk": "high"
   }
 }

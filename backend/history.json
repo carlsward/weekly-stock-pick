@@ -45,5 +45,25 @@
     "score": 0.054271279990408546,
     "risk": "medium",
     "model_version": "v1.0"
+  },
+  {
+    "logged_at": "2025-11-21",
+    "symbol": "JNJ",
+    "company_name": "Johnson & Johnson",
+    "week_start": "2025-11-21",
+    "week_end": "2025-11-28",
+    "score": 0.03366414444379637,
+    "risk": "medium",
+    "model_version": "v1.0"
+  },
+  {
+    "logged_at": "2025-11-22",
+    "symbol": "GOOGL",
+    "company_name": "Alphabet Inc.",
+    "week_start": "2025-11-22",
+    "week_end": "2025-11-29",
+    "score": 0.07074855338635751,
+    "risk": "high",
+    "model_version": "v1.0"
   }
 ]

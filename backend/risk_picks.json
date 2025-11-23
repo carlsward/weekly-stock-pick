@@ -2,8 +2,8 @@
   "low": {
     "symbol": "FB",
     "company_name": "Meta Platforms Inc.",
-    "week_start": "2025-11-22",
-    "week_end": "2025-11-29",
+    "week_start": "2025-11-23",
+    "week_end": "2025-11-30",
     "reasons": [
       "Price performance over the last 5 trading days: about -0.2%.",
       "Measured daily volatility around 0.2%, classified as low risk.",
@@ -17,8 +17,8 @@
   "medium": {
     "symbol": "MDT",
     "company_name": "Medtronic plc",
-    "week_start": "2025-11-22",
-    "week_end": "2025-11-29",
+    "week_start": "2025-11-23",
+    "week_end": "2025-11-30",
     "reasons": [
       "Price performance over the last 5 trading days: about 5.6%.",
       "Measured daily volatility around 1.5%, classified as medium risk.",
@@ -33,17 +33,17 @@
   "high": {
     "symbol": "GOOGL",
     "company_name": "Alphabet Inc.",
-    "week_start": "2025-11-22",
-    "week_end": "2025-11-29",
+    "week_start": "2025-11-23",
+    "week_end": "2025-11-30",
     "reasons": [
       "Price performance over the last 5 trading days: about 8.4%.",
       "Measured daily volatility around 2.1%, classified as high risk.",
       "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
       "News analysis (AI model, summary across multiple sources):",
-      "News sentiment (AI model, FinBERT) based on 3 articles from the last few days.",
-      "News summary for GOOGL (Alphabet Inc.): Alphabet overtook Microsoft as the third-largest company by market value. Small stocks outperformed, with the Russell 2000 rising 2.8%. New York Fed President John Williams made the case for a near-term cut to interest rates."
+      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
+      "News summary for GOOGL (Alphabet Inc.): Booking Holdings (BKNG) Is Down 5.5% After Google Unveils Global AI Travel Booking Expansion. Alphabet's Google announced the global expansion of its AI-powered travel features."
     ],
-    "score": 0.07074855338635751,
+    "score": 0.05811488313879365,
     "risk": "high"
   }
 }

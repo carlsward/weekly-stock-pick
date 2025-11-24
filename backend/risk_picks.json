@@ -2,8 +2,8 @@
   "low": {
     "symbol": "FB",
     "company_name": "Meta Platforms Inc.",
-    "week_start": "2025-11-23",
-    "week_end": "2025-11-30",
+    "week_start": "2025-11-24",
+    "week_end": "2025-12-01",
     "reasons": [
       "Price performance over the last 5 trading days: about -0.2%.",
       "Measured daily volatility around 0.2%, classified as low risk.",
@@ -17,33 +17,33 @@
   "medium": {
     "symbol": "MDT",
     "company_name": "Medtronic plc",
-    "week_start": "2025-11-23",
-    "week_end": "2025-11-30",
+    "week_start": "2025-11-24",
+    "week_end": "2025-12-01",
     "reasons": [
       "Price performance over the last 5 trading days: about 5.6%.",
       "Measured daily volatility around 1.5%, classified as medium risk.",
       "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
       "News analysis (AI model, summary across multiple sources):",
-      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
+      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
       "News summary for MDT (Medtronic plc): Medtronic plc (NYSE:MDT) is a medical technology company that makes and sells devices for cardiovascular, neuroscience, and surgical applications. Medtronic’s share price has climbed 3.3% in the last week and is up a notable 23.8% year-to-date, suggesting either confidence in its long-term prospects or changing attitudes around risk"
     ],
-    "score": 0.04850839727561345,
+    "score": 0.047295687343723115,
     "risk": "medium"
   },
   "high": {
     "symbol": "GOOGL",
     "company_name": "Alphabet Inc.",
-    "week_start": "2025-11-23",
-    "week_end": "2025-11-30",
+    "week_start": "2025-11-24",
+    "week_end": "2025-12-01",
     "reasons": [
       "Price performance over the last 5 trading days: about 8.4%.",
       "Measured daily volatility around 2.1%, classified as high risk.",
       "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
       "News analysis (AI model, summary across multiple sources):",
-      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-      "News summary for GOOGL (Alphabet Inc.): Booking Holdings (BKNG) Is Down 5.5% After Google Unveils Global AI Travel Booking Expansion. Alphabet's Google announced the global expansion of its AI-powered travel features."
+      "News sentiment (AI model, FinBERT) based on 3 articles from the last few days.",
+      "News summary for GOOGL (Alphabet Inc.): Alphabet (GOOGL) shares have been on the move recently, gaining nearly 44% over the past 3 months. Wall Street is straining to absorb a flood of new bonds from tech companies funding their artificial intelligence investments, adding to the recent pressure in markets."
     ],
-    "score": 0.05811488313879365,
+    "score": 0.05685151611403728,
     "risk": "high"
   }
 }

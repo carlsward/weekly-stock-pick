@@ -1,53 +1,53 @@
 {
   "AAPL": {
-    "news_score": 0.31,
+    "news_score": 0.53,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 4 articles from the last few days.",
-      "News summary for AAPL (Apple Inc.): The stock market rebounded Friday on Fed rate cut hopes but suffered damaging weekly losses. Apple’s presumptive future CEO, John Ternus, has a tough act to follow. Nvidia, Apple and Eli Lilly are in focus."
+      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
+      "News summary for AAPL (Apple Inc.): Bloomberg’s Mark Gurman has shared that Apple Inc. CEO Tim Cook is likely to retain his position until at least mid-2026. The Financial Times had earlier reported this month that Apple was gearing up for Cook's departure “as soon as next year."
     ],
-    "raw_sentiment": -0.3763,
-    "article_count": 4,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.0553,
+    "article_count": 5,
+    "last_updated": "2025-11-24"
   },
   "MSFT": {
-    "news_score": 0.65,
+    "news_score": 0.5,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 3 articles from the last few days.",
-      "News summary for MSFT (Microsoft Corporation): Lumen Technologies (LUMN) announced new AI partnerships with Microsoft and Meter. Lumen Defender Advanced Managed Detection and Response is powered by Microsoft Sentinel. Meter announced an integrated WAN-to-LAN networking solution for AI-driven enterprises."
+      "News summary for MSFT (Microsoft Corporation): Hayley Martin founded Once Upon a Charm, a Seattle-based startup selling prescription glasses designed specifically for girls between the ages of 4 and 9. The frames retail at $250 per pair and feature a patent-pending system allowing wearers to attach decorative charms to the temples."
     ],
-    "raw_sentiment": 0.3017,
+    "raw_sentiment": 0.0,
     "article_count": 3,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "GOOGL": {
-    "news_score": 0.42,
+    "news_score": 0.4,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-      "News summary for GOOGL (Alphabet Inc.): Booking Holdings (BKNG) Is Down 5.5% After Google Unveils Global AI Travel Booking Expansion. Alphabet's Google announced the global expansion of its AI-powered travel features."
+      "News sentiment (AI model, FinBERT) based on 3 articles from the last few days.",
+      "News summary for GOOGL (Alphabet Inc.): Alphabet (GOOGL) shares have been on the move recently, gaining nearly 44% over the past 3 months. Wall Street is straining to absorb a flood of new bonds from tech companies funding their artificial intelligence investments, adding to the recent pressure in markets."
     ],
-    "raw_sentiment": -0.1612,
-    "article_count": 6,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": -0.2049,
+    "article_count": 3,
+    "last_updated": "2025-11-24"
   },
   "AMZN": {
-    "news_score": 0.37,
+    "news_score": 0.41,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
-      "News summary for AMZN (Amazon.com Inc.): America’s labor market is cooling, and workers are quietly turning to Uber and DoorDash to fill the income gap. The gig economy is quietly propping up a cooling labor market as more Americans turn to Uber, DoorDash, and Instacart."
+      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
+      "News summary for AMZN (Amazon.com Inc.): Wall Street is straining to absorb a flood of new bonds from tech companies funding their artificial intelligence investments. Since the start of September, so-called AI hyperscalers Amazon, Alphabet Meta Platforms and Oracle have issued nearly $90 billion of investment-grade bonds."
     ],
-    "raw_sentiment": -0.2545,
-    "article_count": 7,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": -0.185,
+    "article_count": 6,
+    "last_updated": "2025-11-24"
   },
   "TSLA": {
-    "news_score": 0.62,
+    "news_score": 0.65,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 4 articles from the last few days.",
-      "News summary for TSLA (Tesla Inc.): Tesla's stock price rebound has been pleasant for investors, but here's something that might make them tap the brakes. Analysts are saying Tesla could hit 1,003 dollars by 2030, a long-term target that has sparked renewed debate among investors."
+      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
+      "News summary for TSLA (Tesla Inc.): Tesla CEO Elon Musk says the company is working on a new AI chip design every 12 months. Analysts are saying Tesla could hit 1,003 dollars by 2030, a long-term target."
     ],
-    "raw_sentiment": 0.2391,
-    "article_count": 4,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.2985,
+    "article_count": 7,
+    "last_updated": "2025-11-24"
   },
   "FB": {
     "news_score": 0.5,
@@ -56,7 +56,7 @@
     ],
     "raw_sentiment": 0.0,
     "article_count": 0,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "BRK.B": {
     "news_score": 0.5,
@@ -65,27 +65,27 @@
     ],
     "raw_sentiment": 0.0,
     "article_count": 0,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "NVDA": {
-    "news_score": 0.66,
+    "news_score": 0.53,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-      "News summary for NVDA (NVIDIA Corporation): Nvidia stock has climbed 1,000% over the past five years. AMD and Intel are both vying for incremental share of the data center market. IBM, Alphabet, and Microsoft had the most U.S. quantum computing patents awarded in 2024."
+      "News summary for NVDA (NVIDIA Corporation): NVIDIA Corporation (NASDAQ:NVDA) is one of the stocks Jim Cramer recently offered insights on. Billionaire Stanley Druckenmiller Dropped Nvidia, Palantir, and Eli Lilly Over the Past Year and Just Bought the 2 Cheapest Magnificent Seven Stocks."
     ],
-    "raw_sentiment": 0.3208,
+    "raw_sentiment": 0.0591,
     "article_count": 6,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "JPM": {
-    "news_score": 0.64,
+    "news_score": 0.61,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-      "News summary for JPM (JP Morgan Chase & Co.): consensus analyst price target for JPMorgan Chase has ticked upward, now sitting at $328.09 compared to $327.70 previously. This rise follows a period of more positive analyst sentiment, fueled by recent earnings beats and upward adjustments to the bank’s financial guidance."
+      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
+      "News summary for JPM (JP Morgan Chase & Co.): consensus analyst price target for JPMorgan Chase has ticked upward, now sitting at $328.09 compared to $327.70 previously. Michael Feroli, chief US economist at JPMorgan Securities, says a December rate cut will be a \"very close call\""
     ],
-    "raw_sentiment": 0.2715,
-    "article_count": 6,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.2279,
+    "article_count": 5,
+    "last_updated": "2025-11-24"
   },
   "JNJ": {
     "news_score": 0.97,
@@ -95,67 +95,67 @@
     ],
     "raw_sentiment": 0.9313,
     "article_count": 2,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "V": {
-    "news_score": 0.63,
+    "news_score": 0.61,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 10 articles from the last few days.",
-      "News summary for V (Visa Inc.): Visa's earnings growth could slow, and it could still deliver better returns than the S&P 500. Visa sees solid volume growth and cross-border gains. AmEx is elevating its travel and lifestyle services into a broader, experience-driven growth engine."
+      "News summary for V (Visa Inc.): Visa's stock has seen mixed momentum lately, with a slight drop of 0.6% in the past week and down 5.6%. Visa's earnings growth could slow, and it could still deliver better returns than the S&P 500. This dividend-paying growth stock is a top buy for investors seeking a high-quality company at a favorable value."
     ],
-    "raw_sentiment": 0.257,
+    "raw_sentiment": 0.2122,
     "article_count": 10,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "WMT": {
-    "news_score": 0.59,
+    "news_score": 0.58,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
-      "News summary for WMT (Walmart Inc.): Walmart (WMT) is in focus after the company reported earnings that wowed investors. Once a symbol of corporate excess, Walmart has reinvented itself under CEO Doug McMillon. Zacks Investment Management senior client portfolio manager, Brian Mulberry, joins Market Domination host Josh Lipton to discuss how Walmart's e-commerce business has helped Walmart secure affluent customers."
+      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
+      "News summary for WMT (Walmart Inc.): Walmart Inc. (NYSE:WMT) is one of the stocks Jim Cramer recently offered insights on. Cramer made some positive comments about the stock and the company’s quarter. He believes that Costco Wholesale Corporation (NASDAQ:COST) is in freefall."
     ],
-    "raw_sentiment": 0.1899,
-    "article_count": 5,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.1646,
+    "article_count": 7,
+    "last_updated": "2025-11-24"
   },
   "PG": {
     "news_score": 0.49,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
-      "News summary for PG (Procter & Gamble Company): The stock just gained 2.2% in the past week, although it’s still down 0.8% this month and has slipped 9.1% year-to-date. PG leans on premium, high-performance products and targeted marketing to strengthen margins and consumer loyalty. The company maintains appeal as a defensive choice amid economic uncertainty."
+      "News summary for PG (Procter & Gamble Company): The Procter & Gamble Company (NYSE:PG) is one of the stocks Jim Cramer answered questions about. The stock just gained 2.2% in the past week, although it’s still down 0.8% this month. PG leans on premium, high-performance products and targeted marketing to strengthen margins and consumer loyalty."
     ],
     "raw_sentiment": -0.0297,
     "article_count": 7,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "MA": {
-    "news_score": 0.56,
+    "news_score": 0.34,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
-      "News summary for MA (Mastercard Incorporated): Mastercard (NYSE:MA) sheds 5.0% this week, as yearly returns fall more in line with earnings growth. Mastercard strengthens its cybersecurity edge as Recorded Future expands its Exabeam partnership for smarter, faster threat defense."
+      "News sentiment (AI model, FinBERT) based on 4 articles from the last few days.",
+      "News summary for MA (Mastercard Incorporated): A number of stocks jumped in the afternoon session after investors grew more optimistic about a potential Federal Reserve interest rate cut in December. Mastercard (NYSE:MA) sheds 5.0% this week, as yearly returns fall more in line with earnings growth."
     ],
-    "raw_sentiment": 0.11,
-    "article_count": 5,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": -0.3132,
+    "article_count": 4,
+    "last_updated": "2025-11-24"
   },
   "DIS": {
-    "news_score": 0.65,
+    "news_score": 0.55,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
-      "News summary for DIS (The Walt Disney Company): Warner Bros. bidding and a disappointing Q3, Q4 leaves Disney reliant on parks and upcoming films. Disney has increased its 2026 dividend by 50% and the payout has risen 1.5X since 2023. ESPN, NBCUniversal, Netflix Secure MLB Broadcast Rights From 2026."
+      "News summary for DIS (The Walt Disney Company): Disney has increased its 2026 dividend by 50% and the payout has risen 1.5X since 2023. Netflix's 10-For-1 Stock Split Takes Effect: Hold for Now or Fold? (Revised)"
     ],
-    "raw_sentiment": 0.2956,
+    "raw_sentiment": 0.1067,
     "article_count": 7,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "HD": {
-    "news_score": 0.42,
+    "news_score": 0.19,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 10 articles from the last few days.",
-      "News summary for HD (The Home Depot Inc.): Target Corp. shares rallied Friday after its earnings showed the retailer cut prices at the expense of profits. The Standard & Poor's 500 index fell 1.95% this week in a technology-led decline."
+      "News summary for HD (The Home Depot Inc.): Home Depot, Inc. (NYSE:HD) is one of the stocks Jim Cramer recently offered insights on. Cramer said that the company’s performance is dependant on whether the Fed cuts rate during the next meeting or not. Home Depot recently reported weaker-than-expected third-quarter earnings."
     ],
-    "raw_sentiment": -0.1619,
+    "raw_sentiment": -0.6114,
     "article_count": 10,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "BAC": {
     "news_score": 0.63,
@@ -165,117 +165,117 @@
     ],
     "raw_sentiment": 0.2619,
     "article_count": 7,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "XOM": {
-    "news_score": 0.73,
+    "news_score": 0.64,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 4 articles from the last few days.",
-      "News summary for XOM (Exxon Mobil Corporation): XOM moves to buy a 40% stake in EPD's Bahia NGL pipeline, aiming to accelerate Permian NGL flows and boost long-term takeaway capacity. XOM continues to increase dividends sustainably as upstream strength in Guyana and the PerMian boosts earnings and cash flows."
+      "News summary for XOM (Exxon Mobil Corporation): Michael C. \"Tug\" Hanley will become executive vice president and chief commercial officer. This appointment, along with the sale of a 40% stake in the Bahia NGL pipeline to ExxonMobil, highlights Enterprise’s focus on leadership continuity and collaborative infrastructure growth."
     ],
-    "raw_sentiment": 0.4624,
+    "raw_sentiment": 0.2809,
     "article_count": 4,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "PFE": {
-    "news_score": 0.67,
-    "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
-      "News summary for PFE (Pfizer Inc.): Pfizer's performance has been mixed lately. Shares dipped just 0.1% in the last week, inched up 1.3% over the past month, but are still down 5.9% year to date. Phillip Frost, CEO and Chairman of OPKO Health, together with Frost Gamma Investments Trust, acquired US$737,747."
-    ],
-    "raw_sentiment": 0.3396,
-    "article_count": 5,
-    "last_updated": "2025-11-23"
-  },
-  "VZ": {
-    "news_score": 0.62,
+    "news_score": 0.61,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 4 articles from the last few days.",
-      "News summary for VZ (Verizon Communications Inc.): ASTS SpaceMobile recently announced a follow-on equity offering of approximately US$23.9 million. The company also provided an update on its third quarter results, reporting sales of US$14.74 million. These developments come as the company advances toward launching its largest BlueBird 6 satellite in December."
+      "News summary for PFE (Pfizer Inc.): Pfizer's performance has been mixed lately. Shares dipped just 0.1% in the last week, inched up 1.3% over the past month, but are still down 5.9% year to date. Recent headlines about Pfizer have focused on its latest product developments."
     ],
-    "raw_sentiment": 0.2421,
+    "raw_sentiment": 0.2206,
     "article_count": 4,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
+  },
+  "VZ": {
+    "news_score": 0.43,
+    "news_reasons": [
+      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
+      "News summary for VZ (Verizon Communications Inc.): As layoffs mount, is the 'no-hire, no-fire' labor market narrative breaking? A raft of job cut announcements this fall from big companies like Amazon, Verizon, and Target calls into question the state of what has been deemed a “no- hire,no-fire” labor market. Jim Cramer says “I want you to scale out of Verizon"
+    ],
+    "raw_sentiment": -0.1466,
+    "article_count": 6,
+    "last_updated": "2025-11-24"
   },
   "NFLX": {
-    "news_score": 0.47,
+    "news_score": 0.48,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 9 articles from the last few days.",
-      "News summary for NFLX (Netflix Inc.): Netflix’s consensus analyst price target has been sharply reduced from nearly $1,350 to around $135 per share. Bitcoin sinks to $84,000 per token as the crypto asset is looking at its worst trading month since 2022. US stock futures are rising in Friday's premarket trading after Thursday's volatile trading day."
+      "News summary for NFLX (Netflix Inc.): Paramount Skydance, Netflix, and Comcast have all submitted their bids to possibly acquire Warner Bros. Discovery. Bitcoin sinks to $84,000 per token as the crypto asset is looking at its worst trading month since 2022. US stock futures are rising in Friday's premarket trading after Thursday's volatile trading day."
     ],
-    "raw_sentiment": -0.0583,
+    "raw_sentiment": -0.0486,
     "article_count": 9,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "ADBE": {
-    "news_score": 0.55,
-    "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
-      "News summary for ADBE (Adobe Inc.): Adobe Systems (ADBE) closed at $318.03, marking a -1.98% move from the previous day. Digital media and marketing software firm Adobe announced a deal to buy search engine optimization firm Semrush for $1.9 billion in cash."
-    ],
-    "raw_sentiment": 0.1058,
-    "article_count": 7,
-    "last_updated": "2025-11-23"
-  },
-  "CMCSA": {
-    "news_score": 0.49,
-    "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
-      "News summary for CMCSA (Comcast Corporation): Paramount Skydance Corp., Netflix Inc. and Comcast Corp. have all made offers for all or part of the New York-based entertainment giant. The submissions meet a Nov. 20 deadline for a first round of bids set by the board of Warner Bros. Discovery. Foxconn — which does business as Hon Hai Precision Industry (2317.TW, HNHPF)"
-    ],
-    "raw_sentiment": -0.0187,
-    "article_count": 5,
-    "last_updated": "2025-11-23"
-  },
-  "KO": {
-    "news_score": 0.56,
+    "news_score": 0.61,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
+      "News summary for ADBE (Adobe Inc.): Adobe (ADBE) shares edged up in recent trading, despite the absence of a new headline event or announcement. After a steep drop earlier this year, Adobe’s share price has started to claw back some ground, gaining 3.8% over the last day. Investors may be considering the company's broader business trends and evaluating how its long-term valuation appears."
+    ],
+    "raw_sentiment": 0.212,
+    "article_count": 8,
+    "last_updated": "2025-11-24"
+  },
+  "CMCSA": {
+    "news_score": 0.61,
+    "news_reasons": [
+      "News sentiment (AI model, FinBERT) based on 4 articles from the last few days.",
+      "News summary for CMCSA (Comcast Corporation): Skydance Corp., Netflix Inc. and Comcast Corp. have all made offers for all or part of the New York-based entertainment giant. Comcast and Netflix are most interested in the film and TV library, which includes everything from Bugs Bunny."
+    ],
+    "raw_sentiment": 0.2119,
+    "article_count": 4,
+    "last_updated": "2025-11-24"
+  },
+  "KO": {
+    "news_score": 0.57,
+    "news_reasons": [
+      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
       "News summary for KO (The Coca-Cola Company): Coca-Cola's shares have climbed 15.2% year-to-date and 15.0% over the last year, with the latest close at $71.21. This hints at renewed investor optimism and possibly changing risk perceptions. Investors are increasingly seeking stability and income through dividend stocks."
     ],
-    "raw_sentiment": 0.129,
-    "article_count": 8,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.1474,
+    "article_count": 7,
+    "last_updated": "2025-11-24"
   },
   "T": {
-    "news_score": 0.36,
+    "news_score": 0.31,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 10 articles from the last few days.",
-      "News summary for T (AT&T Inc.): T-Mobile plans to start charging customers for a free offer. Netflix, Comcast and Paramount Make Bids for Warner Bros. Discovery. AT&T Bets on Fiber Growth While Verizon Cuts 15% of Workforce."
+      "News summary for T (AT&T Inc.): T-Mobile faces heightened competition from its competitors, which has contributed to it seeing a slight uptick in customer losses in recent months. Verizon has been using artificial intelligence to scan bills from rival phone carriers, offering customized deals."
     ],
-    "raw_sentiment": -0.2859,
+    "raw_sentiment": -0.3755,
     "article_count": 10,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "NKE": {
     "news_score": 0.5,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
+      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
       "News summary for NKE (Nike Inc.): Nike (NKE) reached $61.43 at the closing of the latest trading day, reflecting a -1.93% change compared to its last close. A number of stocks jumped in the afternoon session after comments from a key Federal Reserve official bolstered hopes for an interest rate cut."
     ],
-    "raw_sentiment": 0.003,
-    "article_count": 8,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.004,
+    "article_count": 6,
+    "last_updated": "2025-11-24"
   },
   "MRK": {
-    "news_score": 0.96,
+    "news_score": 0.73,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 4 articles from the last few days.",
-      "News summary for MRK (Merck & Co. Inc.): Merck & Co., Inc.'s ( NYSE:MRK ) periodic dividend will be increasing on the 8th of January to $0.85. Merck, Altria, and Genuine Parts have rewarded shareholders for years and recently announced dividend increases."
+      "News summary for MRK (Merck & Co. Inc.): Cidara Therapeutics Inc. (NASDAQ:CDTX) is the top stock in our list of the hottest SMID-cap stocks so far in 2025 with a 717% share price surge year-to-date. Merck, Altria, and Genuine Parts have rewarded shareholders for years and recently announced dividend increases."
     ],
-    "raw_sentiment": 0.9277,
+    "raw_sentiment": 0.4536,
     "article_count": 4,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "ABT": {
-    "news_score": 0.78,
+    "news_score": 0.71,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-      "News summary for ABT (Abbott Laboratories): A number of stocks jumped in the afternoon session after comments from a key Federal Reserve official bolstered hopes for an interest rate cut. The probability of the central bank cutting rates at its December meeting jumped from 39% to over 73%, according to the CME FedWatch tool."
+      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
+      "News summary for ABT (Abbott Laboratories): Abbott Laboratories (NYSE:ABT) is one of the stocks Jim Cramer recently offered insights on. Cramer highlighted the company's acquisition of Exact Sciences and said that it complements Abbott’s diagnostic business. This show marked more than a month after Cramer discussed pharmaceuticals and diagnostics devices firm Abbott Laboratories."
     ],
-    "raw_sentiment": 0.5676,
-    "article_count": 6,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.4257,
+    "article_count": 8,
+    "last_updated": "2025-11-24"
   },
   "PEP": {
     "news_score": 0.72,
@@ -285,37 +285,37 @@
     ],
     "raw_sentiment": 0.4341,
     "article_count": 6,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "CSCO": {
     "news_score": 0.61,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
-      "News summary for CSCO (Cisco Systems Inc.): Mega-cap technology stock valuations are high but not extreme, says Invesco fund manager David Aujla. Analyst sentiment toward Cisco Systems stock has shifted recently, with the consensus price target rising from about $77 to nearly $85. Stay tuned to discover how investors can keep track of the evolving outlook on Cisco as these trends unfold."
+      "News summary for CSCO (Cisco Systems Inc.): Many investors are keeping a close eye on Cisco for hints about untapped potential or hidden risks. Cisco’s stock has been on a rollercoaster, slipping -2.4% this week. Recent acquisition headlines and industry partnerships have pushed Cisco into the spotlight."
     ],
-    "raw_sentiment": 0.2203,
+    "raw_sentiment": 0.2213,
     "article_count": 5,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "ORCL": {
-    "news_score": 0.03,
+    "news_score": 0.49,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 3 articles from the last few days.",
-      "News summary for ORCL (Oracle Corporation): Many AI stocks have retreated from 52-week or record highs. Oracle (NYSE:ORCL) fell 5.7% in the afternoon session. The decline occurred as concerns grew over high valuations."
+      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
+      "News summary for ORCL (Oracle Corporation): Wall Street is straining to absorb a flood of new bonds from tech companies funding their artificial intelligence investments. Since the start of September, so-called AI hyperscalers have issued nearly $90 billion of investment-grade bonds. Nvidia and Oracle both offer AI growth potential, but their fundamentals make one a clearer choice."
     ],
-    "raw_sentiment": -0.9474,
-    "article_count": 3,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": -0.0103,
+    "article_count": 7,
+    "last_updated": "2025-11-24"
   },
   "INTC": {
-    "news_score": 0.58,
+    "news_score": 0.75,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
-      "News summary for INTC (Intel Corporation): Microsoft co-founder Bill Gates says we're in an AI bubble, but not all bubbles are created equal. Gates was quick to clarify that from his perspective, the AI bubble is over."
+      "News summary for INTC (Intel Corporation): Intel's stock narrative is evolving in response to a recent price target update. The fair value remains steady at $37.27 per share, while the discount rate has increased from 11.64% to 11.78%. This adjustment reflects both optimism around Intel's execution and clarity in its AI strategy."
     ],
-    "raw_sentiment": 0.1502,
+    "raw_sentiment": 0.4961,
     "article_count": 5,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "CRM": {
     "news_score": 0.33,
@@ -325,47 +325,47 @@
     ],
     "raw_sentiment": -0.3302,
     "article_count": 6,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "COST": {
-    "news_score": 0.43,
+    "news_score": 0.45,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
-      "News summary for COST (Costco Wholesale Corporation): Costco stock has seen a dip of 2.6% over the past week and is down 4.9% for the month. Jim Cramer has remained mixed about The Kroger Co. (NYSE:KR) in 2025. Cramer advised a Mad Money viewer to “stay away” from the stock and focus instead on Costco."
+      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
+      "News summary for COST (Costco Wholesale Corporation): Costco stock has dipped recently, but investors should take a closer look at the bigger picture. BJ's Wholesale trades at a sizable discount to Costco, making it an interesting idea for investors who think Costco stock is too expensive."
     ],
-    "raw_sentiment": -0.1461,
-    "article_count": 7,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": -0.1096,
+    "article_count": 8,
+    "last_updated": "2025-11-24"
   },
   "ACN": {
-    "news_score": 0.57,
+    "news_score": 0.52,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
+      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
       "News summary for ACN (Accenture plc): Accenture (ACN) is gaining attention after revealing new collaborations with PPL Corporation and Essity. These moves highlight the firm's growing impact on digital transformation. Momentum around Accenture has been mixed, with shares jumping 4.6% in the past day."
     ],
-    "raw_sentiment": 0.132,
-    "article_count": 7,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.0392,
+    "article_count": 6,
+    "last_updated": "2025-11-24"
   },
   "CVX": {
-    "news_score": 0.58,
+    "news_score": 0.65,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
-      "News summary for CVX (Chevron Corporation): Chevron's stock has been on a bit of a seesaw lately, falling 3.4% over the last week and dipping 2.3% in the past month. The oil and gas giant's prioritization of profits over production could lead to steady gains in the years ahead. White House Touts $270 billion Worth of Deals at Saudi-palooza."
+      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
+      "News summary for CVX (Chevron Corporation): Chevron's Nov. 12 Investor Day outlined a cash flow plan that implies a potentially sizable dividend hike. Chevron's stock has been on a bit of a seesaw lately, falling 3.4% over the last week. The oil and gas giant's prioritization of profits over production could lead to steady gains in the years ahead."
     ],
-    "raw_sentiment": 0.1648,
-    "article_count": 5,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.2959,
+    "article_count": 6,
+    "last_updated": "2025-11-24"
   },
   "MCD": {
-    "news_score": 0.49,
+    "news_score": 0.59,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
-      "News summary for MCD (McDonald's Corporation): The Grinch Meal will feature a Big Mac or 10-piece Chicken McNuggets, Dill Pickle \"Grinch Salt\" McShaker fries, a medium drink, and Grinch-themed socks. MCD leans on revamped Extra Value Meals, clear price anchors and strong franchisee support to steady traffic amid consumer strain."
+      "News summary for MCD (McDonald's Corporation): SoFi lets you buy McDonald's stock with zero commissions. New users who fund their account can receive up to 1,000 dollars in stock. Discount retail chain has closed nearly 700 stores."
     ],
-    "raw_sentiment": -0.0144,
+    "raw_sentiment": 0.1776,
     "article_count": 5,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "DHR": {
     "news_score": 0.5,
@@ -375,27 +375,27 @@
     ],
     "raw_sentiment": 0.0,
     "article_count": 2,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "MDT": {
-    "news_score": 0.7,
+    "news_score": 0.67,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
+      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
       "News summary for MDT (Medtronic plc): Medtronic plc (NYSE:MDT) is a medical technology company that makes and sells devices for cardiovascular, neuroscience, and surgical applications. Medtronic’s share price has climbed 3.3% in the last week and is up a notable 23.8% year-to-date, suggesting either confidence in its long-term prospects or changing attitudes around risk"
     ],
-    "raw_sentiment": 0.4067,
-    "article_count": 7,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.3376,
+    "article_count": 8,
+    "last_updated": "2025-11-24"
   },
   "LLY": {
-    "news_score": 0.8,
+    "news_score": 0.79,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 9 articles from the last few days.",
-      "News summary for LLY (Eli Lilly and Company): Dow Jones Futures: Stocks Bounce, Nvidia, Apple, Eli Lilly In Focus; Bitcoin The Weak Link? The stock market rebounded Friday on Fed rate cut hopes but suffered damaging weekly losses. Nvidia’s blockbuster results weren’t enough to quell growing fears of an AI bubble."
+      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
+      "News summary for LLY (Eli Lilly and Company): Stanley Druckenmiller Dropped Nvidia, Palantir, and Eli Lilly Over the Past Year and Just Bought the 2 Cheapest Magnificent Seven Stocks. Eli Lilly’s weight-loss drugs have made it the first pharma company to hit a $1tn market valuation, a sharp turnaround from this summer."
     ],
-    "raw_sentiment": 0.5983,
-    "article_count": 9,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.5863,
+    "article_count": 7,
+    "last_updated": "2025-11-24"
   },
   "TXN": {
     "news_score": 0.34,
@@ -405,27 +405,27 @@
     ],
     "raw_sentiment": -0.3142,
     "article_count": 3,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "UNH": {
-    "news_score": 0.65,
+    "news_score": 0.64,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
-      "News summary for UNH (UnitedHealth Group Incorporated): UnitedHealth Group (UNH) concluded the recent trading session at $319.97, signifying a +2.71% move from its prior day's close. UnitedHealth Group has seen a bit of volatility over the month, moving down 12%. While not linked to a single recent event, some investors are weighing longer-term earnings trends and sector sentiment."
+      "News sentiment (AI model, FinBERT) based on 9 articles from the last few days.",
+      "News summary for UNH (UnitedHealth Group Incorporated): Former FDA chief Scott Gottlieb joins UnitedHealth board. UnitedHealth Group Incorporated (UNH) Outlook Strong, Analysts Watch Closely. Wells Fargo analyst Stephen Baxter reaffirmed a Buy rating on UnitedHealth with a price target of $400."
     ],
-    "raw_sentiment": 0.3079,
-    "article_count": 8,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.2737,
+    "article_count": 9,
+    "last_updated": "2025-11-24"
   },
   "BMY": {
-    "news_score": 0.15,
+    "news_score": 0.22,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 4 articles from the last few days.",
-      "News summary for BMY (Bristol-Myers Squibb Company): BMY ends its Librexia ACS study after an interim review shows milvexian is unlikely to meet goals. BMY faces a sharp drop in sales of Revlimid, a leading treatment for multiple myeloma. Other flagship products approaching their loss of exclusivity in 2028."
+      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
+      "News summary for BMY (Bristol-Myers Squibb Company): Bristol-Myers Squibb faces a sharp drop in sales of Revlimid, a leading treatment for multiple myeloma that lost patent protection in 2022. Other flagship products approaching their loss of exclusivity in 2028 include Eliquis, a blood thinner."
     ],
-    "raw_sentiment": -0.6998,
-    "article_count": 4,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": -0.5598,
+    "article_count": 5,
+    "last_updated": "2025-11-24"
   },
   "QCOM": {
     "news_score": 0.33,
@@ -435,56 +435,56 @@
     ],
     "raw_sentiment": -0.3428,
     "article_count": 7,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   },
   "HON": {
-    "news_score": 0.26,
+    "news_score": 0.49,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-      "News summary for HON (Honeywell International Inc.): Bank of America double-downgraded Honeywell, but the stock still has 30% upside potential. The stock has faced some rough waters lately, dropping 5.5% in the last week. Honeywell's planned spin off of its Aerospace and Automation businesses in H2 2026 will likely Honeywell slips."
+      "News sentiment (AI model, FinBERT) based on 2 articles from the last few days.",
+      "News summary for HON (Honeywell International Inc.): Bank of America double-downgraded Honeywell, but the stock still has ~30% upside potential to the consensus price target. The stock has faced some rough waters lately, dropping 5.5% in the last week."
     ],
-    "raw_sentiment": -0.4859,
-    "article_count": 6,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": -0.0167,
+    "article_count": 2,
+    "last_updated": "2025-11-24"
   },
   "AMGN": {
-    "news_score": 0.66,
+    "news_score": 0.74,
     "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 3 articles from the last few days.",
-      "News summary for AMGN (Amgen Inc.): Amgen Inc. (NASDAQ:AMGN) is one of the stocks Jim Cramer discussed. Most of his discussions surround the firm’s Repatha drug that aims to reduce cholesterol."
+      "News sentiment (AI model, FinBERT) based on 2 articles from the last few days.",
+      "News summary for AMGN (Amgen Inc.): Rising relative strength lines are making it clear that money is flowing to this area. Amgen is the top weight in IBB according to iShares data."
     ],
-    "raw_sentiment": 0.3161,
-    "article_count": 3,
-    "last_updated": "2025-11-23"
+    "raw_sentiment": 0.4741,
+    "article_count": 2,
+    "last_updated": "2025-11-24"
   },
   "SBUX": {
-    "news_score": 0.55,
-    "news_reasons": [
-      "News sentiment (AI model, FinBERT) based on 5 articles from the last few days.",
-      "News summary for SBUX (Starbucks Corporation): Intuit will keep 'Intuit' on Clippers arena as part of groundbreaking venue-naming deal. Honda is keeping its name on the arena in Anaheim. Starbucks recently agreed to sell a majority stake in its China retail operations to Boyu for $4bn."
-    ],
-    "raw_sentiment": 0.0917,
-    "article_count": 5,
-    "last_updated": "2025-11-23"
-  },
-  "LOW": {
-    "news_score": 0.47,
+    "news_score": 0.38,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-      "News summary for LOW (Lowe's Companies Inc.): Lowe's shares are seeing a relief rally, as third-quarter results cleared a very low bar, following weak results out of Home Depot. Target, Walmart, Home Depot, Lowe’s and TJX - the parent company of TJ Maxx, Marshalls and HomeGoods - all described a cautious consumer, with tariffs, political tensions, still-high interest rates,"
+      "News summary for SBUX (Starbucks Corporation): Starbucks stock edged up 0.7% in the past week, but is still down 7.4% year-to-date and 14.5% over the last year. Jim Cramer: “These days, you can use a sale like the one we are experiencing, and I don’t think it’s necessarily over, we’re not"
     ],
-    "raw_sentiment": -0.0555,
+    "raw_sentiment": -0.2458,
     "article_count": 6,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
+  },
+  "LOW": {
+    "news_score": 0.53,
+    "news_reasons": [
+      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
+      "News summary for LOW (Lowe's Companies Inc.): Jim Cramer discussed the company's CEO's comments around the state of consumers. Lowe's shares are seeing a relief rally, as third-quarter results cleared a very low bar. Lowe’s comps slightly outperformed its larger peer, with that occurring only once in the prior eight quarters."
+    ],
+    "raw_sentiment": 0.0543,
+    "article_count": 7,
+    "last_updated": "2025-11-24"
   },
   "GE": {
-    "news_score": 0.59,
+    "news_score": 0.53,
     "news_reasons": [
       "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
-      "News summary for GE (General Electric Company): GE (GE) reported earnings 30 days ago. What's next for the stock? We take a look at earnings estimates for some clues. White House Touts $270 Billion Worth of Deals at Saudi-palooza."
+      "News summary for GE (General Electric Company): GE (GE) reported earnings 30 days ago. What's next for the stock? We take a look at earnings estimates for some clues. Trump says $270 billion in deals being signed at US-Saudi Forum."
     ],
-    "raw_sentiment": 0.1719,
+    "raw_sentiment": 0.0659,
     "article_count": 8,
-    "last_updated": "2025-11-23"
+    "last_updated": "2025-11-24"
   }
 }

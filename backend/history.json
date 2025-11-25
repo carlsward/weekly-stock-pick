@@ -85,5 +85,15 @@
     "score": 0.05685151611403728,
     "risk": "high",
     "model_version": "v1.0"
+  },
+  {
+    "logged_at": "2025-11-25",
+    "symbol": "GOOGL",
+    "company_name": "Alphabet Inc.",
+    "week_start": "2025-11-25",
+    "week_end": "2025-12-02",
+    "score": 0.08505263750678332,
+    "risk": "high",
+    "model_version": "v1.0"
   }
 ]

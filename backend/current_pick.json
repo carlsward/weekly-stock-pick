@@ -1,16 +1,16 @@
 {
   "symbol": "GOOGL",
   "company_name": "Alphabet Inc.",
-  "week_start": "2025-11-24",
-  "week_end": "2025-12-01",
+  "week_start": "2025-11-25",
+  "week_end": "2025-12-02",
   "reasons": [
-    "Price performance over the last 5 trading days: about 8.4%.",
-    "Measured daily volatility around 2.1%, classified as high risk.",
+    "Price performance over the last 5 trading days: about 11.8%.",
+    "Measured daily volatility around 2.4%, classified as high risk.",
     "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
     "News analysis (AI model, summary across multiple sources):",
-    "News sentiment (AI model, FinBERT) based on 3 articles from the last few days.",
-    "News summary for GOOGL (Alphabet Inc.): Alphabet (GOOGL) shares have been on the move recently, gaining nearly 44% over the past 3 months. Wall Street is straining to absorb a flood of new bonds from tech companies funding their artificial intelligence investments, adding to the recent pressure in markets."
+    "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
+    "News summary for GOOGL (Alphabet Inc.): Alphabet (GOOG, GOOGL) is seeing its shares soar thanks to early praise for Google's Gemini 3. Anthropic (ANTH.PVT) may not let Google have the spotlight for long, debuting its Claude Opus 4.5 model on Monday. Stay up to date on the latest market action, minute-by-minute, with&n"
   ],
-  "score": 0.05685151611403728,
+  "score": 0.08505263750678332,
   "risk": "high"
 }

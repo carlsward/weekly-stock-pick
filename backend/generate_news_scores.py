@@ -1,6 +1,11 @@
+import argparse
+import hashlib
 import json
+import re
+import time
 from datetime import datetime, timedelta, timezone
-from typing import List, Dict, Tuple
+from pathlib import Path
+from typing import List, Dict, Tuple, Optional
 
 import pandas as pd
 import yfinance as yf
@@ -15,6 +20,43 @@ SUMMARIZER_MODEL_NAME = "facebook/bart-large-cnn"
 # Hur långt tillbaka vi tittar på nyheter
 NEWS_LOOKBACK_DAYS = 5
 MAX_ARTICLES_PER_SYMBOL = 10
+MAX_PER_PROVIDER = 3
+SENTIMENT_MAX_LENGTH = 512
+SENTIMENT_DECAY_HALF_LIFE_DAYS = 2.0  # dagar till halverad vikt
+SENTIMENT_CACHE_PATH = Path(".news_sentiment_cache.json")
+SENTIMENT_MODEL_VERSION = FINBERT_MODEL_NAME
+
+PROVIDER_TRUST: Dict[str, float] = {
+    "bloomberg": 1.0,
+    "reuters": 1.0,
+    "the wall street journal": 0.95,
+    "financial times": 0.95,
+    "seeking alpha": 0.8,
+    "motley fool": 0.8,
+    "benzinga": 0.8,
+}
+
+
+# ---------- Cache-hantering ----------
+
+def load_sentiment_cache() -> Dict[str, dict]:
+    if not SENTIMENT_CACHE_PATH.exists():
+        return {}
+    try:
+        with open(SENTIMENT_CACHE_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            if isinstance(data, dict):
+                return data
+    except Exception:
+        return {}
+    return {}
+
+
+def save_sentiment_cache(cache: Dict[str, dict]) -> None:
+    tmp = SENTIMENT_CACHE_PATH.with_suffix(".tmp")
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False)
+    tmp.replace(SENTIMENT_CACHE_PATH)
 
 
 # ---------- Hjälpfunktioner för universet ----------
@@ -59,19 +101,32 @@ def detect_device_for_logs() -> None:
 
 # ---------- Nyhets-hantering ----------
 
-def parse_news_time(raw: dict) -> datetime | None:
+def parse_news_time(raw: dict) -> Optional[datetime]:
     """
     Försöker plocka ut tid från yfinance-nyhetsobjekt.
+    Returnerar UTC-aware datetime eller None.
     """
     content = raw.get("content") or {}
     ts = content.get("pubDate") or content.get("displayTime")
+    # Vissa poster har epoch-sekunder i providerPublishTime
+    if ts is None:
+        epoch = raw.get("providerPublishTime") or content.get("providerPublishTime")
+        if isinstance(epoch, (int, float)):
+            try:
+                return datetime.fromtimestamp(epoch, tz=timezone.utc)
+            except Exception:
+                return None
+
     if not ts:
         return None
     try:
         # Ex: "2025-11-18T11:00:42Z"
-        if ts.endswith("Z"):
+        if isinstance(ts, str) and ts.endswith("Z"):
             ts = ts.replace("Z", "+00:00")
-        return datetime.fromisoformat(ts)
+        dt = datetime.fromisoformat(ts) if isinstance(ts, str) else None
+        if dt and dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt
     except Exception:
         return None
 
@@ -125,20 +180,36 @@ def is_relevant_news_item(
     desc = (content.get("description") or "").lower()
     text = " ".join([title, summary, desc])
 
-    keywords = build_symbol_keywords(symbol, company_name)
     if not text.strip():
         return False
 
-    return any(k in text for k in keywords)
+    keywords = build_symbol_keywords(symbol, company_name)
+    if not keywords:
+        return False
+
+    words = set(re.findall(r"[a-z0-9]+", text))
+    hits = [k for k in keywords if k in words or f"{k}s" in words]
+    # Kräv minst ett ordträff och föredra att både ticker eller namn-ord finns
+    return bool(hits)
 
 
-def fetch_symbol_news(symbol: str, company_name: str) -> List[str]:
+def fetch_symbol_news(symbol: str, company_name: str) -> List[Dict[str, str]]:
     """
     Hämtar nyhetstexter (titel + summary) för ett bolag, filtrerar på datum och relevans.
-    Returnerar en lista med textstycken som kan sentimentanalyseras/summeras.
+    Returnerar en lista med metadata + text per artikel.
     """
     ticker = yf.Ticker(symbol)
-    raw_news = ticker.news or []
+    raw_news = []
+    for attempt in range(3):
+        try:
+            raw_news = ticker.news or []
+            break
+        except Exception as e:
+            if attempt == 2:
+                raise
+            sleep_time = 1 + attempt
+            print(f"[{symbol}] news fetch failed (attempt {attempt+1}): {e} – retrying in {sleep_time}s")
+            time.sleep(sleep_time)
 
     print(f"\n=== Hämtar nyheter för {symbol} ===")
     print(f"[{symbol}] raw news count: {len(raw_news)}")
@@ -146,33 +217,63 @@ def fetch_symbol_news(symbol: str, company_name: str) -> List[str]:
     now = datetime.now(timezone.utc)
     cutoff = now - timedelta(days=NEWS_LOOKBACK_DAYS)
 
-    texts: List[str] = []
-    for idx, item in enumerate(raw_news[: MAX_ARTICLES_PER_SYMBOL * 2]):
+    # Sortera på tid (nyaste först) så vi inte råkar plocka gamla om ordningen ändras
+    sortable_news = []
+    for item in raw_news:
         t = parse_news_time(item)
+        sortable_news.append((t, item))
+    sortable_news.sort(key=lambda x: x[0] or datetime.min.replace(tzinfo=timezone.utc), reverse=True)
+
+    articles: List[Dict[str, str]] = []
+    seen_titles: set[str] = set()
+    per_provider: Dict[str, int] = {}
+
+    for idx, (t, item) in enumerate(sortable_news):
         content = item.get("content") or {}
         title = content.get("title") or ""
         summary = content.get("summary") or ""
         desc = content.get("description") or ""
+        provider = (item.get("publisher") or content.get("provider") or "").strip().lower()
 
         print(f"[{symbol}] item {idx}: time={t} title='{title}'")
 
-        # Tidfilter
-        if t is not None and t < cutoff:
+        # Tidfilter – hoppa över odaterade artiklar för att undvika uråldrigt brus
+        if t is None or t < cutoff:
             continue
 
         # Relevansfilter
         if not is_relevant_news_item(item, symbol, company_name):
             continue
 
+        # Dubbeldetektion på titel
+        norm_title = title.strip().lower()
+        if norm_title and norm_title in seen_titles:
+            continue
+
+        # Begränsa övervikt från en och samma källa
+        if provider:
+            per_provider[provider] = per_provider.get(provider, 0) + 1
+            if per_provider[provider] > MAX_PER_PROVIDER:
+                continue
+
         combined = " ".join([title, summary, desc]).strip()
         if combined:
-            texts.append(combined)
+            articles.append(
+                {
+                    "title": title,
+                    "provider": provider or "",
+                    "published_at": t.isoformat(),
+                    "text": combined,
+                }
+            )
+            if norm_title:
+                seen_titles.add(norm_title)
 
-        if len(texts) >= MAX_ARTICLES_PER_SYMBOL:
+        if len(articles) >= MAX_ARTICLES_PER_SYMBOL:
             break
 
-    print(f"[{symbol}] texts used: {len(texts)}")
-    return texts
+    print(f"[{symbol}] texts used: {len(articles)}")
+    return articles
 
 
 # ---------- Modellinit ----------
@@ -206,42 +307,105 @@ def init_models():
 
 # ---------- Sentiment + sammanfattning ----------
 
-def compute_finbert_sentiment(pipe, texts: List[str]) -> float:
+def sentiment_cache_key(symbol: str, article: Dict[str, str]) -> str:
+    title = (article.get("title") or "").strip().lower()
+    provider = (article.get("provider") or "").strip().lower()
+    published = article.get("published_at") or ""
+    blob = f"{symbol}|{provider}|{published}|{title}"
+    return hashlib.sha1(blob.encode("utf-8")).hexdigest()
+
+
+def compute_finbert_sentiment(
+    pipe,
+    articles: List[Dict[str, str]],
+    symbol: str,
+    cache: Dict[str, dict],
+) -> float:
     """
-    Kör FinBERT på varje text och beräknar ett snitt i intervallet [-1, 1].
+    Kör FinBERT på varje text och beräknar ett viktat snitt i intervallet [-1, 1].
+    Viktning baseras på ålder (halveringstid SENTIMENT_DECAY_HALF_LIFE_DAYS) och källtillit.
     """
-    if not texts:
+    if not articles:
         return 0.0
 
-    scored: List[float] = []
-    # Begränsa längden per text (tecken) för säkerhets skull
-    inputs = [t[:512] for t in texts]
-
-    results = pipe(inputs, truncation=True)
-    for res in results:
-        label = res["label"].lower()
-        score = float(res["score"])
-        if "positive" in label:
-            scored.append(+score)
-        elif "negative" in label:
-            scored.append(-score)
+    # Steg 1: använd cache där möjligt
+    to_score: List[str] = []
+    to_score_idx: List[int] = []
+    for idx, article in enumerate(articles):
+        key = sentiment_cache_key(symbol, article)
+        article["cache_key"] = key
+        cached = cache.get(key)
+        if cached and cached.get("model_version") == SENTIMENT_MODEL_VERSION:
+            article["raw_sentiment"] = float(cached.get("sentiment", 0.0))
+            article["sentiment_weight"] = float(cached.get("weight", 1.0))
         else:
-            scored.append(0.0)
+            to_score.append(article["text"])
+            to_score_idx.append(idx)
 
-    if not scored:
+    if to_score:
+        results = pipe(
+            to_score,
+            truncation=True,
+            max_length=SENTIMENT_MAX_LENGTH,
+            return_all_scores=True,
+        )
+        for idx, scores in zip(to_score_idx, results):
+            pos = next((float(s["score"]) for s in scores if "pos" in s["label"].lower()), 0.0)
+            neg = next((float(s["score"]) for s in scores if "neg" in s["label"].lower()), 0.0)
+            raw_sent = pos - neg  # [-1,1] approx
+            articles[idx]["raw_sentiment"] = raw_sent
+
+    now = datetime.now(timezone.utc)
+    weighted: List[float] = []
+    weights: List[float] = []
+
+    for article in articles:
+        raw_sent = float(article.get("raw_sentiment", 0.0))
+
+        published = article.get("published_at")
+        age_days = 0.0
+        try:
+            if isinstance(published, str):
+                dt = datetime.fromisoformat(published)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                age_days = max(0.0, (now - dt).total_seconds() / 86400)
+        except Exception:
+            age_days = 0.0
+
+        decay = 0.5 ** (age_days / SENTIMENT_DECAY_HALF_LIFE_DAYS)
+        provider = (article.get("provider") or "").strip().lower()
+        provider_weight = PROVIDER_TRUST.get(provider, 0.85 if provider else 0.8)
+        weight = decay * provider_weight
+
+        weighted.append(raw_sent * weight)
+        weights.append(weight)
+
+        article["sentiment_weight"] = weight
+        article["provider_weight"] = provider_weight
+
+        key = article.get("cache_key")
+        if key:
+            cache[key] = {
+                "sentiment": raw_sent,
+                "weight": weight,
+                "model_version": SENTIMENT_MODEL_VERSION,
+                "cached_at": datetime.now(timezone.utc).isoformat(),
+            }
+
+    if not weights or sum(weights) == 0:
         return 0.0
-    return sum(scored) / len(scored)
+    return sum(weighted) / sum(weights)
 
 
-def summarize_texts(pipe, texts: List[str]) -> str:
+def summarize_texts(pipe, articles: List[Dict[str, str]]) -> str:
     """
     Summerar alla texter till en kort sammanfattning (1–2 meningar).
     """
-    if not texts:
+    if not articles:
         return ""
 
-    joined = " ".join(texts)
-    joined = joined[:3000]  # grov begränsning
+    joined = " ".join(a["text"] for a in articles)
 
     try:
         out = pipe(
@@ -274,53 +438,94 @@ def sentiment_to_news_score(raw_sent: float) -> float:
 # ---------- Huvudlogik ----------
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry-run", action="store_true", help="Kör utan att skriva news_scores.json")
+    args = parser.parse_args()
+
     sentiment_pipe, summarizer_pipe = init_models()
     universe = load_universe()
+    cache = load_sentiment_cache()
 
     out: Dict[str, dict] = {}
     today_str = datetime.now(timezone.utc).date().isoformat()
+    out_path = Path(NEWS_SCORES_PATH)
 
     for symbol, company_name in universe:
-        texts = fetch_symbol_news(symbol, company_name)
+        try:
+            articles = fetch_symbol_news(symbol, company_name)
 
-        if not texts:
-            print(f"[{symbol}] No relevant recent news – setting neutral 0.50")
+            if not articles:
+                print(f"[{symbol}] No relevant recent news – setting neutral 0.50")
+                out[symbol] = {
+                    "news_score": 0.5,
+                    "news_reasons": [
+                        "No recently identified relevant news articles for this company – "
+                        "the news contribution is set to neutral (0.50)."
+                    ],
+                    "raw_sentiment": 0.0,
+                    "article_count": 0,
+                    "last_updated": today_str,
+                    "articles": [],
+                    "decay_half_life_days": SENTIMENT_DECAY_HALF_LIFE_DAYS,
+                }
+            else:
+                raw_sent = compute_finbert_sentiment(sentiment_pipe, articles, symbol, cache)
+                news_score = sentiment_to_news_score(raw_sent)
+                summary = summarize_texts(summarizer_pipe, articles)
+
+                reasons = [
+                    f"News sentiment (AI model, FinBERT) based on {len(articles)} articles from the last few days (time-decayed).",
+                    f"News summary for {symbol} ({company_name}): {summary}",
+                ]
+
+                articles_info = [
+                    {
+                        "title": a.get("title", "")[:200],
+                        "provider": a.get("provider", ""),
+                        "published_at": a.get("published_at"),
+                        "raw_sentiment": round(float(a.get("raw_sentiment", 0.0)), 4),
+                        "weight": round(float(a.get("sentiment_weight", 1.0)), 3),
+                        "provider_weight": round(float(a.get("provider_weight", 1.0)), 3),
+                    }
+                    for a in articles
+                ]
+
+                out[symbol] = {
+                    "news_score": round(news_score, 2),
+                    "news_reasons": reasons,
+                    "raw_sentiment": round(raw_sent, 4),
+                    "article_count": len(articles),
+                    "last_updated": today_str,
+                    "articles": articles_info,
+                    "decay_half_life_days": SENTIMENT_DECAY_HALF_LIFE_DAYS,
+                }
+
+        except Exception as e:
+            print(f"[WARN] Failed to process {symbol}: {e}")
             out[symbol] = {
                 "news_score": 0.5,
                 "news_reasons": [
-                    "No recently identified relevant news articles for this company – "
-                    "the news contribution is set to neutral (0.50)."
+                    f"News processing failed ({e}); using neutral news contribution (0.50)."
                 ],
                 "raw_sentiment": 0.0,
                 "article_count": 0,
                 "last_updated": today_str,
+                "articles": [],
+                "decay_half_life_days": SENTIMENT_DECAY_HALF_LIFE_DAYS,
             }
-            continue
 
+        if not args.dry_run:
+            # Skriv inkrementellt för att inte tappa framsteg om något avbryts
+            tmp_path = out_path.with_suffix(".tmp")
+            with open(tmp_path, "w", encoding="utf-8") as f:
+                json.dump(out, f, ensure_ascii=False, indent=2)
+            tmp_path.replace(out_path)
 
-        raw_sent = compute_finbert_sentiment(sentiment_pipe, texts)
-        news_score = sentiment_to_news_score(raw_sent)
-        summary = summarize_texts(summarizer_pipe, texts)
-
-        reasons = [
-            f"News sentiment (AI model, FinBERT) based on {len(texts)} articles from the last few days.",
-            f"News summary for {symbol} ({company_name}): {summary}",
-        ]
-
-
-        out[symbol] = {
-            "news_score": round(news_score, 2),
-            "news_reasons": reasons,
-            "raw_sentiment": round(raw_sent, 4),
-            "article_count": len(texts),
-            "last_updated": today_str,
-        }
-
-
-    with open(NEWS_SCORES_PATH, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=2)
-
-    print("\nnews_scores.json uppdaterad.")
+    if not args.dry_run:
+        save_sentiment_cache(cache)
+        print("\nnews_scores.json uppdaterad.")
+    else:
+        print("\nDry run – ingen fil skrivs.")
 
 
 if __name__ == "__main__":

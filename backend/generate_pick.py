@@ -1,5 +1,7 @@
+import argparse
 import json
 import math
+import time
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from typing import List, Dict, Optional, Tuple
@@ -9,7 +11,12 @@ import yfinance as yf
 
 # ======= Konfig =======
 
-MODEL_VERSION = "v1.0"  # uppdatera när du ändrar scoring-logik
+MODEL_VERSION = "v1.1"  # uppdatera när du ändrar scoring-logik
+VOL_WEIGHT = 0.7        # hur hårt volatilitet straffas i standardiserat mått
+NEWS_ALPHA = 0.6        # hur mycket nyhetsfaktorn påverkar (0.5 neutralt)
+NEWS_FACTOR_MIN = 0.7
+NEWS_FACTOR_MAX = 1.3
+MIN_ARTICLES_FOR_NEWS = 2
 
 UNIVERSE_CSV_PATH = "universe.csv"
 NEWS_SCORES_PATH = "news_scores.json"
@@ -26,8 +33,15 @@ class StockCandidate:
     risk_level: str       # "low" / "medium" / "high"
     base_score: float     # bara momentum/vol
     news_score: float     # 0..1
+    news_factor: float
     raw_momentum: float
+    raw_momentum_20d: float
     raw_vol: float
+    raw_drawdown: float
+    momentum_z: float
+    momentum_20d_z: float
+    vol_z: float
+    drawdown_z: float
 
 
 # ======= Hjälpfunktioner =======
@@ -51,18 +65,28 @@ def load_universe(path: str = UNIVERSE_CSV_PATH) -> List[Tuple[str, str]]:
     return rows
 
 
-def fetch_daily_closes(symbol: str, max_days: int = 20) -> List[float]:
+def fetch_daily_closes(symbol: str, max_days: int = 40) -> List[float]:
     """
     Hämta senaste dagliga stängningskurserna från Yahoo Finance.
     Vi tar ca 1 månads data och plockar ut de senaste max_days dagarna.
     """
-    data = yf.download(
-        tickers=symbol,
-        period="1mo",
-        interval="1d",
-        auto_adjust=True,
-        progress=False,
-    )
+    data = None
+    for attempt in range(3):
+        try:
+            data = yf.download(
+                tickers=symbol,
+                period="2mo",
+                interval="1d",
+                auto_adjust=True,
+                progress=False,
+            )
+            break
+        except Exception as e:
+            if attempt == 2:
+                raise
+            sleep_time = 1 + attempt
+            print(f"[{symbol}] pris-hämtning misslyckades (försök {attempt+1}): {e} – väntar {sleep_time}s")
+            time.sleep(sleep_time)
 
     closes = data["Close"]
 
@@ -105,16 +129,21 @@ def load_news_scores(path: str = NEWS_SCORES_PATH) -> Dict[str, dict]:
     return {}
 
 
-def compute_metrics(closes: List[float]) -> tuple[float, float]:
+def compute_price_features(closes: List[float]) -> Dict[str, float]:
     """
-    Beräkna enkel 5-dagars momentum och volatilitet (stdav på dagsavkastningar).
-    Antag: closes[0] = senaste stängning, closes[5] = 6 dagar tillbaka.
+    Beräkna momentum och volatilitet + enkel max drawdown.
+    Antag: closes[0] = senaste stängning.
     """
     if len(closes) < 6:
         raise ValueError("För få datapunkter för att beräkna 5-dagars momentum")
 
-    # Momentum: prisförändring senaste 5 handelsdagar
     momentum_5d = closes[0] / closes[5] - 1.0
+
+    # Momentum 20d om möjligt
+    if len(closes) >= 21:
+        momentum_20d = closes[0] / closes[20] - 1.0
+    else:
+        momentum_20d = momentum_5d
 
     # Dagsavkastningar
     returns: List[float] = []
@@ -129,7 +158,23 @@ def compute_metrics(closes: List[float]) -> tuple[float, float]:
     var_r = sum((r - mean_r) ** 2 for r in returns) / len(returns)
     vol = math.sqrt(var_r)
 
-    return momentum_5d, vol
+    # Max drawdown över senaste ~20 dagar
+    chron = list(reversed(closes))  # äldst först
+    peak = chron[0]
+    max_dd = 0.0
+    for price in chron:
+        if price > peak:
+            peak = price
+        drawdown = (price / peak) - 1.0
+        if drawdown < max_dd:
+            max_dd = drawdown
+
+    return {
+        "momentum_5d": momentum_5d,
+        "momentum_20d": momentum_20d,
+        "vol": vol,
+        "max_drawdown": abs(max_dd),  # positiv storlek
+    }
 
 
 def classify_risk(vol: float) -> str:
@@ -165,36 +210,76 @@ def format_pct(x: float) -> str:
     return f"{x * 100:.1f}%"
 
 
+def mean_and_std(values: List[float]) -> tuple[float, float]:
+    if not values:
+        return 0.0, 1.0
+    mean_v = sum(values) / len(values)
+    var_v = sum((v - mean_v) ** 2 for v in values) / len(values)
+    std_v = math.sqrt(var_v)
+    if std_v <= 1e-6:
+        std_v = 1.0
+    return mean_v, std_v
+
+
+def z_score(value: float, mean_v: float, std_v: float) -> float:
+    if std_v <= 1e-9:
+        return 0.0
+    return (value - mean_v) / std_v
+
+
 def build_candidate(
     symbol: str,
     company_name: str,
+    momentum: float,
+    momentum_20d: float,
+    vol: float,
+    drawdown: float,
+    momentum_z: float,
+    momentum_20d_z: float,
+    vol_z: float,
+    drawdown_z: float,
     news_info: Optional[dict] = None,
 ) -> StockCandidate:
 
-    closes = fetch_daily_closes(symbol)
-    momentum, vol = compute_metrics(closes)
     risk_level = classify_risk(vol)
-    base_score = compute_base_score(momentum, vol)
+    base_score = (
+        0.6 * momentum_z
+        + 0.4 * momentum_20d_z
+        - VOL_WEIGHT * vol_z
+        - 0.3 * drawdown_z
+    )
 
     # Nyhetsdel – default neutral 0.5
     news_score = 0.5
     news_reasons: List[str] = []
+    article_count = MIN_ARTICLES_FOR_NEWS
     if news_info:
         news_score = float(news_info.get("news_score", 0.5))
+        article_count = int(news_info.get("article_count", MIN_ARTICLES_FOR_NEWS))
         reasons = news_info.get("news_reasons")
         if isinstance(reasons, list):
             news_reasons = [str(r) for r in reasons]
 
+    if news_info and article_count < MIN_ARTICLES_FOR_NEWS:
+        news_score = 0.5
+        if news_reasons:
+            news_reasons.append(
+                "News contribution neutralized due to limited recent articles."
+            )
+
     # Kombinera teknisk + nyhetsscore
     #  - news_score ~0.5 neutralt
     #  - >0.5 boostar, <0.5 drar ned
-    news_factor = 0.5 + news_score  # 0.5..1.5 ungefär
+    news_factor = 1 + NEWS_ALPHA * (news_score - 0.5)
+    news_factor = max(NEWS_FACTOR_MIN, min(NEWS_FACTOR_MAX, news_factor))
     total_score = base_score * news_factor
 
     reasons = [
-        f"Price performance over the last 5 trading days: about {format_pct(momentum)}.",
-        f"Measured daily volatility around {format_pct(vol)}, classified as {risk_level} risk.",
-        "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
+        f"Price performance over the last 5 trading days: about {format_pct(momentum)} (z={momentum_z:.2f}).",
+        f"20-day momentum: about {format_pct(momentum_20d)} (z={momentum_20d_z:.2f}).",
+        f"Measured daily volatility around {format_pct(vol)}, classified as {risk_level} risk (z={vol_z:.2f}).",
+        f"Recent max drawdown ~{format_pct(-drawdown)} (z={drawdown_z:.2f}).",
+        f"Base score (0.6*mom5z + 0.4*mom20z − {VOL_WEIGHT:.2f}×volz − 0.3×ddz): {base_score:.3f}.",
     ]
 
     if news_info:
@@ -211,8 +296,15 @@ def build_candidate(
         risk_level=risk_level,
         base_score=base_score,
         news_score=news_score,
+        news_factor=news_factor,
         raw_momentum=momentum,
+        raw_momentum_20d=momentum_20d,
         raw_vol=vol,
+        raw_drawdown=drawdown,
+        momentum_z=momentum_z,
+        momentum_20d_z=momentum_20d_z,
+        vol_z=vol_z,
+        drawdown_z=drawdown_z,
     )
 
 
@@ -220,18 +312,54 @@ def get_candidates() -> List[StockCandidate]:
     universe = load_universe()
     news_scores = load_news_scores()
     candidates: List[StockCandidate] = []
+    collected: List[dict] = []
+
     for symbol, name in universe:
         try:
-            candidate = build_candidate(
-                symbol=symbol,
-                company_name=name,
-                news_info=news_scores.get(symbol),
+            closes = fetch_daily_closes(symbol)
+            features = compute_price_features(closes)
+            collected.append(
+                {
+                    "symbol": symbol,
+                    "company_name": name,
+                    "momentum_5d": features["momentum_5d"],
+                    "momentum_20d": features["momentum_20d"],
+                    "vol": features["vol"],
+                    "drawdown": features["max_drawdown"],
+                    "news_info": news_scores.get(symbol),
+                }
             )
-            candidates.append(candidate)
         except Exception as e:
             print(f"[WARN] Hoppar över {symbol}: {e}")
-    if not candidates:
+
+    if not collected:
         raise RuntimeError("Inga kandidater kunde genereras")
+
+    mom_mean, mom_std = mean_and_std([c["momentum_5d"] for c in collected])
+    mom20_mean, mom20_std = mean_and_std([c["momentum_20d"] for c in collected])
+    vol_mean, vol_std = mean_and_std([c["vol"] for c in collected])
+    dd_mean, dd_std = mean_and_std([c["drawdown"] for c in collected])
+
+    for item in collected:
+        mom_z = z_score(item["momentum_5d"], mom_mean, mom_std)
+        mom20_z = z_score(item["momentum_20d"], mom20_mean, mom20_std)
+        vol_z = z_score(item["vol"], vol_mean, vol_std)
+        dd_z = z_score(item["drawdown"], dd_mean, dd_std)
+        candidate = build_candidate(
+            symbol=item["symbol"],
+            company_name=item["company_name"],
+            momentum=item["momentum_5d"],
+            momentum_20d=item["momentum_20d"],
+            vol=item["vol"],
+            drawdown=item["drawdown"],
+            momentum_z=mom_z,
+            momentum_20d_z=mom20_z,
+            vol_z=vol_z,
+            drawdown_z=dd_z,
+            news_info=item["news_info"],
+        )
+        candidates.append(candidate)
+
     return candidates
 
 
@@ -253,12 +381,25 @@ def select_best_per_risk(candidates: List[StockCandidate]) -> Dict[str, StockCan
 
     for c in candidates:
         key = c.risk_level if c.risk_level in buckets else "high"
+        # Risk-kvalitetsfilter
+        if key == "low":
+            if c.vol_z > 1.0 or c.drawdown_z > 1.0 or c.base_score < -0.2:
+                continue
+        elif key == "medium":
+            if c.vol_z > 1.6 or c.drawdown_z > 1.4 or c.base_score < -0.4:
+                continue
+        else:  # high
+            if c.momentum_z < -0.8:
+                continue
         buckets[key].append(c)
 
     best_per_risk: Dict[str, StockCandidate] = {}
     for risk, lst in buckets.items():
         if lst:
             best_per_risk[risk] = max(lst, key=lambda x: x.score)
+        else:
+            # Fallback: ta bästa totala om riskhinken blev tom efter filter
+            best_per_risk[risk] = max(candidates, key=lambda x: x.score)
 
     return best_per_risk
 
@@ -282,6 +423,20 @@ def build_output_json(candidate: StockCandidate) -> dict:
         "reasons": candidate.reasons,
         "score": candidate.score,
         "risk": candidate.risk_level,
+        "model_version": MODEL_VERSION,
+        "components": {
+            "momentum": candidate.raw_momentum,
+            "momentum_20d": candidate.raw_momentum_20d,
+            "vol": candidate.raw_vol,
+            "drawdown": candidate.raw_drawdown,
+            "momentum_z": candidate.momentum_z,
+            "momentum_20d_z": candidate.momentum_20d_z,
+            "vol_z": candidate.vol_z,
+            "drawdown_z": candidate.drawdown_z,
+            "base_score": candidate.base_score,
+            "news_score": candidate.news_score,
+            "news_factor": candidate.news_factor,
+        },
     }
 
 
@@ -328,8 +483,27 @@ def update_history(current_pick: dict, history_path: str = "history.json") -> No
 # ======= main =======
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry-run", action="store_true", help="Skriv inte ut filer, skriv bara toppkandidater")
+    parser.add_argument("--top-n", type=int, default=5, help="Hur många kandidater att visa i dry-run")
+    args = parser.parse_args()
+
     print("[INFO] Genererar kandidater...")
     candidates = get_candidates()
+
+    if args.dry_run:
+        sorted_cands = sorted(candidates, key=lambda c: c.score, reverse=True)
+        print("\nTop candidates (dry run):")
+        for c in sorted_cands[: args.top_n]:
+            print(
+                f"{c.symbol} | score={c.score:.3f} | risk={c.risk_level} | "
+                f"mom5={c.raw_momentum:.3%} z={c.momentum_z:.2f} | "
+                f"mom20={c.raw_momentum_20d:.3%} z={c.momentum_20d_z:.2f} | "
+                f"vol={c.raw_vol:.3%} z={c.vol_z:.2f} | "
+                f"dd={c.raw_drawdown:.3%} z={c.drawdown_z:.2f} | "
+                f"news={c.news_score:.2f} factor={c.news_factor:.2f}"
+            )
+        return
 
     # Bästa totalt
     best_overall = select_best_candidate(candidates)

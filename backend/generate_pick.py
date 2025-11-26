@@ -332,9 +332,6 @@ def get_candidates() -> List[StockCandidate]:
         except Exception as e:
             print(f"[WARN] Hoppar över {symbol}: {e}")
 
-    if not collected:
-        raise RuntimeError("Inga kandidater kunde genereras")
-
     mom_mean, mom_std = mean_and_std([c["momentum_5d"] for c in collected])
     mom20_mean, mom20_std = mean_and_std([c["momentum_20d"] for c in collected])
     vol_mean, vol_std = mean_and_std([c["vol"] for c in collected])
@@ -490,6 +487,32 @@ def main():
 
     print("[INFO] Genererar kandidater...")
     candidates = get_candidates()
+
+    if not candidates:
+        print("[WARN] Inga kandidater kunde genereras (troligen ingen prisdata tillgänglig). Skriver neutral placeholder.")
+        today = date.today()
+        placeholder = {
+            "symbol": "N/A",
+            "company_name": "Data unavailable",
+            "week_start": today.isoformat(),
+            "week_end": (today + timedelta(days=7)).isoformat(),
+            "reasons": [
+                "No price data available for the current universe; using a neutral placeholder."
+            ],
+            "score": 0.0,
+            "risk": "unknown",
+            "model_version": MODEL_VERSION,
+        }
+        with open("current_pick.json", "w", encoding="utf-8") as f:
+            json.dump(placeholder, f, ensure_ascii=False, indent=2)
+        with open("risk_picks.json", "w", encoding="utf-8") as f:
+            json.dump(
+                {"low": placeholder, "medium": placeholder, "high": placeholder},
+                f,
+                ensure_ascii=False,
+                indent=2,
+            )
+        return
 
     if args.dry_run:
         sorted_cands = sorted(candidates, key=lambda c: c.score, reverse=True)

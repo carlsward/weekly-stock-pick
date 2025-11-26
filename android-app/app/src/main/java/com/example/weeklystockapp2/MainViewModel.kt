@@ -13,6 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
+import java.net.HttpURLConnection
 import java.net.URL
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -48,6 +49,31 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         loadHistory()
     }
 
+    fun refreshAll() {
+        loadData()
+        loadHistory()
+    }
+
+    private fun fetchUrlWithTimeout(urlStr: String, timeoutMs: Int = 7000, retries: Int = 2): String {
+        var lastError: Exception? = null
+        repeat(retries) { attempt ->
+            try {
+                val conn = URL(urlStr).openConnection() as HttpURLConnection
+                conn.connectTimeout = timeoutMs
+                conn.readTimeout = timeoutMs
+                conn.requestMethod = "GET"
+                conn.instanceFollowRedirects = true
+                conn.connect()
+                conn.inputStream.bufferedReader().use { reader ->
+                    return reader.readText()
+                }
+            } catch (e: Exception) {
+                lastError = e
+            }
+        }
+        throw lastError ?: RuntimeException("Failed to fetch $urlStr")
+    }
+
     fun onRiskSelected(riskKey: String) {
         val candidate = riskMap[riskKey] ?: return
         prefs.edit {
@@ -65,7 +91,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
             // 1) Försök hämta risk_picks.json från nätet
             try {
-                val jsonText = URL(riskPicksUrl).readText()
+                val jsonText = fetchUrlWithTimeout(riskPicksUrl)
 
                 // Cacha rå JSON
                 prefs.edit {
@@ -129,7 +155,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
             // 3) Försök nätverks-hämta current_pick.json
             try {
-                val jsonText = URL(jsonUrl).readText()
+                val jsonText = fetchUrlWithTimeout(jsonUrl)
                 prefs.edit {
                     putString(keyCachedSinglePick, jsonText)
                 }
@@ -174,7 +200,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO) {
             // 1) Försök hämta från nätet
             try {
-                val jsonText = URL(historyUrl).readText()
+                val jsonText = fetchUrlWithTimeout(historyUrl)
                 prefs.edit {
                     putString(keyCachedHistory, jsonText)
                 }
@@ -212,7 +238,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private fun parseWeeklyPick(jsonText: String): WeeklyPick {
         val obj = JSONObject(jsonText)
 
-        val reasonsJson = obj.getJSONArray("reasons")
+        val reasonsJson = obj.optJSONArray("reasons") ?: JSONArray()
         val reasons = mutableListOf<String>()
         for (i in 0 until reasonsJson.length()) {
             reasons.add(reasonsJson.getString(i))
@@ -238,7 +264,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             val riskKey = keys.next()
             val pickObj = obj.getJSONObject(riskKey)
 
-            val reasonsJson = pickObj.getJSONArray("reasons")
+            val reasonsJson = pickObj.optJSONArray("reasons") ?: JSONArray()
             val reasons = mutableListOf<String>()
             for (i in 0 until reasonsJson.length()) {
                 reasons.add(reasonsJson.getString(i))

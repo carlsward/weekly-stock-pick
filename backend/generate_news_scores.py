@@ -6,6 +6,7 @@ import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional
+from difflib import SequenceMatcher
 
 import pandas as pd
 import yfinance as yf
@@ -13,6 +14,7 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification, Auto
 
 NEWS_SCORES_PATH = "news_scores.json"
 UNIVERSE_CSV_PATH = "universe.csv"
+EXTRA_NEWS_PATH = Path("extra_news.json")
 
 FINBERT_MODEL_NAME = "ProsusAI/finbert"
 SUMMARIZER_MODEL_NAME = "facebook/bart-large-cnn"
@@ -57,6 +59,44 @@ def save_sentiment_cache(cache: Dict[str, dict]) -> None:
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(cache, f, ensure_ascii=False)
     tmp.replace(SENTIMENT_CACHE_PATH)
+
+
+def load_extra_news(symbol: str) -> List[dict]:
+    """
+    Ladda extra nyheter från lokal JSON (för att bredda täckningen utan nätberoende).
+    Förväntat format:
+    {
+      "AAPL": [
+        {"title": "...", "summary": "...", "description": "...", "provider": "source", "pubDate": "2025-01-01T12:00:00Z"}
+      ]
+    }
+    """
+    if not EXTRA_NEWS_PATH.exists():
+        return []
+    try:
+        with open(EXTRA_NEWS_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        items = data.get(symbol.upper(), [])
+        normalized = []
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            normalized.append(
+                {
+                    "content": {
+                        "title": item.get("title"),
+                        "summary": item.get("summary"),
+                        "description": item.get("description"),
+                        "pubDate": item.get("pubDate"),
+                        "provider": item.get("provider"),
+                    },
+                    "publisher": item.get("provider"),
+                    "link": item.get("link"),
+                }
+            )
+        return normalized
+    except Exception:
+        return []
 
 
 # ---------- Hjälpfunktioner för universet ----------
@@ -165,6 +205,16 @@ def build_symbol_keywords(symbol: str, company_name: str) -> List[str]:
     return [k for k in keywords if k]
 
 
+def fuzzy_company_match(text: str, company_name: str, threshold: float = 0.42) -> bool:
+    """
+    Enkel fuzzy-match mellan text och företagsnamn för att minska falska positiva.
+    """
+    text = text.lower()
+    target = company_name.lower()
+    ratio = SequenceMatcher(None, text, target).ratio()
+    return ratio >= threshold
+
+
 def is_relevant_news_item(
     item: dict,
     symbol: str,
@@ -189,8 +239,11 @@ def is_relevant_news_item(
 
     words = set(re.findall(r"[a-z0-9]+", text))
     hits = [k for k in keywords if k in words or f"{k}s" in words]
-    # Kräv minst ett ordträff och föredra att både ticker eller namn-ord finns
-    return bool(hits)
+    if hits:
+        return True
+
+    # Fuzzy fallback på företagsnamn för att fånga stavningar/korta titlar
+    return fuzzy_company_match(title + " " + summary, company_name)
 
 
 def fetch_symbol_news(symbol: str, company_name: str) -> List[Dict[str, str]]:
@@ -211,6 +264,9 @@ def fetch_symbol_news(symbol: str, company_name: str) -> List[Dict[str, str]]:
             print(f"[{symbol}] news fetch failed (attempt {attempt+1}): {e} – retrying in {sleep_time}s")
             time.sleep(sleep_time)
 
+    # Lägg till lokala extra nyheter om de finns
+    raw_news += load_extra_news(symbol)
+
     print(f"\n=== Hämtar nyheter för {symbol} ===")
     print(f"[{symbol}] raw news count: {len(raw_news)}")
 
@@ -226,6 +282,7 @@ def fetch_symbol_news(symbol: str, company_name: str) -> List[Dict[str, str]]:
 
     articles: List[Dict[str, str]] = []
     seen_titles: set[str] = set()
+    seen_links: set[str] = set()
     per_provider: Dict[str, int] = {}
 
     for idx, (t, item) in enumerate(sortable_news):
@@ -234,6 +291,7 @@ def fetch_symbol_news(symbol: str, company_name: str) -> List[Dict[str, str]]:
         summary = content.get("summary") or ""
         desc = content.get("description") or ""
         provider = (item.get("publisher") or content.get("provider") or "").strip().lower()
+        link = (item.get("link") or content.get("link") or "").strip().lower()
 
         print(f"[{symbol}] item {idx}: time={t} title='{title}'")
 
@@ -245,9 +303,11 @@ def fetch_symbol_news(symbol: str, company_name: str) -> List[Dict[str, str]]:
         if not is_relevant_news_item(item, symbol, company_name):
             continue
 
-        # Dubbeldetektion på titel
+        # Dubbeldetektion på titel/länk
         norm_title = title.strip().lower()
         if norm_title and norm_title in seen_titles:
+            continue
+        if link and link in seen_links:
             continue
 
         # Begränsa övervikt från en och samma källa
@@ -264,10 +324,13 @@ def fetch_symbol_news(symbol: str, company_name: str) -> List[Dict[str, str]]:
                     "provider": provider or "",
                     "published_at": t.isoformat(),
                     "text": combined,
+                    "link": link,
                 }
             )
             if norm_title:
                 seen_titles.add(norm_title)
+            if link:
+                seen_links.add(link)
 
         if len(articles) >= MAX_ARTICLES_PER_SYMBOL:
             break
@@ -486,6 +549,7 @@ def main():
                         "raw_sentiment": round(float(a.get("raw_sentiment", 0.0)), 4),
                         "weight": round(float(a.get("sentiment_weight", 1.0)), 3),
                         "provider_weight": round(float(a.get("provider_weight", 1.0)), 3),
+                        "link": a.get("link", ""),
                     }
                     for a in articles
                 ]

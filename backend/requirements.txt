@@ -1,5 +1,5 @@
-pandas
-yfinance
-transformers
-torch
-sentencepiece
+pandas==2.2.2
+yfinance==0.2.40
+transformers==4.44.2
+torch==2.3.1
+sentencepiece==0.2.0

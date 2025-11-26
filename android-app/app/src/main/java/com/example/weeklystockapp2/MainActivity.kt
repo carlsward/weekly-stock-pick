@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.TextButton
 import com.example.weeklystockapp2.ui.theme.RiskHighColor
 import com.example.weeklystockapp2.ui.theme.RiskLowColor
 import com.example.weeklystockapp2.ui.theme.RiskMediumColor
@@ -54,7 +55,7 @@ class MainActivity : ComponentActivity() {
                     Surface(color = MaterialTheme.colorScheme.background) {
                         when (val state = vm.uiState) {
                             is UiState.Loading -> LoadingView()
-                            is UiState.Error -> ErrorView(message = state.message)
+                            is UiState.Error -> ErrorView(message = state.message, onRetry = { vm.refreshAll() })
                             is UiState.Content -> {
                                 LazyColumn(
                                     modifier = Modifier
@@ -62,6 +63,11 @@ class MainActivity : ComponentActivity() {
                                         .padding(16.dp),
                                     verticalArrangement = Arrangement.spacedBy(16.dp)
                                 ) {
+                                    item {
+                                        TextButton(onClick = { vm.refreshAll() }) {
+                                            Text("Refresh data")
+                                        }
+                                    }
                                     item {
                                         WeeklyPickScreen(
                                             pick = state.pick,
@@ -94,12 +100,19 @@ fun LoadingView() {
 }
 
 @Composable
-fun ErrorView(message: String) {
-    Text(
-        text = message,
-        style = MaterialTheme.typography.bodyLarge,
-        color = MaterialTheme.colorScheme.error
-    )
+fun ErrorView(message: String, onRetry: (() -> Unit)? = null) {
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text(
+            text = message,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.error
+        )
+        if (onRetry != null) {
+            TextButton(onClick = onRetry) {
+                Text("Try again")
+            }
+        }
+    }
 }
 
 @Composable
@@ -196,4 +209,3 @@ fun HistoryRow(entry: HistoryEntry) {
         }
     }
 }
-

@@ -2,49 +2,49 @@
   "low": {
     "symbol": "JNJ",
     "company_name": "Johnson & Johnson",
-    "week_start": "2025-11-25",
-    "week_end": "2025-12-02",
+    "week_start": "2025-11-26",
+    "week_end": "2025-12-03",
     "reasons": [
-      "Price performance over the last 5 trading days: about 3.2%.",
+      "Price performance over the last 5 trading days: about 3.3%.",
       "Measured daily volatility around 0.9%, classified as low risk.",
       "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
       "News analysis (AI model, summary across multiple sources):",
-      "News sentiment (AI model, FinBERT) based on 3 articles from the last few days.",
-      "News summary for JNJ (Johnson & Johnson): Johnson & Johnson (NYSE:JNJ) is a global healthcare company that develops, manufactures, and sells pharmaceutical products and medical devices. Wall Street analysts expect the company to post EPS of $0.82 in Q4 2025."
+      "News sentiment (AI model, FinBERT) based on 2 articles from the last few days.",
+      "News summary for JNJ (Johnson & Johnson): Johnson & Johnson (JNJ) shares have edged higher over the past month, building on a steady run that has seen the stock advance 17% in the past 3 months. The share price momentum for Johnson & Johnson has been impressive, with steady gains this year suggesting renewed investor confidence as the company continues to navigate a shifting healthcare landscape."
     ],
-    "score": 0.033054442050427,
+    "score": 0.03381943567841067,
     "risk": "low"
   },
   "medium": {
-    "symbol": "MDT",
-    "company_name": "Medtronic plc",
-    "week_start": "2025-11-25",
-    "week_end": "2025-12-02",
+    "symbol": "LLY",
+    "company_name": "Eli Lilly and Company",
+    "week_start": "2025-11-26",
+    "week_end": "2025-12-03",
     "reasons": [
-      "Price performance over the last 5 trading days: about 7.2%.",
-      "Measured daily volatility around 1.5%, classified as medium risk.",
+      "Price performance over the last 5 trading days: about 7.8%.",
+      "Measured daily volatility around 1.6%, classified as medium risk.",
       "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
       "News analysis (AI model, summary across multiple sources):",
-      "News sentiment (AI model, FinBERT) based on 7 articles from the last few days.",
-      "News summary for MDT (Medtronic plc): Medtronic plc (NYSE:MDT) is a medical technology company that makes and sells devices for cardiovascular, neuroscience, and surgical applications. Medtronic’s share price has climbed 3.3% in the last week and is up a notable 23.8% year-to-date."
+      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
+      "News summary for LLY (Eli Lilly and Company): Bernstein drops jaw-dropping price target on Eli Lilly stock. US government has negotiated a 71 per cent discount for Novo Nordisk’s weight-loss drugs Ozempic and Wegovy for patients enrolled in Medicare."
     ],
-    "score": 0.07422585007866571,
+    "score": 0.08757754736721018,
     "risk": "medium"
   },
   "high": {
-    "symbol": "GOOGL",
-    "company_name": "Alphabet Inc.",
-    "week_start": "2025-11-25",
-    "week_end": "2025-12-02",
+    "symbol": "MRK",
+    "company_name": "Merck & Co. Inc.",
+    "week_start": "2025-11-26",
+    "week_end": "2025-12-03",
     "reasons": [
-      "Price performance over the last 5 trading days: about 11.8%.",
-      "Measured daily volatility around 2.4%, classified as high risk.",
+      "Price performance over the last 5 trading days: about 9.6%.",
+      "Measured daily volatility around 2.1%, classified as high risk.",
       "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
       "News analysis (AI model, summary across multiple sources):",
       "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-      "News summary for GOOGL (Alphabet Inc.): Alphabet (GOOG, GOOGL) is seeing its shares soar thanks to early praise for Google's Gemini 3. Anthropic (ANTH.PVT) may not let Google have the spotlight for long, debuting its Claude Opus 4.5 model on Monday. Stay up to date on the latest market action, minute-by-minute, with&n"
+      "News summary for MRK (Merck & Co. Inc.): Merck shares received an upgrade at Wells Fargo, with analyst Mohit Bansa lifting the stock to Overweight and raising the price target to $125 per share. Merck and Qualcomm combine strong cash flow with steady dividend growth, signaling potential for meaningful payout increases ahead."
     ],
-    "score": 0.08505263750678332,
+    "score": 0.10317084379037977,
     "risk": "high"
   }
 }

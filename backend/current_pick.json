@@ -1,16 +1,16 @@
 {
-  "symbol": "GOOGL",
-  "company_name": "Alphabet Inc.",
-  "week_start": "2025-11-25",
-  "week_end": "2025-12-02",
+  "symbol": "MRK",
+  "company_name": "Merck & Co. Inc.",
+  "week_start": "2025-11-26",
+  "week_end": "2025-12-03",
   "reasons": [
-    "Price performance over the last 5 trading days: about 11.8%.",
-    "Measured daily volatility around 2.4%, classified as high risk.",
+    "Price performance over the last 5 trading days: about 9.6%.",
+    "Measured daily volatility around 2.1%, classified as high risk.",
     "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
     "News analysis (AI model, summary across multiple sources):",
     "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-    "News summary for GOOGL (Alphabet Inc.): Alphabet (GOOG, GOOGL) is seeing its shares soar thanks to early praise for Google's Gemini 3. Anthropic (ANTH.PVT) may not let Google have the spotlight for long, debuting its Claude Opus 4.5 model on Monday. Stay up to date on the latest market action, minute-by-minute, with&n"
+    "News summary for MRK (Merck & Co. Inc.): Merck shares received an upgrade at Wells Fargo, with analyst Mohit Bansa lifting the stock to Overweight and raising the price target to $125 per share. Merck and Qualcomm combine strong cash flow with steady dividend growth, signaling potential for meaningful payout increases ahead."
   ],
-  "score": 0.08505263750678332,
+  "score": 0.10317084379037977,
   "risk": "high"
 }

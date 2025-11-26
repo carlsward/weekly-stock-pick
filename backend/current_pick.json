@@ -1,16 +1,12 @@
 {
-  "symbol": "MRK",
-  "company_name": "Merck & Co. Inc.",
+  "symbol": "N/A",
+  "company_name": "Data unavailable",
   "week_start": "2025-11-26",
   "week_end": "2025-12-03",
   "reasons": [
-    "Price performance over the last 5 trading days: about 9.6%.",
-    "Measured daily volatility around 2.1%, classified as high risk.",
-    "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
-    "News analysis (AI model, summary across multiple sources):",
-    "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-    "News summary for MRK (Merck & Co. Inc.): Merck shares received an upgrade at Wells Fargo, with analyst Mohit Bansa lifting the stock to Overweight and raising the price target to $125 per share. Merck and Qualcomm combine strong cash flow with steady dividend growth, signaling potential for meaningful payout increases ahead."
+    "No price data available for the current universe; using a neutral placeholder."
   ],
-  "score": 0.10317084379037977,
-  "risk": "high"
+  "score": 0.0,
+  "risk": "unknown",
+  "model_version": "v1.1"
 }

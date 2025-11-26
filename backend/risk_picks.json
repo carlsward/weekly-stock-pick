@@ -1,50 +1,38 @@
 {
   "low": {
-    "symbol": "JNJ",
-    "company_name": "Johnson & Johnson",
+    "symbol": "N/A",
+    "company_name": "Data unavailable",
     "week_start": "2025-11-26",
     "week_end": "2025-12-03",
     "reasons": [
-      "Price performance over the last 5 trading days: about 3.3%.",
-      "Measured daily volatility around 0.9%, classified as low risk.",
-      "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
-      "News analysis (AI model, summary across multiple sources):",
-      "News sentiment (AI model, FinBERT) based on 2 articles from the last few days.",
-      "News summary for JNJ (Johnson & Johnson): Johnson & Johnson (JNJ) shares have edged higher over the past month, building on a steady run that has seen the stock advance 17% in the past 3 months. The share price momentum for Johnson & Johnson has been impressive, with steady gains this year suggesting renewed investor confidence as the company continues to navigate a shifting healthcare landscape."
+      "No price data available for the current universe; using a neutral placeholder."
     ],
-    "score": 0.03381943567841067,
-    "risk": "low"
+    "score": 0.0,
+    "risk": "unknown",
+    "model_version": "v1.1"
   },
   "medium": {
-    "symbol": "LLY",
-    "company_name": "Eli Lilly and Company",
+    "symbol": "N/A",
+    "company_name": "Data unavailable",
     "week_start": "2025-11-26",
     "week_end": "2025-12-03",
     "reasons": [
-      "Price performance over the last 5 trading days: about 7.8%.",
-      "Measured daily volatility around 1.6%, classified as medium risk.",
-      "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
-      "News analysis (AI model, summary across multiple sources):",
-      "News sentiment (AI model, FinBERT) based on 8 articles from the last few days.",
-      "News summary for LLY (Eli Lilly and Company): Bernstein drops jaw-dropping price target on Eli Lilly stock. US government has negotiated a 71 per cent discount for Novo Nordisk’s weight-loss drugs Ozempic and Wegovy for patients enrolled in Medicare."
+      "No price data available for the current universe; using a neutral placeholder."
     ],
-    "score": 0.08757754736721018,
-    "risk": "medium"
+    "score": 0.0,
+    "risk": "unknown",
+    "model_version": "v1.1"
   },
   "high": {
-    "symbol": "MRK",
-    "company_name": "Merck & Co. Inc.",
+    "symbol": "N/A",
+    "company_name": "Data unavailable",
     "week_start": "2025-11-26",
     "week_end": "2025-12-03",
     "reasons": [
-      "Price performance over the last 5 trading days: about 9.6%.",
-      "Measured daily volatility around 2.1%, classified as high risk.",
-      "Risk-adjusted model score (momentum minus volatility) gives a relatively attractive profile.",
-      "News analysis (AI model, summary across multiple sources):",
-      "News sentiment (AI model, FinBERT) based on 6 articles from the last few days.",
-      "News summary for MRK (Merck & Co. Inc.): Merck shares received an upgrade at Wells Fargo, with analyst Mohit Bansa lifting the stock to Overweight and raising the price target to $125 per share. Merck and Qualcomm combine strong cash flow with steady dividend growth, signaling potential for meaningful payout increases ahead."
+      "No price data available for the current universe; using a neutral placeholder."
     ],
-    "score": 0.10317084379037977,
-    "risk": "high"
+    "score": 0.0,
+    "risk": "unknown",
+    "model_version": "v1.1"
   }
 }

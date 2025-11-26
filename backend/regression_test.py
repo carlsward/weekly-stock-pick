@@ -25,6 +25,7 @@ def build_candidates():
             "mom20": 0.12,
             "vol": 0.012,
             "dd": 0.03,
+            "liq": 15_000_000,
             "news": {"news_score": 0.65, "article_count": 5, "news_reasons": ["Positive synthetic news."]},
         },
         {
@@ -34,6 +35,7 @@ def build_candidates():
             "mom20": 0.04,
             "vol": 0.009,
             "dd": 0.015,
+            "liq": 9_000_000,
             "news": {"news_score": 0.55, "article_count": 3, "news_reasons": ["Neutral news."]},
         },
         {
@@ -43,6 +45,7 @@ def build_candidates():
             "mom20": 0.0,
             "vol": 0.018,
             "dd": 0.05,
+            "liq": 6_000_000,
             "news": {"news_score": 0.35, "article_count": 4, "news_reasons": ["Negative news."]},
         },
     ]
@@ -51,6 +54,7 @@ def build_candidates():
     mom20_mean, mom20_std = mean_and_std([s["mom20"] for s in samples])
     vol_mean, vol_std = mean_and_std([s["vol"] for s in samples])
     dd_mean, dd_std = mean_and_std([s["dd"] for s in samples])
+    liq_mean, liq_std = mean_and_std([s["liq"] for s in samples])
 
     candidates = []
     for s in samples:
@@ -61,10 +65,12 @@ def build_candidates():
             momentum_20d=s["mom20"],
             vol=s["vol"],
             drawdown=s["dd"],
+            avg_dollar_vol=s["liq"],
             momentum_z=z_score(s["mom5"], mom_mean, mom_std),
             momentum_20d_z=z_score(s["mom20"], mom20_mean, mom20_std),
             vol_z=z_score(s["vol"], vol_mean, vol_std),
             drawdown_z=z_score(s["dd"], dd_mean, dd_std),
+            dollar_vol_z=z_score(s["liq"], liq_mean, liq_std),
             news_info=s["news"],
         )
         candidates.append(c)

@@ -11,12 +11,14 @@ import yfinance as yf
 
 # ======= Konfig =======
 
-MODEL_VERSION = "v1.1"  # uppdatera när du ändrar scoring-logik
+MODEL_VERSION = "v1.2"  # uppdatera när du ändrar scoring-logik
 VOL_WEIGHT = 0.7        # hur hårt volatilitet straffas i standardiserat mått
 NEWS_ALPHA = 0.6        # hur mycket nyhetsfaktorn påverkar (0.5 neutralt)
 NEWS_FACTOR_MIN = 0.7
 NEWS_FACTOR_MAX = 1.3
 MIN_ARTICLES_FOR_NEWS = 2
+PRICE_CACHE_PATH = "price_cache.json"
+MIN_DOLLAR_VOL = 5_000_000  # minsta genomsnittliga dollarvolym för att undvika illikvida namn
 
 UNIVERSE_CSV_PATH = "universe.csv"
 NEWS_SCORES_PATH = "news_scores.json"
@@ -38,10 +40,12 @@ class StockCandidate:
     raw_momentum_20d: float
     raw_vol: float
     raw_drawdown: float
+    avg_dollar_vol: float
     momentum_z: float
     momentum_20d_z: float
     vol_z: float
     drawdown_z: float
+    dollar_vol_z: float
 
 
 # ======= Hjälpfunktioner =======
@@ -65,7 +69,7 @@ def load_universe(path: str = UNIVERSE_CSV_PATH) -> List[Tuple[str, str]]:
     return rows
 
 
-def fetch_daily_closes(symbol: str, max_days: int = 40) -> List[float]:
+def fetch_daily_closes(symbol: str, cache: Dict[str, dict], max_days: int = 40) -> tuple[List[float], List[float]]:
     """
     Hämta senaste dagliga stängningskurserna från Yahoo Finance.
     Vi tar ca 1 månads data och plockar ut de senaste max_days dagarna.
@@ -83,25 +87,54 @@ def fetch_daily_closes(symbol: str, max_days: int = 40) -> List[float]:
             break
         except Exception as e:
             if attempt == 2:
-                raise
+                data = None
+                break
             sleep_time = 1 + attempt
             print(f"[{symbol}] pris-hämtning misslyckades (försök {attempt+1}): {e} – väntar {sleep_time}s")
             time.sleep(sleep_time)
 
-    closes = data["Close"]
+    closes = None
+    volumes = None
+    if data is not None:
+        try:
+            closes = data["Close"]
+            volumes = data["Volume"]
+        except Exception:
+            closes = None
+            volumes = None
 
     # Om vi får en DataFrame, ta första kolumnen
-    if isinstance(closes, pd.DataFrame):
+    if closes is not None and isinstance(closes, pd.DataFrame):
         closes = closes.iloc[:, 0]
+    if volumes is not None and isinstance(volumes, pd.DataFrame):
+        volumes = volumes.iloc[:, 0]
 
-    closes = closes.dropna()
-    if len(closes) == 0:
-        raise RuntimeError(f"Inga prisdata för {symbol}")
+    if closes is not None:
+        closes = closes.dropna()
+        if len(closes) > 0:
+            aligned_vols = None
+            if volumes is not None:
+                try:
+                    aligned_vols = volumes.loc[closes.index]
+                    aligned_vols = aligned_vols.fillna(0)
+                except Exception:
+                    aligned_vols = None
+            values = closes.tail(max_days).values
+            close_list = list(values)[::-1]
+            vol_list = []
+            if aligned_vols is not None:
+                vol_values = aligned_vols.tail(max_days).values
+                vol_list = list(vol_values)[::-1]
+            cache[symbol] = {"close": close_list, "volume": vol_list}
+            return close_list, vol_list
 
-    # Ta de senaste max_days värdena, gör ordningen: senaste först
-    values = closes.tail(max_days).values  # numpy-array
-    closes_list = list(values)[::-1]       # index 0 = senaste
-    return closes_list
+    # Fallback till cache
+    cached = cache.get(symbol)
+    if cached:
+        print(f"[{symbol}] Använder cachelagda prisdata.")
+        return cached.get("close", []), cached.get("volume", [])
+
+    raise RuntimeError(f"Inga prisdata för {symbol}")
 
 
 def load_news_scores(path: str = NEWS_SCORES_PATH) -> Dict[str, dict]:
@@ -129,7 +162,7 @@ def load_news_scores(path: str = NEWS_SCORES_PATH) -> Dict[str, dict]:
     return {}
 
 
-def compute_price_features(closes: List[float]) -> Dict[str, float]:
+def compute_price_features(closes: List[float], volumes: List[float]) -> Dict[str, float]:
     """
     Beräkna momentum och volatilitet + enkel max drawdown.
     Antag: closes[0] = senaste stängning.
@@ -169,11 +202,20 @@ def compute_price_features(closes: List[float]) -> Dict[str, float]:
         if drawdown < max_dd:
             max_dd = drawdown
 
+    avg_dollar_vol = 0.0
+    if volumes and closes:
+        # align lengths
+        n = min(len(closes), len(volumes))
+        if n > 0:
+            dollar_vol = [float(closes[i]) * float(volumes[i]) for i in range(n)]
+            avg_dollar_vol = sum(dollar_vol) / n
+
     return {
         "momentum_5d": momentum_5d,
         "momentum_20d": momentum_20d,
         "vol": vol,
         "max_drawdown": abs(max_dd),  # positiv storlek
+        "avg_dollar_vol": avg_dollar_vol,
     }
 
 
@@ -227,6 +269,36 @@ def z_score(value: float, mean_v: float, std_v: float) -> float:
     return (value - mean_v) / std_v
 
 
+def load_price_cache() -> Dict[str, List[float]]:
+    try:
+        with open(PRICE_CACHE_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            if isinstance(data, dict):
+                normalized = {}
+                for k, v in data.items():
+                    if isinstance(v, dict):
+                        closes = v.get("close")
+                        vols = v.get("volume")
+                        if isinstance(closes, list):
+                            normalized[k] = {"close": closes, "volume": vols if isinstance(vols, list) else []}
+                    elif isinstance(v, list):
+                        normalized[k] = {"close": v, "volume": []}
+                return normalized
+    except FileNotFoundError:
+        return {}
+    except Exception:
+        return {}
+    return {}
+
+
+def save_price_cache(cache: Dict[str, List[float]]) -> None:
+    try:
+        with open(PRICE_CACHE_PATH, "w", encoding="utf-8") as f:
+            json.dump(cache, f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
+
+
 def build_candidate(
     symbol: str,
     company_name: str,
@@ -234,19 +306,22 @@ def build_candidate(
     momentum_20d: float,
     vol: float,
     drawdown: float,
+    avg_dollar_vol: float,
     momentum_z: float,
     momentum_20d_z: float,
     vol_z: float,
     drawdown_z: float,
+    dollar_vol_z: float,
     news_info: Optional[dict] = None,
 ) -> StockCandidate:
 
     risk_level = classify_risk(vol)
     base_score = (
         0.6 * momentum_z
-        + 0.4 * momentum_20d_z
+        + 0.35 * momentum_20d_z
         - VOL_WEIGHT * vol_z
         - 0.3 * drawdown_z
+        + 0.1 * dollar_vol_z
     )
 
     # Nyhetsdel – default neutral 0.5
@@ -279,7 +354,8 @@ def build_candidate(
         f"20-day momentum: about {format_pct(momentum_20d)} (z={momentum_20d_z:.2f}).",
         f"Measured daily volatility around {format_pct(vol)}, classified as {risk_level} risk (z={vol_z:.2f}).",
         f"Recent max drawdown ~{format_pct(-drawdown)} (z={drawdown_z:.2f}).",
-        f"Base score (0.6*mom5z + 0.4*mom20z − {VOL_WEIGHT:.2f}×volz − 0.3×ddz): {base_score:.3f}.",
+        f"Avg dollar volume ≈ ${avg_dollar_vol:,.0f} (z={dollar_vol_z:.2f}).",
+        f"Base score (0.6*mom5z + 0.35*mom20z − {VOL_WEIGHT:.2f}×volz − 0.3×ddz + 0.1×liq_z): {base_score:.3f}.",
     ]
 
     if news_info:
@@ -301,10 +377,12 @@ def build_candidate(
         raw_momentum_20d=momentum_20d,
         raw_vol=vol,
         raw_drawdown=drawdown,
+        avg_dollar_vol=avg_dollar_vol,
         momentum_z=momentum_z,
         momentum_20d_z=momentum_20d_z,
         vol_z=vol_z,
         drawdown_z=drawdown_z,
+        dollar_vol_z=dollar_vol_z,
     )
 
 
@@ -313,11 +391,15 @@ def get_candidates() -> List[StockCandidate]:
     news_scores = load_news_scores()
     candidates: List[StockCandidate] = []
     collected: List[dict] = []
+    price_cache = load_price_cache()
 
     for symbol, name in universe:
         try:
-            closes = fetch_daily_closes(symbol)
-            features = compute_price_features(closes)
+            closes, volumes = fetch_daily_closes(symbol, cache=price_cache)
+            features = compute_price_features(closes, volumes)
+            if features["avg_dollar_vol"] < MIN_DOLLAR_VOL:
+                print(f"[WARN] Hoppar över {symbol}: för låg dollarvolym ({features['avg_dollar_vol']:,.0f})")
+                continue
             collected.append(
                 {
                     "symbol": symbol,
@@ -326,6 +408,7 @@ def get_candidates() -> List[StockCandidate]:
                     "momentum_20d": features["momentum_20d"],
                     "vol": features["vol"],
                     "drawdown": features["max_drawdown"],
+                    "avg_dollar_vol": features["avg_dollar_vol"],
                     "news_info": news_scores.get(symbol),
                 }
             )
@@ -336,12 +419,14 @@ def get_candidates() -> List[StockCandidate]:
     mom20_mean, mom20_std = mean_and_std([c["momentum_20d"] for c in collected])
     vol_mean, vol_std = mean_and_std([c["vol"] for c in collected])
     dd_mean, dd_std = mean_and_std([c["drawdown"] for c in collected])
+    liq_mean, liq_std = mean_and_std([c["avg_dollar_vol"] for c in collected])
 
     for item in collected:
         mom_z = z_score(item["momentum_5d"], mom_mean, mom_std)
         mom20_z = z_score(item["momentum_20d"], mom20_mean, mom20_std)
         vol_z = z_score(item["vol"], vol_mean, vol_std)
         dd_z = z_score(item["drawdown"], dd_mean, dd_std)
+        liq_z = z_score(item["avg_dollar_vol"], liq_mean, liq_std)
         candidate = build_candidate(
             symbol=item["symbol"],
             company_name=item["company_name"],
@@ -349,14 +434,17 @@ def get_candidates() -> List[StockCandidate]:
             momentum_20d=item["momentum_20d"],
             vol=item["vol"],
             drawdown=item["drawdown"],
+            avg_dollar_vol=item["avg_dollar_vol"],
             momentum_z=mom_z,
             momentum_20d_z=mom20_z,
             vol_z=vol_z,
             drawdown_z=dd_z,
+            dollar_vol_z=liq_z,
             news_info=item["news_info"],
         )
         candidates.append(candidate)
 
+    save_price_cache(price_cache)
     return candidates
 
 
@@ -426,10 +514,12 @@ def build_output_json(candidate: StockCandidate) -> dict:
             "momentum_20d": candidate.raw_momentum_20d,
             "vol": candidate.raw_vol,
             "drawdown": candidate.raw_drawdown,
+            "avg_dollar_vol": candidate.avg_dollar_vol,
             "momentum_z": candidate.momentum_z,
             "momentum_20d_z": candidate.momentum_20d_z,
             "vol_z": candidate.vol_z,
             "drawdown_z": candidate.drawdown_z,
+            "dollar_vol_z": candidate.dollar_vol_z,
             "base_score": candidate.base_score,
             "news_score": candidate.news_score,
             "news_factor": candidate.news_factor,
@@ -489,29 +579,34 @@ def main():
     candidates = get_candidates()
 
     if not candidates:
-        print("[WARN] Inga kandidater kunde genereras (troligen ingen prisdata tillgänglig). Skriver neutral placeholder.")
-        today = date.today()
-        placeholder = {
-            "symbol": "N/A",
-            "company_name": "Data unavailable",
-            "week_start": today.isoformat(),
-            "week_end": (today + timedelta(days=7)).isoformat(),
-            "reasons": [
-                "No price data available for the current universe; using a neutral placeholder."
-            ],
-            "score": 0.0,
-            "risk": "unknown",
-            "model_version": MODEL_VERSION,
-        }
+        print("[WARN] Inga kandidater kunde genereras (troligen ingen prisdata tillgänglig). Försöker återanvända tidigare picks.")
+        try:
+            with open("current_pick.json", "r", encoding="utf-8") as f:
+                current_pick = json.load(f)
+        except Exception:
+            today = date.today()
+            current_pick = {
+                "symbol": "N/A",
+                "company_name": "Data unavailable",
+                "week_start": today.isoformat(),
+                "week_end": (today + timedelta(days=7)).isoformat(),
+                "reasons": [
+                    "No price data available for the current universe; using a neutral placeholder."
+                ],
+                "score": 0.0,
+                "risk": "unknown",
+                "model_version": MODEL_VERSION,
+            }
+        try:
+            with open("risk_picks.json", "r", encoding="utf-8") as f:
+                risk_output = json.load(f)
+        except Exception:
+            risk_output = {"low": current_pick, "medium": current_pick, "high": current_pick}
+
         with open("current_pick.json", "w", encoding="utf-8") as f:
-            json.dump(placeholder, f, ensure_ascii=False, indent=2)
+            json.dump(current_pick, f, ensure_ascii=False, indent=2)
         with open("risk_picks.json", "w", encoding="utf-8") as f:
-            json.dump(
-                {"low": placeholder, "medium": placeholder, "high": placeholder},
-                f,
-                ensure_ascii=False,
-                indent=2,
-            )
+            json.dump(risk_output, f, ensure_ascii=False, indent=2)
         return
 
     if args.dry_run:

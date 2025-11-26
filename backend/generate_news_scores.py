@@ -3,21 +3,27 @@ import hashlib
 import json
 import re
 import time
+import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Dict, Tuple, Optional
 from difflib import SequenceMatcher
 
 import pandas as pd
+import torch
 import yfinance as yf
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModelForSeq2SeqLM, pipeline
 
 NEWS_SCORES_PATH = "news_scores.json"
 UNIVERSE_CSV_PATH = "universe.csv"
 EXTRA_NEWS_PATH = Path("extra_news.json")
+ALT_NEWS_PATH = Path("alt_news.json")
+CONFIG_PATH = Path("config.json")
 
 FINBERT_MODEL_NAME = "ProsusAI/finbert"
+GENERAL_SENTIMENT_MODEL_NAME = "distilbert-base-uncased-finetuned-sst-2-english"
 SUMMARIZER_MODEL_NAME = "facebook/bart-large-cnn"
+EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
 # Hur långt tillbaka vi tittar på nyheter
 NEWS_LOOKBACK_DAYS = 5
@@ -27,6 +33,10 @@ SENTIMENT_MAX_LENGTH = 512
 SENTIMENT_DECAY_HALF_LIFE_DAYS = 2.0  # dagar till halverad vikt
 SENTIMENT_CACHE_PATH = Path(".news_sentiment_cache.json")
 SENTIMENT_MODEL_VERSION = FINBERT_MODEL_NAME
+GENERAL_SENTIMENT_VERSION = GENERAL_SENTIMENT_MODEL_NAME
+SENTIMENT_CONFIDENCE_THRESHOLD = 0.55
+SENTIMENT_ENSEMBLE_WEIGHTS = (0.65, 0.35)  # finbert, general
+SEMANTIC_SIM_THRESHOLD = 0.35
 
 PROVIDER_TRUST: Dict[str, float] = {
     "bloomberg": 1.0,
@@ -61,6 +71,28 @@ def save_sentiment_cache(cache: Dict[str, dict]) -> None:
     tmp.replace(SENTIMENT_CACHE_PATH)
 
 
+def load_config() -> dict:
+    defaults = {
+        "provider_trust": PROVIDER_TRUST,
+        "sentiment_confidence_threshold": SENTIMENT_CONFIDENCE_THRESHOLD,
+        "sentiment_ensemble_weights": SENTIMENT_ENSEMBLE_WEIGHTS,
+        "semantic_similarity_threshold": SEMANTIC_SIM_THRESHOLD,
+        "news_feed_urls": [],
+    }
+    if not CONFIG_PATH.exists():
+        return defaults
+    try:
+        with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+            cfg = json.load(f)
+            if not isinstance(cfg, dict):
+                return defaults
+            for k in defaults:
+                defaults[k] = cfg.get(k, defaults[k])
+    except Exception:
+        return defaults
+    return defaults
+
+
 def load_extra_news(symbol: str) -> List[dict]:
     """
     Ladda extra nyheter från lokal JSON (för att bredda täckningen utan nätberoende).
@@ -71,32 +103,73 @@ def load_extra_news(symbol: str) -> List[dict]:
       ]
     }
     """
-    if not EXTRA_NEWS_PATH.exists():
-        return []
-    try:
-        with open(EXTRA_NEWS_PATH, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        items = data.get(symbol.upper(), [])
-        normalized = []
-        for item in items:
-            if not isinstance(item, dict):
-                continue
-            normalized.append(
-                {
-                    "content": {
-                        "title": item.get("title"),
-                        "summary": item.get("summary"),
-                        "description": item.get("description"),
-                        "pubDate": item.get("pubDate"),
-                        "provider": item.get("provider"),
-                    },
-                    "publisher": item.get("provider"),
-                    "link": item.get("link"),
-                }
-            )
-        return normalized
-    except Exception:
-        return []
+    sources = [EXTRA_NEWS_PATH, ALT_NEWS_PATH]
+    merged: List[dict] = []
+    for path in sources:
+        if not path.exists():
+            continue
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            items = data.get(symbol.upper(), [])
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                merged.append(
+                    {
+                        "content": {
+                            "title": item.get("title"),
+                            "summary": item.get("summary"),
+                            "description": item.get("description"),
+                            "pubDate": item.get("pubDate"),
+                            "provider": item.get("provider"),
+                            "link": item.get("link"),
+                        },
+                        "publisher": item.get("provider"),
+                        "link": item.get("link"),
+                    }
+                )
+        except Exception:
+            continue
+    return merged
+
+
+def fetch_remote_feeds(urls: List[str]) -> List[dict]:
+    items: List[dict] = []
+    for url in urls:
+        try:
+            with urllib.request.urlopen(url, timeout=10) as resp:
+                data = resp.read()
+            parsed = json.loads(data.decode("utf-8"))
+            if isinstance(parsed, list):
+                items.extend(parsed)
+            elif isinstance(parsed, dict):
+                # accept dict of symbol -> list
+                for sym_items in parsed.values():
+                    if isinstance(sym_items, list):
+                        items.extend(sym_items)
+        except Exception as e:
+            print(f"[WARN] Failed to fetch remote feed {url}: {e}")
+            continue
+    normalized = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        normalized.append(
+            {
+                "content": {
+                    "title": item.get("title"),
+                    "summary": item.get("summary") or item.get("description"),
+                    "description": item.get("description"),
+                    "pubDate": item.get("pubDate") or item.get("publishedAt"),
+                    "provider": item.get("provider") or item.get("source"),
+                    "link": item.get("link") or item.get("url"),
+                },
+                "publisher": item.get("provider") or item.get("source"),
+                "link": item.get("link") or item.get("url"),
+            }
+        )
+    return normalized
 
 
 # ---------- Hjälpfunktioner för universet ----------
@@ -246,7 +319,7 @@ def is_relevant_news_item(
     return fuzzy_company_match(title + " " + summary, company_name)
 
 
-def fetch_symbol_news(symbol: str, company_name: str) -> List[Dict[str, str]]:
+def fetch_symbol_news(symbol: str, company_name: str, extra_feed_items: Optional[List[dict]] = None) -> List[Dict[str, str]]:
     """
     Hämtar nyhetstexter (titel + summary) för ett bolag, filtrerar på datum och relevans.
     Returnerar en lista med metadata + text per artikel.
@@ -266,6 +339,8 @@ def fetch_symbol_news(symbol: str, company_name: str) -> List[Dict[str, str]]:
 
     # Lägg till lokala extra nyheter om de finns
     raw_news += load_extra_news(symbol)
+    if extra_feed_items:
+        raw_news += extra_feed_items
 
     print(f"\n=== Hämtar nyheter för {symbol} ===")
     print(f"[{symbol}] raw news count: {len(raw_news)}")
@@ -347,11 +422,23 @@ def init_models():
 
     finbert_tokenizer = AutoTokenizer.from_pretrained(FINBERT_MODEL_NAME)
     finbert_model = AutoModelForSequenceClassification.from_pretrained(FINBERT_MODEL_NAME)
-    sentiment_pipe = pipeline(
+    finbert_pipe = pipeline(
         "sentiment-analysis",
         model=finbert_model,
         tokenizer=finbert_tokenizer,
         device=-1,  # CPU för robusthet
+        return_all_scores=True,
+    )
+
+    print("Laddar generell sentiment-modell...")
+    general_tokenizer = AutoTokenizer.from_pretrained(GENERAL_SENTIMENT_MODEL_NAME)
+    general_model = AutoModelForSequenceClassification.from_pretrained(GENERAL_SENTIMENT_MODEL_NAME)
+    general_pipe = pipeline(
+        "sentiment-analysis",
+        model=general_model,
+        tokenizer=general_tokenizer,
+        device=-1,
+        return_all_scores=True,
     )
 
     print("Laddar summarizer-modell...")
@@ -365,7 +452,15 @@ def init_models():
         device=-1,
     )
 
-    return sentiment_pipe, summarizer_pipe
+    print("Laddar embeddings-modell...")
+    embed_pipe = pipeline(
+        "feature-extraction",
+        model=EMBEDDING_MODEL_NAME,
+        tokenizer=EMBEDDING_MODEL_NAME,
+        device=-1,
+    )
+
+    return finbert_pipe, general_pipe, summarizer_pipe, embed_pipe
 
 
 # ---------- Sentiment + sammanfattning ----------
@@ -378,45 +473,68 @@ def sentiment_cache_key(symbol: str, article: Dict[str, str]) -> str:
     return hashlib.sha1(blob.encode("utf-8")).hexdigest()
 
 
-def compute_finbert_sentiment(
-    pipe,
+def compute_ensemble_sentiment(
+    finbert_pipe,
+    general_pipe,
     articles: List[Dict[str, str]],
     symbol: str,
     cache: Dict[str, dict],
 ) -> float:
     """
-    Kör FinBERT på varje text och beräknar ett viktat snitt i intervallet [-1, 1].
+    Kör FinBERT + generell sentiment och beräknar ett viktat snitt i intervallet [-1, 1].
     Viktning baseras på ålder (halveringstid SENTIMENT_DECAY_HALF_LIFE_DAYS) och källtillit.
+    Lågkonfidensartiklar filtreras bort.
     """
     if not articles:
         return 0.0
 
-    # Steg 1: använd cache där möjligt
     to_score: List[str] = []
     to_score_idx: List[int] = []
     for idx, article in enumerate(articles):
         key = sentiment_cache_key(symbol, article)
         article["cache_key"] = key
         cached = cache.get(key)
-        if cached and cached.get("model_version") == SENTIMENT_MODEL_VERSION:
+        if cached and cached.get("finbert_version") == SENTIMENT_MODEL_VERSION and cached.get("general_version") == GENERAL_SENTIMENT_VERSION:
             article["raw_sentiment"] = float(cached.get("sentiment", 0.0))
+            article["finbert_sentiment"] = float(cached.get("finbert_sentiment", 0.0))
+            article["general_sentiment"] = float(cached.get("general_sentiment", 0.0))
             article["sentiment_weight"] = float(cached.get("weight", 1.0))
+            article["confidence"] = float(cached.get("confidence", 1.0))
         else:
             to_score.append(article["text"])
             to_score_idx.append(idx)
 
     if to_score:
-        results = pipe(
+        finbert_results = finbert_pipe(
             to_score,
             truncation=True,
             max_length=SENTIMENT_MAX_LENGTH,
             return_all_scores=True,
         )
-        for idx, scores in zip(to_score_idx, results):
-            pos = next((float(s["score"]) for s in scores if "pos" in s["label"].lower()), 0.0)
-            neg = next((float(s["score"]) for s in scores if "neg" in s["label"].lower()), 0.0)
-            raw_sent = pos - neg  # [-1,1] approx
-            articles[idx]["raw_sentiment"] = raw_sent
+        general_results = general_pipe(
+            to_score,
+            truncation=True,
+            max_length=SENTIMENT_MAX_LENGTH,
+            return_all_scores=True,
+        )
+        for idx, f_scores, g_scores in zip(to_score_idx, finbert_results, general_results):
+            f_pos = next((float(s["score"]) for s in f_scores if "pos" in s["label"].lower()), 0.0)
+            f_neg = next((float(s["score"]) for s in f_scores if "neg" in s["label"].lower()), 0.0)
+            f_conf = max(float(s["score"]) for s in f_scores) if f_scores else 0.0
+            finbert_sent = f_pos - f_neg
+
+            # general sentiment labels usually "POSITIVE"/"NEGATIVE"
+            g_label_score = max(g_scores, key=lambda s: s["score"]) if g_scores else {"label": "neutral", "score": 0.0}
+            g_conf = float(g_label_score.get("score", 0.0))
+            g_sent = g_conf if "pos" in g_label_score.get("label", "").lower() else -g_conf
+
+            conf = max(f_conf, g_conf)
+            combined = SENTIMENT_ENSEMBLE_WEIGHTS[0] * finbert_sent + SENTIMENT_ENSEMBLE_WEIGHTS[1] * g_sent
+
+            articles[idx]["raw_sentiment"] = combined
+            articles[idx]["finbert_sentiment"] = finbert_sent
+            articles[idx]["general_sentiment"] = g_sent
+            articles[idx]["confidence"] = conf
 
     now = datetime.now(timezone.utc)
     weighted: List[float] = []
@@ -424,6 +542,9 @@ def compute_finbert_sentiment(
 
     for article in articles:
         raw_sent = float(article.get("raw_sentiment", 0.0))
+        conf = float(article.get("confidence", 0.0))
+        if conf < SENTIMENT_CONFIDENCE_THRESHOLD:
+            continue
 
         published = article.get("published_at")
         age_days = 0.0
@@ -451,8 +572,12 @@ def compute_finbert_sentiment(
         if key:
             cache[key] = {
                 "sentiment": raw_sent,
+                "finbert_sentiment": float(article.get("finbert_sentiment", 0.0)),
+                "general_sentiment": float(article.get("general_sentiment", 0.0)),
                 "weight": weight,
-                "model_version": SENTIMENT_MODEL_VERSION,
+                "confidence": conf,
+                "finbert_version": SENTIMENT_MODEL_VERSION,
+                "general_version": GENERAL_SENTIMENT_VERSION,
                 "cached_at": datetime.now(timezone.utc).isoformat(),
             }
 
@@ -487,6 +612,32 @@ def summarize_texts(pipe, articles: List[Dict[str, str]]) -> str:
     return " ".join(t[:120] for t in texts[:2])
 
 
+def get_embedding(embed_pipe, text: str) -> torch.Tensor:
+    """
+    Beräknar en genomsnittlig embeddingsvektor för en text.
+    """
+    outputs = embed_pipe(text, truncation=True, max_length=128)
+    # pipeline returnerar list[list[list[float]]] (batch x tokens x dim)
+    if not outputs:
+        return torch.zeros(1)
+    arr = torch.tensor(outputs[0])  # tokens x dim
+    if arr.ndim != 2:
+        return torch.zeros(1)
+    return arr.mean(dim=0)
+
+
+def cosine_sim(a: torch.Tensor, b: torch.Tensor) -> float:
+    if a.numel() == 0 or b.numel() == 0:
+        return 0.0
+    if a.ndim == 1:
+        a = a.unsqueeze(0)
+    if b.ndim == 1:
+        b = b.unsqueeze(0)
+    a_norm = torch.nn.functional.normalize(a, dim=1)
+    b_norm = torch.nn.functional.normalize(b, dim=1)
+    return float((a_norm @ b_norm.t()).mean())
+
+
 
 
 def sentiment_to_news_score(raw_sent: float) -> float:
@@ -498,6 +649,29 @@ def sentiment_to_news_score(raw_sent: float) -> float:
     return 0.5 + 0.5 * x
 
 
+def filter_semantic_relevance(
+    articles: List[Dict[str, str]],
+    company_name: str,
+    embed_pipe,
+    company_embedding: torch.Tensor,
+) -> List[Dict[str, str]]:
+    """
+    Filtrerar artiklar baserat på semantisk likhet mellan rubrik/summary och företagsnamnet.
+    """
+    if company_embedding.numel() == 0:
+        return articles
+
+    kept: List[Dict[str, str]] = []
+    for a in articles:
+        text = (a.get("title", "") + " " + a.get("text", ""))[:512]
+        emb = get_embedding(embed_pipe, text)
+        sim = cosine_sim(company_embedding, emb)
+        a["semantic_sim"] = sim
+        if sim >= SEMANTIC_SIM_THRESHOLD:
+            kept.append(a)
+    return kept
+
+
 # ---------- Huvudlogik ----------
 
 def main():
@@ -505,7 +679,15 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Kör utan att skriva news_scores.json")
     args = parser.parse_args()
 
-    sentiment_pipe, summarizer_pipe = init_models()
+    cfg = load_config()
+    global PROVIDER_TRUST, SENTIMENT_CONFIDENCE_THRESHOLD, SENTIMENT_ENSEMBLE_WEIGHTS, SEMANTIC_SIM_THRESHOLD
+    PROVIDER_TRUST = cfg.get("provider_trust", PROVIDER_TRUST)
+    SENTIMENT_CONFIDENCE_THRESHOLD = cfg.get("sentiment_confidence_threshold", SENTIMENT_CONFIDENCE_THRESHOLD)
+    SENTIMENT_ENSEMBLE_WEIGHTS = tuple(cfg.get("sentiment_ensemble_weights", SENTIMENT_ENSEMBLE_WEIGHTS))  # type: ignore
+    SEMANTIC_SIM_THRESHOLD = cfg.get("semantic_similarity_threshold", SEMANTIC_SIM_THRESHOLD)
+    remote_feeds = fetch_remote_feeds(cfg.get("news_feed_urls", []))
+
+    finbert_pipe, general_pipe, summarizer_pipe, embed_pipe = init_models()
     universe = load_universe()
     cache = load_sentiment_cache()
 
@@ -515,7 +697,12 @@ def main():
 
     for symbol, company_name in universe:
         try:
-            articles = fetch_symbol_news(symbol, company_name)
+            try:
+                company_embedding = get_embedding(embed_pipe, f"{symbol} {company_name}")
+            except Exception:
+                company_embedding = torch.zeros(1)
+            articles = fetch_symbol_news(symbol, company_name, extra_feed_items=remote_feeds)
+            articles = filter_semantic_relevance(articles, company_name, embed_pipe, company_embedding)
 
             if not articles:
                 print(f"[{symbol}] No relevant recent news – setting neutral 0.50")
@@ -532,7 +719,7 @@ def main():
                     "decay_half_life_days": SENTIMENT_DECAY_HALF_LIFE_DAYS,
                 }
             else:
-                raw_sent = compute_finbert_sentiment(sentiment_pipe, articles, symbol, cache)
+                raw_sent = compute_ensemble_sentiment(finbert_pipe, general_pipe, articles, symbol, cache)
                 news_score = sentiment_to_news_score(raw_sent)
                 summary = summarize_texts(summarizer_pipe, articles)
 
@@ -550,6 +737,10 @@ def main():
                         "weight": round(float(a.get("sentiment_weight", 1.0)), 3),
                         "provider_weight": round(float(a.get("provider_weight", 1.0)), 3),
                         "link": a.get("link", ""),
+                        "semantic_sim": round(float(a.get("semantic_sim", 0.0)), 3),
+                        "finbert_sentiment": round(float(a.get("finbert_sentiment", 0.0)), 4),
+                        "general_sentiment": round(float(a.get("general_sentiment", 0.0)), 4),
+                        "confidence": round(float(a.get("confidence", 0.0)), 3),
                     }
                     for a in articles
                 ]

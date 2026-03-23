@@ -1,4 +1,4 @@
-package com.example.weeklystockapp2.ui.theme
+package com.nilu.weeklypicks.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

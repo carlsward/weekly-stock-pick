@@ -1,4 +1,4 @@
-package com.example.weeklystockapp2.ui.theme
+package com.nilu.weeklypicks.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -56,7 +56,7 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 @Composable
-fun WeeklyStockApp2Theme(
+fun NiLUWeeklyPicksTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

@@ -1,5 +1,2 @@
 pandas
 yfinance
-transformers
-torch
-sentencepiece

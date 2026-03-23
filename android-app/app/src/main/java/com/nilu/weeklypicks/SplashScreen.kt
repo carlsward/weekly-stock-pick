@@ -1,4 +1,4 @@
-package com.example.weeklystockapp2
+package com.nilu.weeklypicks
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing

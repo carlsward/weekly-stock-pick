@@ -1,489 +1,1296 @@
 {
   "AAPL": {
-    "news_score": 0.72,
+    "news_score": 0.65,
+    "news_confidence": 0.66,
+    "raw_sentiment": 0.4939,
+    "calibrated_sentiment": 0.3034,
+    "article_count": 1,
+    "effective_article_count": 0.38,
+    "source_count": 1,
+    "average_relevance": 0.47,
+    "average_recency_weight": 0.9,
+    "average_source_quality": 0.88,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 1.0,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 4 artiklar senaste dagarna.",
-      "Sammanfattning för AAPL (Apple Inc.): Apple stock continues to trade at an elevated multiple as the iPhone is gaining market share in China. Apple stock has delivered massive gains for two decades, but can it keep climbing? Explore what analysts predict for the tech giant’s future."
+      "Marketaux entity coverage rated the news flow bullish at 0.65, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.4 effective weighted articles, average relevance 0.47, average source quality 0.88, confidence 0.66.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for AAPL (Apple Inc.): Nvidia (NVDA) is down 1.35% as investors[+295 characters]"
     ],
-    "raw_sentiment": 0.443,
-    "article_count": 4,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Market Volatility Surges as Fed Signals “Hawkish Hold” Amid Escalating Middle East Tensions"
+    ],
+    "last_updated": "2026-03-19"
   },
   "MSFT": {
-    "news_score": 0.62,
+    "news_score": 0.5,
+    "news_confidence": 0.71,
+    "raw_sentiment": 0.0,
+    "calibrated_sentiment": 0.0,
+    "article_count": 1,
+    "effective_article_count": 0.59,
+    "source_count": 1,
+    "average_relevance": 0.83,
+    "average_recency_weight": 0.87,
+    "average_source_quality": 0.82,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 1.0,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 4 artiklar senaste dagarna.",
-      "Sammanfattning för MSFT (Microsoft Corporation): Microsoft Corporation (NASDAQ:MSFT) is one of the AI Stocks Analysts are Tracking Closely. On November 18, Rothschild Redburn downgraded the stock to “Neutral’ and cut the price target to $500 from $560. According to the firm, Azure has been the main growth engine for Microsoft till now."
+      "Marketaux entity coverage rated the news flow neutral at 0.50, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.6 effective weighted articles, average relevance 0.83, average source quality 0.82, confidence 0.71.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for MSFT (Microsoft Corporation): Here is a snapshot of the year-to-date r[+273 characters] Amazon.com (NASDAQ:AMZN), Alphabet (NASDAQ:GOOGL), Meta Platforms (NASDAQ:META), Microsoft (NASDAQ:MSFT)"
     ],
-    "raw_sentiment": 0.2442,
-    "article_count": 4,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Amazon.com (NASDAQ:AMZN), Alphabet (NASDAQ:GOOGL), Meta Platforms (NASDAQ:META), Microsoft (NASDAQ:MSFT)"
+    ],
+    "last_updated": "2026-03-19"
   },
   "GOOGL": {
-    "news_score": 0.87,
+    "news_score": 0.64,
+    "news_confidence": 0.74,
+    "raw_sentiment": 0.3864,
+    "calibrated_sentiment": 0.2801,
+    "article_count": 3,
+    "effective_article_count": 1.31,
+    "source_count": 2,
+    "average_relevance": 0.51,
+    "average_recency_weight": 0.94,
+    "average_source_quality": 0.89,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.38,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 1 artiklar senaste dagarna.",
-      "Sammanfattning för GOOGL (Alphabet Inc.): Alphabet Stock Climbed to an All-Time High Today. The internet search king is quickly becoming a dominant supplier of artificial intelligence (AI)"
+      "Marketaux entity coverage rated the news flow bullish at 0.64, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.3 effective weighted articles, average relevance 0.51, average source quality 0.89, confidence 0.74.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for GOOGL (Alphabet Inc.): Additionally, Alphabet 's Googl[+271 characters] (Jim Cramer's Charitable Trust is long A[+297 characters]"
     ],
-    "raw_sentiment": 0.7372,
-    "article_count": 1,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Apple bears are proven wrong yet again as iPhone defies the China slump narrative",
+      "Market Slump Deepens as Geopolitical Tensions and Fed Hawkishness Push Indexes to 2026 Lows",
+      "Bezos Eyes $100B AI Fund as Netanyahu Claims Neutralization of Iranian Nuclear Capacity"
+    ],
+    "last_updated": "2026-03-19"
   },
   "AMZN": {
-    "news_score": 0.57,
+    "news_score": 0.56,
+    "news_confidence": 0.8,
+    "raw_sentiment": 0.1389,
+    "calibrated_sentiment": 0.1106,
+    "article_count": 3,
+    "effective_article_count": 1.39,
+    "source_count": 3,
+    "average_relevance": 0.85,
+    "average_recency_weight": 0.69,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.48,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för AMZN (Amazon.com Inc.): Yahoo Finance anchor Julie Hyman examines some of the top stories on Wall Street. Goldman Sachs initiating coverage on MP Materials (MP), and Plug Power (PLUG) announcing plans to raise capital. Ramzan Karmali breaks down the four reasons why investors - and global markets - have grown so dependent on the world's largest listed company."
+      "Marketaux entity coverage rated the news flow neutral at 0.56, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.4 effective weighted articles, average relevance 0.85, average source quality 0.77, confidence 0.80.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for AMZN (Amazon.com Inc.): Here is a snapshot of the year-to-date r[+273 characters] Amazon.com (NASDAQ:AMZN), Alphabet (NASDAQ:GOOGL), Meta Platforms (NASDAQ:META), Microsoft (NASDAQ:MSFT)"
     ],
-    "raw_sentiment": 0.1362,
-    "article_count": 6,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Amazon.com (NASDAQ:AMZN), Alphabet (NASDAQ:GOOGL), Meta Platforms (NASDAQ:META), Microsoft (NASDAQ:MSFT)",
+      "Amazon: Deep Discount Makes Me Greedy (NASDAQ:AMZN)",
+      "11 Most Buzzing Stocks to Buy with the Highest Upside Potential"
+    ],
+    "last_updated": "2026-03-19"
   },
   "TSLA": {
-    "news_score": 0.41,
+    "news_score": 0.48,
+    "news_confidence": 0.74,
+    "raw_sentiment": -0.0458,
+    "calibrated_sentiment": -0.033,
+    "article_count": 1,
+    "effective_article_count": 0.71,
+    "source_count": 1,
+    "average_relevance": 0.97,
+    "average_recency_weight": 0.9,
+    "average_source_quality": 0.82,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 1.0,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för TSLA (Tesla Inc.): According to the Wall Street Journal, Elon Musk's xAI is looking to raise $15 billion in funding that would value it at $230 billion. Target slashed it future guidance and predicts a weak holiday season. AMD, Intel and TSMC brace for Nvidia earnings: trending stocks."
+      "Marketaux entity coverage rated the news flow neutral at 0.48, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.7 effective weighted articles, average relevance 0.97, average source quality 0.82, confidence 0.74.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for TSLA (Tesla Inc.): Tesla Inc. (NASDAQ[+324 characters] While Musk claims logs show the driver d[+188 characters]"
     ],
-    "raw_sentiment": -0.1875,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Gordon Johnson Warns Tesla's Potential Recall Could Derail 'Robotaxi Story'"
+    ],
+    "last_updated": "2026-03-19"
   },
-  "FB": {
-    "news_score": 0.5,
+  "META": {
+    "news_score": 0.66,
+    "news_confidence": 0.8,
+    "raw_sentiment": 0.4092,
+    "calibrated_sentiment": 0.329,
+    "article_count": 3,
+    "effective_article_count": 1.57,
+    "source_count": 3,
+    "average_relevance": 0.79,
+    "average_recency_weight": 0.84,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.42,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Inga nyligen identifierade relevanta nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
+      "Marketaux entity coverage rated the news flow bullish at 0.66, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.6 effective weighted articles, average relevance 0.79, average source quality 0.77, confidence 0.80.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for META (Meta Platforms Inc.): In a recent announcement, the Magnificen[+299 characters] Amazon.com (NASDAQ:AMZN), Alphabet (NASDAQ:GOOGL), Meta Platforms (NASDAQ:META), Microsoft (NASDAQ:MSFT)"
     ],
-    "raw_sentiment": 0.0,
-    "article_count": 0,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Why Meta’s AI Chip Announcement Has Broadcom Investors Paying Attention",
+      "Amazon.com (NASDAQ:AMZN), Alphabet (NASDAQ:GOOGL), Meta Platforms (NASDAQ:META), Microsoft (NASDAQ:MSFT)",
+      "Gautam Gambhir moves Delhi HC seeking protection of personality rights against misuse of his identity via deepfakes"
+    ],
+    "last_updated": "2026-03-19"
   },
   "BRK.B": {
     "news_score": 0.5,
-    "news_reasons": [
-      "Inga nyligen identifierade relevanta nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
-    ],
+    "news_confidence": 0.2,
     "raw_sentiment": 0.0,
+    "calibrated_sentiment": 0.0,
     "article_count": 0,
-    "last_updated": "2025-11-20"
+    "effective_article_count": 0.0,
+    "source_count": 0,
+    "average_relevance": 0.0,
+    "average_recency_weight": 0.0,
+    "average_source_quality": 0.0,
+    "provider_sentiment_coverage": 0.0,
+    "dominant_weight_share": 0.0,
+    "dominant_signal": "neutral",
+    "news_reasons": [
+      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+    ],
+    "top_headlines": [],
+    "last_updated": "2026-03-19"
   },
   "NVDA": {
-    "news_score": 0.46,
+    "news_score": 0.58,
+    "news_confidence": 0.69,
+    "raw_sentiment": 0.2399,
+    "calibrated_sentiment": 0.1578,
+    "article_count": 2,
+    "effective_article_count": 0.89,
+    "source_count": 1,
+    "average_relevance": 0.64,
+    "average_recency_weight": 0.93,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.51,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 9 artiklar senaste dagarna.",
-      "Sammanfattning för NVDA (NVIDIA Corporation): N Nvidia's (NVDA) third quarter earnings results are due out after the closing bell on Wednesday. Goldman Sachs senior equity analyst Jim Schneider shares what he's expecting from Nvidia's earnings print. Wall Street chatter of an AI bubble forming and Nvidia CEO Jensen Huang's promise of $500 billion in AI chip demand."
+      "Marketaux entity coverage rated the news flow neutral at 0.58, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 1 sources, 0.9 effective weighted articles, average relevance 0.64, average source quality 0.75, confidence 0.69.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for NVDA (NVIDIA Corporation): NVIDIA Corporation (<e[+217 characters] On March 16, NVIDIA Corpora[+269 characters]"
     ],
-    "raw_sentiment": -0.0722,
-    "article_count": 9,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Harvard University Stocks List: Top 9 AI Picks",
+      "Jim Cramer Broke Down 13 Stocks Amid Rising Inflation and a Recalcitrant Federal Reserve"
+    ],
+    "last_updated": "2026-03-19"
   },
   "JPM": {
-    "news_score": 0.62,
+    "news_score": 0.74,
+    "news_confidence": 0.72,
+    "raw_sentiment": 0.691,
+    "calibrated_sentiment": 0.4759,
+    "article_count": 3,
+    "effective_article_count": 1.35,
+    "source_count": 1,
+    "average_relevance": 0.89,
+    "average_recency_weight": 0.63,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.34,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för JPM (JP Morgan Chase & Co.): JPMorgan Chase (JPM) shares have shown relatively steady performance over the past month, inching up around 0.3%. For anyone tracking the banking sector, this mild movement invites a closer look at what might be driving investor sentiment right now. JPMorgan Chase’s momentum has cooled slightly after a brisk start to the year, but the recent 1-month share price return"
+      "Marketaux entity coverage rated the news flow bullish at 0.74, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 1.3 effective weighted articles, average relevance 0.89, average source quality 0.75, confidence 0.72.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for JPM (JPMorgan Chase & Co.): Presentation\n\nSeth Seifman\n\nJPMorgan[+305 characters] Stephen Tusa\n\nJPMorgan Chas[+312 characters]"
     ],
-    "raw_sentiment": 0.2381,
-    "article_count": 6,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "AeroVironment, Inc. (AVAV) Presents at JPMorgan Industrials Conference 2026 Transcript",
+      "Carrier Global Corporation (CARR) Presents at JPMorgan Industrials Conference 2026 Transcript",
+      "Hubbell Incorporated (HUBB) Presents at JPMorgan Industrials Conference 2026 Transcript"
+    ],
+    "last_updated": "2026-03-19"
   },
   "JNJ": {
-    "news_score": 0.75,
-    "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 3 artiklar senaste dagarna.",
-      "Sammanfattning för JNJ (Johnson & Johnson): Johnson & Johnson (JNJ) has received quite a bit of attention from Zacks.com users lately. It is wise to be aware of the facts that can impact the stock's prospects. In November 2025, Johnson & Johnson announced several major product developments."
-    ],
-    "raw_sentiment": 0.4906,
+    "news_score": 0.61,
+    "news_confidence": 0.87,
+    "raw_sentiment": 0.2392,
+    "calibrated_sentiment": 0.2121,
     "article_count": 3,
-    "last_updated": "2025-11-20"
+    "effective_article_count": 1.99,
+    "source_count": 3,
+    "average_relevance": 0.87,
+    "average_recency_weight": 0.88,
+    "average_source_quality": 0.82,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.36,
+    "dominant_signal": "bullish",
+    "news_reasons": [
+      "Marketaux entity coverage rated the news flow bullish at 0.61, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 2.0 effective weighted articles, average relevance 0.87, average source quality 0.82, confidence 0.87.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for JNJ (Johnson & Johnson): Defensive stocks also provided a minor b[+151 characters] Johnson & Johnson (<em[+323 characters]"
+    ],
+    "top_headlines": [
+      "[DowJonesToday]Dow Jones Slumps as Inflation Fears Resurface",
+      "Jim Cramer on Johnson & Johnson: “It Should Have Gone Higher, But It Just Shows You How Hard It Is to Buck Stagflation Theories”",
+      "Investors Heavily Search Johnson & Johnson (JNJ): Here is What You Need to Know"
+    ],
+    "last_updated": "2026-03-19"
   },
   "V": {
-    "news_score": 0.73,
+    "news_score": 0.66,
+    "news_confidence": 0.71,
+    "raw_sentiment": 0.4832,
+    "calibrated_sentiment": 0.3288,
+    "article_count": 3,
+    "effective_article_count": 0.93,
+    "source_count": 2,
+    "average_relevance": 0.74,
+    "average_recency_weight": 0.56,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.44,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 9 artiklar senaste dagarna.",
-      "Sammanfattning för V (Visa Inc.): Visa (V) shares have edged lower over the past month, down 6%, reflecting a mix of market shifts and investor reactions to recent sector developments. Despite this pullback, Visa’s year-to-date return remains in positive territory. Visa reported solid revenue and adjusted profit gains in its most recent fiscal year."
+      "Marketaux entity coverage rated the news flow bullish at 0.66, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.9 effective weighted articles, average relevance 0.74, average source quality 0.77, confidence 0.71.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for V (Visa Inc.): Business First Bancshares Inc (NASDAQ:BF[+198 characters] Stablecoins are also being adopted by cr[+153 characters]"
     ],
-    "raw_sentiment": 0.4661,
-    "article_count": 9,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Business First Bancshares (NASDAQ:BFST), SmartFinancial (NYSE:SMBK)",
+      "PayPal Expands Its Stablecoin To 70 Additional Markets",
+      "Visa (V) Integrates AI for Fraud Protection and Digital Payments"
+    ],
+    "last_updated": "2026-03-19"
   },
   "WMT": {
-    "news_score": 0.66,
+    "news_score": 0.71,
+    "news_confidence": 0.71,
+    "raw_sentiment": 0.6265,
+    "calibrated_sentiment": 0.4218,
+    "article_count": 3,
+    "effective_article_count": 1.28,
+    "source_count": 1,
+    "average_relevance": 0.76,
+    "average_recency_weight": 0.72,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.46,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för WMT (Walmart Inc.): Dow Jones futures rise as AI Giant Nvidia Jumps On Earnings; Jobs Report, Walmart Due. Walmart's omnichannel strength, delivery gains and newer ventures like advertising and membership underscore its solid momentum in Zacks' latest review."
+      "Marketaux entity coverage rated the news flow bullish at 0.71, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 1.3 effective weighted articles, average relevance 0.76, average source quality 0.75, confidence 0.71.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for WMT (Walmart Inc.): Adobe, Walmart , and Disney are[+262 characters] Walmart's New Leader Has Potential to Co[+269 characters]"
     ],
-    "raw_sentiment": 0.3114,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "How to Play 3 Major CEO Transitions in Early 2026",
+      "Forget Chipmakers: Walmart and Target Are the Real AI Plays",
+      "EUR/USD: Traders Majority Long Buying Dips Ahead of FOMC Event"
+    ],
+    "last_updated": "2026-03-19"
   },
   "PG": {
-    "news_score": 0.57,
+    "news_score": 0.59,
+    "news_confidence": 0.67,
+    "raw_sentiment": 0.2903,
+    "calibrated_sentiment": 0.1828,
+    "article_count": 2,
+    "effective_article_count": 0.44,
+    "source_count": 2,
+    "average_relevance": 0.82,
+    "average_recency_weight": 0.36,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.59,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för PG (Procter & Gamble Company): The Procter & Gamble Company (NYSE:PG) is one of the biggest consumer goods companies in the world. Jim Cramer has praised the firm’s management in previous appearances. PG leans on premium, high-performance products and targeted marketing."
+      "Marketaux entity coverage rated the news flow neutral at 0.59, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.4 effective weighted articles, average relevance 0.82, average source quality 0.75, confidence 0.67.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for PG (Procter & Gamble Company): CHD has slightly underperformed its riva[+161 characters] We came across a bullish thesis on T[+369 characters]"
     ],
-    "raw_sentiment": 0.1497,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Is Church & Dwight Stock Outperforming the S&P 500?",
+      "Is The Procter & Gamble Company (PG) A Good Stock To Buy Now?"
+    ],
+    "last_updated": "2026-03-19"
   },
   "MA": {
-    "news_score": 0.74,
+    "news_score": 0.55,
+    "news_confidence": 0.71,
+    "raw_sentiment": 0.1502,
+    "calibrated_sentiment": 0.1026,
+    "article_count": 2,
+    "effective_article_count": 0.59,
+    "source_count": 2,
+    "average_relevance": 0.99,
+    "average_recency_weight": 0.39,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.58,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 9 artiklar senaste dagarna.",
-      "Sammanfattning för MA (Mastercard Incorporated): Mastercard Teams With Polygon To Bring Email-Style Aliases to Self-Custody Crypto Wallets. Polygon provides the underlying blockchain infrastructure; Mercuryo handles identity onboarding. Mastercard and Visa’s Proposed Settlement Might Change the Case for Investing in MA."
+      "Marketaux entity coverage rated the news flow neutral at 0.55, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.6 effective weighted articles, average relevance 0.99, average source quality 0.75, confidence 0.71.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for MA (Mastercard Incorporated): Mastercard Incorporated (MA) M&A Call Transcript Mastercard Incorporated</em[+184 characters]"
     ],
-    "raw_sentiment": 0.4782,
-    "article_count": 9,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Mastercard Incorporated (MA) M&A Call Transcript",
+      "Mastercard (MA) Introduces Virtual C-Suite to Provide Small Businesses with Executive-Level Insights"
+    ],
+    "last_updated": "2026-03-19"
   },
   "DIS": {
-    "news_score": 0.46,
+    "news_score": 0.48,
+    "news_confidence": 0.83,
+    "raw_sentiment": -0.0568,
+    "calibrated_sentiment": -0.0476,
+    "article_count": 3,
+    "effective_article_count": 1.52,
+    "source_count": 3,
+    "average_relevance": 0.96,
+    "average_recency_weight": 0.69,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.38,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning för DIS (The Walt Disney Company): Major League Baseball has completed new three-year media-rights agreements with ESPN, NBCUniversal and  Netflix. Disney’s ESPN will pay around $550 million a year for a broad deal including the rights to sell and distribute MLB.TV. YouTube TV drops more good news to subscribers after Disney deal."
+      "Marketaux entity coverage rated the news flow neutral at 0.48, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.5 effective weighted articles, average relevance 0.96, average source quality 0.75, confidence 0.83.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for DIS (The Walt Disney Company): The Walt Disney</e[+116 characters] At The Walt Disney[+214 characters]"
     ],
-    "raw_sentiment": -0.07,
-    "article_count": 10,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Disney Handing Out $50,000,000 To Settle Allegations of Driving Up Subscription Prices for Consumers",
+      "The career rise of Bob Iger, from local weatherman to Disney's repeat CEO",
+      "Disney confirms release dates for Lilo & Stitch 2 and Incredibles 3"
+    ],
+    "last_updated": "2026-03-19"
   },
   "HD": {
-    "news_score": 0.47,
+    "news_score": 0.7,
+    "news_confidence": 0.67,
+    "raw_sentiment": 0.6441,
+    "calibrated_sentiment": 0.4028,
+    "article_count": 1,
+    "effective_article_count": 0.3,
+    "source_count": 1,
+    "average_relevance": 1.0,
+    "average_recency_weight": 0.35,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 1.0,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning för HD (The Home Depot Inc.): Lowe's (LOW) stock is getting a lift on Wednesday morning after topping third quarter sales estimates. Yahoo Finance senior retail reporter Brooke DiPalma dives into the home improvement retailer's earnings release."
+      "Marketaux entity coverage rated the news flow bullish at 0.70, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.3 effective weighted articles, average relevance 1.00, average source quality 0.75, confidence 0.67.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for HD (The Home Depot Inc.): We came across a bullish thesis on T[+351 characters] fotoknips/Shutterstock.com\n\nThe[+244 characters]"
     ],
-    "raw_sentiment": -0.0624,
-    "article_count": 10,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Is The Home Depot, Inc. (HD) A Good Stock To Buy Now?"
+    ],
+    "last_updated": "2026-03-19"
   },
   "BAC": {
-    "news_score": 0.75,
+    "news_score": 0.62,
+    "news_confidence": 0.75,
+    "raw_sentiment": 0.3314,
+    "calibrated_sentiment": 0.2445,
+    "article_count": 3,
+    "effective_article_count": 1.33,
+    "source_count": 2,
+    "average_relevance": 0.96,
+    "average_recency_weight": 0.59,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.51,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
-      "Sammanfattning för BAC (Bank of America Corporation): Despite a 3.9% dip over the past week, Bank of America is up 17.5% year-to-date. The bank has delivered a strong 102.4% return over five years, showing resilience and long-term growth potential."
+      "Marketaux entity coverage rated the news flow bullish at 0.62, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.3 effective weighted articles, average relevance 0.96, average source quality 0.77, confidence 0.75.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for BAC (Bank of America Corporation): Bank of America Corporation (BAC) is Attracting Investor Attention: Here is What You Should Know Mechelen, Belgium; March 117, 2026, 22:0[+336 characters]"
     ],
-    "raw_sentiment": 0.4954,
-    "article_count": 7,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Bank of America Corporation (BAC) is Attracting Investor Attention: Here is What You Should Know",
+      "Galapagos Receives Transparency Notification from Bank of America",
+      "Umicore - Transparency notification by Bank of America Corporation"
+    ],
+    "last_updated": "2026-03-19"
   },
   "XOM": {
-    "news_score": 0.15,
+    "news_score": 0.53,
+    "news_confidence": 0.78,
+    "raw_sentiment": 0.0815,
+    "calibrated_sentiment": 0.0626,
+    "article_count": 3,
+    "effective_article_count": 1.08,
+    "source_count": 3,
+    "average_relevance": 0.9,
+    "average_recency_weight": 0.51,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.44,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för XOM (Exxon Mobil Corporation): Petrochemical giant ExxonMobil has accused Labour of damaging British business. Chairman Paul Greenhouse spoke out after the petrochemical firm announced plans to close the Mossmorran ethylene plant in Fife."
+      "Marketaux entity coverage rated the news flow neutral at 0.53, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.1 effective weighted articles, average relevance 0.90, average source quality 0.77, confidence 0.78.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for XOM (Exxon Mobil Corporation): Chevron (NYSE:CVX), Marathon Petroleum (NYSE:MPC), NVIDIA (NASDAQ:NVDA), Exxon Mobil (NYSE:XOM) Exxon Mobil: Avoid Being The Latecomer To The Energy Party (Downgrade) (NYSE:XOM)"
     ],
-    "raw_sentiment": -0.7097,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Chevron (NYSE:CVX), Marathon Petroleum (NYSE:MPC), NVIDIA (NASDAQ:NVDA), Exxon Mobil (NYSE:XOM)",
+      "Exxon Mobil: Avoid Being The Latecomer To The Energy Party (Downgrade) (NYSE:XOM)",
+      "The Biggest Things Driving the S&P 500 Higher Despite $103 Oil Today"
+    ],
+    "last_updated": "2026-03-19"
   },
   "PFE": {
-    "news_score": 0.75,
-    "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 3 artiklar senaste dagarna.",
-      "Sammanfattning för PFE (Pfizer Inc.): Pfizer CEO on plans to bring down drug prices Pfizer CEO Albert Bourla sits down with Yahoo Finance Executive Editor Brian Sozzi to talk about when consumers can expect to see lower drug prices. Pfizer is among the companies that have made deals with the White House on pharmaceutical pricing."
-    ],
-    "raw_sentiment": 0.5034,
+    "news_score": 0.59,
+    "news_confidence": 0.76,
+    "raw_sentiment": 0.2375,
+    "calibrated_sentiment": 0.1766,
     "article_count": 3,
-    "last_updated": "2025-11-20"
+    "effective_article_count": 1.03,
+    "source_count": 3,
+    "average_relevance": 0.84,
+    "average_recency_weight": 0.55,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.41,
+    "dominant_signal": "neutral",
+    "news_reasons": [
+      "Marketaux entity coverage rated the news flow neutral at 0.59, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.0 effective weighted articles, average relevance 0.84, average source quality 0.77, confidence 0.76.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for PFE (Pfizer Inc.): ., which was acquired by Pfizer[+291 characters] Serina intends to advance additional app[+284 characters]"
+    ],
+    "top_headlines": [
+      "Serina Therapeutics Secures up to $30 Million in Private Placement to Advance Registrational Trial of SER-252 for Advanced Parkinson’s Disease",
+      "Pfizer: I'm Still Expecting A Massive Rebound (NYSE:PFE)",
+      "Pfizer Inc. (PFE) is Attracting Investor Attention: Here is What You Should Know"
+    ],
+    "last_updated": "2026-03-19"
   },
   "VZ": {
-    "news_score": 0.41,
+    "news_score": 0.5,
+    "news_confidence": 0.75,
+    "raw_sentiment": -0.0035,
+    "calibrated_sentiment": -0.0026,
+    "article_count": 2,
+    "effective_article_count": 0.74,
+    "source_count": 2,
+    "average_relevance": 0.99,
+    "average_recency_weight": 0.48,
+    "average_source_quality": 0.78,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.51,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för VZ (Verizon Communications Inc.): Fortis, Verizon, and Atmos Energy are dividend stocks worth holding no matter what your portfolio looks like. Verizon's new 100G optical ring for Monumental Sports strengthens venue connectivity and supports its digital transformation push."
+      "Marketaux entity coverage rated the news flow neutral at 0.50, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.7 effective weighted articles, average relevance 0.99, average source quality 0.78, confidence 0.75.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for VZ (Verizon Communications Inc.): Verizon Communications[+297 characters] (NYSE:VZ)’s planned changes t[+263 characters]"
     ],
-    "raw_sentiment": -0.18,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "KeyBanc Flags Verizon’s (VZ) New Reporting Structure as Investor-Unfriendly",
+      "Is Trending Stock Verizon Communications Inc. (VZ) a Buy Now?"
+    ],
+    "last_updated": "2026-03-19"
   },
   "NFLX": {
     "news_score": 0.58,
+    "news_confidence": 0.68,
+    "raw_sentiment": 0.2603,
+    "calibrated_sentiment": 0.1651,
+    "article_count": 2,
+    "effective_article_count": 0.59,
+    "source_count": 2,
+    "average_relevance": 0.49,
+    "average_recency_weight": 0.75,
+    "average_source_quality": 0.81,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.57,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 9 artiklar senaste dagarna.",
-      "Sammanfattning för NFLX (Netflix Inc.): Major League Baseball has completed new three-year media-rights agreements with ESPN, NBCUniversal and Netflix. ESPN will pay around $550 million a year for a broad deal including the rights to sell and distribute the league’s out-of-market streaming service MLB.TV. Netflix stock falls amid scrutiny of potential Warner Bros Discovery bid."
+      "Marketaux entity coverage rated the news flow neutral at 0.58, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.6 effective weighted articles, average relevance 0.49, average source quality 0.81, confidence 0.68.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for NFLX (Netflix Inc.): Consider when Netflix made this[+246 characters] In other tech news, Netflix (NF[+123 characters]"
     ],
-    "raw_sentiment": 0.1629,
-    "article_count": 9,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Why Kratos Defense Stock Dropped Today",
+      "Fed Decision Looms as Hot Inflation and Rising Oil Prices Pressure Wall Street"
+    ],
+    "last_updated": "2026-03-19"
   },
   "ADBE": {
-    "news_score": 0.59,
+    "news_score": 0.52,
+    "news_confidence": 0.78,
+    "raw_sentiment": 0.0589,
+    "calibrated_sentiment": 0.0453,
+    "article_count": 3,
+    "effective_article_count": 1.16,
+    "source_count": 3,
+    "average_relevance": 0.78,
+    "average_recency_weight": 0.67,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.37,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
-      "Sammanfattning för ADBE (Adobe Inc.): Adobe buys Semrush for $1.9B, TJX raises outlook in Q3 beat Morning Brief host Julie Hyman tracks several of the day's top trending stock tickers. Unity Software (U) will be partnering with Epic Games to integrate games into Fortnite."
+      "Marketaux entity coverage rated the news flow neutral at 0.52, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.2 effective weighted articles, average relevance 0.78, average source quality 0.75, confidence 0.78.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for ADBE (Adobe Inc.): Adobe CEO's Two-Decade Run Ends, But Fun[+302 characters] Adobe: 3 Reasons Not To Buy, 1 Reason Not To Sell After Q1 (NASDAQ:ADBE)"
     ],
-    "raw_sentiment": 0.187,
-    "article_count": 7,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "How to Play 3 Major CEO Transitions in Early 2026",
+      "Adobe: 3 Reasons Not To Buy, 1 Reason Not To Sell After Q1 (NASDAQ:ADBE)",
+      "AI Integration and Capabilities Power Adobe Inc. (ADBE) to Record First Quarter"
+    ],
+    "last_updated": "2026-03-19"
   },
   "CMCSA": {
-    "news_score": 0.4,
+    "news_score": 0.5,
+    "news_confidence": 0.76,
+    "raw_sentiment": 0.0018,
+    "calibrated_sentiment": 0.0013,
+    "article_count": 3,
+    "effective_article_count": 1.36,
+    "source_count": 2,
+    "average_relevance": 0.79,
+    "average_recency_weight": 0.7,
+    "average_source_quality": 0.82,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.39,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för CMCSA (Comcast Corporation): The contest to acquire Warner Bros Discovery (WBD) is accelerating. At least three potential buyers: PSKY, NFLX and CMCSA. Comcast’s stock price has been on something of a rollercoaster lately. The media and telecom industries have faced headwinds from shifting consumer habits."
+      "Marketaux entity coverage rated the news flow neutral at 0.50, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.4 effective weighted articles, average relevance 0.79, average source quality 0.82, confidence 0.76.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for CMCSA (Comcast Corporation): Comcast Corp. (NASDAQ:CMCSA[+311 characters] Comcast, NVIDIA Launch Edge AI [+141 characters]"
     ],
-    "raw_sentiment": -0.2078,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Comcast Stock Edges Up In Pre-Market—Here's What You Should Know",
+      "MU, CVNA, NET, CMCSA, B: 5 Trending Stocks Today",
+      "Comcast (CMCSA) Dips More Than Broader Market: What You Should Know"
+    ],
+    "last_updated": "2026-03-19"
   },
   "KO": {
-    "news_score": 0.6,
+    "news_score": 0.58,
+    "news_confidence": 0.7,
+    "raw_sentiment": 0.2305,
+    "calibrated_sentiment": 0.1534,
+    "article_count": 3,
+    "effective_article_count": 0.88,
+    "source_count": 2,
+    "average_relevance": 0.83,
+    "average_recency_weight": 0.47,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.46,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 9 artiklar senaste dagarna.",
-      "Sammanfattning för KO (The Coca-Cola Company): Coca-Cola is still a reliable investment in this bubbly market. Collegium Pharma and Entegris have been highlighted as Zacks Bull and Bear of the Day COLL's momentum and value appeal contrast sharply with ENTG's slide on weak guidance and falling estimates."
+      "Marketaux entity coverage rated the news flow neutral at 0.58, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.9 effective weighted articles, average relevance 0.83, average source quality 0.75, confidence 0.70.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for KO (The Coca-Cola Company): Sprite Returns as League’s Official Gl[+304 characters] Get the latest news\n\ndelivered to your i[+347 characters]"
     ],
-    "raw_sentiment": 0.209,
-    "article_count": 9,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "NBA and The Coca-Cola Company Announce Multiyear Global Partnership",
+      "Sprite reclaims NBA soft drink sponsorship in blow to PepsiCo’s Starry",
+      "Licensing Expo 2026 Keynote to Spotlight Food & Beverage as the Ultimate Brand Extension Goldmine"
+    ],
+    "last_updated": "2026-03-19"
   },
   "T": {
-    "news_score": 0.62,
+    "news_score": 0.57,
+    "news_confidence": 0.79,
+    "raw_sentiment": 0.1705,
+    "calibrated_sentiment": 0.1348,
+    "article_count": 3,
+    "effective_article_count": 1.36,
+    "source_count": 3,
+    "average_relevance": 0.91,
+    "average_recency_weight": 0.64,
+    "average_source_quality": 0.8,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.4,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 10 artiklar senaste dagarna.",
-      "Sammanfattning för T (AT&T Inc.): The stock market jolted higher shortly after the open as much of the tech universe, including semiconductor stocks, sees aggressive buying. S&P 500 was up 1%, while the Dow rose 0.4%. Both indexes had declined for four straight days coming into today's session."
+      "Marketaux entity coverage rated the news flow neutral at 0.57, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.4 effective weighted articles, average relevance 0.91, average source quality 0.80, confidence 0.79.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for T (AT&T Inc.): I don't think AT&T ( T[+200 characters] AT&T: Way Too Late To Be Buying Now (NYSE:T)"
     ],
-    "raw_sentiment": 0.2365,
-    "article_count": 10,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "AT&T: Way Too Late To Be Buying Now (NYSE:T)",
+      "AT&T Unveils New AI-Powered App Aiming At 100 Million Families",
+      "AT&T Inc. (T) is Attracting Investor Attention: Here is What You Should Know"
+    ],
+    "last_updated": "2026-03-19"
   },
   "NKE": {
-    "news_score": 0.63,
+    "news_score": 0.65,
+    "news_confidence": 0.64,
+    "raw_sentiment": 0.5202,
+    "calibrated_sentiment": 0.306,
+    "article_count": 2,
+    "effective_article_count": 0.32,
+    "source_count": 2,
+    "average_relevance": 0.63,
+    "average_recency_weight": 0.34,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.6,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
-      "Sammanfattning för NKE (Nike Inc.): Wells Fargo raised its outlook on Nike, Inc., highlighting increased confidence in the company's turnaround efforts and improved visibility into sales and margins. Under Armour, Inc. (NYSE:UA) is another sports apparel firm that is in the midst of a turnaround. Jim Cramer believes Under Armour is worth investing in."
+      "Marketaux entity coverage rated the news flow bullish at 0.65, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.3 effective weighted articles, average relevance 0.63, average source quality 0.75, confidence 0.64.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for NKE (Nike Inc.): Hyundai shares have plummeted 23% this m[+336 characters] The iconic Nike (NYSE: NKE<[+315 characters]"
     ],
-    "raw_sentiment": 0.263,
-    "article_count": 7,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Trader's guide to navigating supply disruption by war",
+      "Down 11% in 2026: Is Nike Finally a Buy?"
+    ],
+    "last_updated": "2026-03-19"
   },
   "MRK": {
-    "news_score": 0.96,
+    "news_score": 0.63,
+    "news_confidence": 0.73,
+    "raw_sentiment": 0.3651,
+    "calibrated_sentiment": 0.2601,
+    "article_count": 3,
+    "effective_article_count": 0.97,
+    "source_count": 3,
+    "average_relevance": 0.72,
+    "average_recency_weight": 0.56,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.53,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
-      "Sammanfattning för MRK (Merck & Co. Inc.): Merck (MRK) shares have ticked higher this week, catching the interest of investors. The company's performance over the past month has been relatively steady. This stability invites a closer look at what might be driving sentiment."
+      "Marketaux entity coverage rated the news flow bullish at 0.63, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.0 effective weighted articles, average relevance 0.72, average source quality 0.77, confidence 0.73.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for MRK (Merck & Co. Inc.): Today's Research Daily features new rese[+258 characters] Merck has been making meaningfu[+300 characters]"
     ],
-    "raw_sentiment": 0.916,
-    "article_count": 7,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Top Analyst Reports for Merck, TotalEnergies & Union Pacific",
+      "Kelun-Biotech to Present the Final OS Analysis of Sacituzumab Tirumotecan (Sac-TMT) from the OptiTROP-Lung03 Study",
+      "Evaxion to present new data at AACR Annual Meeting"
+    ],
+    "last_updated": "2026-03-19"
   },
   "ABT": {
-    "news_score": 0.82,
+    "news_score": 0.44,
+    "news_confidence": 0.76,
+    "raw_sentiment": -0.1593,
+    "calibrated_sentiment": -0.1184,
+    "article_count": 3,
+    "effective_article_count": 1.1,
+    "source_count": 3,
+    "average_relevance": 0.75,
+    "average_recency_weight": 0.64,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.43,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för ABT (Abbott Laboratories): Shares of Exact Sciences are soaring over 21% on Wednesday following a Bloomberg report that Abbott Laboratories is in advanced talks to acquire the medical-testing company. The Bloomberg report didn't include any financial terms of a potential deal. Neither Abbott nor Exacts Sciences immediately responded to a request for comment."
+      "Marketaux entity coverage rated the news flow neutral at 0.44, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.1 effective weighted articles, average relevance 0.75, average source quality 0.77, confidence 0.76.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for ABT (Abbott Laboratories): The Virginia Workers’ Compensation Com[+295 characters] Turner spent nearly 30 years at Abbo[+172 characters]"
     ],
-    "raw_sentiment": 0.6413,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Does Workers’ Compensation Cover Injury Caused by Performing a ‘Common Courtesy’?",
+      "ImmuCell Appoints Former Elanco Animal Health Board Member Kathy Turner to Board",
+      "Is Trending Stock Abbott Laboratories (ABT) a Buy Now?"
+    ],
+    "last_updated": "2026-03-19"
   },
   "PEP": {
-    "news_score": 0.77,
+    "news_score": 0.63,
+    "news_confidence": 0.69,
+    "raw_sentiment": 0.4149,
+    "calibrated_sentiment": 0.2694,
+    "article_count": 3,
+    "effective_article_count": 0.78,
+    "source_count": 2,
+    "average_relevance": 0.82,
+    "average_recency_weight": 0.42,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.49,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för PEP (PepsiCo Inc.): PEP, MNST, LW, UNFI and OLLI are five stocks that show improving growth drivers for 2026. Molson Coors ramps marketing and leans on core and economy brands as beer consumption softens and competitive pressure intensifies. Mid-America Apartment Communities, PepsiCo, and Mondelez International have rewarded shareholders for years and recently."
+      "Marketaux entity coverage rated the news flow bullish at 0.63, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.8 effective weighted articles, average relevance 0.82, average source quality 0.75, confidence 0.69.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for PEP (PepsiCo Inc.): PepsiCo, Inc. (NAS[+344 characters] The firm said it continues to favor [+280 characters]"
     ],
-    "raw_sentiment": 0.5396,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Piper Sandler Stays Bullish on PepsiCo (PEP), Cites Pricing and Innovation Tailwinds",
+      "NVIDIA and Global Industrial Software Giants Bring Design, Engineering and Manufacturing Into the AI Era",
+      "Is PepsiCo, Inc. (PEP) A Good Stock To Buy Now?"
+    ],
+    "last_updated": "2026-03-19"
   },
   "CSCO": {
-    "news_score": 0.77,
+    "news_score": 0.7,
+    "news_confidence": 0.73,
+    "raw_sentiment": 0.5684,
+    "calibrated_sentiment": 0.4045,
+    "article_count": 3,
+    "effective_article_count": 0.8,
+    "source_count": 3,
+    "average_relevance": 0.79,
+    "average_recency_weight": 0.43,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.44,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för CSCO (Cisco Systems Inc.): Advanced Micro Devices, Cisco Systems and Saudi Arabian artificial intelligence startup Humain are forming a joint venture to build data centers in the Middle East. The yet-to-be-named joint venture will kick off with a 100-megawatt data center project in Saudi Arabia. Humain has contracted to supply generative video startup Luma AI."
+      "Marketaux entity coverage rated the news flow bullish at 0.70, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.8 effective weighted articles, average relevance 0.79, average source quality 0.77, confidence 0.73.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for CSCO (Cisco Systems Inc.): Cisco Systems Inc. (CSCO): Billionaire Ken Fisher Reignites Interest in Long-Term Holding Cisco Systems\n\nCis[+358 characters]"
     ],
-    "raw_sentiment": 0.5434,
-    "article_count": 6,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Cisco Systems Inc. (CSCO): Billionaire Ken Fisher Reignites Interest in Long-Term Holding",
+      "Stock Market Today: S&P 500, Dow Jones Futures Tumble As US Allies Reject Trump's Call To Deploy Navy At Hormuz—Uber, Lululemon, Cisco In Focus",
+      "Cisco Secure AI Factory with NVIDIA Makes AI Easier to Deploy and Secure, Anywhere Organizations Need It"
+    ],
+    "last_updated": "2026-03-19"
   },
   "ORCL": {
-    "news_score": 0.31,
+    "news_score": 0.69,
+    "news_confidence": 0.74,
+    "raw_sentiment": 0.5205,
+    "calibrated_sentiment": 0.3744,
+    "article_count": 3,
+    "effective_article_count": 1.15,
+    "source_count": 2,
+    "average_relevance": 0.87,
+    "average_recency_weight": 0.57,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.41,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för ORCL (Oracle Corporation): Oracle (ORCL) shares moved slightly in recent trading, capturing attention from investors as sentiment shifts around major tech names. The company’s performance this month shows mixed results, which encourages a closer evaluation of its longer-term track record and fundamentals. See our latest analysis for Oracle."
+      "Marketaux entity coverage rated the news flow bullish at 0.69, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.1 effective weighted articles, average relevance 0.87, average source quality 0.77, confidence 0.74.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for ORCL (Oracle Corporation): In its fourth-quarter 2025 investor lett[+308 characters] On March 17, 2026, Oracle C[+319 characters]"
     ],
-    "raw_sentiment": -0.371,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Oracle Corporation (ORCL) Slid Due to Concerns Around the OpenAI Concentration",
+      "Oracle Corporation (ORCL) is Attracting Investor Attention: Here is What You Should Know",
+      "Is VeriSign Stock Underperforming the S&P 500?"
+    ],
+    "last_updated": "2026-03-19"
   },
   "INTC": {
-    "news_score": 0.26,
+    "news_score": 0.67,
+    "news_confidence": 0.76,
+    "raw_sentiment": 0.4629,
+    "calibrated_sentiment": 0.3479,
+    "article_count": 2,
+    "effective_article_count": 1.3,
+    "source_count": 1,
+    "average_relevance": 0.99,
+    "average_recency_weight": 0.88,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.51,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 4 artiklar senaste dagarna.",
-      "Sammanfattning för INTC (Intel Corporation): AMD, Intel and TSMC brace for Nvidia earnings: trending stocks. Xiaomi sees shares plummet - even as its EV arm turns an operating profit for the first time. Wh Smith pushes for a turnaround. Doordash delivers some news - including a new partnership."
+      "Marketaux entity coverage rated the news flow bullish at 0.67, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 1 sources, 1.3 effective weighted articles, average relevance 0.99, average source quality 0.75, confidence 0.76.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for INTC (Intel Corporation): We came across a bearish thesis on I[+294 characters] Photo by Slejven Djurakovic on Unsplash\n[+206 characters]"
     ],
-    "raw_sentiment": -0.4788,
-    "article_count": 4,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Is Intel Corporation (INTC) A Good Stock To Buy Now?",
+      "Intel (INTC): Intel Xeon 6 is being Used as Processor for NVIDIA DGX Rubin NVL8 Systems"
+    ],
+    "last_updated": "2026-03-19"
   },
   "CRM": {
-    "news_score": 0.95,
+    "news_score": 0.5,
+    "news_confidence": 0.2,
+    "raw_sentiment": 0.0,
+    "calibrated_sentiment": 0.0,
+    "article_count": 0,
+    "effective_article_count": 0.0,
+    "source_count": 0,
+    "average_relevance": 0.0,
+    "average_recency_weight": 0.0,
+    "average_source_quality": 0.0,
+    "provider_sentiment_coverage": 0.0,
+    "dominant_weight_share": 0.0,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 2 artiklar senaste dagarna.",
-      "Sammanfattning för CRM (Salesforce Inc.): Despite a slight dip of 1.9% over the last week and 2.5% across the past month, the stock is still up an impressive 65.4% over three years. Cantor Fitzgerald maintained its “Overweight” rating on the stock with a price target of $325.00."
+      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
     ],
-    "raw_sentiment": 0.9012,
-    "article_count": 2,
-    "last_updated": "2025-11-20"
+    "top_headlines": [],
+    "last_updated": "2026-03-19"
   },
   "COST": {
-    "news_score": 0.52,
+    "news_score": 0.63,
+    "news_confidence": 0.65,
+    "raw_sentiment": 0.4502,
+    "calibrated_sentiment": 0.2692,
+    "article_count": 3,
+    "effective_article_count": 0.82,
+    "source_count": 1,
+    "average_relevance": 0.78,
+    "average_recency_weight": 0.46,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.46,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 8 artiklar senaste dagarna.",
-      "Sammanfattning för COST (Costco Wholesale Corporation): Costco Wholesale (COST) just posted an 8.6% rise in October sales along with a strong start to its new fiscal year, driven by a shift toward apparel and home goods in its product mix. The retail stock is down 15% from its 52-week high."
+      "Marketaux entity coverage rated the news flow bullish at 0.63, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 0.8 effective weighted articles, average relevance 0.78, average source quality 0.75, confidence 0.65.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for COST (Costco Wholesale Corporation): Yet Costco Wholesale ([+291 characters] Is Costco Wholesale a Recession-Proof Business?"
     ],
-    "raw_sentiment": 0.0357,
-    "article_count": 8,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Is Costco Wholesale a Recession-Proof Business?",
+      "How Kirkland Quietly Became Costco's Most Powerful Moat",
+      "Your Tax Refund Will Probably Be Bigger This Year. Here's What to Do With It."
+    ],
+    "last_updated": "2026-03-19"
   },
   "ACN": {
-    "news_score": 0.64,
+    "news_score": 0.55,
+    "news_confidence": 0.83,
+    "raw_sentiment": 0.1209,
+    "calibrated_sentiment": 0.1022,
+    "article_count": 3,
+    "effective_article_count": 1.97,
+    "source_count": 2,
+    "average_relevance": 0.94,
+    "average_recency_weight": 0.88,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.39,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för ACN (Accenture plc): Accenture invests in Alembic, partners on Causal AI for marketing insights. Investors are sitting on a loss of 31% if they invested a year ago. Investors can approximate the average market return by buying an index fund."
+      "Marketaux entity coverage rated the news flow neutral at 0.55, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 2.0 effective weighted articles, average relevance 0.94, average source quality 0.77, confidence 0.83.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for ACN (Accenture plc): As you can see in the rating history cha[+290 characters] Accenture: No, The Software Apocalypse Isn't Coming (NYSE:ACN)"
     ],
-    "raw_sentiment": 0.2853,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Accenture: No, The Software Apocalypse Isn't Coming (NYSE:ACN)",
+      "Gold Tumbles Over 6%; Accenture Earnings Top Views",
+      "Accenture plc 2026 Q2 - Results - Earnings Call Presentation (NYSE:ACN) 2026-03-19"
+    ],
+    "last_updated": "2026-03-19"
   },
   "CVX": {
-    "news_score": 0.78,
+    "news_score": 0.54,
+    "news_confidence": 0.79,
+    "raw_sentiment": 0.1052,
+    "calibrated_sentiment": 0.0826,
+    "article_count": 3,
+    "effective_article_count": 1.22,
+    "source_count": 3,
+    "average_relevance": 0.94,
+    "average_recency_weight": 0.55,
+    "average_source_quality": 0.8,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.38,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 4 artiklar senaste dagarna.",
-      "Sammanfattning för CVX (Chevron Corporation): TotalEnergies and Chevron Vie for Stake in Namibia’s 10-Billion-Barrel Discovery. CVX and XOM are racing to capture strategic oilfields and refineries across key regions. CNQ's record production, low-decline assets, and cleaner valuation stand out."
+      "Marketaux entity coverage rated the news flow neutral at 0.54, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.2 effective weighted articles, average relevance 0.94, average source quality 0.80, confidence 0.79.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for CVX (Chevron Corporation): Chevron (NYSE:CVX), Marathon Petroleum (NYSE:MPC), NVIDIA (NASDAQ:NVDA), Exxon Mobil (NYSE:XOM) Chevron Corporation (CVX) Is a Trending Stock: Facts to Know Before Betting on It"
     ],
-    "raw_sentiment": 0.5646,
-    "article_count": 4,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Chevron (NYSE:CVX), Marathon Petroleum (NYSE:MPC), NVIDIA (NASDAQ:NVDA), Exxon Mobil (NYSE:XOM)",
+      "Chevron Corporation (CVX) Is a Trending Stock: Facts to Know Before Betting on It",
+      "Does Chevron pay dividends? When & how often?"
+    ],
+    "last_updated": "2026-03-19"
   },
   "MCD": {
-    "news_score": 0.22,
-    "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 3 artiklar senaste dagarna.",
-      "Sammanfattning för MCD (McDonald's Corporation): McDonald's stock has eased back slightly, down 0.7% over the last week and 1.1% in the past month. The stock has delivered a solid 55.4% return over five years. Recent news about McDonald's ongoing global expansions and new menu innovations has continued."
-    ],
-    "raw_sentiment": -0.5589,
+    "news_score": 0.64,
+    "news_confidence": 0.68,
+    "raw_sentiment": 0.4336,
+    "calibrated_sentiment": 0.2773,
     "article_count": 3,
-    "last_updated": "2025-11-20"
+    "effective_article_count": 0.8,
+    "source_count": 2,
+    "average_relevance": 0.92,
+    "average_recency_weight": 0.39,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.36,
+    "dominant_signal": "bullish",
+    "news_reasons": [
+      "Marketaux entity coverage rated the news flow bullish at 0.64, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.8 effective weighted articles, average relevance 0.92, average source quality 0.75, confidence 0.68.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for MCD (McDonald's Corporation): McDonald's (NYSE: [+345 characters] McDonald's \"Accelerating the Ar[+299 characters]"
+    ],
+    "top_headlines": [
+      "If You Had Invested $1,000 in McDonald’s or Starbucks 10 Years Ago, Here’s What You’d Have Now",
+      "McDonald's McValue 2.0 Menu Is Appetizing But Valuation Leaves Little Room For Upside",
+      "Is McDonald’s Corporation (MCD) A Good Stock To Buy Now?"
+    ],
+    "last_updated": "2026-03-19"
   },
   "DHR": {
-    "news_score": 0.14,
-    "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 1 artiklar senaste dagarna.",
-      "Sammanfattning för DHR (Danaher Corporation): Shareholders 2.8% loss in Danaher (NYSE:DHR) partly attributable to the company's decline in earnings over past three years. Many investors define successful investing as beating the market average over the long term."
-    ],
-    "raw_sentiment": -0.7166,
+    "news_score": 0.68,
+    "news_confidence": 0.63,
+    "raw_sentiment": 0.6249,
+    "calibrated_sentiment": 0.3581,
     "article_count": 1,
-    "last_updated": "2025-11-20"
+    "effective_article_count": 0.23,
+    "source_count": 1,
+    "average_relevance": 0.64,
+    "average_recency_weight": 0.48,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 1.0,
+    "dominant_signal": "bullish",
+    "news_reasons": [
+      "Marketaux entity coverage rated the news flow bullish at 0.68, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.2 effective weighted articles, average relevance 0.64, average source quality 0.75, confidence 0.63.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for DHR (Danaher Corporation): Chowbey served in various roles of incre[+258 characters]"
+    ],
+    "top_headlines": [
+      "NOV Appoints Sanjay Chowbey, President & CEO of Kennametal Inc., to the Board of Directors"
+    ],
+    "last_updated": "2026-03-19"
   },
   "MDT": {
-    "news_score": 0.42,
+    "news_score": 0.67,
+    "news_confidence": 0.74,
+    "raw_sentiment": 0.4814,
+    "calibrated_sentiment": 0.3482,
+    "article_count": 3,
+    "effective_article_count": 0.9,
+    "source_count": 3,
+    "average_relevance": 0.82,
+    "average_recency_weight": 0.49,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.42,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för MDT (Medtronic plc): Futures are trading higher this morning, as all the major indices once again closed lower on Tuesday. The Dow Jones Industrials closed down 1.07% at 46,091, while the S&P 500 was last seen at 6617, down 0.83%. The NASDAQ, which has been hit the hardest."
+      "Marketaux entity coverage rated the news flow bullish at 0.67, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.9 effective weighted articles, average relevance 0.82, average source quality 0.75, confidence 0.74.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for MDT (Medtronic plc): Medtronic plc (NYS[+368 characters] Linnea Burman, senior vice president and[+337 characters]"
     ],
-    "raw_sentiment": -0.1672,
-    "article_count": 6,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Medtronic (MDT) Strengthens Neurovascular Platform with Scientia Vascular Purchase",
+      "14 Quality Stocks with Highest Dividends",
+      "Medtronic: Snatch Up This Dividend Aristocrat Bargain Now (NYSE:MDT)"
+    ],
+    "last_updated": "2026-03-19"
   },
   "LLY": {
-    "news_score": 0.96,
+    "news_score": 0.57,
+    "news_confidence": 0.72,
+    "raw_sentiment": 0.1987,
+    "calibrated_sentiment": 0.1377,
+    "article_count": 3,
+    "effective_article_count": 1.16,
+    "source_count": 2,
+    "average_relevance": 0.76,
+    "average_recency_weight": 0.69,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.37,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
-      "Sammanfattning för LLY (Eli Lilly and Company): Eli Lilly and J&J recently announced partnerships with AI chipmaker Nvidia, pointing to a broader trend of tie-ups to advance drug discovery and improve workflows. LLY has strong technical momentum and is trading at new all-time highs. Shares are up 43% over the past year."
+      "Marketaux entity coverage rated the news flow neutral at 0.57, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.2 effective weighted articles, average relevance 0.76, average source quality 0.75, confidence 0.72.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for LLY (Eli Lilly and Company): Eli Lilly and[+338 characters] financing was co-led by Taiho Ventures a[+327 characters]"
     ],
-    "raw_sentiment": 0.9163,
-    "article_count": 7,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "BioCryst Pharmaceuticals, Inc. (BCRX) A Good Stock To Buy Now?",
+      "Crossbow Therapeutics Snares $77M in Series B",
+      "Eli Lilly and Company (LLY) Gets Downgraded to Reduce From Hold by HSBC – Here’s Why"
+    ],
+    "last_updated": "2026-03-19"
   },
   "TXN": {
     "news_score": 0.5,
-    "news_reasons": [
-      "Inga nyligen identifierade relevanta nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
-    ],
+    "news_confidence": 0.7,
     "raw_sentiment": 0.0,
-    "article_count": 0,
-    "last_updated": "2025-11-20"
+    "calibrated_sentiment": 0.0,
+    "article_count": 1,
+    "effective_article_count": 0.47,
+    "source_count": 1,
+    "average_relevance": 1.0,
+    "average_recency_weight": 0.57,
+    "average_source_quality": 0.82,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 1.0,
+    "dominant_signal": "neutral",
+    "news_reasons": [
+      "Marketaux entity coverage rated the news flow neutral at 0.50, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.5 effective weighted articles, average relevance 1.00, average source quality 0.82, confidence 0.70.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for TXN (Texas Instruments Incorporated): Texas Instruments Incorporated (TXN) Is a Trending Stock: Facts to Know Before Betting on It"
+    ],
+    "top_headlines": [
+      "Texas Instruments Incorporated (TXN) Is a Trending Stock: Facts to Know Before Betting on It"
+    ],
+    "last_updated": "2026-03-19"
   },
   "UNH": {
-    "news_score": 0.4,
+    "news_score": 0.64,
+    "news_confidence": 0.67,
+    "raw_sentiment": 0.4404,
+    "calibrated_sentiment": 0.2746,
+    "article_count": 1,
+    "effective_article_count": 0.28,
+    "source_count": 1,
+    "average_relevance": 1.0,
+    "average_recency_weight": 0.35,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 1.0,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för UNH (UnitedHealth Group Incorporated): UnitedHealth Group (UNH) shares have seen a bit of volatility over the month, moving down 12%. While not linked to a single recent event, some investors are weighing longer-term earnings trends and sector sentiment. The stock’s recent performance has been rocky, with a 10.1% decline over the past month and a 36.5% drop year-to-"
+      "Marketaux entity coverage rated the news flow bullish at 0.64, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.3 effective weighted articles, average relevance 1.00, average source quality 0.75, confidence 0.67.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for UNH (UnitedHealth Group Incorporated): Is UnitedHealth Group Incorporated (UNH) A Good Stock To Buy Now?"
     ],
-    "raw_sentiment": -0.206,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Is UnitedHealth Group Incorporated (UNH) A Good Stock To Buy Now?"
+    ],
+    "last_updated": "2026-03-19"
   },
   "BMY": {
-    "news_score": 0.38,
+    "news_score": 0.51,
+    "news_confidence": 0.68,
+    "raw_sentiment": 0.0272,
+    "calibrated_sentiment": 0.0174,
+    "article_count": 2,
+    "effective_article_count": 0.88,
+    "source_count": 1,
+    "average_relevance": 0.86,
+    "average_recency_weight": 0.68,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.59,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 4 artiklar senaste dagarna.",
-      "Sammanfattning för BMY (Bristol-Myers Squibb Company): Bristol Myers (BMY) is included among the 15 Best Passive Income Stocks to Buy Right Now. BMY shares drop after halting the Librexia ACS trial, though other milvexian studies continue with top-line data expected in 2026."
+      "Marketaux entity coverage rated the news flow neutral at 0.51, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 1 sources, 0.9 effective weighted articles, average relevance 0.86, average source quality 0.75, confidence 0.68.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for BMY (Bristol-Myers Squibb Company): Bristol Myers Squi[+301 characters] Right now, Bristol Myers</e[+325 characters]"
     ],
-    "raw_sentiment": -0.2412,
-    "article_count": 4,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "These 3 Stocks Trigger Bearish Signals but 2 Offer Hidden Opportunity",
+      "Bristol‑Myers Squibb: The Boring Dividend Stock I'd Happily Hold Through Any Crash"
+    ],
+    "last_updated": "2026-03-19"
   },
   "QCOM": {
-    "news_score": 0.42,
+    "news_score": 0.64,
+    "news_confidence": 0.73,
+    "raw_sentiment": 0.3881,
+    "calibrated_sentiment": 0.2758,
+    "article_count": 3,
+    "effective_article_count": 1.19,
+    "source_count": 2,
+    "average_relevance": 0.99,
+    "average_recency_weight": 0.52,
+    "average_source_quality": 0.77,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.54,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
-      "Sammanfattning för QCOM (QUALCOMM Incorporated): The move comes amid the broader trend of Big Tech companies strengthening their ties to the Middle East. Qualcomm vs. Intel: Which Chip Stock is the Better Buy Now? INTC edges out QCOM as valuation, price momentum and growth prospects give it a slight lead."
+      "Marketaux entity coverage rated the news flow bullish at 0.64, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.2 effective weighted articles, average relevance 0.99, average source quality 0.77, confidence 0.73.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for QCOM (QUALCOMM Incorporated): QUALCOMM Incorporated [+345 characters] QUALCOMM (QCOM): Board Approves New $20.[+274 characters]"
     ],
-    "raw_sentiment": -0.1578,
-    "article_count": 7,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "QUALCOMM (QCOM): Board Approves New $20.0 billion Stock Repurchase Authorization",
+      "QUALCOMM Incorporated (QCOM) Is a Trending Stock: Facts to Know Before Betting on It",
+      "Qualcomm (QCOM), Wayve Partner to Accelerate AI-Driven Autonomous Driving"
+    ],
+    "last_updated": "2026-03-19"
   },
   "HON": {
-    "news_score": 0.21,
+    "news_score": 0.53,
+    "news_confidence": 0.72,
+    "raw_sentiment": 0.0895,
+    "calibrated_sentiment": 0.0624,
+    "article_count": 3,
+    "effective_article_count": 1.02,
+    "source_count": 2,
+    "average_relevance": 0.97,
+    "average_recency_weight": 0.47,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.36,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 5 artiklar senaste dagarna.",
-      "Sammanfattning för HON (Honeywell International Inc.): BofA Securities analyst Andrew Obin cut his rating on Honeywell shares all the way to Sell from Buy. BofA warns that the company faces a difficult stretch of catalysts ahead of its Aerospace spin-off and continues to trail peers on growth."
+      "Marketaux entity coverage rated the news flow neutral at 0.53, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.0 effective weighted articles, average relevance 0.97, average source quality 0.75, confidence 0.72.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for HON (Honeywell International Inc.): Honeywell International</em[+229 characters] About Honeywell Internation[+275 characters]"
     ],
-    "raw_sentiment": -0.5764,
-    "article_count": 5,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Honeywell International CEO Reaffirms Outlook, Flags Middle East Shipping Disruptions at Conference",
+      "Honeywell International Inc. (HON) Presents at JPMorgan Industrials Conference 2026 Transcript",
+      "Honeywell International Inc. (HON) Presents at Bank of America Global Industrials Conference 2026 Transcript"
+    ],
+    "last_updated": "2026-03-19"
   },
   "AMGN": {
-    "news_score": 0.81,
-    "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 3 artiklar senaste dagarna.",
-      "Sammanfattning för AMGN (Amgen Inc.): Jim Cramer has started to discuss pharmaceutical giant Amgen Inc. (NASDAQ:AMGN) more frequently. Most of his discussions surround the firm’s Repatha drug that aims to reduce cholesterol and prevent heart disease. Investors are starting to re-evaluate the pharmaceutical giant's current valuation in light of these recent gains."
-    ],
-    "raw_sentiment": 0.6261,
+    "news_score": 0.59,
+    "news_confidence": 0.7,
+    "raw_sentiment": 0.2833,
+    "calibrated_sentiment": 0.1897,
     "article_count": 3,
-    "last_updated": "2025-11-20"
+    "effective_article_count": 0.74,
+    "source_count": 3,
+    "average_relevance": 0.57,
+    "average_recency_weight": 0.55,
+    "average_source_quality": 0.79,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.38,
+    "dominant_signal": "neutral",
+    "news_reasons": [
+      "Marketaux entity coverage rated the news flow neutral at 0.59, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.7 effective weighted articles, average relevance 0.57, average source quality 0.79, confidence 0.70.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for AMGN (Amgen Inc.): rising bond yields are reducing its appe[+328 characters] Biggest fallers on the Dow are Amgen[+142 characters]"
+    ],
+    "top_headlines": [
+      "US stock crashes big today: Why S&P 500, Nasdaq have suddenly fallen - Dow down 400 points while S&P and Nasdaq slip 0.5%",
+      "Dow Jones leads Wall Street lower as oil prices spike on Iran threats, Fed awaited",
+      "St. Patrick’s Day Rally: Markets Rebound as Tech and Airlines Lead Gains"
+    ],
+    "last_updated": "2026-03-19"
   },
   "SBUX": {
-    "news_score": 0.53,
+    "news_score": 0.69,
+    "news_confidence": 0.77,
+    "raw_sentiment": 0.4918,
+    "calibrated_sentiment": 0.3709,
+    "article_count": 3,
+    "effective_article_count": 0.99,
+    "source_count": 3,
+    "average_relevance": 0.89,
+    "average_recency_weight": 0.46,
+    "average_source_quality": 0.8,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.47,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 8 artiklar senaste dagarna.",
-      "Sammanfattning för SBUX (Starbucks Corporation): Starbucks Corporation (NASDAQ:SBUX) is one of the stocks on Jim Cramer’s radar. Cramer has continued to stress that viewers have faith in the firm. Starbucks' fourth-quarter margin plunge amid persistent inflation and rising labor costs clouds its turnaround."
+      "Marketaux entity coverage rated the news flow bullish at 0.69, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.0 effective weighted articles, average relevance 0.89, average source quality 0.80, confidence 0.77.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for SBUX (Starbucks Corporation): Starbucks Corporation (SBUX) is Attracting Investor Attention: Here is What You Should Know Starbucks (SBUX) returned 102% [+222 characters]"
     ],
-    "raw_sentiment": 0.0559,
-    "article_count": 8,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Starbucks Corporation (SBUX) is Attracting Investor Attention: Here is What You Should Know",
+      "If You Had Invested $1,000 in McDonald’s or Starbucks 10 Years Ago, Here’s What You’d Have Now",
+      "Starbucks' Momentum Score Spikes As Massachusetts Governor Defends Coffee Chains Against RFK Jr.'s Sugar Safety Probe"
+    ],
+    "last_updated": "2026-03-19"
   },
   "LOW": {
-    "news_score": 0.33,
+    "news_score": 0.5,
+    "news_confidence": 0.7,
+    "raw_sentiment": 0.0,
+    "calibrated_sentiment": 0.0,
+    "article_count": 1,
+    "effective_article_count": 0.47,
+    "source_count": 1,
+    "average_relevance": 1.0,
+    "average_recency_weight": 0.57,
+    "average_source_quality": 0.82,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 1.0,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för LOW (Lowe's Companies Inc.): Lowe's stock lifted on Q3 sales beat, raises sales guidance. Chipmaker Nvidia (NVDA) is set to report third quarter earnings figures after the closing bell. Retailers Target (TGT), Lowe's (LOW), and TJX Companies (TJX) are also out with their respective earnings this morning."
+      "Marketaux entity coverage rated the news flow neutral at 0.50, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.5 effective weighted articles, average relevance 1.00, average source quality 0.82, confidence 0.70.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for LOW (Lowe's Companies Inc.): Investors Heavily Search Lowe's Companies, Inc. (LOW): Here is What You Need to Know"
     ],
-    "raw_sentiment": -0.3492,
-    "article_count": 6,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "Investors Heavily Search Lowe's Companies, Inc. (LOW): Here is What You Need to Know"
+    ],
+    "last_updated": "2026-03-19"
   },
   "GE": {
-    "news_score": 0.69,
+    "news_score": 0.42,
+    "news_confidence": 0.62,
+    "raw_sentiment": -0.2857,
+    "calibrated_sentiment": -0.1615,
+    "article_count": 3,
+    "effective_article_count": 0.49,
+    "source_count": 2,
+    "average_relevance": 0.55,
+    "average_recency_weight": 0.4,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.39,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 7 artiklar senaste dagarna.",
-      "Sammanfattning för GE (General Electric Company): Trump says $270 billion in deals being signed at US-Saudi Forum. World's largest aerospace companies gather at Dubai Airshow. GE Aerospace reported strong third-quarter earnings as its flywheel looks set to benefit."
+      "Marketaux entity coverage rated the news flow neutral at 0.42, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.5 effective weighted articles, average relevance 0.55, average source quality 0.75, confidence 0.62.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for GE (General Electric Company): She also held roles at eBay, Walmart, an[+246 characters] Major contractors including Lockheed Mar[+272 characters]"
     ],
-    "raw_sentiment": 0.3875,
-    "article_count": 7,
-    "last_updated": "2025-11-20"
+    "top_headlines": [
+      "$12 billion AI startup founder says future tech giants could operate with under 100 employees",
+      "The Invisible Metals Powering a Trillion-Dollar Economy",
+      "Did Warren Buffett Know Something Wall Street Doesn't? The Former Berkshire Hathaway CEO Left a $373 Billion Warning for the Stock Market."
+    ],
+    "last_updated": "2026-03-19"
   }
 }

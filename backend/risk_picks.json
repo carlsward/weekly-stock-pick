@@ -1,49 +1,312 @@
 {
-  "low": {
-    "symbol": "FB",
-    "company_name": "Meta Platforms Inc.",
-    "week_start": "2025-11-20",
-    "week_end": "2025-11-27",
-    "reasons": [
-      "Senaste 5 handelsdagarna: cirka -0.5% prisutveckling.",
-      "Uppmätt dagsvolatilitet kring 0.2%, klassad som low risk.",
-      "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-      "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-      "Inga nyligen identifierade relevanta nyhetsartiklar för bolaget – nyhetsbidraget sätts till neutralt (0.50)."
-    ],
-    "score": -0.007657108086456215,
-    "risk": "low"
+  "schema_version": 2,
+  "model_version": "v3.1",
+  "generated_at": "2026-03-20T02:55:34Z",
+  "data_as_of": "2026-03-19",
+  "expected_next_refresh_at": "2026-03-23T12:00:00Z",
+  "stale_after": "2026-03-24T00:00:00Z",
+  "market_context": {
+    "timezone": "America/New_York",
+    "week_id": "2026-W12",
+    "week_label": "Mar 16 - 20, 2026",
+    "week_start": "2026-03-16",
+    "week_end": "2026-03-20"
   },
-  "medium": {
-    "symbol": "CSCO",
-    "company_name": "Cisco Systems Inc.",
-    "week_start": "2025-11-20",
-    "week_end": "2025-11-27",
-    "reasons": [
-      "Senaste 5 handelsdagarna: cirka 6.0% prisutveckling.",
-      "Uppmätt dagsvolatilitet kring 1.7%, klassad som medium risk.",
-      "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-      "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 6 artiklar senaste dagarna.",
-      "Sammanfattning för CSCO (Cisco Systems Inc.): Advanced Micro Devices, Cisco Systems and Saudi Arabian artificial intelligence startup Humain are forming a joint venture to build data centers in the Middle East. The yet-to-be-named joint venture will kick off with a 100-megawatt data center project in Saudi Arabia. Humain has contracted to supply generative video startup Luma AI."
-    ],
-    "score": 0.054271279990408546,
-    "risk": "medium"
+  "generation_summary": {
+    "universe_size": 49,
+    "evaluated_candidates": 49,
+    "skipped_symbols": 0,
+    "skipped_details": []
   },
-  "high": {
-    "symbol": "GOOGL",
-    "company_name": "Alphabet Inc.",
-    "week_start": "2025-11-20",
-    "week_end": "2025-11-27",
-    "reasons": [
-      "Senaste 5 handelsdagarna: cirka 2.1% prisutveckling.",
-      "Uppmätt dagsvolatilitet kring 2.1%, klassad som high risk.",
-      "Riskjusterad modellscore (momentum minus volatilitet) ger en relativt attraktiv profil.",
-      "Nyhetsanalys (AI-modell, sammanfattning av flera källor):",
-      "Nyhetsanalys (AI-modell, FinBERT) baserad på 1 artiklar senaste dagarna.",
-      "Sammanfattning för GOOGL (Alphabet Inc.): Alphabet Stock Climbed to an All-Time High Today. The internet search king is quickly becoming a dominant supplier of artificial intelligence (AI)"
-    ],
-    "score": 0.00026667175294589526,
-    "risk": "high"
+  "selection_thresholds": {
+    "overall_score": 0.1,
+    "risk_scores": {
+      "low": 0.08,
+      "medium": 0.1,
+      "high": 0.12
+    },
+    "minimum_confidence": 0.55
+  },
+  "overall_selection": {
+    "status": "picked",
+    "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.174 and medium confidence.",
+    "threshold_score": 0.1,
+    "threshold_confidence": 0.55,
+    "pick": {
+      "symbol": "CVX",
+      "company_name": "Chevron Corporation",
+      "risk": "medium",
+      "model_score": 0.174,
+      "confidence_score": 0.73,
+      "confidence_label": "medium",
+      "price_as_of": "2026-03-19",
+      "news_as_of": "2026-03-19",
+      "article_count": 3,
+      "metrics": {
+        "momentum_5d": 0.0227,
+        "momentum_20d": 0.0902,
+        "daily_volatility": 0.0121,
+        "downside_volatility": 0.0085,
+        "max_drawdown_20d": 0.0192,
+        "positive_day_ratio_10d": 0.7,
+        "price_vs_20d_average": 0.0575,
+        "volume_trend_5d": 0.1241,
+        "news_sentiment": 0.54,
+        "raw_news_sentiment": 0.1052,
+        "calibrated_news_sentiment": 0.0826,
+        "news_confidence": 0.79,
+        "effective_article_count": 1.22,
+        "source_count": 3,
+        "average_relevance": 0.94
+      },
+      "score_breakdown": {
+        "momentum": 0.243,
+        "short_momentum": 0.0624,
+        "medium_momentum": 0.0902,
+        "trend_quality": 0.0739,
+        "volume_confirmation": 0.0165,
+        "volatility_penalty": -0.0829,
+        "daily_volatility_penalty": -0.0363,
+        "downside_penalty": -0.0338,
+        "drawdown_penalty": -0.0128,
+        "news_adjustment": 0.014,
+        "signal_alignment": 0.0,
+        "technical_total": 0.16,
+        "total": 0.174
+      },
+      "reasons": [
+        "Price trend remains constructive: 5-day momentum is 2.3% and 20-day momentum is 9.0%.",
+        "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 5.8% relative to its 20-day average.",
+        "Risk profile shows daily volatility around 1.2%, downside volatility near 0.8%, and a recent max drawdown of 1.9%.",
+        "Volume confirmation is 12.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+        "News signal is neutral with score 0.54, confidence 0.79, and 1.2 weighted articles across 3 sources.",
+        "Marketaux entity coverage rated the news flow neutral at 0.54, after adjusting for relevance, recency, source quality, and story concentration.",
+        "Evidence quality: 3 articles across 3 sources, 1.2 effective weighted articles, average relevance 0.94, average source quality 0.80, confidence 0.79.",
+        "Overall model score is 0.174 with medium confidence."
+      ],
+      "news_evidence": [
+        {
+          "title": "Chevron (NYSE:CVX), Marathon Petroleum (NYSE:MPC), NVIDIA (NASDAQ:NVDA), Exxon Mobil (NYSE:XOM)",
+          "provider": null,
+          "url": null,
+          "published_at": null,
+          "relevance_score": null,
+          "sentiment": null
+        },
+        {
+          "title": "Chevron Corporation (CVX) Is a Trending Stock: Facts to Know Before Betting on It",
+          "provider": null,
+          "url": null,
+          "published_at": null,
+          "relevance_score": null,
+          "sentiment": null
+        },
+        {
+          "title": "Does Chevron pay dividends? When & how often?",
+          "provider": null,
+          "url": null,
+          "published_at": null,
+          "relevance_score": null,
+          "sentiment": null
+        }
+      ],
+      "thesis_monitor": {
+        "status": "watch",
+        "headline": "The thesis needs watching",
+        "summary": "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact.",
+        "alerts": [
+          "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact."
+        ],
+        "signals": [
+          {
+            "label": "Momentum",
+            "state": "positive",
+            "value": "2.3% 5D • 9.0% 20D",
+            "detail": "Price action is still supporting the release thesis."
+          },
+          {
+            "label": "Volatility",
+            "state": "positive",
+            "value": "1.2% daily • 1.9% drawdown",
+            "detail": "Volatility and drawdown remain controlled for this release."
+          },
+          {
+            "label": "News",
+            "state": "watch",
+            "value": "0.54 sentiment • 3 articles",
+            "detail": "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact."
+          },
+          {
+            "label": "Margin",
+            "state": "positive",
+            "value": "+0.074 score • +0.179 conf",
+            "detail": "The pick cleared the release thresholds with room to spare."
+          },
+          {
+            "label": "Freshness",
+            "state": "positive",
+            "value": "price 0d • news 0d",
+            "detail": "Price and news timestamps are recent enough for a live monitoring read."
+          }
+        ]
+      }
+    }
+  },
+  "risk_selections": {
+    "low": {
+      "status": "no_pick",
+      "status_reason": "No low-risk candidate cleared the minimum score threshold of 0.08. The best candidate was DIS at -0.241.",
+      "threshold_score": 0.08,
+      "threshold_confidence": 0.55,
+      "pick": null,
+      "best_candidate": {
+        "symbol": "DIS",
+        "company_name": "The Walt Disney Company",
+        "risk": "low",
+        "model_score": -0.2405,
+        "confidence_score": 0.47,
+        "confidence_label": "low"
+      }
+    },
+    "medium": {
+      "status": "picked",
+      "status_reason": "CVX is the strongest medium-risk candidate this week at 0.174 with medium confidence.",
+      "threshold_score": 0.1,
+      "threshold_confidence": 0.55,
+      "pick": {
+        "symbol": "CVX",
+        "company_name": "Chevron Corporation",
+        "risk": "medium",
+        "model_score": 0.174,
+        "confidence_score": 0.73,
+        "confidence_label": "medium",
+        "price_as_of": "2026-03-19",
+        "news_as_of": "2026-03-19",
+        "article_count": 3,
+        "metrics": {
+          "momentum_5d": 0.0227,
+          "momentum_20d": 0.0902,
+          "daily_volatility": 0.0121,
+          "downside_volatility": 0.0085,
+          "max_drawdown_20d": 0.0192,
+          "positive_day_ratio_10d": 0.7,
+          "price_vs_20d_average": 0.0575,
+          "volume_trend_5d": 0.1241,
+          "news_sentiment": 0.54,
+          "raw_news_sentiment": 0.1052,
+          "calibrated_news_sentiment": 0.0826,
+          "news_confidence": 0.79,
+          "effective_article_count": 1.22,
+          "source_count": 3,
+          "average_relevance": 0.94
+        },
+        "score_breakdown": {
+          "momentum": 0.243,
+          "short_momentum": 0.0624,
+          "medium_momentum": 0.0902,
+          "trend_quality": 0.0739,
+          "volume_confirmation": 0.0165,
+          "volatility_penalty": -0.0829,
+          "daily_volatility_penalty": -0.0363,
+          "downside_penalty": -0.0338,
+          "drawdown_penalty": -0.0128,
+          "news_adjustment": 0.014,
+          "signal_alignment": 0.0,
+          "technical_total": 0.16,
+          "total": 0.174
+        },
+        "reasons": [
+          "Price trend remains constructive: 5-day momentum is 2.3% and 20-day momentum is 9.0%.",
+          "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 5.8% relative to its 20-day average.",
+          "Risk profile shows daily volatility around 1.2%, downside volatility near 0.8%, and a recent max drawdown of 1.9%.",
+          "Volume confirmation is 12.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+          "News signal is neutral with score 0.54, confidence 0.79, and 1.2 weighted articles across 3 sources.",
+          "Marketaux entity coverage rated the news flow neutral at 0.54, after adjusting for relevance, recency, source quality, and story concentration.",
+          "Evidence quality: 3 articles across 3 sources, 1.2 effective weighted articles, average relevance 0.94, average source quality 0.80, confidence 0.79.",
+          "Overall model score is 0.174 with medium confidence."
+        ],
+        "news_evidence": [
+          {
+            "title": "Chevron (NYSE:CVX), Marathon Petroleum (NYSE:MPC), NVIDIA (NASDAQ:NVDA), Exxon Mobil (NYSE:XOM)",
+            "provider": null,
+            "url": null,
+            "published_at": null,
+            "relevance_score": null,
+            "sentiment": null
+          },
+          {
+            "title": "Chevron Corporation (CVX) Is a Trending Stock: Facts to Know Before Betting on It",
+            "provider": null,
+            "url": null,
+            "published_at": null,
+            "relevance_score": null,
+            "sentiment": null
+          },
+          {
+            "title": "Does Chevron pay dividends? When & how often?",
+            "provider": null,
+            "url": null,
+            "published_at": null,
+            "relevance_score": null,
+            "sentiment": null
+          }
+        ],
+        "thesis_monitor": {
+          "status": "watch",
+          "headline": "The thesis needs watching",
+          "summary": "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact.",
+          "alerts": [
+            "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact."
+          ],
+          "signals": [
+            {
+              "label": "Momentum",
+              "state": "positive",
+              "value": "2.3% 5D • 9.0% 20D",
+              "detail": "Price action is still supporting the release thesis."
+            },
+            {
+              "label": "Volatility",
+              "state": "positive",
+              "value": "1.2% daily • 1.9% drawdown",
+              "detail": "Volatility and drawdown remain controlled for this release."
+            },
+            {
+              "label": "News",
+              "state": "watch",
+              "value": "0.54 sentiment • 3 articles",
+              "detail": "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact."
+            },
+            {
+              "label": "Margin",
+              "state": "positive",
+              "value": "+0.074 score • +0.179 conf",
+              "detail": "The pick cleared the release thresholds with room to spare."
+            },
+            {
+              "label": "Freshness",
+              "state": "positive",
+              "value": "price 0d • news 0d",
+              "detail": "Price and news timestamps are recent enough for a live monitoring read."
+            }
+          ]
+        }
+      }
+    },
+    "high": {
+      "status": "no_pick",
+      "status_reason": "No high-risk candidate cleared the minimum score threshold of 0.12. The best candidate was INTC at -0.078.",
+      "threshold_score": 0.12,
+      "threshold_confidence": 0.55,
+      "pick": null,
+      "best_candidate": {
+        "symbol": "INTC",
+        "company_name": "Intel Corporation",
+        "risk": "high",
+        "model_score": -0.078,
+        "confidence_score": 0.54,
+        "confidence_label": "low"
+      }
+    }
   }
 }

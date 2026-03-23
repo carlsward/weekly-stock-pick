@@ -1,49 +1,41 @@
-[
-  {
-    "logged_at": "2025-11-17",
-    "symbol": "MSFT",
-    "company_name": "Microsoft Corporation",
-    "week_start": "2025-11-17",
-    "week_end": "2025-11-24",
-    "score": -0.001600450514517425,
-    "risk": "low"
-  },
-  {
-    "logged_at": "2025-11-18",
-    "symbol": "MSFT",
-    "company_name": "Microsoft Corporation",
-    "week_start": "2025-11-18",
-    "week_end": "2025-11-25",
-    "score": -0.01005593428923459,
-    "risk": "low"
-  },
-  {
-    "logged_at": "2025-11-18",
-    "symbol": "AAPL",
-    "company_name": "Apple Inc.",
-    "week_start": "2025-11-18",
-    "week_end": "2025-11-25",
-    "score": 0.0875960623592939,
-    "risk": "low"
-  },
-  {
-    "logged_at": "2025-11-19",
-    "symbol": "CSCO",
-    "company_name": "Cisco Systems Inc.",
-    "week_start": "2025-11-19",
-    "week_end": "2025-11-26",
-    "score": 0.07277525807499263,
-    "risk": "medium",
-    "model_version": "v1.0"
-  },
-  {
-    "logged_at": "2025-11-20",
-    "symbol": "CSCO",
-    "company_name": "Cisco Systems Inc.",
-    "week_start": "2025-11-20",
-    "week_end": "2025-11-27",
-    "score": 0.054271279990408546,
-    "risk": "medium",
-    "model_version": "v1.0"
-  }
-]
+{
+  "schema_version": 2,
+  "model_version": "v3.1",
+  "generated_at": "2026-03-20T02:55:34Z",
+  "entries": [
+    {
+      "week_id": "2025-W47",
+      "week_start": "2025-11-17",
+      "week_end": "2025-11-21",
+      "week_label": "Nov 17 - 21, 2025",
+      "logged_at": "2025-11-20T03:00:00Z",
+      "status": "picked",
+      "status_reason": "CSCO cleared the commercial release thresholds for this market week with a score of 0.332 and high confidence.",
+      "symbol": "CSCO",
+      "company_name": "Cisco Systems Inc.",
+      "risk": "medium",
+      "model_score": 0.3315,
+      "confidence_score": 0.79,
+      "confidence_label": "high",
+      "data_as_of": "2025-11-20",
+      "model_version": "v2.0"
+    },
+    {
+      "week_id": "2026-W12",
+      "week_start": "2026-03-16",
+      "week_end": "2026-03-20",
+      "week_label": "Mar 16 - 20, 2026",
+      "logged_at": "2026-03-20T02:55:34Z",
+      "status": "picked",
+      "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.174 and medium confidence.",
+      "symbol": "CVX",
+      "company_name": "Chevron Corporation",
+      "risk": "medium",
+      "model_score": 0.174,
+      "confidence_score": 0.73,
+      "confidence_label": "medium",
+      "data_as_of": "2026-03-19",
+      "model_version": "v3.1"
+    }
+  ]
+}

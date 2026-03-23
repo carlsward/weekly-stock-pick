@@ -2,10 +2,8 @@
 
 package com.nilu.weeklypicks
 
-import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,7 +28,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -53,14 +50,19 @@ import kotlin.math.abs
 
 @Composable
 fun WeeklyPickScreen(
-    content: DashboardContent,
-    onRiskSelected: (String) -> Unit,
-    onRefresh: () -> Unit
+    content: DashboardContent
 ) {
-    var showInfoDialog by remember { mutableStateOf(false) }
-    var showFullSummary by rememberSaveable(content.selectedRisk) { mutableStateOf(false) }
-    val selectedSelection = content.selectedSelection
-    val overallPick = content.dashboard.overallSelection.pick
+    val displaySelection = content.dashboard.overallSelection
+    val detailStateKey = listOf(
+        displaySelection.pick?.symbol ?: displaySelection.status.name,
+        content.dashboard.marketContext.weekLabel
+    ).joinToString(":")
+    var showChangeDetails by rememberSaveable(detailStateKey) { mutableStateOf(false) }
+    var showThesisMonitor by rememberSaveable(detailStateKey) { mutableStateOf(false) }
+    var showScoreBreakdown by rememberSaveable(detailStateKey) { mutableStateOf(false) }
+    var showNewsEvidence by rememberSaveable(detailStateKey) { mutableStateOf(false) }
+    var showQualificationDetails by rememberSaveable(detailStateKey) { mutableStateOf(false) }
+    var showNoPickDetails by rememberSaveable(detailStateKey) { mutableStateOf(false) }
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -82,26 +84,23 @@ fun WeeklyPickScreen(
                     )
                 )
                 .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
-            HeaderRow(
-                isRefreshing = content.isRefreshing,
-                onRefresh = onRefresh,
-                onShowInfo = { showInfoDialog = true }
-            )
+            HeaderRow()
 
             Text(
                 text = content.dashboard.marketContext.weekLabel,
-                style = MaterialTheme.typography.titleMedium,
+                style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.SemiBold
             )
             Text(
-                text = "Last updated ${formatInstant(content.dashboard.generatedAt)} • Data as of ${formatDate(content.dashboard.dataAsOf)}",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Text(
-                text = "Source: ${if (content.source == DataSource.NETWORK) "live network" else "saved cache"}",
+                text = buildString {
+                    append("Updated ${formatInstant(content.dashboard.generatedAt)}")
+                    append(" • Data ${formatDate(content.dashboard.dataAsOf)}")
+                    if (content.source == DataSource.CACHE) {
+                        append(" • Cached")
+                    }
+                },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -122,106 +121,43 @@ fun WeeklyPickScreen(
                 )
             }
 
-            overallPick?.let { pick ->
-                Text(
-                    text = "Release pick: ${pick.symbol} • ${pick.companyName} • ${pick.risk.replaceFirstChar { it.uppercase() }} risk",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            }
-
-            content.weeklyChange?.let { WeeklyChangeCard(it) }
-
-            RiskSelector(
-                selections = content.dashboard.riskSelections,
-                selectedRisk = content.selectedRisk,
-                onRiskSelected = onRiskSelected
-            )
-
-            if (selectedSelection.status == SelectionStatus.PICKED && selectedSelection.pick != null) {
+            if (displaySelection.status == SelectionStatus.PICKED && displaySelection.pick != null) {
                 PickDetails(
-                    pick = selectedSelection.pick,
-                    showFullSummary = showFullSummary,
-                    onToggleSummary = { showFullSummary = !showFullSummary }
+                    pick = displaySelection.pick,
+                    showThesisMonitor = showThesisMonitor,
+                    onToggleThesisMonitor = { showThesisMonitor = !showThesisMonitor },
+                    showScoreBreakdown = showScoreBreakdown,
+                    onToggleScoreBreakdown = { showScoreBreakdown = !showScoreBreakdown },
+                    showNewsEvidence = showNewsEvidence,
+                    onToggleNewsEvidence = { showNewsEvidence = !showNewsEvidence },
+                    showQualificationDetails = showQualificationDetails,
+                    onToggleQualificationDetails = { showQualificationDetails = !showQualificationDetails }
                 )
             } else {
-                NoPickDetails(selection = selectedSelection)
+                NoPickDetails(
+                    selection = displaySelection,
+                    expanded = showNoPickDetails,
+                    onToggle = { showNoPickDetails = !showNoPickDetails }
+                )
             }
 
-            Text(
-                text = "This is a model-driven research tool, not financial advice. Always verify the thesis independently before investing.",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-    }
-
-    if (showInfoDialog) {
-        ModelInfoDialog(onDismiss = { showInfoDialog = false })
-    }
-}
-
-@Composable
-private fun HeaderRow(
-    isRefreshing: Boolean,
-    onRefresh: () -> Unit,
-    onShowInfo: () -> Unit
-) {
-    Column(
-        modifier = Modifier.fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        Column {
-            Text(
-                text = "Weekly stock release",
-                style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                text = if (isRefreshing) "Refreshing..." else "Commercial release mode",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End)
-        ) {
-            HeaderActionChip(
-                label = "How it works",
-                onClick = onShowInfo
-            )
-            HeaderActionChip(
-                label = if (isRefreshing) "Refreshing" else "Refresh",
-                onClick = onRefresh
-            )
+            content.weeklyChange?.let { change ->
+                WeeklyChangeCard(
+                    change = change,
+                    expanded = showChangeDetails,
+                    onToggle = { showChangeDetails = !showChangeDetails }
+                )
+            }
         }
     }
 }
 
 @Composable
-private fun HeaderActionChip(
-    label: String,
-    onClick: () -> Unit
-) {
-    AssistChip(
-        onClick = onClick,
-        label = {
-            Text(
-                text = label,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-        },
-        colors = AssistChipDefaults.assistChipColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f),
-            labelColor = MaterialTheme.colorScheme.onSurface
-        ),
-        border = AssistChipDefaults.assistChipBorder(
-            enabled = true,
-            borderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)
-        )
+private fun HeaderRow() {
+    Text(
+        text = "Weekly stock release",
+        style = MaterialTheme.typography.headlineSmall,
+        fontWeight = FontWeight.Bold
     )
 }
 
@@ -257,9 +193,15 @@ private fun StatusBanner(
 }
 
 @Composable
-private fun WeeklyChangeCard(change: WeeklyChangeSummary) {
+private fun WeeklyChangeCard(
+    change: WeeklyChangeSummary,
+    expanded: Boolean,
+    onToggle: () -> Unit
+) {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .animateContentSize(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f)
         ),
@@ -269,22 +211,18 @@ private fun WeeklyChangeCard(change: WeeklyChangeSummary) {
             modifier = Modifier.padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Text(
-                text = "What changed this week",
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = FontWeight.SemiBold
+            SectionHeader(
+                title = "This week",
+                expanded = expanded,
+                onToggle = onToggle
             )
             Text(
                 text = change.title,
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
             Text(
-                text = change.summary,
-                style = MaterialTheme.typography.bodyMedium
-            )
-            Text(
-                text = "${change.previousWeekLabel} → ${change.currentWeekLabel}",
+                text = "${change.previousWeekLabel} -> ${change.currentWeekLabel}",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -315,6 +253,13 @@ private fun WeeklyChangeCard(change: WeeklyChangeSummary) {
                     )
                 }
             }
+
+            if (expanded) {
+                Text(
+                    text = change.summary,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
         }
     }
 }
@@ -343,88 +288,16 @@ private fun DeltaChip(
 }
 
 @Composable
-@OptIn(ExperimentalLayoutApi::class)
-private fun RiskSelector(
-    selections: Map<String, Selection>,
-    selectedRisk: String,
-    onRiskSelected: (String) -> Unit
-) {
-    val orderedKeys = listOf("low", "medium", "high")
-        .filter { selections.containsKey(it) }
-
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text(
-            text = "Risk profiles",
-            style = MaterialTheme.typography.titleSmall,
-            fontWeight = FontWeight.SemiBold
-        )
-        FlowRow(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            orderedKeys.forEach { risk ->
-                val selection = selections.getValue(risk)
-                RiskChip(
-                    risk = risk,
-                    isSelected = selectedRisk == risk,
-                    hasPick = selection.status == SelectionStatus.PICKED,
-                    onClick = { onRiskSelected(risk) }
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun RiskChip(
-    risk: String,
-    isSelected: Boolean,
-    hasPick: Boolean,
-    onClick: () -> Unit
-) {
-    val baseColor = riskColor(risk)
-    val targetBackground = when {
-        isSelected -> baseColor.copy(alpha = 0.18f)
-        !hasPick -> MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.35f)
-        else -> Color.Transparent
-    }
-    val targetBorder = when {
-        isSelected -> baseColor
-        !hasPick -> MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
-        else -> MaterialTheme.colorScheme.outline.copy(alpha = 0.3f)
-    }
-    val targetText = when {
-        isSelected -> baseColor
-        !hasPick -> MaterialTheme.colorScheme.onSurfaceVariant
-        else -> MaterialTheme.colorScheme.onSurface
-    }
-
-    val background by animateColorAsState(targetValue = targetBackground, label = "riskBg")
-    val border by animateColorAsState(targetValue = targetBorder, label = "riskBorder")
-    val textColor by animateColorAsState(targetValue = targetText, label = "riskText")
-
-    Text(
-        text = buildString {
-            append(risk.replaceFirstChar { it.uppercase() })
-            if (!hasPick) append(" · No pick")
-        },
-        modifier = Modifier
-            .border(1.dp, border, RoundedCornerShape(999.dp))
-            .background(background, RoundedCornerShape(999.dp))
-            .clickable(onClick = onClick)
-            .padding(horizontal = 12.dp, vertical = 8.dp),
-        style = MaterialTheme.typography.bodyMedium,
-        fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal,
-        color = textColor
-    )
-}
-
-@Composable
 private fun PickDetails(
     pick: WeeklyPick,
-    showFullSummary: Boolean,
-    onToggleSummary: () -> Unit
+    showThesisMonitor: Boolean,
+    onToggleThesisMonitor: () -> Unit,
+    showScoreBreakdown: Boolean,
+    onToggleScoreBreakdown: () -> Unit,
+    showNewsEvidence: Boolean,
+    onToggleNewsEvidence: () -> Unit,
+    showQualificationDetails: Boolean,
+    onToggleQualificationDetails: () -> Unit
 ) {
     val summaryReason = pick.reasons.firstOrNull { it.startsWith("News summary", ignoreCase = true) }
     val primaryReasons = pick.reasons.filterNot { it == summaryReason }
@@ -475,53 +348,48 @@ private fun PickDetails(
         }
 
         pick.thesisMonitor?.let { monitor ->
-            ThesisMonitorSection(monitor)
+            ThesisMonitorSection(
+                monitor = monitor,
+                expanded = showThesisMonitor,
+                onToggle = onToggleThesisMonitor
+            )
         }
 
-        ScoreBreakdownSection(pick.scoreBreakdown)
-
-        if (pick.newsEvidence.isNotEmpty()) {
-            NewsEvidenceSection(pick.newsEvidence)
-        }
-
-        HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
-
-        Text(
-            text = "Why it qualified",
-            style = MaterialTheme.typography.titleSmall,
-            fontWeight = FontWeight.SemiBold
+        ScoreBreakdownSection(
+            scoreBreakdown = pick.scoreBreakdown,
+            expanded = showScoreBreakdown,
+            onToggle = onToggleScoreBreakdown
         )
 
-        primaryReasons.forEach { reason ->
-            Text(
-                text = "• $reason",
-                style = MaterialTheme.typography.bodyMedium
+        if (pick.newsEvidence.isNotEmpty()) {
+            NewsEvidenceSection(
+                newsEvidence = pick.newsEvidence,
+                expanded = showNewsEvidence,
+                onToggle = onToggleNewsEvidence
             )
         }
 
-        summaryReason?.let { summary ->
-            Text(
-                text = "• $summary",
-                style = MaterialTheme.typography.bodyMedium,
-                maxLines = if (showFullSummary) Int.MAX_VALUE else 4,
-                overflow = TextOverflow.Ellipsis
-            )
-            TextButton(
-                onClick = onToggleSummary,
-                modifier = Modifier.align(Alignment.Start)
-            ) {
-                Text(if (showFullSummary) "Show less" else "Show more")
-            }
-        }
+        QualificationSection(
+            primaryReasons = primaryReasons,
+            summaryReason = summaryReason,
+            expanded = showQualificationDetails,
+            onToggle = onToggleQualificationDetails
+        )
     }
 }
 
 @Composable
-private fun ThesisMonitorSection(monitor: ThesisMonitor) {
+private fun ThesisMonitorSection(
+    monitor: ThesisMonitor,
+    expanded: Boolean,
+    onToggle: () -> Unit
+) {
     val accent = thesisStatusColor(monitor.status)
 
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .animateContentSize(),
         colors = CardDefaults.cardColors(
             containerColor = accent.copy(alpha = 0.10f)
         ),
@@ -533,47 +401,66 @@ private fun ThesisMonitorSection(monitor: ThesisMonitor) {
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.Top
             ) {
-                Text(
-                    text = "Thesis monitor",
-                    style = MaterialTheme.typography.titleSmall,
-                    fontWeight = FontWeight.SemiBold
-                )
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    Text(
+                        text = "Thesis health",
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Text(
+                        text = monitor.headline,
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.Medium,
+                        maxLines = if (expanded) Int.MAX_VALUE else 2,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
                 DeltaChip(
-                    label = "Status",
-                    value = monitor.status.name.lowercase().replaceFirstChar { it.uppercase() },
+                    label = "Health",
+                    value = thesisStatusLabel(monitor.status),
                     accent = accent
                 )
             }
 
             Text(
-                text = monitor.headline,
-                style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.SemiBold
-            )
-            Text(
                 text = monitor.summary,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodySmall,
+                maxLines = if (expanded) Int.MAX_VALUE else 2,
+                overflow = TextOverflow.Ellipsis
             )
 
-            if (monitor.alerts.isNotEmpty()) {
+            if (expanded && monitor.alerts.isNotEmpty()) {
                 monitor.alerts.forEach { alert ->
                     Text(
                         text = "• $alert",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurface
+                        style = MaterialTheme.typography.bodySmall
                     )
                 }
             }
 
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+            if (expanded) {
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    monitor.signals.forEach { signal ->
+                        SignalPill(signal)
+                    }
+                }
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
             ) {
-                monitor.signals.forEach { signal ->
-                    SignalPill(signal)
+                TextButton(onClick = onToggle) {
+                    Text(if (expanded) "Hide details" else "Open details")
                 }
             }
         }
@@ -605,7 +492,11 @@ private fun SignalPill(signal: ThesisSignal) {
 }
 
 @Composable
-private fun ScoreBreakdownSection(scoreBreakdown: ScoreBreakdown) {
+private fun ScoreBreakdownSection(
+    scoreBreakdown: ScoreBreakdown,
+    expanded: Boolean,
+    onToggle: () -> Unit
+) {
     val contributions = listOf(
         "Momentum" to scoreBreakdown.momentum,
         "Volatility" to scoreBreakdown.volatilityPenalty,
@@ -615,7 +506,9 @@ private fun ScoreBreakdownSection(scoreBreakdown: ScoreBreakdown) {
     val maxMagnitude = contributions.maxOfOrNull { abs(it.second) }?.coerceAtLeast(0.01) ?: 0.01
 
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .animateContentSize(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
@@ -625,23 +518,30 @@ private fun ScoreBreakdownSection(scoreBreakdown: ScoreBreakdown) {
             modifier = Modifier.padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Text(
-                text = "Score breakdown",
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = FontWeight.SemiBold
+            SectionHeader(
+                title = "Score breakdown",
+                expanded = expanded,
+                onToggle = onToggle
             )
-            contributions.forEach { (label, value) ->
-                ContributionRow(
-                    label = label,
-                    value = value,
-                    maxMagnitude = maxMagnitude
-                )
-            }
             Text(
-                text = "Short ${formatSigned(scoreBreakdown.shortMomentum)} • Medium ${formatSigned(scoreBreakdown.mediumMomentum)} • Trend ${formatSigned(scoreBreakdown.trendQuality)} • Volume ${formatSigned(scoreBreakdown.volumeConfirmation)}",
+                text = scoreBreakdownSummary(contributions),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
+            if (expanded) {
+                contributions.forEach { (label, value) ->
+                    ContributionRow(
+                        label = label,
+                        value = value,
+                        maxMagnitude = maxMagnitude
+                    )
+                }
+                Text(
+                    text = "Short ${formatSigned(scoreBreakdown.shortMomentum)} • Medium ${formatSigned(scoreBreakdown.mediumMomentum)} • Trend ${formatSigned(scoreBreakdown.trendQuality)} • Volume ${formatSigned(scoreBreakdown.volumeConfirmation)}",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }
@@ -694,11 +594,17 @@ private fun ContributionRow(
 }
 
 @Composable
-private fun NewsEvidenceSection(newsEvidence: List<NewsEvidence>) {
+private fun NewsEvidenceSection(
+    newsEvidence: List<NewsEvidence>,
+    expanded: Boolean,
+    onToggle: () -> Unit
+) {
     val uriHandler = LocalUriHandler.current
 
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .animateContentSize(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
@@ -708,36 +614,61 @@ private fun NewsEvidenceSection(newsEvidence: List<NewsEvidence>) {
             modifier = Modifier.padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Text(
-                text = "News evidence",
-                style = MaterialTheme.typography.titleSmall,
-                fontWeight = FontWeight.SemiBold
+            SectionHeader(
+                title = "News evidence",
+                expanded = expanded,
+                onToggle = onToggle
             )
-            newsEvidence.forEachIndexed { index, article ->
-                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text(
+                text = "${newsEvidence.size} recent headline${if (newsEvidence.size == 1) "" else "s"} contributed to the signal.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            if (expanded) {
+                newsEvidence.forEachIndexed { index, article ->
+                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(
+                            text = article.title,
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.Medium
+                        )
+                        formatEvidenceMetadata(article)?.let { metadata ->
+                            Text(
+                                text = metadata,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                        if (!article.url.isNullOrBlank()) {
+                            TextButton(
+                                onClick = { uriHandler.openUri(article.url) },
+                                modifier = Modifier.padding(start = 0.dp)
+                            ) {
+                                Text("Open source")
+                            }
+                        }
+                    }
+                    if (index != newsEvidence.lastIndex) {
+                        HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
+                    }
+                }
+            } else {
+                newsEvidence.firstOrNull()?.let { article ->
                     Text(
                         text = article.title,
                         style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Medium
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
                     )
                     formatEvidenceMetadata(article)?.let { metadata ->
                         Text(
                             text = metadata,
                             style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
                         )
                     }
-                    if (!article.url.isNullOrBlank()) {
-                        TextButton(
-                            onClick = { uriHandler.openUri(article.url) },
-                            modifier = Modifier.padding(start = 0.dp)
-                        ) {
-                            Text("Open source")
-                        }
-                    }
-                }
-                if (index != newsEvidence.lastIndex) {
-                    HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
                 }
             }
         }
@@ -745,7 +676,67 @@ private fun NewsEvidenceSection(newsEvidence: List<NewsEvidence>) {
 }
 
 @Composable
-private fun NoPickDetails(selection: Selection) {
+private fun QualificationSection(
+    primaryReasons: List<String>,
+    summaryReason: String?,
+    expanded: Boolean,
+    onToggle: () -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .animateContentSize(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(14.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            SectionHeader(
+                title = "Why it qualified",
+                expanded = expanded,
+                onToggle = onToggle
+            )
+
+            val previewReasons = if (expanded) primaryReasons else primaryReasons.take(2)
+            previewReasons.forEach { reason ->
+                Text(
+                    text = "• $reason",
+                    style = MaterialTheme.typography.bodyMedium,
+                    maxLines = if (expanded) Int.MAX_VALUE else 3,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            if (!expanded && primaryReasons.size > previewReasons.size) {
+                Text(
+                    text = "${primaryReasons.size - previewReasons.size} more notes hidden",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            if (expanded && summaryReason != null) {
+                HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
+                Text(
+                    text = summaryReason.removePrefix("News summary: ").removePrefix("News summary"),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun NoPickDetails(
+    selection: Selection,
+    expanded: Boolean,
+    onToggle: () -> Unit
+) {
     val bestCandidate = selection.bestCandidate
     val scoreGap = bestCandidate
         ?.takeIf { it.modelScore < selection.thresholdScore }
@@ -755,7 +746,9 @@ private fun NoPickDetails(selection: Selection) {
         ?.let { selection.thresholdConfidence - it.confidenceScore }
 
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .animateContentSize(),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f)
         ),
@@ -765,60 +758,63 @@ private fun NoPickDetails(selection: Selection) {
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            Text(
-                text = "No release pick for this profile",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.SemiBold
+            SectionHeader(
+                title = "No release pick for this profile",
+                expanded = expanded,
+                onToggle = onToggle,
+                collapsedLabel = "Why"
             )
             Text(
                 text = selection.statusReason,
                 style = MaterialTheme.typography.bodyMedium
             )
 
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                DeltaChip(
-                    label = "Required score",
-                    value = formatSigned(selection.thresholdScore),
-                    accent = RiskMediumColor
-                )
-                DeltaChip(
-                    label = "Required conf.",
-                    value = formatSigned(selection.thresholdConfidence),
-                    accent = RiskMediumColor
-                )
-            }
-
-            bestCandidate?.let { candidate ->
-                HorizontalDivider()
-                Text(
-                    text = "Closest candidate",
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-                Text(
-                    text = "${candidate.symbol} • ${candidate.companyName}",
-                    style = MaterialTheme.typography.bodyLarge
-                )
-                Text(
-                    text = "Score ${formatSigned(candidate.modelScore)} • ${candidate.confidenceLabel.replaceFirstChar { it.uppercase() }} confidence",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-
-                scoreGap?.let {
-                    Text(
-                        text = "The candidate missed the score bar by ${formatSigned(it)}.",
-                        style = MaterialTheme.typography.bodySmall
+            if (expanded) {
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    DeltaChip(
+                        label = "Required score",
+                        value = formatSigned(selection.thresholdScore),
+                        accent = RiskMediumColor
+                    )
+                    DeltaChip(
+                        label = "Required conf.",
+                        value = formatSigned(selection.thresholdConfidence),
+                        accent = RiskMediumColor
                     )
                 }
-                confidenceGap?.let {
+
+                bestCandidate?.let { candidate ->
+                    HorizontalDivider()
                     Text(
-                        text = "Confidence came in ${formatSigned(it)} below the minimum threshold.",
-                        style = MaterialTheme.typography.bodySmall
+                        text = "Closest candidate",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+                    Text(
+                        text = "${candidate.symbol} • ${candidate.companyName}",
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                    Text(
+                        text = "Score ${formatSigned(candidate.modelScore)} • ${candidate.confidenceLabel.replaceFirstChar { it.uppercase() }} confidence",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+
+                    scoreGap?.let {
+                        Text(
+                            text = "The candidate missed the score bar by ${formatSigned(it)}.",
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                    confidenceGap?.let {
+                        Text(
+                            text = "Confidence came in ${formatSigned(it)} below the minimum threshold.",
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
                 }
             }
         }
@@ -855,7 +851,7 @@ private fun MetricCard(
 }
 
 @Composable
-private fun ModelInfoDialog(onDismiss: () -> Unit) {
+fun ModelInfoDialog(onDismiss: () -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
@@ -869,8 +865,8 @@ private fun ModelInfoDialog(onDismiss: () -> Unit) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("The app publishes one release-quality pick per market week only when a candidate clears both score and confidence thresholds.")
                 Text("The score is additive: momentum helps, volatility subtracts, and recent news sentiment nudges the result up or down.")
-                Text("The release screen compares this week with last week, shows the score contributions, and surfaces the headlines that informed the signal.")
-                Text("If a risk profile does not clear the minimum bar, the app shows no pick instead of forcing a weak idea into the UI.")
+                Text("The homepage keeps the pick compact and pushes the supporting analysis into expandable sections.")
+                Text("This is a model-driven research tool, not financial advice. Verify the thesis independently before investing.")
             }
         },
         confirmButton = {
@@ -904,7 +900,7 @@ private fun StockLogoBadge(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = symbol.uppercase(Locale.getDefault()),
+                text = symbol.uppercase(Locale.US),
                 style = MaterialTheme.typography.labelLarge,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -915,8 +911,7 @@ private fun StockLogoBadge(
 
 @Composable
 private fun ScoreMeter(score: Double) {
-    val clamped = score.coerceIn(-0.4, 0.4)
-    val normalized = ((clamped + 0.4) / 0.8).toFloat()
+    val normalized = ((score.coerceIn(-0.4, 0.4) + 0.4) / 0.8).toFloat()
 
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Text(
@@ -945,11 +940,29 @@ private fun ScoreMeter(score: Double) {
                     )
             )
         }
+    }
+}
+
+@Composable
+private fun SectionHeader(
+    title: String,
+    expanded: Boolean,
+    onToggle: () -> Unit,
+    collapsedLabel: String = "Details"
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
         Text(
-            text = "Momentum, volatility, and news are blended into one release score.",
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            text = title,
+            style = MaterialTheme.typography.titleSmall,
+            fontWeight = FontWeight.SemiBold
         )
+        TextButton(onClick = onToggle) {
+            Text(if (expanded) "Hide" else collapsedLabel)
+        }
     }
 }
 
@@ -970,6 +983,14 @@ private fun thesisStatusColor(status: ThesisMonitorStatus): Color {
     }
 }
 
+private fun thesisStatusLabel(status: ThesisMonitorStatus): String {
+    return when (status) {
+        ThesisMonitorStatus.HEALTHY -> "Stable"
+        ThesisMonitorStatus.WATCH -> "Watch"
+        ThesisMonitorStatus.RISK -> "Review"
+    }
+}
+
 private fun thesisSignalColor(state: ThesisSignalState): Color {
     return when (state) {
         ThesisSignalState.POSITIVE -> RiskLowColor
@@ -985,12 +1006,12 @@ private fun formatSigned(value: Double): String = String.format(Locale.US, "%+.3
 private fun formatDelta(value: Double): String = String.format(Locale.US, "%+.2f", value)
 
 private fun formatDate(date: LocalDate): String {
-    val formatter = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.getDefault())
+    val formatter = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.US)
     return date.format(formatter)
 }
 
 private fun formatInstant(instant: Instant): String {
-    val formatter = DateTimeFormatter.ofPattern("MMM d, yyyy HH:mm", Locale.getDefault())
+    val formatter = DateTimeFormatter.ofPattern("MMM d, yyyy HH:mm", Locale.US)
     return instant.atZone(ZoneId.systemDefault()).format(formatter)
 }
 
@@ -1002,4 +1023,23 @@ private fun formatEvidenceMetadata(article: NewsEvidence): String? {
         article.sentiment?.let { add("sentiment ${formatDelta(it)}") }
     }
     return parts.takeIf { it.isNotEmpty() }?.joinToString(" • ")
+}
+
+private fun scoreBreakdownSummary(contributions: List<Pair<String, Double>>): String {
+    val positive = contributions.maxByOrNull { it.second }?.takeIf { it.second > 0.01 }
+    val negative = contributions.minByOrNull { it.second }?.takeIf { it.second < -0.01 }
+
+    return when {
+        positive != null && negative != null ->
+            "${positive.first} is doing most of the lifting while ${negative.first.lowercase(Locale.US)} is the main drag."
+
+        positive != null ->
+            "${positive.first} is doing most of the lifting in the model."
+
+        negative != null ->
+            "${negative.first} is the main drag on the score."
+
+        else ->
+            "The score is broadly balanced across momentum, volatility, news, and alignment."
+    }
 }

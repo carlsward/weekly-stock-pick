@@ -163,6 +163,26 @@ def market_today(now: Optional[datetime] = None) -> date:
     return (now or datetime.now(MARKET_TZ)).astimezone(MARKET_TZ).date()
 
 
+def market_day_age(as_of: date, reference: date) -> int:
+    if as_of >= reference:
+        return 0
+
+    age = 0
+    cursor = as_of
+    while cursor < reference:
+        cursor += timedelta(days=1)
+        if cursor.weekday() < 5:
+            age += 1
+    return age
+
+
+def format_market_age(label: str, days: Optional[int]) -> str:
+    if days is None:
+        return f"{label} no fresh news"
+    suffix = "trading day" if days == 1 else "trading days"
+    return f"{label} {days} {suffix}"
+
+
 def parse_iso_datetime(value: Optional[str]) -> Optional[datetime]:
     if not value or not isinstance(value, str):
         return None
@@ -747,10 +767,10 @@ def build_thesis_monitor(
 ) -> Dict[str, Any]:
     reference = reference_date or market_today()
     price_as_of = date.fromisoformat(candidate.price_as_of)
-    price_age_days = max((reference - price_as_of).days, 0)
+    price_age_days = market_day_age(price_as_of, reference)
     news_age_days = None
     if candidate.news_as_of:
-        news_age_days = max((reference - date.fromisoformat(candidate.news_as_of)).days, 0)
+        news_age_days = market_day_age(date.fromisoformat(candidate.news_as_of), reference)
 
     score_margin = candidate.total_score - threshold_score
     confidence_margin = candidate.confidence_score - threshold_confidence
@@ -860,9 +880,9 @@ def build_thesis_monitor(
             "label": "Freshness",
             "state": freshness_state,
             "value": (
-                f"price {price_age_days}d • news {news_age_days}d"
+                f"{format_market_age('price', price_age_days)} • {format_market_age('news', news_age_days)}"
                 if news_age_days is not None
-                else f"price {price_age_days}d • no fresh news"
+                else f"{format_market_age('price', price_age_days)} • no fresh news"
             ),
             "detail": freshness_detail,
         },
@@ -873,15 +893,15 @@ def build_thesis_monitor(
     alerts = alert_details[:3]
 
     if severity == 0:
-        headline = "The thesis is intact"
+        headline = "Support is intact"
         summary = "Momentum, risk, and evidence are still aligned with the release thesis."
         status = "healthy"
     elif severity == 1:
-        headline = "The thesis needs watching"
+        headline = "Support needs watching"
         summary = alerts[0] if alerts else "One or more support signals narrowed, even though the pick still qualifies."
         status = "watch"
     else:
-        headline = "The thesis is weakening"
+        headline = "Support needs review"
         summary = alerts[0] if alerts else "A core support signal slipped into risk territory and needs re-checking."
         status = "risk"
 

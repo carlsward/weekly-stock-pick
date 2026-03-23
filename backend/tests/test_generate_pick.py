@@ -11,6 +11,7 @@ from backend.generate_pick import (
     RISK_SELECTION_THRESHOLDS,
     StockCandidate,
     build_thesis_monitor,
+    market_day_age,
     build_price_series_from_frame,
     build_news_snapshot,
     build_market_week,
@@ -230,13 +231,13 @@ class GeneratePickTests(unittest.TestCase):
         )
 
         self.assertEqual("healthy", monitor["status"])
-        self.assertEqual("The thesis is intact", monitor["headline"])
+        self.assertEqual("Support is intact", monitor["headline"])
         self.assertEqual(5, len(monitor["signals"]))
 
     def test_thesis_monitor_flags_narrow_margin_and_stale_data(self) -> None:
         candidate = build_candidate("NVDA", "high", total_score=0.125, confidence_score=0.57)
-        candidate.price_as_of = "2026-03-10"
-        candidate.news_as_of = "2026-03-10"
+        candidate.price_as_of = "2026-03-06"
+        candidate.news_as_of = "2026-03-06"
         candidate.article_count = 1
         candidate.effective_article_count = 0.6
         candidate.news_score = 0.48
@@ -252,6 +253,9 @@ class GeneratePickTests(unittest.TestCase):
         self.assertEqual("risk", monitor["status"])
         self.assertTrue(any("barely cleared the release bar" in alert for alert in monitor["alerts"]))
         self.assertTrue(any(signal["label"] == "Freshness" and signal["state"] == "risk" for signal in monitor["signals"]))
+
+    def test_market_day_age_ignores_weekend_gap(self) -> None:
+        self.assertEqual(1, market_day_age(date(2026, 3, 20), date(2026, 3, 23)))
 
     def test_stooq_symbol_maps_us_equities(self) -> None:
         self.assertEqual("aapl.us", stooq_symbol("AAPL"))

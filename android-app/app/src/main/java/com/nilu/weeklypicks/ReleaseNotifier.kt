@@ -81,9 +81,9 @@ internal fun buildReleaseNotificationPlan(
                 events += ReleaseNotificationEvent(
                     id = THESIS_ALERT_NOTIFICATION_ID,
                     title = when (monitor.status) {
-                        ThesisMonitorStatus.RISK -> "Thesis risk: ${overallPick.symbol}"
-                        ThesisMonitorStatus.WATCH -> "Thesis watch: ${overallPick.symbol}"
-                        ThesisMonitorStatus.HEALTHY -> "Thesis update: ${overallPick.symbol}"
+                        ThesisMonitorStatus.RISK -> "Support needs review: ${overallPick.symbol}"
+                        ThesisMonitorStatus.WATCH -> "Support needs watching: ${overallPick.symbol}"
+                        ThesisMonitorStatus.HEALTHY -> "Support update: ${overallPick.symbol}"
                     },
                     message = monitor.summary
                 )

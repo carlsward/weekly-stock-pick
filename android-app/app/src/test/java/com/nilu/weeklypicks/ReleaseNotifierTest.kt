@@ -41,7 +41,7 @@ class ReleaseNotifierTest {
         )
 
         assertEquals(1, plan.events.size)
-        assertTrue(plan.events.first().title.startsWith("Thesis watch"))
+        assertTrue(plan.events.first().title.startsWith("Support needs watching"))
         assertEquals("2026-W12:MSFT:WATCH", plan.thesisAlertKeyToRecord)
     }
 

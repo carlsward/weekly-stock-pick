@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
   "model_version": "v3.1",
-  "generated_at": "2026-03-20T02:55:34Z",
-  "data_as_of": "2026-03-19",
-  "expected_next_refresh_at": "2026-03-23T12:00:00Z",
-  "stale_after": "2026-03-24T00:00:00Z",
+  "generated_at": "2026-03-23T13:01:50Z",
+  "data_as_of": "2026-03-23",
+  "expected_next_refresh_at": "2026-03-30T12:00:00Z",
+  "stale_after": "2026-03-31T00:00:00Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W12",
-    "week_label": "Mar 16 - 20, 2026",
-    "week_start": "2026-03-16",
-    "week_end": "2026-03-20"
+    "week_id": "2026-W13",
+    "week_label": "Mar 23 - 27, 2026",
+    "week_start": "2026-03-23",
+    "week_end": "2026-03-27"
   },
   "generation_summary": {
     "universe_size": 49,
@@ -29,99 +29,99 @@
   },
   "selection": {
     "status": "picked",
-    "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.174 and medium confidence.",
+    "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.264 and high confidence.",
     "threshold_score": 0.1,
     "threshold_confidence": 0.55,
     "pick": {
       "symbol": "CVX",
       "company_name": "Chevron Corporation",
       "risk": "medium",
-      "model_score": 0.174,
-      "confidence_score": 0.73,
-      "confidence_label": "medium",
-      "price_as_of": "2026-03-19",
-      "news_as_of": "2026-03-19",
+      "model_score": 0.2635,
+      "confidence_score": 0.77,
+      "confidence_label": "high",
+      "price_as_of": "2026-03-20",
+      "news_as_of": "2026-03-23",
       "article_count": 3,
       "metrics": {
-        "momentum_5d": 0.0227,
-        "momentum_20d": 0.0902,
-        "daily_volatility": 0.0121,
-        "downside_volatility": 0.0085,
+        "momentum_5d": 0.0249,
+        "momentum_20d": 0.0968,
+        "daily_volatility": 0.0119,
+        "downside_volatility": 0.0089,
         "max_drawdown_20d": 0.0192,
         "positive_day_ratio_10d": 0.7,
-        "price_vs_20d_average": 0.0575,
-        "volume_trend_5d": 0.1241,
-        "news_sentiment": 0.54,
-        "raw_news_sentiment": 0.1052,
-        "calibrated_news_sentiment": 0.0826,
-        "news_confidence": 0.79,
-        "effective_article_count": 1.22,
-        "source_count": 3,
-        "average_relevance": 0.94
+        "price_vs_20d_average": 0.0541,
+        "volume_trend_5d": 0.464,
+        "news_sentiment": 0.62,
+        "raw_news_sentiment": 0.3697,
+        "calibrated_news_sentiment": 0.2412,
+        "news_confidence": 0.69,
+        "effective_article_count": 1.21,
+        "source_count": 1,
+        "average_relevance": 0.69
       },
       "score_breakdown": {
-        "momentum": 0.243,
-        "short_momentum": 0.0624,
-        "medium_momentum": 0.0902,
-        "trend_quality": 0.0739,
-        "volume_confirmation": 0.0165,
-        "volatility_penalty": -0.0829,
-        "daily_volatility_penalty": -0.0363,
-        "downside_penalty": -0.0338,
+        "momentum": 0.2987,
+        "short_momentum": 0.0686,
+        "medium_momentum": 0.0968,
+        "trend_quality": 0.0715,
+        "volume_confirmation": 0.0619,
+        "volatility_penalty": -0.0841,
+        "daily_volatility_penalty": -0.0358,
+        "downside_penalty": -0.0355,
         "drawdown_penalty": -0.0128,
-        "news_adjustment": 0.014,
-        "signal_alignment": 0.0,
-        "technical_total": 0.16,
-        "total": 0.174
+        "news_adjustment": 0.0391,
+        "signal_alignment": 0.0099,
+        "technical_total": 0.2146,
+        "total": 0.2635
       },
       "reasons": [
-        "Price trend remains constructive: 5-day momentum is 2.3% and 20-day momentum is 9.0%.",
-        "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 5.8% relative to its 20-day average.",
-        "Risk profile shows daily volatility around 1.2%, downside volatility near 0.8%, and a recent max drawdown of 1.9%.",
-        "Volume confirmation is 12.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-        "News signal is neutral with score 0.54, confidence 0.79, and 1.2 weighted articles across 3 sources.",
-        "Marketaux entity coverage rated the news flow neutral at 0.54, after adjusting for relevance, recency, source quality, and story concentration.",
-        "Evidence quality: 3 articles across 3 sources, 1.2 effective weighted articles, average relevance 0.94, average source quality 0.80, confidence 0.79.",
-        "Overall model score is 0.174 with medium confidence."
+        "Price trend remains constructive: 5-day momentum is 2.5% and 20-day momentum is 9.7%.",
+        "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 5.4% relative to its 20-day average.",
+        "Risk profile shows daily volatility around 1.2%, downside volatility near 0.9%, and a recent max drawdown of 1.9%.",
+        "Volume confirmation is 46.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+        "News signal is bullish with score 0.62, confidence 0.69, and 1.2 weighted articles across 1 sources.",
+        "Marketaux entity coverage rated the news flow bullish at 0.62, after adjusting for relevance, recency, source quality, and story concentration.",
+        "Evidence quality: 3 articles across 1 sources, 1.2 effective weighted articles, average relevance 0.69, average source quality 0.75, confidence 0.69.",
+        "Overall model score is 0.264 with high confidence."
       ],
       "news_evidence": [
         {
-          "title": "Chevron (NYSE:CVX), Marathon Petroleum (NYSE:MPC), NVIDIA (NASDAQ:NVDA), Exxon Mobil (NYSE:XOM)",
-          "provider": null,
-          "url": null,
-          "published_at": null,
-          "relevance_score": null,
-          "sentiment": null
+          "title": "The Best Stocks to Invest $1,000 in Right Now",
+          "provider": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/best-stocks-invest-1-000-090400950.html",
+          "published_at": "2026-03-23T09:04:00Z",
+          "relevance_score": 0.64,
+          "sentiment": 0.2
         },
         {
-          "title": "Chevron Corporation (CVX) Is a Trending Stock: Facts to Know Before Betting on It",
-          "provider": null,
-          "url": null,
-          "published_at": null,
-          "relevance_score": null,
-          "sentiment": null
+          "title": "Better Oil Stock: Chevron vs. Occidental Petroleum",
+          "provider": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/sectors/energy/articles/better-oil-stock-chevron-vs-203500027.html",
+          "published_at": "2026-03-22T20:35:00Z",
+          "relevance_score": 0.83,
+          "sentiment": 0.27
         },
         {
-          "title": "Does Chevron pay dividends? When & how often?",
-          "provider": null,
-          "url": null,
-          "published_at": null,
-          "relevance_score": null,
-          "sentiment": null
+          "title": "VIG vs NOBL: Which Dividend ETF Should You Buy Now?",
+          "provider": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/vig-vs-nobl-dividend-etf-155402963.html",
+          "published_at": "2026-03-22T15:54:02Z",
+          "relevance_score": 0.59,
+          "sentiment": 0.77
         }
       ],
       "thesis_monitor": {
-        "status": "watch",
-        "headline": "The thesis needs watching",
-        "summary": "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact.",
+        "status": "risk",
+        "headline": "The thesis is weakening",
+        "summary": "Some of the supporting data is getting old enough to weaken monitoring quality.",
         "alerts": [
-          "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact."
+          "Some of the supporting data is getting old enough to weaken monitoring quality."
         ],
         "signals": [
           {
             "label": "Momentum",
             "state": "positive",
-            "value": "2.3% 5D • 9.0% 20D",
+            "value": "2.5% 5D • 9.7% 20D",
             "detail": "Price action is still supporting the release thesis."
           },
           {
@@ -132,21 +132,21 @@
           },
           {
             "label": "News",
-            "state": "watch",
-            "value": "0.54 sentiment • 3 articles",
-            "detail": "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact."
+            "state": "positive",
+            "value": "0.62 sentiment • 3 articles",
+            "detail": "Recent news flow is supportive and diversified enough to back the setup."
           },
           {
             "label": "Margin",
             "state": "positive",
-            "value": "+0.074 score • +0.179 conf",
+            "value": "+0.164 score • +0.222 conf",
             "detail": "The pick cleared the release thresholds with room to spare."
           },
           {
             "label": "Freshness",
-            "state": "positive",
-            "value": "price 0d • news 0d",
-            "detail": "Price and news timestamps are recent enough for a live monitoring read."
+            "state": "risk",
+            "value": "price 3d • news 0d",
+            "detail": "Some of the supporting data is getting old enough to weaken monitoring quality."
           }
         ]
       }

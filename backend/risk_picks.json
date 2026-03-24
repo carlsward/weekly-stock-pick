@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "model_version": "v3.1",
-  "generated_at": "2026-03-23T13:01:50Z",
-  "data_as_of": "2026-03-23",
+  "generated_at": "2026-03-24T15:20:27Z",
+  "data_as_of": "2026-03-24",
   "expected_next_refresh_at": "2026-03-30T12:00:00Z",
   "stale_after": "2026-03-31T00:00:00Z",
   "market_context": {
@@ -29,99 +29,99 @@
   },
   "overall_selection": {
     "status": "picked",
-    "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.264 and high confidence.",
+    "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.385 and high confidence.",
     "threshold_score": 0.1,
     "threshold_confidence": 0.55,
     "pick": {
       "symbol": "CVX",
       "company_name": "Chevron Corporation",
       "risk": "medium",
-      "model_score": 0.2635,
-      "confidence_score": 0.77,
+      "model_score": 0.3852,
+      "confidence_score": 0.86,
       "confidence_label": "high",
-      "price_as_of": "2026-03-20",
-      "news_as_of": "2026-03-23",
+      "price_as_of": "2026-03-24",
+      "news_as_of": "2026-03-24",
       "article_count": 3,
       "metrics": {
-        "momentum_5d": 0.0249,
-        "momentum_20d": 0.0968,
-        "daily_volatility": 0.0119,
+        "momentum_5d": 0.0533,
+        "momentum_20d": 0.1251,
+        "daily_volatility": 0.0125,
         "downside_volatility": 0.0089,
         "max_drawdown_20d": 0.0192,
-        "positive_day_ratio_10d": 0.7,
-        "price_vs_20d_average": 0.0541,
-        "volume_trend_5d": 0.464,
-        "news_sentiment": 0.62,
-        "raw_news_sentiment": 0.3697,
-        "calibrated_news_sentiment": 0.2412,
-        "news_confidence": 0.69,
-        "effective_article_count": 1.21,
-        "source_count": 1,
-        "average_relevance": 0.69
+        "positive_day_ratio_10d": 0.9,
+        "price_vs_20d_average": 0.0773,
+        "volume_trend_5d": 0.2467,
+        "news_sentiment": 0.6,
+        "raw_news_sentiment": 0.2784,
+        "calibrated_news_sentiment": 0.1927,
+        "news_confidence": 0.72,
+        "effective_article_count": 0.89,
+        "source_count": 3,
+        "average_relevance": 0.55
       },
       "score_breakdown": {
-        "momentum": 0.2987,
-        "short_momentum": 0.0686,
-        "medium_momentum": 0.0968,
-        "trend_quality": 0.0715,
-        "volume_confirmation": 0.0619,
-        "volatility_penalty": -0.0841,
-        "daily_volatility_penalty": -0.0358,
+        "momentum": 0.4259,
+        "short_momentum": 0.1465,
+        "medium_momentum": 0.1251,
+        "trend_quality": 0.1213,
+        "volume_confirmation": 0.0329,
+        "volatility_penalty": -0.0857,
+        "daily_volatility_penalty": -0.0374,
         "downside_penalty": -0.0355,
         "drawdown_penalty": -0.0128,
-        "news_adjustment": 0.0391,
-        "signal_alignment": 0.0099,
-        "technical_total": 0.2146,
-        "total": 0.2635
+        "news_adjustment": 0.0333,
+        "signal_alignment": 0.0118,
+        "technical_total": 0.3402,
+        "total": 0.3852
       },
       "reasons": [
-        "Price trend remains constructive: 5-day momentum is 2.5% and 20-day momentum is 9.7%.",
-        "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 5.4% relative to its 20-day average.",
+        "Price trend remains constructive: 5-day momentum is 5.3% and 20-day momentum is 12.5%.",
+        "Trend quality is supported by 90% positive sessions over the last 10 trading days and the price sitting 7.7% relative to its 20-day average.",
         "Risk profile shows daily volatility around 1.2%, downside volatility near 0.9%, and a recent max drawdown of 1.9%.",
-        "Volume confirmation is 46.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-        "News signal is bullish with score 0.62, confidence 0.69, and 1.2 weighted articles across 1 sources.",
-        "Marketaux entity coverage rated the news flow bullish at 0.62, after adjusting for relevance, recency, source quality, and story concentration.",
-        "Evidence quality: 3 articles across 1 sources, 1.2 effective weighted articles, average relevance 0.69, average source quality 0.75, confidence 0.69.",
-        "Overall model score is 0.264 with high confidence."
+        "Volume confirmation is 24.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+        "News signal is neutral with score 0.60, confidence 0.72, and 0.9 weighted articles across 3 sources.",
+        "Marketaux entity coverage rated the news flow neutral at 0.60, after adjusting for relevance, recency, source quality, and story concentration.",
+        "Evidence quality: 3 articles across 3 sources, 0.9 effective weighted articles, average relevance 0.55, average source quality 0.75, confidence 0.72.",
+        "Overall model score is 0.385 with high confidence."
       ],
       "news_evidence": [
         {
-          "title": "The Best Stocks to Invest $1,000 in Right Now",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/best-stocks-invest-1-000-090400950.html",
-          "published_at": "2026-03-23T09:04:00Z",
-          "relevance_score": 0.64,
-          "sentiment": 0.2
+          "title": "One prediction isn’t enough — Why CEOs are shifting to wartime planning",
+          "provider": "fortune.com",
+          "url": "https://fortune.com/2026/03/24/one-prediction-isnt-enough-why-ceos-shifting-wartime-planning/",
+          "published_at": "2026-03-24T11:53:15Z",
+          "relevance_score": 0.47,
+          "sentiment": 0.46
         },
         {
-          "title": "Better Oil Stock: Chevron vs. Occidental Petroleum",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/better-oil-stock-chevron-vs-203500027.html",
-          "published_at": "2026-03-22T20:35:00Z",
-          "relevance_score": 0.83,
-          "sentiment": 0.27
+          "title": "Trump Pauses Strikes on Iran Energy Sites: What It Means for US Stocks",
+          "provider": "investing.com",
+          "url": "https://www.investing.com/analysis/trump-pauses-strikes-on-iran-energy-sites-what-it-means-for-us-stocks-200677102",
+          "published_at": "2026-03-23T13:56:00Z",
+          "relevance_score": 0.65,
+          "sentiment": -0.13
         },
         {
-          "title": "VIG vs NOBL: Which Dividend ETF Should You Buy Now?",
+          "title": "What Sectors Are Not Getting Hit by the Market Sell-Off?",
           "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/vig-vs-nobl-dividend-etf-155402963.html",
-          "published_at": "2026-03-22T15:54:02Z",
-          "relevance_score": 0.59,
-          "sentiment": 0.77
+          "url": "https://finance.yahoo.com/markets/stocks/articles/sectors-not-getting-hit-market-123500143.html",
+          "published_at": "2026-03-23T12:35:00Z",
+          "relevance_score": 0.52,
+          "sentiment": 0.56
         }
       ],
       "thesis_monitor": {
-        "status": "risk",
-        "headline": "The thesis is weakening",
-        "summary": "Some of the supporting data is getting old enough to weaken monitoring quality.",
+        "status": "watch",
+        "headline": "Support needs watching",
+        "summary": "The news layer is still thin, so conviction should stay measured.",
         "alerts": [
-          "Some of the supporting data is getting old enough to weaken monitoring quality."
+          "The news layer is still thin, so conviction should stay measured."
         ],
         "signals": [
           {
             "label": "Momentum",
             "state": "positive",
-            "value": "2.5% 5D • 9.7% 20D",
+            "value": "5.3% 5D • 12.5% 20D",
             "detail": "Price action is still supporting the release thesis."
           },
           {
@@ -132,21 +132,21 @@
           },
           {
             "label": "News",
-            "state": "positive",
-            "value": "0.62 sentiment • 3 articles",
-            "detail": "Recent news flow is supportive and diversified enough to back the setup."
+            "state": "watch",
+            "value": "0.60 sentiment • 3 articles",
+            "detail": "The news layer is still thin, so conviction should stay measured."
           },
           {
             "label": "Margin",
             "state": "positive",
-            "value": "+0.164 score • +0.222 conf",
+            "value": "+0.285 score • +0.306 conf",
             "detail": "The pick cleared the release thresholds with room to spare."
           },
           {
             "label": "Freshness",
-            "state": "risk",
-            "value": "price 3d • news 0d",
-            "detail": "Some of the supporting data is getting old enough to weaken monitoring quality."
+            "state": "positive",
+            "value": "price 0 trading days • news 0 trading days",
+            "detail": "Price and news timestamps are recent enough for a live monitoring read."
           }
         ]
       }
@@ -155,114 +155,114 @@
   "risk_selections": {
     "low": {
       "status": "no_pick",
-      "status_reason": "No low-risk candidate cleared the minimum score threshold of 0.08. The best candidate was DIS at -0.151.",
+      "status_reason": "No low-risk candidate cleared the minimum score threshold of 0.08. The best candidate was JNJ at -0.221.",
       "threshold_score": 0.08,
       "threshold_confidence": 0.55,
       "pick": null,
       "best_candidate": {
-        "symbol": "DIS",
-        "company_name": "The Walt Disney Company",
+        "symbol": "JNJ",
+        "company_name": "Johnson & Johnson",
         "risk": "low",
-        "model_score": -0.151,
-        "confidence_score": 0.45,
+        "model_score": -0.2209,
+        "confidence_score": 0.49,
         "confidence_label": "low"
       }
     },
     "medium": {
       "status": "picked",
-      "status_reason": "CVX is the strongest medium-risk candidate this week at 0.264 with high confidence.",
+      "status_reason": "CVX is the strongest medium-risk candidate this week at 0.385 with high confidence.",
       "threshold_score": 0.1,
       "threshold_confidence": 0.55,
       "pick": {
         "symbol": "CVX",
         "company_name": "Chevron Corporation",
         "risk": "medium",
-        "model_score": 0.2635,
-        "confidence_score": 0.77,
+        "model_score": 0.3852,
+        "confidence_score": 0.86,
         "confidence_label": "high",
-        "price_as_of": "2026-03-20",
-        "news_as_of": "2026-03-23",
+        "price_as_of": "2026-03-24",
+        "news_as_of": "2026-03-24",
         "article_count": 3,
         "metrics": {
-          "momentum_5d": 0.0249,
-          "momentum_20d": 0.0968,
-          "daily_volatility": 0.0119,
+          "momentum_5d": 0.0533,
+          "momentum_20d": 0.1251,
+          "daily_volatility": 0.0125,
           "downside_volatility": 0.0089,
           "max_drawdown_20d": 0.0192,
-          "positive_day_ratio_10d": 0.7,
-          "price_vs_20d_average": 0.0541,
-          "volume_trend_5d": 0.464,
-          "news_sentiment": 0.62,
-          "raw_news_sentiment": 0.3697,
-          "calibrated_news_sentiment": 0.2412,
-          "news_confidence": 0.69,
-          "effective_article_count": 1.21,
-          "source_count": 1,
-          "average_relevance": 0.69
+          "positive_day_ratio_10d": 0.9,
+          "price_vs_20d_average": 0.0773,
+          "volume_trend_5d": 0.2467,
+          "news_sentiment": 0.6,
+          "raw_news_sentiment": 0.2784,
+          "calibrated_news_sentiment": 0.1927,
+          "news_confidence": 0.72,
+          "effective_article_count": 0.89,
+          "source_count": 3,
+          "average_relevance": 0.55
         },
         "score_breakdown": {
-          "momentum": 0.2987,
-          "short_momentum": 0.0686,
-          "medium_momentum": 0.0968,
-          "trend_quality": 0.0715,
-          "volume_confirmation": 0.0619,
-          "volatility_penalty": -0.0841,
-          "daily_volatility_penalty": -0.0358,
+          "momentum": 0.4259,
+          "short_momentum": 0.1465,
+          "medium_momentum": 0.1251,
+          "trend_quality": 0.1213,
+          "volume_confirmation": 0.0329,
+          "volatility_penalty": -0.0857,
+          "daily_volatility_penalty": -0.0374,
           "downside_penalty": -0.0355,
           "drawdown_penalty": -0.0128,
-          "news_adjustment": 0.0391,
-          "signal_alignment": 0.0099,
-          "technical_total": 0.2146,
-          "total": 0.2635
+          "news_adjustment": 0.0333,
+          "signal_alignment": 0.0118,
+          "technical_total": 0.3402,
+          "total": 0.3852
         },
         "reasons": [
-          "Price trend remains constructive: 5-day momentum is 2.5% and 20-day momentum is 9.7%.",
-          "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 5.4% relative to its 20-day average.",
+          "Price trend remains constructive: 5-day momentum is 5.3% and 20-day momentum is 12.5%.",
+          "Trend quality is supported by 90% positive sessions over the last 10 trading days and the price sitting 7.7% relative to its 20-day average.",
           "Risk profile shows daily volatility around 1.2%, downside volatility near 0.9%, and a recent max drawdown of 1.9%.",
-          "Volume confirmation is 46.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-          "News signal is bullish with score 0.62, confidence 0.69, and 1.2 weighted articles across 1 sources.",
-          "Marketaux entity coverage rated the news flow bullish at 0.62, after adjusting for relevance, recency, source quality, and story concentration.",
-          "Evidence quality: 3 articles across 1 sources, 1.2 effective weighted articles, average relevance 0.69, average source quality 0.75, confidence 0.69.",
-          "Overall model score is 0.264 with high confidence."
+          "Volume confirmation is 24.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+          "News signal is neutral with score 0.60, confidence 0.72, and 0.9 weighted articles across 3 sources.",
+          "Marketaux entity coverage rated the news flow neutral at 0.60, after adjusting for relevance, recency, source quality, and story concentration.",
+          "Evidence quality: 3 articles across 3 sources, 0.9 effective weighted articles, average relevance 0.55, average source quality 0.75, confidence 0.72.",
+          "Overall model score is 0.385 with high confidence."
         ],
         "news_evidence": [
           {
-            "title": "The Best Stocks to Invest $1,000 in Right Now",
-            "provider": "finance.yahoo.com",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/best-stocks-invest-1-000-090400950.html",
-            "published_at": "2026-03-23T09:04:00Z",
-            "relevance_score": 0.64,
-            "sentiment": 0.2
+            "title": "One prediction isn’t enough — Why CEOs are shifting to wartime planning",
+            "provider": "fortune.com",
+            "url": "https://fortune.com/2026/03/24/one-prediction-isnt-enough-why-ceos-shifting-wartime-planning/",
+            "published_at": "2026-03-24T11:53:15Z",
+            "relevance_score": 0.47,
+            "sentiment": 0.46
           },
           {
-            "title": "Better Oil Stock: Chevron vs. Occidental Petroleum",
-            "provider": "finance.yahoo.com",
-            "url": "https://finance.yahoo.com/sectors/energy/articles/better-oil-stock-chevron-vs-203500027.html",
-            "published_at": "2026-03-22T20:35:00Z",
-            "relevance_score": 0.83,
-            "sentiment": 0.27
+            "title": "Trump Pauses Strikes on Iran Energy Sites: What It Means for US Stocks",
+            "provider": "investing.com",
+            "url": "https://www.investing.com/analysis/trump-pauses-strikes-on-iran-energy-sites-what-it-means-for-us-stocks-200677102",
+            "published_at": "2026-03-23T13:56:00Z",
+            "relevance_score": 0.65,
+            "sentiment": -0.13
           },
           {
-            "title": "VIG vs NOBL: Which Dividend ETF Should You Buy Now?",
+            "title": "What Sectors Are Not Getting Hit by the Market Sell-Off?",
             "provider": "finance.yahoo.com",
-            "url": "https://finance.yahoo.com/markets/stocks/articles/vig-vs-nobl-dividend-etf-155402963.html",
-            "published_at": "2026-03-22T15:54:02Z",
-            "relevance_score": 0.59,
-            "sentiment": 0.77
+            "url": "https://finance.yahoo.com/markets/stocks/articles/sectors-not-getting-hit-market-123500143.html",
+            "published_at": "2026-03-23T12:35:00Z",
+            "relevance_score": 0.52,
+            "sentiment": 0.56
           }
         ],
         "thesis_monitor": {
-          "status": "risk",
-          "headline": "The thesis is weakening",
-          "summary": "Some of the supporting data is getting old enough to weaken monitoring quality.",
+          "status": "watch",
+          "headline": "Support needs watching",
+          "summary": "The news layer is still thin, so conviction should stay measured.",
           "alerts": [
-            "Some of the supporting data is getting old enough to weaken monitoring quality."
+            "The news layer is still thin, so conviction should stay measured."
           ],
           "signals": [
             {
               "label": "Momentum",
               "state": "positive",
-              "value": "2.5% 5D • 9.7% 20D",
+              "value": "5.3% 5D • 12.5% 20D",
               "detail": "Price action is still supporting the release thesis."
             },
             {
@@ -273,21 +273,21 @@
             },
             {
               "label": "News",
-              "state": "positive",
-              "value": "0.62 sentiment • 3 articles",
-              "detail": "Recent news flow is supportive and diversified enough to back the setup."
+              "state": "watch",
+              "value": "0.60 sentiment • 3 articles",
+              "detail": "The news layer is still thin, so conviction should stay measured."
             },
             {
               "label": "Margin",
               "state": "positive",
-              "value": "+0.164 score • +0.222 conf",
+              "value": "+0.285 score • +0.306 conf",
               "detail": "The pick cleared the release thresholds with room to spare."
             },
             {
               "label": "Freshness",
-              "state": "risk",
-              "value": "price 3d • news 0d",
-              "detail": "Some of the supporting data is getting old enough to weaken monitoring quality."
+              "state": "positive",
+              "value": "price 0 trading days • news 0 trading days",
+              "detail": "Price and news timestamps are recent enough for a live monitoring read."
             }
           ]
         }
@@ -295,16 +295,16 @@
     },
     "high": {
       "status": "no_pick",
-      "status_reason": "No high-risk candidate cleared the minimum score threshold of 0.12. The best candidate was CRM at -0.131.",
+      "status_reason": "No high-risk candidate cleared the minimum score threshold of 0.12. The best candidate was NFLX at -0.147.",
       "threshold_score": 0.12,
       "threshold_confidence": 0.55,
       "pick": null,
       "best_candidate": {
-        "symbol": "CRM",
-        "company_name": "Salesforce Inc.",
+        "symbol": "NFLX",
+        "company_name": "Netflix Inc.",
         "risk": "high",
-        "model_score": -0.1314,
-        "confidence_score": 0.31,
+        "model_score": -0.1473,
+        "confidence_score": 0.47,
         "confidence_label": "low"
       }
     }

@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "model_version": "v3.1",
-  "generated_at": "2026-03-24T15:20:27Z",
-  "data_as_of": "2026-03-24",
+  "generated_at": "2026-03-25T17:04:42Z",
+  "data_as_of": "2026-03-25",
   "expected_next_refresh_at": "2026-03-30T12:00:00Z",
   "stale_after": "2026-03-31T00:00:00Z",
   "market_context": {
@@ -29,62 +29,78 @@
   },
   "selection": {
     "status": "picked",
-    "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.385 and high confidence.",
+    "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.325 and high confidence.",
     "threshold_score": 0.1,
     "threshold_confidence": 0.55,
     "pick": {
       "symbol": "CVX",
       "company_name": "Chevron Corporation",
       "risk": "medium",
-      "model_score": 0.3852,
-      "confidence_score": 0.86,
+      "model_score": 0.3246,
+      "confidence_score": 0.82,
       "confidence_label": "high",
-      "price_as_of": "2026-03-24",
-      "news_as_of": "2026-03-24",
+      "price_as_of": "2026-03-25",
+      "news_as_of": "2026-03-25",
       "article_count": 3,
       "metrics": {
-        "momentum_5d": 0.0533,
-        "momentum_20d": 0.1251,
-        "daily_volatility": 0.0125,
-        "downside_volatility": 0.0089,
+        "momentum_5d": 0.0363,
+        "momentum_20d": 0.1172,
+        "daily_volatility": 0.0122,
+        "downside_volatility": 0.0088,
         "max_drawdown_20d": 0.0192,
-        "positive_day_ratio_10d": 0.9,
-        "price_vs_20d_average": 0.0773,
-        "volume_trend_5d": 0.2467,
-        "news_sentiment": 0.6,
-        "raw_news_sentiment": 0.2784,
-        "calibrated_news_sentiment": 0.1927,
-        "news_confidence": 0.72,
-        "effective_article_count": 0.89,
-        "source_count": 3,
-        "average_relevance": 0.55
+        "positive_day_ratio_10d": 0.8,
+        "price_vs_20d_average": 0.0579,
+        "volume_trend_5d": 0.2768,
+        "news_sentiment": 0.65,
+        "raw_news_sentiment": 0.4461,
+        "calibrated_news_sentiment": 0.2955,
+        "news_confidence": 0.7,
+        "effective_article_count": 0.94,
+        "source_count": 2,
+        "average_relevance": 0.56
       },
       "score_breakdown": {
-        "momentum": 0.4259,
-        "short_momentum": 0.1465,
-        "medium_momentum": 0.1251,
-        "trend_quality": 0.1213,
-        "volume_confirmation": 0.0329,
-        "volatility_penalty": -0.0857,
-        "daily_volatility_penalty": -0.0374,
-        "downside_penalty": -0.0355,
+        "momentum": 0.3447,
+        "short_momentum": 0.0997,
+        "medium_momentum": 0.1172,
+        "trend_quality": 0.0909,
+        "volume_confirmation": 0.0369,
+        "volatility_penalty": -0.0844,
+        "daily_volatility_penalty": -0.0366,
+        "downside_penalty": -0.035,
         "drawdown_penalty": -0.0128,
-        "news_adjustment": 0.0333,
-        "signal_alignment": 0.0118,
-        "technical_total": 0.3402,
-        "total": 0.3852
+        "news_adjustment": 0.0492,
+        "signal_alignment": 0.0151,
+        "technical_total": 0.2603,
+        "total": 0.3246
       },
       "reasons": [
-        "Price trend remains constructive: 5-day momentum is 5.3% and 20-day momentum is 12.5%.",
-        "Trend quality is supported by 90% positive sessions over the last 10 trading days and the price sitting 7.7% relative to its 20-day average.",
+        "Price trend remains constructive: 5-day momentum is 3.6% and 20-day momentum is 11.7%.",
+        "Trend quality is supported by 80% positive sessions over the last 10 trading days and the price sitting 5.8% relative to its 20-day average.",
         "Risk profile shows daily volatility around 1.2%, downside volatility near 0.9%, and a recent max drawdown of 1.9%.",
-        "Volume confirmation is 24.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-        "News signal is neutral with score 0.60, confidence 0.72, and 0.9 weighted articles across 3 sources.",
-        "Marketaux entity coverage rated the news flow neutral at 0.60, after adjusting for relevance, recency, source quality, and story concentration.",
-        "Evidence quality: 3 articles across 3 sources, 0.9 effective weighted articles, average relevance 0.55, average source quality 0.75, confidence 0.72.",
-        "Overall model score is 0.385 with high confidence."
+        "Volume confirmation is 27.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+        "News signal is bullish with score 0.65, confidence 0.70, and 0.9 weighted articles across 2 sources.",
+        "Marketaux entity coverage rated the news flow bullish at 0.65, after adjusting for relevance, recency, source quality, and story concentration.",
+        "Evidence quality: 3 articles across 2 sources, 0.9 effective weighted articles, average relevance 0.56, average source quality 0.75, confidence 0.70.",
+        "Overall model score is 0.325 with high confidence."
       ],
       "news_evidence": [
+        {
+          "title": "The S&P 500 Rips 1% Higher On Hope For Iran Peace Negotiations and Oil Falls Below Critical $100 Barrel Line",
+          "provider": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/p-500-rips-1-higher-134953148.html",
+          "published_at": "2026-03-25T13:49:53Z",
+          "relevance_score": 0.57,
+          "sentiment": 0.31
+        },
+        {
+          "title": "2 Oil Stocks That Can Weather the Current Volatility",
+          "provider": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/sectors/energy/articles/2-oil-stocks-weather-current-172300175.html",
+          "published_at": "2026-03-24T17:23:00Z",
+          "relevance_score": 0.64,
+          "sentiment": 0.61
+        },
         {
           "title": "One prediction isn’t enough — Why CEOs are shifting to wartime planning",
           "provider": "fortune.com",
@@ -92,22 +108,6 @@
           "published_at": "2026-03-24T11:53:15Z",
           "relevance_score": 0.47,
           "sentiment": 0.46
-        },
-        {
-          "title": "Trump Pauses Strikes on Iran Energy Sites: What It Means for US Stocks",
-          "provider": "investing.com",
-          "url": "https://www.investing.com/analysis/trump-pauses-strikes-on-iran-energy-sites-what-it-means-for-us-stocks-200677102",
-          "published_at": "2026-03-23T13:56:00Z",
-          "relevance_score": 0.65,
-          "sentiment": -0.13
-        },
-        {
-          "title": "What Sectors Are Not Getting Hit by the Market Sell-Off?",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/sectors-not-getting-hit-market-123500143.html",
-          "published_at": "2026-03-23T12:35:00Z",
-          "relevance_score": 0.52,
-          "sentiment": 0.56
         }
       ],
       "thesis_monitor": {
@@ -121,7 +121,7 @@
           {
             "label": "Momentum",
             "state": "positive",
-            "value": "5.3% 5D • 12.5% 20D",
+            "value": "3.6% 5D • 11.7% 20D",
             "detail": "Price action is still supporting the release thesis."
           },
           {
@@ -133,13 +133,13 @@
           {
             "label": "News",
             "state": "watch",
-            "value": "0.60 sentiment • 3 articles",
+            "value": "0.65 sentiment • 3 articles",
             "detail": "The news layer is still thin, so conviction should stay measured."
           },
           {
             "label": "Margin",
             "state": "positive",
-            "value": "+0.285 score • +0.306 conf",
+            "value": "+0.225 score • +0.273 conf",
             "detail": "The pick cleared the release thresholds with room to spare."
           },
           {

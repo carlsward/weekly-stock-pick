@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.1",
-  "generated_at": "2026-03-24T15:20:27Z",
+  "generated_at": "2026-03-25T17:04:42Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -42,16 +42,16 @@
       "week_start": "2026-03-23",
       "week_end": "2026-03-27",
       "week_label": "Mar 23 - 27, 2026",
-      "logged_at": "2026-03-24T15:20:27Z",
+      "logged_at": "2026-03-25T17:04:42Z",
       "status": "picked",
-      "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.385 and high confidence.",
+      "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.325 and high confidence.",
       "symbol": "CVX",
       "company_name": "Chevron Corporation",
       "risk": "medium",
-      "model_score": 0.3852,
-      "confidence_score": 0.86,
+      "model_score": 0.3246,
+      "confidence_score": 0.82,
       "confidence_label": "high",
-      "data_as_of": "2026-03-24",
+      "data_as_of": "2026-03-25",
       "model_version": "v3.1"
     }
   ]

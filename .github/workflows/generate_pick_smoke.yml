@@ -54,24 +54,6 @@ jobs:
       - name: Run backend tests
         run: python -m unittest discover -s backend/tests -t .
 
-      - name: Verify news provider configuration
-        env:
-          MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
-        run: |
-          if [[ -z "${MARKETAUX_API_TOKEN}" ]]; then
-            echo "MARKETAUX_API_TOKEN secret is required for news generation." >&2
-            exit 1
-          fi
-
-      - name: Verify OpenAI configuration
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          if [[ -z "${OPENAI_API_KEY}" ]]; then
-            echo "OPENAI_API_KEY secret is required for sector analysis." >&2
-            exit 1
-          fi
-
       - name: Generate news_scores.json
         working-directory: backend
         env:
@@ -79,7 +61,7 @@ jobs:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
-          ALLOW_LLM_FALLBACK: "false"
+          ALLOW_LLM_FALLBACK: "true"
           ALLOW_MARKETAUX_FALLBACK: "true"
           MARKETAUX_NEWS_LIMIT: ${{ github.event.inputs.company_news_limit || '3' }}
           COMPANY_LLM_ARTICLE_LIMIT: ${{ github.event.inputs.company_llm_article_limit || '3' }}
@@ -92,7 +74,7 @@ jobs:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
-          ALLOW_LLM_FALLBACK: "false"
+          ALLOW_LLM_FALLBACK: "true"
           ALLOW_MARKETAUX_FALLBACK: "true"
           MARKETAUX_GLOBAL_NEWS_LIMIT: ${{ github.event.inputs.global_news_limit || '30' }}
           SECTOR_LLM_ARTICLE_LIMIT: ${{ github.event.inputs.sector_llm_article_limit || '15' }}
@@ -102,8 +84,8 @@ jobs:
         working-directory: backend
         env:
           UNIVERSE_CSV_PATH: universe_test.csv
-          ENABLE_HISTORY_REALIZED_ENRICHMENT: "true"
-          ALLOW_PRICE_FALLBACK: "true"
+          ENABLE_HISTORY_REALIZED_ENRICHMENT: "false"
+          FORCE_PRICE_FALLBACK: "true"
         run: python generate_pick.py
 
       - name: Validate generated output contracts

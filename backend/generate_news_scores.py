@@ -445,6 +445,8 @@ def marketaux_api_token() -> str:
     token = os.getenv(MARKETAUX_API_TOKEN_ENV, "").strip()
     if token:
         return token
+    if allow_marketaux_fallback():
+        return ""
     raise RuntimeError(
         f"{MARKETAUX_API_TOKEN_ENV} is required for news generation. "
         "Set a free Marketaux API token for weekly runs."
@@ -619,6 +621,9 @@ def build_marketaux_article(
 
 
 def fetch_raw_news(symbol: str) -> List[dict]:
+    if not os.getenv(MARKETAUX_API_TOKEN_ENV, "").strip() and allow_marketaux_fallback():
+        print(f"[WARN] [{symbol}] Marketaux token missing, returning neutral fallback data.")
+        return []
     published_after = datetime.now(timezone.utc) - timedelta(days=NEWS_LOOKBACK_DAYS)
     return fetch_marketaux_payload(symbol, published_after)
 

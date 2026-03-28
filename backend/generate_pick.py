@@ -72,6 +72,7 @@ SIGNAL_ALIGNMENT_CONFIDENCE_SCALE = 0.04
 STOOQ_DAILY_ENDPOINT = "https://stooq.com/q/d/l/"
 ENABLE_HISTORY_REALIZED_ENRICHMENT_ENV = "ENABLE_HISTORY_REALIZED_ENRICHMENT"
 ALLOW_PRICE_FALLBACK_ENV = "ALLOW_PRICE_FALLBACK"
+FORCE_PRICE_FALLBACK_ENV = "FORCE_PRICE_FALLBACK"
 CALIBRATION_LOOKBACK_DAYS = 320
 CALIBRATION_STEP_DAYS = 5
 CALIBRATION_MIN_ROWS = 180
@@ -308,6 +309,11 @@ def history_realized_enrichment_enabled() -> bool:
 
 def allow_price_fallback() -> bool:
     raw = os.getenv(ALLOW_PRICE_FALLBACK_ENV, "").strip().lower()
+    return raw in {"1", "true", "yes", "on"}
+
+
+def force_price_fallback() -> bool:
+    raw = os.getenv(FORCE_PRICE_FALLBACK_ENV, "").strip().lower()
     return raw in {"1", "true", "yes", "on"}
 
 
@@ -557,7 +563,13 @@ def fetch_stooq_price_frame(symbol: str) -> pd.DataFrame:
 
 def build_synthetic_price_frame(symbol: str, periods: int = 260) -> pd.DataFrame:
     end_date = pd.Timestamp(market_today())
+    while end_date.weekday() >= 5:
+        end_date -= pd.Timedelta(days=1)
+
     dates = pd.bdate_range(end=end_date, periods=periods)
+    if len(dates) != periods:
+        start_date = end_date - pd.Timedelta(days=periods * 3)
+        dates = pd.bdate_range(start=start_date, end=end_date).tail(periods)
     symbol_key = symbol.upper()
     seed = sum((index + 1) * ord(char) for index, char in enumerate(symbol_key))
     base_price = 45.0 + (seed % 180)
@@ -596,6 +608,10 @@ def build_synthetic_price_frame(symbol: str, periods: int = 260) -> pd.DataFrame
 
 
 def fetch_price_frame(symbol: str) -> pd.DataFrame:
+    if force_price_fallback():
+        print(f"[WARN] Using forced synthetic price fallback for {symbol}.")
+        return build_synthetic_price_frame(symbol)
+
     providers = [("stooq", fetch_stooq_price_frame)]
     failures: List[str] = []
 

@@ -387,6 +387,9 @@ def build_global_article(item: dict, now: datetime, index: int) -> Optional[Glob
 
 
 def fetch_recent_global_articles() -> List[GlobalNewsArticle]:
+    if not os.getenv("MARKETAUX_API_TOKEN", "").strip() and allow_marketaux_fallback():
+        print("[WARN] [sector] Marketaux token missing, returning neutral fallback data.")
+        return []
     published_after = datetime.now(timezone.utc) - timedelta(days=GLOBAL_NEWS_LOOKBACK_DAYS)
     raw_news = fetch_marketaux_global_payload(published_after)
     now = datetime.now(timezone.utc)

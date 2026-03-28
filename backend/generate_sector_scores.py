@@ -12,6 +12,7 @@ from urllib.request import Request, urlopen
 
 try:
     from backend.generate_news_scores import (
+        allow_marketaux_fallback,
         MARKETAUX_NEWS_ENDPOINT,
         MARKETAUX_REQUEST_TIMEOUT_SECONDS,
         NEWS_FETCH_ATTEMPTS,
@@ -36,6 +37,7 @@ try:
     )
 except ImportError:
     from generate_news_scores import (
+        allow_marketaux_fallback,
         MARKETAUX_NEWS_ENDPOINT,
         MARKETAUX_REQUEST_TIMEOUT_SECONDS,
         NEWS_FETCH_ATTEMPTS,
@@ -318,6 +320,12 @@ def fetch_marketaux_global_payload(published_after: datetime) -> List[dict]:
             return payload["data"]
         except HTTPError as exc:
             body = exc.read().decode("utf-8", errors="replace")
+            if exc.code == 402 and allow_marketaux_fallback():
+                print("[WARN] [sector] Marketaux usage limit reached, returning neutral fallback data.")
+                return []
+            if exc.code == 429 and allow_marketaux_fallback():
+                print("[WARN] [sector] Marketaux rate limit reached, returning neutral fallback data.")
+                return []
             last_error = RuntimeError(f"Marketaux HTTP {exc.code} while fetching sector news: {body[:160]}")
         except (URLError, TimeoutError, OSError, json.JSONDecodeError) as exc:
             last_error = exc

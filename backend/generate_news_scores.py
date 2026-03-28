@@ -33,6 +33,7 @@ DEFAULT_UNIVERSE_CSV_PATH = "universe.csv"
 MARKETAUX_NEWS_ENDPOINT = "https://api.marketaux.com/v1/news/all"
 
 MARKETAUX_API_TOKEN_ENV = "MARKETAUX_API_TOKEN"
+ALLOW_MARKETAUX_FALLBACK_ENV = "ALLOW_MARKETAUX_FALLBACK"
 MARKETAUX_NEWS_LIMIT_ENV = "MARKETAUX_NEWS_LIMIT"
 MARKETAUX_DEFAULT_NEWS_LIMIT = 3
 MARKETAUX_REQUEST_TIMEOUT_SECONDS = 20
@@ -450,6 +451,11 @@ def marketaux_api_token() -> str:
     )
 
 
+def allow_marketaux_fallback() -> bool:
+    raw = os.getenv(ALLOW_MARKETAUX_FALLBACK_ENV, "").strip().lower()
+    return raw in {"1", "true", "yes", "on"}
+
+
 def build_marketaux_query(symbol: str, published_after: datetime) -> str:
     params = {
         "symbols": symbol,
@@ -486,9 +492,15 @@ def fetch_marketaux_payload(symbol: str, published_after: datetime) -> List[dict
             return payload["data"]
         except HTTPError as exc:
             body = exc.read().decode("utf-8", errors="replace")
+            if exc.code == 402 and allow_marketaux_fallback():
+                print(f"[WARN] [{symbol}] Marketaux usage limit reached, returning neutral fallback data.")
+                return []
             if exc.code in (401, 402, 403):
                 raise RuntimeError(f"Marketaux authentication failed for {symbol}: HTTP {exc.code} {body[:160]}") from exc
             if exc.code == 429:
+                if allow_marketaux_fallback():
+                    print(f"[WARN] [{symbol}] Marketaux rate limit reached, returning neutral fallback data.")
+                    return []
                 last_error = RuntimeError(f"Marketaux rate limit hit for {symbol}: {body[:160]}")
             else:
                 last_error = RuntimeError(f"Marketaux HTTP {exc.code} for {symbol}: {body[:160]}")

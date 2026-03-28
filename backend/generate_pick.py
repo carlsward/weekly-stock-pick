@@ -71,6 +71,7 @@ SIGNAL_ALIGNMENT_BASE = 0.03
 SIGNAL_ALIGNMENT_CONFIDENCE_SCALE = 0.04
 STOOQ_DAILY_ENDPOINT = "https://stooq.com/q/d/l/"
 ENABLE_HISTORY_REALIZED_ENRICHMENT_ENV = "ENABLE_HISTORY_REALIZED_ENRICHMENT"
+ALLOW_PRICE_FALLBACK_ENV = "ALLOW_PRICE_FALLBACK"
 CALIBRATION_LOOKBACK_DAYS = 320
 CALIBRATION_STEP_DAYS = 5
 CALIBRATION_MIN_ROWS = 180
@@ -302,6 +303,11 @@ def now_utc() -> datetime:
 
 def history_realized_enrichment_enabled() -> bool:
     raw = os.getenv(ENABLE_HISTORY_REALIZED_ENRICHMENT_ENV, "").strip().lower()
+    return raw in {"1", "true", "yes", "on"}
+
+
+def allow_price_fallback() -> bool:
+    raw = os.getenv(ALLOW_PRICE_FALLBACK_ENV, "").strip().lower()
     return raw in {"1", "true", "yes", "on"}
 
 
@@ -549,6 +555,46 @@ def fetch_stooq_price_frame(symbol: str) -> pd.DataFrame:
     )
 
 
+def build_synthetic_price_frame(symbol: str, periods: int = 260) -> pd.DataFrame:
+    end_date = pd.Timestamp(market_today())
+    dates = pd.bdate_range(end=end_date, periods=periods)
+    symbol_key = symbol.upper()
+    seed = sum((index + 1) * ord(char) for index, char in enumerate(symbol_key))
+    base_price = 45.0 + (seed % 180)
+    drift_map = {
+        "SPY": 0.00045,
+        "XLF": 0.00040,
+        "XLK": 0.00055,
+        "XLE": 0.00050,
+        "MSFT": 0.00075,
+        "JPM": 0.00050,
+        "XOM": 0.00060,
+    }
+    base_drift = drift_map.get(symbol_key, 0.00045 + ((seed % 9) - 4) * 0.00003)
+    phase = (seed % 23) / 23.0 * math.pi
+    volume_base = 1_500_000 + (seed % 40) * 110_000
+
+    prices: List[float] = []
+    volumes: List[float] = []
+    current_price = base_price
+    for index, _ in enumerate(dates):
+        cyclical = 0.0045 * math.sin(index / 6.5 + phase)
+        micro = 0.0020 * math.cos(index / 3.1 + phase / 2.0)
+        move = base_drift + cyclical + micro
+        current_price = max(5.0, current_price * (1.0 + move))
+        volume = volume_base * (1.0 + 0.16 * math.sin(index / 5.0 + phase))
+        prices.append(round(current_price, 4))
+        volumes.append(max(100_000.0, round(volume)))
+
+    return pd.DataFrame(
+        {
+            "Date": dates,
+            "Close": prices,
+            "Volume": volumes,
+        }
+    )
+
+
 def fetch_price_frame(symbol: str) -> pd.DataFrame:
     providers = [("stooq", fetch_stooq_price_frame)]
     failures: List[str] = []
@@ -566,6 +612,10 @@ def fetch_price_frame(symbol: str) -> pd.DataFrame:
 
         if provider_error is not None:
             failures.append(f"{provider_name}: {provider_error}")
+
+    if allow_price_fallback():
+        print(f"[WARN] Using synthetic price fallback for {symbol} because live price providers failed.")
+        return build_synthetic_price_frame(symbol)
 
     raise RuntimeError(
         f"Unable to fetch usable price frame for {symbol} after {PRICE_FETCH_ATTEMPTS} attempts per provider: "
@@ -589,27 +639,8 @@ def fetch_price_series(symbol: str, max_days: int = 45) -> PriceSeries:
     if cached_frame is not None:
         return build_price_series_from_frame(cached_frame.copy(), symbol, max_days)
 
-    providers = [("stooq", fetch_stooq_price_frame)]
-    failures: List[str] = []
-
-    for provider_name, provider_fetcher in providers:
-        provider_error: Optional[Exception] = None
-        for attempt in range(1, PRICE_FETCH_ATTEMPTS + 1):
-            try:
-                frame = provider_fetcher(symbol)
-                return build_price_series_from_frame(frame, symbol, max_days)
-            except Exception as exc:
-                provider_error = exc
-                if attempt < PRICE_FETCH_ATTEMPTS:
-                    time_module.sleep(PRICE_FETCH_RETRY_SECONDS * attempt)
-
-        if provider_error is not None:
-            failures.append(f"{provider_name}: {provider_error}")
-
-    raise RuntimeError(
-        f"Unable to fetch usable price history for {symbol} after {PRICE_FETCH_ATTEMPTS} attempts per provider: "
-        + "; ".join(failures)
-    )
+    frame = fetch_price_frame(symbol)
+    return build_price_series_from_frame(frame, symbol, max_days)
 
 
 def fetch_price_series_cached(symbol: str, max_days: int = 45) -> PriceSeries:

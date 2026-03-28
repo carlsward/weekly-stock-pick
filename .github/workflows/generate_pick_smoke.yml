@@ -103,6 +103,7 @@ jobs:
         env:
           UNIVERSE_CSV_PATH: universe_test.csv
           ENABLE_HISTORY_REALIZED_ENRICHMENT: "true"
+          ALLOW_PRICE_FALLBACK: "true"
         run: python generate_pick.py
 
       - name: Validate generated output contracts

@@ -14,6 +14,7 @@ from backend.generate_pick import (
     SectorSnapshot,
     StockCandidate,
     build_macro_snapshot,
+    build_synthetic_price_frame,
     build_thesis_monitor,
     dedupe_layer_penalties,
     default_model_calibration,
@@ -574,6 +575,14 @@ class GeneratePickTests(unittest.TestCase):
         self.assertEqual("2026-01-30", series.latest_trading_date)
         self.assertEqual(30, series.closes[0])
         self.assertEqual(6, series.closes[-1])
+
+    def test_build_synthetic_price_frame_produces_usable_history(self) -> None:
+        frame = build_synthetic_price_frame("MSFT", periods=80)
+
+        self.assertEqual(80, len(frame))
+        self.assertEqual(["Date", "Close", "Volume"], list(frame.columns))
+        self.assertTrue((frame["Close"] > 0).all())
+        self.assertTrue((frame["Volume"] > 0).all())
 
     def test_select_best_candidate_returns_no_pick_when_thresholds_fail(self) -> None:
         selection = select_best_candidate(

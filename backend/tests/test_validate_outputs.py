@@ -5,6 +5,13 @@ from backend.validate_outputs import validate_repository_outputs
 
 
 def write_payloads(base_dir: Path) -> None:
+    (base_dir / "universe.csv").write_text(
+        "symbol,company_name,sector,active\n"
+        "MSFT,Microsoft Corporation,technology,1\n"
+        "XOM,Exxon Mobil Corporation,energy,1\n",
+        encoding="utf-8",
+    )
+
     (base_dir / "current_pick.json").write_text(
         """
         {
@@ -44,26 +51,42 @@ def write_payloads(base_dir: Path) -> None:
             "pick": {
               "symbol": "MSFT",
               "company_name": "Microsoft Corporation",
+              "sector": "technology",
               "risk": "low",
               "model_score": 0.2,
               "confidence_score": 0.82,
               "confidence_label": "high",
               "price_as_of": "2026-03-14",
               "news_as_of": "2026-03-14",
+              "macro_as_of": "2026-03-14",
+              "sector_as_of": "2026-03-14",
               "article_count": 4,
               "metrics": {
                 "momentum_5d": 0.04,
                 "daily_volatility": 0.01,
                 "news_sentiment": 0.72,
-                "raw_news_sentiment": 0.3
+                "raw_news_sentiment": 0.3,
+                "macro_sentiment": 0.59,
+                "macro_confidence": 0.62,
+                "sector_sentiment": 0.64,
+                "sector_confidence": 0.71,
+                "market_relative_5d": 0.02,
+                "market_relative_20d": 0.05,
+                "sector_relative_5d": 0.01,
+                "sector_relative_20d": 0.03
               },
               "score_breakdown": {
                 "momentum": 0.25,
+                "market_relative_strength": 0.02,
+                "sector_relative_strength": 0.01,
                 "volatility_penalty": -0.08,
                 "news_adjustment": 0.03,
+                "macro_adjustment": 0.02,
+                "sector_adjustment": 0.01,
                 "total": 0.2
               },
-              "reasons": ["a"]
+              "reasons": ["a"],
+              "macro_evidence": []
             }
           }
         }
@@ -110,26 +133,42 @@ def write_payloads(base_dir: Path) -> None:
             "pick": {
               "symbol": "MSFT",
               "company_name": "Microsoft Corporation",
+              "sector": "technology",
               "risk": "low",
               "model_score": 0.2,
               "confidence_score": 0.82,
               "confidence_label": "high",
               "price_as_of": "2026-03-14",
               "news_as_of": "2026-03-14",
+              "macro_as_of": "2026-03-14",
+              "sector_as_of": "2026-03-14",
               "article_count": 4,
               "metrics": {
                 "momentum_5d": 0.04,
                 "daily_volatility": 0.01,
                 "news_sentiment": 0.72,
-                "raw_news_sentiment": 0.3
+                "raw_news_sentiment": 0.3,
+                "macro_sentiment": 0.59,
+                "macro_confidence": 0.62,
+                "sector_sentiment": 0.64,
+                "sector_confidence": 0.71,
+                "market_relative_5d": 0.02,
+                "market_relative_20d": 0.05,
+                "sector_relative_5d": 0.01,
+                "sector_relative_20d": 0.03
               },
               "score_breakdown": {
                 "momentum": 0.25,
+                "market_relative_strength": 0.02,
+                "sector_relative_strength": 0.01,
                 "volatility_penalty": -0.08,
                 "news_adjustment": 0.03,
+                "macro_adjustment": 0.02,
+                "sector_adjustment": 0.01,
                 "total": 0.2
               },
-              "reasons": ["a"]
+              "reasons": ["a"],
+              "macro_evidence": []
             }
           },
           "risk_selections": {
@@ -141,26 +180,42 @@ def write_payloads(base_dir: Path) -> None:
               "pick": {
                 "symbol": "MSFT",
                 "company_name": "Microsoft Corporation",
+                "sector": "technology",
                 "risk": "low",
                 "model_score": 0.2,
                 "confidence_score": 0.82,
                 "confidence_label": "high",
                 "price_as_of": "2026-03-14",
                 "news_as_of": "2026-03-14",
+                "macro_as_of": "2026-03-14",
+                "sector_as_of": "2026-03-14",
                 "article_count": 4,
                 "metrics": {
                   "momentum_5d": 0.04,
                   "daily_volatility": 0.01,
                   "news_sentiment": 0.72,
-                  "raw_news_sentiment": 0.3
+                  "raw_news_sentiment": 0.3,
+                  "macro_sentiment": 0.59,
+                  "macro_confidence": 0.62,
+                  "sector_sentiment": 0.64,
+                  "sector_confidence": 0.71,
+                  "market_relative_5d": 0.02,
+                  "market_relative_20d": 0.05,
+                  "sector_relative_5d": 0.01,
+                  "sector_relative_20d": 0.03
                 },
                 "score_breakdown": {
                   "momentum": 0.25,
+                  "market_relative_strength": 0.02,
+                  "sector_relative_strength": 0.01,
                   "volatility_penalty": -0.08,
                   "news_adjustment": 0.03,
+                  "macro_adjustment": 0.02,
+                  "sector_adjustment": 0.01,
                   "total": 0.2
                 },
-                "reasons": ["a"]
+                "reasons": ["a"],
+                "macro_evidence": []
               }
             },
             "medium": {
@@ -178,6 +233,116 @@ def write_payloads(base_dir: Path) -> None:
               "pick": null
             }
           }
+        }
+        """.strip(),
+        encoding="utf-8",
+    )
+
+    (base_dir / "news_scores.json").write_text(
+        """
+        {
+          "MSFT": {
+            "news_score": 0.72,
+            "news_confidence": 0.81,
+            "raw_sentiment": 0.33,
+            "calibrated_sentiment": 0.24,
+            "article_count": 4,
+            "effective_article_count": 2.8,
+            "source_count": 3,
+            "average_relevance": 0.82,
+            "average_recency_weight": 0.91,
+            "average_source_quality": 0.94,
+            "provider_sentiment_coverage": 0.8,
+            "dominant_weight_share": 0.42,
+            "dominant_signal": "bullish",
+            "news_reasons": ["Good evidence."],
+            "top_articles": [],
+            "last_updated": "2026-03-14",
+            "analysis_method": "gpt_company_review",
+            "llm_model": "gpt-5-mini"
+          },
+          "XOM": {
+            "news_score": 0.46,
+            "news_confidence": 0.63,
+            "raw_sentiment": -0.08,
+            "calibrated_sentiment": -0.05,
+            "article_count": 2,
+            "effective_article_count": 1.2,
+            "source_count": 2,
+            "average_relevance": 0.71,
+            "average_recency_weight": 0.88,
+            "average_source_quality": 0.9,
+            "provider_sentiment_coverage": 0.5,
+            "dominant_weight_share": 0.58,
+            "dominant_signal": "neutral",
+            "news_reasons": ["Mixed evidence."],
+            "top_articles": [],
+            "last_updated": "2026-03-14",
+            "analysis_method": "heuristic_fallback",
+            "llm_model": null
+          }
+        }
+        """.strip(),
+        encoding="utf-8",
+    )
+
+    (base_dir / "sector_scores.json").write_text(
+        """
+        {
+          "generated_at": "2026-03-16T12:00:00Z",
+          "last_updated": "2026-03-16",
+          "lookback_days": 3,
+          "article_count": 6,
+          "source_count": 4,
+          "llm_model": "gpt-5-mini",
+          "summary": "Recent broad market news favored technology over energy.",
+          "sector_scores": {
+            "energy": {
+              "sector": "energy",
+              "display_name": "Energy",
+              "score": 0.42,
+              "confidence": 0.71,
+              "direction": "bearish",
+              "last_updated": "2026-03-16",
+              "reasons": ["Oil demand expectations weakened."],
+              "supporting_articles": []
+            },
+            "technology": {
+              "sector": "technology",
+              "display_name": "Technology",
+              "score": 0.64,
+              "confidence": 0.73,
+              "direction": "bullish",
+              "last_updated": "2026-03-16",
+              "reasons": ["AI infrastructure demand improved."],
+              "supporting_articles": []
+            }
+          },
+          "symbol_scores": {
+            "MSFT": {
+              "symbol": "MSFT",
+              "company_name": "Microsoft Corporation",
+              "sector": "technology",
+              "score": 0.68,
+              "confidence": 0.74,
+              "direction": "bullish",
+              "last_updated": "2026-03-16",
+              "reasons": ["Enterprise AI demand improved."],
+              "supporting_articles": []
+            },
+            "XOM": {
+              "symbol": "XOM",
+              "company_name": "Exxon Mobil Corporation",
+              "sector": "energy",
+              "score": 0.44,
+              "confidence": 0.66,
+              "direction": "bearish",
+              "last_updated": "2026-03-16",
+              "reasons": ["Oil demand expectations weakened for near-term producers."],
+              "supporting_articles": []
+            }
+          },
+          "events": []
         }
         """.strip(),
         encoding="utf-8",
@@ -220,7 +385,7 @@ class ValidateOutputsTests(unittest.TestCase):
         self.temp_dir.mkdir(exist_ok=True)
 
     def tearDown(self) -> None:
-        for filename in ("current_pick.json", "risk_picks.json", "history.json"):
+        for filename in ("current_pick.json", "risk_picks.json", "history.json", "news_scores.json", "sector_scores.json", "universe.csv"):
             path = self.temp_dir / filename
             if path.exists():
                 path.unlink()

@@ -1,29 +1,47 @@
 import json
 import math
+import os
 import time as time_module
 from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta, timezone
 from io import StringIO
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 
 import pandas as pd
-import yfinance as yf
+import numpy as np
 
-MODEL_VERSION = "v3.1"
+try:
+    from backend.sector_utils import load_sector_map, sector_display_name
+except ImportError:
+    from sector_utils import load_sector_map, sector_display_name
+
+MODEL_VERSION = "v3.3"
 SCHEMA_VERSION = 2
 MARKET_TIMEZONE = "America/New_York"
 MARKET_TZ = ZoneInfo(MARKET_TIMEZONE)
 
 UNIVERSE_CSV_PATH = Path("universe.csv")
 NEWS_SCORES_PATH = Path("news_scores.json")
+SECTOR_SCORES_PATH = Path("sector_scores.json")
 CURRENT_PICK_PATH = Path("current_pick.json")
 RISK_PICKS_PATH = Path("risk_picks.json")
 HISTORY_PATH = Path("history.json")
+MARKET_BENCHMARK_SYMBOL = "SPY"
+SECTOR_ETF_BY_SECTOR = {
+    "communication_services": "XLC",
+    "consumer_discretionary": "XLY",
+    "consumer_staples": "XLP",
+    "energy": "XLE",
+    "financials": "XLF",
+    "healthcare": "XLV",
+    "industrials": "XLI",
+    "technology": "XLK",
+}
 
 SHORT_MOMENTUM_SCALE = 0.08
 MEDIUM_MOMENTUM_SCALE = 0.18
@@ -32,6 +50,7 @@ VOLUME_TREND_SCALE = 0.60
 VOLATILITY_SCALE = 0.04
 DOWNSIDE_VOLATILITY_SCALE = 0.025
 MAX_DRAWDOWN_SCALE = 0.12
+RELATIVE_STRENGTH_SCALE = 0.08
 
 OVERALL_SELECTION_THRESHOLD = 0.10
 RISK_SELECTION_THRESHOLDS = {
@@ -43,12 +62,84 @@ MIN_CONFIDENCE_THRESHOLD = 0.55
 EXPECTED_REFRESH_HOUR_UTC = 12
 STALE_GRACE_HOURS = 12
 NEWS_STALE_AFTER_DAYS = 2
+SECTOR_STALE_AFTER_DAYS = 3
 PRICE_FETCH_ATTEMPTS = 3
 PRICE_FETCH_RETRY_SECONDS = 1.5
 PRICE_REQUEST_TIMEOUT_SECONDS = 20
 SIGNAL_ALIGNMENT_BASE = 0.03
 SIGNAL_ALIGNMENT_CONFIDENCE_SCALE = 0.04
 STOOQ_DAILY_ENDPOINT = "https://stooq.com/q/d/l/"
+ENABLE_HISTORY_REALIZED_ENRICHMENT_ENV = "ENABLE_HISTORY_REALIZED_ENRICHMENT"
+CALIBRATION_LOOKBACK_DAYS = 320
+CALIBRATION_STEP_DAYS = 5
+CALIBRATION_MIN_ROWS = 180
+CALIBRATION_RIDGE_ALPHA = 0.75
+CALIBRATION_PREDICTION_PCTL = 0.90
+TECHNICAL_SCORE_TARGET_SCALE = 0.30
+BLOCK_CALIBRATION_MIN_ROWS = 12
+BLOCK_BASE_PRIORS = {
+    "news": 0.18,
+    "macro": 0.10,
+    "sector": 0.08,
+}
+BLOCK_WEIGHT_FLOORS = {
+    "news": 0.10,
+    "macro": 0.05,
+    "sector": 0.04,
+}
+BLOCK_WEIGHT_CAPS = {
+    "news": 0.24,
+    "macro": 0.14,
+    "sector": 0.12,
+}
+LAYER_OVERLAP_MAX_PENALTY = 0.55
+LAYER_OVERLAP_MIN_PENALTY = 0.30
+TECHNICAL_FEATURE_ORDER = (
+    "short_momentum",
+    "medium_momentum",
+    "trend_gap",
+    "positive_ratio",
+    "volume_confirmation",
+    "market_relative",
+    "sector_relative",
+    "inverse_volatility",
+    "inverse_downside",
+    "inverse_drawdown",
+)
+TECHNICAL_GROUPS = {
+    "trend_strength": ("short_momentum", "medium_momentum", "trend_gap", "positive_ratio"),
+    "relative_strength": ("market_relative", "sector_relative"),
+    "participation": ("volume_confirmation",),
+    "risk_control": ("inverse_volatility", "inverse_downside", "inverse_drawdown"),
+}
+DEFAULT_TECHNICAL_FEATURE_WEIGHTS = {
+    "short_momentum": 0.22,
+    "medium_momentum": 0.18,
+    "trend_gap": 0.06,
+    "positive_ratio": 0.08,
+    "volume_confirmation": 0.08,
+    "market_relative": 0.07,
+    "sector_relative": 0.05,
+    "inverse_volatility": 0.12,
+    "inverse_downside": 0.09,
+    "inverse_drawdown": 0.05,
+}
+THEME_KEYWORDS = {
+    "oil": ("oil", "crude", "opec", "lng", "fuel", "refinery", "natural gas"),
+    "semiconductors": ("chip", "semiconductor", "gpu", "foundry", "wafer"),
+    "ai": ("ai", "artificial intelligence", "data center", "accelerator", "inference"),
+    "cloud": ("cloud", "azure", "aws", "software", "saas"),
+    "rates": ("interest rate", "yield", "federal reserve", "rate cut", "rate hike"),
+    "inflation": ("inflation", "cpi", "ppi", "pricing pressure"),
+    "consumer": ("consumer spending", "retail sales", "foot traffic", "demand", "pricing"),
+    "autos": ("auto", "vehicle", "ev", "deliveries", "registrations", "production"),
+    "healthcare": ("drug", "fda", "clinical trial", "reimbursement", "medicare"),
+    "regulation": ("tariff", "sanction", "regulation", "antitrust", "export control"),
+    "supply_chain": ("shortage", "oversupply", "supply chain", "inventory", "capacity"),
+    "defense": ("defense", "aerospace", "military", "missile"),
+    "shipping": ("shipping", "freight", "logistics", "container"),
+    "earnings": ("guidance", "earnings", "revenue", "margin", "sales"),
+}
 
 
 @dataclass(frozen=True)
@@ -83,6 +174,30 @@ class NewsSnapshot:
     news_evidence: List[Dict[str, Any]]
 
 
+@dataclass(frozen=True)
+class SectorSnapshot:
+    sector: str
+    sector_score: float
+    sector_confidence: float
+    direction: str
+    reasons: List[str]
+    supporting_articles: List[Dict[str, Any]]
+    last_updated: Optional[str]
+
+
+@dataclass(frozen=True)
+class MacroSnapshot:
+    symbol: str
+    company_name: str
+    sector: str
+    macro_score: float
+    macro_confidence: float
+    direction: str
+    reasons: List[str]
+    supporting_articles: List[Dict[str, Any]]
+    last_updated: Optional[str]
+
+
 @dataclass
 class StockCandidate:
     symbol: str
@@ -106,13 +221,27 @@ class StockCandidate:
     trend_gap: float
     positive_day_ratio: float
     volume_trend: float
+    market_relative_5d: float
+    market_relative_20d: float
+    sector_relative_5d: float
+    sector_relative_20d: float
     news_score: float
     news_confidence: float
+    macro_score: float
+    macro_confidence: float
     raw_sentiment: float
     calibrated_sentiment: float
     dominant_signal: str
     score_breakdown: Dict[str, float]
     news_evidence: List[Dict[str, Any]]
+    macro_evidence: List[Dict[str, Any]]
+    macro_as_of: Optional[str] = None
+    sector_as_of: Optional[str] = None
+    sector: str = "unknown"
+    sector_score: float = 0.5
+    sector_confidence: float = 0.2
+    sector_direction: str = "neutral"
+    sector_reasons: List[str] = None
 
 
 @dataclass(frozen=True)
@@ -131,6 +260,21 @@ class GenerationStats:
     evaluated_candidates: int
     skipped_symbols: int
     skipped_details: List[Dict[str, str]]
+
+
+@dataclass(frozen=True)
+class ModelCalibration:
+    technical_weights: Dict[str, float]
+    block_weights: Dict[str, float]
+    technical_scale: float
+    training_row_count: int
+    training_ic: float
+    block_row_count: int
+    source: str
+
+
+PRICE_SERIES_CACHE: Dict[Tuple[str, int], PriceSeries] = {}
+PRICE_FRAME_CACHE: Dict[str, pd.DataFrame] = {}
 
 
 def clamp(value: float, minimum: float, maximum: float) -> float:
@@ -153,6 +297,11 @@ def format_score(value: float) -> str:
 
 def now_utc() -> datetime:
     return datetime.now(timezone.utc).replace(microsecond=0)
+
+
+def history_realized_enrichment_enabled() -> bool:
+    raw = os.getenv(ENABLE_HISTORY_REALIZED_ENRICHMENT_ENV, "").strip().lower()
+    return raw in {"1", "true", "yes", "on"}
 
 
 def iso_utc(dt: datetime) -> str:
@@ -263,6 +412,23 @@ def stooq_symbol(symbol: str) -> str:
 
 
 def build_price_series_from_frame(frame: pd.DataFrame, symbol: str, max_days: int = 45) -> PriceSeries:
+    working = build_clean_price_frame(frame, symbol)
+
+    if len(working) < 21:
+        raise RuntimeError(f"Not enough price history for {symbol}")
+
+    recent_frame = working.tail(max_days)
+    latest_date = recent_frame["Date"].iloc[-1].date().isoformat()
+
+    return PriceSeries(
+        closes=list(recent_frame["Close"].tolist())[::-1],
+        volumes=list(recent_frame["Volume"].tolist())[::-1],
+        latest_trading_date=latest_date,
+        observations=len(recent_frame),
+    )
+
+
+def build_clean_price_frame(frame: pd.DataFrame, symbol: str) -> pd.DataFrame:
     if frame is None or frame.empty:
         raise RuntimeError(f"Price provider returned an empty frame for {symbol}")
 
@@ -292,23 +458,10 @@ def build_price_series_from_frame(frame: pd.DataFrame, symbol: str, max_days: in
     else:
         working["Volume"] = 0.0
 
-    working = (
+    return (
         working.dropna(subset=["Date", "Close"])
         .sort_values("Date")
         .reset_index(drop=True)
-    )
-
-    if len(working) < 21:
-        raise RuntimeError(f"Not enough price history for {symbol}")
-
-    recent_frame = working.tail(max_days)
-    latest_date = recent_frame["Date"].iloc[-1].date().isoformat()
-
-    return PriceSeries(
-        closes=list(recent_frame["Close"].tolist())[::-1],
-        volumes=list(recent_frame["Volume"].tolist())[::-1],
-        latest_trading_date=latest_date,
-        observations=len(recent_frame),
     )
 
 
@@ -343,44 +496,47 @@ def fetch_stooq_price_frame(symbol: str) -> pd.DataFrame:
     return frame
 
 
-def fetch_yahoo_price_frame(symbol: str) -> pd.DataFrame:
-    data = yf.download(
-        tickers=symbol,
-        period="3mo",
-        interval="1d",
-        auto_adjust=True,
-        progress=False,
-        threads=False,
+def fetch_price_frame(symbol: str) -> pd.DataFrame:
+    providers = [("stooq", fetch_stooq_price_frame)]
+    failures: List[str] = []
+
+    for provider_name, provider_fetcher in providers:
+        provider_error: Optional[Exception] = None
+        for attempt in range(1, PRICE_FETCH_ATTEMPTS + 1):
+            try:
+                frame = provider_fetcher(symbol)
+                return build_clean_price_frame(frame, symbol)
+            except Exception as exc:
+                provider_error = exc
+                if attempt < PRICE_FETCH_ATTEMPTS:
+                    time_module.sleep(PRICE_FETCH_RETRY_SECONDS * attempt)
+
+        if provider_error is not None:
+            failures.append(f"{provider_name}: {provider_error}")
+
+    raise RuntimeError(
+        f"Unable to fetch usable price frame for {symbol} after {PRICE_FETCH_ATTEMPTS} attempts per provider: "
+        + "; ".join(failures)
     )
 
-    if data is None or data.empty:
-        raise RuntimeError("empty Yahoo price response")
-    if "Close" not in data:
-        raise RuntimeError(f"Yahoo data for {symbol} did not include Close prices")
 
-    closes = data["Close"]
-    volumes = data["Volume"] if "Volume" in data else None
+def fetch_price_frame_cached(symbol: str) -> pd.DataFrame:
+    cache_key = symbol.upper()
+    cached = PRICE_FRAME_CACHE.get(cache_key)
+    if cached is not None:
+        return cached.copy()
 
-    if isinstance(closes, pd.DataFrame):
-        closes = closes.iloc[:, 0]
-    if isinstance(volumes, pd.DataFrame):
-        volumes = volumes.iloc[:, 0]
-
-    frame = pd.DataFrame(
-        {
-            "Date": closes.index,
-            "Close": closes.values,
-            "Volume": volumes.values if volumes is not None else [0.0] * len(closes),
-        }
-    )
-    return frame
+    fetched = fetch_price_frame(symbol)
+    PRICE_FRAME_CACHE[cache_key] = fetched
+    return fetched.copy()
 
 
 def fetch_price_series(symbol: str, max_days: int = 45) -> PriceSeries:
-    providers = [
-        ("stooq", fetch_stooq_price_frame),
-        ("yahoo", fetch_yahoo_price_frame),
-    ]
+    cached_frame = PRICE_FRAME_CACHE.get(symbol.upper())
+    if cached_frame is not None:
+        return build_price_series_from_frame(cached_frame.copy(), symbol, max_days)
+
+    providers = [("stooq", fetch_stooq_price_frame)]
     failures: List[str] = []
 
     for provider_name, provider_fetcher in providers:
@@ -403,6 +559,17 @@ def fetch_price_series(symbol: str, max_days: int = 45) -> PriceSeries:
     )
 
 
+def fetch_price_series_cached(symbol: str, max_days: int = 45) -> PriceSeries:
+    cache_key = (symbol.upper(), max_days)
+    cached = PRICE_SERIES_CACHE.get(cache_key)
+    if cached is not None:
+        return cached
+
+    fetched = fetch_price_series(symbol, max_days)
+    PRICE_SERIES_CACHE[cache_key] = fetched
+    return fetched
+
+
 def load_news_scores(path: Path = NEWS_SCORES_PATH) -> Dict[str, dict]:
     try:
         with path.open("r", encoding="utf-8") as handle:
@@ -415,6 +582,18 @@ def load_news_scores(path: Path = NEWS_SCORES_PATH) -> Dict[str, dict]:
                 return data
     except FileNotFoundError:
         print(f"[WARN] Could not find {path}; news contribution will be neutral.")
+
+    return {}
+
+
+def load_sector_scores(path: Path = SECTOR_SCORES_PATH) -> Dict[str, Any]:
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+            if isinstance(data, dict):
+                return data
+    except FileNotFoundError:
+        print(f"[WARN] Could not find {path}; sector overlay will stay neutral.")
 
     return {}
 
@@ -438,6 +617,12 @@ def normalize_news_evidence(news_info: dict) -> List[Dict[str, Any]]:
                     "published_at": str(article.get("published_at", "")).strip() or None,
                     "relevance_score": float(article["relevance_score"]) if isinstance(article.get("relevance_score"), (int, float)) else None,
                     "sentiment": float(article["sentiment"]) if isinstance(article.get("sentiment"), (int, float)) else None,
+                    "doc_type": str(article.get("doc_type", "")).strip() or None,
+                    "company_relevance": float(article["company_relevance"]) if isinstance(article.get("company_relevance"), (int, float)) else None,
+                    "materiality": float(article["materiality"]) if isinstance(article.get("materiality"), (int, float)) else None,
+                    "llm_confidence": float(article["llm_confidence"]) if isinstance(article.get("llm_confidence"), (int, float)) else None,
+                    "llm_impact_score": float(article["llm_impact_score"]) if isinstance(article.get("llm_impact_score"), (int, float)) else None,
+                    "llm_reason": str(article.get("llm_reason", "")).strip() or None,
                 }
             )
 
@@ -461,6 +646,120 @@ def normalize_news_evidence(news_info: dict) -> List[Dict[str, Any]]:
                 )
 
     return normalized
+
+
+def normalize_sector_supporting_articles(sector_info: dict) -> List[Dict[str, Any]]:
+    normalized: List[Dict[str, Any]] = []
+    articles = sector_info.get("supporting_articles")
+    if not isinstance(articles, list):
+        return normalized
+
+    for article in articles[:3]:
+        if not isinstance(article, dict):
+            continue
+        title = str(article.get("title", "")).strip()
+        if not title:
+            continue
+        normalized.append(
+            {
+                "title": title,
+                "provider": str(article.get("provider", "")).strip() or None,
+                "url": str(article.get("url", "")).strip() or None,
+                "published_at": str(article.get("published_at", "")).strip() or None,
+                "impact": str(article.get("impact", "")).strip() or None,
+                "weight": float(article["weight"]) if isinstance(article.get("weight"), (int, float)) else None,
+                "reason": str(article.get("reason", "")).strip() or None,
+            }
+        )
+
+    return normalized
+
+
+def latest_payload_article_date(articles: Any) -> Optional[str]:
+    if not isinstance(articles, list):
+        return None
+
+    published_dates: List[str] = []
+    for article in articles:
+        if not isinstance(article, dict):
+            continue
+        published_at = parse_iso_datetime(article.get("published_at"))
+        if published_at is not None:
+            published_dates.append(published_at.date().isoformat())
+
+    if not published_dates:
+        return None
+    return max(published_dates)
+
+
+def theme_tokens_from_text(text: str) -> List[str]:
+    normalized = text.lower()
+    matches = []
+    for theme, keywords in THEME_KEYWORDS.items():
+        if any(keyword in normalized for keyword in keywords):
+            matches.append(theme)
+    return matches
+
+
+def extract_layer_themes(
+    reasons: Sequence[str],
+    evidence: Sequence[Dict[str, Any]],
+) -> List[str]:
+    themes: List[str] = []
+    for reason in reasons:
+        themes.extend(theme_tokens_from_text(str(reason)))
+    for article in evidence:
+        if not isinstance(article, dict):
+            continue
+        themes.extend(theme_tokens_from_text(str(article.get("title", ""))))
+        themes.extend(theme_tokens_from_text(str(article.get("reason", ""))))
+        themes.extend(theme_tokens_from_text(str(article.get("llm_reason", ""))))
+    return list(dict.fromkeys(themes))
+
+
+def overlap_ratio(left: Sequence[str], right: Sequence[str]) -> float:
+    left_set = {item for item in left if item}
+    right_set = {item for item in right if item}
+    if not left_set or not right_set:
+        return 0.0
+    return len(left_set & right_set) / len(left_set | right_set)
+
+
+def dedupe_layer_penalties(
+    news_snapshot: NewsSnapshot,
+    macro_snapshot: MacroSnapshot,
+    sector_snapshot: SectorSnapshot,
+) -> Dict[str, Any]:
+    news_themes = extract_layer_themes(news_snapshot.reasons, news_snapshot.news_evidence)
+    macro_themes = extract_layer_themes(macro_snapshot.reasons, macro_snapshot.supporting_articles)
+    sector_themes = extract_layer_themes(sector_snapshot.reasons, sector_snapshot.supporting_articles)
+
+    news_macro_overlap = overlap_ratio(news_themes, macro_themes)
+    news_sector_overlap = overlap_ratio(news_themes, sector_themes)
+    macro_sector_overlap = overlap_ratio(macro_themes, sector_themes)
+
+    macro_penalty = 1.0 - clamp(news_macro_overlap * LAYER_OVERLAP_MAX_PENALTY, 0.0, LAYER_OVERLAP_MAX_PENALTY)
+    sector_penalty = 1.0 - clamp(
+        max(news_sector_overlap, macro_sector_overlap) * (LAYER_OVERLAP_MAX_PENALTY + 0.05),
+        0.0,
+        LAYER_OVERLAP_MAX_PENALTY + 0.05,
+    )
+
+    if news_macro_overlap > 0.0 and macro_snapshot.macro_confidence >= 0.35:
+        macro_penalty = min(macro_penalty, 1.0 - LAYER_OVERLAP_MIN_PENALTY)
+    if max(news_sector_overlap, macro_sector_overlap) > 0.0 and sector_snapshot.sector_confidence >= 0.35:
+        sector_penalty = min(sector_penalty, 1.0 - (LAYER_OVERLAP_MIN_PENALTY + 0.05))
+
+    return {
+        "news_themes": news_themes,
+        "macro_themes": macro_themes,
+        "sector_themes": sector_themes,
+        "news_macro_overlap": news_macro_overlap,
+        "news_sector_overlap": news_sector_overlap,
+        "macro_sector_overlap": macro_sector_overlap,
+        "macro_penalty": clamp(macro_penalty, 0.40, 1.0),
+        "sector_penalty": clamp(sector_penalty, 0.35, 1.0),
+    }
 
 
 def build_news_snapshot(news_info: Optional[dict]) -> NewsSnapshot:
@@ -489,7 +788,7 @@ def build_news_snapshot(news_info: Optional[dict]) -> NewsSnapshot:
     article_count = int(news_info.get("article_count", 0))
     base_news_confidence = float(news_info.get("news_confidence", 0.25 if article_count else 0.20))
     base_news_score = float(news_info.get("news_score", 0.5))
-    last_updated = news_info.get("last_updated")
+    last_updated = news_info.get("last_updated") or latest_payload_article_date(news_info.get("top_articles"))
     now = now_utc()
     freshness_multiplier = 1.0
 
@@ -527,6 +826,154 @@ def build_news_snapshot(news_info: Optional[dict]) -> NewsSnapshot:
         dominant_signal=dominant_signal,
         last_updated=last_updated,
         news_evidence=news_evidence,
+    )
+
+
+def build_sector_snapshot(
+    sector: str,
+    sector_scores_payload: Optional[Dict[str, Any]],
+) -> SectorSnapshot:
+    neutral_reason = (
+        f"No fresh broad catalyst clearly favored the {sector_display_name(sector)} sector, so the sector overlay stayed neutral."
+    )
+    if not sector_scores_payload:
+        return SectorSnapshot(
+            sector=sector,
+            sector_score=0.5,
+            sector_confidence=0.20,
+            direction="neutral",
+            reasons=[neutral_reason],
+            supporting_articles=[],
+            last_updated=None,
+        )
+
+    sector_scores = sector_scores_payload.get("sector_scores")
+    sector_info = sector_scores.get(sector) if isinstance(sector_scores, dict) else None
+    if not isinstance(sector_info, dict):
+        return SectorSnapshot(
+            sector=sector,
+            sector_score=0.5,
+            sector_confidence=0.20,
+            direction="neutral",
+            reasons=[neutral_reason],
+            supporting_articles=[],
+            last_updated=str(sector_scores_payload.get("last_updated")) if sector_scores_payload.get("last_updated") else None,
+        )
+
+    reasons = sector_info.get("reasons")
+    normalized_reasons = [str(item) for item in reasons] if isinstance(reasons, list) and reasons else [neutral_reason]
+    base_score = float(sector_info.get("score", 0.5))
+    base_confidence = float(sector_info.get("confidence", 0.2))
+    supporting_articles = normalize_sector_supporting_articles(sector_info)
+    last_updated = (
+        str(sector_info.get("last_updated")).strip()
+        if sector_info.get("last_updated")
+        else latest_payload_article_date(supporting_articles)
+    )
+    if not last_updated and supporting_articles:
+        last_updated = str(sector_scores_payload.get("last_updated")).strip() if sector_scores_payload.get("last_updated") else None
+    freshness_multiplier = 1.0
+    parsed_last_updated = parse_iso_datetime(last_updated)
+    now = now_utc()
+    if parsed_last_updated and parsed_last_updated < now - timedelta(days=SECTOR_STALE_AFTER_DAYS):
+        age_days = max(1, (now - parsed_last_updated).days)
+        freshness_multiplier = 0.65
+        normalized_reasons.append(
+            f"Sector overlay is {age_days} days old, so its impact and confidence were reduced."
+        )
+
+    score = 0.5 + (base_score - 0.5) * freshness_multiplier
+    confidence = clamp(base_confidence * freshness_multiplier, 0.18, 0.95)
+    direction = str(sector_info.get("direction", "neutral"))
+    if freshness_multiplier < 1.0 and abs(score - 0.5) < 0.08:
+        direction = "neutral"
+
+    return SectorSnapshot(
+        sector=sector,
+        sector_score=score,
+        sector_confidence=confidence,
+        direction=direction,
+        reasons=normalized_reasons,
+        supporting_articles=supporting_articles,
+        last_updated=str(last_updated).strip() if last_updated else None,
+    )
+
+
+def build_macro_snapshot(
+    symbol: str,
+    company_name: str,
+    sector: str,
+    sector_scores_payload: Optional[Dict[str, Any]],
+) -> MacroSnapshot:
+    neutral_reason = (
+        f"No fresh world-news catalyst clearly favored {company_name}, so the global overlay stayed neutral."
+    )
+    if not sector_scores_payload:
+        return MacroSnapshot(
+            symbol=symbol,
+            company_name=company_name,
+            sector=sector,
+            macro_score=0.5,
+            macro_confidence=0.20,
+            direction="neutral",
+            reasons=[neutral_reason],
+            supporting_articles=[],
+            last_updated=None,
+        )
+
+    symbol_scores = sector_scores_payload.get("symbol_scores")
+    symbol_info = symbol_scores.get(symbol) if isinstance(symbol_scores, dict) else None
+    if not isinstance(symbol_info, dict):
+        return MacroSnapshot(
+            symbol=symbol,
+            company_name=company_name,
+            sector=sector,
+            macro_score=0.5,
+            macro_confidence=0.20,
+            direction="neutral",
+            reasons=[neutral_reason],
+            supporting_articles=[],
+            last_updated=str(sector_scores_payload.get("last_updated")) if sector_scores_payload.get("last_updated") else None,
+        )
+
+    reasons = symbol_info.get("reasons")
+    normalized_reasons = [str(item) for item in reasons] if isinstance(reasons, list) and reasons else [neutral_reason]
+    base_score = float(symbol_info.get("score", 0.5))
+    base_confidence = float(symbol_info.get("confidence", 0.2))
+    supporting_articles = normalize_sector_supporting_articles(symbol_info)
+    last_updated = (
+        str(symbol_info.get("last_updated")).strip()
+        if symbol_info.get("last_updated")
+        else latest_payload_article_date(supporting_articles)
+    )
+    if not last_updated and supporting_articles:
+        last_updated = str(sector_scores_payload.get("last_updated")).strip() if sector_scores_payload.get("last_updated") else None
+    freshness_multiplier = 1.0
+    parsed_last_updated = parse_iso_datetime(last_updated)
+    now = now_utc()
+    if parsed_last_updated and parsed_last_updated < now - timedelta(days=SECTOR_STALE_AFTER_DAYS):
+        age_days = max(1, (now - parsed_last_updated).days)
+        freshness_multiplier = 0.65
+        normalized_reasons.append(
+            f"Global overlay is {age_days} days old, so its impact and confidence were reduced."
+        )
+
+    score = 0.5 + (base_score - 0.5) * freshness_multiplier
+    confidence = clamp(base_confidence * freshness_multiplier, 0.18, 0.95)
+    direction = str(symbol_info.get("direction", "neutral"))
+    if freshness_multiplier < 1.0 and abs(score - 0.5) < 0.08:
+        direction = "neutral"
+
+    return MacroSnapshot(
+        symbol=symbol,
+        company_name=company_name,
+        sector=sector,
+        macro_score=score,
+        macro_confidence=confidence,
+        direction=direction,
+        reasons=normalized_reasons,
+        supporting_articles=supporting_articles,
+        last_updated=str(last_updated).strip() if last_updated else None,
     )
 
 
@@ -608,12 +1055,333 @@ def compute_metrics(closes: List[float]) -> Tuple[float, float]:
     return metrics["momentum_5d"], metrics["volatility"]
 
 
+def relative_return(stock_return: float, benchmark_return: float) -> float:
+    return safe_divide(1.0 + stock_return, 1.0 + benchmark_return, 1.0) - 1.0
+
+
+def compute_relative_strength_metrics(
+    stock_metrics: Dict[str, float],
+    market_metrics: Dict[str, float],
+    sector_metrics: Dict[str, float],
+) -> Dict[str, float]:
+    market_relative_5d = relative_return(stock_metrics["momentum_5d"], market_metrics["momentum_5d"])
+    market_relative_20d = relative_return(stock_metrics["momentum_20d"], market_metrics["momentum_20d"])
+    sector_relative_5d = relative_return(stock_metrics["momentum_5d"], sector_metrics["momentum_5d"])
+    sector_relative_20d = relative_return(stock_metrics["momentum_20d"], sector_metrics["momentum_20d"])
+    return {
+        "market_relative_5d": market_relative_5d,
+        "market_relative_20d": market_relative_20d,
+        "sector_relative_5d": sector_relative_5d,
+        "sector_relative_20d": sector_relative_20d,
+    }
+
+
 def classify_risk(volatility: float) -> str:
     if volatility < 0.01:
         return "low"
     if volatility < 0.02:
         return "medium"
     return "high"
+
+
+def build_normalized_technical_features(
+    *,
+    momentum: float,
+    medium_momentum: float,
+    trend_gap: float,
+    positive_day_ratio: float,
+    volume_trend: float,
+    volatility: float,
+    downside_risk: float,
+    max_drawdown: float,
+    market_relative_5d: float,
+    market_relative_20d: float,
+    sector_relative_5d: float,
+    sector_relative_20d: float,
+) -> Dict[str, float]:
+    normalized_short_momentum = clamp(momentum / SHORT_MOMENTUM_SCALE, -1.0, 1.0)
+    normalized_medium_momentum = clamp(medium_momentum / MEDIUM_MOMENTUM_SCALE, -1.0, 1.0)
+    normalized_trend_gap = clamp(trend_gap / TREND_GAP_SCALE, -1.0, 1.0)
+    normalized_positive_ratio = clamp((positive_day_ratio - 0.5) * 2.0, -1.0, 1.0)
+    normalized_volume = clamp(volume_trend / VOLUME_TREND_SCALE, -1.0, 1.0)
+    normalized_volatility = clamp(volatility / VOLATILITY_SCALE, 0.0, 1.0)
+    normalized_downside = clamp(downside_risk / DOWNSIDE_VOLATILITY_SCALE, 0.0, 1.0)
+    normalized_drawdown = clamp(max_drawdown / MAX_DRAWDOWN_SCALE, 0.0, 1.0)
+    normalized_market_relative = clamp(
+        (market_relative_5d + market_relative_20d) / 2.0 / RELATIVE_STRENGTH_SCALE,
+        -1.0,
+        1.0,
+    )
+    normalized_sector_relative = clamp(
+        (sector_relative_5d + sector_relative_20d) / 2.0 / RELATIVE_STRENGTH_SCALE,
+        -1.0,
+        1.0,
+    )
+
+    return {
+        "short_momentum": normalized_short_momentum,
+        "medium_momentum": normalized_medium_momentum,
+        "trend_gap": normalized_trend_gap,
+        "positive_ratio": normalized_positive_ratio,
+        "volume_confirmation": normalized_volume,
+        "market_relative": normalized_market_relative,
+        "sector_relative": normalized_sector_relative,
+        "inverse_volatility": -normalized_volatility,
+        "inverse_downside": -normalized_downside,
+        "inverse_drawdown": -normalized_drawdown,
+    }
+
+
+def normalize_weight_map(weight_map: Dict[str, float]) -> Dict[str, float]:
+    ordered = {name: max(0.0, float(weight_map.get(name, 0.0))) for name in TECHNICAL_FEATURE_ORDER}
+    total = sum(ordered.values())
+    if total <= 1e-9:
+        fallback_total = sum(DEFAULT_TECHNICAL_FEATURE_WEIGHTS.values())
+        return {
+            name: DEFAULT_TECHNICAL_FEATURE_WEIGHTS[name] / fallback_total
+            for name in TECHNICAL_FEATURE_ORDER
+        }
+    return {name: value / total for name, value in ordered.items()}
+
+
+def default_model_calibration() -> ModelCalibration:
+    return ModelCalibration(
+        technical_weights=normalize_weight_map(DEFAULT_TECHNICAL_FEATURE_WEIGHTS),
+        block_weights=dict(BLOCK_BASE_PRIORS),
+        technical_scale=TECHNICAL_SCORE_TARGET_SCALE,
+        training_row_count=0,
+        training_ic=0.0,
+        block_row_count=0,
+        source="default_priors",
+    )
+
+
+def build_window_price_series(
+    close_window: Sequence[float],
+    volume_window: Sequence[float],
+    end_date: pd.Timestamp,
+) -> PriceSeries:
+    return PriceSeries(
+        closes=list(close_window)[::-1],
+        volumes=list(volume_window)[::-1],
+        latest_trading_date=end_date.date().isoformat(),
+        observations=len(close_window),
+    )
+
+
+def build_calibration_training_rows(
+    universe: List[Tuple[str, str]],
+    sector_map: Dict[str, str],
+) -> List[Tuple[np.ndarray, float]]:
+    training_rows: List[Tuple[np.ndarray, float]] = []
+    market_frame = fetch_price_frame_cached(MARKET_BENCHMARK_SYMBOL)[["Date", "Close"]].rename(
+        columns={"Close": "MarketClose"}
+    )
+    sector_frames = {
+        sector: fetch_price_frame_cached(etf)[["Date", "Close"]].rename(columns={"Close": "SectorClose"})
+        for sector, etf in SECTOR_ETF_BY_SECTOR.items()
+    }
+
+    for symbol, _company_name in universe:
+        sector = sector_map[symbol]
+        stock_frame = fetch_price_frame_cached(symbol)[["Date", "Close", "Volume"]]
+        merged = stock_frame.merge(market_frame, on="Date", how="inner")
+        merged = merged.merge(sector_frames[sector], on="Date", how="inner")
+        merged = merged.sort_values("Date").reset_index(drop=True)
+        if len(merged) < 45:
+            continue
+
+        merged = merged.tail(CALIBRATION_LOOKBACK_DAYS).reset_index(drop=True)
+        for end_index in range(20, len(merged) - 5, CALIBRATION_STEP_DAYS):
+            window = merged.iloc[end_index - 20:end_index + 1]
+            if len(window) < 21:
+                continue
+            future_index = end_index + 5
+            future_row = merged.iloc[future_index]
+            current_row = merged.iloc[end_index]
+
+            stock_series = build_window_price_series(
+                close_window=window["Close"].tolist(),
+                volume_window=window["Volume"].tolist(),
+                end_date=current_row["Date"],
+            )
+            market_series = build_window_price_series(
+                close_window=window["MarketClose"].tolist(),
+                volume_window=[0.0] * len(window),
+                end_date=current_row["Date"],
+            )
+            sector_series = build_window_price_series(
+                close_window=window["SectorClose"].tolist(),
+                volume_window=[0.0] * len(window),
+                end_date=current_row["Date"],
+            )
+
+            stock_metrics = compute_technical_metrics(stock_series)
+            market_metrics = compute_technical_metrics(market_series)
+            sector_metrics = compute_technical_metrics(sector_series)
+            relative_metrics = compute_relative_strength_metrics(stock_metrics, market_metrics, sector_metrics)
+            technical_features = build_normalized_technical_features(
+                momentum=stock_metrics["momentum_5d"],
+                medium_momentum=stock_metrics["momentum_20d"],
+                trend_gap=stock_metrics["trend_gap"],
+                positive_day_ratio=stock_metrics["positive_day_ratio"],
+                volume_trend=stock_metrics["volume_trend"],
+                volatility=stock_metrics["volatility"],
+                downside_risk=stock_metrics["downside_volatility"],
+                max_drawdown=stock_metrics["max_drawdown"],
+                market_relative_5d=relative_metrics["market_relative_5d"],
+                market_relative_20d=relative_metrics["market_relative_20d"],
+                sector_relative_5d=relative_metrics["sector_relative_5d"],
+                sector_relative_20d=relative_metrics["sector_relative_20d"],
+            )
+
+            stock_forward_return = safe_divide(float(future_row["Close"]), float(current_row["Close"]), 1.0) - 1.0
+            market_forward_return = safe_divide(float(future_row["MarketClose"]), float(current_row["MarketClose"]), 1.0) - 1.0
+            forward_excess_return = clamp(
+                relative_return(stock_forward_return, market_forward_return),
+                -0.25,
+                0.25,
+            )
+            feature_vector = np.array([technical_features[name] for name in TECHNICAL_FEATURE_ORDER], dtype=float)
+            training_rows.append((feature_vector, forward_excess_return))
+
+    return training_rows
+
+
+def information_coefficient(predictions: np.ndarray, targets: np.ndarray) -> float:
+    if len(predictions) < 3 or len(targets) < 3:
+        return 0.0
+    pred_std = float(np.std(predictions))
+    target_std = float(np.std(targets))
+    if pred_std <= 1e-9 or target_std <= 1e-9:
+        return 0.0
+    correlation = float(np.corrcoef(predictions, targets)[0, 1])
+    if math.isnan(correlation):
+        return 0.0
+    return correlation
+
+
+def build_block_weight_sample(entry: Dict[str, Any]) -> Optional[Tuple[np.ndarray, float]]:
+    diagnostics = entry.get("diagnostics")
+    realized = entry.get("realized_5d_excess_return")
+    if not isinstance(diagnostics, dict) or not isinstance(realized, (int, float)):
+        return None
+
+    news_signal = diagnostics.get("news_signal_input")
+    macro_signal = diagnostics.get("macro_signal_input")
+    sector_signal = diagnostics.get("sector_signal_input")
+    if not all(isinstance(value, (int, float)) for value in (news_signal, macro_signal, sector_signal)):
+        return None
+
+    return (
+        np.array([float(news_signal), float(macro_signal), float(sector_signal)], dtype=float),
+        clamp(float(realized), -0.25, 0.25),
+    )
+
+
+def calibrate_block_weights(history_entries: List[Dict[str, Any]]) -> Tuple[Dict[str, float], int, str]:
+    samples = [sample for sample in (build_block_weight_sample(entry) for entry in history_entries) if sample is not None]
+    if len(samples) < BLOCK_CALIBRATION_MIN_ROWS:
+        return dict(BLOCK_BASE_PRIORS), len(samples), "block_priors"
+
+    x = np.vstack([sample[0] for sample in samples])
+    y = np.array([sample[1] for sample in samples], dtype=float)
+    ridge_alpha = 0.35
+    beta = np.linalg.solve(x.T @ x + ridge_alpha * np.eye(x.shape[1]), x.T @ y)
+    beta = np.clip(beta, 0.0, None)
+    if float(beta.sum()) <= 1e-9:
+        return dict(BLOCK_BASE_PRIORS), len(samples), "block_priors"
+
+    budget = sum(BLOCK_BASE_PRIORS.values())
+    weights = {
+        "news": clamp(budget * float(beta[0] / beta.sum()), BLOCK_WEIGHT_FLOORS["news"], BLOCK_WEIGHT_CAPS["news"]),
+        "macro": clamp(budget * float(beta[1] / beta.sum()), BLOCK_WEIGHT_FLOORS["macro"], BLOCK_WEIGHT_CAPS["macro"]),
+        "sector": clamp(budget * float(beta[2] / beta.sum()), BLOCK_WEIGHT_FLOORS["sector"], BLOCK_WEIGHT_CAPS["sector"]),
+    }
+    return weights, len(samples), "history_realized_returns"
+
+
+def build_model_calibration(
+    universe: List[Tuple[str, str]],
+    sector_map: Dict[str, str],
+    history_entries: List[Dict[str, Any]],
+) -> ModelCalibration:
+    technical_calibration = default_model_calibration()
+    source = technical_calibration.source
+    try:
+        training_rows = build_calibration_training_rows(universe, sector_map)
+    except Exception as exc:
+        print(f"[WARN] Technical calibration failed, using default priors: {exc}")
+        training_rows = []
+
+    if len(training_rows) >= CALIBRATION_MIN_ROWS:
+        x = np.vstack([row[0] for row in training_rows])
+        y = np.array([row[1] for row in training_rows], dtype=float)
+        beta = np.linalg.solve(x.T @ x + CALIBRATION_RIDGE_ALPHA * np.eye(x.shape[1]), x.T @ y)
+        beta = np.clip(beta, 0.0, None)
+        if float(beta.sum()) > 1e-9:
+            normalized_weights = normalize_weight_map(
+                {name: float(value) for name, value in zip(TECHNICAL_FEATURE_ORDER, beta.tolist())}
+            )
+            raw_predictions = x @ np.array([normalized_weights[name] for name in TECHNICAL_FEATURE_ORDER], dtype=float)
+            robust_scale = float(np.quantile(np.abs(raw_predictions), CALIBRATION_PREDICTION_PCTL)) if len(raw_predictions) else 0.0
+            technical_scale = clamp(
+                TECHNICAL_SCORE_TARGET_SCALE / max(robust_scale, 1e-6),
+                0.12,
+                0.45,
+            )
+            technical_calibration = ModelCalibration(
+                technical_weights=normalized_weights,
+                block_weights=dict(BLOCK_BASE_PRIORS),
+                technical_scale=technical_scale,
+                training_row_count=len(training_rows),
+                training_ic=information_coefficient(raw_predictions, y),
+                block_row_count=0,
+                source="price_history_5d_excess_return",
+            )
+            source = technical_calibration.source
+
+    block_weights, block_row_count, block_source = calibrate_block_weights(history_entries)
+    if technical_calibration.source == "default_priors" and block_source == "block_priors":
+        return technical_calibration
+
+    return ModelCalibration(
+        technical_weights=technical_calibration.technical_weights,
+        block_weights=block_weights,
+        technical_scale=technical_calibration.technical_scale,
+        training_row_count=technical_calibration.training_row_count,
+        training_ic=technical_calibration.training_ic,
+        block_row_count=block_row_count,
+        source=f"{source}+{block_source}",
+    )
+
+
+def compute_technical_contributions(
+    technical_features: Dict[str, float],
+    calibration: ModelCalibration,
+) -> Dict[str, Any]:
+    feature_weights = calibration.technical_weights
+    raw_feature_contributions = {
+        name: technical_features[name] * feature_weights.get(name, 0.0)
+        for name in TECHNICAL_FEATURE_ORDER
+    }
+    group_raw = {
+        group_name: sum(raw_feature_contributions[name] for name in feature_names)
+        for group_name, feature_names in TECHNICAL_GROUPS.items()
+    }
+    group_weighted = {
+        group_name: contribution * calibration.technical_scale
+        for group_name, contribution in group_raw.items()
+    }
+    technical_total = sum(group_weighted.values())
+    return {
+        "feature_values": technical_features,
+        "feature_weights": feature_weights,
+        "feature_contributions": raw_feature_contributions,
+        "group_raw": group_raw,
+        "group_weighted": group_weighted,
+        "technical_total": technical_total,
+    }
 
 
 def compute_score_breakdown(
@@ -627,79 +1395,136 @@ def compute_score_breakdown(
     downside_volatility: Optional[float] = None,
     max_drawdown: float = 0.0,
     news_confidence: float = 0.5,
+    macro_score: float = 0.5,
+    macro_confidence: float = 0.2,
+    sector_score: float = 0.5,
+    sector_confidence: float = 0.2,
+    market_relative_5d: float = 0.0,
+    market_relative_20d: float = 0.0,
+    sector_relative_5d: float = 0.0,
+    sector_relative_20d: float = 0.0,
+    calibration: Optional[ModelCalibration] = None,
+    layer_penalties: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, float]:
+    active_calibration = calibration or default_model_calibration()
+    active_layer_penalties = layer_penalties or {
+        "macro_penalty": 1.0,
+        "sector_penalty": 1.0,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0,
+    }
     medium_momentum = momentum if momentum_20d is None else momentum_20d
     downside_risk = volatility if downside_volatility is None else downside_volatility
 
-    normalized_short_momentum = clamp(momentum / SHORT_MOMENTUM_SCALE, -1.0, 1.0)
-    normalized_medium_momentum = clamp(medium_momentum / MEDIUM_MOMENTUM_SCALE, -1.0, 1.0)
-    normalized_trend_gap = clamp(trend_gap / TREND_GAP_SCALE, -1.0, 1.0)
-    normalized_positive_ratio = clamp((positive_day_ratio - 0.5) * 2.0, -1.0, 1.0)
-    normalized_volume = clamp(volume_trend / VOLUME_TREND_SCALE, -1.0, 1.0)
-    normalized_volatility = clamp(volatility / VOLATILITY_SCALE, 0.0, 1.0)
-    normalized_downside = clamp(downside_risk / DOWNSIDE_VOLATILITY_SCALE, 0.0, 1.0)
-    normalized_drawdown = clamp(max_drawdown / MAX_DRAWDOWN_SCALE, 0.0, 1.0)
+    normalized_features = build_normalized_technical_features(
+        momentum=momentum,
+        medium_momentum=medium_momentum,
+        trend_gap=trend_gap,
+        positive_day_ratio=positive_day_ratio,
+        volume_trend=volume_trend,
+        volatility=volatility,
+        downside_risk=downside_risk,
+        max_drawdown=max_drawdown,
+        market_relative_5d=market_relative_5d,
+        market_relative_20d=market_relative_20d,
+        sector_relative_5d=sector_relative_5d,
+        sector_relative_20d=sector_relative_20d,
+    )
     centered_news = clamp((news_score - 0.5) * 2.0, -1.0, 1.0)
+    centered_macro = clamp((macro_score - 0.5) * 2.0, -1.0, 1.0)
+    centered_sector = clamp((sector_score - 0.5) * 2.0, -1.0, 1.0)
 
-    trend_quality = clamp(
-        normalized_positive_ratio * 0.60 + normalized_trend_gap * 0.40,
-        -1.0,
-        1.0,
+    technical_parts = compute_technical_contributions(normalized_features, active_calibration)
+    trend_strength = technical_parts["group_weighted"]["trend_strength"]
+    relative_strength = technical_parts["group_weighted"]["relative_strength"]
+    participation = technical_parts["group_weighted"]["participation"]
+    risk_control = technical_parts["group_weighted"]["risk_control"]
+    technical_total = technical_parts["technical_total"]
+
+    weighted_short_momentum = technical_parts["feature_contributions"]["short_momentum"] * active_calibration.technical_scale
+    weighted_medium_momentum = technical_parts["feature_contributions"]["medium_momentum"] * active_calibration.technical_scale
+    weighted_trend_gap = technical_parts["feature_contributions"]["trend_gap"] * active_calibration.technical_scale
+    weighted_positive_ratio = technical_parts["feature_contributions"]["positive_ratio"] * active_calibration.technical_scale
+    weighted_volume_confirmation = technical_parts["feature_contributions"]["volume_confirmation"] * active_calibration.technical_scale
+    weighted_market_relative = technical_parts["feature_contributions"]["market_relative"] * active_calibration.technical_scale
+    weighted_sector_relative = technical_parts["feature_contributions"]["sector_relative"] * active_calibration.technical_scale
+    weighted_volatility_penalty = technical_parts["feature_contributions"]["inverse_volatility"] * active_calibration.technical_scale
+    weighted_downside_penalty = technical_parts["feature_contributions"]["inverse_downside"] * active_calibration.technical_scale
+    weighted_drawdown_penalty = technical_parts["feature_contributions"]["inverse_drawdown"] * active_calibration.technical_scale
+
+    news_multiplier = active_calibration.block_weights["news"] * (0.45 + 0.55 * clamp(news_confidence, 0.0, 1.0))
+    macro_multiplier = (
+        active_calibration.block_weights["macro"]
+        * (0.30 + 0.70 * clamp(macro_confidence, 0.0, 1.0))
+        * float(active_layer_penalties["macro_penalty"])
     )
-    news_multiplier = 0.08 + 0.12 * clamp(news_confidence, 0.0, 1.0)
+    sector_multiplier = (
+        active_calibration.block_weights["sector"]
+        * (0.28 + 0.72 * clamp(sector_confidence, 0.0, 1.0))
+        * float(active_layer_penalties["sector_penalty"])
+    )
 
-    weighted_short_momentum = normalized_short_momentum * 0.22
-    weighted_medium_momentum = normalized_medium_momentum * 0.18
-    weighted_trend_quality = trend_quality * 0.14
-    weighted_volume_confirmation = normalized_volume * 0.08
-    weighted_volatility_penalty = -(normalized_volatility * 0.12)
-    weighted_downside_penalty = -(normalized_downside * 0.10)
-    weighted_drawdown_penalty = -(normalized_drawdown * 0.08)
     weighted_news = centered_news * news_multiplier
+    weighted_macro = centered_macro * macro_multiplier
+    weighted_sector = centered_sector * sector_multiplier
 
-    momentum_total = (
-        weighted_short_momentum
-        + weighted_medium_momentum
-        + weighted_trend_quality
-        + weighted_volume_confirmation
-    )
-    volatility_penalty_total = (
-        weighted_volatility_penalty
-        + weighted_downside_penalty
-        + weighted_drawdown_penalty
-    )
-    technical_total = momentum_total + volatility_penalty_total
+    momentum_total = trend_strength + relative_strength + participation
+    volatility_penalty_total = risk_control
     technical_direction = clamp(technical_total / 0.30, -1.0, 1.0)
     alignment_signal = technical_direction * centered_news if abs(centered_news) >= 0.10 else 0.0
     weighted_signal_alignment = alignment_signal * (
         SIGNAL_ALIGNMENT_BASE
         + SIGNAL_ALIGNMENT_CONFIDENCE_SCALE * clamp(news_confidence, 0.0, 1.0)
     )
-    total_score = technical_total + weighted_news + weighted_signal_alignment
+    total_score = technical_total + weighted_news + weighted_macro + weighted_sector + weighted_signal_alignment
 
     return {
-        "normalized_short_momentum": normalized_short_momentum,
-        "normalized_medium_momentum": normalized_medium_momentum,
-        "normalized_trend_gap": normalized_trend_gap,
-        "normalized_positive_ratio": normalized_positive_ratio,
-        "normalized_volume": normalized_volume,
-        "normalized_volatility": normalized_volatility,
-        "normalized_downside": normalized_downside,
-        "normalized_drawdown": normalized_drawdown,
+        "normalized_short_momentum": normalized_features["short_momentum"],
+        "normalized_medium_momentum": normalized_features["medium_momentum"],
+        "normalized_trend_gap": normalized_features["trend_gap"],
+        "normalized_positive_ratio": normalized_features["positive_ratio"],
+        "normalized_volume": normalized_features["volume_confirmation"],
+        "normalized_market_relative": normalized_features["market_relative"],
+        "normalized_sector_relative": normalized_features["sector_relative"],
+        "normalized_volatility": -normalized_features["inverse_volatility"],
+        "normalized_downside": -normalized_features["inverse_downside"],
+        "normalized_drawdown": -normalized_features["inverse_drawdown"],
         "centered_news": centered_news,
+        "centered_macro": centered_macro,
+        "centered_sector": centered_sector,
         "weighted_short_momentum": weighted_short_momentum,
         "weighted_medium_momentum": weighted_medium_momentum,
-        "weighted_trend_quality": weighted_trend_quality,
+        "weighted_trend_quality": weighted_trend_gap + weighted_positive_ratio,
         "weighted_volume_confirmation": weighted_volume_confirmation,
+        "weighted_market_relative": weighted_market_relative,
+        "weighted_sector_relative": weighted_sector_relative,
         "weighted_volatility_penalty": weighted_volatility_penalty,
         "weighted_downside_penalty": weighted_downside_penalty,
         "weighted_drawdown_penalty": weighted_drawdown_penalty,
         "weighted_news": weighted_news,
+        "weighted_macro": weighted_macro,
+        "weighted_sector": weighted_sector,
         "alignment_signal": alignment_signal,
         "weighted_signal_alignment": weighted_signal_alignment,
         "momentum_total": momentum_total,
         "volatility_penalty_total": volatility_penalty_total,
         "technical_total": technical_total,
+        "technical_trend_strength": trend_strength,
+        "technical_relative_strength": relative_strength,
+        "technical_participation": participation,
+        "technical_risk_control": risk_control,
+        "technical_scale": active_calibration.technical_scale,
+        "technical_training_rows": active_calibration.training_row_count,
+        "technical_training_ic": active_calibration.training_ic,
+        "block_weight_news": active_calibration.block_weights["news"],
+        "block_weight_macro": active_calibration.block_weights["macro"],
+        "block_weight_sector": active_calibration.block_weights["sector"],
+        "macro_dedup_penalty": float(active_layer_penalties["macro_penalty"]),
+        "sector_dedup_penalty": float(active_layer_penalties["sector_penalty"]),
+        "news_macro_overlap": float(active_layer_penalties["news_macro_overlap"]),
+        "news_sector_overlap": float(active_layer_penalties["news_sector_overlap"]),
+        "macro_sector_overlap": float(active_layer_penalties["macro_sector_overlap"]),
         "total": total_score,
     }
 
@@ -714,6 +1539,10 @@ def compute_confidence_score(
     news_confidence: float = 0.25,
     effective_article_count: float = 0.0,
     signal_alignment: float = 0.0,
+    macro_score: float = 0.5,
+    macro_confidence: float = 0.2,
+    sector_score: float = 0.5,
+    sector_confidence: float = 0.2,
 ) -> float:
     score_signal = clamp((total_score + 0.20) / 0.70, 0.0, 1.0) * 0.32
     history_signal = min(price_observations, 45) / 45 * 0.12
@@ -724,6 +1553,10 @@ def compute_confidence_score(
     news_confidence_signal = clamp(news_confidence, 0.0, 1.0) * 0.12
     conviction_signal = clamp(abs(news_score - 0.5) * 2.0, 0.0, 1.0) * 0.05
     alignment_signal = clamp(signal_alignment / 0.08, -1.0, 1.0) * 0.05
+    macro_confidence_signal = clamp(macro_confidence, 0.0, 1.0) * 0.04
+    macro_conviction_signal = clamp(abs(macro_score - 0.5) * 2.0, 0.0, 1.0) * 0.04
+    sector_confidence_signal = clamp(sector_confidence, 0.0, 1.0) * 0.04
+    sector_conviction_signal = clamp(abs(sector_score - 0.5) * 2.0, 0.0, 1.0) * 0.03
     no_news_penalty = 0.05 if article_count == 0 else 0.0
 
     return clamp(
@@ -737,6 +1570,10 @@ def compute_confidence_score(
         + news_confidence_signal
         + conviction_signal
         + alignment_signal
+        + macro_confidence_signal
+        + macro_conviction_signal
+        + sector_confidence_signal
+        + sector_conviction_signal
         - no_news_penalty,
         0.05,
         0.99,
@@ -771,6 +1608,12 @@ def build_thesis_monitor(
     news_age_days = None
     if candidate.news_as_of:
         news_age_days = market_day_age(date.fromisoformat(candidate.news_as_of), reference)
+    macro_age_days = None
+    if candidate.macro_as_of:
+        macro_age_days = market_day_age(date.fromisoformat(candidate.macro_as_of), reference)
+    sector_age_days = None
+    if candidate.sector_as_of:
+        sector_age_days = market_day_age(date.fromisoformat(candidate.sector_as_of), reference)
 
     score_margin = candidate.total_score - threshold_score
     confidence_margin = candidate.confidence_score - threshold_confidence
@@ -831,6 +1674,19 @@ def build_thesis_monitor(
         news_state = "watch"
         news_detail = "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact."
 
+    if candidate.macro_confidence < 0.35 or abs(candidate.macro_score - 0.5) < 0.05:
+        macro_state = "positive"
+        macro_detail = "No strong world-news headwind is currently working against the setup."
+    elif candidate.macro_score < 0.45 and candidate.macro_confidence >= 0.55:
+        macro_state = "risk"
+        macro_detail = "Recent world news leaned negative for this company with enough confidence to matter."
+    elif candidate.macro_score >= 0.58:
+        macro_state = "positive"
+        macro_detail = "Recent world news added a supportive company-level overlay."
+    else:
+        macro_state = "watch"
+        macro_detail = "The global overlay is present, but not yet decisive."
+
     if score_margin < 0.015 or confidence_margin < 0.03:
         margin_state = "risk"
         margin_detail = "The pick only barely cleared the release bar."
@@ -841,15 +1697,47 @@ def build_thesis_monitor(
         margin_state = "positive"
         margin_detail = "The pick cleared the release thresholds with room to spare."
 
-    if price_age_days > 2 or (news_age_days is not None and news_age_days > 3):
+    macro_is_material = candidate.macro_confidence >= 0.35 and abs(candidate.macro_score - 0.5) >= 0.05
+    sector_is_material = candidate.sector_confidence >= 0.35 and abs(candidate.sector_score - 0.5) >= 0.05
+
+    freshness_risks: List[str] = []
+    freshness_watches: List[str] = []
+    if price_age_days > 2:
+        freshness_risks.append(f"price data is {price_age_days} trading days old")
+    elif price_age_days > 1:
+        freshness_watches.append(f"price data is {price_age_days} trading days old")
+
+    if news_age_days is not None:
+        if news_age_days > 3:
+            freshness_risks.append(f"company news is {news_age_days} trading days old")
+        elif news_age_days > 2:
+            freshness_watches.append(f"company news is {news_age_days} trading days old")
+
+    if macro_is_material:
+        if macro_age_days is None:
+            freshness_watches.append("macro overlay has no supporting timestamp")
+        elif macro_age_days > 3:
+            freshness_risks.append(f"macro overlay is {macro_age_days} trading days old")
+        elif macro_age_days > 2:
+            freshness_watches.append(f"macro overlay is {macro_age_days} trading days old")
+
+    if sector_is_material:
+        if sector_age_days is None:
+            freshness_watches.append("sector overlay has no supporting timestamp")
+        elif sector_age_days > 3:
+            freshness_risks.append(f"sector overlay is {sector_age_days} trading days old")
+        elif sector_age_days > 2:
+            freshness_watches.append(f"sector overlay is {sector_age_days} trading days old")
+
+    if freshness_risks:
         freshness_state = "risk"
-        freshness_detail = "Some of the supporting data is getting old enough to weaken monitoring quality."
-    elif price_age_days > 1 or (news_age_days is not None and news_age_days > 2):
+        freshness_detail = "Some of the supporting data is getting old enough to weaken monitoring quality: " + ", ".join(freshness_risks) + "."
+    elif freshness_watches:
         freshness_state = "watch"
-        freshness_detail = "The data is still usable, but freshness should be checked before acting."
+        freshness_detail = "Freshness should be checked before acting: " + ", ".join(freshness_watches) + "."
     else:
         freshness_state = "positive"
-        freshness_detail = "Price and news timestamps are recent enough for a live monitoring read."
+        freshness_detail = "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
 
     signals = [
         {
@@ -871,6 +1759,12 @@ def build_thesis_monitor(
             "detail": news_detail,
         },
         {
+            "label": "Macro",
+            "state": macro_state,
+            "value": f"{candidate.macro_score:.2f} overlay • {candidate.macro_confidence:.2f} conf",
+            "detail": macro_detail,
+        },
+        {
             "label": "Margin",
             "state": margin_state,
             "value": f"{format_score(score_margin)} score • {format_score(confidence_margin)} conf",
@@ -879,10 +1773,13 @@ def build_thesis_monitor(
         {
             "label": "Freshness",
             "state": freshness_state,
-            "value": (
-                f"{format_market_age('price', price_age_days)} • {format_market_age('news', news_age_days)}"
-                if news_age_days is not None
-                else f"{format_market_age('price', price_age_days)} • no fresh news"
+            "value": " • ".join(
+                [
+                    format_market_age("price", price_age_days),
+                    format_market_age("news", news_age_days) if news_age_days is not None else "news no fresh signal",
+                    format_market_age("macro", macro_age_days) if macro_is_material else "macro neutral",
+                    format_market_age("sector", sector_age_days) if sector_is_material else "sector neutral",
+                ]
             ),
             "detail": freshness_detail,
         },
@@ -917,11 +1814,27 @@ def build_thesis_monitor(
 def build_candidate(
     symbol: str,
     company_name: str,
+    sector: str,
     news_info: Optional[dict] = None,
+    sector_scores_payload: Optional[Dict[str, Any]] = None,
+    calibration: Optional[ModelCalibration] = None,
 ) -> StockCandidate:
-    price_series = fetch_price_series(symbol)
+    price_series = fetch_price_series_cached(symbol)
     technical_metrics = compute_technical_metrics(price_series)
+    market_metrics = compute_technical_metrics(fetch_price_series_cached(MARKET_BENCHMARK_SYMBOL))
+    sector_benchmark_symbol = SECTOR_ETF_BY_SECTOR.get(sector)
+    if not sector_benchmark_symbol:
+        raise RuntimeError(f"No sector benchmark configured for sector {sector}")
+    sector_metrics = compute_technical_metrics(fetch_price_series_cached(sector_benchmark_symbol))
+    relative_strength_metrics = compute_relative_strength_metrics(
+        technical_metrics,
+        market_metrics,
+        sector_metrics,
+    )
     news_snapshot = build_news_snapshot(news_info)
+    macro_snapshot = build_macro_snapshot(symbol, company_name, sector, sector_scores_payload)
+    sector_snapshot = build_sector_snapshot(sector, sector_scores_payload)
+    layer_penalties = dedupe_layer_penalties(news_snapshot, macro_snapshot, sector_snapshot)
     risk_level = classify_risk(technical_metrics["volatility"])
 
     score_breakdown = compute_score_breakdown(
@@ -935,6 +1848,16 @@ def build_candidate(
         max_drawdown=technical_metrics["max_drawdown"],
         news_score=news_snapshot.news_score,
         news_confidence=news_snapshot.news_confidence,
+        macro_score=macro_snapshot.macro_score,
+        macro_confidence=macro_snapshot.macro_confidence,
+        sector_score=sector_snapshot.sector_score,
+        sector_confidence=sector_snapshot.sector_confidence,
+        market_relative_5d=relative_strength_metrics["market_relative_5d"],
+        market_relative_20d=relative_strength_metrics["market_relative_20d"],
+        sector_relative_5d=relative_strength_metrics["sector_relative_5d"],
+        sector_relative_20d=relative_strength_metrics["sector_relative_20d"],
+        calibration=calibration,
+        layer_penalties=layer_penalties,
     )
 
     confidence_score = compute_confidence_score(
@@ -947,6 +1870,10 @@ def build_candidate(
         news_confidence=news_snapshot.news_confidence,
         effective_article_count=news_snapshot.effective_article_count,
         signal_alignment=score_breakdown["weighted_signal_alignment"],
+        macro_score=macro_snapshot.macro_score,
+        macro_confidence=macro_snapshot.macro_confidence,
+        sector_score=sector_snapshot.sector_score,
+        sector_confidence=sector_snapshot.sector_confidence,
     )
     confidence = confidence_label(confidence_score)
 
@@ -969,6 +1896,10 @@ def build_candidate(
             f"Volume confirmation is {format_pct(technical_metrics['volume_trend'])} versus the trailing baseline, "
             f"which helps separate steady breakouts from thin momentum."
         ),
+        (
+            f"Relative strength is {format_pct(relative_strength_metrics['market_relative_5d'])} versus SPY over 5 days "
+            f"and {format_pct(relative_strength_metrics['sector_relative_5d'])} versus the sector ETF."
+        ),
     ]
 
     if news_snapshot.article_count > 0:
@@ -986,6 +1917,38 @@ def build_candidate(
 
     if news_snapshot.reasons:
         reasons.extend(news_snapshot.reasons[:2])
+
+    if macro_snapshot.macro_confidence >= 0.30 and abs(macro_snapshot.macro_score - 0.5) >= 0.05:
+        reasons.append(
+            (
+                f"Broad world news leaned {macro_snapshot.direction} for {company_name} with score "
+                f"{macro_snapshot.macro_score:.2f} and confidence {macro_snapshot.macro_confidence:.2f}."
+            )
+        )
+        reasons.extend(macro_snapshot.reasons[:1])
+        if layer_penalties["macro_penalty"] < 0.95:
+            reasons.append(
+                f"Macro impact was trimmed by {round((1.0 - layer_penalties['macro_penalty']) * 100):.0f}% because it overlaps with company-news themes."
+            )
+
+    if sector_snapshot.sector_confidence >= 0.30 and abs(sector_snapshot.sector_score - 0.5) >= 0.05:
+        reasons.append(
+            (
+                f"Broad market news leaned {sector_snapshot.direction} for the "
+                f"{sector_display_name(sector_snapshot.sector)} sector with score "
+                f"{sector_snapshot.sector_score:.2f} and confidence {sector_snapshot.sector_confidence:.2f}."
+            )
+        )
+        reasons.extend(sector_snapshot.reasons[:1])
+        if layer_penalties["sector_penalty"] < 0.95:
+            reasons.append(
+                f"Sector overlay was trimmed by {round((1.0 - layer_penalties['sector_penalty']) * 100):.0f}% because it overlaps with company or macro themes."
+            )
+
+    if calibration is not None and calibration.training_row_count >= CALIBRATION_MIN_ROWS:
+        reasons.append(
+            f"Technical weights were calibrated on {calibration.training_row_count} historical symbol-weeks against 5-day excess return (IC {calibration.training_ic:.2f})."
+        )
 
     if score_breakdown["weighted_signal_alignment"] > 0.02:
         reasons.append(
@@ -1022,19 +1985,37 @@ def build_candidate(
         trend_gap=technical_metrics["trend_gap"],
         positive_day_ratio=technical_metrics["positive_day_ratio"],
         volume_trend=technical_metrics["volume_trend"],
+        market_relative_5d=relative_strength_metrics["market_relative_5d"],
+        market_relative_20d=relative_strength_metrics["market_relative_20d"],
+        sector_relative_5d=relative_strength_metrics["sector_relative_5d"],
+        sector_relative_20d=relative_strength_metrics["sector_relative_20d"],
         news_score=news_snapshot.news_score,
         news_confidence=news_snapshot.news_confidence,
+        macro_score=macro_snapshot.macro_score,
+        macro_confidence=macro_snapshot.macro_confidence,
         raw_sentiment=news_snapshot.raw_sentiment,
         calibrated_sentiment=news_snapshot.calibrated_sentiment,
         dominant_signal=news_snapshot.dominant_signal,
         score_breakdown=score_breakdown,
         news_evidence=news_snapshot.news_evidence,
+        macro_evidence=macro_snapshot.supporting_articles,
+        macro_as_of=macro_snapshot.last_updated,
+        sector_as_of=sector_snapshot.last_updated,
+        sector=sector_snapshot.sector,
+        sector_score=sector_snapshot.sector_score,
+        sector_confidence=sector_snapshot.sector_confidence,
+        sector_direction=sector_snapshot.direction,
+        sector_reasons=sector_snapshot.reasons,
     )
 
 
 def get_candidates() -> Tuple[List[StockCandidate], GenerationStats]:
     universe = load_universe()
     news_scores = load_news_scores()
+    sector_map = load_sector_map(UNIVERSE_CSV_PATH)
+    sector_scores = load_sector_scores()
+    history_entries = [normalize_history_entry(entry) for entry in load_existing_history_entries(HISTORY_PATH)]
+    calibration = build_model_calibration(universe, sector_map, history_entries)
 
     candidates: List[StockCandidate] = []
     skipped_details: List[Dict[str, str]] = []
@@ -1043,7 +2024,10 @@ def get_candidates() -> Tuple[List[StockCandidate], GenerationStats]:
             candidate = build_candidate(
                 symbol=symbol,
                 company_name=company_name,
+                sector=sector_map[symbol],
                 news_info=news_scores.get(symbol),
+                sector_scores_payload=sector_scores,
+                calibration=calibration,
             )
             candidates.append(candidate)
         except Exception as exc:
@@ -1161,12 +2145,15 @@ def serialize_candidate(
     return {
         "symbol": candidate.symbol,
         "company_name": candidate.company_name,
+        "sector": candidate.sector,
         "risk": candidate.risk_level,
         "model_score": round(candidate.total_score, 4),
         "confidence_score": round(candidate.confidence_score, 2),
         "confidence_label": candidate.confidence_label,
         "price_as_of": candidate.price_as_of,
         "news_as_of": candidate.news_as_of,
+        "macro_as_of": candidate.macro_as_of,
+        "sector_as_of": candidate.sector_as_of,
         "article_count": candidate.article_count,
         "metrics": {
             "momentum_5d": round(candidate.momentum_5d, 4),
@@ -1177,13 +2164,23 @@ def serialize_candidate(
             "positive_day_ratio_10d": round(candidate.positive_day_ratio, 4),
             "price_vs_20d_average": round(candidate.trend_gap, 4),
             "volume_trend_5d": round(candidate.volume_trend, 4),
+            "market_relative_5d": round(candidate.market_relative_5d, 4),
+            "market_relative_20d": round(candidate.market_relative_20d, 4),
+            "sector_relative_5d": round(candidate.sector_relative_5d, 4),
+            "sector_relative_20d": round(candidate.sector_relative_20d, 4),
             "news_sentiment": round(candidate.news_score, 2),
             "raw_news_sentiment": round(candidate.raw_sentiment, 4),
             "calibrated_news_sentiment": round(candidate.calibrated_sentiment, 4),
             "news_confidence": round(candidate.news_confidence, 2),
+            "macro_sentiment": round(candidate.macro_score, 2),
+            "macro_confidence": round(candidate.macro_confidence, 2),
+            "sector_sentiment": round(candidate.sector_score, 2),
+            "sector_confidence": round(candidate.sector_confidence, 2),
             "effective_article_count": round(candidate.effective_article_count, 2),
             "source_count": candidate.source_count,
             "average_relevance": round(candidate.average_relevance, 2),
+            "technical_training_ic": round(float(candidate.score_breakdown.get("technical_training_ic", 0.0)), 4),
+            "technical_training_rows": int(candidate.score_breakdown.get("technical_training_rows", 0)),
         },
         "score_breakdown": {
             "momentum": round(candidate.score_breakdown["momentum_total"], 4),
@@ -1191,17 +2188,34 @@ def serialize_candidate(
             "medium_momentum": round(candidate.score_breakdown["weighted_medium_momentum"], 4),
             "trend_quality": round(candidate.score_breakdown["weighted_trend_quality"], 4),
             "volume_confirmation": round(candidate.score_breakdown["weighted_volume_confirmation"], 4),
+            "market_relative_strength": round(candidate.score_breakdown["weighted_market_relative"], 4),
+            "sector_relative_strength": round(candidate.score_breakdown["weighted_sector_relative"], 4),
             "volatility_penalty": round(candidate.score_breakdown["volatility_penalty_total"], 4),
             "daily_volatility_penalty": round(candidate.score_breakdown["weighted_volatility_penalty"], 4),
             "downside_penalty": round(candidate.score_breakdown["weighted_downside_penalty"], 4),
             "drawdown_penalty": round(candidate.score_breakdown["weighted_drawdown_penalty"], 4),
             "news_adjustment": round(candidate.score_breakdown["weighted_news"], 4),
+            "macro_adjustment": round(candidate.score_breakdown["weighted_macro"], 4),
+            "sector_adjustment": round(candidate.score_breakdown["weighted_sector"], 4),
             "signal_alignment": round(candidate.score_breakdown["weighted_signal_alignment"], 4),
             "technical_total": round(candidate.score_breakdown["technical_total"], 4),
+            "trend_strength": round(candidate.score_breakdown.get("technical_trend_strength", 0.0), 4),
+            "relative_strength": round(candidate.score_breakdown.get("technical_relative_strength", 0.0), 4),
+            "participation": round(candidate.score_breakdown.get("technical_participation", 0.0), 4),
+            "risk_control": round(candidate.score_breakdown.get("technical_risk_control", 0.0), 4),
+            "block_weight_news": round(candidate.score_breakdown.get("block_weight_news", 0.0), 4),
+            "block_weight_macro": round(candidate.score_breakdown.get("block_weight_macro", 0.0), 4),
+            "block_weight_sector": round(candidate.score_breakdown.get("block_weight_sector", 0.0), 4),
+            "macro_dedup_penalty": round(candidate.score_breakdown.get("macro_dedup_penalty", 1.0), 4),
+            "sector_dedup_penalty": round(candidate.score_breakdown.get("sector_dedup_penalty", 1.0), 4),
+            "news_macro_overlap": round(candidate.score_breakdown.get("news_macro_overlap", 0.0), 4),
+            "news_sector_overlap": round(candidate.score_breakdown.get("news_sector_overlap", 0.0), 4),
+            "macro_sector_overlap": round(candidate.score_breakdown.get("macro_sector_overlap", 0.0), 4),
             "total": round(candidate.score_breakdown["total"], 4),
         },
         "reasons": candidate.reasons,
         "news_evidence": candidate.news_evidence,
+        "macro_evidence": candidate.macro_evidence,
         "thesis_monitor": build_thesis_monitor(
             candidate=candidate,
             threshold_score=threshold_score,
@@ -1240,7 +2254,12 @@ def derive_data_as_of(candidates: List[StockCandidate]) -> str:
     candidate_dates = [
         item
         for candidate in candidates
-        for item in [candidate.price_as_of, candidate.news_as_of]
+        for item in [
+            candidate.price_as_of,
+            candidate.news_as_of,
+            candidate.macro_as_of,
+            candidate.sector_as_of,
+        ]
         if item
     ]
     return max(candidate_dates) if candidate_dates else date.today().isoformat()
@@ -1374,6 +2393,9 @@ def normalize_history_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
         "confidence_label": entry.get("confidence_label"),
         "data_as_of": entry.get("data_as_of"),
         "model_version": entry.get("model_version", MODEL_VERSION),
+        "diagnostics": entry.get("diagnostics") if isinstance(entry.get("diagnostics"), dict) else None,
+        "realized_5d_return": entry.get("realized_5d_return"),
+        "realized_5d_excess_return": entry.get("realized_5d_excess_return"),
     }
 
 
@@ -1400,7 +2422,99 @@ def build_history_entry(
         "confidence_label": pick.confidence_label if pick else None,
         "data_as_of": data_as_of,
         "model_version": MODEL_VERSION,
+        "diagnostics": (
+            {
+                "technical_total": round(pick.score_breakdown["technical_total"], 4),
+                "news_adjustment": round(pick.score_breakdown["weighted_news"], 4),
+                "macro_adjustment": round(pick.score_breakdown["weighted_macro"], 4),
+                "sector_adjustment": round(pick.score_breakdown["weighted_sector"], 4),
+                "news_signal_input": round(float(pick.score_breakdown.get("centered_news", 0.0)) * pick.news_confidence, 4),
+                "macro_signal_input": round(
+                    float(pick.score_breakdown.get("centered_macro", 0.0))
+                    * pick.macro_confidence
+                    * pick.score_breakdown.get("macro_dedup_penalty", 1.0),
+                    4,
+                ),
+                "sector_signal_input": round(
+                    float(pick.score_breakdown.get("centered_sector", 0.0))
+                    * pick.sector_confidence
+                    * pick.score_breakdown.get("sector_dedup_penalty", 1.0),
+                    4,
+                ),
+                "technical_training_rows": int(pick.score_breakdown.get("technical_training_rows", 0)),
+                "technical_training_ic": round(float(pick.score_breakdown.get("technical_training_ic", 0.0)), 4),
+                "news_macro_overlap": round(float(pick.score_breakdown.get("news_macro_overlap", 0.0)), 4),
+                "news_sector_overlap": round(float(pick.score_breakdown.get("news_sector_overlap", 0.0)), 4),
+                "macro_sector_overlap": round(float(pick.score_breakdown.get("macro_sector_overlap", 0.0)), 4),
+            }
+            if pick
+            else None
+        ),
     }
+
+
+def realized_forward_return(
+    symbol: str,
+    anchor_date: str,
+    benchmark_symbol: Optional[str] = None,
+) -> Tuple[Optional[float], Optional[float]]:
+    try:
+        price_frame = fetch_price_frame_cached(symbol)
+    except Exception:
+        return None, None
+
+    anchor_ts = pd.Timestamp(anchor_date)
+    eligible = price_frame[price_frame["Date"] <= anchor_ts]
+    if eligible.empty:
+        return None, None
+    anchor_index = int(eligible.index[-1])
+    future_index = anchor_index + 5
+    if future_index >= len(price_frame):
+        return None, None
+
+    start_price = float(price_frame.iloc[anchor_index]["Close"])
+    end_price = float(price_frame.iloc[future_index]["Close"])
+    stock_return = safe_divide(end_price, start_price, 1.0) - 1.0
+
+    if not benchmark_symbol:
+        return stock_return, None
+
+    try:
+        benchmark_frame = fetch_price_frame_cached(benchmark_symbol)
+    except Exception:
+        return stock_return, None
+
+    benchmark_eligible = benchmark_frame[benchmark_frame["Date"] <= anchor_ts]
+    if benchmark_eligible.empty:
+        return stock_return, None
+    benchmark_index = int(benchmark_eligible.index[-1])
+    benchmark_future_index = benchmark_index + 5
+    if benchmark_future_index >= len(benchmark_frame):
+        return stock_return, None
+
+    benchmark_start = float(benchmark_frame.iloc[benchmark_index]["Close"])
+    benchmark_end = float(benchmark_frame.iloc[benchmark_future_index]["Close"])
+    benchmark_return = safe_divide(benchmark_end, benchmark_start, 1.0) - 1.0
+    return stock_return, relative_return(stock_return, benchmark_return)
+
+
+def enrich_history_realized_returns(entries: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    if not history_realized_enrichment_enabled():
+        return entries
+
+    enriched: List[Dict[str, Any]] = []
+    for entry in entries:
+        normalized = dict(entry)
+        symbol = normalized.get("symbol")
+        week_end = normalized.get("week_end")
+        if isinstance(symbol, str) and isinstance(week_end, str):
+            realized_return, realized_excess = realized_forward_return(symbol, week_end, MARKET_BENCHMARK_SYMBOL)
+            if realized_return is not None:
+                normalized["realized_5d_return"] = round(realized_return, 4)
+            if realized_excess is not None:
+                normalized["realized_5d_excess_return"] = round(realized_excess, 4)
+        enriched.append(normalized)
+    return enriched
 
 
 def update_history(
@@ -1417,6 +2531,7 @@ def update_history(
     filtered_entries.append(new_entry)
     filtered_entries.sort(key=lambda item: item.get("week_start", ""))
     filtered_entries = filtered_entries[-104:]
+    filtered_entries = enrich_history_realized_returns(filtered_entries)
 
     payload = {
         "schema_version": SCHEMA_VERSION,

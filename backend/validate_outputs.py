@@ -3,6 +3,11 @@ from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Tuple
 
+try:
+    from backend.sector_utils import load_active_sectors, load_symbol_metadata
+except ImportError:
+    from sector_utils import load_active_sectors, load_symbol_metadata
+
 SCHEMA_VERSION = 2
 RISK_BUCKETS = ("low", "medium", "high")
 
@@ -60,21 +65,52 @@ def validate_common_payload(payload: Dict[str, Any], filename: str) -> None:
 def validate_candidate(candidate: Dict[str, Any], context: str) -> None:
     require(isinstance(candidate.get("symbol"), str), f"{context} is missing symbol")
     require(isinstance(candidate.get("company_name"), str), f"{context} is missing company_name")
+    require(isinstance(candidate.get("sector"), str), f"{context} is missing sector")
     require(candidate.get("risk") in RISK_BUCKETS, f"{context} risk must be one of {RISK_BUCKETS}")
     require(isinstance(candidate.get("model_score"), (int, float)), f"{context} is missing model_score")
     require(isinstance(candidate.get("confidence_score"), (int, float)), f"{context} is missing confidence_score")
     require(candidate.get("confidence_label") in ("low", "medium", "high"), f"{context} confidence_label is invalid")
     require(isinstance(candidate.get("price_as_of"), str), f"{context} is missing price_as_of")
     parse_iso_date(candidate["price_as_of"])
+    macro_as_of = candidate.get("macro_as_of")
+    if macro_as_of is not None:
+        require(isinstance(macro_as_of, str), f"{context}.macro_as_of must be a string when present")
+        parse_iso_date(macro_as_of)
+    sector_as_of = candidate.get("sector_as_of")
+    if sector_as_of is not None:
+        require(isinstance(sector_as_of, str), f"{context}.sector_as_of must be a string when present")
+        parse_iso_date(sector_as_of)
 
     metrics = candidate.get("metrics")
     require(isinstance(metrics, dict), f"{context} is missing metrics")
-    for key in ("momentum_5d", "daily_volatility", "news_sentiment", "raw_news_sentiment"):
+    for key in (
+        "momentum_5d",
+        "daily_volatility",
+        "news_sentiment",
+        "raw_news_sentiment",
+        "macro_sentiment",
+        "macro_confidence",
+        "sector_sentiment",
+        "sector_confidence",
+        "market_relative_5d",
+        "market_relative_20d",
+        "sector_relative_5d",
+        "sector_relative_20d",
+    ):
         require(isinstance(metrics.get(key), (int, float)), f"{context} metrics.{key} must be numeric")
 
     score_breakdown = candidate.get("score_breakdown")
     require(isinstance(score_breakdown, dict), f"{context} is missing score_breakdown")
-    for key in ("momentum", "volatility_penalty", "news_adjustment", "total"):
+    for key in (
+        "momentum",
+        "market_relative_strength",
+        "sector_relative_strength",
+        "volatility_penalty",
+        "news_adjustment",
+        "macro_adjustment",
+        "sector_adjustment",
+        "total",
+    ):
         require(isinstance(score_breakdown.get(key), (int, float)), f"{context} score_breakdown.{key} must be numeric")
 
     reasons = candidate.get("reasons")
@@ -85,6 +121,14 @@ def validate_candidate(candidate: Dict[str, Any], context: str) -> None:
         require(isinstance(news_evidence, list), f"{context} news_evidence must be a list when present")
         for index, article in enumerate(news_evidence):
             article_context = f"{context}.news_evidence[{index}]"
+            require(isinstance(article, dict), f"{article_context} must be an object")
+            require(isinstance(article.get("title"), str), f"{article_context} must include title")
+
+    macro_evidence = candidate.get("macro_evidence")
+    if macro_evidence is not None:
+        require(isinstance(macro_evidence, list), f"{context} macro_evidence must be a list when present")
+        for index, article in enumerate(macro_evidence):
+            article_context = f"{context}.macro_evidence[{index}]"
             require(isinstance(article, dict), f"{article_context} must be an object")
             require(isinstance(article.get("title"), str), f"{article_context} must include title")
 
@@ -173,14 +217,108 @@ def validate_history_payload(payload: Dict[str, Any]) -> None:
         require(isinstance(entry.get("model_version"), str), f"{context} is missing model_version")
 
 
+def validate_sector_scores_payload(payload: Dict[str, Any], universe_path: Path) -> None:
+    parse_iso_datetime(payload["generated_at"])
+    parse_iso_date(payload["last_updated"])
+    require(isinstance(payload.get("lookback_days"), int), "sector_scores.json must include lookback_days")
+    require(isinstance(payload.get("article_count"), int), "sector_scores.json must include article_count")
+    require(isinstance(payload.get("source_count"), int), "sector_scores.json must include source_count")
+    require(isinstance(payload.get("llm_model"), str), "sector_scores.json must include llm_model")
+    require(isinstance(payload.get("summary"), str), "sector_scores.json must include summary")
+
+    sector_scores = payload.get("sector_scores")
+    require(isinstance(sector_scores, dict) and sector_scores, "sector_scores.json must include non-empty sector_scores")
+    expected_sectors = load_active_sectors(universe_path)
+    for sector in expected_sectors:
+        require(sector in sector_scores, f"sector_scores.json is missing sector {sector}")
+        sector_payload = sector_scores[sector]
+        context = f"sector_scores.json.sector_scores.{sector}"
+        require(isinstance(sector_payload, dict), f"{context} must be an object")
+        require(isinstance(sector_payload.get("display_name"), str), f"{context} must include display_name")
+        require(isinstance(sector_payload.get("score"), (int, float)), f"{context} score must be numeric")
+        require(isinstance(sector_payload.get("confidence"), (int, float)), f"{context} confidence must be numeric")
+        require(
+            sector_payload.get("direction") in ("bullish", "bearish", "neutral"),
+            f"{context} direction is invalid",
+        )
+        reasons = sector_payload.get("reasons")
+        require(isinstance(reasons, list) and reasons, f"{context} reasons must be a non-empty list")
+        last_updated = sector_payload.get("last_updated")
+        if last_updated is not None:
+            require(isinstance(last_updated, str), f"{context}.last_updated must be a string when present")
+            parse_iso_date(last_updated)
+
+    symbol_scores = payload.get("symbol_scores")
+    require(isinstance(symbol_scores, dict) and symbol_scores, "sector_scores.json must include non-empty symbol_scores")
+    expected_symbols = load_symbol_metadata(universe_path)
+    for symbol, metadata in expected_symbols.items():
+        require(symbol in symbol_scores, f"sector_scores.json is missing symbol {symbol}")
+        symbol_payload = symbol_scores[symbol]
+        context = f"sector_scores.json.symbol_scores.{symbol}"
+        require(isinstance(symbol_payload, dict), f"{context} must be an object")
+        require(symbol_payload.get("symbol") == symbol, f"{context} must include symbol")
+        require(isinstance(symbol_payload.get("company_name"), str), f"{context} must include company_name")
+        require(symbol_payload.get("sector") == metadata["sector"], f"{context} sector must match universe.csv")
+        require(isinstance(symbol_payload.get("score"), (int, float)), f"{context} score must be numeric")
+        require(isinstance(symbol_payload.get("confidence"), (int, float)), f"{context} confidence must be numeric")
+        require(
+            symbol_payload.get("direction") in ("bullish", "bearish", "neutral"),
+            f"{context} direction is invalid",
+        )
+        reasons = symbol_payload.get("reasons")
+        require(isinstance(reasons, list) and reasons, f"{context} reasons must be a non-empty list")
+        last_updated = symbol_payload.get("last_updated")
+        if last_updated is not None:
+            require(isinstance(last_updated, str), f"{context}.last_updated must be a string when present")
+            parse_iso_date(last_updated)
+
+    events = payload.get("events")
+    require(isinstance(events, list), "sector_scores.json events must be a list")
+
+
+def validate_news_scores_payload(payload: Dict[str, Any], universe_path: Path) -> None:
+    expected_symbols = load_symbol_metadata(universe_path)
+    require(isinstance(payload, dict) and payload, "news_scores.json must contain symbol entries")
+    for symbol in expected_symbols:
+        require(symbol in payload, f"news_scores.json is missing symbol {symbol}")
+        symbol_payload = payload[symbol]
+        context = f"news_scores.json.{symbol}"
+        require(isinstance(symbol_payload, dict), f"{context} must be an object")
+        for key in (
+            "news_score",
+            "news_confidence",
+            "raw_sentiment",
+            "calibrated_sentiment",
+            "effective_article_count",
+            "average_relevance",
+        ):
+            require(isinstance(symbol_payload.get(key), (int, float)), f"{context}.{key} must be numeric")
+        require(isinstance(symbol_payload.get("article_count"), int), f"{context}.article_count must be an integer")
+        require(isinstance(symbol_payload.get("source_count"), int), f"{context}.source_count must be an integer")
+        require(isinstance(symbol_payload.get("dominant_signal"), str), f"{context}.dominant_signal must be a string")
+        require(isinstance(symbol_payload.get("analysis_method"), str), f"{context}.analysis_method must be a string")
+        reasons = symbol_payload.get("news_reasons")
+        require(isinstance(reasons, list) and reasons, f"{context}.news_reasons must be a non-empty list")
+        top_articles = symbol_payload.get("top_articles")
+        require(isinstance(top_articles, list), f"{context}.top_articles must be a list")
+        last_updated = symbol_payload.get("last_updated")
+        if last_updated is not None:
+            require(isinstance(last_updated, str), f"{context}.last_updated must be a string when present")
+            parse_iso_date(last_updated)
+
+
 def validate_repository_outputs(base_dir: Path = Path(".")) -> None:
     current_pick = load_json(base_dir / "current_pick.json")
     risk_picks = load_json(base_dir / "risk_picks.json")
     history = load_json(base_dir / "history.json")
+    news_scores = load_json(base_dir / "news_scores.json")
+    sector_scores = load_json(base_dir / "sector_scores.json")
 
     validate_current_pick_payload(current_pick)
     validate_risk_picks_payload(risk_picks)
     validate_history_payload(history)
+    validate_news_scores_payload(news_scores, base_dir / "universe.csv")
+    validate_sector_scores_payload(sector_scores, base_dir / "universe.csv")
 
     overall_current = current_pick["selection"]["status"]
     overall_risk = risk_picks["overall_selection"]["status"]

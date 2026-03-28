@@ -1,50 +1,50 @@
-symbol,company_name,active
-AAPL,Apple Inc.,1
-MSFT,Microsoft Corporation,1
-GOOGL,Alphabet Inc.,1
-AMZN,Amazon.com Inc.,1
-TSLA,Tesla Inc.,1
-META,Meta Platforms Inc.,1
-BRK.B,Berkshire Hathaway Inc.,1
-NVDA,NVIDIA Corporation,1
-JPM,JPMorgan Chase & Co.,1
-JNJ,Johnson & Johnson,1
-V,Visa Inc.,1
-WMT,Walmart Inc.,1
-PG,Procter & Gamble Company,1
-MA,Mastercard Incorporated,1
-DIS,The Walt Disney Company,1
-HD,The Home Depot Inc.,1
-BAC,Bank of America Corporation,1
-XOM,Exxon Mobil Corporation,1
-PFE,Pfizer Inc.,1
-VZ,Verizon Communications Inc.,1
-NFLX,Netflix Inc.,1
-ADBE,Adobe Inc.,1
-CMCSA,Comcast Corporation,1
-KO,The Coca-Cola Company,1
-T,AT&T Inc.,1
-NKE,Nike Inc.,1
-MRK,Merck & Co. Inc.,1
-ABT,Abbott Laboratories,1
-PEP,PepsiCo Inc.,1
-CSCO,Cisco Systems Inc.,1
-ORCL,Oracle Corporation,1
-INTC,Intel Corporation,1
-CRM,Salesforce Inc.,1
-COST,Costco Wholesale Corporation,1
-ACN,Accenture plc,1
-CVX,Chevron Corporation,1
-MCD,McDonald's Corporation,1
-DHR,Danaher Corporation,1
-MDT,Medtronic plc,1
-LLY,Eli Lilly and Company,1
-TXN,Texas Instruments Incorporated,1
-UNH,UnitedHealth Group Incorporated,1
-BMY,Bristol-Myers Squibb Company,1
-QCOM,QUALCOMM Incorporated,1
-HON,Honeywell International Inc.,1
-AMGN,Amgen Inc.,1
-SBUX,Starbucks Corporation,1
-LOW,Lowe's Companies Inc.,1
-GE,General Electric Company,1
+symbol,company_name,sector,active
+AAPL,Apple Inc.,technology,1
+MSFT,Microsoft Corporation,technology,1
+GOOGL,Alphabet Inc.,communication_services,1
+AMZN,Amazon.com Inc.,consumer_discretionary,1
+TSLA,Tesla Inc.,consumer_discretionary,1
+META,Meta Platforms Inc.,communication_services,1
+BRK.B,Berkshire Hathaway Inc.,financials,1
+NVDA,NVIDIA Corporation,technology,1
+JPM,JPMorgan Chase & Co.,financials,1
+JNJ,Johnson & Johnson,healthcare,1
+V,Visa Inc.,financials,1
+WMT,Walmart Inc.,consumer_staples,1
+PG,Procter & Gamble Company,consumer_staples,1
+MA,Mastercard Incorporated,financials,1
+DIS,The Walt Disney Company,communication_services,1
+HD,The Home Depot Inc.,consumer_discretionary,1
+BAC,Bank of America Corporation,financials,1
+XOM,Exxon Mobil Corporation,energy,1
+PFE,Pfizer Inc.,healthcare,1
+VZ,Verizon Communications Inc.,communication_services,1
+NFLX,Netflix Inc.,communication_services,1
+ADBE,Adobe Inc.,technology,1
+CMCSA,Comcast Corporation,communication_services,1
+KO,The Coca-Cola Company,consumer_staples,1
+T,AT&T Inc.,communication_services,1
+NKE,Nike Inc.,consumer_discretionary,1
+MRK,Merck & Co. Inc.,healthcare,1
+ABT,Abbott Laboratories,healthcare,1
+PEP,PepsiCo Inc.,consumer_staples,1
+CSCO,Cisco Systems Inc.,technology,1
+ORCL,Oracle Corporation,technology,1
+INTC,Intel Corporation,technology,1
+CRM,Salesforce Inc.,technology,1
+COST,Costco Wholesale Corporation,consumer_staples,1
+ACN,Accenture plc,technology,1
+CVX,Chevron Corporation,energy,1
+MCD,McDonald's Corporation,consumer_discretionary,1
+DHR,Danaher Corporation,healthcare,1
+MDT,Medtronic plc,healthcare,1
+LLY,Eli Lilly and Company,healthcare,1
+TXN,Texas Instruments Incorporated,technology,1
+UNH,UnitedHealth Group Incorporated,healthcare,1
+BMY,Bristol-Myers Squibb Company,healthcare,1
+QCOM,QUALCOMM Incorporated,technology,1
+HON,Honeywell International Inc.,industrials,1
+AMGN,Amgen Inc.,healthcare,1
+SBUX,Starbucks Corporation,consumer_discretionary,1
+LOW,Lowe's Companies Inc.,consumer_discretionary,1
+GE,General Electric Company,industrials,1

@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-03-28T12:00:00Z",
+  "last_updated": "2026-03-28",
+  "lookback_days": 3,
+  "article_count": 0,
+  "source_count": 0,
+  "llm_model": "gpt-5-mini",
+  "summary": "No recent broad catalyst clearly favored one tracked sector over another.",
+  "sector_scores": {
+    "communication_services": {
+      "sector": "communication_services",
+      "display_name": "Communication Services",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "reasons": [
+        "No recent broad catalyst clearly favored the Communication Services sector."
+      ],
+      "supporting_articles": []
+    },
+    "consumer_discretionary": {
+      "sector": "consumer_discretionary",
+      "display_name": "Consumer Discretionary",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "reasons": [
+        "No recent broad catalyst clearly favored the Consumer Discretionary sector."
+      ],
+      "supporting_articles": []
+    },
+    "consumer_staples": {
+      "sector": "consumer_staples",
+      "display_name": "Consumer Staples",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "reasons": [
+        "No recent broad catalyst clearly favored the Consumer Staples sector."
+      ],
+      "supporting_articles": []
+    },
+    "energy": {
+      "sector": "energy",
+      "display_name": "Energy",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "reasons": [
+        "No recent broad catalyst clearly favored the Energy sector."
+      ],
+      "supporting_articles": []
+    },
+    "financials": {
+      "sector": "financials",
+      "display_name": "Financials",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "reasons": [
+        "No recent broad catalyst clearly favored the Financials sector."
+      ],
+      "supporting_articles": []
+    },
+    "healthcare": {
+      "sector": "healthcare",
+      "display_name": "Healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "reasons": [
+        "No recent broad catalyst clearly favored the Healthcare sector."
+      ],
+      "supporting_articles": []
+    },
+    "industrials": {
+      "sector": "industrials",
+      "display_name": "Industrials",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "reasons": [
+        "No recent broad catalyst clearly favored the Industrials sector."
+      ],
+      "supporting_articles": []
+    },
+    "technology": {
+      "sector": "technology",
+      "display_name": "Technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "reasons": [
+        "No recent broad catalyst clearly favored the Technology sector."
+      ],
+      "supporting_articles": []
+    }
+  },
+  "events": []
+}

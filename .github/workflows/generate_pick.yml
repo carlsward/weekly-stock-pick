@@ -5,6 +5,37 @@ on:
     # Kör varje måndag kl 12:00 UTC inför US market week
     - cron: "0 12 * * 1"
   workflow_dispatch:
+    inputs:
+      openai_model:
+        description: "OpenAI model to use for GPT review"
+        required: false
+        default: "gpt-5-mini"
+        type: string
+      company_news_limit:
+        description: "Marketaux articles per company"
+        required: false
+        default: "6"
+        type: string
+      company_llm_article_limit:
+        description: "Company articles sent to GPT per symbol"
+        required: false
+        default: "6"
+        type: string
+      global_news_limit:
+        description: "Broad world-news articles fetched"
+        required: false
+        default: "80"
+        type: string
+      sector_llm_article_limit:
+        description: "World-news articles sent to GPT"
+        required: false
+        default: "30"
+        type: string
+      commit_changes:
+        description: "Commit refreshed JSON files back to the repo"
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -40,28 +71,68 @@ jobs:
             exit 1
           fi
 
+      - name: Verify OpenAI configuration
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [[ -z "${OPENAI_API_KEY}" ]]; then
+            echo "OPENAI_API_KEY secret is required for sector analysis." >&2
+            exit 1
+          fi
+
       - name: Generate news_scores.json
         working-directory: backend
         env:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
-          MARKETAUX_NEWS_LIMIT: "3"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.openai_model || 'gpt-5-mini' }}
+          ALLOW_LLM_FALLBACK: "false"
+          MARKETAUX_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.company_news_limit || '6' }}
+          COMPANY_LLM_ARTICLE_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.company_llm_article_limit || '6' }}
         run: python generate_news_scores.py
+
+      - name: Generate sector_scores.json
+        working-directory: backend
+        env:
+          MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.openai_model || 'gpt-5-mini' }}
+          ALLOW_LLM_FALLBACK: "false"
+          MARKETAUX_GLOBAL_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.global_news_limit || '80' }}
+          SECTOR_LLM_ARTICLE_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.sector_llm_article_limit || '30' }}
+        run: python generate_sector_scores.py
 
       - name: Generate current_pick.json and risk_picks.json
         working-directory: backend
+        env:
+          ENABLE_HISTORY_REALIZED_ENRICHMENT: "true"
         run: python generate_pick.py
 
       - name: Validate generated output contracts
         working-directory: backend
         run: python validate_outputs.py
 
+      - name: Upload generated backend artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-weekly-pick-${{ github.run_number }}
+          path: |
+            backend/current_pick.json
+            backend/risk_picks.json
+            backend/history.json
+            backend/news_scores.json
+            backend/sector_scores.json
+          if-no-files-found: ignore
+
       - name: Commit and push if changed
+        if: github.event_name != 'workflow_dispatch' || github.event.inputs.commit_changes == 'true'
         run: |
-          if [[ -n "$(git status --porcelain backend/current_pick.json backend/risk_picks.json backend/history.json backend/news_scores.json)" ]]; then
+          if [[ -n "$(git status --porcelain backend/current_pick.json backend/risk_picks.json backend/history.json backend/news_scores.json backend/sector_scores.json)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add backend/current_pick.json backend/risk_picks.json backend/history.json backend/news_scores.json
-            git commit -m "Update picks and news_scores [skip ci]"
+            git add backend/current_pick.json backend/risk_picks.json backend/history.json backend/news_scores.json backend/sector_scores.json
+            git commit -m "Update picks, news, and sector scores [skip ci]"
             git push
           else
             echo "No changes to commit"

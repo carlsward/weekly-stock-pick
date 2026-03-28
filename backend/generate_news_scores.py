@@ -5,12 +5,27 @@ import re
 import time as time_module
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Sequence, Tuple
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urlparse
 from urllib.request import Request, urlopen
 
 import pandas as pd
+
+try:
+    from backend.llm_utils import (
+        allow_llm_fallback,
+        openai_api_key,
+        openai_model,
+        request_structured_response,
+    )
+except ImportError:
+    from llm_utils import (
+        allow_llm_fallback,
+        openai_api_key,
+        openai_model,
+        request_structured_response,
+    )
 
 NEWS_SCORES_PATH = "news_scores.json"
 UNIVERSE_CSV_PATH = "universe.csv"
@@ -20,6 +35,7 @@ MARKETAUX_API_TOKEN_ENV = "MARKETAUX_API_TOKEN"
 MARKETAUX_NEWS_LIMIT_ENV = "MARKETAUX_NEWS_LIMIT"
 MARKETAUX_DEFAULT_NEWS_LIMIT = 3
 MARKETAUX_REQUEST_TIMEOUT_SECONDS = 20
+COMPANY_LLM_ARTICLE_LIMIT_ENV = "COMPANY_LLM_ARTICLE_LIMIT"
 
 NEWS_LOOKBACK_DAYS = 5
 MAX_ARTICLES_PER_SYMBOL = 10
@@ -61,6 +77,18 @@ NEGATIVE_HINTS = (
     "slows growth",
 )
 
+LLM_DEFAULT_NEWS_ARTICLE_LIMIT = 5
+COMPANY_NEWS_TYPE_WEIGHTS = {
+    "company_specific": 1.00,
+    "sector_macro": 0.55,
+    "market_roundup": 0.12,
+    "opinion_or_listicle": 0.08,
+    "irrelevant": 0.00,
+}
+SIGNAL_ARTICLE_COVERAGE_TARGET = 0.85
+SIGNAL_ARTICLE_MIN_SHARE = 0.08
+SIGNAL_ARTICLE_MIN_WEIGHT = 0.03
+
 
 @dataclass(frozen=True)
 class NewsArticle:
@@ -77,6 +105,17 @@ class NewsArticle:
     match_score: float = 0.0
     highlight_snippets: Tuple[str, ...] = ()
     cluster_size: int = 1
+
+
+@dataclass(frozen=True)
+class ArticleReview:
+    article_id: str
+    doc_type: str
+    company_relevance: float
+    materiality: float
+    impact_score: float
+    confidence: float
+    reason: str
 
 
 def clamp(value: float, minimum: float, maximum: float) -> float:
@@ -385,6 +424,15 @@ def configured_marketaux_news_limit() -> int:
     return max(1, min(parsed_limit, MAX_ARTICLES_PER_SYMBOL))
 
 
+def configured_llm_news_limit() -> int:
+    raw_limit = os.getenv(COMPANY_LLM_ARTICLE_LIMIT_ENV, str(LLM_DEFAULT_NEWS_ARTICLE_LIMIT))
+    try:
+        parsed_limit = int(raw_limit)
+    except ValueError:
+        parsed_limit = LLM_DEFAULT_NEWS_ARTICLE_LIMIT
+    return max(1, min(parsed_limit, MAX_ARTICLES_PER_SYMBOL))
+
+
 def marketaux_api_token() -> str:
     token = os.getenv(MARKETAUX_API_TOKEN_ENV, "").strip()
     if token:
@@ -584,8 +632,11 @@ def fetch_symbol_news(symbol: str, company_name: str) -> List[NewsArticle]:
 
     articles.sort(
         key=lambda article: (
-            article.published_at or datetime.fromtimestamp(0, tz=timezone.utc),
             article.weight,
+            article.relevance_score,
+            article.source_quality,
+            article.recency_weight,
+            article.published_at or datetime.fromtimestamp(0, tz=timezone.utc),
         ),
         reverse=True,
     )
@@ -738,9 +789,389 @@ def summarize_texts(pipe, articles: List[NewsArticle]) -> str:
     return "; ".join(top_titles)
 
 
+def llm_news_enabled() -> bool:
+    return bool(openai_api_key(required=False))
+
+
+def build_company_news_prompt(
+    symbol: str,
+    company_name: str,
+    articles: Sequence[NewsArticle],
+) -> str:
+    lines = [
+        f"Company: {company_name} ({symbol})",
+        "Horizon: next 1-10 trading days.",
+        "Classify each article carefully.",
+        "Use company_specific only when the article materially affects this exact company.",
+        "Use sector_macro when the article is mainly macro/sector news but still likely relevant for the company.",
+        "Use market_roundup for broad market recaps, ETF commentary, or weakly-related mentions.",
+        "Use opinion_or_listicle for tips, rankings, comparisons, or editorial pieces with weak new information.",
+        "Use irrelevant when the company mention is incidental.",
+        "",
+        "Articles:",
+    ]
+
+    for index, article in enumerate(articles, start=1):
+        article_id = f"article_{index}"
+        compact_text = article.text.replace("\n", " ").strip()[:700]
+        lines.extend(
+            [
+                f"- article_id: {article_id}",
+                f"  title: {article.title}",
+                f"  provider: {article.provider}",
+                f"  published_at: {article.published_at.isoformat().replace('+00:00', 'Z') if article.published_at else 'unknown'}",
+                f"  text: {compact_text}",
+            ]
+        )
+
+    return "\n".join(lines)
+
+
+def build_company_news_review_schema() -> Dict[str, Any]:
+    article_schema = {
+        "type": "object",
+        "properties": {
+            "article_id": {"type": "string"},
+            "doc_type": {
+                "type": "string",
+                "enum": list(COMPANY_NEWS_TYPE_WEIGHTS.keys()),
+            },
+            "company_relevance": {"type": "number"},
+            "materiality": {"type": "number"},
+            "impact_score": {"type": "number"},
+            "confidence": {"type": "number"},
+            "reason": {"type": "string"},
+        },
+        "required": [
+            "article_id",
+            "doc_type",
+            "company_relevance",
+            "materiality",
+            "impact_score",
+            "confidence",
+            "reason",
+        ],
+        "additionalProperties": False,
+    }
+
+    return {
+        "type": "object",
+        "properties": {
+            "summary": {"type": "string"},
+            "overall_signal": {
+                "type": "string",
+                "enum": ["bullish", "bearish", "neutral", "mixed"],
+            },
+            "overall_impact_score": {"type": "number"},
+            "overall_confidence": {"type": "number"},
+            "articles": {
+                "type": "array",
+                "items": article_schema,
+            },
+        },
+        "required": [
+            "summary",
+            "overall_signal",
+            "overall_impact_score",
+            "overall_confidence",
+            "articles",
+        ],
+        "additionalProperties": False,
+    }
+
+
+def request_company_news_review(
+    symbol: str,
+    company_name: str,
+    articles: Sequence[NewsArticle],
+) -> Dict[str, Any]:
+    return request_structured_response(
+        system_prompt=(
+            "You are a financial news analyst. Return JSON only. "
+            "Judge whether each article is actually useful for predicting this company's performance over the next 1-10 trading days. "
+            "Down-weight broad market roundups, generic listicles, and incidental mentions."
+        ),
+        user_prompt=build_company_news_prompt(symbol, company_name, articles),
+        schema_name="company_news_review",
+        schema=build_company_news_review_schema(),
+    )
+
+
+def normalize_company_news_review(
+    review: Dict[str, Any],
+    articles: Sequence[NewsArticle],
+) -> Tuple[List[ArticleReview], Dict[str, Any]]:
+    valid_ids = {f"article_{index}": article for index, article in enumerate(articles, start=1)}
+    normalized: Dict[str, ArticleReview] = {
+        article_id: ArticleReview(
+            article_id=article_id,
+            doc_type="irrelevant",
+            company_relevance=0.0,
+            materiality=0.0,
+            impact_score=0.0,
+            confidence=0.0,
+            reason="No usable company-specific impact extracted.",
+        )
+        for article_id in valid_ids
+    }
+
+    for item in review.get("articles", []) if isinstance(review.get("articles"), list) else []:
+        if not isinstance(item, dict):
+            continue
+        article_id = str(item.get("article_id", "")).strip()
+        if article_id not in valid_ids:
+            continue
+        doc_type = str(item.get("doc_type", "")).strip()
+        if doc_type not in COMPANY_NEWS_TYPE_WEIGHTS:
+            doc_type = "irrelevant"
+        normalized[article_id] = ArticleReview(
+            article_id=article_id,
+            doc_type=doc_type,
+            company_relevance=clamp(float(item.get("company_relevance", 0.0)), 0.0, 1.0),
+            materiality=clamp(float(item.get("materiality", 0.0)), 0.0, 1.0),
+            impact_score=clamp(float(item.get("impact_score", 0.0)), -1.0, 1.0),
+            confidence=clamp(float(item.get("confidence", 0.0)), 0.0, 1.0),
+            reason=str(item.get("reason", "")).strip() or "No explicit reason returned.",
+        )
+
+    normalized_meta = {
+        "summary": str(review.get("summary", "")).strip(),
+        "overall_signal": str(review.get("overall_signal", "neutral")).strip() or "neutral",
+        "overall_impact_score": clamp(float(review.get("overall_impact_score", 0.0)), -1.0, 1.0),
+        "overall_confidence": clamp(float(review.get("overall_confidence", 0.0)), 0.0, 1.0),
+    }
+    ordered = [normalized[f"article_{index}"] for index, _ in enumerate(articles, start=1)]
+    return ordered, normalized_meta
+
+
+def aggregate_llm_news_signal(
+    articles: Sequence[NewsArticle],
+    reviews: Sequence[ArticleReview],
+    review_meta: Dict[str, Any],
+) -> Dict[str, float]:
+    if not articles or not reviews:
+        return aggregate_news_signal([], [])
+
+    if len(articles) != len(reviews):
+        raise ValueError("articles and reviews must have the same length")
+
+    effective_weights: List[float] = []
+    llm_impacts: List[float] = []
+    directness_values: List[float] = []
+    materiality_values: List[float] = []
+    llm_confidences: List[float] = []
+    low_quality_count = 0
+
+    for article, review in zip(articles, reviews):
+        effective_weight = review_effective_weight(article, review)
+        type_weight = COMPANY_NEWS_TYPE_WEIGHTS.get(review.doc_type, 0.0)
+        if effective_weight <= 0.0 or type_weight <= 0.0:
+            low_quality_count += 1
+            effective_weights.append(0.0)
+            llm_impacts.append(0.0)
+            directness_values.append(0.0)
+            materiality_values.append(0.0)
+            llm_confidences.append(0.0)
+            continue
+
+        effective_weights.append(effective_weight)
+        llm_impacts.append(review.impact_score)
+        directness_values.append(review.company_relevance * type_weight)
+        materiality_values.append(review.materiality)
+        llm_confidences.append(review.confidence)
+        if review.doc_type in {"market_roundup", "opinion_or_listicle"}:
+            low_quality_count += 1
+
+    total_effective_weight = sum(effective_weights)
+    if total_effective_weight <= 1e-9:
+        return {
+            **aggregate_news_signal([], []),
+            "llm_average_directness": 0.0,
+            "llm_average_materiality": 0.0,
+            "llm_average_confidence": 0.0,
+            "llm_low_quality_share": 1.0 if reviews else 0.0,
+        }
+
+    article_level_sentiment = sum(
+        impact * weight for impact, weight in zip(llm_impacts, effective_weights)
+    ) / total_effective_weight
+    overall_impact = float(review_meta.get("overall_impact_score", 0.0))
+    overall_confidence = float(review_meta.get("overall_confidence", 0.0))
+    raw_sentiment = clamp(
+        article_level_sentiment * 0.80 + overall_impact * 0.20,
+        -1.0,
+        1.0,
+    )
+
+    average_relevance = sum(article.relevance_score for article in articles) / len(articles)
+    average_recency_weight = sum(article.recency_weight for article in articles) / len(articles)
+    average_source_quality = sum(article.source_quality for article in articles) / len(articles)
+    source_count = len({article.provider.lower() for article in articles})
+    provider_sentiment_coverage = sum(
+        article.weight for article in articles if article.entity_sentiment is not None
+    ) / max(sum(article.weight for article in articles), 1e-9)
+    dominant_weight_share = max(effective_weights) / total_effective_weight
+    dispersion = sum(
+        abs(impact - raw_sentiment) * weight
+        for impact, weight in zip(llm_impacts, effective_weights)
+    ) / total_effective_weight
+
+    llm_average_directness = sum(
+        value * weight for value, weight in zip(directness_values, effective_weights)
+    ) / total_effective_weight
+    llm_average_materiality = sum(
+        value * weight for value, weight in zip(materiality_values, effective_weights)
+    ) / total_effective_weight
+    llm_average_confidence = sum(
+        value * weight for value, weight in zip(llm_confidences, effective_weights)
+    ) / total_effective_weight
+    llm_low_quality_share = low_quality_count / len(reviews)
+
+    coverage_score = clamp(total_effective_weight / 1.8, 0.0, 1.0)
+    diversity_score = clamp(source_count / min(max(len(articles), 1), 4), 0.0, 1.0)
+    stability_score = 1.0 - clamp(dispersion / 1.0, 0.0, 1.0)
+    concentration_score = 1.0 - clamp((dominant_weight_share - 0.45) / 0.35, 0.0, 1.0)
+    evidence_score = clamp(
+        0.22 * coverage_score
+        + 0.15 * diversity_score
+        + 0.15 * llm_average_directness
+        + 0.12 * llm_average_materiality
+        + 0.12 * llm_average_confidence
+        + 0.08 * average_relevance
+        + 0.06 * average_recency_weight
+        + 0.05 * average_source_quality
+        + 0.03 * provider_sentiment_coverage
+        + 0.02 * concentration_score
+        - 0.12 * llm_low_quality_share,
+        0.0,
+        1.0,
+    )
+    evidence_score = clamp(evidence_score * (0.85 + 0.15 * overall_confidence), 0.0, 1.0)
+
+    calibrated_sentiment = raw_sentiment * evidence_score
+    news_score = sentiment_to_news_score(calibrated_sentiment)
+    news_confidence = clamp(
+        0.20
+        + evidence_score * 0.65
+        + llm_average_confidence * 0.10
+        + overall_confidence * 0.05,
+        0.20,
+        0.95,
+    )
+
+    return {
+        "raw_sentiment": raw_sentiment,
+        "calibrated_sentiment": calibrated_sentiment,
+        "news_score": news_score,
+        "news_confidence": news_confidence,
+        "effective_article_count": total_effective_weight,
+        "source_count": source_count,
+        "average_relevance": average_relevance,
+        "average_recency_weight": average_recency_weight,
+        "average_source_quality": average_source_quality,
+        "provider_sentiment_coverage": provider_sentiment_coverage,
+        "dominant_weight_share": dominant_weight_share,
+        "concentration_score": concentration_score,
+        "sentiment_dispersion": dispersion,
+        "dominant_signal": classify_dominant_signal(calibrated_sentiment, dispersion),
+        "llm_average_directness": llm_average_directness,
+        "llm_average_materiality": llm_average_materiality,
+        "llm_average_confidence": llm_average_confidence,
+        "llm_low_quality_share": llm_low_quality_share,
+    }
+
+
 def sentiment_to_news_score(raw_sent: float) -> float:
     x = clamp(raw_sent, -1.0, 1.0)
     return 0.5 + 0.5 * x
+
+
+def review_effective_weight(article: NewsArticle, review: ArticleReview) -> float:
+    type_weight = COMPANY_NEWS_TYPE_WEIGHTS.get(review.doc_type, 0.0)
+    if type_weight <= 0.0:
+        return 0.0
+    return (
+        article.weight
+        * type_weight
+        * max(0.15, review.company_relevance)
+        * max(0.10, review.materiality)
+        * max(0.20, review.confidence)
+    )
+
+
+def heuristic_signal_weight(article: NewsArticle, scale: float = 1.0) -> float:
+    conviction = max(0.15, abs(article_sentiment_value(article)))
+    return article.weight * conviction * max(scale, 0.0)
+
+
+def build_signal_article_entries(
+    primary_articles: Sequence[NewsArticle],
+    reviews: Optional[Sequence[ArticleReview]] = None,
+    overflow_articles: Optional[Sequence[NewsArticle]] = None,
+    overflow_scale: float = 0.10,
+) -> List[Dict[str, Any]]:
+    entries: List[Dict[str, Any]] = []
+    if reviews is None:
+        for article in primary_articles:
+            signal_weight = heuristic_signal_weight(article)
+            if signal_weight <= 0.0:
+                continue
+            entries.append({"article": article, "review": None, "signal_weight": signal_weight})
+    else:
+        for article, review in zip(primary_articles, reviews):
+            signal_weight = review_effective_weight(article, review)
+            if signal_weight <= 0.0:
+                continue
+            entries.append({"article": article, "review": review, "signal_weight": signal_weight})
+
+    for article in overflow_articles or []:
+        signal_weight = heuristic_signal_weight(article, scale=overflow_scale)
+        if signal_weight <= 0.0:
+            continue
+        entries.append({"article": article, "review": None, "signal_weight": signal_weight})
+
+    return entries
+
+
+def select_supporting_article_entries(
+    entries: Sequence[Dict[str, Any]],
+    limit: int = 5,
+) -> List[Dict[str, Any]]:
+    ranked = sorted(
+        (
+            entry
+            for entry in entries
+            if isinstance(entry, dict) and float(entry.get("signal_weight", 0.0)) > 0.0
+        ),
+        key=lambda entry: (
+            float(entry["signal_weight"]),
+            entry["article"].published_at or datetime.fromtimestamp(0, tz=timezone.utc),
+        ),
+        reverse=True,
+    )
+    if not ranked:
+        return []
+
+    total_weight = sum(float(entry["signal_weight"]) for entry in ranked)
+    min_weight = max(
+        SIGNAL_ARTICLE_MIN_WEIGHT,
+        total_weight * SIGNAL_ARTICLE_MIN_SHARE,
+        float(ranked[0]["signal_weight"]) * 0.20,
+    )
+
+    selected: List[Dict[str, Any]] = []
+    cumulative_weight = 0.0
+    for entry in ranked:
+        if len(selected) >= limit:
+            break
+        if float(entry["signal_weight"]) < min_weight and len(selected) >= 2:
+            break
+        selected.append(entry)
+        cumulative_weight += float(entry["signal_weight"])
+        if cumulative_weight >= total_weight * SIGNAL_ARTICLE_COVERAGE_TARGET:
+            break
+
+    return selected
 
 
 def build_news_reasons(
@@ -749,10 +1180,17 @@ def build_news_reasons(
     summary: str,
     signal: Dict[str, float],
     articles: List[NewsArticle],
+    reviews: Optional[Sequence[ArticleReview]] = None,
+    llm_used: bool = False,
 ) -> List[str]:
+    engine_label = (
+        "GPT-5 article classification and Marketaux entity coverage"
+        if llm_used
+        else "Marketaux entity coverage"
+    )
     reasons = [
         (
-            f"Marketaux entity coverage rated the news flow {signal['dominant_signal']} at {signal['news_score']:.2f}, "
+            f"{engine_label} rated the news flow {signal['dominant_signal']} at {signal['news_score']:.2f}, "
             f"after adjusting for relevance, recency, source quality, and story concentration."
         ),
         (
@@ -762,6 +1200,20 @@ def build_news_reasons(
             f"{signal['average_source_quality']:.2f}, confidence {signal['news_confidence']:.2f}."
         ),
     ]
+
+    if llm_used:
+        reasons.append(
+            (
+                f"GPT-5 kept the weighted set focused on direct and material coverage: "
+                f"average directness {signal.get('llm_average_directness', 0.0):.2f}, "
+                f"materiality {signal.get('llm_average_materiality', 0.0):.2f}, "
+                f"LLM confidence {signal.get('llm_average_confidence', 0.0):.2f}."
+            )
+        )
+        if signal.get("llm_low_quality_share", 0.0) >= 0.34:
+            reasons.append(
+                "Several fetched articles looked like market roundups or listicles, so GPT-5 discounted them heavily."
+            )
 
     if signal["provider_sentiment_coverage"] >= 0.60:
         reasons.append(
@@ -784,8 +1236,11 @@ def build_news_reasons(
     return reasons
 
 
-def serialize_article_evidence(article: NewsArticle) -> Dict[str, object]:
-    return {
+def serialize_article_evidence(
+    article: NewsArticle,
+    review: Optional[ArticleReview] = None,
+) -> Dict[str, object]:
+    payload: Dict[str, object] = {
         "title": article.title,
         "provider": article.provider,
         "url": article.url,
@@ -793,14 +1248,35 @@ def serialize_article_evidence(article: NewsArticle) -> Dict[str, object]:
         "relevance_score": round(article.relevance_score, 2),
         "sentiment": round(article_sentiment_value(article), 2),
     }
+    if review is not None:
+        payload["doc_type"] = review.doc_type
+        payload["company_relevance"] = round(review.company_relevance, 2)
+        payload["materiality"] = round(review.materiality, 2)
+        payload["llm_confidence"] = round(review.confidence, 2)
+        payload["llm_impact_score"] = round(review.impact_score, 2)
+        payload["llm_reason"] = review.reason
+    return payload
+
+
+def latest_article_date(articles: Sequence[NewsArticle]) -> Optional[str]:
+    published_dates = [
+        article.published_at.astimezone(timezone.utc).date().isoformat()
+        for article in articles
+        if article.published_at is not None
+    ]
+    if not published_dates:
+        return None
+    return max(published_dates)
 
 
 def main():
     _, summarizer_pipe = init_models()
     universe = load_universe()
+    llm_enabled = llm_news_enabled()
+    model_name = openai_model() if llm_enabled else None
+    company_llm_limit = configured_llm_news_limit()
 
     out: Dict[str, dict] = {}
-    today_str = datetime.now(timezone.utc).date().isoformat()
 
     for symbol, company_name in universe:
         articles = fetch_symbol_news(symbol, company_name)
@@ -826,13 +1302,104 @@ def main():
                 ],
                 "top_headlines": [],
                 "top_articles": [],
-                "last_updated": today_str,
+                "last_updated": None,
+                "analysis_method": "neutral_no_articles",
+                "llm_model": model_name,
             }
             continue
 
-        signal = compute_finbert_sentiment(None, articles)
-        summary = summarize_texts(summarizer_pipe, articles)
-        reasons = build_news_reasons(symbol, company_name, summary, signal, articles)
+        reviews: Optional[List[ArticleReview]] = None
+        llm_used = False
+        try:
+            if llm_enabled:
+                llm_used = True
+                llm_review = request_company_news_review(
+                    symbol=symbol,
+                    company_name=company_name,
+                    articles=articles[:company_llm_limit],
+                )
+                reviews, review_meta = normalize_company_news_review(
+                    llm_review,
+                    articles[:company_llm_limit],
+                )
+                llm_signal = aggregate_llm_news_signal(
+                    articles[:company_llm_limit],
+                    reviews,
+                    review_meta,
+                )
+
+                if len(articles) > company_llm_limit:
+                    fallback_signal = aggregate_news_signal(
+                        articles[company_llm_limit:],
+                        [article_sentiment_value(article) for article in articles[company_llm_limit:]],
+                    )
+                    signal = {
+                        **llm_signal,
+                        "raw_sentiment": clamp(
+                            llm_signal["raw_sentiment"] * 0.88 + fallback_signal["raw_sentiment"] * 0.12,
+                            -1.0,
+                            1.0,
+                        ),
+                        "calibrated_sentiment": clamp(
+                            llm_signal["calibrated_sentiment"] * 0.90 + fallback_signal["calibrated_sentiment"] * 0.10,
+                            -1.0,
+                            1.0,
+                        ),
+                        "news_score": clamp(
+                            llm_signal["news_score"] * 0.90 + fallback_signal["news_score"] * 0.10,
+                            0.0,
+                            1.0,
+                        ),
+                        "news_confidence": clamp(
+                            llm_signal["news_confidence"] * 0.90 + fallback_signal["news_confidence"] * 0.10,
+                            0.20,
+                            0.95,
+                        ),
+                        "effective_article_count": llm_signal["effective_article_count"] + fallback_signal["effective_article_count"] * 0.10,
+                    }
+                else:
+                    signal = llm_signal
+
+                summary = review_meta["summary"] or summarize_texts(summarizer_pipe, articles)
+            else:
+                signal = compute_finbert_sentiment(None, articles)
+                summary = summarize_texts(summarizer_pipe, articles)
+        except Exception as exc:
+            if llm_enabled and not allow_llm_fallback():
+                raise
+            llm_used = False
+            reviews = None
+            print(f"[WARN] [{symbol}] GPT company news review failed, using heuristic fallback: {exc}")
+            signal = compute_finbert_sentiment(None, articles)
+            summary = summarize_texts(summarizer_pipe, articles)
+
+        primary_articles = articles[:company_llm_limit] if llm_used else articles
+        overflow_articles = articles[company_llm_limit:] if llm_used else []
+        signal_article_entries = build_signal_article_entries(
+            primary_articles=primary_articles,
+            reviews=reviews if llm_used else None,
+            overflow_articles=overflow_articles,
+        )
+        supporting_entries = select_supporting_article_entries(signal_article_entries)
+        supporting_articles = [
+            serialize_article_evidence(entry["article"], entry.get("review"))
+            for entry in supporting_entries
+        ]
+        signal_last_updated = latest_article_date([entry["article"] for entry in supporting_entries])
+
+        reasons = build_news_reasons(
+            symbol,
+            company_name,
+            summary,
+            signal,
+            articles,
+            reviews=reviews,
+            llm_used=llm_used,
+        )
+        review_lookup = {
+            review.article_id: review
+            for review in reviews or []
+        }
 
         out[symbol] = {
             "news_score": round(signal["news_score"], 2),
@@ -850,8 +1417,10 @@ def main():
             "dominant_signal": signal["dominant_signal"],
             "news_reasons": reasons,
             "top_headlines": [article.title for article in articles[:3]],
-            "top_articles": [serialize_article_evidence(article) for article in articles[:5]],
-            "last_updated": today_str,
+            "top_articles": supporting_articles,
+            "last_updated": signal_last_updated,
+            "analysis_method": "gpt_company_review" if llm_used else "heuristic_fallback",
+            "llm_model": model_name if llm_used else None,
         }
 
     with open(NEWS_SCORES_PATH, "w", encoding="utf-8") as handle:

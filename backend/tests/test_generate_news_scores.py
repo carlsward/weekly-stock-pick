@@ -3,13 +3,18 @@ from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
 from backend.generate_news_scores import (
+    ArticleReview,
     NewsArticle,
     aggregate_news_signal,
+    aggregate_llm_news_signal,
+    build_signal_article_entries,
     build_marketaux_article,
     compute_finbert_sentiment,
     compute_recency_weight,
     compute_relevance_score,
     fetch_raw_news,
+    latest_article_date,
+    select_supporting_article_entries,
 )
 
 
@@ -224,6 +229,121 @@ class GenerateNewsScoresTests(unittest.TestCase):
 
         self.assertGreater(signal["provider_sentiment_coverage"], 0.50)
         self.assertGreater(signal["news_score"], 0.50)
+
+    def test_llm_news_aggregation_discounts_market_roundups(self) -> None:
+        articles = [
+            NewsArticle(
+                title="Market Retreat: S&P 500 and Dow Slip as Inflation Concerns Dampen Rate Cut Hopes",
+                text="A broad market recap mentioning several megacap stocks.",
+                published_at=datetime(2026, 3, 19, 8, 0, tzinfo=timezone.utc),
+                provider="Blog",
+                url="https://example.com/1",
+                relevance_score=0.52,
+                recency_weight=0.95,
+                source_quality=0.75,
+                weight=0.37,
+            ),
+            NewsArticle(
+                title="Microsoft wins multi-year enterprise cloud contract",
+                text="Microsoft signed a major enterprise cloud contract that should raise Azure revenue.",
+                published_at=datetime(2026, 3, 19, 7, 0, tzinfo=timezone.utc),
+                provider="Reuters",
+                url="https://example.com/2",
+                relevance_score=0.88,
+                recency_weight=0.94,
+                source_quality=1.00,
+                weight=0.83,
+            ),
+        ]
+        reviews = [
+            ArticleReview(
+                article_id="article_1",
+                doc_type="market_roundup",
+                company_relevance=0.18,
+                materiality=0.12,
+                impact_score=0.60,
+                confidence=0.72,
+                reason="Broad roundup with only incidental mention of Microsoft.",
+            ),
+            ArticleReview(
+                article_id="article_2",
+                doc_type="company_specific",
+                company_relevance=0.93,
+                materiality=0.86,
+                impact_score=0.74,
+                confidence=0.81,
+                reason="Direct contract win with clear revenue relevance.",
+            ),
+        ]
+
+        signal = aggregate_llm_news_signal(
+            articles,
+            reviews,
+            {
+                "summary": "Contract win matters more than the roundup.",
+                "overall_signal": "bullish",
+                "overall_impact_score": 0.68,
+                "overall_confidence": 0.78,
+            },
+        )
+
+        self.assertGreater(signal["news_score"], 0.55)
+        self.assertLess(signal["llm_low_quality_share"], 0.60)
+        self.assertGreater(signal["llm_average_directness"], 0.40)
+
+    def test_supporting_article_freshness_ignores_fresh_roundup(self) -> None:
+        articles = [
+            NewsArticle(
+                title="Stocks rise as rate-cut hopes return",
+                text="A market roundup that mentions Microsoft only in passing.",
+                published_at=datetime(2026, 3, 19, 9, 0, tzinfo=timezone.utc),
+                provider="Blog",
+                url="https://example.com/roundup",
+                relevance_score=0.50,
+                recency_weight=0.98,
+                source_quality=0.75,
+                weight=0.34,
+            ),
+            NewsArticle(
+                title="Microsoft lands major enterprise software renewal",
+                text="Microsoft signed a large renewal that directly supports next-quarter revenue.",
+                published_at=datetime(2026, 3, 18, 11, 0, tzinfo=timezone.utc),
+                provider="Reuters",
+                url="https://example.com/msft",
+                relevance_score=0.89,
+                recency_weight=0.88,
+                source_quality=1.0,
+                weight=0.78,
+            ),
+        ]
+        reviews = [
+            ArticleReview(
+                article_id="article_1",
+                doc_type="market_roundup",
+                company_relevance=0.12,
+                materiality=0.10,
+                impact_score=0.30,
+                confidence=0.65,
+                reason="Incidental company mention inside a broad roundup.",
+            ),
+            ArticleReview(
+                article_id="article_2",
+                doc_type="company_specific",
+                company_relevance=0.94,
+                materiality=0.86,
+                impact_score=0.77,
+                confidence=0.82,
+                reason="Direct company catalyst with revenue relevance.",
+            ),
+        ]
+
+        supporting_entries = select_supporting_article_entries(
+            build_signal_article_entries(articles, reviews)
+        )
+
+        self.assertEqual(1, len(supporting_entries))
+        self.assertEqual("Microsoft lands major enterprise software renewal", supporting_entries[0]["article"].title)
+        self.assertEqual("2026-03-18", latest_article_date([entry["article"] for entry in supporting_entries]))
 
     def test_fetch_raw_news_requires_marketaux_token(self) -> None:
         with patch.dict("os.environ", {}, clear=True):

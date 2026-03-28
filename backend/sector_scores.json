@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-28T12:00:00Z",
+  "generated_at": "2026-03-28T22:22:52Z",
   "last_updated": "2026-03-28",
   "lookback_days": 3,
   "article_count": 0,
   "source_count": 0,
   "llm_model": "gpt-5-mini",
-  "summary": "No recent broad catalyst clearly favored one tracked sector over another.",
+  "summary": "Sector analysis was neutral because no reliable broad catalysts were found.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -13,6 +13,7 @@
       "score": 0.5,
       "confidence": 0.2,
       "direction": "neutral",
+      "last_updated": null,
       "reasons": [
         "No recent broad catalyst clearly favored the Communication Services sector."
       ],
@@ -24,6 +25,7 @@
       "score": 0.5,
       "confidence": 0.2,
       "direction": "neutral",
+      "last_updated": null,
       "reasons": [
         "No recent broad catalyst clearly favored the Consumer Discretionary sector."
       ],
@@ -35,6 +37,7 @@
       "score": 0.5,
       "confidence": 0.2,
       "direction": "neutral",
+      "last_updated": null,
       "reasons": [
         "No recent broad catalyst clearly favored the Consumer Staples sector."
       ],
@@ -46,6 +49,7 @@
       "score": 0.5,
       "confidence": 0.2,
       "direction": "neutral",
+      "last_updated": null,
       "reasons": [
         "No recent broad catalyst clearly favored the Energy sector."
       ],
@@ -57,6 +61,7 @@
       "score": 0.5,
       "confidence": 0.2,
       "direction": "neutral",
+      "last_updated": null,
       "reasons": [
         "No recent broad catalyst clearly favored the Financials sector."
       ],
@@ -68,6 +73,7 @@
       "score": 0.5,
       "confidence": 0.2,
       "direction": "neutral",
+      "last_updated": null,
       "reasons": [
         "No recent broad catalyst clearly favored the Healthcare sector."
       ],
@@ -79,6 +85,7 @@
       "score": 0.5,
       "confidence": 0.2,
       "direction": "neutral",
+      "last_updated": null,
       "reasons": [
         "No recent broad catalyst clearly favored the Industrials sector."
       ],
@@ -90,8 +97,648 @@
       "score": 0.5,
       "confidence": 0.2,
       "direction": "neutral",
+      "last_updated": null,
       "reasons": [
         "No recent broad catalyst clearly favored the Technology sector."
+      ],
+      "supporting_articles": []
+    }
+  },
+  "symbol_scores": {
+    "AAPL": {
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Apple Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "MSFT": {
+      "symbol": "MSFT",
+      "company_name": "Microsoft Corporation",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Microsoft Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "GOOGL": {
+      "symbol": "GOOGL",
+      "company_name": "Alphabet Inc.",
+      "sector": "communication_services",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Alphabet Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "AMZN": {
+      "symbol": "AMZN",
+      "company_name": "Amazon.com Inc.",
+      "sector": "consumer_discretionary",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Amazon.com Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "TSLA": {
+      "symbol": "TSLA",
+      "company_name": "Tesla Inc.",
+      "sector": "consumer_discretionary",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Tesla Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "META": {
+      "symbol": "META",
+      "company_name": "Meta Platforms Inc.",
+      "sector": "communication_services",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Meta Platforms Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "BRK.B": {
+      "symbol": "BRK.B",
+      "company_name": "Berkshire Hathaway Inc.",
+      "sector": "financials",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "company_name": "NVIDIA Corporation",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored NVIDIA Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "JPM": {
+      "symbol": "JPM",
+      "company_name": "JPMorgan Chase & Co.",
+      "sector": "financials",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored JPMorgan Chase & Co.."
+      ],
+      "supporting_articles": []
+    },
+    "JNJ": {
+      "symbol": "JNJ",
+      "company_name": "Johnson & Johnson",
+      "sector": "healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Johnson & Johnson."
+      ],
+      "supporting_articles": []
+    },
+    "V": {
+      "symbol": "V",
+      "company_name": "Visa Inc.",
+      "sector": "financials",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Visa Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "WMT": {
+      "symbol": "WMT",
+      "company_name": "Walmart Inc.",
+      "sector": "consumer_staples",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Walmart Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "PG": {
+      "symbol": "PG",
+      "company_name": "Procter & Gamble Company",
+      "sector": "consumer_staples",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Procter & Gamble Company."
+      ],
+      "supporting_articles": []
+    },
+    "MA": {
+      "symbol": "MA",
+      "company_name": "Mastercard Incorporated",
+      "sector": "financials",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Mastercard Incorporated."
+      ],
+      "supporting_articles": []
+    },
+    "DIS": {
+      "symbol": "DIS",
+      "company_name": "The Walt Disney Company",
+      "sector": "communication_services",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored The Walt Disney Company."
+      ],
+      "supporting_articles": []
+    },
+    "HD": {
+      "symbol": "HD",
+      "company_name": "The Home Depot Inc.",
+      "sector": "consumer_discretionary",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored The Home Depot Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "BAC": {
+      "symbol": "BAC",
+      "company_name": "Bank of America Corporation",
+      "sector": "financials",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Bank of America Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "XOM": {
+      "symbol": "XOM",
+      "company_name": "Exxon Mobil Corporation",
+      "sector": "energy",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Exxon Mobil Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "PFE": {
+      "symbol": "PFE",
+      "company_name": "Pfizer Inc.",
+      "sector": "healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Pfizer Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "VZ": {
+      "symbol": "VZ",
+      "company_name": "Verizon Communications Inc.",
+      "sector": "communication_services",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Verizon Communications Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "NFLX": {
+      "symbol": "NFLX",
+      "company_name": "Netflix Inc.",
+      "sector": "communication_services",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Netflix Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "ADBE": {
+      "symbol": "ADBE",
+      "company_name": "Adobe Inc.",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Adobe Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "CMCSA": {
+      "symbol": "CMCSA",
+      "company_name": "Comcast Corporation",
+      "sector": "communication_services",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Comcast Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "KO": {
+      "symbol": "KO",
+      "company_name": "The Coca-Cola Company",
+      "sector": "consumer_staples",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored The Coca-Cola Company."
+      ],
+      "supporting_articles": []
+    },
+    "T": {
+      "symbol": "T",
+      "company_name": "AT&T Inc.",
+      "sector": "communication_services",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored AT&T Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "NKE": {
+      "symbol": "NKE",
+      "company_name": "Nike Inc.",
+      "sector": "consumer_discretionary",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Nike Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "MRK": {
+      "symbol": "MRK",
+      "company_name": "Merck & Co. Inc.",
+      "sector": "healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Merck & Co. Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "ABT": {
+      "symbol": "ABT",
+      "company_name": "Abbott Laboratories",
+      "sector": "healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Abbott Laboratories."
+      ],
+      "supporting_articles": []
+    },
+    "PEP": {
+      "symbol": "PEP",
+      "company_name": "PepsiCo Inc.",
+      "sector": "consumer_staples",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored PepsiCo Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "CSCO": {
+      "symbol": "CSCO",
+      "company_name": "Cisco Systems Inc.",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Cisco Systems Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "ORCL": {
+      "symbol": "ORCL",
+      "company_name": "Oracle Corporation",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Oracle Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "INTC": {
+      "symbol": "INTC",
+      "company_name": "Intel Corporation",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Intel Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "CRM": {
+      "symbol": "CRM",
+      "company_name": "Salesforce Inc.",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Salesforce Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "COST": {
+      "symbol": "COST",
+      "company_name": "Costco Wholesale Corporation",
+      "sector": "consumer_staples",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Costco Wholesale Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "ACN": {
+      "symbol": "ACN",
+      "company_name": "Accenture plc",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Accenture plc."
+      ],
+      "supporting_articles": []
+    },
+    "CVX": {
+      "symbol": "CVX",
+      "company_name": "Chevron Corporation",
+      "sector": "energy",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Chevron Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "MCD": {
+      "symbol": "MCD",
+      "company_name": "McDonald's Corporation",
+      "sector": "consumer_discretionary",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored McDonald's Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "DHR": {
+      "symbol": "DHR",
+      "company_name": "Danaher Corporation",
+      "sector": "healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Danaher Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "MDT": {
+      "symbol": "MDT",
+      "company_name": "Medtronic plc",
+      "sector": "healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Medtronic plc."
+      ],
+      "supporting_articles": []
+    },
+    "LLY": {
+      "symbol": "LLY",
+      "company_name": "Eli Lilly and Company",
+      "sector": "healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Eli Lilly and Company."
+      ],
+      "supporting_articles": []
+    },
+    "TXN": {
+      "symbol": "TXN",
+      "company_name": "Texas Instruments Incorporated",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Texas Instruments Incorporated."
+      ],
+      "supporting_articles": []
+    },
+    "UNH": {
+      "symbol": "UNH",
+      "company_name": "UnitedHealth Group Incorporated",
+      "sector": "healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
+      ],
+      "supporting_articles": []
+    },
+    "BMY": {
+      "symbol": "BMY",
+      "company_name": "Bristol-Myers Squibb Company",
+      "sector": "healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
+      ],
+      "supporting_articles": []
+    },
+    "QCOM": {
+      "symbol": "QCOM",
+      "company_name": "QUALCOMM Incorporated",
+      "sector": "technology",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored QUALCOMM Incorporated."
+      ],
+      "supporting_articles": []
+    },
+    "HON": {
+      "symbol": "HON",
+      "company_name": "Honeywell International Inc.",
+      "sector": "industrials",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Honeywell International Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "AMGN": {
+      "symbol": "AMGN",
+      "company_name": "Amgen Inc.",
+      "sector": "healthcare",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Amgen Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "SBUX": {
+      "symbol": "SBUX",
+      "company_name": "Starbucks Corporation",
+      "sector": "consumer_discretionary",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Starbucks Corporation."
+      ],
+      "supporting_articles": []
+    },
+    "LOW": {
+      "symbol": "LOW",
+      "company_name": "Lowe's Companies Inc.",
+      "sector": "consumer_discretionary",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored Lowe's Companies Inc.."
+      ],
+      "supporting_articles": []
+    },
+    "GE": {
+      "symbol": "GE",
+      "company_name": "General Electric Company",
+      "sector": "industrials",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
+      "reasons": [
+        "No recent world-news catalyst clearly favored General Electric Company."
       ],
       "supporting_articles": []
     }

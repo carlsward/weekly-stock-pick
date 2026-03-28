@@ -763,11 +763,22 @@ def normalize_sector_supporting_articles(sector_info: dict) -> List[Dict[str, An
         normalized.append(
             {
                 "title": title,
+                "feed": str(article.get("feed", "")).strip() or None,
                 "provider": str(article.get("provider", "")).strip() or None,
                 "url": str(article.get("url", "")).strip() or None,
                 "published_at": str(article.get("published_at", "")).strip() or None,
                 "impact": str(article.get("impact", "")).strip() or None,
                 "weight": float(article["weight"]) if isinstance(article.get("weight"), (int, float)) else None,
+                "event_type": str(article.get("event_type", "")).strip() or None,
+                "transmission_channel": str(article.get("transmission_channel", "")).strip() or None,
+                "affected_inputs": [
+                    str(item).strip()
+                    for item in article.get("affected_inputs", [])
+                    if str(item).strip()
+                ]
+                if isinstance(article.get("affected_inputs"), list)
+                else [],
+                "horizon": str(article.get("horizon", "")).strip() or None,
                 "reason": str(article.get("reason", "")).strip() or None,
             }
         )
@@ -814,6 +825,10 @@ def extract_layer_themes(
         themes.extend(theme_tokens_from_text(str(article.get("title", ""))))
         themes.extend(theme_tokens_from_text(str(article.get("reason", ""))))
         themes.extend(theme_tokens_from_text(str(article.get("llm_reason", ""))))
+        themes.extend(theme_tokens_from_text(str(article.get("event_type", ""))))
+        themes.extend(theme_tokens_from_text(str(article.get("transmission_channel", ""))))
+        for affected_input in article.get("affected_inputs", []) if isinstance(article.get("affected_inputs"), list) else []:
+            themes.extend(theme_tokens_from_text(str(affected_input)))
     return list(dict.fromkeys(themes))
 
 
@@ -2488,6 +2503,7 @@ def normalize_history_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
         "status_reason": entry.get("status_reason") or "",
         "symbol": entry.get("symbol"),
         "company_name": entry.get("company_name"),
+        "sector": entry.get("sector"),
         "risk": entry.get("risk"),
         "model_score": entry.get("model_score", entry.get("score")),
         "confidence_score": entry.get("confidence_score"),
@@ -2517,6 +2533,7 @@ def build_history_entry(
         "status_reason": selection.status_reason,
         "symbol": pick.symbol if pick else None,
         "company_name": pick.company_name if pick else None,
+        "sector": pick.sector if pick else None,
         "risk": pick.risk_level if pick else None,
         "model_score": round(pick.total_score, 4) if pick else None,
         "confidence_score": round(pick.confidence_score, 2) if pick else None,

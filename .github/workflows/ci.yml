@@ -28,6 +28,36 @@ jobs:
       - name: Run backend unit tests
         run: python -m unittest discover -s backend/tests -t .
 
+      - name: Generate backend contract smoke artifacts
+        working-directory: backend
+        env:
+          UNIVERSE_CSV_PATH: universe_test.csv
+          MARKETAUX_FIXTURE_PATH: fixtures/marketaux_smoke_news.json
+          MARKETAUX_GLOBAL_FIXTURE_PATH: fixtures/marketaux_smoke_global.json
+          ALLOW_MARKETAUX_FALLBACK: "true"
+          ALLOW_LLM_FALLBACK: "true"
+          ENABLE_HISTORY_REALIZED_ENRICHMENT: "false"
+          ENABLE_MONTHLY_HISTORY_REALIZED_ENRICHMENT: "false"
+          FORCE_PRICE_FALLBACK: "true"
+          MARKETAUX_NEWS_LIMIT: "3"
+          MARKETAUX_GLOBAL_NEWS_LIMIT: "30"
+          GDELT_GLOBAL_NEWS_LIMIT: "12"
+          ALPHA_VANTAGE_GLOBAL_NEWS_LIMIT: "12"
+          SECTOR_LLM_ARTICLE_LIMIT: "10"
+        run: |
+          python generate_news_scores.py
+          python generate_sector_scores.py
+          python generate_pick.py
+          python generate_thesis_monitor.py
+          python generate_track_record.py
+          python generate_monthly_pick.py
+
+      - name: Validate backend contracts
+        working-directory: backend
+        env:
+          UNIVERSE_CSV_PATH: universe_test.csv
+        run: python validate_outputs.py
+
   android:
     runs-on: ubuntu-latest
 

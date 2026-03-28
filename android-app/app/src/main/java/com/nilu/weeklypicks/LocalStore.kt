@@ -10,6 +10,12 @@ interface LocalStore {
     fun writeDashboardCache(rawJson: String)
     fun readHistoryCache(): String?
     fun writeHistoryCache(rawJson: String)
+    fun readThesisMonitorCache(): String?
+    fun writeThesisMonitorCache(rawJson: String)
+    fun readTrackRecordCache(): String?
+    fun writeTrackRecordCache(rawJson: String)
+    fun readMonthlyPickCache(): String?
+    fun writeMonthlyPickCache(rawJson: String)
     fun readLastReleaseNotificationWeek(): String?
     fun writeLastReleaseNotificationWeek(weekId: String)
     fun readLastThesisAlertKey(): String?
@@ -41,6 +47,24 @@ class SharedPreferencesLocalStore(
         prefs.edit { putString(KEY_HISTORY_CACHE, rawJson) }
     }
 
+    override fun readThesisMonitorCache(): String? = prefs.getString(KEY_THESIS_MONITOR_CACHE, null)
+
+    override fun writeThesisMonitorCache(rawJson: String) {
+        prefs.edit { putString(KEY_THESIS_MONITOR_CACHE, rawJson) }
+    }
+
+    override fun readTrackRecordCache(): String? = prefs.getString(KEY_TRACK_RECORD_CACHE, null)
+
+    override fun writeTrackRecordCache(rawJson: String) {
+        prefs.edit { putString(KEY_TRACK_RECORD_CACHE, rawJson) }
+    }
+
+    override fun readMonthlyPickCache(): String? = prefs.getString(KEY_MONTHLY_PICK_CACHE, null)
+
+    override fun writeMonthlyPickCache(rawJson: String) {
+        prefs.edit { putString(KEY_MONTHLY_PICK_CACHE, rawJson) }
+    }
+
     override fun readLastReleaseNotificationWeek(): String? =
         prefs.getString(KEY_LAST_RELEASE_NOTIFICATION_WEEK, null)
 
@@ -67,6 +91,9 @@ class SharedPreferencesLocalStore(
         const val KEY_SELECTED_RISK = "selected_risk"
         const val KEY_DASHBOARD_CACHE = "dashboard_cache"
         const val KEY_HISTORY_CACHE = "history_cache"
+        const val KEY_THESIS_MONITOR_CACHE = "thesis_monitor_cache"
+        const val KEY_TRACK_RECORD_CACHE = "track_record_cache"
+        const val KEY_MONTHLY_PICK_CACHE = "monthly_pick_cache"
         const val KEY_LAST_RELEASE_NOTIFICATION_WEEK = "last_release_notification_week"
         const val KEY_LAST_THESIS_ALERT_KEY = "last_thesis_alert_key"
         const val KEY_LAST_STALE_ALERT_WEEK = "last_stale_alert_week"
@@ -77,6 +104,9 @@ class InMemoryLocalStore : LocalStore {
     private var selectedRisk: String? = null
     private var dashboardCache: String? = null
     private var historyCache: String? = null
+    private var thesisMonitorCache: String? = null
+    private var trackRecordCache: String? = null
+    private var monthlyPickCache: String? = null
     private var lastReleaseNotificationWeek: String? = null
     private var lastThesisAlertKey: String? = null
     private var lastStaleAlertWeek: String? = null
@@ -97,6 +127,24 @@ class InMemoryLocalStore : LocalStore {
 
     override fun writeHistoryCache(rawJson: String) {
         historyCache = rawJson
+    }
+
+    override fun readThesisMonitorCache(): String? = thesisMonitorCache
+
+    override fun writeThesisMonitorCache(rawJson: String) {
+        thesisMonitorCache = rawJson
+    }
+
+    override fun readTrackRecordCache(): String? = trackRecordCache
+
+    override fun writeTrackRecordCache(rawJson: String) {
+        trackRecordCache = rawJson
+    }
+
+    override fun readMonthlyPickCache(): String? = monthlyPickCache
+
+    override fun writeMonthlyPickCache(rawJson: String) {
+        monthlyPickCache = rawJson
     }
 
     override fun readLastReleaseNotificationWeek(): String? = lastReleaseNotificationWeek

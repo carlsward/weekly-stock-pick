@@ -1,0 +1,42 @@
+{
+  "schema_version": 2,
+  "model_version": "v3.3-monthly",
+  "generated_at": "2026-03-28T22:22:55Z",
+  "data_as_of": "2026-03-27",
+  "expected_next_refresh_at": "2026-04-01T12:00:00Z",
+  "stale_after": "2026-04-04T12:00:00Z",
+  "period_context": {
+    "timezone": "America/New_York",
+    "month_id": "2026-03",
+    "month_label": "March 2026",
+    "month_start": "2026-03-01",
+    "month_end": "2026-03-31",
+    "rebalance_date": "2026-03-01",
+    "horizon_trading_days": 20
+  },
+  "generation_summary": {
+    "universe_size": 49,
+    "evaluated_candidates": 49,
+    "skipped_symbols": 0,
+    "skipped_details": []
+  },
+  "selection_thresholds": {
+    "overall_score": 0.12,
+    "minimum_confidence": 0.6
+  },
+  "selection": {
+    "status": "no_pick",
+    "status_reason": "No monthly candidate cleared the minimum confidence threshold of 0.60. The best score was MSFT at 0.136 with medium confidence.",
+    "threshold_score": 0.12,
+    "threshold_confidence": 0.6,
+    "pick": null,
+    "best_candidate": {
+      "symbol": "MSFT",
+      "company_name": "Microsoft Corporation",
+      "risk": "low",
+      "model_score": 0.1357,
+      "confidence_score": 0.55,
+      "confidence_label": "medium"
+    }
+  }
+}

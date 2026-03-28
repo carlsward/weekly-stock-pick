@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.weight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -96,6 +97,18 @@ class MainActivity : ComponentActivity() {
                                         item {
                                             WeeklyPickScreen(
                                                 content = state.content
+                                            )
+                                        }
+                                        item {
+                                            MonthlyPickSection(
+                                                feed = state.content.monthlyPick,
+                                                message = state.content.monthlyPickMessage
+                                            )
+                                        }
+                                        item {
+                                            TrackRecordSection(
+                                                trackRecord = state.content.trackRecord,
+                                                message = state.content.trackRecordMessage
                                             )
                                         }
                                         item {
@@ -273,6 +286,279 @@ fun HistorySection(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun TrackRecordSection(
+    trackRecord: TrackRecordFeed?,
+    message: String?
+) {
+    if (trackRecord == null && message == null) {
+        return
+    }
+
+    var expanded by rememberSaveable { mutableStateOf(false) }
+    val recentClosedEntries = trackRecord?.entries
+        ?.filter { it.status == SelectionStatus.PICKED && it.realized5dReturn != null }
+        ?.take(6)
+        .orEmpty()
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .animateContentSize(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(14.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Performance",
+                    style = MaterialTheme.typography.titleMedium
+                )
+                if (trackRecord != null) {
+                    TextButton(onClick = { expanded = !expanded }) {
+                        Text(if (expanded) "Hide" else "Open")
+                    }
+                }
+            }
+
+            message?.let {
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            val summary = trackRecord?.summary
+            if (summary != null) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    PerformanceMetric(
+                        label = "Closed",
+                        value = summary.closedPicks.toString(),
+                        modifier = Modifier.weight(1f)
+                    )
+                    PerformanceMetric(
+                        label = "Win rate",
+                        value = percentLabel(summary.winRate),
+                        modifier = Modifier.weight(1f)
+                    )
+                    PerformanceMetric(
+                        label = "Beat SPY",
+                        value = percentLabel(summary.beatSpyRate),
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                ) {
+                    PerformanceMetric(
+                        label = "Avg 5D",
+                        value = signedPercentLabel(summary.average5dReturn),
+                        modifier = Modifier.weight(1f)
+                    )
+                    PerformanceMetric(
+                        label = "Avg excess",
+                        value = signedPercentLabel(summary.average5dExcessReturn),
+                        modifier = Modifier.weight(1f)
+                    )
+                    PerformanceMetric(
+                        label = "Compounded",
+                        value = signedPercentLabel(summary.compounded5dReturn),
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+            }
+
+            if (expanded && recentClosedEntries.isNotEmpty()) {
+                HorizontalDivider()
+                recentClosedEntries.forEachIndexed { index, entry ->
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(2.dp)
+                    ) {
+                        Text(
+                            text = "${entry.weekLabel} • ${entry.symbol ?: "No pick"}",
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                        Text(
+                            text = "Return ${signedPercentLabel(entry.realized5dReturn)} • Excess ${signedPercentLabel(entry.realized5dExcessReturn)}",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = when (entry.outcome) {
+                                "win" -> RiskLowColor
+                                "loss" -> RiskHighColor
+                                else -> MaterialTheme.colorScheme.onSurfaceVariant
+                            }
+                        )
+                    }
+                    if (index != recentClosedEntries.lastIndex) {
+                        HorizontalDivider()
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun MonthlyPickSection(
+    feed: MonthlyPickFeed?,
+    message: String?
+) {
+    if (feed == null && message == null) {
+        return
+    }
+
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(14.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            Text(
+                text = "Monthly conviction",
+                style = MaterialTheme.typography.titleMedium
+            )
+
+            message?.let {
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            if (feed != null) {
+                Text(
+                    text = feed.periodContext.monthLabel,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+
+                val selection = feed.selection
+                if (selection.status == SelectionStatus.PICKED && selection.pick != null) {
+                    val pick = selection.pick
+                    Text(
+                        text = "${pick.symbol} - ${pick.companyName}",
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                    Text(
+                        text = "${pick.sector.replaceFirstChar { it.uppercase() }} • ${pick.risk.replaceFirstChar { it.uppercase() }} risk",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        PerformanceMetric(
+                            label = "Score",
+                            value = String.format(Locale.US, "%+.3f", pick.modelScore),
+                            modifier = Modifier.weight(1f)
+                        )
+                        PerformanceMetric(
+                            label = "Confidence",
+                            value = percentLabel(pick.confidenceScore),
+                            modifier = Modifier.weight(1f)
+                        )
+                        PerformanceMetric(
+                            label = "20D / 60D",
+                            value = "${signedPercentLabel(pick.metrics.momentum20d)} / ${signedPercentLabel(pick.metrics.momentum60d)}",
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                    pick.reasons.take(3).forEach { reason ->
+                        Text(
+                            text = "• $reason",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    )
+                } else {
+                    Text(
+                        text = "No monthly pick",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+                    Text(
+                        text = selection.statusReason,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    selection.bestCandidate?.let { candidate ->
+                        Text(
+                            text = "Closest candidate: ${candidate.symbol} at ${String.format(Locale.US, "%+.3f", candidate.modelScore)}",
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun PerformanceMetric(
+    label: String,
+    value: String,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.45f)
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(10.dp),
+            verticalArrangement = Arrangement.spacedBy(2.dp)
+        ) {
+            Text(
+                text = label,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Text(
+                text = value,
+                style = MaterialTheme.typography.titleSmall
+            )
+        }
+    }
+}
+
+private fun percentLabel(value: Double?): String {
+    return if (value == null) {
+        "N/A"
+    } else {
+        String.format(Locale.US, "%.0f%%", value * 100)
+    }
+}
+
+private fun signedPercentLabel(value: Double?): String {
+    return if (value == null) {
+        "N/A"
+    } else {
+        String.format(Locale.US, "%+.1f%%", value * 100)
     }
 }
 

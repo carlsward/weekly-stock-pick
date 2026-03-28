@@ -4,17 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       openai_model:
-        description: "OpenAI model to use for GPT review"
+        description: "OpenAI model to use for world-news GPT review"
         required: false
         default: "gpt-5-mini"
         type: string
       company_news_limit:
         description: "Marketaux articles per company"
-        required: false
-        default: "3"
-        type: string
-      company_llm_article_limit:
-        description: "Company articles sent to GPT per symbol"
         required: false
         default: "3"
         type: string
@@ -60,12 +55,8 @@ jobs:
           UNIVERSE_CSV_PATH: universe_test.csv
           MARKETAUX_FIXTURE_PATH: fixtures/marketaux_smoke_news.json
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
-          ALLOW_LLM_FALLBACK: "true"
           ALLOW_MARKETAUX_FALLBACK: "true"
           MARKETAUX_NEWS_LIMIT: ${{ github.event.inputs.company_news_limit || '3' }}
-          COMPANY_LLM_ARTICLE_LIMIT: ${{ github.event.inputs.company_llm_article_limit || '3' }}
         run: python generate_news_scores.py
 
       - name: Generate sector_scores.json
@@ -74,6 +65,7 @@ jobs:
           UNIVERSE_CSV_PATH: universe_test.csv
           MARKETAUX_GLOBAL_FIXTURE_PATH: fixtures/marketaux_smoke_global.json
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
           ALLOW_LLM_FALLBACK: "true"
@@ -89,6 +81,41 @@ jobs:
           ENABLE_HISTORY_REALIZED_ENRICHMENT: "false"
           FORCE_PRICE_FALLBACK: "true"
         run: python generate_pick.py
+
+      - name: Generate thesis_monitor.json
+        working-directory: backend
+        env:
+          UNIVERSE_CSV_PATH: universe_test.csv
+          MARKETAUX_FIXTURE_PATH: fixtures/marketaux_smoke_news.json
+          MARKETAUX_GLOBAL_FIXTURE_PATH: fixtures/marketaux_smoke_global.json
+          MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
+          ALLOW_LLM_FALLBACK: "true"
+          ALLOW_MARKETAUX_FALLBACK: "true"
+          FORCE_PRICE_FALLBACK: "true"
+          MARKETAUX_GLOBAL_NEWS_LIMIT: "20"
+          GDELT_GLOBAL_NEWS_LIMIT: "12"
+          ALPHA_VANTAGE_GLOBAL_NEWS_LIMIT: "12"
+          SECTOR_LLM_ARTICLE_LIMIT: "10"
+        run: python generate_thesis_monitor.py
+
+      - name: Generate track_record.json
+        working-directory: backend
+        env:
+          UNIVERSE_CSV_PATH: universe_test.csv
+          FORCE_PRICE_FALLBACK: "true"
+          ENABLE_HISTORY_REALIZED_ENRICHMENT: "false"
+        run: python generate_track_record.py
+
+      - name: Generate monthly_pick.json
+        working-directory: backend
+        env:
+          UNIVERSE_CSV_PATH: universe_test.csv
+          FORCE_PRICE_FALLBACK: "true"
+          ENABLE_MONTHLY_HISTORY_REALIZED_ENRICHMENT: "false"
+        run: python generate_monthly_pick.py
 
       - name: Validate generated output contracts
         working-directory: backend
@@ -107,6 +134,10 @@ jobs:
             backend/history.json
             backend/news_scores.json
             backend/sector_scores.json
+            backend/thesis_monitor.json
+            backend/track_record.json
+            backend/monthly_pick.json
+            backend/monthly_history.json
             backend/universe_test.csv
             backend/fixtures/marketaux_smoke_news.json
             backend/fixtures/marketaux_smoke_global.json

@@ -15,13 +15,19 @@ class WeeklyStockRepositoryTest {
         val store = InMemoryLocalStore()
         val server = MockWebServer()
         server.enqueue(MockResponse().setResponseCode(200).setBody(sampleDashboardJson))
+        server.enqueue(MockResponse().setResponseCode(200).setBody(sampleThesisMonitorJson))
         server.enqueue(MockResponse().setResponseCode(200).setBody(sampleHistoryJson))
+        server.enqueue(MockResponse().setResponseCode(200).setBody(sampleTrackRecordJson))
+        server.enqueue(MockResponse().setResponseCode(200).setBody(sampleMonthlyPickJson))
         server.start()
 
         try {
             val repository = WeeklyStockRepository(
                 dashboardUrl = server.url("/risk_picks.json").toString(),
                 historyUrl = server.url("/history.json").toString(),
+                thesisMonitorUrl = server.url("/thesis_monitor.json").toString(),
+                trackRecordUrl = server.url("/track_record.json").toString(),
+                monthlyPickUrl = server.url("/monthly_pick.json").toString(),
                 localStore = store,
                 client = OkHttpClient()
             )
@@ -32,8 +38,14 @@ class WeeklyStockRepositoryTest {
             val snapshot = (result as RepositoryResult.Success).snapshot
             assertEquals(DataSource.NETWORK, snapshot.source)
             assertEquals("MSFT", snapshot.dashboard.overallSelection.pick?.symbol)
+            assertEquals(0.19, snapshot.dashboard.overallSelection.pick?.modelScore ?: 0.0, 0.0001)
+            assertEquals(1, snapshot.trackRecord?.summary?.closedPicks)
+            assertEquals("MSFT", snapshot.monthlyPick?.selection?.pick?.symbol)
             assertNotNull(store.readDashboardCache())
             assertNotNull(store.readHistoryCache())
+            assertNotNull(store.readThesisMonitorCache())
+            assertNotNull(store.readTrackRecordCache())
+            assertNotNull(store.readMonthlyPickCache())
         } finally {
             server.shutdown()
         }
@@ -49,12 +61,16 @@ class WeeklyStockRepositoryTest {
         val server = MockWebServer()
         server.enqueue(MockResponse().setResponseCode(500))
         server.enqueue(MockResponse().setResponseCode(500))
+        server.enqueue(MockResponse().setResponseCode(500))
+        server.enqueue(MockResponse().setResponseCode(500))
         server.start()
 
         try {
             val repository = WeeklyStockRepository(
                 dashboardUrl = server.url("/risk_picks.json").toString(),
                 historyUrl = server.url("/history.json").toString(),
+                thesisMonitorUrl = server.url("/thesis_monitor.json").toString(),
+                trackRecordUrl = server.url("/track_record.json").toString(),
                 localStore = store,
                 client = OkHttpClient()
             )
@@ -80,13 +96,17 @@ class WeeklyStockRepositoryTest {
 
         val server = MockWebServer()
         server.enqueue(MockResponse().setResponseCode(200).setBody("{\"schema_version\":2"))
+        server.enqueue(MockResponse().setResponseCode(200).setBody(sampleThesisMonitorJson))
         server.enqueue(MockResponse().setResponseCode(200).setBody(sampleHistoryJson))
+        server.enqueue(MockResponse().setResponseCode(200).setBody(sampleTrackRecordJson))
         server.start()
 
         try {
             val repository = WeeklyStockRepository(
                 dashboardUrl = server.url("/risk_picks.json").toString(),
                 historyUrl = server.url("/history.json").toString(),
+                thesisMonitorUrl = server.url("/thesis_monitor.json").toString(),
+                trackRecordUrl = server.url("/track_record.json").toString(),
                 localStore = store,
                 client = OkHttpClient()
             )
@@ -112,13 +132,17 @@ class WeeklyStockRepositoryTest {
 
         val server = MockWebServer()
         server.enqueue(MockResponse().setResponseCode(200).setBody(sampleDashboardJson))
+        server.enqueue(MockResponse().setResponseCode(200).setBody(sampleThesisMonitorJson))
         server.enqueue(MockResponse().setResponseCode(200).setBody("{\"entries\":"))
+        server.enqueue(MockResponse().setResponseCode(200).setBody(sampleTrackRecordJson))
         server.start()
 
         try {
             val repository = WeeklyStockRepository(
                 dashboardUrl = server.url("/risk_picks.json").toString(),
                 historyUrl = server.url("/history.json").toString(),
+                thesisMonitorUrl = server.url("/thesis_monitor.json").toString(),
+                trackRecordUrl = server.url("/track_record.json").toString(),
                 localStore = store,
                 client = OkHttpClient()
             )

@@ -90,7 +90,10 @@ class ReleaseNotifierTest {
         return DashboardContent(
             dashboard = dashboard,
             historyEntries = history.entries,
+            trackRecord = null,
             historyMessage = null,
+            thesisMonitorMessage = null,
+            trackRecordMessage = null,
             selectedRisk = "low",
             isRefreshing = false,
             source = source,

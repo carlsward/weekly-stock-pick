@@ -1,0 +1,27 @@
+{
+  "schema_version": 2,
+  "model_version": "v3.3-monthly",
+  "generated_at": "2026-03-28T22:22:55Z",
+  "entries": [
+    {
+      "month_id": "2026-03",
+      "month_start": "2026-03-01",
+      "month_end": "2026-03-31",
+      "rebalance_date": "2026-03-01",
+      "month_label": "March 2026",
+      "logged_at": "2026-03-28T22:22:55Z",
+      "status": "no_pick",
+      "status_reason": "No monthly candidate cleared the minimum confidence threshold of 0.60. The best score was MSFT at 0.136 with medium confidence.",
+      "symbol": null,
+      "company_name": null,
+      "sector": null,
+      "risk": null,
+      "model_score": null,
+      "confidence_score": null,
+      "confidence_label": null,
+      "data_as_of": "2026-03-27",
+      "model_version": "v3.3-monthly",
+      "diagnostics": null
+    }
+  ]
+}

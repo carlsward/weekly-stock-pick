@@ -110,12 +110,15 @@ data class CandidateSnapshot(
 data class WeeklyPick(
     val symbol: String,
     val companyName: String,
+    val sector: String? = null,
     val risk: String,
     val modelScore: Double,
     val confidenceScore: Double,
     val confidenceLabel: String,
     val priceAsOf: LocalDate,
     val newsAsOf: LocalDate?,
+    val macroAsOf: LocalDate? = null,
+    val sectorAsOf: LocalDate? = null,
     val articleCount: Int,
     val metrics: ScoreMetrics,
     val scoreBreakdown: ScoreBreakdown,
@@ -150,21 +153,31 @@ data class Dashboard(
 data class DashboardSnapshot(
     val dashboard: Dashboard,
     val history: HistoryFeed?,
+    val trackRecord: TrackRecordFeed?,
     val source: DataSource,
     val warningMessage: String?,
-    val historyMessage: String?
+    val historyMessage: String?,
+    val thesisMonitorMessage: String?,
+    val trackRecordMessage: String?,
+    val monthlyPick: MonthlyPickFeed? = null,
+    val monthlyPickMessage: String? = null
 )
 
 data class DashboardContent(
     val dashboard: Dashboard,
     val historyEntries: List<HistoryEntry>,
+    val trackRecord: TrackRecordFeed?,
     val historyMessage: String?,
+    val thesisMonitorMessage: String?,
+    val trackRecordMessage: String?,
     val selectedRisk: String,
     val isRefreshing: Boolean,
     val source: DataSource,
     val warningMessage: String?,
     val freshness: Freshness,
-    val weeklyChange: WeeklyChangeSummary?
+    val weeklyChange: WeeklyChangeSummary?,
+    val monthlyPick: MonthlyPickFeed? = null,
+    val monthlyPickMessage: String? = null
 ) {
     val selectedSelection: Selection
         get() = dashboard.riskSelections[selectedRisk] ?: dashboard.overallSelection
@@ -191,6 +204,194 @@ fun Dashboard.freshness(clock: Clock): Freshness =
     } else {
         Freshness.FRESH
     }
+
+data class ThesisMonitorFeed(
+    val schemaVersion: Int,
+    val modelVersion: String,
+    val generatedAt: Instant,
+    val dataAsOf: LocalDate,
+    val expectedNextRefreshAt: Instant,
+    val staleAfter: Instant,
+    val marketContext: MarketContext,
+    val sourceDashboardGeneratedAt: Instant,
+    val selection: Selection,
+    val activePick: WeeklyPick?
+)
+
+data class TrackRecordSummary(
+    val totalWeeks: Int,
+    val totalPicks: Int,
+    val noPickWeeks: Int,
+    val closedPicks: Int,
+    val openPicks: Int,
+    val winRate: Double?,
+    val beatSpyRate: Double?,
+    val beatSectorRate: Double?,
+    val average5dReturn: Double?,
+    val median5dReturn: Double?,
+    val average5dExcessReturn: Double?,
+    val average5dSectorExcessReturn: Double?,
+    val compounded5dReturn: Double?
+)
+
+data class RiskTrackRecord(
+    val pickCount: Int,
+    val closedPickCount: Int,
+    val winRate: Double?,
+    val average5dReturn: Double?,
+    val average5dExcessReturn: Double?
+)
+
+data class TrackRecordEntry(
+    val weekId: String,
+    val weekStart: LocalDate,
+    val weekEnd: LocalDate,
+    val weekLabel: String,
+    val loggedAt: Instant,
+    val status: SelectionStatus,
+    val statusReason: String,
+    val symbol: String?,
+    val companyName: String?,
+    val sector: String?,
+    val risk: String?,
+    val modelScore: Double?,
+    val confidenceScore: Double?,
+    val confidenceLabel: String?,
+    val dataAsOf: LocalDate?,
+    val realized5dReturn: Double?,
+    val realized5dExcessReturn: Double?,
+    val realized5dSectorReturn: Double?,
+    val realized5dSectorExcessReturn: Double?,
+    val outcome: String?
+)
+
+data class TrackRecordFeed(
+    val schemaVersion: Int,
+    val modelVersion: String,
+    val generatedAt: Instant,
+    val dataAsOf: LocalDate,
+    val expectedNextRefreshAt: Instant,
+    val staleAfter: Instant,
+    val marketContext: MarketContext,
+    val selectionThresholds: SelectionThresholds,
+    val summary: TrackRecordSummary,
+    val riskBreakdown: Map<String, RiskTrackRecord>,
+    val entries: List<TrackRecordEntry>
+)
+
+data class MonthlyPeriodContext(
+    val timezone: String,
+    val monthId: String,
+    val monthLabel: String,
+    val monthStart: LocalDate,
+    val monthEnd: LocalDate,
+    val rebalanceDate: LocalDate,
+    val horizonTradingDays: Int
+)
+
+data class MonthlySelectionThresholds(
+    val overallScore: Double,
+    val minimumConfidence: Double
+)
+
+data class MonthlyScoreMetrics(
+    val momentum20d: Double,
+    val momentum60d: Double,
+    val dailyVolatility: Double,
+    val marketRelative20d: Double,
+    val marketRelative60d: Double,
+    val sectorRelative20d: Double,
+    val sectorRelative60d: Double,
+    val newsSentiment: Double,
+    val newsConfidence: Double,
+    val macroSentiment: Double,
+    val macroConfidence: Double,
+    val sectorSentiment: Double,
+    val sectorConfidence: Double
+)
+
+data class MonthlyScoreBreakdown(
+    val trendStrength: Double,
+    val relativeStrength: Double,
+    val participation: Double,
+    val riskControl: Double,
+    val technicalTotal: Double,
+    val newsAdjustment: Double,
+    val macroAdjustment: Double,
+    val sectorAdjustment: Double,
+    val signalAlignment: Double,
+    val total: Double
+)
+
+data class MonthlyPickCandidate(
+    val symbol: String,
+    val companyName: String,
+    val sector: String,
+    val risk: String,
+    val modelScore: Double,
+    val confidenceScore: Double,
+    val confidenceLabel: String,
+    val priceAsOf: LocalDate,
+    val newsAsOf: LocalDate?,
+    val macroAsOf: LocalDate?,
+    val sectorAsOf: LocalDate?,
+    val articleCount: Int,
+    val metrics: MonthlyScoreMetrics,
+    val scoreBreakdown: MonthlyScoreBreakdown,
+    val reasons: List<String>,
+    val newsEvidence: List<NewsEvidence>,
+    val macroEvidence: List<NewsEvidence>
+)
+
+data class MonthlySelection(
+    val status: SelectionStatus,
+    val statusReason: String,
+    val thresholdScore: Double,
+    val thresholdConfidence: Double,
+    val pick: MonthlyPickCandidate?,
+    val bestCandidate: CandidateSnapshot?
+)
+
+data class MonthlyPickFeed(
+    val schemaVersion: Int,
+    val modelVersion: String,
+    val generatedAt: Instant,
+    val dataAsOf: LocalDate,
+    val expectedNextRefreshAt: Instant,
+    val staleAfter: Instant,
+    val periodContext: MonthlyPeriodContext,
+    val generationSummary: GenerationSummary,
+    val selectionThresholds: MonthlySelectionThresholds,
+    val selection: MonthlySelection
+)
+
+fun Dashboard.withLiveThesisMonitor(feed: ThesisMonitorFeed?): Dashboard {
+    val currentPick = overallSelection.pick ?: return this
+    val livePick = feed?.activePick ?: return this
+    if (feed.selection.status != SelectionStatus.PICKED) {
+        return this
+    }
+    if (feed.marketContext.weekId != marketContext.weekId) {
+        return this
+    }
+    if (livePick.symbol != currentPick.symbol) {
+        return this
+    }
+
+    val updatedOverall = overallSelection.copy(pick = livePick)
+    val updatedRiskSelections = riskSelections.mapValues { (_, selection) ->
+        val selectionPick = selection.pick
+        if (selectionPick != null && selectionPick.symbol == livePick.symbol) {
+            selection.copy(pick = livePick)
+        } else {
+            selection
+        }
+    }
+    return copy(
+        overallSelection = updatedOverall,
+        riskSelections = updatedRiskSelections
+    )
+}
 
 fun buildWeeklyChangeSummary(
     dashboard: Dashboard,

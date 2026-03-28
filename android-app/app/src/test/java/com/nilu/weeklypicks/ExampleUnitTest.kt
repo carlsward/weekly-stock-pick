@@ -34,6 +34,35 @@ class ExampleUnitTest {
     }
 
     @Test
+    fun parser_maps_thesis_monitor_contract() {
+        val thesisMonitor = parser.parseThesisMonitor(sampleThesisMonitorJson)
+
+        assertEquals("2026-W12", thesisMonitor.marketContext.weekId)
+        assertEquals(SelectionStatus.PICKED, thesisMonitor.selection.status)
+        assertEquals("MSFT", thesisMonitor.activePick?.symbol)
+        assertEquals(ThesisMonitorStatus.WATCH, thesisMonitor.activePick?.thesisMonitor?.status)
+    }
+
+    @Test
+    fun parser_maps_track_record_contract() {
+        val trackRecord = parser.parseTrackRecord(sampleTrackRecordJson)
+
+        assertEquals(2, trackRecord.summary.totalPicks)
+        assertEquals(1, trackRecord.summary.closedPicks)
+        assertEquals("MSFT", trackRecord.entries.first().symbol)
+    }
+
+    @Test
+    fun parser_maps_monthly_pick_contract() {
+        val monthlyPick = parser.parseMonthlyPick(sampleMonthlyPickJson)
+
+        assertEquals("2026-04", monthlyPick.periodContext.monthId)
+        assertEquals(SelectionStatus.PICKED, monthlyPick.selection.status)
+        assertEquals("MSFT", monthlyPick.selection.pick?.symbol)
+        assertEquals(0.26, monthlyPick.selection.pick?.modelScore ?: 0.0, 0.0001)
+    }
+
+    @Test
     fun parser_maps_legacy_dashboard_contract() {
         val dashboard = parser.parseDashboard(legacyDashboardJson)
 
@@ -335,6 +364,248 @@ internal const val sampleHistoryWithPreviousWeekJson = """
       "data_as_of": "2026-03-13"
     }
   ]
+}
+"""
+
+internal const val sampleThesisMonitorJson = """
+{
+  "schema_version": 2,
+  "model_version": "v3.3",
+  "generated_at": "2026-03-18T18:00:00Z",
+  "data_as_of": "2026-03-18",
+  "expected_next_refresh_at": "2026-03-19T18:00:00Z",
+  "stale_after": "2026-03-20T06:00:00Z",
+  "market_context": {
+    "timezone": "America/New_York",
+    "week_id": "2026-W12",
+    "week_label": "Mar 16 - 20, 2026",
+    "week_start": "2026-03-16",
+    "week_end": "2026-03-20"
+  },
+  "source_dashboard_generated_at": "2026-03-16T12:00:00Z",
+  "selection": {
+    "status": "picked",
+    "status_reason": "Live thesis monitor refreshed the active weekly pick.",
+    "threshold_score": 0.1,
+    "threshold_confidence": 0.55
+  },
+  "active_pick": {
+    "symbol": "MSFT",
+    "company_name": "Microsoft Corporation",
+    "sector": "technology",
+    "risk": "low",
+    "model_score": 0.19,
+    "confidence_score": 0.78,
+    "confidence_label": "high",
+    "price_as_of": "2026-03-18",
+    "news_as_of": "2026-03-18",
+    "macro_as_of": "2026-03-18",
+    "sector_as_of": "2026-03-18",
+    "article_count": 3,
+    "metrics": {
+      "momentum_5d": 0.05,
+      "daily_volatility": 0.01,
+      "news_sentiment": 0.69,
+      "raw_news_sentiment": 0.28
+    },
+    "score_breakdown": {
+      "momentum": 0.23,
+      "volatility_penalty": -0.07,
+      "news_adjustment": 0.03,
+      "total": 0.19
+    },
+    "reasons": [
+      "reason"
+    ],
+    "thesis_monitor": {
+      "status": "watch",
+      "headline": "Support needs watching",
+      "summary": "The pick still qualified, but the margin of safety is not wide.",
+      "alerts": [
+        "The pick still qualified, but the margin of safety is not wide."
+      ],
+      "signals": [
+        {
+          "label": "Momentum",
+          "state": "positive",
+          "value": "+5.0% 5D • +9.0% 20D",
+          "detail": "Price action is still supporting the release thesis."
+        }
+      ]
+    }
+  }
+}
+"""
+
+internal const val sampleTrackRecordJson = """
+{
+  "schema_version": 2,
+  "model_version": "v3.3",
+  "generated_at": "2026-03-16T12:00:00Z",
+  "data_as_of": "2026-03-20",
+  "expected_next_refresh_at": "2026-03-23T12:00:00Z",
+  "stale_after": "2026-03-24T00:00:00Z",
+  "market_context": {
+    "timezone": "America/New_York",
+    "week_id": "2026-W12",
+    "week_label": "Mar 16 - 20, 2026",
+    "week_start": "2026-03-16",
+    "week_end": "2026-03-20"
+  },
+  "selection_thresholds": {
+    "overall_score": 0.1,
+    "minimum_confidence": 0.55,
+    "risk_scores": {
+      "low": 0.08,
+      "medium": 0.1,
+      "high": 0.12
+    }
+  },
+  "summary": {
+    "total_weeks": 3,
+    "total_picks": 2,
+    "no_pick_weeks": 1,
+    "closed_picks": 1,
+    "open_picks": 1,
+    "win_rate": 1.0,
+    "beat_spy_rate": 1.0,
+    "beat_sector_rate": 1.0,
+    "average_5d_return": 0.034,
+    "median_5d_return": 0.034,
+    "average_5d_excess_return": 0.012,
+    "average_5d_sector_excess_return": 0.006,
+    "compounded_5d_return": 0.034
+  },
+  "risk_breakdown": {
+    "low": {
+      "pick_count": 1,
+      "closed_pick_count": 1,
+      "win_rate": 1.0,
+      "average_5d_return": 0.034,
+      "average_5d_excess_return": 0.012
+    },
+    "medium": {
+      "pick_count": 1,
+      "closed_pick_count": 0,
+      "win_rate": null,
+      "average_5d_return": null,
+      "average_5d_excess_return": null
+    },
+    "high": {
+      "pick_count": 0,
+      "closed_pick_count": 0,
+      "win_rate": null,
+      "average_5d_return": null,
+      "average_5d_excess_return": null
+    }
+  },
+  "entries": [
+    {
+      "week_id": "2026-W12",
+      "week_start": "2026-03-16",
+      "week_end": "2026-03-20",
+      "week_label": "Mar 16 - 20, 2026",
+      "logged_at": "2026-03-16T12:00:00Z",
+      "status": "picked",
+      "status_reason": "MSFT cleared the thresholds.",
+      "symbol": "MSFT",
+      "company_name": "Microsoft Corporation",
+      "sector": "technology",
+      "risk": "low",
+      "model_score": 0.2,
+      "confidence_score": 0.82,
+      "confidence_label": "high",
+      "data_as_of": "2026-03-14",
+      "realized_5d_return": 0.034,
+      "realized_5d_excess_return": 0.012,
+      "realized_5d_sector_return": 0.028,
+      "realized_5d_sector_excess_return": 0.006,
+      "outcome": "win"
+    }
+  ]
+}
+"""
+
+internal const val sampleMonthlyPickJson = """
+{
+  "schema_version": 2,
+  "model_version": "v3.3-monthly",
+  "generated_at": "2026-04-01T12:00:00Z",
+  "data_as_of": "2026-04-01",
+  "expected_next_refresh_at": "2026-05-01T12:00:00Z",
+  "stale_after": "2026-05-04T12:00:00Z",
+  "period_context": {
+    "timezone": "America/New_York",
+    "month_id": "2026-04",
+    "month_label": "April 2026",
+    "month_start": "2026-04-01",
+    "month_end": "2026-04-30",
+    "rebalance_date": "2026-04-01",
+    "horizon_trading_days": 20
+  },
+  "generation_summary": {
+    "universe_size": 50,
+    "evaluated_candidates": 46,
+    "skipped_symbols": 4
+  },
+  "selection_thresholds": {
+    "overall_score": 0.12,
+    "minimum_confidence": 0.60
+  },
+  "selection": {
+    "status": "picked",
+    "status_reason": "MSFT cleared the monthly release thresholds.",
+    "threshold_score": 0.12,
+    "threshold_confidence": 0.60,
+    "pick": {
+      "symbol": "MSFT",
+      "company_name": "Microsoft Corporation",
+      "sector": "technology",
+      "risk": "low",
+      "model_score": 0.26,
+      "confidence_score": 0.84,
+      "confidence_label": "high",
+      "price_as_of": "2026-04-01",
+      "news_as_of": "2026-04-01",
+      "macro_as_of": "2026-04-01",
+      "sector_as_of": "2026-04-01",
+      "article_count": 6,
+      "metrics": {
+        "momentum_20d": 0.12,
+        "momentum_60d": 0.27,
+        "daily_volatility": 0.014,
+        "market_relative_20d": 0.04,
+        "market_relative_60d": 0.06,
+        "sector_relative_20d": 0.03,
+        "sector_relative_60d": 0.05,
+        "news_sentiment": 0.65,
+        "news_confidence": 0.72,
+        "macro_sentiment": 0.62,
+        "macro_confidence": 0.69,
+        "sector_sentiment": 0.58,
+        "sector_confidence": 0.66
+      },
+      "score_breakdown": {
+        "trend_strength": 0.15,
+        "relative_strength": 0.05,
+        "participation": 0.02,
+        "risk_control": -0.03,
+        "technical_total": 0.19,
+        "news_adjustment": 0.03,
+        "macro_adjustment": 0.02,
+        "sector_adjustment": 0.01,
+        "signal_alignment": 0.01,
+        "total": 0.26
+      },
+      "reasons": [
+        "Medium-term trend stayed constructive.",
+        "World-news catalysts leaned bullish for Microsoft.",
+        "Monthly model score is 0.260 with high confidence."
+      ],
+      "news_evidence": [],
+      "macro_evidence": []
+    }
+  }
 }
 """
 

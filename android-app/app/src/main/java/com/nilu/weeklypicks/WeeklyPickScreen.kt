@@ -121,6 +121,14 @@ fun WeeklyPickScreen(
                 )
             }
 
+            content.thesisMonitorMessage?.let { thesisMessage ->
+                StatusBanner(
+                    title = "Live thesis monitor",
+                    message = thesisMessage,
+                    accent = RiskMediumColor
+                )
+            }
+
             if (displaySelection.status == SelectionStatus.PICKED && displaySelection.pick != null) {
                 PickDetails(
                     pick = displaySelection.pick,

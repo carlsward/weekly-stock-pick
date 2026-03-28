@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "model_version": "v3.1",
-  "generated_at": "2026-03-23T13:01:50Z",
+  "model_version": "v3.3",
+  "generated_at": "2026-03-28T22:22:52Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -13,12 +13,16 @@
       "status_reason": "CSCO cleared the commercial release thresholds for this market week with a score of 0.332 and high confidence.",
       "symbol": "CSCO",
       "company_name": "Cisco Systems Inc.",
+      "sector": null,
       "risk": "medium",
       "model_score": 0.3315,
       "confidence_score": 0.79,
       "confidence_label": "high",
       "data_as_of": "2025-11-20",
-      "model_version": "v2.0"
+      "model_version": "v2.0",
+      "diagnostics": null,
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
     },
     {
       "week_id": "2026-W12",
@@ -30,12 +34,16 @@
       "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.174 and medium confidence.",
       "symbol": "CVX",
       "company_name": "Chevron Corporation",
+      "sector": null,
       "risk": "medium",
       "model_score": 0.174,
       "confidence_score": 0.73,
       "confidence_label": "medium",
       "data_as_of": "2026-03-19",
-      "model_version": "v3.1"
+      "model_version": "v3.1",
+      "diagnostics": null,
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
     },
     {
       "week_id": "2026-W13",
@@ -47,12 +55,48 @@
       "status_reason": "CVX cleared the commercial release thresholds for this market week with a score of 0.264 and high confidence.",
       "symbol": "CVX",
       "company_name": "Chevron Corporation",
+      "sector": null,
       "risk": "medium",
       "model_score": 0.2635,
       "confidence_score": 0.77,
       "confidence_label": "high",
       "data_as_of": "2026-03-23",
-      "model_version": "v3.1"
+      "model_version": "v3.1",
+      "diagnostics": null,
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W14",
+      "week_start": "2026-03-30",
+      "week_end": "2026-04-03",
+      "week_label": "Mar 30 - Apr 03, 2026",
+      "logged_at": "2026-03-28T22:22:52Z",
+      "status": "picked",
+      "status_reason": "HON cleared the commercial release thresholds for this market week with a score of 0.156 and medium confidence.",
+      "symbol": "HON",
+      "company_name": "Honeywell International Inc.",
+      "sector": "industrials",
+      "risk": "low",
+      "model_score": 0.156,
+      "confidence_score": 0.59,
+      "confidence_label": "medium",
+      "data_as_of": "2026-03-27",
+      "model_version": "v3.3",
+      "diagnostics": {
+        "technical_total": 0.156,
+        "news_adjustment": 0.0,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.0,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 2303,
+        "technical_training_ic": -0.2292,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      }
     }
   ]
 }

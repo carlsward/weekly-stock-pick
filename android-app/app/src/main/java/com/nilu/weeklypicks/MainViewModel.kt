@@ -65,13 +65,18 @@ class MainViewModel(
         val content = DashboardContent(
             dashboard = snapshot.dashboard,
             historyEntries = historyEntries,
+            trackRecord = snapshot.trackRecord,
             historyMessage = snapshot.historyMessage,
+            thesisMonitorMessage = snapshot.thesisMonitorMessage,
+            trackRecordMessage = snapshot.trackRecordMessage,
             selectedRisk = selectedRisk,
             isRefreshing = isRefreshing,
             source = snapshot.source,
             warningMessage = snapshot.warningMessage,
             freshness = snapshot.dashboard.freshness(clock),
-            weeklyChange = buildWeeklyChangeSummary(snapshot.dashboard, historyEntries)
+            weeklyChange = buildWeeklyChangeSummary(snapshot.dashboard, historyEntries),
+            monthlyPick = snapshot.monthlyPick,
+            monthlyPickMessage = snapshot.monthlyPickMessage
         )
         uiState = UiState.Content(content = content)
         releaseNotifier?.onContentUpdated(content)
@@ -104,6 +109,9 @@ class MainViewModel(
             val repository = WeeklyStockRepository(
                 dashboardUrl = BuildConfig.DASHBOARD_URL,
                 historyUrl = BuildConfig.HISTORY_URL,
+                thesisMonitorUrl = BuildConfig.THESIS_MONITOR_URL,
+                trackRecordUrl = BuildConfig.TRACK_RECORD_URL,
+                monthlyPickUrl = BuildConfig.MONTHLY_PICK_URL,
                 localStore = localStore
             )
             val releaseNotifier = ReleaseNotifier(

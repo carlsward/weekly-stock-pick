@@ -35,6 +35,21 @@ class ContractParser(
             parseLegacyHistory(json, rawJson)
         }
     }
+
+    fun parseThesisMonitor(rawJson: String): ThesisMonitorFeed {
+        val dto = json.decodeFromString<ThesisMonitorEnvelopeDto>(rawJson)
+        return dto.toModel()
+    }
+
+    fun parseTrackRecord(rawJson: String): TrackRecordFeed {
+        val dto = json.decodeFromString<TrackRecordEnvelopeDto>(rawJson)
+        return dto.toModel()
+    }
+
+    fun parseMonthlyPick(rawJson: String): MonthlyPickFeed {
+        val dto = json.decodeFromString<MonthlyPickEnvelopeDto>(rawJson)
+        return dto.toModel()
+    }
 }
 
 private const val DEFAULT_OVERALL_SCORE_THRESHOLD = 0.10
@@ -137,6 +152,7 @@ private data class WeeklyPickDto(
     val symbol: String,
     @SerialName("company_name")
     val companyName: String,
+    val sector: String? = null,
     val risk: String,
     @SerialName("model_score")
     val modelScore: Double,
@@ -148,6 +164,10 @@ private data class WeeklyPickDto(
     val priceAsOf: String,
     @SerialName("news_as_of")
     val newsAsOf: String? = null,
+    @SerialName("macro_as_of")
+    val macroAsOf: String? = null,
+    @SerialName("sector_as_of")
+    val sectorAsOf: String? = null,
     @SerialName("article_count")
     val articleCount: Int,
     val metrics: ScoreMetricsDto,
@@ -270,6 +290,283 @@ private data class HistoryEntryDto(
 )
 
 @Serializable
+private data class ThesisMonitorEnvelopeDto(
+    @SerialName("schema_version")
+    val schemaVersion: Int,
+    @SerialName("model_version")
+    val modelVersion: String,
+    @SerialName("generated_at")
+    val generatedAt: String,
+    @SerialName("data_as_of")
+    val dataAsOf: String,
+    @SerialName("expected_next_refresh_at")
+    val expectedNextRefreshAt: String,
+    @SerialName("stale_after")
+    val staleAfter: String,
+    @SerialName("market_context")
+    val marketContext: MarketContextDto,
+    @SerialName("source_dashboard_generated_at")
+    val sourceDashboardGeneratedAt: String,
+    val selection: SelectionDto,
+    @SerialName("active_pick")
+    val activePick: WeeklyPickDto? = null
+)
+
+@Serializable
+private data class TrackRecordEnvelopeDto(
+    @SerialName("schema_version")
+    val schemaVersion: Int,
+    @SerialName("model_version")
+    val modelVersion: String,
+    @SerialName("generated_at")
+    val generatedAt: String,
+    @SerialName("data_as_of")
+    val dataAsOf: String,
+    @SerialName("expected_next_refresh_at")
+    val expectedNextRefreshAt: String,
+    @SerialName("stale_after")
+    val staleAfter: String,
+    @SerialName("market_context")
+    val marketContext: MarketContextDto,
+    @SerialName("selection_thresholds")
+    val selectionThresholds: SelectionThresholdsDto,
+    val summary: TrackRecordSummaryDto,
+    @SerialName("risk_breakdown")
+    val riskBreakdown: Map<String, RiskTrackRecordDto>,
+    val entries: List<TrackRecordEntryDto>
+)
+
+@Serializable
+private data class TrackRecordSummaryDto(
+    @SerialName("total_weeks")
+    val totalWeeks: Int,
+    @SerialName("total_picks")
+    val totalPicks: Int,
+    @SerialName("no_pick_weeks")
+    val noPickWeeks: Int,
+    @SerialName("closed_picks")
+    val closedPicks: Int,
+    @SerialName("open_picks")
+    val openPicks: Int,
+    @SerialName("win_rate")
+    val winRate: Double? = null,
+    @SerialName("beat_spy_rate")
+    val beatSpyRate: Double? = null,
+    @SerialName("beat_sector_rate")
+    val beatSectorRate: Double? = null,
+    @SerialName("average_5d_return")
+    val average5dReturn: Double? = null,
+    @SerialName("median_5d_return")
+    val median5dReturn: Double? = null,
+    @SerialName("average_5d_excess_return")
+    val average5dExcessReturn: Double? = null,
+    @SerialName("average_5d_sector_excess_return")
+    val average5dSectorExcessReturn: Double? = null,
+    @SerialName("compounded_5d_return")
+    val compounded5dReturn: Double? = null
+)
+
+@Serializable
+private data class RiskTrackRecordDto(
+    @SerialName("pick_count")
+    val pickCount: Int,
+    @SerialName("closed_pick_count")
+    val closedPickCount: Int,
+    @SerialName("win_rate")
+    val winRate: Double? = null,
+    @SerialName("average_5d_return")
+    val average5dReturn: Double? = null,
+    @SerialName("average_5d_excess_return")
+    val average5dExcessReturn: Double? = null
+)
+
+@Serializable
+private data class TrackRecordEntryDto(
+    @SerialName("week_id")
+    val weekId: String,
+    @SerialName("week_start")
+    val weekStart: String,
+    @SerialName("week_end")
+    val weekEnd: String,
+    @SerialName("week_label")
+    val weekLabel: String,
+    @SerialName("logged_at")
+    val loggedAt: String,
+    val status: String,
+    @SerialName("status_reason")
+    val statusReason: String,
+    val symbol: String? = null,
+    @SerialName("company_name")
+    val companyName: String? = null,
+    val sector: String? = null,
+    val risk: String? = null,
+    @SerialName("model_score")
+    val modelScore: Double? = null,
+    @SerialName("confidence_score")
+    val confidenceScore: Double? = null,
+    @SerialName("confidence_label")
+    val confidenceLabel: String? = null,
+    @SerialName("data_as_of")
+    val dataAsOf: String? = null,
+    @SerialName("realized_5d_return")
+    val realized5dReturn: Double? = null,
+    @SerialName("realized_5d_excess_return")
+    val realized5dExcessReturn: Double? = null,
+    @SerialName("realized_5d_sector_return")
+    val realized5dSectorReturn: Double? = null,
+    @SerialName("realized_5d_sector_excess_return")
+    val realized5dSectorExcessReturn: Double? = null,
+    val outcome: String? = null
+)
+
+@Serializable
+private data class MonthlyPickEnvelopeDto(
+    @SerialName("schema_version")
+    val schemaVersion: Int,
+    @SerialName("model_version")
+    val modelVersion: String,
+    @SerialName("generated_at")
+    val generatedAt: String,
+    @SerialName("data_as_of")
+    val dataAsOf: String,
+    @SerialName("expected_next_refresh_at")
+    val expectedNextRefreshAt: String,
+    @SerialName("stale_after")
+    val staleAfter: String,
+    @SerialName("period_context")
+    val periodContext: MonthlyPeriodContextDto,
+    @SerialName("generation_summary")
+    val generationSummary: GenerationSummaryDto,
+    @SerialName("selection_thresholds")
+    val selectionThresholds: MonthlySelectionThresholdsDto,
+    val selection: MonthlySelectionDto
+)
+
+@Serializable
+private data class MonthlyPeriodContextDto(
+    val timezone: String,
+    @SerialName("month_id")
+    val monthId: String,
+    @SerialName("month_label")
+    val monthLabel: String,
+    @SerialName("month_start")
+    val monthStart: String,
+    @SerialName("month_end")
+    val monthEnd: String,
+    @SerialName("rebalance_date")
+    val rebalanceDate: String,
+    @SerialName("horizon_trading_days")
+    val horizonTradingDays: Int
+)
+
+@Serializable
+private data class MonthlySelectionThresholdsDto(
+    @SerialName("overall_score")
+    val overallScore: Double,
+    @SerialName("minimum_confidence")
+    val minimumConfidence: Double
+)
+
+@Serializable
+private data class MonthlySelectionDto(
+    val status: String,
+    @SerialName("status_reason")
+    val statusReason: String,
+    @SerialName("threshold_score")
+    val thresholdScore: Double,
+    @SerialName("threshold_confidence")
+    val thresholdConfidence: Double,
+    val pick: MonthlyPickCandidateDto? = null,
+    @SerialName("best_candidate")
+    val bestCandidate: CandidateSnapshotDto? = null
+)
+
+@Serializable
+private data class MonthlyPickCandidateDto(
+    val symbol: String,
+    @SerialName("company_name")
+    val companyName: String,
+    val sector: String,
+    val risk: String,
+    @SerialName("model_score")
+    val modelScore: Double,
+    @SerialName("confidence_score")
+    val confidenceScore: Double,
+    @SerialName("confidence_label")
+    val confidenceLabel: String,
+    @SerialName("price_as_of")
+    val priceAsOf: String,
+    @SerialName("news_as_of")
+    val newsAsOf: String? = null,
+    @SerialName("macro_as_of")
+    val macroAsOf: String? = null,
+    @SerialName("sector_as_of")
+    val sectorAsOf: String? = null,
+    @SerialName("article_count")
+    val articleCount: Int,
+    val metrics: MonthlyScoreMetricsDto,
+    @SerialName("score_breakdown")
+    val scoreBreakdown: MonthlyScoreBreakdownDto,
+    val reasons: List<String>,
+    @SerialName("news_evidence")
+    val newsEvidence: List<NewsEvidenceDto> = emptyList(),
+    @SerialName("macro_evidence")
+    val macroEvidence: List<NewsEvidenceDto> = emptyList()
+)
+
+@Serializable
+private data class MonthlyScoreMetricsDto(
+    @SerialName("momentum_20d")
+    val momentum20d: Double,
+    @SerialName("momentum_60d")
+    val momentum60d: Double,
+    @SerialName("daily_volatility")
+    val dailyVolatility: Double,
+    @SerialName("market_relative_20d")
+    val marketRelative20d: Double,
+    @SerialName("market_relative_60d")
+    val marketRelative60d: Double,
+    @SerialName("sector_relative_20d")
+    val sectorRelative20d: Double,
+    @SerialName("sector_relative_60d")
+    val sectorRelative60d: Double,
+    @SerialName("news_sentiment")
+    val newsSentiment: Double,
+    @SerialName("news_confidence")
+    val newsConfidence: Double,
+    @SerialName("macro_sentiment")
+    val macroSentiment: Double,
+    @SerialName("macro_confidence")
+    val macroConfidence: Double,
+    @SerialName("sector_sentiment")
+    val sectorSentiment: Double,
+    @SerialName("sector_confidence")
+    val sectorConfidence: Double
+)
+
+@Serializable
+private data class MonthlyScoreBreakdownDto(
+    @SerialName("trend_strength")
+    val trendStrength: Double,
+    @SerialName("relative_strength")
+    val relativeStrength: Double,
+    val participation: Double,
+    @SerialName("risk_control")
+    val riskControl: Double,
+    @SerialName("technical_total")
+    val technicalTotal: Double,
+    @SerialName("news_adjustment")
+    val newsAdjustment: Double,
+    @SerialName("macro_adjustment")
+    val macroAdjustment: Double,
+    @SerialName("sector_adjustment")
+    val sectorAdjustment: Double,
+    @SerialName("signal_alignment")
+    val signalAlignment: Double,
+    val total: Double
+)
+
+@Serializable
 private data class LegacyDashboardEnvelopeDto(
     val low: LegacyRiskPickDto? = null,
     val medium: LegacyRiskPickDto? = null,
@@ -380,12 +677,15 @@ private fun WeeklyPickDto.toModel(): WeeklyPick {
     return WeeklyPick(
         symbol = symbol,
         companyName = companyName,
+        sector = sector,
         risk = risk,
         modelScore = modelScore,
         confidenceScore = confidenceScore,
         confidenceLabel = confidenceLabel,
         priceAsOf = LocalDate.parse(priceAsOf),
         newsAsOf = newsAsOf?.let(LocalDate::parse),
+        macroAsOf = macroAsOf?.let(LocalDate::parse),
+        sectorAsOf = sectorAsOf?.let(LocalDate::parse),
         articleCount = articleCount,
         metrics = metrics.toModel(),
         scoreBreakdown = scoreBreakdown.toModel(),
@@ -488,6 +788,196 @@ private fun HistoryEntryDto.toModel(): HistoryEntry {
         confidenceScore = confidenceScore,
         confidenceLabel = confidenceLabel,
         dataAsOf = dataAsOf?.let(LocalDate::parse)
+    )
+}
+
+private fun ThesisMonitorEnvelopeDto.toModel(): ThesisMonitorFeed {
+    return ThesisMonitorFeed(
+        schemaVersion = schemaVersion,
+        modelVersion = modelVersion,
+        generatedAt = Instant.parse(generatedAt),
+        dataAsOf = LocalDate.parse(dataAsOf),
+        expectedNextRefreshAt = Instant.parse(expectedNextRefreshAt),
+        staleAfter = Instant.parse(staleAfter),
+        marketContext = marketContext.toModel(),
+        sourceDashboardGeneratedAt = Instant.parse(sourceDashboardGeneratedAt),
+        selection = selection.toModel(),
+        activePick = activePick?.toModel()
+    )
+}
+
+private fun TrackRecordEnvelopeDto.toModel(): TrackRecordFeed {
+    return TrackRecordFeed(
+        schemaVersion = schemaVersion,
+        modelVersion = modelVersion,
+        generatedAt = Instant.parse(generatedAt),
+        dataAsOf = LocalDate.parse(dataAsOf),
+        expectedNextRefreshAt = Instant.parse(expectedNextRefreshAt),
+        staleAfter = Instant.parse(staleAfter),
+        marketContext = marketContext.toModel(),
+        selectionThresholds = selectionThresholds.toModel(),
+        summary = summary.toModel(),
+        riskBreakdown = riskBreakdown.mapValues { (_, value) -> value.toModel() },
+        entries = entries.map { it.toModel() }
+    )
+}
+
+private fun TrackRecordSummaryDto.toModel(): TrackRecordSummary {
+    return TrackRecordSummary(
+        totalWeeks = totalWeeks,
+        totalPicks = totalPicks,
+        noPickWeeks = noPickWeeks,
+        closedPicks = closedPicks,
+        openPicks = openPicks,
+        winRate = winRate,
+        beatSpyRate = beatSpyRate,
+        beatSectorRate = beatSectorRate,
+        average5dReturn = average5dReturn,
+        median5dReturn = median5dReturn,
+        average5dExcessReturn = average5dExcessReturn,
+        average5dSectorExcessReturn = average5dSectorExcessReturn,
+        compounded5dReturn = compounded5dReturn
+    )
+}
+
+private fun RiskTrackRecordDto.toModel(): RiskTrackRecord {
+    return RiskTrackRecord(
+        pickCount = pickCount,
+        closedPickCount = closedPickCount,
+        winRate = winRate,
+        average5dReturn = average5dReturn,
+        average5dExcessReturn = average5dExcessReturn
+    )
+}
+
+private fun TrackRecordEntryDto.toModel(): TrackRecordEntry {
+    return TrackRecordEntry(
+        weekId = weekId,
+        weekStart = LocalDate.parse(weekStart),
+        weekEnd = LocalDate.parse(weekEnd),
+        weekLabel = weekLabel,
+        loggedAt = Instant.parse(loggedAt),
+        status = when (status.lowercase()) {
+            "picked" -> SelectionStatus.PICKED
+            else -> SelectionStatus.NO_PICK
+        },
+        statusReason = statusReason,
+        symbol = symbol,
+        companyName = companyName,
+        sector = sector,
+        risk = risk,
+        modelScore = modelScore,
+        confidenceScore = confidenceScore,
+        confidenceLabel = confidenceLabel,
+        dataAsOf = dataAsOf?.let(LocalDate::parse),
+        realized5dReturn = realized5dReturn,
+        realized5dExcessReturn = realized5dExcessReturn,
+        realized5dSectorReturn = realized5dSectorReturn,
+        realized5dSectorExcessReturn = realized5dSectorExcessReturn,
+        outcome = outcome
+    )
+}
+
+private fun MonthlyPickEnvelopeDto.toModel(): MonthlyPickFeed {
+    return MonthlyPickFeed(
+        schemaVersion = schemaVersion,
+        modelVersion = modelVersion,
+        generatedAt = Instant.parse(generatedAt),
+        dataAsOf = LocalDate.parse(dataAsOf),
+        expectedNextRefreshAt = Instant.parse(expectedNextRefreshAt),
+        staleAfter = Instant.parse(staleAfter),
+        periodContext = periodContext.toModel(),
+        generationSummary = generationSummary.toModel(),
+        selectionThresholds = selectionThresholds.toModel(),
+        selection = selection.toModel()
+    )
+}
+
+private fun MonthlyPeriodContextDto.toModel(): MonthlyPeriodContext {
+    return MonthlyPeriodContext(
+        timezone = timezone,
+        monthId = monthId,
+        monthLabel = monthLabel,
+        monthStart = LocalDate.parse(monthStart),
+        monthEnd = LocalDate.parse(monthEnd),
+        rebalanceDate = LocalDate.parse(rebalanceDate),
+        horizonTradingDays = horizonTradingDays
+    )
+}
+
+private fun MonthlySelectionThresholdsDto.toModel(): MonthlySelectionThresholds {
+    return MonthlySelectionThresholds(
+        overallScore = overallScore,
+        minimumConfidence = minimumConfidence
+    )
+}
+
+private fun MonthlySelectionDto.toModel(): MonthlySelection {
+    return MonthlySelection(
+        status = when (status.lowercase()) {
+            "picked" -> SelectionStatus.PICKED
+            else -> SelectionStatus.NO_PICK
+        },
+        statusReason = statusReason,
+        thresholdScore = thresholdScore,
+        thresholdConfidence = thresholdConfidence,
+        pick = pick?.toModel(),
+        bestCandidate = bestCandidate?.toModel()
+    )
+}
+
+private fun MonthlyPickCandidateDto.toModel(): MonthlyPickCandidate {
+    return MonthlyPickCandidate(
+        symbol = symbol,
+        companyName = companyName,
+        sector = sector,
+        risk = risk,
+        modelScore = modelScore,
+        confidenceScore = confidenceScore,
+        confidenceLabel = confidenceLabel,
+        priceAsOf = LocalDate.parse(priceAsOf),
+        newsAsOf = newsAsOf?.let(LocalDate::parse),
+        macroAsOf = macroAsOf?.let(LocalDate::parse),
+        sectorAsOf = sectorAsOf?.let(LocalDate::parse),
+        articleCount = articleCount,
+        metrics = metrics.toModel(),
+        scoreBreakdown = scoreBreakdown.toModel(),
+        reasons = reasons,
+        newsEvidence = newsEvidence.map { it.toModel() },
+        macroEvidence = macroEvidence.map { it.toModel() }
+    )
+}
+
+private fun MonthlyScoreMetricsDto.toModel(): MonthlyScoreMetrics {
+    return MonthlyScoreMetrics(
+        momentum20d = momentum20d,
+        momentum60d = momentum60d,
+        dailyVolatility = dailyVolatility,
+        marketRelative20d = marketRelative20d,
+        marketRelative60d = marketRelative60d,
+        sectorRelative20d = sectorRelative20d,
+        sectorRelative60d = sectorRelative60d,
+        newsSentiment = newsSentiment,
+        newsConfidence = newsConfidence,
+        macroSentiment = macroSentiment,
+        macroConfidence = macroConfidence,
+        sectorSentiment = sectorSentiment,
+        sectorConfidence = sectorConfidence
+    )
+}
+
+private fun MonthlyScoreBreakdownDto.toModel(): MonthlyScoreBreakdown {
+    return MonthlyScoreBreakdown(
+        trendStrength = trendStrength,
+        relativeStrength = relativeStrength,
+        participation = participation,
+        riskControl = riskControl,
+        technicalTotal = technicalTotal,
+        newsAdjustment = newsAdjustment,
+        macroAdjustment = macroAdjustment,
+        sectorAdjustment = sectorAdjustment,
+        signalAlignment = signalAlignment,
+        total = total
     )
 }
 

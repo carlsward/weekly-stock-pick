@@ -37,6 +37,8 @@ MARKETAUX_API_TOKEN_ENV = "MARKETAUX_API_TOKEN"
 ALLOW_MARKETAUX_FALLBACK_ENV = "ALLOW_MARKETAUX_FALLBACK"
 MARKETAUX_FIXTURE_PATH_ENV = "MARKETAUX_FIXTURE_PATH"
 MARKETAUX_NEWS_LIMIT_ENV = "MARKETAUX_NEWS_LIMIT"
+MARKETAUX_NEWS_LOOKBACK_DAYS_ENV = "MARKETAUX_NEWS_LOOKBACK_DAYS"
+ENABLE_COMPANY_LLM_REVIEW_ENV = "ENABLE_COMPANY_LLM_REVIEW"
 MARKETAUX_DEFAULT_NEWS_LIMIT = 3
 MARKETAUX_REQUEST_TIMEOUT_SECONDS = 20
 COMPANY_LLM_ARTICLE_LIMIT_ENV = "COMPANY_LLM_ARTICLE_LIMIT"
@@ -92,6 +94,17 @@ COMPANY_NEWS_TYPE_WEIGHTS = {
 SIGNAL_ARTICLE_COVERAGE_TARGET = 0.85
 SIGNAL_ARTICLE_MIN_SHARE = 0.08
 SIGNAL_ARTICLE_MIN_WEIGHT = 0.03
+
+
+def configured_news_lookback_days() -> int:
+    raw_value = os.getenv(MARKETAUX_NEWS_LOOKBACK_DAYS_ENV, "").strip()
+    if not raw_value:
+        return NEWS_LOOKBACK_DAYS
+    try:
+        parsed = int(raw_value)
+    except ValueError:
+        return NEWS_LOOKBACK_DAYS
+    return max(1, min(parsed, 30))
 
 
 @dataclass(frozen=True)
@@ -595,7 +608,8 @@ def build_marketaux_article(
     now: datetime,
 ) -> Optional[NewsArticle]:
     published_at = parse_iso_datetime(item.get("published_at"))
-    if published_at is not None and published_at < now - timedelta(days=NEWS_LOOKBACK_DAYS):
+    lookback_days = configured_news_lookback_days()
+    if published_at is not None and published_at < now - timedelta(days=lookback_days):
         return None
 
     title, text = extract_title_and_text(item)
@@ -652,7 +666,7 @@ def fetch_raw_news(symbol: str) -> List[dict]:
     if not os.getenv(MARKETAUX_API_TOKEN_ENV, "").strip() and allow_marketaux_fallback():
         print(f"[WARN] [{symbol}] Marketaux token missing, returning neutral fallback data.")
         return []
-    published_after = datetime.now(timezone.utc) - timedelta(days=NEWS_LOOKBACK_DAYS)
+    published_after = datetime.now(timezone.utc) - timedelta(days=configured_news_lookback_days())
     return fetch_marketaux_payload(symbol, published_after)
 
 
@@ -842,6 +856,9 @@ def summarize_texts(pipe, articles: List[NewsArticle]) -> str:
 
 
 def llm_news_enabled() -> bool:
+    raw = os.getenv(ENABLE_COMPANY_LLM_REVIEW_ENV, "").strip().lower()
+    if raw not in {"1", "true", "yes", "on"}:
+        return False
     return bool(openai_api_key(required=False))
 
 
@@ -1321,6 +1338,167 @@ def latest_article_date(articles: Sequence[NewsArticle]) -> Optional[str]:
     return max(published_dates)
 
 
+def neutral_news_payload(
+    symbol: str,
+    model_name: Optional[str],
+    reason: Optional[str] = None,
+) -> Dict[str, Any]:
+    return {
+        "news_score": 0.5,
+        "news_confidence": 0.20,
+        "raw_sentiment": 0.0,
+        "calibrated_sentiment": 0.0,
+        "article_count": 0,
+        "effective_article_count": 0.0,
+        "source_count": 0,
+        "average_relevance": 0.0,
+        "average_recency_weight": 0.0,
+        "average_source_quality": 0.0,
+        "provider_sentiment_coverage": 0.0,
+        "dominant_weight_share": 0.0,
+        "dominant_signal": "neutral",
+        "news_reasons": [
+            reason
+            or "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+        ],
+        "top_headlines": [],
+        "top_articles": [],
+        "last_updated": None,
+        "analysis_method": "neutral_no_articles",
+        "llm_model": model_name,
+    }
+
+
+def score_symbol_news(
+    symbol: str,
+    company_name: str,
+    summarizer_pipe=None,
+    *,
+    llm_enabled: Optional[bool] = None,
+    model_name: Optional[str] = None,
+    company_llm_limit: Optional[int] = None,
+) -> Dict[str, Any]:
+    llm_enabled = llm_news_enabled() if llm_enabled is None else llm_enabled
+    model_name = model_name if model_name is not None else (openai_model() if llm_enabled else None)
+    company_llm_limit = company_llm_limit or configured_llm_news_limit()
+    articles = fetch_symbol_news(symbol, company_name)
+
+    if not articles:
+        print(f"[{symbol}] No relevant recent news from Marketaux - setting neutral 0.50")
+        return neutral_news_payload(symbol, model_name)
+
+    reviews: Optional[List[ArticleReview]] = None
+    llm_used = False
+    try:
+        if llm_enabled:
+            llm_used = True
+            llm_review = request_company_news_review(
+                symbol=symbol,
+                company_name=company_name,
+                articles=articles[:company_llm_limit],
+            )
+            reviews, review_meta = normalize_company_news_review(
+                llm_review,
+                articles[:company_llm_limit],
+            )
+            llm_signal = aggregate_llm_news_signal(
+                articles[:company_llm_limit],
+                reviews,
+                review_meta,
+            )
+
+            if len(articles) > company_llm_limit:
+                fallback_signal = aggregate_news_signal(
+                    articles[company_llm_limit:],
+                    [article_sentiment_value(article) for article in articles[company_llm_limit:]],
+                )
+                signal = {
+                    **llm_signal,
+                    "raw_sentiment": clamp(
+                        llm_signal["raw_sentiment"] * 0.88 + fallback_signal["raw_sentiment"] * 0.12,
+                        -1.0,
+                        1.0,
+                    ),
+                    "calibrated_sentiment": clamp(
+                        llm_signal["calibrated_sentiment"] * 0.90 + fallback_signal["calibrated_sentiment"] * 0.10,
+                        -1.0,
+                        1.0,
+                    ),
+                    "news_score": clamp(
+                        llm_signal["news_score"] * 0.90 + fallback_signal["news_score"] * 0.10,
+                        0.0,
+                        1.0,
+                    ),
+                    "news_confidence": clamp(
+                        llm_signal["news_confidence"] * 0.90 + fallback_signal["news_confidence"] * 0.10,
+                        0.20,
+                        0.95,
+                    ),
+                    "effective_article_count": llm_signal["effective_article_count"] + fallback_signal["effective_article_count"] * 0.10,
+                }
+            else:
+                signal = llm_signal
+
+            summary = review_meta["summary"] or summarize_texts(summarizer_pipe, articles)
+        else:
+            signal = compute_finbert_sentiment(None, articles)
+            summary = summarize_texts(summarizer_pipe, articles)
+    except Exception as exc:
+        if llm_enabled and not allow_llm_fallback():
+            raise
+        llm_used = False
+        reviews = None
+        print(f"[WARN] [{symbol}] GPT company news review failed, using heuristic fallback: {exc}")
+        signal = compute_finbert_sentiment(None, articles)
+        summary = summarize_texts(summarizer_pipe, articles)
+
+    primary_articles = articles[:company_llm_limit] if llm_used else articles
+    overflow_articles = articles[company_llm_limit:] if llm_used else []
+    signal_article_entries = build_signal_article_entries(
+        primary_articles=primary_articles,
+        reviews=reviews if llm_used else None,
+        overflow_articles=overflow_articles,
+    )
+    supporting_entries = select_supporting_article_entries(signal_article_entries)
+    supporting_articles = [
+        serialize_article_evidence(entry["article"], entry.get("review"))
+        for entry in supporting_entries
+    ]
+    signal_last_updated = latest_article_date([entry["article"] for entry in supporting_entries])
+
+    reasons = build_news_reasons(
+        symbol,
+        company_name,
+        summary,
+        signal,
+        articles,
+        reviews=reviews,
+        llm_used=llm_used,
+    )
+
+    return {
+        "news_score": round(signal["news_score"], 2),
+        "news_confidence": round(signal["news_confidence"], 2),
+        "raw_sentiment": round(signal["raw_sentiment"], 4),
+        "calibrated_sentiment": round(signal["calibrated_sentiment"], 4),
+        "article_count": len(articles),
+        "effective_article_count": round(signal["effective_article_count"], 2),
+        "source_count": signal["source_count"],
+        "average_relevance": round(signal["average_relevance"], 2),
+        "average_recency_weight": round(signal["average_recency_weight"], 2),
+        "average_source_quality": round(signal["average_source_quality"], 2),
+        "provider_sentiment_coverage": round(signal["provider_sentiment_coverage"], 2),
+        "dominant_weight_share": round(signal["dominant_weight_share"], 2),
+        "dominant_signal": signal["dominant_signal"],
+        "news_reasons": reasons,
+        "top_headlines": [article.title for article in articles[:3]],
+        "top_articles": supporting_articles,
+        "last_updated": signal_last_updated,
+        "analysis_method": "gpt_company_review" if llm_used else "marketaux_entity_scoring",
+        "llm_model": model_name if llm_used else None,
+    }
+
+
 def main():
     _, summarizer_pipe = init_models()
     universe = load_universe()
@@ -1331,149 +1509,14 @@ def main():
     out: Dict[str, dict] = {}
 
     for symbol, company_name in universe:
-        articles = fetch_symbol_news(symbol, company_name)
-
-        if not articles:
-            print(f"[{symbol}] No relevant recent news from Marketaux - setting neutral 0.50")
-            out[symbol] = {
-                "news_score": 0.5,
-                "news_confidence": 0.20,
-                "raw_sentiment": 0.0,
-                "calibrated_sentiment": 0.0,
-                "article_count": 0,
-                "effective_article_count": 0.0,
-                "source_count": 0,
-                "average_relevance": 0.0,
-                "average_recency_weight": 0.0,
-                "average_source_quality": 0.0,
-                "provider_sentiment_coverage": 0.0,
-                "dominant_weight_share": 0.0,
-                "dominant_signal": "neutral",
-                "news_reasons": [
-                    "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
-                ],
-                "top_headlines": [],
-                "top_articles": [],
-                "last_updated": None,
-                "analysis_method": "neutral_no_articles",
-                "llm_model": model_name,
-            }
-            continue
-
-        reviews: Optional[List[ArticleReview]] = None
-        llm_used = False
-        try:
-            if llm_enabled:
-                llm_used = True
-                llm_review = request_company_news_review(
-                    symbol=symbol,
-                    company_name=company_name,
-                    articles=articles[:company_llm_limit],
-                )
-                reviews, review_meta = normalize_company_news_review(
-                    llm_review,
-                    articles[:company_llm_limit],
-                )
-                llm_signal = aggregate_llm_news_signal(
-                    articles[:company_llm_limit],
-                    reviews,
-                    review_meta,
-                )
-
-                if len(articles) > company_llm_limit:
-                    fallback_signal = aggregate_news_signal(
-                        articles[company_llm_limit:],
-                        [article_sentiment_value(article) for article in articles[company_llm_limit:]],
-                    )
-                    signal = {
-                        **llm_signal,
-                        "raw_sentiment": clamp(
-                            llm_signal["raw_sentiment"] * 0.88 + fallback_signal["raw_sentiment"] * 0.12,
-                            -1.0,
-                            1.0,
-                        ),
-                        "calibrated_sentiment": clamp(
-                            llm_signal["calibrated_sentiment"] * 0.90 + fallback_signal["calibrated_sentiment"] * 0.10,
-                            -1.0,
-                            1.0,
-                        ),
-                        "news_score": clamp(
-                            llm_signal["news_score"] * 0.90 + fallback_signal["news_score"] * 0.10,
-                            0.0,
-                            1.0,
-                        ),
-                        "news_confidence": clamp(
-                            llm_signal["news_confidence"] * 0.90 + fallback_signal["news_confidence"] * 0.10,
-                            0.20,
-                            0.95,
-                        ),
-                        "effective_article_count": llm_signal["effective_article_count"] + fallback_signal["effective_article_count"] * 0.10,
-                    }
-                else:
-                    signal = llm_signal
-
-                summary = review_meta["summary"] or summarize_texts(summarizer_pipe, articles)
-            else:
-                signal = compute_finbert_sentiment(None, articles)
-                summary = summarize_texts(summarizer_pipe, articles)
-        except Exception as exc:
-            if llm_enabled and not allow_llm_fallback():
-                raise
-            llm_used = False
-            reviews = None
-            print(f"[WARN] [{symbol}] GPT company news review failed, using heuristic fallback: {exc}")
-            signal = compute_finbert_sentiment(None, articles)
-            summary = summarize_texts(summarizer_pipe, articles)
-
-        primary_articles = articles[:company_llm_limit] if llm_used else articles
-        overflow_articles = articles[company_llm_limit:] if llm_used else []
-        signal_article_entries = build_signal_article_entries(
-            primary_articles=primary_articles,
-            reviews=reviews if llm_used else None,
-            overflow_articles=overflow_articles,
+        out[symbol] = score_symbol_news(
+            symbol=symbol,
+            company_name=company_name,
+            summarizer_pipe=summarizer_pipe,
+            llm_enabled=llm_enabled,
+            model_name=model_name,
+            company_llm_limit=company_llm_limit,
         )
-        supporting_entries = select_supporting_article_entries(signal_article_entries)
-        supporting_articles = [
-            serialize_article_evidence(entry["article"], entry.get("review"))
-            for entry in supporting_entries
-        ]
-        signal_last_updated = latest_article_date([entry["article"] for entry in supporting_entries])
-
-        reasons = build_news_reasons(
-            symbol,
-            company_name,
-            summary,
-            signal,
-            articles,
-            reviews=reviews,
-            llm_used=llm_used,
-        )
-        review_lookup = {
-            review.article_id: review
-            for review in reviews or []
-        }
-
-        out[symbol] = {
-            "news_score": round(signal["news_score"], 2),
-            "news_confidence": round(signal["news_confidence"], 2),
-            "raw_sentiment": round(signal["raw_sentiment"], 4),
-            "calibrated_sentiment": round(signal["calibrated_sentiment"], 4),
-            "article_count": len(articles),
-            "effective_article_count": round(signal["effective_article_count"], 2),
-            "source_count": signal["source_count"],
-            "average_relevance": round(signal["average_relevance"], 2),
-            "average_recency_weight": round(signal["average_recency_weight"], 2),
-            "average_source_quality": round(signal["average_source_quality"], 2),
-            "provider_sentiment_coverage": round(signal["provider_sentiment_coverage"], 2),
-            "dominant_weight_share": round(signal["dominant_weight_share"], 2),
-            "dominant_signal": signal["dominant_signal"],
-            "news_reasons": reasons,
-            "top_headlines": [article.title for article in articles[:3]],
-            "top_articles": supporting_articles,
-            "last_updated": signal_last_updated,
-            "analysis_method": "gpt_company_review" if llm_used else "heuristic_fallback",
-            "llm_model": model_name if llm_used else None,
-        }
 
     with open(NEWS_SCORES_PATH, "w", encoding="utf-8") as handle:
         json.dump(out, handle, ensure_ascii=False, indent=2)

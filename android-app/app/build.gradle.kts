@@ -47,6 +47,21 @@ android {
                 "HISTORY_URL",
                 "\"${backendUrl(debugBackendBaseUrl, "history.json")}\""
             )
+            buildConfigField(
+                "String",
+                "THESIS_MONITOR_URL",
+                "\"${backendUrl(debugBackendBaseUrl, "thesis_monitor.json")}\""
+            )
+            buildConfigField(
+                "String",
+                "TRACK_RECORD_URL",
+                "\"${backendUrl(debugBackendBaseUrl, "track_record.json")}\""
+            )
+            buildConfigField(
+                "String",
+                "MONTHLY_PICK_URL",
+                "\"${backendUrl(debugBackendBaseUrl, "monthly_pick.json")}\""
+            )
         }
         release {
             isMinifyEnabled = true
@@ -60,6 +75,21 @@ android {
                 "String",
                 "HISTORY_URL",
                 "\"${backendUrl(releaseBackendBaseUrl, "history.json")}\""
+            )
+            buildConfigField(
+                "String",
+                "THESIS_MONITOR_URL",
+                "\"${backendUrl(releaseBackendBaseUrl, "thesis_monitor.json")}\""
+            )
+            buildConfigField(
+                "String",
+                "TRACK_RECORD_URL",
+                "\"${backendUrl(releaseBackendBaseUrl, "track_record.json")}\""
+            )
+            buildConfigField(
+                "String",
+                "MONTHLY_PICK_URL",
+                "\"${backendUrl(releaseBackendBaseUrl, "monthly_pick.json")}\""
             )
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

@@ -7,7 +7,10 @@ from backend.generate_sector_scores import (
     aggregate_sector_scores,
     build_global_article,
     compute_macro_relevance,
+    normalize_alpha_vantage_item,
+    normalize_gdelt_item,
     normalize_review_payload,
+    select_articles_for_llm,
 )
 
 
@@ -62,6 +65,10 @@ class GenerateSectorScoresTests(unittest.TestCase):
                 "articles": [
                     {
                         "article_id": "news_1",
+                        "event_type": "oil_supply_shock",
+                        "transmission_channel": "Tighter crude supply lifts fuel input costs and producer realizations.",
+                        "affected_inputs": ["oil_price", "fuel_costs"],
+                        "horizon": "1-2w",
                         "market_relevance": 0.9,
                         "magnitude": 0.8,
                         "confidence": 0.7,
@@ -82,9 +89,13 @@ class GenerateSectorScoresTests(unittest.TestCase):
         self.assertEqual(["consumer_discretionary"], normalized[0]["hurt_sectors"])
         self.assertEqual(["XOM"], normalized[0]["beneficiary_symbols"])
         self.assertEqual(["TSLA"], normalized[0]["hurt_symbols"])
+        self.assertEqual("oil_supply_shock", normalized[0]["event_type"])
+        self.assertEqual("1-2w", normalized[0]["horizon"])
+        self.assertEqual(["oil_price", "fuel_costs"], normalized[0]["affected_inputs"])
         self.assertEqual([], normalized[1]["beneficiary_sectors"])
         self.assertEqual([], normalized[1]["beneficiary_symbols"])
         self.assertEqual(0.0, normalized[1]["market_relevance"])
+        self.assertEqual("unclear", normalized[1]["event_type"])
 
     def test_aggregate_sector_scores_reflects_positive_and_negative_sector_effects(self) -> None:
         articles = [
@@ -118,6 +129,10 @@ class GenerateSectorScoresTests(unittest.TestCase):
         reviews = [
             {
                 "article_id": "news_1",
+                "event_type": "oil_supply_shock",
+                "transmission_channel": "Higher crude prices boost upstream revenue and pressure fuel-intensive demand.",
+                "affected_inputs": ["oil_price", "fuel_costs"],
+                "horizon": "1-2w",
                 "market_relevance": 0.9,
                 "magnitude": 0.9,
                 "confidence": 0.8,
@@ -129,6 +144,10 @@ class GenerateSectorScoresTests(unittest.TestCase):
             },
             {
                 "article_id": "news_2",
+                "event_type": "reimbursement_tailwind",
+                "transmission_channel": "Lower reimbursement pressure supports healthcare margins.",
+                "affected_inputs": ["reimbursement", "medical_margins"],
+                "horizon": "1w",
                 "market_relevance": 0.7,
                 "magnitude": 0.6,
                 "confidence": 0.7,
@@ -165,6 +184,8 @@ class GenerateSectorScoresTests(unittest.TestCase):
         self.assertGreater(symbol_scores["UNH"]["confidence"], 0.20)
         self.assertEqual("2026-03-27", aggregated["energy"]["last_updated"])
         self.assertEqual("2026-03-27", symbol_scores["XOM"]["last_updated"])
+        self.assertEqual("oil_supply_shock", aggregated["energy"]["supporting_articles"][0]["event_type"])
+        self.assertEqual("1-2w", symbol_scores["XOM"]["supporting_articles"][0]["horizon"])
 
     def test_build_global_article_keeps_recent_high_quality_multi_entity_story(self) -> None:
         now = datetime(2026, 3, 27, 12, 0, tzinfo=timezone.utc)
@@ -185,6 +206,107 @@ class GenerateSectorScoresTests(unittest.TestCase):
 
         self.assertIsNotNone(article)
         self.assertGreaterEqual(article.macro_relevance, 0.18)
+
+    def test_normalize_alpha_vantage_item_builds_marketaux_like_shape(self) -> None:
+        normalized = normalize_alpha_vantage_item(
+            {
+                "title": "Oil prices jump as shipping disruptions threaten supply routes",
+                "summary": "Energy shares gained as crude prices rose on renewed transport risk.",
+                "url": "https://example.com/alpha-oil",
+                "time_published": "20260327T1130",
+                "source": "Reuters",
+                "topics": [
+                    {"topic": "energy_transportation"},
+                    {"topic": "economy_macro"},
+                ],
+                "ticker_sentiment": [
+                    {"ticker": "XOM"},
+                    {"ticker": "CVX"},
+                ],
+                "overall_sentiment_label": "Neutral",
+            }
+        )
+
+        self.assertIsNotNone(normalized)
+        self.assertEqual("Reuters", normalized["source"])
+        self.assertEqual(2, len(normalized["entities"]))
+        self.assertIn("energy_transportation", normalized["snippet"])
+        self.assertEqual("2026-03-27T11:30:00Z", normalized["published_at"])
+
+    def test_normalize_gdelt_item_preserves_title_and_domain(self) -> None:
+        normalized = normalize_gdelt_item(
+            {
+                "title": "Semiconductor shortage fears return after new export restrictions",
+                "url": "https://example.com/gdelt-chip",
+                "domain": "ft.com",
+                "seendate": "20260327T084500Z",
+                "language": "English",
+                "sourcecountry": "UK",
+            }
+        )
+
+        self.assertIsNotNone(normalized)
+        self.assertEqual("ft.com", normalized["source"])
+        self.assertEqual("2026-03-27T08:45:00Z", normalized["published_at"])
+        self.assertIn("Source country: UK.", normalized["description"])
+
+    def test_select_articles_for_llm_preserves_feed_mix(self) -> None:
+        articles = [
+            GlobalNewsArticle(
+                article_id=f"marketaux_{index}",
+                title=f"Market story {index}",
+                text="Broad market story",
+                published_at=datetime(2026, 3, 27, 12, 0, tzinfo=timezone.utc),
+                provider="Reuters",
+                url=f"https://example.com/m{index}",
+                macro_relevance=0.9,
+                recency_weight=0.9,
+                source_quality=1.0,
+                weight=1.0 - index * 0.01,
+                cluster_size=1,
+                feed="marketaux",
+            )
+            for index in range(12)
+        ] + [
+            GlobalNewsArticle(
+                article_id=f"gdelt_{index}",
+                title=f"GDELT story {index}",
+                text="Oil supply disruption story",
+                published_at=datetime(2026, 3, 27, 11, 0, tzinfo=timezone.utc),
+                provider="ft.com",
+                url=f"https://example.com/g{index}",
+                macro_relevance=0.85,
+                recency_weight=0.88,
+                source_quality=0.95,
+                weight=0.95 - index * 0.01,
+                cluster_size=1,
+                feed="gdelt",
+            )
+            for index in range(6)
+        ] + [
+            GlobalNewsArticle(
+                article_id=f"alpha_{index}",
+                title=f"Alpha story {index}",
+                text="Macro and rates story",
+                published_at=datetime(2026, 3, 27, 10, 0, tzinfo=timezone.utc),
+                provider="Reuters",
+                url=f"https://example.com/a{index}",
+                macro_relevance=0.82,
+                recency_weight=0.87,
+                source_quality=0.95,
+                weight=0.92 - index * 0.01,
+                cluster_size=1,
+                feed="alpha_vantage",
+            )
+            for index in range(5)
+        ]
+
+        selected = select_articles_for_llm(articles, 12)
+        selected_feeds = {article.feed for article in selected}
+
+        self.assertIn("marketaux", selected_feeds)
+        self.assertIn("gdelt", selected_feeds)
+        self.assertIn("alpha_vantage", selected_feeds)
 
 
 if __name__ == "__main__":

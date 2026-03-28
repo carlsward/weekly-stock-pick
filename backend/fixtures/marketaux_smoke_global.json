@@ -1,0 +1,41 @@
+[
+  {
+    "title": "Oil rally extends after shipping disruption threatens prompt crude supply",
+    "description": "Crude prices climbed as traders priced in tighter near-term availability after a regional shipping disruption, improving the earnings backdrop for upstream and integrated energy producers.",
+    "snippet": "Strategists said higher oil prices would likely help large energy companies while raising costs for fuel-sensitive industries.",
+    "published_at": "2026-03-28T08:40:00Z",
+    "source": "Reuters",
+    "url": "https://example.com/global-oil-rally",
+    "similar": [],
+    "entities": [
+      {"symbol": "XOM"},
+      {"symbol": "CVX"}
+    ]
+  },
+  {
+    "title": "Enterprise AI budgets rise as large companies accelerate cloud and automation spending",
+    "description": "Chief information officers are increasing budget allocations for AI assistants, cloud infrastructure and data platforms as pilot projects convert into broader deployments.",
+    "snippet": "The spending shift is expected to benefit software and cloud providers with strong enterprise AI offerings over the next several quarters.",
+    "published_at": "2026-03-28T09:55:00Z",
+    "source": "Bloomberg",
+    "url": "https://example.com/global-ai-spending",
+    "similar": [],
+    "entities": [
+      {"symbol": "MSFT"},
+      {"symbol": "NVDA"}
+    ]
+  },
+  {
+    "title": "Bank stocks gain as yield backdrop steadies and credit trends remain resilient",
+    "description": "Large U.S. banks outperformed after investors grew more comfortable with the rate outlook and stable credit trends, supporting sentiment toward diversified lenders.",
+    "snippet": "Analysts said a steadier yield environment and resilient fee income could support the group near term.",
+    "published_at": "2026-03-27T15:10:00Z",
+    "source": "Financial Times",
+    "url": "https://example.com/global-bank-outlook",
+    "similar": [],
+    "entities": [
+      {"symbol": "JPM"},
+      {"symbol": "BAC"}
+    ]
+  }
+]

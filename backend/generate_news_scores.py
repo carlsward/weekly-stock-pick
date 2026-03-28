@@ -5,6 +5,7 @@ import re
 import time as time_module
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urlparse
@@ -34,6 +35,7 @@ MARKETAUX_NEWS_ENDPOINT = "https://api.marketaux.com/v1/news/all"
 
 MARKETAUX_API_TOKEN_ENV = "MARKETAUX_API_TOKEN"
 ALLOW_MARKETAUX_FALLBACK_ENV = "ALLOW_MARKETAUX_FALLBACK"
+MARKETAUX_FIXTURE_PATH_ENV = "MARKETAUX_FIXTURE_PATH"
 MARKETAUX_NEWS_LIMIT_ENV = "MARKETAUX_NEWS_LIMIT"
 MARKETAUX_DEFAULT_NEWS_LIMIT = 3
 MARKETAUX_REQUEST_TIMEOUT_SECONDS = 20
@@ -458,6 +460,29 @@ def allow_marketaux_fallback() -> bool:
     return raw in {"1", "true", "yes", "on"}
 
 
+def load_marketaux_fixture(symbol: str) -> Optional[List[dict]]:
+    configured = os.getenv(MARKETAUX_FIXTURE_PATH_ENV, "").strip()
+    if not configured:
+        return None
+
+    fixture_path = Path(configured)
+    with fixture_path.open("r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+
+    if isinstance(payload, dict):
+        symbol_payload = payload.get(symbol.upper(), [])
+        if isinstance(symbol_payload, list):
+            print(f"[INFO] [{symbol}] Loaded {len(symbol_payload)} fixture news items from {fixture_path}.")
+            return symbol_payload
+        raise RuntimeError(f"Fixture payload for {symbol} must be a list in {fixture_path}")
+
+    if isinstance(payload, list):
+        print(f"[INFO] [{symbol}] Loaded shared fixture news list from {fixture_path}.")
+        return payload
+
+    raise RuntimeError(f"Unsupported Marketaux fixture shape in {fixture_path}")
+
+
 def build_marketaux_query(symbol: str, published_after: datetime) -> str:
     params = {
         "symbols": symbol,
@@ -621,6 +646,9 @@ def build_marketaux_article(
 
 
 def fetch_raw_news(symbol: str) -> List[dict]:
+    fixture_payload = load_marketaux_fixture(symbol)
+    if fixture_payload is not None:
+        return fixture_payload
     if not os.getenv(MARKETAUX_API_TOKEN_ENV, "").strip() and allow_marketaux_fallback():
         print(f"[WARN] [{symbol}] Marketaux token missing, returning neutral fallback data.")
         return []

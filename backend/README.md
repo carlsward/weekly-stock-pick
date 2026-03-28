@@ -85,4 +85,5 @@ For a faster smoke test in GitHub Actions:
 
 - Use `Generate weekly stock pick smoke test`.
 - That workflow runs the same backend pipeline against `universe_test.csv`, which currently contains 3 symbols.
+- It also uses bundled Marketaux-style fixture articles so the GPT review layers can still run even when the live Marketaux quota is exhausted.
 - It validates and uploads artifacts, but it does not commit the smoke-test outputs back to the repository.

@@ -1,0 +1,206 @@
+{
+  "MSFT": [
+    {
+      "title": "Microsoft signs large Azure AI infrastructure agreement with European bank",
+      "description": "Microsoft said a major European bank will expand Azure and Copilot usage across its operations, adding multi-year AI infrastructure spending and broader enterprise deployment.",
+      "snippet": "The agreement expands Azure consumption, Copilot rollout and data platform services, with management pointing to durable enterprise AI demand over the coming quarters.",
+      "published_at": "2026-03-28T10:30:00Z",
+      "source": "Reuters",
+      "url": "https://example.com/msft-ai-bank-deal",
+      "similar": [],
+      "entities": [
+        {
+          "symbol": "MSFT",
+          "match_score": 168,
+          "sentiment_score": 0.71,
+          "highlights": [
+            {
+              "highlight": "Azure consumption and Copilot adoption remain strong.",
+              "sentiment": 0.76
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Microsoft says Copilot adoption widens as enterprise customers expand licenses",
+      "description": "Microsoft executives highlighted broader paid Copilot adoption among enterprise clients, with higher attach rates across productivity, cloud and security workflows.",
+      "snippet": "The company said demand remains healthy among large customers that want automation, AI assistants and cloud tooling in one stack.",
+      "published_at": "2026-03-27T15:45:00Z",
+      "source": "CNBC",
+      "url": "https://example.com/msft-copilot-adoption",
+      "similar": [],
+      "entities": [
+        {
+          "symbol": "MSFT",
+          "match_score": 151,
+          "sentiment_score": 0.64,
+          "highlights": [
+            {
+              "highlight": "Enterprise customers are expanding paid Copilot licenses.",
+              "sentiment": 0.68
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Magnificent Seven stocks wobble as traders reassess AI winners",
+      "description": "A broad market roundup reviewed recent weakness across large-cap technology names as investors reassessed valuation and risk appetite.",
+      "snippet": "The article discusses several mega-cap names and broader market tone rather than any one company-specific catalyst.",
+      "published_at": "2026-03-27T19:15:00Z",
+      "source": "MarketWatch",
+      "url": "https://example.com/mag7-roundup",
+      "similar": [],
+      "entities": [
+        {
+          "symbol": "MSFT",
+          "match_score": 72,
+          "sentiment_score": -0.12,
+          "highlights": [
+            {
+              "highlight": "Large-cap technology stocks sold off broadly.",
+              "sentiment": -0.16
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "JPM": [
+    {
+      "title": "JPMorgan investment banking fees rise as deal pipeline improves",
+      "description": "JPMorgan said advisory and underwriting activity improved through quarter-end, with corporate clients returning to capital markets as volatility stabilized.",
+      "snippet": "Management indicated stronger fee income and resilient credit performance, offsetting some concern around future rate cuts.",
+      "published_at": "2026-03-28T09:20:00Z",
+      "source": "Bloomberg",
+      "url": "https://example.com/jpm-fees-rise",
+      "similar": [],
+      "entities": [
+        {
+          "symbol": "JPM",
+          "match_score": 162,
+          "sentiment_score": 0.58,
+          "highlights": [
+            {
+              "highlight": "Investment banking fees and market activity improved.",
+              "sentiment": 0.61
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Big banks brace for lower net interest income if rate cuts accelerate",
+      "description": "A sector-focused piece examined how a faster path to rate cuts could pressure net interest margins across large banks, even as credit quality remains stable.",
+      "snippet": "The article is relevant to banks broadly and notes that margin pressure could affect deposit-heavy lenders over the next few quarters.",
+      "published_at": "2026-03-27T13:05:00Z",
+      "source": "Financial Times",
+      "url": "https://example.com/banks-rate-cuts",
+      "similar": [],
+      "entities": [
+        {
+          "symbol": "JPM",
+          "match_score": 118,
+          "sentiment_score": -0.18,
+          "highlights": [
+            {
+              "highlight": "Lower rates may compress bank net interest margins.",
+              "sentiment": -0.22
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "JPMorgan clears regulatory review tied to capital planning process",
+      "description": "JPMorgan said its latest capital planning review concluded without material findings, supporting buyback flexibility and a stable capital return posture.",
+      "snippet": "The update removed an overhang on capital actions and was viewed positively by analysts covering the stock.",
+      "published_at": "2026-03-26T16:40:00Z",
+      "source": "Reuters",
+      "url": "https://example.com/jpm-capital-review",
+      "similar": [],
+      "entities": [
+        {
+          "symbol": "JPM",
+          "match_score": 149,
+          "sentiment_score": 0.49,
+          "highlights": [
+            {
+              "highlight": "The review supported buyback flexibility.",
+              "sentiment": 0.54
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "XOM": [
+    {
+      "title": "Oil jumps after supply disruption raises concern over near-term crude availability",
+      "description": "Crude prices moved higher after a shipping disruption tightened prompt barrels, improving the near-term earnings backdrop for large upstream producers.",
+      "snippet": "Analysts said integrated oil majors with strong upstream exposure could benefit if benchmark crude remains elevated through the next several weeks.",
+      "published_at": "2026-03-28T11:05:00Z",
+      "source": "Reuters",
+      "url": "https://example.com/oil-supply-shock",
+      "similar": [],
+      "entities": [
+        {
+          "symbol": "XOM",
+          "match_score": 139,
+          "sentiment_score": 0.67,
+          "highlights": [
+            {
+              "highlight": "Higher crude prices improve the backdrop for upstream earnings.",
+              "sentiment": 0.72
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Exxon expands Guyana production guidance after stronger field performance",
+      "description": "Exxon said output from its Guyana assets is tracking above plan, improving production visibility and supporting near-term cash generation.",
+      "snippet": "The company pointed to stronger field reliability and expected production gains as a support for revenue.",
+      "published_at": "2026-03-27T14:25:00Z",
+      "source": "Bloomberg",
+      "url": "https://example.com/xom-guyana-guidance",
+      "similar": [],
+      "entities": [
+        {
+          "symbol": "XOM",
+          "match_score": 158,
+          "sentiment_score": 0.63,
+          "highlights": [
+            {
+              "highlight": "Production visibility improved at key upstream assets.",
+              "sentiment": 0.66
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Energy stocks rise with crude while airlines and chemicals lag",
+      "description": "A broad market piece reviewed how energy shares outperformed on higher crude prices while fuel-sensitive sectors trailed.",
+      "snippet": "The article was sector-focused and not specific to any one integrated major.",
+      "published_at": "2026-03-27T18:10:00Z",
+      "source": "CNBC",
+      "url": "https://example.com/energy-sector-roundup",
+      "similar": [],
+      "entities": [
+        {
+          "symbol": "XOM",
+          "match_score": 88,
+          "sentiment_score": 0.24,
+          "highlights": [
+            {
+              "highlight": "Energy shares outperformed with crude higher.",
+              "sentiment": 0.29
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

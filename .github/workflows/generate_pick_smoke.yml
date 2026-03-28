@@ -58,6 +58,7 @@ jobs:
         working-directory: backend
         env:
           UNIVERSE_CSV_PATH: universe_test.csv
+          MARKETAUX_FIXTURE_PATH: fixtures/marketaux_smoke_news.json
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
@@ -71,6 +72,7 @@ jobs:
         working-directory: backend
         env:
           UNIVERSE_CSV_PATH: universe_test.csv
+          MARKETAUX_GLOBAL_FIXTURE_PATH: fixtures/marketaux_smoke_global.json
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
@@ -106,4 +108,6 @@ jobs:
             backend/news_scores.json
             backend/sector_scores.json
             backend/universe_test.csv
+            backend/fixtures/marketaux_smoke_news.json
+            backend/fixtures/marketaux_smoke_global.json
           if-no-files-found: ignore

@@ -66,6 +66,7 @@ UNIVERSE_CSV_PATH_ENV = "UNIVERSE_CSV_PATH"
 DEFAULT_UNIVERSE_CSV_PATH = Path("universe.csv")
 
 GLOBAL_NEWS_LOOKBACK_DAYS = 3
+MARKETAUX_GLOBAL_FIXTURE_PATH_ENV = "MARKETAUX_GLOBAL_FIXTURE_PATH"
 GLOBAL_NEWS_LIMIT_ENV = "MARKETAUX_GLOBAL_NEWS_LIMIT"
 GLOBAL_DEFAULT_NEWS_LIMIT = 80
 GLOBAL_MAX_NEWS_LIMIT = 100
@@ -387,11 +388,21 @@ def build_global_article(item: dict, now: datetime, index: int) -> Optional[Glob
 
 
 def fetch_recent_global_articles() -> List[GlobalNewsArticle]:
-    if not os.getenv("MARKETAUX_API_TOKEN", "").strip() and allow_marketaux_fallback():
+    configured_fixture = os.getenv(MARKETAUX_GLOBAL_FIXTURE_PATH_ENV, "").strip()
+    if configured_fixture:
+        fixture_path = Path(configured_fixture)
+        with fixture_path.open("r", encoding="utf-8") as handle:
+            raw_news = json.load(handle)
+        if not isinstance(raw_news, list):
+            raise RuntimeError(f"Global Marketaux fixture must be a list in {fixture_path}")
+        print(f"[INFO] [sector] Loaded {len(raw_news)} fixture news items from {fixture_path}.")
+    elif not os.getenv("MARKETAUX_API_TOKEN", "").strip() and allow_marketaux_fallback():
         print("[WARN] [sector] Marketaux token missing, returning neutral fallback data.")
         return []
-    published_after = datetime.now(timezone.utc) - timedelta(days=GLOBAL_NEWS_LOOKBACK_DAYS)
-    raw_news = fetch_marketaux_global_payload(published_after)
+    else:
+        published_after = datetime.now(timezone.utc) - timedelta(days=GLOBAL_NEWS_LOOKBACK_DAYS)
+        raw_news = fetch_marketaux_global_payload(published_after)
+
     now = datetime.now(timezone.utc)
 
     print("\n=== Fetching recent global sector news (Marketaux) ===")

@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Tuple
@@ -10,6 +11,7 @@ except ImportError:
 
 SCHEMA_VERSION = 2
 RISK_BUCKETS = ("low", "medium", "high")
+UNIVERSE_CSV_PATH_ENV = "UNIVERSE_CSV_PATH"
 
 
 def parse_iso_datetime(value: str) -> datetime:
@@ -31,6 +33,14 @@ def load_json(path: Path) -> Dict[str, Any]:
         payload = json.load(handle)
     require(isinstance(payload, dict), f"{path.name} must contain a top-level JSON object")
     return payload
+
+
+def resolve_universe_csv_path(base_dir: Path) -> Path:
+    configured = os.getenv(UNIVERSE_CSV_PATH_ENV, "").strip()
+    if not configured:
+        return base_dir / "universe.csv"
+    path = Path(configured)
+    return path if path.is_absolute() else base_dir / path
 
 
 def validate_common_payload(payload: Dict[str, Any], filename: str) -> None:
@@ -316,9 +326,10 @@ def validate_repository_outputs(base_dir: Path = Path(".")) -> None:
 
     validate_current_pick_payload(current_pick)
     validate_risk_picks_payload(risk_picks)
+    universe_path = resolve_universe_csv_path(base_dir)
     validate_history_payload(history)
-    validate_news_scores_payload(news_scores, base_dir / "universe.csv")
-    validate_sector_scores_payload(sector_scores, base_dir / "universe.csv")
+    validate_news_scores_payload(news_scores, universe_path)
+    validate_sector_scores_payload(sector_scores, universe_path)
 
     overall_current = current_pick["selection"]["status"]
     overall_risk = risk_picks["overall_selection"]["status"]

@@ -28,7 +28,8 @@ except ImportError:
     )
 
 NEWS_SCORES_PATH = "news_scores.json"
-UNIVERSE_CSV_PATH = "universe.csv"
+UNIVERSE_CSV_PATH_ENV = "UNIVERSE_CSV_PATH"
+DEFAULT_UNIVERSE_CSV_PATH = "universe.csv"
 MARKETAUX_NEWS_ENDPOINT = "https://api.marketaux.com/v1/news/all"
 
 MARKETAUX_API_TOKEN_ENV = "MARKETAUX_API_TOKEN"
@@ -122,7 +123,13 @@ def clamp(value: float, minimum: float, maximum: float) -> float:
     return max(minimum, min(maximum, value))
 
 
-def load_universe(path: str = UNIVERSE_CSV_PATH) -> List[Tuple[str, str]]:
+def resolve_universe_csv_path() -> str:
+    configured = os.getenv(UNIVERSE_CSV_PATH_ENV, "").strip()
+    return configured or DEFAULT_UNIVERSE_CSV_PATH
+
+
+def load_universe(path: Optional[str] = None) -> List[Tuple[str, str]]:
+    path = path or resolve_universe_csv_path()
     df = pd.read_csv(path)
     df = df[df.get("active", 1) == 1]
     df = df.dropna(subset=["symbol", "company_name"])

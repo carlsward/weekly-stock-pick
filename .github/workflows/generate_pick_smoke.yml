@@ -1,0 +1,124 @@
+name: Generate weekly stock pick smoke test
+
+on:
+  workflow_dispatch:
+    inputs:
+      openai_model:
+        description: "OpenAI model to use for GPT review"
+        required: false
+        default: "gpt-5-mini"
+        type: string
+      company_news_limit:
+        description: "Marketaux articles per company"
+        required: false
+        default: "6"
+        type: string
+      company_llm_article_limit:
+        description: "Company articles sent to GPT per symbol"
+        required: false
+        default: "6"
+        type: string
+      global_news_limit:
+        description: "Broad world-news articles fetched"
+        required: false
+        default: "80"
+        type: string
+      sector_llm_article_limit:
+        description: "World-news articles sent to GPT"
+        required: false
+        default: "30"
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run backend tests
+        run: python -m unittest discover -s backend/tests -t .
+
+      - name: Verify news provider configuration
+        env:
+          MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+        run: |
+          if [[ -z "${MARKETAUX_API_TOKEN}" ]]; then
+            echo "MARKETAUX_API_TOKEN secret is required for news generation." >&2
+            exit 1
+          fi
+
+      - name: Verify OpenAI configuration
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [[ -z "${OPENAI_API_KEY}" ]]; then
+            echo "OPENAI_API_KEY secret is required for sector analysis." >&2
+            exit 1
+          fi
+
+      - name: Generate news_scores.json
+        working-directory: backend
+        env:
+          UNIVERSE_CSV_PATH: universe_test.csv
+          MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
+          ALLOW_LLM_FALLBACK: "false"
+          MARKETAUX_NEWS_LIMIT: ${{ github.event.inputs.company_news_limit || '6' }}
+          COMPANY_LLM_ARTICLE_LIMIT: ${{ github.event.inputs.company_llm_article_limit || '6' }}
+        run: python generate_news_scores.py
+
+      - name: Generate sector_scores.json
+        working-directory: backend
+        env:
+          UNIVERSE_CSV_PATH: universe_test.csv
+          MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
+          ALLOW_LLM_FALLBACK: "false"
+          MARKETAUX_GLOBAL_NEWS_LIMIT: ${{ github.event.inputs.global_news_limit || '80' }}
+          SECTOR_LLM_ARTICLE_LIMIT: ${{ github.event.inputs.sector_llm_article_limit || '30' }}
+        run: python generate_sector_scores.py
+
+      - name: Generate current_pick.json and risk_picks.json
+        working-directory: backend
+        env:
+          UNIVERSE_CSV_PATH: universe_test.csv
+          ENABLE_HISTORY_REALIZED_ENRICHMENT: "true"
+        run: python generate_pick.py
+
+      - name: Validate generated output contracts
+        working-directory: backend
+        env:
+          UNIVERSE_CSV_PATH: universe_test.csv
+        run: python validate_outputs.py
+
+      - name: Upload smoke test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-smoke-test-${{ github.run_number }}
+          path: |
+            backend/current_pick.json
+            backend/risk_picks.json
+            backend/history.json
+            backend/news_scores.json
+            backend/sector_scores.json
+            backend/universe_test.csv
+          if-no-files-found: ignore

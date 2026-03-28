@@ -80,3 +80,9 @@ For a one-off test run in GitHub Actions:
 - Open the `Generate weekly stock pick` workflow and use `Run workflow`.
 - You can override the GPT model and article limits from the manual form.
 - The run now uploads `current_pick.json`, `risk_picks.json`, `history.json`, `news_scores.json`, and `sector_scores.json` as workflow artifacts even if you choose not to commit them.
+
+For a faster smoke test in GitHub Actions:
+
+- Use `Generate weekly stock pick smoke test`.
+- That workflow runs the same backend pipeline against `universe_test.csv`, which currently contains 3 symbols.
+- It validates and uploads artifacts, but it does not commit the smoke-test outputs back to the repository.

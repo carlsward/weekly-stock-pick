@@ -25,7 +25,8 @@ SCHEMA_VERSION = 2
 MARKET_TIMEZONE = "America/New_York"
 MARKET_TZ = ZoneInfo(MARKET_TIMEZONE)
 
-UNIVERSE_CSV_PATH = Path("universe.csv")
+UNIVERSE_CSV_PATH_ENV = "UNIVERSE_CSV_PATH"
+DEFAULT_UNIVERSE_CSV_PATH = Path("universe.csv")
 NEWS_SCORES_PATH = Path("news_scores.json")
 SECTOR_SCORES_PATH = Path("sector_scores.json")
 CURRENT_PICK_PATH = Path("current_pick.json")
@@ -388,7 +389,13 @@ def build_refresh_window(market_week: MarketWeek) -> Tuple[str, str]:
     return iso_utc(next_refresh), iso_utc(stale_after)
 
 
-def load_universe(path: Path = UNIVERSE_CSV_PATH) -> List[Tuple[str, str]]:
+def resolve_universe_csv_path() -> Path:
+    configured = os.getenv(UNIVERSE_CSV_PATH_ENV, "").strip()
+    return Path(configured) if configured else DEFAULT_UNIVERSE_CSV_PATH
+
+
+def load_universe(path: Optional[Path] = None) -> List[Tuple[str, str]]:
+    path = path or resolve_universe_csv_path()
     df = pd.read_csv(path)
     df = df[df.get("active", 1) == 1]
     df = df.dropna(subset=["symbol", "company_name"])
@@ -407,8 +414,30 @@ def load_universe(path: Path = UNIVERSE_CSV_PATH) -> List[Tuple[str, str]]:
 
 
 def stooq_symbol(symbol: str) -> str:
-    normalized = symbol.strip().replace(".", "-").lower()
-    return normalized if normalized.endswith(".us") else f"{normalized}.us"
+    normalized = symbol.strip().upper().replace(".", "-")
+    return normalized if normalized.endswith(".US") else f"{normalized}.US"
+
+
+def stooq_symbol_variants(symbol: str) -> List[str]:
+    normalized = symbol.strip().upper()
+    if not normalized:
+        return []
+
+    bases = [
+        normalized.replace(".", "-"),
+        normalized,
+        normalized.replace(".", ""),
+    ]
+    variants: List[str] = []
+    for base in bases:
+        if not base:
+            continue
+        suffixed = base if base.endswith(".US") else f"{base}.US"
+        if suffixed not in variants:
+            variants.append(suffixed)
+        if base not in variants:
+            variants.append(base)
+    return variants
 
 
 def build_price_series_from_frame(frame: pd.DataFrame, symbol: str, max_days: int = 45) -> PriceSeries:
@@ -466,34 +495,58 @@ def build_clean_price_frame(frame: pd.DataFrame, symbol: str) -> pd.DataFrame:
 
 
 def fetch_stooq_price_frame(symbol: str) -> pd.DataFrame:
-    params = {
-        "s": stooq_symbol(symbol),
-        "i": "d",
-    }
-    url = f"{STOOQ_DAILY_ENDPOINT}?{urlencode(params)}"
-    request = Request(
-        url,
-        headers={
-            "Accept": "text/csv",
-            "User-Agent": "weekly-stock-pick/1.0",
-        },
+    attempts: List[str] = []
+    for query_symbol in stooq_symbol_variants(symbol):
+        params = {
+            "s": query_symbol,
+            "i": "d",
+        }
+        url = f"{STOOQ_DAILY_ENDPOINT}?{urlencode(params)}"
+        request = Request(
+            url,
+            headers={
+                "Accept": "text/csv,text/plain,*/*;q=0.8",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Referer": "https://stooq.com/",
+                "User-Agent": (
+                    "Mozilla/5.0 (X11; Linux x86_64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/123.0.0.0 Safari/537.36"
+                ),
+            },
+        )
+
+        try:
+            with urlopen(request, timeout=PRICE_REQUEST_TIMEOUT_SECONDS) as response:
+                body = response.read().decode("utf-8", errors="replace").strip()
+        except HTTPError as exc:
+            attempts.append(f"{query_symbol}: HTTP {exc.code}")
+            continue
+        except (URLError, TimeoutError, OSError) as exc:
+            attempts.append(f"{query_symbol}: request failed ({exc})")
+            continue
+
+        if not body:
+            attempts.append(f"{query_symbol}: empty body")
+            continue
+        if "No data" in body or "404 Not Found" in body:
+            attempts.append(f"{query_symbol}: no data")
+            continue
+
+        try:
+            frame = pd.read_csv(StringIO(body))
+        except Exception as exc:
+            attempts.append(f"{query_symbol}: CSV parse failed ({exc})")
+            continue
+
+        if frame.empty:
+            attempts.append(f"{query_symbol}: empty csv")
+            continue
+        return frame
+
+    raise RuntimeError(
+        f"Stooq returned no usable price data for {symbol}. Tried: {', '.join(attempts)}"
     )
-
-    try:
-        with urlopen(request, timeout=PRICE_REQUEST_TIMEOUT_SECONDS) as response:
-            body = response.read().decode("utf-8", errors="replace").strip()
-    except HTTPError as exc:
-        raise RuntimeError(f"Stooq HTTP {exc.code} for {symbol}") from exc
-    except (URLError, TimeoutError, OSError) as exc:
-        raise RuntimeError(f"Stooq request failed for {symbol}: {exc}") from exc
-
-    if not body or "No data" in body or "404 Not Found" in body:
-        raise RuntimeError(f"Stooq returned no usable price data for {symbol}")
-
-    frame = pd.read_csv(StringIO(body))
-    if frame.empty:
-        raise RuntimeError(f"Stooq returned an empty CSV for {symbol}")
-    return frame
 
 
 def fetch_price_frame(symbol: str) -> pd.DataFrame:
@@ -2010,9 +2063,10 @@ def build_candidate(
 
 
 def get_candidates() -> Tuple[List[StockCandidate], GenerationStats]:
-    universe = load_universe()
+    universe_path = resolve_universe_csv_path()
+    universe = load_universe(universe_path)
     news_scores = load_news_scores()
-    sector_map = load_sector_map(UNIVERSE_CSV_PATH)
+    sector_map = load_sector_map(universe_path)
     sector_scores = load_sector_scores()
     history_entries = [normalize_history_entry(entry) for entry in load_existing_history_entries(HISTORY_PATH)]
     calibration = build_model_calibration(universe, sector_map, history_entries)

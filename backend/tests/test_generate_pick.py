@@ -28,6 +28,7 @@ from backend.generate_pick import (
     select_best_candidate,
     select_best_per_risk,
     stooq_symbol,
+    stooq_symbol_variants,
     update_history,
 )
 
@@ -548,8 +549,15 @@ class GeneratePickTests(unittest.TestCase):
         self.assertEqual(1, market_day_age(date(2026, 3, 20), date(2026, 3, 23)))
 
     def test_stooq_symbol_maps_us_equities(self) -> None:
-        self.assertEqual("aapl.us", stooq_symbol("AAPL"))
-        self.assertEqual("brk-b.us", stooq_symbol("BRK.B"))
+        self.assertEqual("AAPL.US", stooq_symbol("AAPL"))
+        self.assertEqual("BRK-B.US", stooq_symbol("BRK.B"))
+
+    def test_stooq_symbol_variants_include_common_us_forms(self) -> None:
+        self.assertEqual(["AAPL.US", "AAPL"], stooq_symbol_variants("AAPL"))
+        self.assertEqual(
+            ["BRK-B.US", "BRK-B", "BRK.B.US", "BRK.B", "BRKB.US", "BRKB"],
+            stooq_symbol_variants("BRK.B"),
+        )
 
     def test_build_price_series_from_frame_uses_recent_sorted_data(self) -> None:
         frame = pd.DataFrame(

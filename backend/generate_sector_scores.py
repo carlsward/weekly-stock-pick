@@ -60,7 +60,8 @@ except ImportError:
     )
 
 SECTOR_SCORES_PATH = Path("sector_scores.json")
-UNIVERSE_CSV_PATH = Path("universe.csv")
+UNIVERSE_CSV_PATH_ENV = "UNIVERSE_CSV_PATH"
+DEFAULT_UNIVERSE_CSV_PATH = Path("universe.csv")
 
 GLOBAL_NEWS_LOOKBACK_DAYS = 3
 GLOBAL_NEWS_LIMIT_ENV = "MARKETAUX_GLOBAL_NEWS_LIMIT"
@@ -925,9 +926,15 @@ def build_neutral_sector_payload(
     }
 
 
+def resolve_universe_csv_path() -> Path:
+    configured = os.getenv(UNIVERSE_CSV_PATH_ENV, "").strip()
+    return Path(configured) if configured else DEFAULT_UNIVERSE_CSV_PATH
+
+
 def main() -> None:
-    symbol_metadata = load_symbol_metadata(UNIVERSE_CSV_PATH)
-    sectors = load_active_sectors(UNIVERSE_CSV_PATH)
+    universe_path = resolve_universe_csv_path()
+    symbol_metadata = load_symbol_metadata(universe_path)
+    sectors = load_active_sectors(universe_path)
     articles = fetch_recent_global_articles()
     generated_at = datetime.now(timezone.utc).replace(microsecond=0)
     model_name = openai_model()

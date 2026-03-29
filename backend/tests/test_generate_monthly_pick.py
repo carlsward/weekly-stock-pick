@@ -110,6 +110,13 @@ class GenerateMonthlyPickTests(unittest.TestCase):
         self.assertGreaterEqual(selection.pick.total_score, MONTHLY_SELECTION_THRESHOLD)
         self.assertGreaterEqual(selection.pick.confidence_score, MONTHLY_MIN_CONFIDENCE_THRESHOLD)
 
+    def test_select_monthly_candidate_returns_no_pick_when_no_candidates_exist(self) -> None:
+        selection = select_monthly_candidate([])
+
+        self.assertEqual("no_pick", selection.status)
+        self.assertIsNone(selection.pick)
+        self.assertIsNone(selection.best_candidate)
+
     @patch("backend.generate_monthly_pick.now_utc")
     def test_build_monthly_news_snapshot_keeps_recent_week_old_news_active(self, now_utc_mock) -> None:
         now_utc_mock.return_value = datetime(2026, 4, 10, 12, tzinfo=timezone.utc)

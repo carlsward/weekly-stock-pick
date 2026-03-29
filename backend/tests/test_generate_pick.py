@@ -596,6 +596,13 @@ class GeneratePickTests(unittest.TestCase):
         self.assertIsNone(selection.pick)
         self.assertIsNotNone(selection.best_candidate)
 
+    def test_select_best_candidate_returns_no_pick_when_no_candidates_exist(self) -> None:
+        selection = select_best_candidate([])
+
+        self.assertEqual("no_pick", selection.status)
+        self.assertIsNone(selection.pick)
+        self.assertIsNone(selection.best_candidate)
+
     def test_select_best_per_risk_can_mix_picks_and_no_picks(self) -> None:
         selections = select_best_per_risk(
             [

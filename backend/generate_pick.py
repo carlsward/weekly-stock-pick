@@ -2150,9 +2150,6 @@ def get_candidates() -> Tuple[List[StockCandidate], GenerationStats]:
             print(f"[WARN] Skipping {symbol}: {exc}")
             skipped_details.append({"symbol": symbol, "reason": str(exc)})
 
-    if not candidates:
-        raise RuntimeError("No candidates could be generated")
-
     stats = GenerationStats(
         universe_size=len(universe),
         evaluated_candidates=len(candidates),

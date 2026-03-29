@@ -17,7 +17,10 @@ from backend.generate_news_scores import (
     compute_recency_weight,
     compute_relevance_score,
     fetch_raw_news,
+    fetch_symbol_news,
     latest_article_date,
+    normalize_alpha_vantage_company_item,
+    score_symbol_news,
     select_supporting_article_entries,
 )
 
@@ -281,6 +284,194 @@ class GenerateNewsScoresTests(unittest.TestCase):
 
         self.assertEqual([], payload)
         fetch_mock.assert_not_called()
+
+    def test_normalize_alpha_vantage_company_item_preserves_matching_entity(self) -> None:
+        normalized = normalize_alpha_vantage_company_item(
+            {
+                "title": "Mastercard expands commercial payments partnerships",
+                "summary": "The payments company highlighted new enterprise and travel wins.",
+                "url": "https://example.com/mastercard",
+                "time_published": "20260329T1015",
+                "source": "Reuters",
+                "topics": [{"topic": "financial_markets"}],
+                "ticker_sentiment": [
+                    {
+                        "ticker": "MA",
+                        "ticker_sentiment_score": "0.42",
+                        "relevance_score": "0.83",
+                    }
+                ],
+                "overall_sentiment_label": "Bullish",
+            },
+            "MA",
+        )
+
+        self.assertIsNotNone(normalized)
+        self.assertEqual("alpha_vantage", normalized["feed"])
+        self.assertEqual("Reuters", normalized["source"])
+        self.assertEqual("2026-03-29T10:15:00Z", normalized["published_at"])
+        self.assertEqual("MA", normalized["entities"][0]["symbol"])
+        self.assertAlmostEqual(0.42, normalized["entities"][0]["sentiment_score"])
+
+    def test_fetch_company_raw_news_sources_uses_fallback_feeds_when_marketaux_is_exhausted(self) -> None:
+        alpha_payload = [
+            {
+                "title": "Mastercard gains on stronger cross-border volumes",
+                "summary": "Payments spending improved.",
+                "url": "https://example.com/alpha",
+                "time_published": "20260329T1000",
+                "source": "Reuters",
+                "ticker_sentiment": [{"ticker": "MA", "ticker_sentiment_score": "0.3", "relevance_score": "0.9"}],
+            }
+        ]
+        gdelt_payload = [
+            {
+                "title": "Mastercard signs new bank partnership in Europe",
+                "url": "https://example.com/gdelt",
+                "domain": "ft.com",
+                "seendate": "20260329T083000Z",
+                "snippet": "Partnership supports payment network expansion.",
+            }
+        ]
+
+        def marketaux_side_effect(symbol: str, published_after: datetime):
+            del symbol, published_after
+            generate_news_scores_module.mark_marketaux_rate_limit_exhausted()
+            return []
+
+        with patch.dict(
+            "os.environ",
+            {
+                "MARKETAUX_API_TOKEN": "token",
+                "ALLOW_MARKETAUX_FALLBACK": "true",
+                "ALPHA_VANTAGE_API_KEY": "alpha",
+                "MARKETAUX_REQUEST_INTERVAL_SECONDS": "0",
+            },
+            clear=False,
+        ):
+            with patch("backend.generate_news_scores.load_marketaux_fixture", return_value=None):
+                with patch("backend.generate_news_scores.fetch_marketaux_payload", side_effect=marketaux_side_effect):
+                    with patch("backend.generate_news_scores.fetch_alpha_vantage_company_payload", return_value=alpha_payload):
+                        with patch("backend.generate_news_scores.fetch_gdelt_company_payload", return_value=gdelt_payload):
+                            raw_sources = generate_news_scores_module.fetch_company_raw_news_sources("MA", "Mastercard Incorporated")
+
+        self.assertEqual(0, len(raw_sources["marketaux"]))
+        self.assertEqual(1, len(raw_sources["alpha_vantage"]))
+        self.assertEqual(1, len(raw_sources["gdelt"]))
+
+    def test_fetch_company_raw_news_sources_blends_marketaux_with_companion_feeds(self) -> None:
+        marketaux_payload = [
+            {
+                "title": "Mastercard signs new co-brand card deal",
+                "description": "The company expanded a large issuing partnership.",
+                "snippet": "",
+                "published_at": "2026-03-29T10:00:00Z",
+                "source": "Reuters",
+                "url": "https://example.com/marketaux",
+                "entities": [{"symbol": "MA", "match_score": 18.0, "sentiment_score": 0.25, "highlights": []}],
+                "similar": [],
+            }
+        ]
+        alpha_payload = [
+            {
+                "title": "Mastercard gains on stronger cross-border volumes",
+                "summary": "Payments spending improved.",
+                "url": "https://example.com/alpha",
+                "time_published": "20260329T1000",
+                "source": "Reuters",
+                "ticker_sentiment": [{"ticker": "MA", "ticker_sentiment_score": "0.3", "relevance_score": "0.9"}],
+            }
+        ]
+        gdelt_payload = [
+            {
+                "title": "Mastercard signs new bank partnership in Europe",
+                "url": "https://example.com/gdelt",
+                "domain": "ft.com",
+                "seendate": "20260329T083000Z",
+                "snippet": "Partnership supports payment network expansion.",
+            }
+        ]
+
+        with patch.dict(
+            "os.environ",
+            {
+                "MARKETAUX_API_TOKEN": "token",
+                "ALLOW_MARKETAUX_FALLBACK": "true",
+                "ALPHA_VANTAGE_API_KEY": "alpha",
+                "COMPANY_NEWS_PROVIDER_MODE": "blended",
+                "MARKETAUX_REQUEST_INTERVAL_SECONDS": "0",
+            },
+            clear=False,
+        ):
+            with patch("backend.generate_news_scores.load_marketaux_fixture", return_value=None):
+                with patch("backend.generate_news_scores.fetch_marketaux_payload", return_value=marketaux_payload):
+                    with patch("backend.generate_news_scores.fetch_alpha_vantage_company_payload", return_value=alpha_payload):
+                        with patch("backend.generate_news_scores.fetch_gdelt_company_payload", return_value=gdelt_payload):
+                            raw_sources = generate_news_scores_module.fetch_company_raw_news_sources("MA", "Mastercard Incorporated")
+
+        self.assertEqual(1, len(raw_sources["marketaux"]))
+        self.assertEqual(1, len(raw_sources["alpha_vantage"]))
+        self.assertEqual(1, len(raw_sources["gdelt"]))
+
+    def test_fetch_symbol_news_builds_articles_from_fallback_feeds(self) -> None:
+        raw_sources = {
+            "marketaux": [],
+            "alpha_vantage": [
+                {
+                    "feed": "alpha_vantage",
+                    "title": "Mastercard expands payment network",
+                    "description": "Mastercard announced a new payments partnership.",
+                    "snippet": "Overall sentiment label: Bullish.",
+                    "published_at": "2026-03-29T10:00:00Z",
+                    "source": "Reuters",
+                    "url": "https://example.com/alpha",
+                    "entities": [{"symbol": "MA", "sentiment_score": 0.35, "match_score": 18.0, "highlights": []}],
+                    "similar": [],
+                }
+            ],
+            "gdelt": [
+                {
+                    "feed": "gdelt",
+                    "title": "Mastercard rolls out new bank partnership",
+                    "description": "Bank partnership expands commercial card reach.",
+                    "snippet": "",
+                    "published_at": "2026-03-29T09:30:00Z",
+                    "source": "ft.com",
+                    "url": "https://example.com/gdelt",
+                    "entities": [],
+                    "similar": [],
+                }
+            ],
+        }
+
+        with patch("backend.generate_news_scores.fetch_company_raw_news_sources", return_value=raw_sources):
+            articles = fetch_symbol_news("MA", "Mastercard Incorporated")
+
+        self.assertEqual(2, len(articles))
+        self.assertEqual({"alpha_vantage", "gdelt"}, {article.feed for article in articles})
+
+    def test_score_symbol_news_uses_fallback_analysis_method_when_marketaux_is_unavailable(self) -> None:
+        articles = [
+            NewsArticle(
+                title="Mastercard expands payment network",
+                text="Mastercard expands payment network after signing a major bank partnership.",
+                published_at=datetime(2026, 3, 29, 10, 0, tzinfo=timezone.utc),
+                provider="Reuters",
+                url="https://example.com/alpha",
+                relevance_score=0.88,
+                recency_weight=0.95,
+                source_quality=1.0,
+                weight=0.84,
+                entity_sentiment=0.4,
+                feed="alpha_vantage",
+            )
+        ]
+
+        with patch("backend.generate_news_scores.fetch_symbol_news", return_value=articles):
+            payload = score_symbol_news("MA", "Mastercard Incorporated", llm_enabled=False)
+
+        self.assertEqual("company_provider_fallback_scoring", payload["analysis_method"])
+        self.assertEqual(["alpha_vantage"], payload["feeds_used"])
 
     def test_llm_news_aggregation_discounts_market_roundups(self) -> None:
         articles = [

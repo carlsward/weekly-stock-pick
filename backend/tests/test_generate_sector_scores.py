@@ -5,6 +5,7 @@ from backend.generate_sector_scores import (
     GlobalNewsArticle,
     aggregate_symbol_scores,
     aggregate_sector_scores,
+    build_analysis_prompt,
     build_global_article,
     compute_macro_relevance,
     normalize_alpha_vantage_item,
@@ -29,6 +30,42 @@ class GenerateSectorScoresTests(unittest.TestCase):
 
         self.assertLess(generic, 0.20)
         self.assertGreater(macro, 0.45)
+
+    def test_compute_macro_relevance_captures_geopolitical_supply_shocks(self) -> None:
+        macro = compute_macro_relevance(
+            "Iran threatens Hormuz closure after regional conflict escalates",
+            "Oil markets, shipping insurers and airline operators reacted to the geopolitical risk and possible supply disruption.",
+            entity_count=3,
+        )
+
+        self.assertGreater(macro, 0.45)
+
+    def test_build_analysis_prompt_mentions_broad_world_event_categories(self) -> None:
+        prompt = build_analysis_prompt(
+            [
+                GlobalNewsArticle(
+                    article_id="news_1",
+                    title="Iran threatens Hormuz closure",
+                    text="Geopolitical tensions raised the risk of an oil supply shock.",
+                    published_at=datetime(2026, 3, 27, 12, 0, tzinfo=timezone.utc),
+                    provider="Reuters",
+                    url="https://example.com/1",
+                    macro_relevance=0.9,
+                    recency_weight=0.95,
+                    source_quality=1.0,
+                    weight=0.90,
+                    cluster_size=2,
+                )
+            ],
+            ["energy"],
+            {"XOM": {"company_name": "Exxon Mobil Corporation", "sector": "energy"}},
+        )
+
+        lowered = prompt.lower()
+        self.assertIn("geopolitical", lowered)
+        self.assertIn("elections", lowered)
+        self.assertIn("cyberattacks", lowered)
+        self.assertIn("natural disasters", lowered)
 
     def test_normalize_review_payload_filters_unknown_sectors(self) -> None:
         articles = [

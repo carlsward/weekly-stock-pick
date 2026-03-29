@@ -1162,9 +1162,6 @@ def get_monthly_candidates() -> Tuple[List[MonthlyCandidate], GenerationStats]:
             print(f"[WARN] Skipping monthly candidate {symbol}: {exc}")
             skipped_details.append({"symbol": symbol, "reason": str(exc)})
 
-    if not candidates:
-        raise RuntimeError("No monthly candidates could be generated")
-
     return candidates, GenerationStats(
         universe_size=len(universe),
         evaluated_candidates=len(candidates),

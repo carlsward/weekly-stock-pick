@@ -56,6 +56,7 @@ jobs:
           MARKETAUX_FIXTURE_PATH: fixtures/marketaux_smoke_news.json
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           ALLOW_MARKETAUX_FALLBACK: "true"
+          COMPANY_NEWS_PROVIDER_MODE: "blended"
           MARKETAUX_NEWS_LIMIT: ${{ github.event.inputs.company_news_limit || '3' }}
         run: python generate_news_scores.py
 
@@ -90,6 +91,7 @@ jobs:
           MARKETAUX_GLOBAL_FIXTURE_PATH: fixtures/marketaux_smoke_global.json
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          COMPANY_NEWS_PROVIDER_MODE: "blended"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
           ALLOW_LLM_FALLBACK: "true"

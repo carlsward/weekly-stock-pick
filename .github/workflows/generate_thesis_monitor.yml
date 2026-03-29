@@ -2,7 +2,10 @@ name: Generate daily thesis monitor
 
 on:
   schedule:
-    - cron: "30 23 * * 1-5"
+    # 12:00 America/New_York every day:
+    # 16:00 UTC during EDT, 17:00 UTC during EST.
+    - cron: "0 16 * * *"
+    - cron: "0 17 * * *"
   workflow_dispatch:
     inputs:
       openai_model:
@@ -20,7 +23,38 @@ permissions:
   contents: write
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.window.outputs.should_run }}
+      ny_time: ${{ steps.window.outputs.ny_time }}
+
+    steps:
+      - name: Resolve thesis-monitor schedule window
+        id: window
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          if os.getenv("GITHUB_EVENT_NAME") != "schedule":
+              print("should_run=true")
+              print("ny_time=manual")
+          else:
+              now = datetime.now(ZoneInfo("America/New_York"))
+              should_run = now.hour == 12
+              print(f"should_run={'true' if should_run else 'false'}")
+              print(f"ny_time={now.isoformat()}")
+          PY
+
+      - name: Skip outside thesis-monitor window
+        if: steps.window.outputs.should_run != 'true'
+        run: echo "Skipping thesis monitor outside 12:00 America/New_York. Current NY time: ${{ steps.window.outputs.ny_time }}"
+
   thesis-monitor:
+    needs: gate
+    if: needs.gate.outputs.should_run == 'true'
     runs-on: ubuntu-latest
 
     steps:
@@ -56,6 +90,7 @@ jobs:
         working-directory: backend
         env:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+          ALLOW_MARKETAUX_FALLBACK: "true"
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.openai_model || 'gpt-5-mini' }}

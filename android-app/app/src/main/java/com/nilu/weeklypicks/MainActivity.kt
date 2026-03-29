@@ -1,15 +1,17 @@
 package com.nilu.weeklypicks
 
 import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Build
 import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.compose.setContent
 import androidx.core.content.ContextCompat
-import android.content.pm.PackageManager
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,8 +24,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.weight
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -39,17 +45,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.nilu.weeklypicks.ui.theme.NiLUWeeklyPicksTheme
+import com.nilu.weeklypicks.ui.theme.HyraxAlphaTheme
+import com.nilu.weeklypicks.ui.theme.Copper
+import com.nilu.weeklypicks.ui.theme.CopperBright
 import com.nilu.weeklypicks.ui.theme.RiskHighColor
 import com.nilu.weeklypicks.ui.theme.RiskLowColor
 import com.nilu.weeklypicks.ui.theme.RiskMediumColor
 import java.util.Locale
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 class MainActivity : ComponentActivity() {
@@ -61,7 +71,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         requestNotificationPermissionIfNeeded()
         setContent {
-            NiLUWeeklyPicksTheme {
+            HyraxAlphaTheme {
                 val vm: MainViewModel = viewModel(
                     factory = MainViewModel.factory(applicationContext)
                 )
@@ -72,55 +82,78 @@ class MainActivity : ComponentActivity() {
                     SplashScreen(onFinished = { showSplash = false })
                 } else {
                     Surface(color = MaterialTheme.colorScheme.background) {
-                        when (val state = vm.uiState) {
-                            UiState.Loading -> LoadingView()
-                            is UiState.Error -> ErrorView(
-                                message = state.message,
-                                onRetry = vm::retry
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(
+                                    Brush.verticalGradient(
+                                        listOf(
+                                            MaterialTheme.colorScheme.background,
+                                            MaterialTheme.colorScheme.surfaceVariant,
+                                            MaterialTheme.colorScheme.background
+                                        )
+                                    )
+                                )
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .align(Alignment.TopCenter)
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.radialGradient(
+                                            colors = listOf(
+                                                Copper.copy(alpha = 0.16f),
+                                                CopperBright.copy(alpha = 0.08f),
+                                                androidx.compose.ui.graphics.Color.Transparent
+                                            )
+                                        )
+                                    )
                             )
 
-                            is UiState.Content -> {
-                                PullToRefreshBox(
-                                    isRefreshing = state.content.isRefreshing,
-                                    onRefresh = vm::refresh,
-                                    modifier = Modifier.fillMaxSize()
-                                ) {
-                                    LazyColumn(
-                                        modifier = Modifier
-                                            .fillMaxSize()
-                                            .statusBarsPadding()
-                                            .navigationBarsPadding()
-                                            .padding(horizontal = 16.dp),
-                                        verticalArrangement = Arrangement.spacedBy(16.dp),
-                                        contentPadding = PaddingValues(vertical = 16.dp)
+                            when (val state = vm.uiState) {
+                                UiState.Loading -> LoadingView()
+                                is UiState.Error -> ErrorView(
+                                    message = state.message,
+                                    onRetry = vm::retry
+                                )
+
+                                is UiState.Content -> {
+                                    PullToRefreshBox(
+                                        isRefreshing = state.content.isRefreshing,
+                                        onRefresh = vm::refresh,
+                                        modifier = Modifier.fillMaxSize()
                                     ) {
-                                        item {
-                                            WeeklyPickScreen(
-                                                content = state.content
-                                            )
-                                        }
-                                        item {
-                                            MonthlyPickSection(
-                                                feed = state.content.monthlyPick,
-                                                message = state.content.monthlyPickMessage
-                                            )
-                                        }
-                                        item {
-                                            TrackRecordSection(
-                                                trackRecord = state.content.trackRecord,
-                                                message = state.content.trackRecordMessage
-                                            )
-                                        }
-                                        item {
-                                            HistorySection(
-                                                entries = state.content.historyEntries,
-                                                message = state.content.historyMessage
-                                            )
-                                        }
-                                        item {
-                                            FooterInfoButton(
-                                                onClick = { showInfoDialog = true }
-                                            )
+                                        LazyColumn(
+                                            modifier = Modifier
+                                                .fillMaxSize()
+                                                .statusBarsPadding()
+                                                .navigationBarsPadding()
+                                                .padding(horizontal = 16.dp),
+                                            verticalArrangement = Arrangement.spacedBy(16.dp),
+                                            contentPadding = PaddingValues(vertical = 16.dp)
+                                        ) {
+                                            item {
+                                                ConvictionPagerSection(
+                                                    content = state.content
+                                                )
+                                            }
+                                            item {
+                                                TrackRecordSection(
+                                                    trackRecord = state.content.trackRecord,
+                                                    message = state.content.trackRecordMessage
+                                                )
+                                            }
+                                            item {
+                                                HistorySection(
+                                                    entries = state.content.historyEntries,
+                                                    message = state.content.historyMessage
+                                                )
+                                            }
+                                            item {
+                                                FooterInfoButton(
+                                                    onClick = { showInfoDialog = true }
+                                                )
+                                            }
                                         }
                                     }
                                 }
@@ -153,6 +186,167 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun ConvictionPagerSection(
+    content: DashboardContent
+) {
+    val pages = listOf("Weekly", "Monthly")
+    val pagerState = rememberPagerState(pageCount = { pages.size })
+    val scope = rememberCoroutineScope()
+
+    Column(
+        verticalArrangement = Arrangement.spacedBy(14.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            pages.forEachIndexed { index, label ->
+                val selected = pagerState.currentPage == index
+                Card(
+                    modifier = Modifier
+                        .weight(1f)
+                        .clickable {
+                            scope.launch {
+                                pagerState.animateScrollToPage(index)
+                            }
+                        },
+                    colors = CardDefaults.cardColors(
+                        containerColor = if (selected) {
+                            MaterialTheme.colorScheme.surface
+                        } else {
+                            MaterialTheme.colorScheme.surface.copy(alpha = 0.52f)
+                        }
+                    ),
+                    border = BorderStroke(
+                        width = 1.dp,
+                        color = if (selected) {
+                            CopperBright.copy(alpha = 0.72f)
+                        } else {
+                            MaterialTheme.colorScheme.outline.copy(alpha = 0.18f)
+                        }
+                    ),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(
+                                if (selected) {
+                                    Brush.horizontalGradient(
+                                        listOf(
+                                            Copper.copy(alpha = 0.18f),
+                                            CopperBright.copy(alpha = 0.08f)
+                                        )
+                                    )
+                                } else {
+                                    Brush.horizontalGradient(
+                                        listOf(
+                                            MaterialTheme.colorScheme.surface.copy(alpha = 0.01f),
+                                            MaterialTheme.colorScheme.surface.copy(alpha = 0.01f)
+                                        )
+                                    )
+                                }
+                            )
+                            .padding(horizontal = 16.dp, vertical = 14.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = label,
+                            style = MaterialTheme.typography.labelLarge,
+                            color = if (selected) CopperBright else MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+        }
+
+        HorizontalPager(
+            state = pagerState,
+            modifier = Modifier.fillMaxWidth(),
+            beyondViewportPageCount = 1,
+            pageSpacing = 12.dp
+        ) { page ->
+            when (page) {
+                0 -> WeeklyPickScreen(content = content)
+                else -> MonthlyPagerCard(
+                    feed = content.monthlyPick,
+                    message = content.monthlyPickMessage
+                )
+            }
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                pages.indices.forEach { index ->
+                    val selected = pagerState.currentPage == index
+                    Box(
+                        modifier = Modifier
+                            .width(if (selected) 24.dp else 8.dp)
+                            .height(8.dp)
+                            .clip(MaterialTheme.shapes.extraLarge)
+                            .background(
+                                if (selected) {
+                                    Brush.horizontalGradient(
+                                        listOf(Copper, CopperBright)
+                                    )
+                                } else {
+                                    Brush.horizontalGradient(
+                                        listOf(
+                                            MaterialTheme.colorScheme.outline.copy(alpha = 0.22f),
+                                            MaterialTheme.colorScheme.outline.copy(alpha = 0.22f)
+                                        )
+                                    )
+                                }
+                            )
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun MonthlyPagerCard(
+    feed: MonthlyPickFeed?,
+    message: String?
+) {
+    if (feed == null && message == null) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.72f)
+            ),
+            elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.45f))
+                    .padding(14.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                Text(
+                    text = "Monthly conviction",
+                    style = MaterialTheme.typography.titleMedium
+                )
+                Text(
+                    text = "Monthly conviction is unavailable right now.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+        return
+    }
+
+    MonthlyPickSection(feed = feed, message = message)
+}
+
 @Composable
 fun LoadingView() {
     Box(
@@ -165,7 +359,7 @@ fun LoadingView() {
         ) {
             CircularProgressIndicator()
             Text(
-                text = "Loading weekly picks...",
+                text = "Scanning the signal stack...",
                 style = MaterialTheme.typography.bodyLarge
             )
         }
@@ -208,7 +402,7 @@ fun FooterInfoButton(
         horizontalArrangement = Arrangement.Center
     ) {
         TextButton(onClick = onClick) {
-            Text("How it works")
+            Text("Methodology")
         }
     }
 }
@@ -234,12 +428,15 @@ fun HistorySection(
             .fillMaxWidth()
             .animateContentSize(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.72f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
-            modifier = Modifier.padding(14.dp),
+            modifier = Modifier
+                .clip(MaterialTheme.shapes.medium)
+                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.45f))
+                .padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Row(
@@ -279,7 +476,63 @@ fun HistorySection(
                 }
 
                 recentEntries.forEachIndexed { index, entry ->
-                    HistoryRow(entry)
+                    val riskColor = when (entry.risk?.lowercase()) {
+                        "low" -> RiskLowColor
+                        "medium" -> RiskMediumColor
+                        "high" -> RiskHighColor
+                        else -> MaterialTheme.colorScheme.outline
+                    }
+
+                    val title = if (entry.status == SelectionStatus.PICKED) {
+                        "${entry.symbol} - ${entry.companyName}"
+                    } else {
+                        "No release pick"
+                    }
+
+                    val details = if (entry.status == SelectionStatus.PICKED) {
+                        buildString {
+                            entry.risk?.let { append(it.replaceFirstChar { ch -> ch.uppercase() }) }
+                            entry.modelScore?.let {
+                                if (isNotEmpty()) append(" • ")
+                                append("Score ${String.format(Locale.US, "%+.3f", it)}")
+                            }
+                        }.ifBlank { "Release archived" }
+                    } else {
+                        entry.statusReason
+                    }
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .width(4.dp)
+                                .height(52.dp)
+                                .background(
+                                    color = riskColor,
+                                    shape = MaterialTheme.shapes.extraLarge
+                                )
+                        )
+
+                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text(
+                                text = entry.weekLabel,
+                                style = MaterialTheme.typography.labelMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                            Text(
+                                text = title,
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+                            Text(
+                                text = details,
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                maxLines = 2
+                            )
+                        }
+                    }
                     if (index != recentEntries.lastIndex) {
                         HorizontalDivider(color = MaterialTheme.colorScheme.surfaceVariant)
                     }
@@ -309,12 +562,15 @@ fun TrackRecordSection(
             .fillMaxWidth()
             .animateContentSize(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.72f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
-            modifier = Modifier.padding(14.dp),
+            modifier = Modifier
+                .clip(MaterialTheme.shapes.medium)
+                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.45f))
+                .padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Row(
@@ -347,17 +603,17 @@ fun TrackRecordSection(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    PerformanceMetric(
+                    PerformanceMetricCard(
                         label = "Closed",
                         value = summary.closedPicks.toString(),
                         modifier = Modifier.weight(1f)
                     )
-                    PerformanceMetric(
+                    PerformanceMetricCard(
                         label = "Win rate",
                         value = percentLabel(summary.winRate),
                         modifier = Modifier.weight(1f)
                     )
-                    PerformanceMetric(
+                    PerformanceMetricCard(
                         label = "Beat SPY",
                         value = percentLabel(summary.beatSpyRate),
                         modifier = Modifier.weight(1f)
@@ -368,17 +624,17 @@ fun TrackRecordSection(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
-                    PerformanceMetric(
+                    PerformanceMetricCard(
                         label = "Avg 5D",
                         value = signedPercentLabel(summary.average5dReturn),
                         modifier = Modifier.weight(1f)
                     )
-                    PerformanceMetric(
+                    PerformanceMetricCard(
                         label = "Avg excess",
                         value = signedPercentLabel(summary.average5dExcessReturn),
                         modifier = Modifier.weight(1f)
                     )
-                    PerformanceMetric(
+                    PerformanceMetricCard(
                         label = "Compounded",
                         value = signedPercentLabel(summary.compounded5dReturn),
                         modifier = Modifier.weight(1f)
@@ -427,12 +683,15 @@ fun MonthlyPickSection(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.72f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
     ) {
         Column(
-            modifier = Modifier.padding(14.dp),
+            modifier = Modifier
+                .clip(MaterialTheme.shapes.medium)
+                .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.45f))
+                .padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Text(
@@ -471,17 +730,17 @@ fun MonthlyPickSection(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(10.dp)
                     ) {
-                        PerformanceMetric(
+                        PerformanceMetricCard(
                             label = "Score",
                             value = String.format(Locale.US, "%+.3f", pick.modelScore),
                             modifier = Modifier.weight(1f)
                         )
-                        PerformanceMetric(
+                        PerformanceMetricCard(
                             label = "Confidence",
                             value = percentLabel(pick.confidenceScore),
                             modifier = Modifier.weight(1f)
                         )
-                        PerformanceMetric(
+                        PerformanceMetricCard(
                             label = "20D / 60D",
                             value = "${signedPercentLabel(pick.metrics.momentum20d)} / ${signedPercentLabel(pick.metrics.momentum60d)}",
                             modifier = Modifier.weight(1f)
@@ -493,7 +752,7 @@ fun MonthlyPickSection(
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
-                    )
+                    }
                 } else {
                     Text(
                         text = "No monthly pick",
@@ -512,113 +771,6 @@ fun MonthlyPickSection(
                     }
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun PerformanceMetric(
-    label: String,
-    value: String,
-    modifier: Modifier = Modifier
-) {
-    Card(
-        modifier = modifier,
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.45f)
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(10.dp),
-            verticalArrangement = Arrangement.spacedBy(2.dp)
-        ) {
-            Text(
-                text = label,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Text(
-                text = value,
-                style = MaterialTheme.typography.titleSmall
-            )
-        }
-    }
-}
-
-private fun percentLabel(value: Double?): String {
-    return if (value == null) {
-        "N/A"
-    } else {
-        String.format(Locale.US, "%.0f%%", value * 100)
-    }
-}
-
-private fun signedPercentLabel(value: Double?): String {
-    return if (value == null) {
-        "N/A"
-    } else {
-        String.format(Locale.US, "%+.1f%%", value * 100)
-    }
-}
-
-@Composable
-fun HistoryRow(entry: HistoryEntry) {
-    val riskColor = when (entry.risk?.lowercase()) {
-        "low" -> RiskLowColor
-        "medium" -> RiskMediumColor
-        "high" -> RiskHighColor
-        else -> MaterialTheme.colorScheme.outline
-    }
-
-    val title = if (entry.status == SelectionStatus.PICKED) {
-        "${entry.symbol} - ${entry.companyName}"
-    } else {
-        "No release pick"
-    }
-
-    val details = if (entry.status == SelectionStatus.PICKED) {
-        buildString {
-            entry.risk?.let { append(it.replaceFirstChar { ch -> ch.uppercase() }) }
-            entry.modelScore?.let {
-                if (isNotEmpty()) append(" • ")
-                append("Score ${String.format(Locale.US, "%+.3f", it)}")
-            }
-        }.ifBlank { "Release archived" }
-    } else {
-        entry.statusReason
-    }
-
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(10.dp)
-    ) {
-        Box(
-            modifier = Modifier
-                .width(4.dp)
-                .height(52.dp)
-                .background(
-                    color = riskColor,
-                    shape = MaterialTheme.shapes.extraLarge
-                )
-        )
-
-        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(
-                text = entry.weekLabel,
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyLarge
-            )
-            Text(
-                text = details,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 2
-            )
         }
     }
 }

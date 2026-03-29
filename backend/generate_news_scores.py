@@ -38,8 +38,10 @@ ALLOW_MARKETAUX_FALLBACK_ENV = "ALLOW_MARKETAUX_FALLBACK"
 MARKETAUX_FIXTURE_PATH_ENV = "MARKETAUX_FIXTURE_PATH"
 MARKETAUX_NEWS_LIMIT_ENV = "MARKETAUX_NEWS_LIMIT"
 MARKETAUX_NEWS_LOOKBACK_DAYS_ENV = "MARKETAUX_NEWS_LOOKBACK_DAYS"
+MARKETAUX_REQUEST_INTERVAL_SECONDS_ENV = "MARKETAUX_REQUEST_INTERVAL_SECONDS"
 ENABLE_COMPANY_LLM_REVIEW_ENV = "ENABLE_COMPANY_LLM_REVIEW"
 MARKETAUX_DEFAULT_NEWS_LIMIT = 3
+MARKETAUX_DEFAULT_REQUEST_INTERVAL_SECONDS = 0.5
 MARKETAUX_REQUEST_TIMEOUT_SECONDS = 20
 COMPANY_LLM_ARTICLE_LIMIT_ENV = "COMPANY_LLM_ARTICLE_LIMIT"
 
@@ -95,6 +97,9 @@ SIGNAL_ARTICLE_COVERAGE_TARGET = 0.85
 SIGNAL_ARTICLE_MIN_SHARE = 0.08
 SIGNAL_ARTICLE_MIN_WEIGHT = 0.03
 
+_marketaux_last_request_monotonic: Optional[float] = None
+_marketaux_rate_limit_exhausted = False
+
 
 def configured_news_lookback_days() -> int:
     raw_value = os.getenv(MARKETAUX_NEWS_LOOKBACK_DAYS_ENV, "").strip()
@@ -105,6 +110,50 @@ def configured_news_lookback_days() -> int:
     except ValueError:
         return NEWS_LOOKBACK_DAYS
     return max(1, min(parsed, 30))
+
+
+def configured_marketaux_request_interval_seconds() -> float:
+    raw_value = os.getenv(
+        MARKETAUX_REQUEST_INTERVAL_SECONDS_ENV,
+        str(MARKETAUX_DEFAULT_REQUEST_INTERVAL_SECONDS),
+    ).strip()
+    if not raw_value:
+        return MARKETAUX_DEFAULT_REQUEST_INTERVAL_SECONDS
+    try:
+        parsed = float(raw_value)
+    except ValueError:
+        return MARKETAUX_DEFAULT_REQUEST_INTERVAL_SECONDS
+    return max(0.0, min(parsed, 5.0))
+
+
+def reset_marketaux_fetch_state() -> None:
+    global _marketaux_last_request_monotonic, _marketaux_rate_limit_exhausted
+    _marketaux_last_request_monotonic = None
+    _marketaux_rate_limit_exhausted = False
+
+
+def apply_marketaux_request_spacing() -> None:
+    global _marketaux_last_request_monotonic
+    minimum_interval = configured_marketaux_request_interval_seconds()
+    if minimum_interval <= 0:
+        return
+
+    now = time_module.monotonic()
+    if _marketaux_last_request_monotonic is not None:
+        remaining = minimum_interval - (now - _marketaux_last_request_monotonic)
+        if remaining > 0:
+            time_module.sleep(remaining)
+
+    _marketaux_last_request_monotonic = time_module.monotonic()
+
+
+def mark_marketaux_rate_limit_exhausted() -> None:
+    global _marketaux_rate_limit_exhausted
+    _marketaux_rate_limit_exhausted = True
+
+
+def marketaux_rate_limit_exhausted() -> bool:
+    return _marketaux_rate_limit_exhausted
 
 
 @dataclass(frozen=True)
@@ -513,6 +562,10 @@ def build_marketaux_query(symbol: str, published_after: datetime) -> str:
 
 
 def fetch_marketaux_payload(symbol: str, published_after: datetime) -> List[dict]:
+    if allow_marketaux_fallback() and marketaux_rate_limit_exhausted():
+        print(f"[WARN] [{symbol}] Marketaux rate limit already hit earlier in this run, returning neutral fallback data.")
+        return []
+
     url = build_marketaux_query(symbol, published_after)
     request = Request(
         url,
@@ -525,6 +578,7 @@ def fetch_marketaux_payload(symbol: str, published_after: datetime) -> List[dict
     last_error: Optional[Exception] = None
     for attempt in range(1, NEWS_FETCH_ATTEMPTS + 1):
         try:
+            apply_marketaux_request_spacing()
             with urlopen(request, timeout=MARKETAUX_REQUEST_TIMEOUT_SECONDS) as response:
                 payload = json.loads(response.read().decode("utf-8"))
             if not isinstance(payload, dict) or not isinstance(payload.get("data"), list):
@@ -533,12 +587,14 @@ def fetch_marketaux_payload(symbol: str, published_after: datetime) -> List[dict
         except HTTPError as exc:
             body = exc.read().decode("utf-8", errors="replace")
             if exc.code == 402 and allow_marketaux_fallback():
+                mark_marketaux_rate_limit_exhausted()
                 print(f"[WARN] [{symbol}] Marketaux usage limit reached, returning neutral fallback data.")
                 return []
             if exc.code in (401, 402, 403):
                 raise RuntimeError(f"Marketaux authentication failed for {symbol}: HTTP {exc.code} {body[:160]}") from exc
             if exc.code == 429:
                 if allow_marketaux_fallback():
+                    mark_marketaux_rate_limit_exhausted()
                     print(f"[WARN] [{symbol}] Marketaux rate limit reached, returning neutral fallback data.")
                     return []
                 last_error = RuntimeError(f"Marketaux rate limit hit for {symbol}: {body[:160]}")
@@ -663,6 +719,9 @@ def fetch_raw_news(symbol: str) -> List[dict]:
     fixture_payload = load_marketaux_fixture(symbol)
     if fixture_payload is not None:
         return fixture_payload
+    if allow_marketaux_fallback() and marketaux_rate_limit_exhausted():
+        print(f"[WARN] [{symbol}] Skipping Marketaux fetch because the rate limit was already reached earlier in this run.")
+        return []
     if not os.getenv(MARKETAUX_API_TOKEN_ENV, "").strip() and allow_marketaux_fallback():
         print(f"[WARN] [{symbol}] Marketaux token missing, returning neutral fallback data.")
         return []
@@ -1500,6 +1559,7 @@ def score_symbol_news(
 
 
 def main():
+    reset_marketaux_fetch_state()
     _, summarizer_pipe = init_models()
     universe = load_universe()
     llm_enabled = llm_news_enabled()

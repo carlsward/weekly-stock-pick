@@ -2,23 +2,33 @@ package com.nilu.weeklypicks.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Bas från din palett
-val RedPrimary = Color(0xFFD9042B)   // #D9042B
-val RedDeep = Color(0xFFBF0413)      // #BF0413
-val Navy = Color(0xFF314A59)         // #314A59
-val GreenAccent = Color(0xFF1B8C57)  // #1B8C57
-val Sand = Color(0xFFD9A384)         // #D9A384
+val Graphite950 = Color(0xFF0D141A)
+val Graphite900 = Color(0xFF111A22)
+val Graphite850 = Color(0xFF15202A)
+val Graphite800 = Color(0xFF1A2631)
+val Graphite700 = Color(0xFF233341)
 
-// Härledda neutrala färger
-val BackgroundLight = Color(0xFFFDF9F6)
-val SurfaceLight = Color(0xFFFFFFFF)
-val SurfaceVariantLight = Sand.copy(alpha = 0.15f)
+val Copper = Color(0xFFC7864A)
+val CopperBright = Color(0xFFE4A46A)
+val CopperDeep = Color(0xFF7D4A24)
+val Ember = Color(0xFFED6F52)
 
-val BackgroundDark = Navy
-val SurfaceDark = Color(0xFF243442)
-val SurfaceVariantDark = Color(0xFF1A2732)
+val BullGreen = Color(0xFF5BD38E)
+val BullGreenDeep = Color(0xFF25684A)
+val BearRed = Color(0xFFE35D6A)
 
-// Riskfärger (används i UI)
-val RiskLowColor = GreenAccent
-val RiskMediumColor = Sand
-val RiskHighColor = RedPrimary
+val Ivory = Color(0xFFF4EFE7)
+val Mist = Color(0xFFD0D8E0)
+val Slate = Color(0xFF8A99A8)
+
+val BackgroundLight = Color(0xFFF5F0E8)
+val SurfaceLight = Color(0xFFFFFCF8)
+val SurfaceVariantLight = Color(0xFFE9DED2)
+
+val BackgroundDark = Graphite950
+val SurfaceDark = Graphite850
+val SurfaceVariantDark = Graphite800
+
+val RiskLowColor = BullGreen
+val RiskMediumColor = CopperBright
+val RiskHighColor = BearRed

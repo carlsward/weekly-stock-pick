@@ -8,55 +8,57 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 private val LightColorScheme = lightColorScheme(
-    primary = RedPrimary,
-    onPrimary = Color.White,
-    primaryContainer = RedPrimary.copy(alpha = 0.9f),
-    onPrimaryContainer = Color.White,
+    primary = Copper,
+    onPrimary = Graphite950,
+    primaryContainer = CopperBright,
+    onPrimaryContainer = Graphite950,
 
-    secondary = GreenAccent,
-    onSecondary = Color.White,
+    secondary = Graphite700,
+    onSecondary = Ivory,
 
-    tertiary = Sand,
-    onTertiary = Navy,
+    tertiary = BullGreen,
+    onTertiary = Graphite950,
 
     background = BackgroundLight,
-    onBackground = Navy,
+    onBackground = Graphite950,
 
     surface = SurfaceLight,
-    onSurface = Navy,
+    onSurface = Graphite950,
 
     surfaceVariant = SurfaceVariantLight,
-    onSurfaceVariant = Navy,
+    onSurfaceVariant = Graphite700,
 
-    outline = Navy.copy(alpha = 0.25f)
+    outline = Graphite700.copy(alpha = 0.28f),
+    error = BearRed
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = RedPrimary,
-    onPrimary = Color.White,
-    primaryContainer = RedDeep,
-    onPrimaryContainer = Color.White,
+    primary = Copper,
+    onPrimary = Graphite950,
+    primaryContainer = CopperDeep,
+    onPrimaryContainer = Ivory,
 
-    secondary = GreenAccent,
-    onSecondary = Color.White,
+    secondary = Graphite700,
+    onSecondary = Ivory,
 
-    tertiary = Sand,
-    onTertiary = BackgroundDark,
+    tertiary = BullGreen,
+    onTertiary = Graphite950,
 
     background = BackgroundDark,
-    onBackground = Color(0xFFEFEFEF),
+    onBackground = Ivory,
 
     surface = SurfaceDark,
-    onSurface = Color(0xFFEFEFEF),
+    onSurface = Ivory,
 
     surfaceVariant = SurfaceVariantDark,
-    onSurfaceVariant = Color(0xFFDFDFDF),
+    onSurfaceVariant = Mist,
 
-    outline = Color(0xFF8FA0AF)
+    outline = Slate,
+    error = BearRed
 )
 
 @Composable
-fun NiLUWeeklyPicksTheme(
+fun HyraxAlphaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
@@ -66,6 +68,17 @@ fun NiLUWeeklyPicksTheme(
         colorScheme = colorScheme,
         typography = Typography,
         shapes = Shapes,
+        content = content
+    )
+}
+
+@Composable
+fun NiLUWeeklyPicksTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    HyraxAlphaTheme(
+        darkTheme = darkTheme,
         content = content
     )
 }

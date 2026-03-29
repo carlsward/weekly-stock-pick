@@ -1,6 +1,10 @@
+import io
 import unittest
 from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
+from urllib.error import HTTPError
+
+import backend.generate_news_scores as generate_news_scores_module
 
 from backend.generate_news_scores import (
     ArticleReview,
@@ -29,6 +33,9 @@ def news_item(title: str, summary: str = "", description: str = "") -> dict:
 
 
 class GenerateNewsScoresTests(unittest.TestCase):
+    def tearDown(self) -> None:
+        generate_news_scores_module.reset_marketaux_fetch_state()
+
     def test_relevance_prefers_company_specific_article(self) -> None:
         generic = news_item(
             title="Stocks climb as the S&P 500 recovers",
@@ -229,6 +236,51 @@ class GenerateNewsScoresTests(unittest.TestCase):
 
         self.assertGreater(signal["provider_sentiment_coverage"], 0.50)
         self.assertGreater(signal["news_score"], 0.50)
+
+    def test_fetch_marketaux_payload_returns_neutral_after_rate_limit_when_fallback_enabled(self) -> None:
+        rate_limit_error = HTTPError(
+            url="https://api.marketaux.com/v1/news/all",
+            code=429,
+            msg="Too Many Requests",
+            hdrs=None,
+            fp=io.BytesIO(b'{"error":{"code":"rate_limit_reached","message":"Too many requests"}}'),
+        )
+
+        with patch.dict(
+            "os.environ",
+            {
+                "MARKETAUX_API_TOKEN": "token",
+                "ALLOW_MARKETAUX_FALLBACK": "true",
+                "MARKETAUX_REQUEST_INTERVAL_SECONDS": "0",
+            },
+            clear=False,
+        ):
+            with patch("backend.generate_news_scores.urlopen", side_effect=rate_limit_error):
+                payload = generate_news_scores_module.fetch_marketaux_payload(
+                    "MSFT",
+                    datetime(2026, 3, 29, 12, 0, tzinfo=timezone.utc),
+                )
+
+        self.assertEqual([], payload)
+        self.assertTrue(generate_news_scores_module.marketaux_rate_limit_exhausted())
+
+    def test_fetch_raw_news_short_circuits_after_rate_limit_in_same_run(self) -> None:
+        with patch.dict(
+            "os.environ",
+            {
+                "MARKETAUX_API_TOKEN": "token",
+                "ALLOW_MARKETAUX_FALLBACK": "true",
+            },
+            clear=False,
+        ):
+            generate_news_scores_module.mark_marketaux_rate_limit_exhausted()
+
+            with patch("backend.generate_news_scores.load_marketaux_fixture", return_value=None):
+                with patch("backend.generate_news_scores.fetch_marketaux_payload") as fetch_mock:
+                    payload = fetch_raw_news("MSFT")
+
+        self.assertEqual([], payload)
+        fetch_mock.assert_not_called()
 
     def test_llm_news_aggregation_discounts_market_roundups(self) -> None:
         articles = [

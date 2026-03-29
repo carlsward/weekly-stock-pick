@@ -3,10 +3,19 @@
 package com.nilu.weeklypicks
 
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
@@ -14,6 +23,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
@@ -32,12 +42,19 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.nilu.weeklypicks.ui.theme.BullGreen
+import com.nilu.weeklypicks.ui.theme.Copper
+import com.nilu.weeklypicks.ui.theme.CopperBright
+import com.nilu.weeklypicks.ui.theme.Ember
+import com.nilu.weeklypicks.ui.theme.Graphite700
 import com.nilu.weeklypicks.ui.theme.RiskHighColor
 import com.nilu.weeklypicks.ui.theme.RiskLowColor
 import com.nilu.weeklypicks.ui.theme.RiskMediumColor
@@ -66,43 +83,50 @@ fun WeeklyPickScreen(
 
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(28.dp),
+        shape = RoundedCornerShape(34.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.28f),
+                    shape = RoundedCornerShape(34.dp)
+                )
                 .background(
                     Brush.verticalGradient(
                         listOf(
                             MaterialTheme.colorScheme.surface,
-                            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.35f)
+                            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.92f),
+                            MaterialTheme.colorScheme.background.copy(alpha = 0.96f)
                         )
                     )
                 )
-                .padding(20.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp)
+                .padding(22.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.34f)
+                    .height(6.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(
+                        Brush.horizontalGradient(
+                            listOf(Copper, CopperBright, BullGreen)
+                        )
+                    )
+            )
+
             HeaderRow()
 
             Text(
                 text = content.dashboard.marketContext.weekLabel,
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.SemiBold
-            )
-            Text(
-                text = buildString {
-                    append("Updated ${formatInstant(content.dashboard.generatedAt)}")
-                    append(" • Data ${formatDate(content.dashboard.dataAsOf)}")
-                    if (content.source == DataSource.CACHE) {
-                        append(" • Cached")
-                    }
-                },
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                style = MaterialTheme.typography.displayMedium,
+                fontWeight = FontWeight.Bold
             )
 
             if (content.freshness == Freshness.STALE) {
@@ -162,11 +186,23 @@ fun WeeklyPickScreen(
 
 @Composable
 private fun HeaderRow() {
-    Text(
-        text = "Weekly stock release",
-        style = MaterialTheme.typography.headlineSmall,
-        fontWeight = FontWeight.Bold
-    )
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.Top
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            HyraxWordmark()
+            Text(
+                text = "Weekly conviction",
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold
+            )
+        }
+        HyraxBrandMark(size = 64.dp)
+    }
 }
 
 @Composable
@@ -178,25 +214,132 @@ private fun StatusBanner(
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = accent.copy(alpha = 0.12f)
+            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.62f)
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(
+                    width = 1.dp,
+                    color = accent.copy(alpha = 0.35f),
+                    shape = RoundedCornerShape(24.dp)
+                )
+                .padding(14.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.Top
+        ) {
+            Box(
+                modifier = Modifier
+                    .width(10.dp)
+                    .height(52.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(
+                        Brush.verticalGradient(
+                            listOf(accent, accent.copy(alpha = 0.35f))
+                        )
+                    )
+            )
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                Text(
+                    text = title.uppercase(Locale.US),
+                    style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = accent
+                )
+                Text(
+                    text = message,
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun MetaChip(
+    text: String,
+    accent: Color = MaterialTheme.colorScheme.onSurfaceVariant
+) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(999.dp))
+            .background(accent.copy(alpha = 0.12f))
+            .border(
+                width = 1.dp,
+                color = accent.copy(alpha = 0.28f),
+                shape = RoundedCornerShape(999.dp)
+            )
+            .padding(horizontal = 10.dp, vertical = 7.dp)
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelMedium,
+            color = accent
+        )
+    }
+}
+
+@Composable
+private fun SignalTag(
+    text: String,
+    accent: Color
+) {
+    Box(
+        modifier = Modifier
+            .clip(RoundedCornerShape(999.dp))
+            .background(accent.copy(alpha = 0.12f))
+            .border(
+                width = 1.dp,
+                color = accent.copy(alpha = 0.25f),
+                shape = RoundedCornerShape(999.dp)
+            )
+            .padding(horizontal = 10.dp, vertical = 7.dp)
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelMedium,
+            color = accent,
+            fontWeight = FontWeight.SemiBold
+        )
+    }
+}
+
+@Composable
+private fun HeroSurface(
+    content: @Composable ColumnScope.() -> Unit
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.68f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Column(
-            modifier = Modifier.padding(12.dp),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyMedium,
-                fontWeight = FontWeight.SemiBold,
-                color = accent
-            )
-            Text(
-                text = message,
-                style = MaterialTheme.typography.bodySmall
-            )
-        }
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.22f),
+                    shape = RoundedCornerShape(30.dp)
+                )
+                .background(
+                    Brush.verticalGradient(
+                        listOf(
+                            MaterialTheme.colorScheme.surface.copy(alpha = 0.98f),
+                            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.76f)
+                        )
+                    )
+                )
+                .padding(18.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp),
+            content = content
+        )
     }
 }
 
@@ -311,48 +454,61 @@ private fun PickDetails(
     val primaryReasons = pick.reasons.filterNot { it == summaryReason }
 
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            StockLogoBadge(symbol = pick.symbol, risk = pick.risk)
-            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                Text(
-                    text = pick.companyName,
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.SemiBold
+        HeroSurface {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(14.dp)
+            ) {
+                StockLogoBadge(symbol = pick.symbol, risk = pick.risk)
+                Column(
+                    modifier = Modifier.weight(1f),
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Text(
+                        text = pick.companyName,
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold
+                    )
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        SignalTag(
+                            text = "${pick.risk.replaceFirstChar { it.uppercase() }} risk",
+                            accent = riskColor(pick.risk)
+                        )
+                        SignalTag(
+                            text = "${pick.confidenceLabel.replaceFirstChar { it.uppercase() }} confidence",
+                            accent = if (pick.confidenceScore >= 0.7) BullGreen else CopperBright
+                        )
+                    }
+                }
+            }
+
+            ScoreMeter(score = pick.modelScore)
+
+            FlowRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                MetricCard(
+                    label = "5D Momentum",
+                    value = percentText(pick.metrics.momentum5d)
                 )
-                Text(
-                    text = "${pick.risk.replaceFirstChar { it.uppercase() }} risk • ${pick.confidenceLabel.replaceFirstChar { it.uppercase() }} confidence",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = riskColor(pick.risk)
+                MetricCard(
+                    label = "Volatility",
+                    value = percentText(pick.metrics.dailyVolatility)
+                )
+                MetricCard(
+                    label = "Confidence",
+                    value = pick.confidenceLabel.replaceFirstChar { it.uppercase() }
+                )
+                MetricCard(
+                    label = "Articles",
+                    value = pick.articleCount.toString()
                 )
             }
-        }
-
-        ScoreMeter(score = pick.modelScore)
-
-        FlowRow(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            MetricCard(
-                label = "5D Momentum",
-                value = percentText(pick.metrics.momentum5d)
-            )
-            MetricCard(
-                label = "Volatility",
-                value = percentText(pick.metrics.dailyVolatility)
-            )
-            MetricCard(
-                label = "Confidence",
-                value = pick.confidenceLabel.replaceFirstChar { it.uppercase() }
-            )
-            MetricCard(
-                label = "Articles",
-                value = pick.articleCount.toString()
-            )
         }
 
         pick.thesisMonitor?.let { monitor ->
@@ -393,18 +549,34 @@ private fun ThesisMonitorSection(
     onToggle: () -> Unit
 ) {
     val accent = thesisStatusColor(monitor.status)
+    val transition = rememberInfiniteTransition(label = "thesisPulse")
+    val pulseAlpha by transition.animateFloat(
+        initialValue = if (monitor.status == ThesisMonitorStatus.HEALTHY) 0.16f else 0.24f,
+        targetValue = if (monitor.status == ThesisMonitorStatus.HEALTHY) 0.24f else 0.42f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 1600, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "thesisPulseAlpha"
+    )
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .animateContentSize(),
         colors = CardDefaults.cardColors(
-            containerColor = accent.copy(alpha = 0.10f)
+            containerColor = accent.copy(alpha = 0.08f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Column(
-            modifier = Modifier.padding(14.dp),
+            modifier = Modifier
+                .border(
+                    width = 1.dp,
+                    color = accent.copy(alpha = pulseAlpha),
+                    shape = RoundedCornerShape(24.dp)
+                )
+                .padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Row(
@@ -518,12 +690,18 @@ private fun ScoreBreakdownSection(
             .fillMaxWidth()
             .animateContentSize(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.72f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Column(
-            modifier = Modifier.padding(14.dp),
+            modifier = Modifier
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.18f),
+                    shape = RoundedCornerShape(24.dp)
+                )
+                .padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             SectionHeader(
@@ -614,12 +792,18 @@ private fun NewsEvidenceSection(
             .fillMaxWidth()
             .animateContentSize(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.72f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Column(
-            modifier = Modifier.padding(14.dp),
+            modifier = Modifier
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.18f),
+                    shape = RoundedCornerShape(24.dp)
+                )
+                .padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             SectionHeader(
@@ -695,12 +879,18 @@ private fun QualificationSection(
             .fillMaxWidth()
             .animateContentSize(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.72f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Column(
-            modifier = Modifier.padding(14.dp),
+            modifier = Modifier
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.18f),
+                    shape = RoundedCornerShape(24.dp)
+                )
+                .padding(14.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             SectionHeader(
@@ -758,12 +948,18 @@ private fun NoPickDetails(
             .fillMaxWidth()
             .animateContentSize(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f)
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.62f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.18f),
+                    shape = RoundedCornerShape(24.dp)
+                )
+                .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             SectionHeader(
@@ -835,18 +1031,23 @@ private fun MetricCard(
     value: String
 ) {
     Card(
+        modifier = Modifier.border(
+            width = 1.dp,
+            color = MaterialTheme.colorScheme.outline.copy(alpha = 0.16f),
+            shape = RoundedCornerShape(22.dp)
+        ),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.78f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp),
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Text(
-                text = label,
-                style = MaterialTheme.typography.bodySmall,
+                text = label.uppercase(Locale.US),
+                style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Text(
@@ -864,16 +1065,16 @@ fun ModelInfoDialog(onDismiss: () -> Unit) {
         onDismissRequest = onDismiss,
         title = {
             Text(
-                text = "How the release works",
+                text = "How Hyrax Alpha works",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
         },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("The app publishes one release-quality pick per market week only when a candidate clears both score and confidence thresholds.")
-                Text("The score is additive: momentum helps, volatility subtracts, and recent news sentiment nudges the result up or down.")
-                Text("The homepage keeps the pick compact and pushes the supporting analysis into expandable sections.")
+                Text("Hyrax Alpha only publishes a release when a candidate clears both score and confidence thresholds.")
+                Text("The score blends technical strength, company news, world-news overlays, and risk penalties into one conviction signal.")
+                Text("The dashboard is intentionally compact at the top and deeper analysis sits behind expandable panels.")
                 Text("This is a model-driven research tool, not financial advice. Verify the thesis independently before investing.")
             }
         },
@@ -891,20 +1092,47 @@ private fun StockLogoBadge(
     risk: String
 ) {
     val baseColor = riskColor(risk)
+    val transition = rememberInfiniteTransition(label = "logoPulse")
+    val haloScale by transition.animateFloat(
+        initialValue = 0.92f,
+        targetValue = 1.08f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 2200),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "logoHalo"
+    )
 
     Box(
         modifier = Modifier
-            .size(56.dp)
-            .background(
-                color = baseColor.copy(alpha = 0.12f),
-                shape = CircleShape
-            ),
+            .size(66.dp),
         contentAlignment = Alignment.Center
     ) {
         Box(
             modifier = Modifier
-                .size(48.dp)
-                .background(baseColor, CircleShape),
+                .size(66.dp * haloScale)
+                .graphicsLayer(alpha = 0.18f)
+                .background(
+                    brush = Brush.radialGradient(
+                        listOf(baseColor.copy(alpha = 0.95f), Color.Transparent)
+                    ),
+                    shape = CircleShape
+                )
+        )
+        Box(
+            modifier = Modifier
+                .size(60.dp)
+                .background(
+                    brush = Brush.linearGradient(
+                        listOf(baseColor, CopperBright)
+                    ),
+                    shape = CircleShape
+                )
+                .border(
+                    width = 2.dp,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f),
+                    shape = CircleShape
+                ),
             contentAlignment = Alignment.Center
         ) {
             Text(
@@ -919,18 +1147,38 @@ private fun StockLogoBadge(
 
 @Composable
 private fun ScoreMeter(score: Double) {
-    val normalized = ((score.coerceIn(-0.4, 0.4) + 0.4) / 0.8).toFloat()
+    val target = ((score.coerceIn(-0.4, 0.4) + 0.4) / 0.8).toFloat()
+    val normalized by animateFloatAsState(
+        targetValue = target,
+        animationSpec = tween(durationMillis = 900),
+        label = "scoreMeter"
+    )
+    val transition = rememberInfiniteTransition(label = "scoreSheen")
+    val sheenOffset by transition.animateFloat(
+        initialValue = -0.35f,
+        targetValue = 1.35f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 2600, easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
+        ),
+        label = "scoreSheenOffset"
+    )
 
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Text(
-            text = "Model score ${formatSigned(score)}",
-            style = MaterialTheme.typography.bodyMedium,
-            fontWeight = FontWeight.SemiBold
+            text = "Conviction score",
+            style = MaterialTheme.typography.labelLarge,
+            color = CopperBright
+        )
+        Text(
+            text = formatSigned(score),
+            style = MaterialTheme.typography.displayLarge,
+            fontWeight = FontWeight.Bold
         )
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(12.dp)
+                .height(14.dp)
                 .background(
                     color = MaterialTheme.colorScheme.surfaceVariant,
                     shape = RoundedCornerShape(999.dp)
@@ -942,9 +1190,21 @@ private fun ScoreMeter(score: Double) {
                     .height(12.dp)
                     .background(
                         brush = Brush.horizontalGradient(
-                            listOf(RiskHighColor, RiskMediumColor, RiskLowColor)
+                            listOf(Ember, CopperBright, BullGreen)
                         ),
                         shape = RoundedCornerShape(999.dp)
+                    )
+            )
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.22f)
+                    .height(14.dp)
+                    .graphicsLayer(translationX = 220f * sheenOffset, alpha = 0.34f)
+                    .background(
+                        Brush.horizontalGradient(
+                            listOf(Color.Transparent, Color.White.copy(alpha = 0.65f), Color.Transparent)
+                        ),
+                        RoundedCornerShape(999.dp)
                     )
             )
         }
@@ -965,7 +1225,7 @@ private fun SectionHeader(
     ) {
         Text(
             text = title,
-            style = MaterialTheme.typography.titleSmall,
+            style = MaterialTheme.typography.labelLarge,
             fontWeight = FontWeight.SemiBold
         )
         TextButton(onClick = onToggle) {

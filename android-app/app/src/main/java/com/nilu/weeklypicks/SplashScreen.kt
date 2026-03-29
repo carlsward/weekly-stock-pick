@@ -5,72 +5,61 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.Image
+import com.nilu.weeklypicks.ui.theme.BullGreen
+import com.nilu.weeklypicks.ui.theme.Copper
+import com.nilu.weeklypicks.ui.theme.CopperBright
+import com.nilu.weeklypicks.ui.theme.Graphite700
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
     onFinished: () -> Unit
 ) {
-    // Animationsprogress 0..1
-    val baseAlpha = remember { Animatable(0f) }
-    val iFillProgress = remember { Animatable(0f) }
-    val taglineAlpha = remember { Animatable(0f) }
-    val taglineTranslateX = remember { Animatable(-80f) } // px från vänster
+    val markScale = remember { Animatable(0.72f) }
+    val markAlpha = remember { Animatable(0f) }
+    val wordmarkAlpha = remember { Animatable(0f) }
+    val signalReveal = remember { Animatable(0f) }
 
     LaunchedEffect(Unit) {
-        // 1) NLU fade-in
-        baseAlpha.animateTo(
+        markScale.animateTo(
             targetValue = 1f,
-            animationSpec = tween(
-                durationMillis = 600,
-                easing = FastOutSlowInEasing
-            )
+            animationSpec = tween(durationMillis = 700, easing = FastOutSlowInEasing)
         )
-
-        // 2) I-stapeln fylls nerifrån och upp
-        iFillProgress.animateTo(
+        markAlpha.animateTo(
             targetValue = 1f,
-            animationSpec = tween(
-                durationMillis = 700,
-                easing = LinearOutSlowInEasing
-            )
+            animationSpec = tween(durationMillis = 450, easing = FastOutSlowInEasing)
         )
-
-        // 3) Tagline: glid in från vänster + fade-in
-        taglineAlpha.animateTo(
+        wordmarkAlpha.animateTo(
             targetValue = 1f,
-            animationSpec = tween(
-                durationMillis = 450,
-                easing = FastOutSlowInEasing
-            )
+            animationSpec = tween(durationMillis = 500, easing = FastOutSlowInEasing)
         )
-        taglineTranslateX.animateTo(
-            targetValue = 0f,
-            animationSpec = tween(
-                durationMillis = 450,
-                easing = FastOutSlowInEasing
-            )
+        signalReveal.animateTo(
+            targetValue = 1f,
+            animationSpec = tween(durationMillis = 900, easing = LinearOutSlowInEasing)
         )
-
-        // Liten paus innan vi går vidare
-        delay(300)
+        delay(350)
         onFinished()
     }
 
@@ -79,61 +68,81 @@ fun SplashScreen(
             .fillMaxSize()
             .background(
                 Brush.verticalGradient(
-                    listOf(
+                    colors = listOf(
                         MaterialTheme.colorScheme.background,
-                        MaterialTheme.colorScheme.surfaceVariant
+                        MaterialTheme.colorScheme.surface,
+                        Graphite700
                     )
                 )
             ),
         contentAlignment = Alignment.Center
     ) {
-        // Behåll kvadratiska proportioner – skala efter behov
         Box(
-            modifier = Modifier.size(300.dp), // justera om du vill ha större/mindre logga
-            contentAlignment = Alignment.Center
-        ) {
-            // 1) Bas: svarta NLU
-            Image(
-                painter = painterResource(id = R.drawable.logo_nilu_base),
-                contentDescription = "NiLU logo base",
-                modifier = Modifier
-                    .matchParentSize()
-                    .graphicsLayer(alpha = baseAlpha.value)
-            )
-
-            // 2) I-stapeln som fylls nerifrån och upp
-            Image(
-                painter = painterResource(id = R.drawable.logo_nilu_i),
-                contentDescription = "NiLU logo I fill",
-                modifier = Modifier
-                    .matchParentSize()
-                    .drawWithContent {
-                        val progress = iFillProgress.value.coerceIn(0f, 1f)
-                        if (progress <= 0f) return@drawWithContent
-
-                        val visibleHeight = size.height * progress
-                        clipRect(
-                            left = 0f,
-                            top = size.height - visibleHeight,
-                            right = size.width,
-                            bottom = size.height
-                        ) {
-                            this@drawWithContent.drawContent()
-                        }
-                    }
-            )
-
-            // 3) Tagline som glider in från vänster
-            Image(
-                painter = painterResource(id = R.drawable.logo_nilu_tagline),
-                contentDescription = "NiLU tagline",
-                modifier = Modifier
-                    .matchParentSize()
-                    .graphicsLayer(
-                        alpha = taglineAlpha.value,
-                        translationX = taglineTranslateX.value
+            modifier = Modifier
+                .size(320.dp)
+                .background(
+                    Brush.radialGradient(
+                        colors = listOf(
+                            Copper.copy(alpha = 0.22f),
+                            BullGreen.copy(alpha = 0.10f),
+                            Color.Transparent
+                        )
                     )
+                )
+        )
+
+        Column(
+            modifier = Modifier.padding(horizontal = 32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(20.dp)
+        ) {
+            HyraxBrandMark(
+                size = 92.dp,
+                animated = false,
+                modifier = Modifier.graphicsLayer(
+                    scaleX = markScale.value,
+                    scaleY = markScale.value,
+                    alpha = markAlpha.value
+                )
             )
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+                modifier = Modifier.graphicsLayer(alpha = wordmarkAlpha.value)
+            ) {
+                Text(
+                    text = "HYRAX ALPHA",
+                    style = MaterialTheme.typography.displayMedium,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Market intelligence for weekly conviction",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.72f)
+                    .height(10.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(MaterialTheme.colorScheme.surfaceVariant)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(signalReveal.value)
+                        .height(10.dp)
+                        .clip(RoundedCornerShape(999.dp))
+                        .background(
+                            Brush.horizontalGradient(
+                                colors = listOf(Copper, CopperBright, BullGreen)
+                            )
+                        )
+                )
+            }
         }
     }
 }

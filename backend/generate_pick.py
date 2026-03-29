@@ -70,6 +70,14 @@ PRICE_REQUEST_TIMEOUT_SECONDS = 20
 SIGNAL_ALIGNMENT_BASE = 0.03
 SIGNAL_ALIGNMENT_CONFIDENCE_SCALE = 0.04
 STOOQ_DAILY_ENDPOINT = "https://stooq.com/q/d/l/"
+TWELVEDATA_TIME_SERIES_ENDPOINT = "https://api.twelvedata.com/time_series"
+TWELVEDATA_API_KEY_ENVS = ("TWELVEDATA_API_KEY", "TWELVE_DATA_API_KEY")
+TWELVEDATA_REQUEST_INTERVAL_SECONDS_ENV = "TWELVEDATA_REQUEST_INTERVAL_SECONDS"
+TWELVEDATA_DEFAULT_REQUEST_INTERVAL_SECONDS = 8.0
+ALPHA_VANTAGE_PRICE_ENDPOINT = "https://www.alphavantage.co/query"
+ALPHA_VANTAGE_API_KEY_ENVS = ("ALPHA_VANTAGE_API_KEY", "ALPHAVANTAGE_API_KEY")
+ALPHA_VANTAGE_REQUEST_INTERVAL_SECONDS_ENV = "ALPHA_VANTAGE_REQUEST_INTERVAL_SECONDS"
+ALPHA_VANTAGE_DEFAULT_REQUEST_INTERVAL_SECONDS = 0.8
 ENABLE_HISTORY_REALIZED_ENRICHMENT_ENV = "ENABLE_HISTORY_REALIZED_ENRICHMENT"
 ALLOW_PRICE_FALLBACK_ENV = "ALLOW_PRICE_FALLBACK"
 FORCE_PRICE_FALLBACK_ENV = "FORCE_PRICE_FALLBACK"
@@ -278,6 +286,8 @@ class ModelCalibration:
 
 PRICE_SERIES_CACHE: Dict[Tuple[str, int], PriceSeries] = {}
 PRICE_FRAME_CACHE: Dict[str, pd.DataFrame] = {}
+_twelvedata_last_request_monotonic: Optional[float] = None
+_alpha_vantage_last_request_monotonic: Optional[float] = None
 
 
 def clamp(value: float, minimum: float, maximum: float) -> float:
@@ -315,6 +325,92 @@ def allow_price_fallback() -> bool:
 def force_price_fallback() -> bool:
     raw = os.getenv(FORCE_PRICE_FALLBACK_ENV, "").strip().lower()
     return raw in {"1", "true", "yes", "on"}
+
+
+def alpha_vantage_api_key(required: bool = False) -> str:
+    for env_name in ALPHA_VANTAGE_API_KEY_ENVS:
+        key = os.getenv(env_name, "").strip()
+        if key:
+            return key
+    if required:
+        raise RuntimeError(
+            f"Alpha Vantage price provider requires one of: {', '.join(ALPHA_VANTAGE_API_KEY_ENVS)}"
+        )
+    return ""
+
+
+def twelvedata_api_key(required: bool = False) -> str:
+    for env_name in TWELVEDATA_API_KEY_ENVS:
+        key = os.getenv(env_name, "").strip()
+        if key:
+            return key
+    if required:
+        raise RuntimeError(
+            f"Twelve Data price provider requires one of: {', '.join(TWELVEDATA_API_KEY_ENVS)}"
+        )
+    return ""
+
+
+def configured_twelvedata_request_interval_seconds() -> float:
+    raw_value = os.getenv(
+        TWELVEDATA_REQUEST_INTERVAL_SECONDS_ENV,
+        str(TWELVEDATA_DEFAULT_REQUEST_INTERVAL_SECONDS),
+    ).strip()
+    try:
+        parsed = float(raw_value)
+    except ValueError:
+        parsed = TWELVEDATA_DEFAULT_REQUEST_INTERVAL_SECONDS
+    return max(0.0, min(parsed, 60.0))
+
+
+def apply_twelvedata_request_spacing() -> None:
+    global _twelvedata_last_request_monotonic
+
+    spacing_seconds = configured_twelvedata_request_interval_seconds()
+    if spacing_seconds <= 0:
+        _twelvedata_last_request_monotonic = time_module.monotonic()
+        return
+
+    now_monotonic = time_module.monotonic()
+    if _twelvedata_last_request_monotonic is not None:
+        elapsed = now_monotonic - _twelvedata_last_request_monotonic
+        remaining = spacing_seconds - elapsed
+        if remaining > 0:
+            time_module.sleep(remaining)
+            now_monotonic = time_module.monotonic()
+
+    _twelvedata_last_request_monotonic = now_monotonic
+
+
+def configured_alpha_vantage_request_interval_seconds() -> float:
+    raw_value = os.getenv(
+        ALPHA_VANTAGE_REQUEST_INTERVAL_SECONDS_ENV,
+        str(ALPHA_VANTAGE_DEFAULT_REQUEST_INTERVAL_SECONDS),
+    ).strip()
+    try:
+        parsed = float(raw_value)
+    except ValueError:
+        parsed = ALPHA_VANTAGE_DEFAULT_REQUEST_INTERVAL_SECONDS
+    return max(0.0, min(parsed, 10.0))
+
+
+def apply_alpha_vantage_request_spacing() -> None:
+    global _alpha_vantage_last_request_monotonic
+
+    spacing_seconds = configured_alpha_vantage_request_interval_seconds()
+    if spacing_seconds <= 0:
+        _alpha_vantage_last_request_monotonic = time_module.monotonic()
+        return
+
+    now_monotonic = time_module.monotonic()
+    if _alpha_vantage_last_request_monotonic is not None:
+        elapsed = now_monotonic - _alpha_vantage_last_request_monotonic
+        remaining = spacing_seconds - elapsed
+        if remaining > 0:
+            time_module.sleep(remaining)
+            now_monotonic = time_module.monotonic()
+
+    _alpha_vantage_last_request_monotonic = now_monotonic
 
 
 def iso_utc(dt: datetime) -> str:
@@ -561,6 +657,112 @@ def fetch_stooq_price_frame(symbol: str) -> pd.DataFrame:
     )
 
 
+def fetch_twelvedata_price_frame(symbol: str) -> pd.DataFrame:
+    params = {
+        "symbol": symbol.strip().upper(),
+        "interval": "1day",
+        "outputsize": "260",
+        "format": "JSON",
+        "apikey": twelvedata_api_key(required=True),
+    }
+    url = f"{TWELVEDATA_TIME_SERIES_ENDPOINT}?{urlencode(params)}"
+    request = Request(
+        url,
+        headers={
+            "Accept": "application/json",
+            "User-Agent": "weekly-stock-pick/1.0",
+        },
+    )
+
+    apply_twelvedata_request_spacing()
+    with urlopen(request, timeout=PRICE_REQUEST_TIMEOUT_SECONDS) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+
+    if not isinstance(payload, dict):
+        raise RuntimeError("Unexpected Twelve Data price response shape")
+
+    values = payload.get("values")
+    if isinstance(values, list) and values:
+        rows: List[Dict[str, Any]] = []
+        for item in values:
+            if not isinstance(item, dict):
+                continue
+            raw_date = item.get("datetime")
+            close_value = item.get("close")
+            volume_value = item.get("volume", 0.0)
+            if raw_date in (None, "") or close_value in (None, ""):
+                continue
+            rows.append(
+                {
+                    "Date": raw_date,
+                    "Close": close_value,
+                    "Volume": volume_value,
+                }
+            )
+        frame = pd.DataFrame(rows)
+        if frame.empty:
+            raise RuntimeError(f"Twelve Data returned no usable daily rows for {symbol}")
+        return frame
+
+    message = (
+        str(payload.get("message", "")).strip()
+        or str(payload.get("status", "")).strip()
+        or str(payload.get("code", "")).strip()
+    )
+    raise RuntimeError(message or f"Twelve Data returned no daily series for {symbol}")
+
+
+def fetch_alpha_vantage_price_frame(symbol: str) -> pd.DataFrame:
+    params = {
+        "function": "TIME_SERIES_DAILY_ADJUSTED",
+        "symbol": symbol.strip().upper(),
+        "outputsize": "compact",
+        "apikey": alpha_vantage_api_key(required=True),
+    }
+    url = f"{ALPHA_VANTAGE_PRICE_ENDPOINT}?{urlencode(params)}"
+    request = Request(
+        url,
+        headers={
+            "Accept": "application/json",
+            "User-Agent": "weekly-stock-pick/1.0",
+        },
+    )
+
+    apply_alpha_vantage_request_spacing()
+    with urlopen(request, timeout=PRICE_REQUEST_TIMEOUT_SECONDS) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+
+    if not isinstance(payload, dict):
+        raise RuntimeError("Unexpected Alpha Vantage price response shape")
+
+    time_series = payload.get("Time Series (Daily)")
+    if isinstance(time_series, dict) and time_series:
+        rows: List[Dict[str, Any]] = []
+        for raw_date, values in time_series.items():
+            if not isinstance(values, dict):
+                continue
+            close_value = values.get("5. adjusted close") or values.get("4. close")
+            volume_value = values.get("6. volume") or values.get("5. volume") or 0.0
+            rows.append(
+                {
+                    "Date": raw_date,
+                    "Close": close_value,
+                    "Volume": volume_value,
+                }
+            )
+        frame = pd.DataFrame(rows)
+        if frame.empty:
+            raise RuntimeError(f"Alpha Vantage returned no usable daily rows for {symbol}")
+        return frame
+
+    message = (
+        str(payload.get("Note", "")).strip()
+        or str(payload.get("Information", "")).strip()
+        or str(payload.get("Error Message", "")).strip()
+    )
+    raise RuntimeError(message or f"Alpha Vantage returned no daily series for {symbol}")
+
+
 def build_synthetic_price_frame(symbol: str, periods: int = 260) -> pd.DataFrame:
     end_date = pd.Timestamp(market_today())
     while end_date.weekday() >= 5:
@@ -612,7 +814,12 @@ def fetch_price_frame(symbol: str) -> pd.DataFrame:
         print(f"[WARN] Using forced synthetic price fallback for {symbol}.")
         return build_synthetic_price_frame(symbol)
 
-    providers = [("stooq", fetch_stooq_price_frame)]
+    providers = []
+    if twelvedata_api_key(required=False):
+        providers.append(("twelvedata", fetch_twelvedata_price_frame))
+    if alpha_vantage_api_key(required=False):
+        providers.append(("alpha_vantage", fetch_alpha_vantage_price_frame))
+    providers.append(("stooq", fetch_stooq_price_frame))
     failures: List[str] = []
 
     for provider_name, provider_fetcher in providers:

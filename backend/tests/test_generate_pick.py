@@ -2,6 +2,7 @@ import json
 import unittest
 from datetime import date, datetime, timezone
 from pathlib import Path
+from unittest.mock import patch
 
 import pandas as pd
 
@@ -18,6 +19,8 @@ from backend.generate_pick import (
     build_thesis_monitor,
     dedupe_layer_penalties,
     default_model_calibration,
+    fetch_price_frame,
+    fetch_twelvedata_price_frame,
     market_day_age,
     build_price_series_from_frame,
     build_news_snapshot,
@@ -583,6 +586,131 @@ class GeneratePickTests(unittest.TestCase):
         self.assertEqual(["Date", "Close", "Volume"], list(frame.columns))
         self.assertTrue((frame["Close"] > 0).all())
         self.assertTrue((frame["Volume"] > 0).all())
+
+    def test_fetch_price_frame_uses_alpha_vantage_before_stooq(self) -> None:
+        frame = pd.DataFrame(
+            {
+                "Date": pd.date_range("2026-01-01", periods=30, freq="B"),
+                "Close": [100 + index for index in range(30)],
+                "Volume": [1_000_000 for _ in range(30)],
+            }
+        )
+
+        with patch.dict("os.environ", {"ALPHA_VANTAGE_API_KEY": "alpha-test"}, clear=False):
+            with patch("backend.generate_pick.twelvedata_api_key", return_value=""):
+                with patch("backend.generate_pick.force_price_fallback", return_value=False):
+                    with patch("backend.generate_pick.fetch_alpha_vantage_price_frame", return_value=frame) as alpha_mock:
+                        with patch("backend.generate_pick.fetch_stooq_price_frame") as stooq_mock:
+                            fetched = fetch_price_frame("MSFT")
+
+        alpha_mock.assert_called_once_with("MSFT")
+        stooq_mock.assert_not_called()
+        self.assertFalse(fetched.empty)
+
+    def test_fetch_twelvedata_price_frame_parses_values_payload(self) -> None:
+        payload = {
+            "meta": {"symbol": "MSFT", "interval": "1day"},
+            "values": [
+                {"datetime": "2026-03-27", "close": "389.12", "volume": "1234567"},
+                {"datetime": "2026-03-26", "close": "386.45", "volume": "1122334"},
+            ],
+        }
+
+        class DummyResponse:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, exc_type, exc, tb):
+                return False
+
+            def read(self):
+                return json.dumps(payload).encode("utf-8")
+
+        with patch.dict("os.environ", {"TWELVEDATA_API_KEY": "twelve-test"}, clear=False):
+            with patch("backend.generate_pick.apply_twelvedata_request_spacing"):
+                with patch("backend.generate_pick.urlopen", return_value=DummyResponse()):
+                    frame = fetch_twelvedata_price_frame("MSFT")
+
+        self.assertEqual(["Date", "Close", "Volume"], list(frame.columns))
+        self.assertEqual(2, len(frame))
+        self.assertEqual("2026-03-27", str(frame.iloc[0]["Date"]))
+        self.assertEqual("389.12", str(frame.iloc[0]["Close"]))
+
+    def test_fetch_price_frame_uses_twelvedata_before_alpha_and_stooq(self) -> None:
+        frame = pd.DataFrame(
+            {
+                "Date": pd.date_range("2026-01-01", periods=30, freq="B"),
+                "Close": [100 + index for index in range(30)],
+                "Volume": [1_000_000 for _ in range(30)],
+            }
+        )
+
+        with patch.dict(
+            "os.environ",
+            {"TWELVEDATA_API_KEY": "twelve-test", "ALPHA_VANTAGE_API_KEY": "alpha-test"},
+            clear=False,
+        ):
+            with patch("backend.generate_pick.force_price_fallback", return_value=False):
+                with patch("backend.generate_pick.fetch_twelvedata_price_frame", return_value=frame) as twelve_mock:
+                    with patch("backend.generate_pick.fetch_alpha_vantage_price_frame") as alpha_mock:
+                        with patch("backend.generate_pick.fetch_stooq_price_frame") as stooq_mock:
+                            fetched = fetch_price_frame("MSFT")
+
+        twelve_mock.assert_called_once_with("MSFT")
+        alpha_mock.assert_not_called()
+        stooq_mock.assert_not_called()
+        self.assertFalse(fetched.empty)
+
+    def test_fetch_price_frame_falls_back_to_alpha_when_twelvedata_fails(self) -> None:
+        frame = pd.DataFrame(
+            {
+                "Date": pd.date_range("2026-01-01", periods=30, freq="B"),
+                "Close": [100 + index for index in range(30)],
+                "Volume": [1_000_000 for _ in range(30)],
+            }
+        )
+
+        with patch.dict(
+            "os.environ",
+            {"TWELVEDATA_API_KEY": "twelve-test", "ALPHA_VANTAGE_API_KEY": "alpha-test"},
+            clear=False,
+        ):
+            with patch("backend.generate_pick.force_price_fallback", return_value=False):
+                with patch(
+                    "backend.generate_pick.fetch_twelvedata_price_frame",
+                    side_effect=RuntimeError("twelve rate limit"),
+                ) as twelve_mock:
+                    with patch("backend.generate_pick.fetch_alpha_vantage_price_frame", return_value=frame) as alpha_mock:
+                        with patch("backend.generate_pick.fetch_stooq_price_frame") as stooq_mock:
+                            fetched = fetch_price_frame("MSFT")
+
+        self.assertGreaterEqual(twelve_mock.call_count, 1)
+        alpha_mock.assert_called_once_with("MSFT")
+        stooq_mock.assert_not_called()
+        self.assertFalse(fetched.empty)
+
+    def test_fetch_price_frame_falls_back_to_stooq_when_alpha_vantage_fails(self) -> None:
+        frame = pd.DataFrame(
+            {
+                "Date": pd.date_range("2026-01-01", periods=30, freq="B"),
+                "Close": [100 + index for index in range(30)],
+                "Volume": [1_000_000 for _ in range(30)],
+            }
+        )
+
+        with patch.dict("os.environ", {"ALPHA_VANTAGE_API_KEY": "alpha-test"}, clear=False):
+            with patch("backend.generate_pick.twelvedata_api_key", return_value=""):
+                with patch("backend.generate_pick.force_price_fallback", return_value=False):
+                    with patch(
+                        "backend.generate_pick.fetch_alpha_vantage_price_frame",
+                        side_effect=RuntimeError("rate limit"),
+                    ) as alpha_mock:
+                        with patch("backend.generate_pick.fetch_stooq_price_frame", return_value=frame) as stooq_mock:
+                            fetched = fetch_price_frame("MSFT")
+
+        self.assertGreaterEqual(alpha_mock.call_count, 1)
+        stooq_mock.assert_called_once_with("MSFT")
+        self.assertFalse(fetched.empty)
 
     def test_select_best_candidate_returns_no_pick_when_thresholds_fail(self) -> None:
         selection = select_best_candidate(

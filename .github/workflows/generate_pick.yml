@@ -16,17 +16,17 @@ on:
       company_news_limit:
         description: "Marketaux articles per company"
         required: false
-        default: "6"
+        default: "5"
         type: string
       global_news_limit:
         description: "Broad world-news articles fetched"
         required: false
-        default: "80"
+        default: "50"
         type: string
       sector_llm_article_limit:
         description: "World-news articles sent to GPT"
         required: false
-        default: "30"
+        default: "20"
         type: string
       commit_changes:
         description: "Commit refreshed JSON files back to the repo"
@@ -113,10 +113,10 @@ jobs:
         working-directory: backend
         env:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
-          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           ALLOW_MARKETAUX_FALLBACK: "true"
           COMPANY_NEWS_PROVIDER_MODE: "blended"
-          MARKETAUX_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.company_news_limit || '6' }}
+          MARKETAUX_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.company_news_limit || '5' }}
         run: python generate_news_scores.py
 
       - name: Generate sector_scores.json
@@ -124,18 +124,20 @@ jobs:
         env:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           ALLOW_MARKETAUX_FALLBACK: "true"
-          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.openai_model || 'gpt-5-mini' }}
           ALLOW_LLM_FALLBACK: "false"
-          MARKETAUX_GLOBAL_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.global_news_limit || '80' }}
-          SECTOR_LLM_ARTICLE_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.sector_llm_article_limit || '30' }}
+          MARKETAUX_GLOBAL_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.global_news_limit || '50' }}
+          SECTOR_LLM_ARTICLE_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.sector_llm_article_limit || '20' }}
         run: python generate_sector_scores.py
 
       - name: Generate current_pick.json and risk_picks.json
         working-directory: backend
         env:
           ENABLE_HISTORY_REALIZED_ENRICHMENT: "true"
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
         run: python generate_pick.py
 
       - name: Generate thesis_monitor.json
@@ -143,7 +145,8 @@ jobs:
         env:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           ALLOW_MARKETAUX_FALLBACK: "true"
-          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHA_VANTAGE_API_KEY }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           COMPANY_NEWS_PROVIDER_MODE: "blended"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.openai_model || 'gpt-5-mini' }}
@@ -158,6 +161,8 @@ jobs:
         working-directory: backend
         env:
           ENABLE_HISTORY_REALIZED_ENRICHMENT: "true"
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
         run: python generate_track_record.py
 
       - name: Validate generated output contracts

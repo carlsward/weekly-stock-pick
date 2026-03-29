@@ -1,5 +1,6 @@
 import unittest
 from datetime import datetime, timezone
+from unittest.mock import patch
 
 from backend.generate_sector_scores import (
     GlobalNewsArticle,
@@ -8,6 +9,7 @@ from backend.generate_sector_scores import (
     build_analysis_prompt,
     build_global_article,
     compute_macro_relevance,
+    fetch_recent_global_articles,
     normalize_alpha_vantage_item,
     normalize_gdelt_item,
     normalize_review_payload,
@@ -16,6 +18,18 @@ from backend.generate_sector_scores import (
 
 
 class GenerateSectorScoresTests(unittest.TestCase):
+    def _marketaux_global_item(self, title: str) -> dict:
+        return {
+            "title": title,
+            "description": "Oil prices and sector demand expectations moved after a global supply headline.",
+            "snippet": "",
+            "source": "Reuters",
+            "url": f"https://example.com/{abs(hash(title))}",
+            "published_at": "2026-03-27T10:00:00Z",
+            "entities": [{}, {}],
+            "similar": [],
+        }
+
     def test_compute_macro_relevance_prefers_sector_level_news(self) -> None:
         generic = compute_macro_relevance(
             "Stocks finished mixed on Friday",
@@ -243,6 +257,54 @@ class GenerateSectorScoresTests(unittest.TestCase):
 
         self.assertIsNotNone(article)
         self.assertGreaterEqual(article.macro_relevance, 0.18)
+
+    def test_fetch_recent_global_articles_stops_after_marketaux_when_sufficient(self) -> None:
+        marketaux_payload = [
+            self._marketaux_global_item(f"Oil jumps after OPEC supply warning {index}")
+            for index in range(10)
+        ]
+
+        with patch.dict("os.environ", {"MARKETAUX_API_TOKEN": "token"}, clear=False):
+            with patch(
+                "backend.generate_sector_scores.fetch_marketaux_global_payload",
+                return_value=marketaux_payload,
+            ):
+                with patch("backend.generate_sector_scores.fetch_gdelt_payload") as gdelt_mock:
+                    with patch("backend.generate_sector_scores.fetch_alpha_vantage_payload") as alpha_mock:
+                        articles = fetch_recent_global_articles()
+
+        self.assertGreaterEqual(len(articles), 8)
+        gdelt_mock.assert_not_called()
+        alpha_mock.assert_not_called()
+
+    def test_fetch_recent_global_articles_escalates_to_gdelt_before_alpha(self) -> None:
+        marketaux_payload = [
+            self._marketaux_global_item("Oil rises after supply risk returns")
+        ]
+        gdelt_payload = [
+            self._marketaux_global_item(f"Global supply shock pressures sectors {index}")
+            for index in range(9)
+        ]
+
+        with patch.dict("os.environ", {"MARKETAUX_API_TOKEN": "token"}, clear=False):
+            with patch(
+                "backend.generate_sector_scores.fetch_marketaux_global_payload",
+                return_value=marketaux_payload,
+            ):
+                with patch(
+                    "backend.generate_sector_scores.fetch_gdelt_payload",
+                    return_value=gdelt_payload,
+                ) as gdelt_mock:
+                    with patch(
+                        "backend.generate_sector_scores.normalize_gdelt_item",
+                        side_effect=lambda item: item,
+                    ):
+                        with patch("backend.generate_sector_scores.fetch_alpha_vantage_payload") as alpha_mock:
+                            articles = fetch_recent_global_articles()
+
+        self.assertGreaterEqual(len(articles), 6)
+        gdelt_mock.assert_called_once()
+        alpha_mock.assert_not_called()
 
     def test_normalize_alpha_vantage_item_builds_marketaux_like_shape(self) -> None:
         normalized = normalize_alpha_vantage_item(

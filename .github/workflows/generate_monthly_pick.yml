@@ -15,12 +15,12 @@ on:
       company_news_limit:
         description: "Marketaux articles per company"
         required: false
-        default: "6"
+        default: "3"
         type: string
       global_news_limit:
         description: "Broad world-news articles fetched"
         required: false
-        default: "60"
+        default: "3"
         type: string
       sector_llm_article_limit:
         description: "World-news articles sent to GPT"
@@ -97,45 +97,56 @@ jobs:
       - name: Run backend tests
         run: python -m unittest discover -s backend/tests -t .
 
-      - name: Verify news provider configuration
+      - name: Log provider configuration
         env:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
-        run: |
-          if [[ -z "${MARKETAUX_API_TOKEN}" ]]; then
-            echo "MARKETAUX_API_TOKEN secret is required for news generation." >&2
-            exit 1
-          fi
-
-      - name: Verify OpenAI configuration
-        env:
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
+          if [[ -z "${MARKETAUX_API_TOKEN}" ]]; then
+            echo "WARN: MARKETAUX_API_TOKEN is missing. Pipeline will rely on fallback news sources."
+          fi
           if [[ -z "${OPENAI_API_KEY}" ]]; then
-            echo "OPENAI_API_KEY secret is required for world-news sector analysis." >&2
-            exit 1
+            echo "WARN: OPENAI_API_KEY is missing. Sector analysis will degrade to neutral fallback."
+          fi
+          if [[ -z "${TWELVEDATA_API_KEY}" ]]; then
+            echo "WARN: TWELVEDATA_API_KEY is missing. Price data may fall back to Alpha Vantage or Stooq."
+          fi
+          if [[ -z "${ALPHA_VANTAGE_API_KEY}" ]]; then
+            echo "WARN: ALPHA_VANTAGE_API_KEY is missing. Secondary news and price fallback capacity will be reduced."
           fi
 
       - name: Generate news_scores.json
         working-directory: backend
         env:
+          ENABLE_PERSISTENT_PROVIDER_LEDGER: "true"
+          PIPELINE_PROVIDER_LEDGER_PATH: "provider_budget_ledger.json"
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           ALLOW_MARKETAUX_FALLBACK: "true"
           COMPANY_NEWS_PROVIDER_MODE: "blended"
-          MARKETAUX_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.company_news_limit || '6' }}
+          COMPANY_NEWS_SHORTLIST_SIZE: "15"
+          ENABLE_COMPANY_LLM_REVIEW: "true"
+          COMPANY_LLM_ARTICLE_LIMIT: "5"
+          MARKETAUX_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.company_news_limit || '3' }}
           MARKETAUX_NEWS_LOOKBACK_DAYS: "14"
+          ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS: "12"
+          ALPHA_VANTAGE_MAX_COMPANY_REQUESTS: "6"
         run: python generate_news_scores.py
 
       - name: Generate sector_scores.json
         working-directory: backend
         env:
+          ENABLE_PERSISTENT_PROVIDER_LEDGER: "true"
+          PIPELINE_PROVIDER_LEDGER_PATH: "provider_budget_ledger.json"
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           ALLOW_MARKETAUX_FALLBACK: "true"
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.openai_model || 'gpt-5-mini' }}
-          ALLOW_LLM_FALLBACK: "false"
-          MARKETAUX_GLOBAL_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.global_news_limit || '60' }}
+          ALLOW_LLM_FALLBACK: "true"
+          MARKETAUX_GLOBAL_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.global_news_limit || '3' }}
           GDELT_GLOBAL_NEWS_LIMIT: "25"
           ALPHA_VANTAGE_GLOBAL_NEWS_LIMIT: "30"
           GLOBAL_NEWS_LOOKBACK_DAYS: "10"
@@ -145,9 +156,14 @@ jobs:
       - name: Generate monthly_pick.json
         working-directory: backend
         env:
+          ENABLE_PERSISTENT_PROVIDER_LEDGER: "true"
+          PIPELINE_PROVIDER_LEDGER_PATH: "provider_budget_ledger.json"
           ENABLE_MONTHLY_HISTORY_REALIZED_ENRICHMENT: "true"
+          ALLOW_STOOQ_FALLBACK: "false"
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
+          ALPHA_VANTAGE_REQUEST_INTERVAL_SECONDS: "12"
+          ALPHA_VANTAGE_MAX_PRICE_REQUESTS: "4"
         run: python generate_monthly_pick.py
 
       - name: Validate monthly output contracts
@@ -164,15 +180,16 @@ jobs:
             backend/monthly_history.json
             backend/news_scores.json
             backend/sector_scores.json
+            backend/provider_budget_ledger.json
           if-no-files-found: ignore
 
       - name: Commit and push if changed
         if: github.event_name != 'workflow_dispatch' || github.event.inputs.commit_changes == 'true'
         run: |
-          if [[ -n "$(git status --porcelain backend/monthly_pick.json backend/monthly_history.json)" ]]; then
+          if [[ -n "$(git status --porcelain backend/monthly_pick.json backend/monthly_history.json backend/provider_budget_ledger.json)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add backend/monthly_pick.json backend/monthly_history.json
+            git add backend/monthly_pick.json backend/monthly_history.json backend/provider_budget_ledger.json
             git commit -m "Update monthly stock pick [skip ci]"
             git push
           else

@@ -14,19 +14,57 @@ from urllib.request import Request, urlopen
 import pandas as pd
 
 try:
+    from backend.generate_pick import (
+        HISTORY_PATH,
+        MARKET_BENCHMARK_SYMBOL,
+        RISK_PICKS_PATH,
+        SECTOR_ETF_BY_SECTOR,
+        compute_technical_metrics,
+        compute_relative_strength_metrics,
+        fetch_price_series_cached,
+        iso_utc,
+        load_existing_history_entries,
+        normalize_history_entry,
+    )
     from backend.llm_utils import (
         allow_llm_fallback,
         openai_api_key,
         openai_model,
         request_structured_response,
     )
+    from backend.pipeline_runtime import (
+        attach_data_quality,
+        consume_provider_budget,
+        record_runtime_event,
+        set_pipeline_scope,
+    )
+    from backend.sector_utils import load_sector_map
 except ImportError:
+    from generate_pick import (
+        HISTORY_PATH,
+        MARKET_BENCHMARK_SYMBOL,
+        RISK_PICKS_PATH,
+        SECTOR_ETF_BY_SECTOR,
+        compute_technical_metrics,
+        compute_relative_strength_metrics,
+        fetch_price_series_cached,
+        iso_utc,
+        load_existing_history_entries,
+        normalize_history_entry,
+    )
     from llm_utils import (
         allow_llm_fallback,
         openai_api_key,
         openai_model,
         request_structured_response,
     )
+    from pipeline_runtime import (
+        attach_data_quality,
+        consume_provider_budget,
+        record_runtime_event,
+        set_pipeline_scope,
+    )
+    from sector_utils import load_sector_map
 
 NEWS_SCORES_PATH = "news_scores.json"
 UNIVERSE_CSV_PATH_ENV = "UNIVERSE_CSV_PATH"
@@ -43,17 +81,48 @@ MARKETAUX_NEWS_LIMIT_ENV = "MARKETAUX_NEWS_LIMIT"
 MARKETAUX_NEWS_LOOKBACK_DAYS_ENV = "MARKETAUX_NEWS_LOOKBACK_DAYS"
 MARKETAUX_REQUEST_INTERVAL_SECONDS_ENV = "MARKETAUX_REQUEST_INTERVAL_SECONDS"
 ALPHA_VANTAGE_COMPANY_NEWS_LIMIT_ENV = "ALPHA_VANTAGE_COMPANY_NEWS_LIMIT"
+ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS_ENV = "ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS"
+ALPHA_VANTAGE_MAX_COMPANY_REQUESTS_ENV = "ALPHA_VANTAGE_MAX_COMPANY_REQUESTS"
 GDELT_COMPANY_NEWS_LIMIT_ENV = "GDELT_COMPANY_NEWS_LIMIT"
 COMPANY_NEWS_PROVIDER_MODE_ENV = "COMPANY_NEWS_PROVIDER_MODE"
 ENABLE_COMPANY_LLM_REVIEW_ENV = "ENABLE_COMPANY_LLM_REVIEW"
+COMPANY_NEWS_SHORTLIST_SIZE_ENV = "COMPANY_NEWS_SHORTLIST_SIZE"
+MARKETAUX_DAILY_REQUEST_LIMIT = 100
+ALPHA_VANTAGE_DAILY_REQUEST_LIMIT = 25
 MARKETAUX_DEFAULT_NEWS_LIMIT = 3
+MARKETAUX_MAX_NEWS_LIMIT = 3
 MARKETAUX_DEFAULT_REQUEST_INTERVAL_SECONDS = 0.5
 ALPHA_VANTAGE_DEFAULT_COMPANY_NEWS_LIMIT = 6
 ALPHA_VANTAGE_MAX_COMPANY_NEWS_LIMIT = 10
+ALPHA_VANTAGE_DEFAULT_COMPANY_REQUEST_INTERVAL_SECONDS = 12.0
+ALPHA_VANTAGE_DEFAULT_MAX_COMPANY_REQUESTS = 8
 GDELT_DEFAULT_COMPANY_NEWS_LIMIT = 8
 GDELT_MAX_COMPANY_NEWS_LIMIT = 10
 MARKETAUX_REQUEST_TIMEOUT_SECONDS = 20
 COMPANY_LLM_ARTICLE_LIMIT_ENV = "COMPANY_LLM_ARTICLE_LIMIT"
+COMPANY_PRIMARY_MARKETAUX_TARGET = 2
+COMPANY_ALPHA_VANTAGE_ESCALATION_FLOOR = 1
+COMPANY_LLM_LOW_QUALITY_SHARE_THRESHOLD = 0.67
+COMPANY_LLM_MIN_DIRECTNESS = 0.45
+COMPANY_HEURISTIC_LOW_QUALITY_SHARE_THRESHOLD = 0.75
+COMPANY_HEURISTIC_LOW_QUALITY_RELEVANCE_CAP = 0.72
+LOW_QUALITY_COMPANY_NEWS_HINTS = (
+    "stocks to buy",
+    "top stocks",
+    "best stocks",
+    "watchlist",
+    "market recap",
+    "market roundup",
+    "wall street",
+    "s&p 500",
+    "dow jones",
+    "nasdaq",
+    "etf",
+    "analyst picks",
+    "price prediction",
+    "these stocks",
+    "stock market",
+)
 
 NEWS_LOOKBACK_DAYS = 5
 MAX_ARTICLES_PER_SYMBOL = 10
@@ -61,6 +130,7 @@ MIN_RELEVANCE_SCORE = 0.45
 RECENCY_HALFLIFE_HOURS = 36.0
 NEWS_FETCH_ATTEMPTS = 3
 NEWS_FETCH_RETRY_SECONDS = 1.5
+DEFAULT_COMPANY_NEWS_SHORTLIST_SIZE = 15
 
 POSITIVE_HINTS = (
     "beats earnings",
@@ -109,6 +179,9 @@ SIGNAL_ARTICLE_MIN_WEIGHT = 0.03
 
 _marketaux_last_request_monotonic: Optional[float] = None
 _marketaux_rate_limit_exhausted = False
+_alpha_vantage_last_request_monotonic: Optional[float] = None
+_alpha_vantage_company_request_count = 0
+_alpha_vantage_company_budget_exhausted = False
 
 
 def configured_news_lookback_days() -> int:
@@ -150,6 +223,34 @@ def configured_alpha_vantage_company_news_limit() -> int:
     return max(1, min(parsed, ALPHA_VANTAGE_MAX_COMPANY_NEWS_LIMIT))
 
 
+def configured_alpha_vantage_company_request_interval_seconds() -> float:
+    raw_value = os.getenv(
+        ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS_ENV,
+        str(ALPHA_VANTAGE_DEFAULT_COMPANY_REQUEST_INTERVAL_SECONDS),
+    ).strip()
+    if not raw_value:
+        return ALPHA_VANTAGE_DEFAULT_COMPANY_REQUEST_INTERVAL_SECONDS
+    try:
+        parsed = float(raw_value)
+    except ValueError:
+        return ALPHA_VANTAGE_DEFAULT_COMPANY_REQUEST_INTERVAL_SECONDS
+    return max(0.0, min(parsed, 60.0))
+
+
+def configured_alpha_vantage_max_company_requests() -> int:
+    raw_value = os.getenv(
+        ALPHA_VANTAGE_MAX_COMPANY_REQUESTS_ENV,
+        str(ALPHA_VANTAGE_DEFAULT_MAX_COMPANY_REQUESTS),
+    ).strip()
+    if not raw_value:
+        return ALPHA_VANTAGE_DEFAULT_MAX_COMPANY_REQUESTS
+    try:
+        parsed = int(raw_value)
+    except ValueError:
+        return ALPHA_VANTAGE_DEFAULT_MAX_COMPANY_REQUESTS
+    return max(0, min(parsed, 25))
+
+
 def configured_gdelt_company_news_limit() -> int:
     raw_value = os.getenv(
         GDELT_COMPANY_NEWS_LIMIT_ENV,
@@ -173,8 +274,13 @@ def configured_company_news_provider_mode() -> str:
 
 def reset_marketaux_fetch_state() -> None:
     global _marketaux_last_request_monotonic, _marketaux_rate_limit_exhausted
+    global _alpha_vantage_last_request_monotonic, _alpha_vantage_company_request_count
+    global _alpha_vantage_company_budget_exhausted
     _marketaux_last_request_monotonic = None
     _marketaux_rate_limit_exhausted = False
+    _alpha_vantage_last_request_monotonic = None
+    _alpha_vantage_company_request_count = 0
+    _alpha_vantage_company_budget_exhausted = False
 
 
 def apply_marketaux_request_spacing() -> None:
@@ -199,6 +305,58 @@ def mark_marketaux_rate_limit_exhausted() -> None:
 
 def marketaux_rate_limit_exhausted() -> bool:
     return _marketaux_rate_limit_exhausted
+
+
+def alpha_vantage_company_budget_exhausted() -> bool:
+    return _alpha_vantage_company_budget_exhausted
+
+
+def mark_alpha_vantage_company_budget_exhausted() -> None:
+    global _alpha_vantage_company_budget_exhausted
+    _alpha_vantage_company_budget_exhausted = True
+
+
+def try_consume_alpha_vantage_company_request() -> bool:
+    global _alpha_vantage_company_request_count
+    budget = configured_alpha_vantage_max_company_requests()
+    if budget <= 0:
+        mark_alpha_vantage_company_budget_exhausted()
+        return False
+    if _alpha_vantage_company_request_count >= budget:
+        mark_alpha_vantage_company_budget_exhausted()
+        return False
+    _alpha_vantage_company_request_count += 1
+    return True
+
+
+def apply_alpha_vantage_company_request_spacing() -> None:
+    global _alpha_vantage_last_request_monotonic
+    minimum_interval = configured_alpha_vantage_company_request_interval_seconds()
+    if minimum_interval <= 0:
+        _alpha_vantage_last_request_monotonic = time_module.monotonic()
+        return
+
+    now = time_module.monotonic()
+    if _alpha_vantage_last_request_monotonic is not None:
+        remaining = minimum_interval - (now - _alpha_vantage_last_request_monotonic)
+        if remaining > 0:
+            time_module.sleep(remaining)
+
+    _alpha_vantage_last_request_monotonic = time_module.monotonic()
+
+
+def is_alpha_vantage_limit_message(message: str) -> bool:
+    normalized = message.strip().lower()
+    return any(
+        fragment in normalized
+        for fragment in (
+            "call frequency",
+            "rate limit",
+            "too many requests",
+            "premium endpoint",
+            "higher api call volume",
+        )
+    )
 
 
 @dataclass(frozen=True)
@@ -253,6 +411,148 @@ def load_universe(path: Optional[str] = None) -> List[Tuple[str, str]]:
     if not rows:
         raise RuntimeError("No active symbols found in universe.csv")
     return rows
+
+
+def configured_company_news_shortlist_size() -> int:
+    raw_value = os.getenv(
+        COMPANY_NEWS_SHORTLIST_SIZE_ENV,
+        str(DEFAULT_COMPANY_NEWS_SHORTLIST_SIZE),
+    ).strip()
+    if not raw_value:
+        return DEFAULT_COMPANY_NEWS_SHORTLIST_SIZE
+    try:
+        parsed = int(raw_value)
+    except ValueError:
+        return DEFAULT_COMPANY_NEWS_SHORTLIST_SIZE
+    return max(1, min(parsed, 100))
+
+
+def shortlist_priority_symbols() -> List[str]:
+    symbols: List[str] = []
+
+    try:
+        with RISK_PICKS_PATH.open("r", encoding="utf-8") as handle:
+            risk_payload = json.load(handle)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        risk_payload = None
+    if isinstance(risk_payload, dict):
+        overall_selection = risk_payload.get("overall_selection")
+        pick = overall_selection.get("pick") if isinstance(overall_selection, dict) else None
+        if isinstance(pick, dict):
+            symbol = str(pick.get("symbol", "")).strip().upper()
+            if symbol:
+                symbols.append(symbol)
+
+    try:
+        history_entries = [
+            normalize_history_entry(entry)
+            for entry in load_existing_history_entries(HISTORY_PATH)
+        ]
+    except Exception:
+        history_entries = []
+    for entry in reversed(history_entries[-4:]):
+        symbol = str(entry.get("symbol", "")).strip().upper()
+        if symbol:
+            symbols.append(symbol)
+
+    seen = set()
+    ordered: List[str] = []
+    for symbol in symbols:
+        if symbol in seen:
+            continue
+        seen.add(symbol)
+        ordered.append(symbol)
+    return ordered
+
+
+def technical_shortlist_score(
+    symbol: str,
+    sector: str,
+    market_metrics: Dict[str, float],
+    sector_metrics_by_sector: Dict[str, Dict[str, float]],
+) -> float:
+    stock_metrics = compute_technical_metrics(fetch_price_series_cached(symbol))
+    sector_metrics = sector_metrics_by_sector[sector]
+    relative_metrics = compute_relative_strength_metrics(stock_metrics, market_metrics, sector_metrics)
+
+    short_component = clamp(stock_metrics["momentum_5d"] / 0.08, -1.0, 1.0)
+    medium_component = clamp(stock_metrics["momentum_20d"] / 0.18, -1.0, 1.0)
+    market_relative_component = clamp(relative_metrics["market_relative_20d"] / 0.08, -1.0, 1.0)
+    sector_relative_component = clamp(relative_metrics["sector_relative_20d"] / 0.08, -1.0, 1.0)
+    trend_component = clamp(stock_metrics["trend_gap"] / 0.08, -1.0, 1.0)
+    participation_component = clamp((stock_metrics["positive_day_ratio"] - 0.5) * 2.0, -1.0, 1.0)
+    volatility_penalty = clamp(stock_metrics["volatility"] / 0.04, 0.0, 1.0)
+
+    return (
+        0.24 * short_component
+        + 0.26 * medium_component
+        + 0.20 * market_relative_component
+        + 0.12 * sector_relative_component
+        + 0.08 * trend_component
+        + 0.05 * participation_component
+        - 0.05 * volatility_penalty
+    )
+
+
+def select_company_news_shortlist(universe: Sequence[Tuple[str, str]]) -> List[str]:
+    shortlist_size = configured_company_news_shortlist_size()
+    if shortlist_size >= len(universe):
+        return [symbol for symbol, _ in universe]
+
+    universe_path = Path(resolve_universe_csv_path())
+    sector_map = load_sector_map(universe_path)
+    market_metrics = compute_technical_metrics(fetch_price_series_cached(MARKET_BENCHMARK_SYMBOL))
+    sector_metrics_by_sector = {
+        sector: compute_technical_metrics(fetch_price_series_cached(etf))
+        for sector, etf in SECTOR_ETF_BY_SECTOR.items()
+    }
+
+    ranked: List[Tuple[float, str]] = []
+    for symbol, _company_name in universe:
+        sector = sector_map.get(symbol)
+        if not sector or sector not in sector_metrics_by_sector:
+            continue
+        try:
+            score = technical_shortlist_score(symbol, sector, market_metrics, sector_metrics_by_sector)
+        except Exception as exc:
+            print(f"[WARN] [{symbol}] Technical shortlist scoring failed: {exc}")
+            continue
+        ranked.append((score, symbol))
+
+    ranked.sort(reverse=True)
+    selected = [symbol for _score, symbol in ranked[:shortlist_size]]
+    selected.extend(shortlist_priority_symbols())
+
+    deduped: List[str] = []
+    seen = set()
+    for symbol in selected:
+        if symbol in seen:
+            continue
+        seen.add(symbol)
+        deduped.append(symbol)
+    return deduped
+
+
+def count_relevant_company_articles(
+    items: Sequence[dict],
+    symbol: str,
+    company_name: str,
+) -> int:
+    now = datetime.now(timezone.utc)
+    seen_titles = set()
+    count = 0
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        article = build_marketaux_article(item, symbol, company_name, now)
+        if article is None:
+            continue
+        title_key = normalize_text(article.title)
+        if title_key in seen_titles:
+            continue
+        seen_titles.add(title_key)
+        count += 1
+    return count
 
 
 def parse_iso_datetime(value: Optional[str]) -> Optional[datetime]:
@@ -573,7 +873,7 @@ def configured_marketaux_news_limit() -> int:
         parsed_limit = int(raw_limit)
     except ValueError:
         parsed_limit = MARKETAUX_DEFAULT_NEWS_LIMIT
-    return max(1, min(parsed_limit, MAX_ARTICLES_PER_SYMBOL))
+    return max(1, min(parsed_limit, MARKETAUX_MAX_NEWS_LIMIT))
 
 
 def configured_llm_news_limit() -> int:
@@ -707,6 +1007,15 @@ def fetch_marketaux_payload(symbol: str, published_after: datetime) -> List[dict
     last_error: Optional[Exception] = None
     for attempt in range(1, NEWS_FETCH_ATTEMPTS + 1):
         try:
+            if not consume_provider_budget(
+                "marketaux",
+                units=1,
+                category="company_news",
+                daily_limit=MARKETAUX_DAILY_REQUEST_LIMIT,
+            ):
+                mark_marketaux_rate_limit_exhausted()
+                print(f"[WARN] [{symbol}] Marketaux workflow budget exhausted, returning fallback data.")
+                return []
             apply_marketaux_request_spacing()
             with urlopen(request, timeout=MARKETAUX_REQUEST_TIMEOUT_SECONDS) as response:
                 payload = json.loads(response.read().decode("utf-8"))
@@ -745,6 +1054,9 @@ def fetch_alpha_vantage_company_payload(symbol: str, published_after: datetime) 
     if not api_key:
         print(f"[WARN] [{symbol}] Alpha Vantage API key missing, skipping company-news fallback feed.")
         return []
+    if alpha_vantage_company_budget_exhausted():
+        print(f"[WARN] [{symbol}] Alpha Vantage company-news budget exhausted earlier in this run, skipping fallback feed.")
+        return []
 
     url = build_alpha_vantage_company_query(symbol, published_after)
     request = Request(
@@ -758,6 +1070,19 @@ def fetch_alpha_vantage_company_payload(symbol: str, published_after: datetime) 
     last_error: Optional[Exception] = None
     for attempt in range(1, NEWS_FETCH_ATTEMPTS + 1):
         try:
+            if not try_consume_alpha_vantage_company_request():
+                print(f"[WARN] [{symbol}] Alpha Vantage company-news budget exhausted for this run, skipping fallback feed.")
+                return []
+            if not consume_provider_budget(
+                "alpha_vantage",
+                units=1,
+                category="company_news",
+                daily_limit=ALPHA_VANTAGE_DAILY_REQUEST_LIMIT,
+            ):
+                mark_alpha_vantage_company_budget_exhausted()
+                print(f"[WARN] [{symbol}] Alpha Vantage daily workflow budget exhausted, skipping fallback feed.")
+                return []
+            apply_alpha_vantage_company_request_spacing()
             with urlopen(request, timeout=MARKETAUX_REQUEST_TIMEOUT_SECONDS) as response:
                 payload = json.loads(response.read().decode("utf-8"))
             if isinstance(payload, dict) and isinstance(payload.get("feed"), list):
@@ -768,8 +1093,19 @@ def fetch_alpha_vantage_company_payload(symbol: str, published_after: datetime) 
                     or str(payload.get("Note", "")).strip()
                     or str(payload.get("Error Message", "")).strip()
                 )
+                if is_alpha_vantage_limit_message(message):
+                    mark_alpha_vantage_company_budget_exhausted()
+                    print(f"[WARN] [{symbol}] Alpha Vantage company-news limit reached, skipping fallback feed.")
+                    return []
                 raise RuntimeError(message or "Unexpected Alpha Vantage response shape")
             raise RuntimeError("Unexpected Alpha Vantage response shape")
+        except HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")
+            if exc.code == 429:
+                mark_alpha_vantage_company_budget_exhausted()
+                print(f"[WARN] [{symbol}] Alpha Vantage company-news rate limit reached, skipping fallback feed.")
+                return []
+            last_error = RuntimeError(f"Alpha Vantage HTTP {exc.code} for {symbol}: {body[:160]}")
         except (HTTPError, URLError, TimeoutError, OSError, json.JSONDecodeError, RuntimeError) as exc:
             last_error = exc
         if attempt < NEWS_FETCH_ATTEMPTS:
@@ -781,6 +1117,7 @@ def fetch_alpha_vantage_company_payload(symbol: str, published_after: datetime) 
 
 
 def fetch_gdelt_company_payload(symbol: str, company_name: str) -> List[dict]:
+    consume_provider_budget("gdelt", units=1, category="company_news")
     url = build_gdelt_company_query(symbol, company_name)
     request = Request(
         url,
@@ -941,8 +1278,12 @@ def fetch_company_raw_news_sources(symbol: str, company_name: str) -> Dict[str, 
     raw_sources: Dict[str, List[dict]] = {}
     marketaux_unavailable = False
     provider_mode = configured_company_news_provider_mode()
+    marketaux_relevant_count = 0
 
-    if allow_marketaux_fallback() and marketaux_rate_limit_exhausted():
+    if provider_mode == "fallback_only":
+        raw_sources["marketaux"] = []
+        marketaux_unavailable = True
+    elif allow_marketaux_fallback() and marketaux_rate_limit_exhausted():
         print(f"[WARN] [{symbol}] Marketaux rate limit already exhausted earlier in this run, trying fallback providers.")
         raw_sources["marketaux"] = []
         marketaux_unavailable = True
@@ -953,33 +1294,32 @@ def fetch_company_raw_news_sources(symbol: str, company_name: str) -> Dict[str, 
     else:
         try:
             raw_sources["marketaux"] = fetch_marketaux_payload(symbol, published_after)
+            marketaux_relevant_count = count_relevant_company_articles(
+                raw_sources["marketaux"],
+                symbol,
+                company_name,
+            )
             if allow_marketaux_fallback() and marketaux_rate_limit_exhausted() and not raw_sources["marketaux"]:
                 marketaux_unavailable = True
         except Exception as exc:
             if not allow_marketaux_fallback():
                 raise
             print(f"[WARN] [{symbol}] Marketaux company feed failed, trying fallback providers: {exc}")
+            record_runtime_event(
+                f"Marketaux company news failed for at least one symbol and fallback feeds were used.",
+                provider="marketaux",
+            )
             raw_sources["marketaux"] = []
             marketaux_unavailable = True
 
-    fetch_companion_sources = provider_mode == "blended" or (
-        marketaux_unavailable and provider_mode != "marketaux_only"
+    fetch_companion_sources = provider_mode != "marketaux_only"
+    should_fetch_gdelt = fetch_companion_sources and (
+        provider_mode == "fallback_only"
+        or marketaux_unavailable
+        or marketaux_relevant_count < COMPANY_PRIMARY_MARKETAUX_TARGET
     )
 
-    if fetch_companion_sources:
-        try:
-            raw_sources["alpha_vantage"] = [
-                item
-                for item in (
-                    normalize_alpha_vantage_company_item(raw_item, symbol)
-                    for raw_item in fetch_alpha_vantage_company_payload(symbol, published_after)
-                )
-                if item is not None
-            ]
-        except Exception as exc:
-            print(f"[WARN] [{symbol}] Alpha Vantage company-news fallback failed: {exc}")
-            raw_sources["alpha_vantage"] = []
-
+    if should_fetch_gdelt:
         try:
             raw_sources["gdelt"] = [
                 item
@@ -991,7 +1331,39 @@ def fetch_company_raw_news_sources(symbol: str, company_name: str) -> Dict[str, 
             ]
         except Exception as exc:
             print(f"[WARN] [{symbol}] GDELT company-news fallback failed: {exc}")
+            record_runtime_event(
+                f"GDELT company news failed for at least one symbol.",
+                provider="gdelt",
+            )
             raw_sources["gdelt"] = []
+    elif fetch_companion_sources:
+        raw_sources["gdelt"] = []
+
+    if fetch_companion_sources:
+        primary_relevant_count = marketaux_relevant_count + count_relevant_company_articles(
+            raw_sources.get("gdelt", []),
+            symbol,
+            company_name,
+        )
+        if primary_relevant_count < COMPANY_ALPHA_VANTAGE_ESCALATION_FLOOR:
+            try:
+                raw_sources["alpha_vantage"] = [
+                    item
+                    for item in (
+                        normalize_alpha_vantage_company_item(raw_item, symbol)
+                        for raw_item in fetch_alpha_vantage_company_payload(symbol, published_after)
+                    )
+                    if item is not None
+                ]
+            except Exception as exc:
+                print(f"[WARN] [{symbol}] Alpha Vantage company-news fallback failed: {exc}")
+                record_runtime_event(
+                    f"Alpha Vantage company-news fallback failed for at least one symbol.",
+                    provider="alpha_vantage",
+                )
+                raw_sources["alpha_vantage"] = []
+        else:
+            raw_sources["alpha_vantage"] = []
 
     return raw_sources
 
@@ -1790,6 +2162,32 @@ def serialize_article_evidence(
     return payload
 
 
+def heuristic_low_quality_share(
+    articles: Sequence[NewsArticle],
+    symbol: str,
+    company_name: str,
+) -> float:
+    if not articles:
+        return 0.0
+
+    normalized_symbol = normalize_text(symbol)
+    company_tokens = [
+        token
+        for token in normalize_text(company_name).split()
+        if len(token) >= 4 and token not in {"corp", "inc", "group", "company", "corporation", "holdings"}
+    ]
+    low_quality_count = 0
+
+    for article in articles:
+        combined = normalize_text(f"{article.title} {article.text}")
+        has_hint = any(hint in combined for hint in LOW_QUALITY_COMPANY_NEWS_HINTS)
+        has_direct_mention = normalized_symbol in combined or any(token in combined for token in company_tokens[:3])
+        if has_hint and (not has_direct_mention or article.relevance_score < COMPANY_HEURISTIC_LOW_QUALITY_RELEVANCE_CAP):
+            low_quality_count += 1
+
+    return low_quality_count / len(articles)
+
+
 def latest_article_date(articles: Sequence[NewsArticle]) -> Optional[str]:
     published_dates = [
         article.published_at.astimezone(timezone.utc).date().isoformat()
@@ -1805,6 +2203,8 @@ def neutral_news_payload(
     symbol: str,
     model_name: Optional[str],
     reason: Optional[str] = None,
+    analysis_method: str = "neutral_no_articles",
+    feeds_used: Optional[Sequence[str]] = None,
 ) -> Dict[str, Any]:
     return {
         "news_score": 0.5,
@@ -1827,8 +2227,9 @@ def neutral_news_payload(
         "top_headlines": [],
         "top_articles": [],
         "last_updated": None,
-        "analysis_method": "neutral_no_articles",
+        "analysis_method": analysis_method,
         "llm_model": model_name,
+        "feeds_used": list(feeds_used or []),
     }
 
 
@@ -1912,11 +2313,38 @@ def score_symbol_news(
         llm_used = False
         reviews = None
         print(f"[WARN] [{symbol}] GPT company news review failed, using heuristic fallback: {exc}")
+        record_runtime_event(
+            "OpenAI company-news review failed and heuristic scoring was used instead.",
+            provider="openai",
+        )
         signal = compute_finbert_sentiment(None, articles)
         summary = summarize_texts(summarizer_pipe, articles)
 
     primary_articles = articles[:company_llm_limit] if llm_used else articles
     overflow_articles = articles[company_llm_limit:] if llm_used else []
+    feeds_used = sorted({article.feed for article in articles if article.feed})
+    heuristic_low_quality = heuristic_low_quality_share(articles, symbol, company_name)
+    if (
+        llm_used
+        and signal.get("llm_low_quality_share", 0.0) >= COMPANY_LLM_LOW_QUALITY_SHARE_THRESHOLD
+        and signal.get("llm_average_directness", 1.0) < COMPANY_LLM_MIN_DIRECTNESS
+    ) or (
+        not llm_used
+        and heuristic_low_quality >= COMPANY_HEURISTIC_LOW_QUALITY_SHARE_THRESHOLD
+        and signal.get("average_relevance", 0.0) < COMPANY_HEURISTIC_LOW_QUALITY_RELEVANCE_CAP
+    ):
+        reason = (
+            f"Recent {symbol} company-news coverage was mostly broad market roundups or weakly direct mentions, "
+            "so the company-news contribution was forced back to neutral."
+        )
+        return neutral_news_payload(
+            symbol,
+            model_name if llm_used else None,
+            reason=reason,
+            analysis_method="neutral_low_quality_company_news",
+            feeds_used=feeds_used,
+        )
+
     signal_article_entries = build_signal_article_entries(
         primary_articles=primary_articles,
         reviews=reviews if llm_used else None,
@@ -1938,7 +2366,6 @@ def score_symbol_news(
         reviews=reviews,
         llm_used=llm_used,
     )
-    feeds_used = sorted({article.feed for article in articles if article.feed})
     heuristic_method = "marketaux_entity_scoring" if feeds_used == ["marketaux"] else "company_provider_fallback_scoring"
 
     return {
@@ -1966,16 +2393,38 @@ def score_symbol_news(
 
 
 def main():
+    set_pipeline_scope("news_scores")
     reset_marketaux_fetch_state()
     _, summarizer_pipe = init_models()
     universe = load_universe()
     llm_enabled = llm_news_enabled()
     model_name = openai_model() if llm_enabled else None
     company_llm_limit = configured_llm_news_limit()
+    try:
+        shortlist_symbols = set(select_company_news_shortlist(universe))
+    except Exception as exc:
+        record_runtime_event(
+            f"Technical company-news shortlist failed, so the full universe was evaluated. Error: {exc}",
+            provider="company_news_shortlist",
+        )
+        shortlist_symbols = {symbol for symbol, _ in universe}
+    if not shortlist_symbols:
+        shortlist_symbols = {symbol for symbol, _ in universe}
 
     out: Dict[str, dict] = {}
 
     for symbol, company_name in universe:
+        if symbol not in shortlist_symbols:
+            out[symbol] = neutral_news_payload(
+                symbol,
+                model_name,
+                reason=(
+                    f"Company news was only fetched for the weekly technical shortlist. "
+                    f"{symbol} was outside the current shortlist, so its company-news contribution stayed neutral."
+                ),
+                analysis_method="neutral_shortlist_pruned",
+            )
+            continue
         out[symbol] = score_symbol_news(
             symbol=symbol,
             company_name=company_name,
@@ -1985,8 +2434,9 @@ def main():
             company_llm_limit=company_llm_limit,
         )
 
+    payload = attach_data_quality(out, scope="news_scores")
     with open(NEWS_SCORES_PATH, "w", encoding="utf-8") as handle:
-        json.dump(out, handle, ensure_ascii=False, indent=2)
+        json.dump(payload, handle, ensure_ascii=False, indent=2)
 
     print("\nnews_scores.json updated.")
 

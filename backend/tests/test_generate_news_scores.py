@@ -16,6 +16,7 @@ from backend.generate_news_scores import (
     compute_finbert_sentiment,
     compute_recency_weight,
     compute_relevance_score,
+    fetch_company_raw_news_sources,
     fetch_raw_news,
     fetch_symbol_news,
     latest_article_date,
@@ -356,10 +357,10 @@ class GenerateNewsScoresTests(unittest.TestCase):
                             raw_sources = generate_news_scores_module.fetch_company_raw_news_sources("MA", "Mastercard Incorporated")
 
         self.assertEqual(0, len(raw_sources["marketaux"]))
-        self.assertEqual(1, len(raw_sources["alpha_vantage"]))
         self.assertEqual(1, len(raw_sources["gdelt"]))
+        self.assertEqual(0, len(raw_sources["alpha_vantage"]))
 
-    def test_fetch_company_raw_news_sources_blends_marketaux_with_companion_feeds(self) -> None:
+    def test_fetch_company_raw_news_sources_blended_skips_companion_feeds_when_marketaux_is_sufficient(self) -> None:
         marketaux_payload = [
             {
                 "title": "Mastercard signs new co-brand card deal",
@@ -370,16 +371,53 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "url": "https://example.com/marketaux",
                 "entities": [{"symbol": "MA", "match_score": 18.0, "sentiment_score": 0.25, "highlights": []}],
                 "similar": [],
-            }
-        ]
-        alpha_payload = [
+            },
             {
-                "title": "Mastercard gains on stronger cross-border volumes",
-                "summary": "Payments spending improved.",
-                "url": "https://example.com/alpha",
-                "time_published": "20260329T1000",
+                "title": "Mastercard expands commercial payments platform",
+                "description": "The company launched another direct payments initiative.",
+                "snippet": "",
+                "published_at": "2026-03-29T08:30:00Z",
+                "source": "Bloomberg",
+                "url": "https://example.com/marketaux-2",
+                "entities": [{"symbol": "MA", "match_score": 17.0, "sentiment_score": 0.18, "highlights": []}],
+                "similar": [],
+            },
+        ]
+
+        with patch.dict(
+            "os.environ",
+            {
+                "MARKETAUX_API_TOKEN": "token",
+                "ALLOW_MARKETAUX_FALLBACK": "true",
+                "ALPHA_VANTAGE_API_KEY": "alpha",
+                "COMPANY_NEWS_PROVIDER_MODE": "blended",
+                "MARKETAUX_REQUEST_INTERVAL_SECONDS": "0",
+            },
+            clear=False,
+        ):
+            with patch("backend.generate_news_scores.load_marketaux_fixture", return_value=None):
+                with patch("backend.generate_news_scores.fetch_marketaux_payload", return_value=marketaux_payload):
+                    with patch("backend.generate_news_scores.fetch_alpha_vantage_company_payload") as alpha_mock:
+                        with patch("backend.generate_news_scores.fetch_gdelt_company_payload") as gdelt_mock:
+                            raw_sources = fetch_company_raw_news_sources("MA", "Mastercard Incorporated")
+
+        self.assertEqual(2, len(raw_sources["marketaux"]))
+        self.assertEqual(0, len(raw_sources["gdelt"]))
+        self.assertEqual(0, len(raw_sources["alpha_vantage"]))
+        gdelt_mock.assert_not_called()
+        alpha_mock.assert_not_called()
+
+    def test_fetch_company_raw_news_sources_blended_uses_gdelt_when_marketaux_is_thin(self) -> None:
+        marketaux_payload = [
+            {
+                "title": "Stocks rise as payment names trade with the market",
+                "description": "A broad market roundup with a weak mention of Mastercard.",
+                "snippet": "",
+                "published_at": "2026-03-29T10:00:00Z",
                 "source": "Reuters",
-                "ticker_sentiment": [{"ticker": "MA", "ticker_sentiment_score": "0.3", "relevance_score": "0.9"}],
+                "url": "https://example.com/marketaux-roundup",
+                "entities": [{"symbol": "MA", "match_score": 7.0, "sentiment_score": 0.05, "highlights": []}],
+                "similar": [],
             }
         ]
         gdelt_payload = [
@@ -405,13 +443,117 @@ class GenerateNewsScoresTests(unittest.TestCase):
         ):
             with patch("backend.generate_news_scores.load_marketaux_fixture", return_value=None):
                 with patch("backend.generate_news_scores.fetch_marketaux_payload", return_value=marketaux_payload):
-                    with patch("backend.generate_news_scores.fetch_alpha_vantage_company_payload", return_value=alpha_payload):
-                        with patch("backend.generate_news_scores.fetch_gdelt_company_payload", return_value=gdelt_payload):
-                            raw_sources = generate_news_scores_module.fetch_company_raw_news_sources("MA", "Mastercard Incorporated")
+                    with patch("backend.generate_news_scores.fetch_gdelt_company_payload", return_value=gdelt_payload) as gdelt_mock:
+                        with patch("backend.generate_news_scores.fetch_alpha_vantage_company_payload") as alpha_mock:
+                            raw_sources = fetch_company_raw_news_sources("MA", "Mastercard Incorporated")
 
         self.assertEqual(1, len(raw_sources["marketaux"]))
-        self.assertEqual(1, len(raw_sources["alpha_vantage"]))
         self.assertEqual(1, len(raw_sources["gdelt"]))
+        self.assertEqual(0, len(raw_sources["alpha_vantage"]))
+        gdelt_mock.assert_called_once()
+        alpha_mock.assert_not_called()
+
+    def test_score_symbol_news_forces_neutral_when_llm_flags_low_quality_roundups(self) -> None:
+        articles = [
+            NewsArticle(
+                title="Stocks rise as software shares trade with the broader market",
+                text="A broad market roundup with only a weak Microsoft mention.",
+                published_at=datetime(2026, 3, 29, 10, 0, tzinfo=timezone.utc),
+                provider="Reuters",
+                url="https://example.com/roundup",
+                relevance_score=0.55,
+                recency_weight=0.92,
+                source_quality=1.0,
+                weight=0.35,
+                feed="marketaux",
+            ),
+        ]
+        reviews = [
+            ArticleReview(
+                article_id="news_1",
+                doc_type="market_roundup",
+                company_relevance=0.25,
+                materiality=0.20,
+                impact_score=0.05,
+                confidence=0.65,
+                reason="Broad market roundup with only a weak Microsoft mention.",
+            )
+        ]
+
+        with patch("backend.generate_news_scores.fetch_symbol_news", return_value=articles):
+            with patch("backend.generate_news_scores.request_company_news_review", return_value={"articles": []}):
+                with patch(
+                    "backend.generate_news_scores.normalize_company_news_review",
+                    return_value=(reviews, {"summary": "Coverage was broad and only loosely tied to Microsoft."}),
+                ):
+                    with patch(
+                        "backend.generate_news_scores.aggregate_llm_news_signal",
+                        return_value={
+                            "raw_sentiment": 0.02,
+                            "calibrated_sentiment": 0.01,
+                            "news_score": 0.505,
+                            "news_confidence": 0.24,
+                            "effective_article_count": 0.2,
+                            "source_count": 1,
+                            "average_relevance": 0.55,
+                            "average_recency_weight": 0.92,
+                            "average_source_quality": 1.0,
+                            "provider_sentiment_coverage": 0.0,
+                            "dominant_weight_share": 1.0,
+                            "concentration_score": 0.0,
+                            "sentiment_dispersion": 0.0,
+                            "dominant_signal": "neutral",
+                            "llm_average_directness": 0.20,
+                            "llm_average_materiality": 0.18,
+                            "llm_average_confidence": 0.65,
+                            "llm_low_quality_share": 1.0,
+                        },
+                    ):
+                        payload = score_symbol_news(
+                            "MSFT",
+                            "Microsoft Corporation",
+                            llm_enabled=True,
+                            model_name="gpt-test",
+                        )
+
+        self.assertEqual("neutral_low_quality_company_news", payload["analysis_method"])
+        self.assertEqual(0.5, payload["news_score"])
+        self.assertEqual(["marketaux"], payload["feeds_used"])
+        self.assertIn("weakly direct mentions", payload["news_reasons"][0])
+
+    def test_fetch_company_raw_news_sources_fallback_only_skips_marketaux_when_gdelt_has_coverage(self) -> None:
+        gdelt_payload = [
+            {
+                "title": "Mastercard expands a bank partnership",
+                "url": "https://example.com/gdelt",
+                "domain": "ft.com",
+                "seendate": "20260329T083000Z",
+                "snippet": "Partnership supports payment network expansion.",
+            }
+        ]
+
+        with patch.dict(
+            "os.environ",
+            {
+                "MARKETAUX_API_TOKEN": "token",
+                "ALLOW_MARKETAUX_FALLBACK": "true",
+                "ALPHA_VANTAGE_API_KEY": "alpha",
+                "COMPANY_NEWS_PROVIDER_MODE": "fallback_only",
+                "MARKETAUX_REQUEST_INTERVAL_SECONDS": "0",
+            },
+            clear=False,
+        ):
+            with patch("backend.generate_news_scores.load_marketaux_fixture", return_value=None):
+                with patch("backend.generate_news_scores.fetch_marketaux_payload") as marketaux_mock:
+                    with patch("backend.generate_news_scores.fetch_gdelt_company_payload", return_value=gdelt_payload):
+                        with patch("backend.generate_news_scores.fetch_alpha_vantage_company_payload") as alpha_mock:
+                            raw_sources = generate_news_scores_module.fetch_company_raw_news_sources("MA", "Mastercard Incorporated")
+
+        marketaux_mock.assert_not_called()
+        alpha_mock.assert_not_called()
+        self.assertEqual(0, len(raw_sources["marketaux"]))
+        self.assertEqual(1, len(raw_sources["gdelt"]))
+        self.assertEqual(0, len(raw_sources["alpha_vantage"]))
 
     def test_fetch_symbol_news_builds_articles_from_fallback_feeds(self) -> None:
         raw_sources = {

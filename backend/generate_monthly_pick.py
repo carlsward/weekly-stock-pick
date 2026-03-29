@@ -21,6 +21,7 @@ try:
         NewsSnapshot,
         SectorSnapshot,
         MacroSnapshot,
+        blend_weight_maps,
         clamp,
         confidence_label,
         compute_confidence_score,
@@ -42,16 +43,23 @@ try:
         normalize_sector_supporting_articles,
         now_utc,
         parse_iso_datetime,
+        price_failure_no_pick_reason,
         relative_return,
         resolve_universe_csv_path,
         safe_divide,
         std_dev,
         write_json,
+        is_live_price_provider_failure,
         PRICE_SERIES_CACHE,
         PRICE_FRAME_CACHE,
         SECTOR_ETF_BY_SECTOR,
     )
     from backend.sector_utils import load_sector_map, sector_display_name
+    from backend.pipeline_runtime import (
+        build_data_quality_block,
+        extract_payload_degraded_reasons,
+        set_pipeline_scope,
+    )
 except ImportError:
     from generate_pick import (
         MARKET_BENCHMARK_SYMBOL,
@@ -63,6 +71,7 @@ except ImportError:
         NewsSnapshot,
         SectorSnapshot,
         MacroSnapshot,
+        blend_weight_maps,
         clamp,
         confidence_label,
         compute_confidence_score,
@@ -84,16 +93,23 @@ except ImportError:
         normalize_sector_supporting_articles,
         now_utc,
         parse_iso_datetime,
+        price_failure_no_pick_reason,
         relative_return,
         resolve_universe_csv_path,
         safe_divide,
         std_dev,
         write_json,
+        is_live_price_provider_failure,
         PRICE_SERIES_CACHE,
         PRICE_FRAME_CACHE,
         SECTOR_ETF_BY_SECTOR,
     )
     from sector_utils import load_sector_map, sector_display_name
+    from pipeline_runtime import (
+        build_data_quality_block,
+        extract_payload_degraded_reasons,
+        set_pipeline_scope,
+    )
 
 
 MONTHLY_MODEL_VERSION = "v3.3-monthly"
@@ -142,6 +158,7 @@ MONTHLY_BLOCK_WEIGHT_CAPS = {
 }
 MONTHLY_BLOCK_CALIBRATION_MIN_ROWS = 6
 MONTHLY_BLOCK_CALIBRATION_RIDGE_ALPHA = 0.45
+MONTHLY_BLOCK_CALIBRATION_FULL_TRUST_ROWS = 24
 
 MONTHLY_HORIZON_MULTIPLIERS = {
     "1-3d": 0.45,
@@ -830,7 +847,19 @@ def calibrate_monthly_block_weights(history_entries: List[Dict[str, Any]]) -> Tu
             MONTHLY_BLOCK_WEIGHT_CAPS["sector"],
         ),
     }
-    return weights, len(samples), "monthly_history_realized_returns"
+    blended_weights, learned_share = blend_weight_maps(
+        MONTHLY_BLOCK_BASE_PRIORS,
+        weights,
+        sample_count=len(samples),
+        min_rows=MONTHLY_BLOCK_CALIBRATION_MIN_ROWS,
+        full_trust_rows=MONTHLY_BLOCK_CALIBRATION_FULL_TRUST_ROWS,
+    )
+    source = (
+        "monthly_history_realized_returns"
+        if learned_share >= 0.999
+        else f"monthly_history_realized_returns_blended_{learned_share:.2f}"
+    )
+    return blended_weights, len(samples), source
 
 
 def build_monthly_calibration(
@@ -1143,9 +1172,13 @@ def get_monthly_candidates() -> Tuple[List[MonthlyCandidate], GenerationStats]:
         for entry in load_existing_monthly_history_entries(MONTHLY_HISTORY_PATH)
     ]
     calibration = build_monthly_calibration(universe, sector_map, history_entries)
+    degraded_reasons = []
+    degraded_reasons.extend(extract_payload_degraded_reasons(news_scores, "news_scores"))
+    degraded_reasons.extend(extract_payload_degraded_reasons(sector_scores, "sector_scores"))
 
     candidates: List[MonthlyCandidate] = []
     skipped_details: List[Dict[str, str]] = []
+    price_provider_failures = 0
     for symbol, company_name in universe:
         try:
             candidates.append(
@@ -1160,13 +1193,33 @@ def get_monthly_candidates() -> Tuple[List[MonthlyCandidate], GenerationStats]:
             )
         except Exception as exc:
             print(f"[WARN] Skipping monthly candidate {symbol}: {exc}")
-            skipped_details.append({"symbol": symbol, "reason": str(exc)})
+            reason = str(exc)
+            failure_category = "price_provider_failure" if is_live_price_provider_failure(reason) else "other"
+            if failure_category == "price_provider_failure":
+                price_provider_failures += 1
+            skipped_details.append({"symbol": symbol, "reason": reason, "category": failure_category})
+
+    if skipped_details:
+        degraded_reasons.append(
+            f"{len(skipped_details)} symbols were skipped during monthly candidate generation."
+        )
+    if price_provider_failures:
+        degraded_reasons.append(
+            f"Live price data failed for {price_provider_failures} symbols during monthly candidate generation."
+        )
+    if universe and not candidates and price_provider_failures >= len(universe):
+        degraded_reasons.append(
+            "All live price providers failed across the monthly universe, so the pipeline published no_pick instead of ranking from fabricated prices."
+        )
 
     return candidates, GenerationStats(
         universe_size=len(universe),
         evaluated_candidates=len(candidates),
         skipped_symbols=len(skipped_details),
         skipped_details=skipped_details[:10],
+        price_provider_failures=price_provider_failures,
+        degraded_reasons=degraded_reasons,
+        model_calibration=None,
     )
 
 
@@ -1177,7 +1230,10 @@ def qualifies(candidate: MonthlyCandidate) -> bool:
     )
 
 
-def select_monthly_candidate(candidates: List[MonthlyCandidate]) -> MonthlySelectionDecision:
+def select_monthly_candidate(
+    candidates: List[MonthlyCandidate],
+    stats: Optional[GenerationStats] = None,
+) -> MonthlySelectionDecision:
     ranked = sorted(candidates, key=lambda item: item.total_score, reverse=True)
     qualified = [candidate for candidate in ranked if qualifies(candidate)]
     if qualified:
@@ -1195,7 +1251,10 @@ def select_monthly_candidate(candidates: List[MonthlyCandidate]) -> MonthlySelec
         )
 
     best_candidate = ranked[0] if ranked else None
-    if best_candidate is None:
+    policy_reason = price_failure_no_pick_reason("monthly", stats)
+    if policy_reason:
+        reason = policy_reason
+    elif best_candidate is None:
         reason = "No monthly candidate had enough clean data to evaluate."
     elif best_candidate.total_score < MONTHLY_SELECTION_THRESHOLD:
         reason = (
@@ -1327,6 +1386,7 @@ def monthly_common_payload(
     stale_after: str,
     market_month: MarketMonth,
     stats: GenerationStats,
+    data_quality: Dict[str, Any],
 ) -> Dict[str, Any]:
     return {
         "schema_version": SCHEMA_VERSION,
@@ -1348,12 +1408,14 @@ def monthly_common_payload(
             "universe_size": stats.universe_size,
             "evaluated_candidates": stats.evaluated_candidates,
             "skipped_symbols": stats.skipped_symbols,
+            "price_provider_failures": stats.price_provider_failures,
             "skipped_details": stats.skipped_details,
         },
         "selection_thresholds": {
             "overall_score": MONTHLY_SELECTION_THRESHOLD,
             "minimum_confidence": MONTHLY_MIN_CONFIDENCE_THRESHOLD,
         },
+        "data_quality": data_quality,
     }
 
 
@@ -1366,6 +1428,7 @@ def build_monthly_pick_payload(
     stale_after: str,
     market_month: MarketMonth,
     stats: GenerationStats,
+    data_quality: Dict[str, Any],
 ) -> Dict[str, Any]:
     payload = monthly_common_payload(
         generated_at=generated_at,
@@ -1374,6 +1437,7 @@ def build_monthly_pick_payload(
         stale_after=stale_after,
         market_month=market_month,
         stats=stats,
+        data_quality=data_quality,
     )
     payload["selection"] = serialize_monthly_selection(selection)
     return payload
@@ -1551,6 +1615,7 @@ def update_monthly_history(
     selection: MonthlySelectionDecision,
     generated_at: str,
     data_as_of: str,
+    data_quality: Dict[str, Any],
     history_path: Path = MONTHLY_HISTORY_PATH,
 ) -> Dict[str, Any]:
     entries = [
@@ -1570,6 +1635,7 @@ def update_monthly_history(
         "model_version": MONTHLY_MODEL_VERSION,
         "generated_at": generated_at,
         "entries": filtered_entries,
+        "data_quality": data_quality,
     }
     with history_path.open("w", encoding="utf-8") as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=2)
@@ -1577,6 +1643,7 @@ def update_monthly_history(
 
 
 def main() -> None:
+    set_pipeline_scope("monthly_pick")
     print("[INFO] Generating monthly stock pick...")
     PRICE_SERIES_CACHE.clear()
     PRICE_FRAME_CACHE.clear()
@@ -1585,8 +1652,12 @@ def main() -> None:
 
     expected_next_refresh_at, stale_after = build_monthly_refresh_window(market_month)
     candidates, stats = get_monthly_candidates()
-    selection = select_monthly_candidate(candidates)
+    selection = select_monthly_candidate(candidates, stats)
     data_as_of = derive_monthly_data_as_of(candidates)
+    data_quality = build_data_quality_block(
+        scope="monthly_pick",
+        extra_reasons=stats.degraded_reasons,
+    )
 
     payload = build_monthly_pick_payload(
         selection=selection,
@@ -1596,6 +1667,7 @@ def main() -> None:
         stale_after=stale_after,
         market_month=market_month,
         stats=stats,
+        data_quality=data_quality,
     )
     write_json(MONTHLY_PICK_PATH, payload)
     update_monthly_history(
@@ -1603,6 +1675,7 @@ def main() -> None:
         selection=selection,
         generated_at=generated_at,
         data_as_of=data_as_of,
+        data_quality=data_quality,
     )
     print("[INFO] monthly_pick.json and monthly_history.json updated.")
 

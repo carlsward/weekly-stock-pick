@@ -71,6 +71,34 @@ def validate_common_payload(payload: Dict[str, Any], filename: str) -> None:
     risk_scores = thresholds.get("risk_scores")
     require(isinstance(risk_scores, dict), f"{filename} selection_thresholds.risk_scores must be an object")
     require(all(risk in risk_scores for risk in RISK_BUCKETS), f"{filename} must expose all risk score thresholds")
+    validate_data_quality_block(payload, filename)
+
+
+def validate_data_quality_block(payload: Dict[str, Any], context: str) -> None:
+    block = payload.get("data_quality")
+    require(isinstance(block, dict), f"{context} must include data_quality")
+    require(block.get("status") in ("healthy", "degraded"), f"{context}.data_quality.status is invalid")
+    degraded_reason = block.get("degraded_reason")
+    if degraded_reason is not None:
+        require(isinstance(degraded_reason, str), f"{context}.data_quality.degraded_reason must be a string when present")
+    if block.get("status") == "degraded":
+        require(isinstance(degraded_reason, str) and degraded_reason.strip(), f"{context}.data_quality.degraded_reason must explain degraded status")
+    reasons = block.get("reasons")
+    require(isinstance(reasons, list), f"{context}.data_quality.reasons must be a list")
+    provider_status = block.get("provider_status")
+    require(isinstance(provider_status, dict), f"{context}.data_quality.provider_status must be an object")
+    for provider, provider_block in provider_status.items():
+        provider_context = f"{context}.data_quality.provider_status.{provider}"
+        require(isinstance(provider_block, dict), f"{provider_context} must be an object")
+        require(isinstance(provider_block.get("status"), str), f"{provider_context}.status must be a string")
+        if provider_block.get("used") is not None:
+            require(isinstance(provider_block.get("used"), int), f"{provider_context}.used must be an integer")
+        if provider_block.get("limit") is not None:
+            require(isinstance(provider_block.get("limit"), int), f"{provider_context}.limit must be an integer")
+        if provider_block.get("remaining") is not None:
+            require(isinstance(provider_block.get("remaining"), int), f"{provider_context}.remaining must be an integer")
+        categories = provider_block.get("categories")
+        require(isinstance(categories, dict), f"{provider_context}.categories must be an object")
 
 
 def validate_candidate(candidate: Dict[str, Any], context: str) -> None:
@@ -203,6 +231,7 @@ def validate_history_payload(payload: Dict[str, Any]) -> None:
     require(payload.get("schema_version") == SCHEMA_VERSION, "history.json must use the current schema version")
     require(isinstance(payload.get("model_version"), str), "history.json is missing model_version")
     parse_iso_datetime(payload["generated_at"])
+    validate_data_quality_block(payload, "history.json")
 
     entries = payload.get("entries")
     require(isinstance(entries, list), "history.json entries must be a list")
@@ -233,6 +262,7 @@ def validate_history_payload(payload: Dict[str, Any]) -> None:
 def validate_sector_scores_payload(payload: Dict[str, Any], universe_path: Path) -> None:
     parse_iso_datetime(payload["generated_at"])
     parse_iso_date(payload["last_updated"])
+    validate_data_quality_block(payload, "sector_scores.json")
     require(isinstance(payload.get("lookback_days"), int), "sector_scores.json must include lookback_days")
     require(isinstance(payload.get("article_count"), int), "sector_scores.json must include article_count")
     require(isinstance(payload.get("source_count"), int), "sector_scores.json must include source_count")
@@ -292,6 +322,7 @@ def validate_sector_scores_payload(payload: Dict[str, Any], universe_path: Path)
 def validate_news_scores_payload(payload: Dict[str, Any], universe_path: Path) -> None:
     expected_symbols = load_symbol_metadata(universe_path)
     require(isinstance(payload, dict) and payload, "news_scores.json must contain symbol entries")
+    validate_data_quality_block(payload, "news_scores.json")
     for symbol in expected_symbols:
         require(symbol in payload, f"news_scores.json is missing symbol {symbol}")
         symbol_payload = payload[symbol]
@@ -324,6 +355,7 @@ def validate_thesis_monitor_payload(payload: Dict[str, Any]) -> None:
     require(payload.get("schema_version") == SCHEMA_VERSION, "thesis_monitor.json must use the current schema version")
     require(isinstance(payload.get("model_version"), str), "thesis_monitor.json is missing model_version")
     parse_iso_datetime(payload["generated_at"])
+    validate_data_quality_block(payload, "thesis_monitor.json")
     parse_iso_date(payload["data_as_of"])
     parse_iso_datetime(payload["expected_next_refresh_at"])
     parse_iso_datetime(payload["stale_after"])
@@ -352,6 +384,7 @@ def validate_track_record_payload(payload: Dict[str, Any]) -> None:
     require(payload.get("schema_version") == SCHEMA_VERSION, "track_record.json must use the current schema version")
     require(isinstance(payload.get("model_version"), str), "track_record.json is missing model_version")
     parse_iso_datetime(payload["generated_at"])
+    validate_data_quality_block(payload, "track_record.json")
     parse_iso_date(payload["data_as_of"])
     parse_iso_datetime(payload["expected_next_refresh_at"])
     parse_iso_datetime(payload["stale_after"])
@@ -460,6 +493,7 @@ def validate_monthly_pick_payload(payload: Dict[str, Any]) -> None:
     parse_iso_date(payload["data_as_of"])
     parse_iso_datetime(payload["expected_next_refresh_at"])
     parse_iso_datetime(payload["stale_after"])
+    validate_data_quality_block(payload, "monthly_pick.json")
 
     period_context = payload.get("period_context")
     require(isinstance(period_context, dict), "monthly_pick.json is missing period_context")
@@ -497,6 +531,7 @@ def validate_monthly_history_payload(payload: Dict[str, Any]) -> None:
     require(payload.get("schema_version") == SCHEMA_VERSION, "monthly_history.json must use the current schema version")
     require(isinstance(payload.get("model_version"), str), "monthly_history.json is missing model_version")
     parse_iso_datetime(payload["generated_at"])
+    validate_data_quality_block(payload, "monthly_history.json")
     entries = payload.get("entries")
     require(isinstance(entries, list), "monthly_history.json entries must be a list")
     seen_month_ids = set()

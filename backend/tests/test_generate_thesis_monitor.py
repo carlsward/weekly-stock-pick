@@ -186,6 +186,50 @@ class GenerateThesisMonitorTests(unittest.TestCase):
         self.assertEqual("MSFT", payload["active_pick"]["symbol"])
         self.assertIn("thesis_monitor", payload["active_pick"])
 
+    @patch("backend.generate_thesis_monitor.write_json")
+    @patch(
+        "backend.generate_thesis_monitor.build_live_candidate",
+        side_effect=RuntimeError("Unable to fetch usable price frame for MSFT after retries"),
+    )
+    @patch("backend.generate_thesis_monitor.load_dashboard_source")
+    def test_main_carries_forward_source_pick_when_live_refresh_fails(
+        self,
+        load_dashboard_source_mock,
+        _build_live_candidate_mock,
+        write_json_mock,
+    ) -> None:
+        load_dashboard_source_mock.return_value = {
+            "generated_at": "2026-03-16T12:00:00Z",
+            "data_as_of": "2026-03-14",
+            "market_context": {
+                "timezone": "America/New_York",
+                "week_id": "2026-W12",
+                "week_label": "Mar 16 - 20, 2026",
+                "week_start": "2026-03-16",
+                "week_end": "2026-03-20",
+            },
+            "overall_selection": {
+                "status": "picked",
+                "status_reason": "MSFT cleared the thresholds.",
+                "threshold_score": 0.10,
+                "threshold_confidence": MIN_CONFIDENCE_THRESHOLD,
+                "pick": {
+                    "symbol": "MSFT",
+                    "company_name": "Microsoft Corporation",
+                    "sector": "technology",
+                    "thesis_monitor": {"status": "healthy"},
+                },
+            },
+        }
+
+        main()
+
+        payload = write_json_mock.call_args.args[1]
+        self.assertEqual("picked", payload["selection"]["status"])
+        self.assertEqual("MSFT", payload["active_pick"]["symbol"])
+        self.assertIn("carried forward", payload["selection"]["status_reason"].lower())
+        self.assertEqual("degraded", payload["data_quality"]["status"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -2,7 +2,8 @@ import json
 import math
 import os
 import time as time_module
-from dataclasses import dataclass
+import hashlib
+from dataclasses import dataclass, field
 from datetime import date, datetime, time, timedelta, timezone
 from io import StringIO
 from pathlib import Path
@@ -17,8 +18,26 @@ import numpy as np
 
 try:
     from backend.sector_utils import load_sector_map, sector_display_name
+    from backend.pipeline_runtime import (
+        attach_data_quality,
+        build_data_quality_block,
+        consume_provider_budget,
+        extract_payload_degraded_reasons,
+        record_runtime_event,
+        resolve_pipeline_cache_root,
+        set_pipeline_scope,
+    )
 except ImportError:
     from sector_utils import load_sector_map, sector_display_name
+    from pipeline_runtime import (
+        attach_data_quality,
+        build_data_quality_block,
+        consume_provider_budget,
+        extract_payload_degraded_reasons,
+        record_runtime_event,
+        resolve_pipeline_cache_root,
+        set_pipeline_scope,
+    )
 
 MODEL_VERSION = "v3.3"
 SCHEMA_VERSION = 2
@@ -74,13 +93,23 @@ TWELVEDATA_TIME_SERIES_ENDPOINT = "https://api.twelvedata.com/time_series"
 TWELVEDATA_API_KEY_ENVS = ("TWELVEDATA_API_KEY", "TWELVE_DATA_API_KEY")
 TWELVEDATA_REQUEST_INTERVAL_SECONDS_ENV = "TWELVEDATA_REQUEST_INTERVAL_SECONDS"
 TWELVEDATA_DEFAULT_REQUEST_INTERVAL_SECONDS = 8.0
+TWELVEDATA_DAILY_CREDIT_LIMIT = 800
 ALPHA_VANTAGE_PRICE_ENDPOINT = "https://www.alphavantage.co/query"
 ALPHA_VANTAGE_API_KEY_ENVS = ("ALPHA_VANTAGE_API_KEY", "ALPHAVANTAGE_API_KEY")
 ALPHA_VANTAGE_REQUEST_INTERVAL_SECONDS_ENV = "ALPHA_VANTAGE_REQUEST_INTERVAL_SECONDS"
-ALPHA_VANTAGE_DEFAULT_REQUEST_INTERVAL_SECONDS = 0.8
+ALPHA_VANTAGE_MAX_REQUESTS_ENV = "ALPHA_VANTAGE_MAX_PRICE_REQUESTS"
+ALPHA_VANTAGE_DEFAULT_REQUEST_INTERVAL_SECONDS = 12.0
+ALPHA_VANTAGE_DEFAULT_MAX_REQUESTS = 5
+ALPHA_VANTAGE_DAILY_REQUEST_LIMIT = 25
 ENABLE_HISTORY_REALIZED_ENRICHMENT_ENV = "ENABLE_HISTORY_REALIZED_ENRICHMENT"
 ALLOW_PRICE_FALLBACK_ENV = "ALLOW_PRICE_FALLBACK"
 FORCE_PRICE_FALLBACK_ENV = "FORCE_PRICE_FALLBACK"
+ALLOW_STOOQ_FALLBACK_ENV = "ALLOW_STOOQ_FALLBACK"
+LIVE_PRICE_FAILURE_MARKERS = (
+    "unable to fetch usable price frame",
+    "price budget exhausted",
+    "stooq returned no usable price data",
+)
 CALIBRATION_LOOKBACK_DAYS = 320
 CALIBRATION_STEP_DAYS = 5
 CALIBRATION_MIN_ROWS = 180
@@ -88,6 +117,7 @@ CALIBRATION_RIDGE_ALPHA = 0.75
 CALIBRATION_PREDICTION_PCTL = 0.90
 TECHNICAL_SCORE_TARGET_SCALE = 0.30
 BLOCK_CALIBRATION_MIN_ROWS = 12
+BLOCK_CALIBRATION_FULL_TRUST_ROWS = 48
 BLOCK_BASE_PRIORS = {
     "news": 0.18,
     "macro": 0.10,
@@ -151,6 +181,8 @@ THEME_KEYWORDS = {
     "shipping": ("shipping", "freight", "logistics", "container"),
     "earnings": ("guidance", "earnings", "revenue", "margin", "sales"),
 }
+PRICE_FRAME_CACHE_DIRNAME = "price_frames"
+CALIBRATION_CACHE_FILENAME = "model_calibration.json"
 
 
 @dataclass(frozen=True)
@@ -271,6 +303,9 @@ class GenerationStats:
     evaluated_candidates: int
     skipped_symbols: int
     skipped_details: List[Dict[str, str]]
+    price_provider_failures: int = 0
+    degraded_reasons: List[str] = field(default_factory=list)
+    model_calibration: Optional[Dict[str, Any]] = None
 
 
 @dataclass(frozen=True)
@@ -284,10 +319,26 @@ class ModelCalibration:
     source: str
 
 
+def resolve_price_frame_cache_dir() -> Path:
+    path = resolve_pipeline_cache_root() / PRICE_FRAME_CACHE_DIRNAME
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def resolve_price_frame_cache_path(symbol: str) -> Path:
+    return resolve_price_frame_cache_dir() / f"{symbol.strip().upper()}.csv"
+
+
+def resolve_calibration_cache_path() -> Path:
+    return resolve_pipeline_cache_root() / CALIBRATION_CACHE_FILENAME
+
+
 PRICE_SERIES_CACHE: Dict[Tuple[str, int], PriceSeries] = {}
 PRICE_FRAME_CACHE: Dict[str, pd.DataFrame] = {}
 _twelvedata_last_request_monotonic: Optional[float] = None
 _alpha_vantage_last_request_monotonic: Optional[float] = None
+_alpha_vantage_request_count = 0
+_alpha_vantage_budget_exhausted = False
 
 
 def clamp(value: float, minimum: float, maximum: float) -> float:
@@ -325,6 +376,130 @@ def allow_price_fallback() -> bool:
 def force_price_fallback() -> bool:
     raw = os.getenv(FORCE_PRICE_FALLBACK_ENV, "").strip().lower()
     return raw in {"1", "true", "yes", "on"}
+
+
+def allow_stooq_fallback() -> bool:
+    raw = os.getenv(ALLOW_STOOQ_FALLBACK_ENV, "").strip().lower()
+    if not raw:
+        return True
+    return raw in {"1", "true", "yes", "on"}
+
+
+def load_disk_price_frame(symbol: str) -> Optional[pd.DataFrame]:
+    path = resolve_price_frame_cache_path(symbol)
+    if not path.exists():
+        return None
+    try:
+        frame = pd.read_csv(path)
+    except Exception:
+        return None
+    if frame.empty:
+        return None
+    try:
+        return build_clean_price_frame(frame, symbol)
+    except Exception:
+        return None
+
+
+def write_disk_price_frame(symbol: str, frame: pd.DataFrame) -> None:
+    path = resolve_price_frame_cache_path(symbol)
+    frame_to_store = frame.copy()
+    if "Date" in frame_to_store.columns:
+        frame_to_store["Date"] = pd.to_datetime(frame_to_store["Date"], errors="coerce").dt.strftime("%Y-%m-%d")
+    frame_to_store.to_csv(path, index=False)
+
+
+def serialize_model_calibration(calibration: ModelCalibration) -> Dict[str, Any]:
+    return {
+        "technical_weights": dict(calibration.technical_weights),
+        "block_weights": dict(calibration.block_weights),
+        "technical_scale": calibration.technical_scale,
+        "training_row_count": calibration.training_row_count,
+        "training_ic": calibration.training_ic,
+        "block_row_count": calibration.block_row_count,
+        "source": calibration.source,
+    }
+
+
+def deserialize_model_calibration(payload: Dict[str, Any]) -> Optional[ModelCalibration]:
+    if not isinstance(payload, dict):
+        return None
+    technical_weights = payload.get("technical_weights")
+    block_weights = payload.get("block_weights")
+    if not isinstance(technical_weights, dict) or not isinstance(block_weights, dict):
+        return None
+    try:
+        return ModelCalibration(
+            technical_weights={str(key): float(value) for key, value in technical_weights.items()},
+            block_weights={str(key): float(value) for key, value in block_weights.items()},
+            technical_scale=float(payload.get("technical_scale", 0.0)),
+            training_row_count=int(payload.get("training_row_count", 0)),
+            training_ic=float(payload.get("training_ic", 0.0)),
+            block_row_count=int(payload.get("block_row_count", 0)),
+            source=str(payload.get("source", "")).strip() or "cached",
+        )
+    except (TypeError, ValueError):
+        return None
+
+
+def calibration_cache_key(
+    universe: List[Tuple[str, str]],
+    sector_map: Dict[str, str],
+    history_entries: List[Dict[str, Any]],
+) -> str:
+    payload = {
+        "model_version": MODEL_VERSION,
+        "universe": universe,
+        "sector_map": {symbol: sector_map.get(symbol) for symbol, _ in universe},
+        "history_entries": [
+            {
+                "week_id": entry.get("week_id"),
+                "symbol": entry.get("symbol"),
+                "sector": entry.get("sector"),
+                "realized_5d_return": entry.get("realized_5d_return"),
+                "realized_5d_excess_return": entry.get("realized_5d_excess_return"),
+            }
+            for entry in history_entries
+        ],
+    }
+    encoded = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def load_cached_model_calibration(
+    universe: List[Tuple[str, str]],
+    sector_map: Dict[str, str],
+    history_entries: List[Dict[str, Any]],
+) -> Optional[ModelCalibration]:
+    cache_path = resolve_calibration_cache_path()
+    try:
+        with cache_path.open("r", encoding="utf-8") as handle:
+            payload = json.load(handle)
+    except FileNotFoundError:
+        return None
+    except (json.JSONDecodeError, OSError):
+        return None
+
+    if not isinstance(payload, dict):
+        return None
+    if payload.get("cache_key") != calibration_cache_key(universe, sector_map, history_entries):
+        return None
+    return deserialize_model_calibration(payload.get("calibration"))
+
+
+def write_cached_model_calibration(
+    universe: List[Tuple[str, str]],
+    sector_map: Dict[str, str],
+    history_entries: List[Dict[str, Any]],
+    calibration: ModelCalibration,
+) -> None:
+    cache_path = resolve_calibration_cache_path()
+    payload = {
+        "cache_key": calibration_cache_key(universe, sector_map, history_entries),
+        "calibration": serialize_model_calibration(calibration),
+    }
+    with cache_path.open("w", encoding="utf-8") as handle:
+        json.dump(payload, handle, ensure_ascii=False, indent=2)
 
 
 def alpha_vantage_api_key(required: bool = False) -> str:
@@ -391,7 +566,19 @@ def configured_alpha_vantage_request_interval_seconds() -> float:
         parsed = float(raw_value)
     except ValueError:
         parsed = ALPHA_VANTAGE_DEFAULT_REQUEST_INTERVAL_SECONDS
-    return max(0.0, min(parsed, 10.0))
+    return max(0.0, min(parsed, 60.0))
+
+
+def configured_alpha_vantage_max_requests() -> int:
+    raw_value = os.getenv(
+        ALPHA_VANTAGE_MAX_REQUESTS_ENV,
+        str(ALPHA_VANTAGE_DEFAULT_MAX_REQUESTS),
+    ).strip()
+    try:
+        parsed = int(raw_value)
+    except ValueError:
+        parsed = ALPHA_VANTAGE_DEFAULT_MAX_REQUESTS
+    return max(0, min(parsed, 25))
 
 
 def apply_alpha_vantage_request_spacing() -> None:
@@ -411,6 +598,42 @@ def apply_alpha_vantage_request_spacing() -> None:
             now_monotonic = time_module.monotonic()
 
     _alpha_vantage_last_request_monotonic = now_monotonic
+
+
+def alpha_vantage_price_budget_exhausted() -> bool:
+    return _alpha_vantage_budget_exhausted
+
+
+def mark_alpha_vantage_price_budget_exhausted() -> None:
+    global _alpha_vantage_budget_exhausted
+    _alpha_vantage_budget_exhausted = True
+
+
+def try_consume_alpha_vantage_price_request() -> bool:
+    global _alpha_vantage_request_count
+    budget = configured_alpha_vantage_max_requests()
+    if budget <= 0:
+        mark_alpha_vantage_price_budget_exhausted()
+        return False
+    if _alpha_vantage_request_count >= budget:
+        mark_alpha_vantage_price_budget_exhausted()
+        return False
+    _alpha_vantage_request_count += 1
+    return True
+
+
+def is_alpha_vantage_limit_message(message: str) -> bool:
+    normalized = message.strip().lower()
+    return any(
+        fragment in normalized
+        for fragment in (
+            "call frequency",
+            "rate limit",
+            "too many requests",
+            "premium endpoint",
+            "higher api call volume",
+        )
+    )
 
 
 def iso_utc(dt: datetime) -> str:
@@ -658,6 +881,14 @@ def fetch_stooq_price_frame(symbol: str) -> pd.DataFrame:
 
 
 def fetch_twelvedata_price_frame(symbol: str) -> pd.DataFrame:
+    if not consume_provider_budget(
+        "twelvedata",
+        units=1,
+        category="price",
+        daily_limit=TWELVEDATA_DAILY_CREDIT_LIMIT,
+    ):
+        raise RuntimeError("Twelve Data budget exhausted for this pipeline run")
+
     params = {
         "symbol": symbol.strip().upper(),
         "interval": "1day",
@@ -713,6 +944,9 @@ def fetch_twelvedata_price_frame(symbol: str) -> pd.DataFrame:
 
 
 def fetch_alpha_vantage_price_frame(symbol: str) -> pd.DataFrame:
+    if alpha_vantage_price_budget_exhausted():
+        raise RuntimeError("Alpha Vantage price budget exhausted for this run")
+
     params = {
         "function": "TIME_SERIES_DAILY_ADJUSTED",
         "symbol": symbol.strip().upper(),
@@ -728,6 +962,16 @@ def fetch_alpha_vantage_price_frame(symbol: str) -> pd.DataFrame:
         },
     )
 
+    if not try_consume_alpha_vantage_price_request():
+        raise RuntimeError("Alpha Vantage price budget exhausted for this run")
+    if not consume_provider_budget(
+        "alpha_vantage",
+        units=1,
+        category="price",
+        daily_limit=ALPHA_VANTAGE_DAILY_REQUEST_LIMIT,
+    ):
+        mark_alpha_vantage_price_budget_exhausted()
+        raise RuntimeError("Alpha Vantage daily workflow budget exhausted")
     apply_alpha_vantage_request_spacing()
     with urlopen(request, timeout=PRICE_REQUEST_TIMEOUT_SECONDS) as response:
         payload = json.loads(response.read().decode("utf-8"))
@@ -760,6 +1004,8 @@ def fetch_alpha_vantage_price_frame(symbol: str) -> pd.DataFrame:
         or str(payload.get("Information", "")).strip()
         or str(payload.get("Error Message", "")).strip()
     )
+    if is_alpha_vantage_limit_message(message):
+        mark_alpha_vantage_price_budget_exhausted()
     raise RuntimeError(message or f"Alpha Vantage returned no daily series for {symbol}")
 
 
@@ -812,6 +1058,10 @@ def build_synthetic_price_frame(symbol: str, periods: int = 260) -> pd.DataFrame
 def fetch_price_frame(symbol: str) -> pd.DataFrame:
     if force_price_fallback():
         print(f"[WARN] Using forced synthetic price fallback for {symbol}.")
+        record_runtime_event(
+            f"Forced synthetic price fallback was used for {symbol}.",
+            provider="synthetic_price",
+        )
         return build_synthetic_price_frame(symbol)
 
     providers = []
@@ -819,7 +1069,8 @@ def fetch_price_frame(symbol: str) -> pd.DataFrame:
         providers.append(("twelvedata", fetch_twelvedata_price_frame))
     if alpha_vantage_api_key(required=False):
         providers.append(("alpha_vantage", fetch_alpha_vantage_price_frame))
-    providers.append(("stooq", fetch_stooq_price_frame))
+    if allow_stooq_fallback():
+        providers.append(("stooq", fetch_stooq_price_frame))
     failures: List[str] = []
 
     for provider_name, provider_fetcher in providers:
@@ -827,6 +1078,16 @@ def fetch_price_frame(symbol: str) -> pd.DataFrame:
         for attempt in range(1, PRICE_FETCH_ATTEMPTS + 1):
             try:
                 frame = provider_fetcher(symbol)
+                if provider_name == "alpha_vantage":
+                    record_runtime_event(
+                        f"Price data required Alpha Vantage fallback during this run.",
+                        provider="alpha_vantage",
+                    )
+                elif provider_name == "stooq":
+                    record_runtime_event(
+                        "Price data required unadjusted Stooq fallback during this run.",
+                        provider="stooq",
+                    )
                 return build_clean_price_frame(frame, symbol)
             except Exception as exc:
                 provider_error = exc
@@ -838,6 +1099,10 @@ def fetch_price_frame(symbol: str) -> pd.DataFrame:
 
     if allow_price_fallback():
         print(f"[WARN] Using synthetic price fallback for {symbol} because live price providers failed.")
+        record_runtime_event(
+            f"Synthetic price fallback was used because live providers failed for {symbol}.",
+            provider="synthetic_price",
+        )
         return build_synthetic_price_frame(symbol)
 
     raise RuntimeError(
@@ -846,13 +1111,26 @@ def fetch_price_frame(symbol: str) -> pd.DataFrame:
     )
 
 
+def is_live_price_provider_failure(reason: str) -> bool:
+    normalized = str(reason).strip().lower()
+    if not normalized:
+        return False
+    return any(marker in normalized for marker in LIVE_PRICE_FAILURE_MARKERS)
+
+
 def fetch_price_frame_cached(symbol: str) -> pd.DataFrame:
     cache_key = symbol.upper()
     cached = PRICE_FRAME_CACHE.get(cache_key)
     if cached is not None:
         return cached.copy()
 
+    disk_cached = load_disk_price_frame(symbol)
+    if disk_cached is not None:
+        PRICE_FRAME_CACHE[cache_key] = disk_cached
+        return disk_cached.copy()
+
     fetched = fetch_price_frame(symbol)
+    write_disk_price_frame(symbol, fetched)
     PRICE_FRAME_CACHE[cache_key] = fetched
     return fetched.copy()
 
@@ -903,6 +1181,13 @@ def load_sector_scores(path: Path = SECTOR_SCORES_PATH) -> Dict[str, Any]:
         print(f"[WARN] Could not find {path}; sector overlay will stay neutral.")
 
     return {}
+
+
+def upstream_degraded_reasons(*payloads: Tuple[str, Dict[str, Any]]) -> List[str]:
+    reasons: List[str] = []
+    for label, payload in payloads:
+        reasons.extend(extract_payload_degraded_reasons(payload, label))
+    return reasons
 
 
 def normalize_news_evidence(news_info: dict) -> List[Dict[str, Any]]:
@@ -1466,6 +1751,41 @@ def normalize_weight_map(weight_map: Dict[str, float]) -> Dict[str, float]:
     return {name: value / total for name, value in ordered.items()}
 
 
+def blend_weight_maps(
+    base_weights: Dict[str, float],
+    learned_weights: Dict[str, float],
+    *,
+    sample_count: int,
+    min_rows: int,
+    full_trust_rows: int,
+) -> Tuple[Dict[str, float], float]:
+    if sample_count <= 0:
+        return dict(base_weights), 0.0
+
+    if full_trust_rows <= min_rows:
+        learned_share = 1.0 if sample_count >= min_rows else 0.0
+    else:
+        learned_share = clamp(
+            (sample_count - min_rows + 1) / (full_trust_rows - min_rows + 1),
+            0.0,
+            1.0,
+        )
+
+    blended = {
+        key: float(base_weights.get(key, 0.0)) * (1.0 - learned_share)
+        + float(learned_weights.get(key, 0.0)) * learned_share
+        for key in base_weights
+    }
+    target_total = sum(float(value) for value in base_weights.values())
+    current_total = sum(blended.values())
+    if target_total > 0 and current_total > 1e-9:
+        blended = {
+            key: target_total * value / current_total
+            for key, value in blended.items()
+        }
+    return blended, learned_share
+
+
 def default_model_calibration() -> ModelCalibration:
     return ModelCalibration(
         technical_weights=normalize_weight_map(DEFAULT_TECHNICAL_FEATURE_WEIGHTS),
@@ -1620,7 +1940,19 @@ def calibrate_block_weights(history_entries: List[Dict[str, Any]]) -> Tuple[Dict
         "macro": clamp(budget * float(beta[1] / beta.sum()), BLOCK_WEIGHT_FLOORS["macro"], BLOCK_WEIGHT_CAPS["macro"]),
         "sector": clamp(budget * float(beta[2] / beta.sum()), BLOCK_WEIGHT_FLOORS["sector"], BLOCK_WEIGHT_CAPS["sector"]),
     }
-    return weights, len(samples), "history_realized_returns"
+    blended_weights, learned_share = blend_weight_maps(
+        BLOCK_BASE_PRIORS,
+        weights,
+        sample_count=len(samples),
+        min_rows=BLOCK_CALIBRATION_MIN_ROWS,
+        full_trust_rows=BLOCK_CALIBRATION_FULL_TRUST_ROWS,
+    )
+    source = (
+        "history_realized_returns"
+        if learned_share >= 0.999
+        else f"history_realized_returns_blended_{learned_share:.2f}"
+    )
+    return blended_weights, len(samples), source
 
 
 def build_model_calibration(
@@ -1628,6 +1960,10 @@ def build_model_calibration(
     sector_map: Dict[str, str],
     history_entries: List[Dict[str, Any]],
 ) -> ModelCalibration:
+    cached = load_cached_model_calibration(universe, sector_map, history_entries)
+    if cached is not None:
+        return cached
+
     technical_calibration = default_model_calibration()
     source = technical_calibration.source
     try:
@@ -1665,9 +2001,10 @@ def build_model_calibration(
 
     block_weights, block_row_count, block_source = calibrate_block_weights(history_entries)
     if technical_calibration.source == "default_priors" and block_source == "block_priors":
+        write_cached_model_calibration(universe, sector_map, history_entries, technical_calibration)
         return technical_calibration
 
-    return ModelCalibration(
+    calibration = ModelCalibration(
         technical_weights=technical_calibration.technical_weights,
         block_weights=block_weights,
         technical_scale=technical_calibration.technical_scale,
@@ -1676,6 +2013,8 @@ def build_model_calibration(
         block_row_count=block_row_count,
         source=f"{source}+{block_source}",
     )
+    write_cached_model_calibration(universe, sector_map, history_entries, calibration)
+    return calibration
 
 
 def compute_technical_contributions(
@@ -2339,9 +2678,14 @@ def get_candidates() -> Tuple[List[StockCandidate], GenerationStats]:
     sector_scores = load_sector_scores()
     history_entries = [normalize_history_entry(entry) for entry in load_existing_history_entries(HISTORY_PATH)]
     calibration = build_model_calibration(universe, sector_map, history_entries)
+    degraded_reasons = upstream_degraded_reasons(
+        ("news_scores", news_scores),
+        ("sector_scores", sector_scores),
+    )
 
     candidates: List[StockCandidate] = []
     skipped_details: List[Dict[str, str]] = []
+    price_provider_failures = 0
     for symbol, company_name in universe:
         try:
             candidate = build_candidate(
@@ -2355,13 +2699,33 @@ def get_candidates() -> Tuple[List[StockCandidate], GenerationStats]:
             candidates.append(candidate)
         except Exception as exc:
             print(f"[WARN] Skipping {symbol}: {exc}")
-            skipped_details.append({"symbol": symbol, "reason": str(exc)})
+            reason = str(exc)
+            failure_category = "price_provider_failure" if is_live_price_provider_failure(reason) else "other"
+            if failure_category == "price_provider_failure":
+                price_provider_failures += 1
+            skipped_details.append({"symbol": symbol, "reason": reason, "category": failure_category})
+
+    if skipped_details:
+        degraded_reasons.append(
+            f"{len(skipped_details)} symbols were skipped during weekly candidate generation."
+        )
+    if price_provider_failures:
+        degraded_reasons.append(
+            f"Live price data failed for {price_provider_failures} symbols during weekly candidate generation."
+        )
+    if universe and not candidates and price_provider_failures >= len(universe):
+        degraded_reasons.append(
+            "All live price providers failed across the weekly universe, so the pipeline published no_pick instead of ranking from fabricated prices."
+        )
 
     stats = GenerationStats(
         universe_size=len(universe),
         evaluated_candidates=len(candidates),
         skipped_symbols=len(skipped_details),
         skipped_details=skipped_details[:10],
+        price_provider_failures=price_provider_failures,
+        degraded_reasons=degraded_reasons,
+        model_calibration=serialize_model_calibration(calibration),
     )
     return candidates, stats
 
@@ -2373,11 +2737,32 @@ def qualifies(candidate: StockCandidate, threshold_score: float) -> bool:
     )
 
 
+def price_failure_no_pick_reason(
+    label: str,
+    stats: Optional[GenerationStats],
+) -> Optional[str]:
+    if stats is None or stats.evaluated_candidates > 0 or stats.universe_size <= 0:
+        return None
+    if stats.price_provider_failures < stats.universe_size:
+        return None
+
+    candidate_label = "weekly candidate" if label == "overall" else f"{label} candidate"
+    return (
+        f"No {candidate_label} was published because all live price providers failed across the evaluation universe. "
+        "The pipeline will not rank stocks from fabricated prices."
+    )
+
+
 def build_no_pick_reason(
     label: str,
     best_candidate: Optional[StockCandidate],
     threshold_score: float,
+    stats: Optional[GenerationStats] = None,
 ) -> str:
+    policy_reason = price_failure_no_pick_reason(label, stats)
+    if policy_reason:
+        return policy_reason
+
     if best_candidate is None:
         return f"No {label} candidate had enough clean data to evaluate this week."
 
@@ -2394,7 +2779,10 @@ def build_no_pick_reason(
     )
 
 
-def select_best_candidate(candidates: List[StockCandidate]) -> SelectionDecision:
+def select_best_candidate(
+    candidates: List[StockCandidate],
+    stats: Optional[GenerationStats] = None,
+) -> SelectionDecision:
     ranked = sorted(candidates, key=lambda item: item.total_score, reverse=True)
     qualified = [item for item in ranked if qualifies(item, OVERALL_SELECTION_THRESHOLD)]
     if qualified:
@@ -2414,7 +2802,7 @@ def select_best_candidate(candidates: List[StockCandidate]) -> SelectionDecision
     best_candidate = ranked[0] if ranked else None
     return SelectionDecision(
         status="no_pick",
-        status_reason=build_no_pick_reason("overall", best_candidate, OVERALL_SELECTION_THRESHOLD),
+        status_reason=build_no_pick_reason("overall", best_candidate, OVERALL_SELECTION_THRESHOLD, stats),
         threshold_score=OVERALL_SELECTION_THRESHOLD,
         threshold_confidence=MIN_CONFIDENCE_THRESHOLD,
         pick=None,
@@ -2422,7 +2810,10 @@ def select_best_candidate(candidates: List[StockCandidate]) -> SelectionDecision
     )
 
 
-def select_best_per_risk(candidates: List[StockCandidate]) -> Dict[str, SelectionDecision]:
+def select_best_per_risk(
+    candidates: List[StockCandidate],
+    stats: Optional[GenerationStats] = None,
+) -> Dict[str, SelectionDecision]:
     decisions: Dict[str, SelectionDecision] = {}
     for risk_level, threshold in RISK_SELECTION_THRESHOLDS.items():
         bucket = [candidate for candidate in candidates if candidate.risk_level == risk_level]
@@ -2447,7 +2838,7 @@ def select_best_per_risk(candidates: List[StockCandidate]) -> Dict[str, Selectio
         best_candidate = bucket[0] if bucket else None
         decisions[risk_level] = SelectionDecision(
             status="no_pick",
-            status_reason=build_no_pick_reason(f"{risk_level}-risk", best_candidate, threshold),
+            status_reason=build_no_pick_reason(f"{risk_level}-risk", best_candidate, threshold, stats),
             threshold_score=threshold,
             threshold_confidence=MIN_CONFIDENCE_THRESHOLD,
             pick=None,
@@ -2592,6 +2983,7 @@ def common_payload(
     stale_after: str,
     market_week: MarketWeek,
     stats: GenerationStats,
+    data_quality: Dict[str, Any],
 ) -> Dict[str, Any]:
     return {
         "schema_version": SCHEMA_VERSION,
@@ -2611,13 +3003,16 @@ def common_payload(
             "universe_size": stats.universe_size,
             "evaluated_candidates": stats.evaluated_candidates,
             "skipped_symbols": stats.skipped_symbols,
+            "price_provider_failures": stats.price_provider_failures,
             "skipped_details": stats.skipped_details,
+            "model_calibration": stats.model_calibration,
         },
         "selection_thresholds": {
             "overall_score": OVERALL_SELECTION_THRESHOLD,
             "risk_scores": RISK_SELECTION_THRESHOLDS,
             "minimum_confidence": MIN_CONFIDENCE_THRESHOLD,
         },
+        "data_quality": data_quality,
     }
 
 
@@ -2629,6 +3024,7 @@ def build_current_pick_payload(
     stale_after: str,
     market_week: MarketWeek,
     stats: GenerationStats,
+    data_quality: Dict[str, Any],
 ) -> Dict[str, Any]:
     payload = common_payload(
         generated_at=generated_at,
@@ -2637,6 +3033,7 @@ def build_current_pick_payload(
         stale_after=stale_after,
         market_week=market_week,
         stats=stats,
+        data_quality=data_quality,
     )
     payload["selection"] = serialize_selection(selection)
     return payload
@@ -2651,6 +3048,7 @@ def build_risk_picks_payload(
     stale_after: str,
     market_week: MarketWeek,
     stats: GenerationStats,
+    data_quality: Dict[str, Any],
 ) -> Dict[str, Any]:
     payload = common_payload(
         generated_at=generated_at,
@@ -2659,6 +3057,7 @@ def build_risk_picks_payload(
         stale_after=stale_after,
         market_week=market_week,
         stats=stats,
+        data_quality=data_quality,
     )
     payload["overall_selection"] = serialize_selection(overall_selection)
     payload["risk_selections"] = {
@@ -2844,6 +3243,7 @@ def update_history(
     selection: SelectionDecision,
     generated_at: str,
     data_as_of: str,
+    data_quality: Optional[Dict[str, Any]] = None,
     history_path: Path = HISTORY_PATH,
 ) -> Dict[str, Any]:
     entries = [normalize_history_entry(entry) for entry in load_existing_history_entries(history_path)]
@@ -2860,6 +3260,7 @@ def update_history(
         "model_version": MODEL_VERSION,
         "generated_at": generated_at,
         "entries": filtered_entries,
+        "data_quality": data_quality or build_data_quality_block(scope="generate_pick"),
     }
 
     with history_path.open("w", encoding="utf-8") as handle:
@@ -2874,15 +3275,20 @@ def write_json(path: Path, payload: Dict[str, Any]) -> None:
 
 
 def main() -> None:
+    set_pipeline_scope("generate_pick")
     print("[INFO] Generating weekly stock picks...")
     generated_at = iso_utc(now_utc())
     market_week = build_market_week()
     expected_next_refresh_at, stale_after = build_refresh_window(market_week)
 
     candidates, stats = get_candidates()
-    overall_selection = select_best_candidate(candidates)
-    risk_selections = select_best_per_risk(candidates)
+    overall_selection = select_best_candidate(candidates, stats)
+    risk_selections = select_best_per_risk(candidates, stats)
     data_as_of = derive_data_as_of(candidates)
+    data_quality = build_data_quality_block(
+        scope="generate_pick",
+        extra_reasons=stats.degraded_reasons,
+    )
 
     current_pick_payload = build_current_pick_payload(
         selection=overall_selection,
@@ -2892,6 +3298,7 @@ def main() -> None:
         stale_after=stale_after,
         market_week=market_week,
         stats=stats,
+        data_quality=data_quality,
     )
     risk_picks_payload = build_risk_picks_payload(
         overall_selection=overall_selection,
@@ -2902,6 +3309,7 @@ def main() -> None:
         stale_after=stale_after,
         market_week=market_week,
         stats=stats,
+        data_quality=data_quality,
     )
 
     write_json(CURRENT_PICK_PATH, current_pick_payload)
@@ -2911,6 +3319,7 @@ def main() -> None:
         selection=overall_selection,
         generated_at=generated_at,
         data_as_of=data_as_of,
+        data_quality=data_quality,
     )
 
     print("[INFO] current_pick.json, risk_picks.json and history.json updated.")

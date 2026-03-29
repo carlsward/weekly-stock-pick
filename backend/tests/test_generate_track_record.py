@@ -1,10 +1,39 @@
 import unittest
 from unittest.mock import patch
 
-from backend.generate_track_record import main
+from backend.generate_track_record import build_signal_block_report, main
 
 
 class GenerateTrackRecordTests(unittest.TestCase):
+    def test_build_signal_block_report_compares_full_model_against_technical_only(self) -> None:
+        entries = []
+        realized_values = [0.02, 0.03, -0.01, 0.04, 0.01, -0.02]
+        technical_values = [0.10, 0.12, 0.08, 0.14, 0.11, 0.07]
+        block_values = [0.03, 0.04, -0.01, 0.05, 0.02, -0.02]
+        for realized, technical, block in zip(realized_values, technical_values, block_values):
+            entries.append(
+                {
+                    "realized_5d_excess_return": realized,
+                    "diagnostics": {
+                        "technical_total": technical,
+                        "news_adjustment": block * 0.5,
+                        "macro_adjustment": block * 0.3,
+                        "sector_adjustment": block * 0.2,
+                        "news_signal_input": block * 2.0,
+                        "macro_signal_input": block * 1.2,
+                        "sector_signal_input": block * 0.8,
+                    },
+                }
+            )
+
+        report = build_signal_block_report(entries)
+
+        self.assertEqual("ok", report["status"])
+        self.assertEqual(6, report["sample_count"])
+        self.assertIn("technical_only_ic", report)
+        self.assertIn("full_model_ic", report)
+        self.assertIn("ic_improvement_vs_technical", report)
+
     @patch("backend.generate_track_record.write_json")
     @patch("backend.generate_track_record.realized_forward_return")
     @patch("backend.generate_track_record.load_sector_map")

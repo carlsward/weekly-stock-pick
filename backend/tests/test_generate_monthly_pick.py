@@ -117,6 +117,25 @@ class GenerateMonthlyPickTests(unittest.TestCase):
         self.assertIsNone(selection.pick)
         self.assertIsNone(selection.best_candidate)
 
+    def test_select_monthly_candidate_uses_explicit_price_failure_policy(self) -> None:
+        selection = select_monthly_candidate(
+            [],
+            GenerationStats(
+                universe_size=2,
+                evaluated_candidates=0,
+                skipped_symbols=2,
+                skipped_details=[
+                    {"symbol": "MSFT", "reason": "Unable to fetch usable price frame for MSFT after retries"},
+                    {"symbol": "CVX", "reason": "Unable to fetch usable price frame for CVX after retries"},
+                ],
+                price_provider_failures=2,
+            ),
+        )
+
+        self.assertEqual("no_pick", selection.status)
+        self.assertIn("all live price providers failed", selection.status_reason.lower())
+        self.assertIn("fabricated prices", selection.status_reason.lower())
+
     @patch("backend.generate_monthly_pick.now_utc")
     def test_build_monthly_news_snapshot_keeps_recent_week_old_news_active(self, now_utc_mock) -> None:
         now_utc_mock.return_value = datetime(2026, 4, 10, 12, tzinfo=timezone.utc)
@@ -268,7 +287,7 @@ class GenerateMonthlyPickTests(unittest.TestCase):
 
         self.assertEqual(len(history_entries), calibration.block_row_count)
         self.assertNotEqual(MONTHLY_BLOCK_BASE_PRIORS, calibration.block_weights)
-        self.assertGreater(calibration.block_weights["macro"], calibration.block_weights["news"])
+        self.assertGreater(calibration.block_weights["macro"], MONTHLY_BLOCK_BASE_PRIORS["macro"])
         self.assertGreater(calibration.block_weights["macro"], calibration.block_weights["sector"])
         self.assertIn("monthly_history_realized_returns", calibration.source)
 

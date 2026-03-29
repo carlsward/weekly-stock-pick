@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from statistics import median
 from typing import Any, Dict, List, Optional
@@ -24,6 +25,11 @@ try:
         resolve_universe_csv_path,
         write_json,
     )
+    from backend.pipeline_runtime import (
+        build_data_quality_block,
+        extract_payload_degraded_reasons,
+        set_pipeline_scope,
+    )
     from backend.sector_utils import load_sector_map
 except ImportError:
     from generate_pick import (
@@ -44,6 +50,11 @@ except ImportError:
         realized_forward_return,
         resolve_universe_csv_path,
         write_json,
+    )
+    from pipeline_runtime import (
+        build_data_quality_block,
+        extract_payload_degraded_reasons,
+        set_pipeline_scope,
     )
     from sector_utils import load_sector_map
 
@@ -70,6 +81,19 @@ def safe_compounded_return(values: List[float]) -> Optional[float]:
     for value in values:
         compounded *= (1.0 + value)
     return compounded - 1.0
+
+
+def safe_correlation(left: List[float], right: List[float]) -> Optional[float]:
+    if len(left) != len(right) or len(left) < 2:
+        return None
+    mean_left = sum(left) / len(left)
+    mean_right = sum(right) / len(right)
+    numerator = sum((x - mean_left) * (y - mean_right) for x, y in zip(left, right))
+    left_variance = sum((x - mean_left) ** 2 for x in left)
+    right_variance = sum((y - mean_right) ** 2 for y in right)
+    if left_variance <= 1e-12 or right_variance <= 1e-12:
+        return None
+    return numerator / ((left_variance * right_variance) ** 0.5)
 
 
 def outcome_label(realized_return: Optional[float]) -> str:
@@ -216,6 +240,81 @@ def build_risk_breakdown(entries: List[Dict[str, Any]]) -> Dict[str, Dict[str, A
     return breakdown
 
 
+def build_signal_block_report(entries: List[Dict[str, Any]]) -> Dict[str, Any]:
+    samples: List[Dict[str, float]] = []
+    for entry in entries:
+        diagnostics = entry.get("diagnostics")
+        realized = entry.get("realized_5d_excess_return")
+        if not isinstance(diagnostics, dict) or not isinstance(realized, (int, float)):
+            continue
+
+        technical_total = diagnostics.get("technical_total")
+        news_adjustment = diagnostics.get("news_adjustment")
+        macro_adjustment = diagnostics.get("macro_adjustment")
+        sector_adjustment = diagnostics.get("sector_adjustment")
+        if not all(
+            isinstance(value, (int, float))
+            for value in (technical_total, news_adjustment, macro_adjustment, sector_adjustment)
+        ):
+            continue
+
+        samples.append(
+            {
+                "technical_total": float(technical_total),
+                "full_model_score": float(technical_total + news_adjustment + macro_adjustment + sector_adjustment),
+                "block_adjustment": float(news_adjustment + macro_adjustment + sector_adjustment),
+                "news_signal_input": float(diagnostics.get("news_signal_input", 0.0)),
+                "macro_signal_input": float(diagnostics.get("macro_signal_input", 0.0)),
+                "sector_signal_input": float(diagnostics.get("sector_signal_input", 0.0)),
+                "realized_excess": float(realized),
+            }
+        )
+
+    if len(samples) < 6:
+        return {
+            "status": "insufficient_data",
+            "scope": "picked_entries_only",
+            "sample_count": len(samples),
+            "summary": "Not enough closed weekly picks are available yet to compare technical-only conviction against block-adjusted conviction.",
+        }
+
+    realized = [sample["realized_excess"] for sample in samples]
+    technical_scores = [sample["technical_total"] for sample in samples]
+    full_scores = [sample["full_model_score"] for sample in samples]
+    block_adjustments = [sample["block_adjustment"] for sample in samples]
+
+    technical_ic = safe_correlation(technical_scores, realized)
+    full_ic = safe_correlation(full_scores, realized)
+    block_ic = safe_correlation(block_adjustments, realized)
+    improvement = None
+    if technical_ic is not None and full_ic is not None:
+        improvement = full_ic - technical_ic
+
+    if improvement is None:
+        summary = "Closed picks now have enough samples for monitoring, but the score dispersion is still too narrow for a stable correlation read."
+    elif improvement > 0.03:
+        summary = "On closed picked weeks, news/macro/sector adjustments are currently improving the realized excess-return fit versus technical-only conviction."
+    elif improvement < -0.03:
+        summary = "On closed picked weeks, block adjustments are currently hurting the realized excess-return fit versus technical-only conviction."
+    else:
+        summary = "On closed picked weeks, block adjustments are currently close to neutral versus technical-only conviction."
+
+    return {
+        "status": "ok",
+        "scope": "picked_entries_only",
+        "sample_count": len(samples),
+        "technical_only_ic": round_optional(technical_ic),
+        "full_model_ic": round_optional(full_ic),
+        "block_adjustment_ic": round_optional(block_ic),
+        "ic_improvement_vs_technical": round_optional(improvement),
+        "average_block_adjustment": round_optional(safe_average(block_adjustments)),
+        "average_news_signal_input": round_optional(safe_average([sample["news_signal_input"] for sample in samples])),
+        "average_macro_signal_input": round_optional(safe_average([sample["macro_signal_input"] for sample in samples])),
+        "average_sector_signal_input": round_optional(safe_average([sample["sector_signal_input"] for sample in samples])),
+        "summary": summary,
+    }
+
+
 def serialize_track_record_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
     return {
         "week_id": entry.get("week_id"),
@@ -242,16 +341,24 @@ def serialize_track_record_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def main() -> None:
+    set_pipeline_scope("track_record")
     universe_path = resolve_universe_csv_path()
     sector_map = load_sector_map(universe_path)
     generated_at = iso_utc(now_utc())
     market_week = build_market_week()
     expected_next_refresh_at, stale_after = build_refresh_window(market_week)
 
+    try:
+        with HISTORY_PATH.open("r", encoding="utf-8") as handle:
+            history_payload = json.load(handle)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        history_payload = {}
+
     normalized_entries = [
         normalize_history_entry(entry)
         for entry in load_existing_history_entries(HISTORY_PATH)
     ]
+    upstream_reasons = extract_payload_degraded_reasons(history_payload, "history")
     enriched_entries = [enrich_entry_metrics(entry, sector_map) for entry in normalized_entries]
     serialized_entries = [serialize_track_record_entry(entry) for entry in reversed(enriched_entries)]
     closed_dates = [
@@ -281,8 +388,13 @@ def main() -> None:
             "minimum_confidence": MIN_CONFIDENCE_THRESHOLD,
         },
         "summary": build_summary_metrics(enriched_entries),
+        "signal_block_report": build_signal_block_report(enriched_entries),
         "risk_breakdown": build_risk_breakdown(enriched_entries),
         "entries": serialized_entries,
+        "data_quality": build_data_quality_block(
+            scope="track_record",
+            extra_reasons=upstream_reasons,
+        ),
     }
     write_json(TRACK_RECORD_PATH, payload)
     print("[INFO] track_record.json updated.")

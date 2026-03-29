@@ -35,6 +35,12 @@ try:
         openai_model,
         request_structured_response,
     )
+    from backend.pipeline_runtime import (
+        attach_data_quality,
+        consume_provider_budget,
+        record_runtime_event,
+        set_pipeline_scope,
+    )
 except ImportError:
     from generate_news_scores import (
         allow_marketaux_fallback,
@@ -60,6 +66,12 @@ except ImportError:
         openai_model,
         request_structured_response,
     )
+    from pipeline_runtime import (
+        attach_data_quality,
+        consume_provider_budget,
+        record_runtime_event,
+        set_pipeline_scope,
+    )
 
 SECTOR_SCORES_PATH = Path("sector_scores.json")
 UNIVERSE_CSV_PATH_ENV = "UNIVERSE_CSV_PATH"
@@ -69,8 +81,8 @@ GLOBAL_NEWS_LOOKBACK_DAYS = 3
 MARKETAUX_GLOBAL_FIXTURE_PATH_ENV = "MARKETAUX_GLOBAL_FIXTURE_PATH"
 GLOBAL_NEWS_LOOKBACK_DAYS_ENV = "GLOBAL_NEWS_LOOKBACK_DAYS"
 GLOBAL_NEWS_LIMIT_ENV = "MARKETAUX_GLOBAL_NEWS_LIMIT"
-GLOBAL_DEFAULT_NEWS_LIMIT = 80
-GLOBAL_MAX_NEWS_LIMIT = 100
+GLOBAL_DEFAULT_NEWS_LIMIT = 3
+GLOBAL_MAX_NEWS_LIMIT = 3
 GDELT_GLOBAL_NEWS_LIMIT_ENV = "GDELT_GLOBAL_NEWS_LIMIT"
 GDELT_DEFAULT_NEWS_LIMIT = 20
 GDELT_MAX_NEWS_LIMIT = 40
@@ -86,6 +98,10 @@ GLOBAL_BACKSTOP_SOURCE_QUALITY = 0.94
 GLOBAL_BACKSTOP_RECENCY_WEIGHT = 0.80
 GDELT_DOC_ENDPOINT = "https://api.gdeltproject.org/api/v2/doc/doc"
 ALPHA_VANTAGE_NEWS_ENDPOINT = "https://www.alphavantage.co/query"
+MARKETAUX_DAILY_REQUEST_LIMIT = 100
+ALPHA_VANTAGE_DAILY_REQUEST_LIMIT = 25
+GLOBAL_GDELT_ESCALATION_TARGET = 5
+GLOBAL_ALPHA_VANTAGE_ESCALATION_TARGET = 10
 
 
 def configured_global_news_lookback_days() -> int:
@@ -348,7 +364,7 @@ def configured_global_news_limit() -> int:
         parsed_limit = int(raw_limit)
     except ValueError:
         parsed_limit = GLOBAL_DEFAULT_NEWS_LIMIT
-    return max(10, min(parsed_limit, GLOBAL_MAX_NEWS_LIMIT))
+    return max(1, min(parsed_limit, GLOBAL_MAX_NEWS_LIMIT))
 
 
 def configured_gdelt_news_limit() -> int:
@@ -474,6 +490,14 @@ def fetch_marketaux_global_payload(published_after: datetime) -> List[dict]:
     last_error: Optional[Exception] = None
     for attempt in range(1, NEWS_FETCH_ATTEMPTS + 1):
         try:
+            if not consume_provider_budget(
+                "marketaux",
+                units=1,
+                category="global_news",
+                daily_limit=MARKETAUX_DAILY_REQUEST_LIMIT,
+            ):
+                print("[WARN] [sector] Marketaux workflow budget exhausted, returning fallback data.")
+                return []
             with urlopen(request, timeout=MARKETAUX_REQUEST_TIMEOUT_SECONDS) as response:
                 payload = json.loads(response.read().decode("utf-8"))
             if not isinstance(payload, dict) or not isinstance(payload.get("data"), list):
@@ -512,6 +536,7 @@ def build_gdelt_query() -> str:
 
 
 def fetch_gdelt_payload() -> List[dict]:
+    consume_provider_budget("gdelt", units=1, category="global_news")
     url = build_gdelt_query()
     request = Request(
         url,
@@ -572,6 +597,14 @@ def fetch_alpha_vantage_payload(published_after: datetime) -> List[dict]:
     last_error: Optional[Exception] = None
     for attempt in range(1, NEWS_FETCH_ATTEMPTS + 1):
         try:
+            if not consume_provider_budget(
+                "alpha_vantage",
+                units=1,
+                category="global_news",
+                daily_limit=ALPHA_VANTAGE_DAILY_REQUEST_LIMIT,
+            ):
+                print("[WARN] [sector] Alpha Vantage workflow budget exhausted, skipping NEWS_SENTIMENT feed.")
+                return []
             with urlopen(request, timeout=MARKETAUX_REQUEST_TIMEOUT_SECONDS) as response:
                 payload = json.loads(response.read().decode("utf-8"))
             if isinstance(payload, dict) and isinstance(payload.get("feed"), list):
@@ -719,8 +752,29 @@ def build_global_article(item: dict, now: datetime, index: int) -> Optional[Glob
     )
 
 
+def count_relevant_global_articles(raw_sources: Dict[str, List[dict]], now: datetime) -> int:
+    seen_titles = set()
+    count = 0
+    article_index = 0
+    for items in raw_sources.values():
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            article = build_global_article(item, now, article_index)
+            article_index += 1
+            if article is None:
+                continue
+            title_key = normalize_text(article.title)
+            if title_key in seen_titles:
+                continue
+            seen_titles.add(title_key)
+            count += 1
+    return count
+
+
 def fetch_recent_global_articles() -> List[GlobalNewsArticle]:
     configured_fixture = os.getenv(MARKETAUX_GLOBAL_FIXTURE_PATH_ENV, "").strip()
+    now = datetime.now(timezone.utc)
     if configured_fixture:
         fixture_path = Path(configured_fixture)
         with fixture_path.open("r", encoding="utf-8") as handle:
@@ -729,45 +783,69 @@ def fetch_recent_global_articles() -> List[GlobalNewsArticle]:
             raise RuntimeError(f"Global Marketaux fixture must be a list in {fixture_path}")
         print(f"[INFO] [sector] Loaded {len(raw_news)} fixture news items from {fixture_path}.")
         raw_sources = {"fixture": raw_news}
-    elif not os.getenv("MARKETAUX_API_TOKEN", "").strip() and allow_marketaux_fallback():
-        print("[WARN] [sector] Marketaux token missing, continuing with other world-news sources.")
-        raw_sources = {"marketaux": []}
     else:
         published_after = datetime.now(timezone.utc) - timedelta(days=configured_global_news_lookback_days())
         raw_sources = {}
-        try:
-            raw_sources["marketaux"] = fetch_marketaux_global_payload(published_after)
-        except Exception as exc:
-            print(f"[WARN] [sector] Marketaux global feed failed: {exc}")
+        if not os.getenv("MARKETAUX_API_TOKEN", "").strip() and allow_marketaux_fallback():
+            print("[WARN] [sector] Marketaux token missing, continuing with other world-news sources.")
             raw_sources["marketaux"] = []
-
-        try:
-            raw_sources["gdelt"] = [
-                item
-                for item in (
-                    normalize_gdelt_item(raw_item)
-                    for raw_item in fetch_gdelt_payload()
+        else:
+            try:
+                raw_sources["marketaux"] = fetch_marketaux_global_payload(published_after)
+            except Exception as exc:
+                print(f"[WARN] [sector] Marketaux global feed failed: {exc}")
+                record_runtime_event(
+                    "Marketaux global-news feed failed and fallback feeds were used.",
+                    provider="marketaux",
                 )
-                if item is not None
-            ]
-        except Exception as exc:
-            print(f"[WARN] [sector] GDELT world-news feed failed: {exc}")
+                raw_sources["marketaux"] = []
+
+        if count_relevant_global_articles({"marketaux": raw_sources.get("marketaux", [])}, now) < GLOBAL_GDELT_ESCALATION_TARGET:
+            try:
+                raw_sources["gdelt"] = [
+                    item
+                    for item in (
+                        normalize_gdelt_item(raw_item)
+                        for raw_item in fetch_gdelt_payload()
+                    )
+                    if item is not None
+                ]
+            except Exception as exc:
+                print(f"[WARN] [sector] GDELT world-news feed failed: {exc}")
+                record_runtime_event(
+                    "GDELT global-news feed failed during this run.",
+                    provider="gdelt",
+                )
+                raw_sources["gdelt"] = []
+        else:
             raw_sources["gdelt"] = []
 
-        try:
-            raw_sources["alpha_vantage"] = [
-                item
-                for item in (
-                    normalize_alpha_vantage_item(raw_item)
-                    for raw_item in fetch_alpha_vantage_payload(published_after)
+        if count_relevant_global_articles(
+            {
+                "marketaux": raw_sources.get("marketaux", []),
+                "gdelt": raw_sources.get("gdelt", []),
+            },
+            now,
+        ) < GLOBAL_ALPHA_VANTAGE_ESCALATION_TARGET:
+            try:
+                raw_sources["alpha_vantage"] = [
+                    item
+                    for item in (
+                        normalize_alpha_vantage_item(raw_item)
+                        for raw_item in fetch_alpha_vantage_payload(published_after)
+                    )
+                    if item is not None
+                ]
+            except Exception as exc:
+                print(f"[WARN] [sector] Alpha Vantage NEWS_SENTIMENT feed failed: {exc}")
+                record_runtime_event(
+                    "Alpha Vantage global-news fallback failed during this run.",
+                    provider="alpha_vantage",
                 )
-                if item is not None
-            ]
-        except Exception as exc:
-            print(f"[WARN] [sector] Alpha Vantage NEWS_SENTIMENT feed failed: {exc}")
+                raw_sources["alpha_vantage"] = []
+        else:
             raw_sources["alpha_vantage"] = []
 
-    now = datetime.now(timezone.utc)
     raw_news = [
         item
         for items in raw_sources.values()
@@ -1522,6 +1600,10 @@ def build_sector_scores_payload(
             f"Error: {exc}"
         )
         print(f"[WARN] {warning}")
+        record_runtime_event(
+            warning,
+            provider="openai",
+        )
         return build_neutral_sector_payload(
             sectors=sectors,
             symbol_metadata=symbol_metadata,
@@ -1533,6 +1615,7 @@ def build_sector_scores_payload(
 
 
 def main() -> None:
+    set_pipeline_scope("sector_scores")
     universe_path = resolve_universe_csv_path()
     symbol_metadata = load_symbol_metadata(universe_path)
     sectors = load_active_sectors(universe_path)
@@ -1544,6 +1627,7 @@ def main() -> None:
         sectors=sectors,
         generated_at=generated_at,
     )
+    payload = attach_data_quality(payload, scope="sector_scores")
 
     with SECTOR_SCORES_PATH.open("w", encoding="utf-8") as handle:
         json.dump(payload, handle, ensure_ascii=False, indent=2)

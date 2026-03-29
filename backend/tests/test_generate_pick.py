@@ -7,6 +7,7 @@ from unittest.mock import patch
 import pandas as pd
 
 from backend.generate_pick import (
+    GenerationStats,
     MIN_CONFIDENCE_THRESHOLD,
     MarketWeek,
     MacroSnapshot,
@@ -28,6 +29,7 @@ from backend.generate_pick import (
     compute_confidence_score,
     compute_score_breakdown,
     derive_data_as_of,
+    blend_weight_maps,
     normalize_history_entry,
     select_best_candidate,
     select_best_per_risk,
@@ -159,6 +161,23 @@ class GeneratePickTests(unittest.TestCase):
         calibration = default_model_calibration()
         self.assertAlmostEqual(1.0, sum(calibration.technical_weights.values()), places=6)
         self.assertGreater(calibration.technical_scale, 0.0)
+
+    def test_blend_weight_maps_scales_learned_share_gradually(self) -> None:
+        base = {"news": 0.14, "macro": 0.12, "sector": 0.09}
+        learned = {"news": 0.10, "macro": 0.18, "sector": 0.07}
+
+        blended, learned_share = blend_weight_maps(
+            base,
+            learned,
+            sample_count=18,
+            min_rows=12,
+            full_trust_rows=48,
+        )
+
+        self.assertGreater(learned_share, 0.0)
+        self.assertLess(learned_share, 1.0)
+        self.assertAlmostEqual(sum(base.values()), sum(blended.values()), places=6)
+        self.assertNotEqual(base["macro"], blended["macro"])
 
     def test_score_breakdown_rewards_aligned_news_and_technical_signal(self) -> None:
         aligned = compute_score_breakdown(
@@ -443,6 +462,26 @@ class GeneratePickTests(unittest.TestCase):
         )
 
         self.assertIsNone(snapshot.last_updated)
+
+    def test_fetch_price_frame_skips_stooq_when_disabled(self) -> None:
+        with patch.dict(
+            "os.environ",
+            {
+                "TWELVEDATA_API_KEY": "td",
+                "ALPHA_VANTAGE_API_KEY": "av",
+                "ALLOW_STOOQ_FALLBACK": "false",
+                "ALLOW_PRICE_FALLBACK": "false",
+            },
+            clear=False,
+        ):
+            with patch("backend.generate_pick.fetch_twelvedata_price_frame", side_effect=RuntimeError("td down")):
+                with patch("backend.generate_pick.fetch_alpha_vantage_price_frame", side_effect=RuntimeError("av down")):
+                    with patch("backend.generate_pick.fetch_stooq_price_frame") as stooq_mock:
+                        with patch("backend.generate_pick.time_module.sleep"):
+                            with self.assertRaises(RuntimeError):
+                                fetch_price_frame("MSFT")
+
+        stooq_mock.assert_not_called()
 
     def test_derive_data_as_of_includes_macro_and_sector_dates(self) -> None:
         first = build_candidate("MSFT", "low", total_score=0.21, confidence_score=0.82)
@@ -730,6 +769,25 @@ class GeneratePickTests(unittest.TestCase):
         self.assertEqual("no_pick", selection.status)
         self.assertIsNone(selection.pick)
         self.assertIsNone(selection.best_candidate)
+
+    def test_select_best_candidate_uses_explicit_price_failure_policy(self) -> None:
+        selection = select_best_candidate(
+            [],
+            GenerationStats(
+                universe_size=2,
+                evaluated_candidates=0,
+                skipped_symbols=2,
+                skipped_details=[
+                    {"symbol": "MSFT", "reason": "Unable to fetch usable price frame for MSFT after retries"},
+                    {"symbol": "CVX", "reason": "Unable to fetch usable price frame for CVX after retries"},
+                ],
+                price_provider_failures=2,
+            ),
+        )
+
+        self.assertEqual("no_pick", selection.status)
+        self.assertIn("all live price providers failed", selection.status_reason.lower())
+        self.assertIn("fabricated prices", selection.status_reason.lower())
 
     def test_select_best_per_risk_can_mix_picks_and_no_picks(self) -> None:
         selections = select_best_per_risk(

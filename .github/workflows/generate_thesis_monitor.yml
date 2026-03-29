@@ -73,36 +73,52 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Verify configuration
+      - name: Log provider configuration
         env:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           if [[ -z "${MARKETAUX_API_TOKEN}" ]]; then
-            echo "MARKETAUX_API_TOKEN secret is required for thesis monitoring." >&2
-            exit 1
+            echo "WARN: MARKETAUX_API_TOKEN is missing. Thesis monitoring will rely on fallback news sources."
           fi
           if [[ -z "${OPENAI_API_KEY}" ]]; then
-            echo "OPENAI_API_KEY secret is required for thesis monitoring." >&2
-            exit 1
+            echo "WARN: OPENAI_API_KEY is missing. Sector analysis will degrade to neutral fallback."
+          fi
+          if [[ -z "${TWELVEDATA_API_KEY}" ]]; then
+            echo "WARN: TWELVEDATA_API_KEY is missing. Price data may fall back to Alpha Vantage or Stooq."
+          fi
+          if [[ -z "${ALPHA_VANTAGE_API_KEY}" ]]; then
+            echo "WARN: ALPHA_VANTAGE_API_KEY is missing. Secondary news and price fallback capacity will be reduced."
           fi
 
       - name: Generate thesis_monitor.json
         working-directory: backend
         env:
+          ENABLE_PERSISTENT_PROVIDER_LEDGER: "true"
+          PIPELINE_PROVIDER_LEDGER_PATH: "provider_budget_ledger.json"
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           ALLOW_MARKETAUX_FALLBACK: "true"
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           COMPANY_NEWS_PROVIDER_MODE: "blended"
+          COMPANY_NEWS_SHORTLIST_SIZE: "15"
+          ENABLE_COMPANY_LLM_REVIEW: "true"
+          COMPANY_LLM_ARTICLE_LIMIT: "5"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.openai_model || 'gpt-5-mini' }}
-          ALLOW_LLM_FALLBACK: "false"
-          MARKETAUX_NEWS_LIMIT: "5"
-          MARKETAUX_GLOBAL_NEWS_LIMIT: "35"
+          ALLOW_LLM_FALLBACK: "true"
+          MARKETAUX_NEWS_LIMIT: "3"
+          MARKETAUX_GLOBAL_NEWS_LIMIT: "3"
           GDELT_GLOBAL_NEWS_LIMIT: "20"
           ALPHA_VANTAGE_GLOBAL_NEWS_LIMIT: "20"
           SECTOR_LLM_ARTICLE_LIMIT: "16"
+          ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS: "12"
+          ALPHA_VANTAGE_MAX_COMPANY_REQUESTS: "2"
+          ALLOW_STOOQ_FALLBACK: "false"
+          ALPHA_VANTAGE_REQUEST_INTERVAL_SECONDS: "12"
+          ALPHA_VANTAGE_MAX_PRICE_REQUESTS: "2"
         run: python generate_thesis_monitor.py
 
       - name: Validate thesis monitor contract
@@ -118,16 +134,18 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: backend-thesis-monitor-${{ github.run_number }}
-          path: backend/thesis_monitor.json
+          path: |
+            backend/thesis_monitor.json
+            backend/provider_budget_ledger.json
           if-no-files-found: ignore
 
       - name: Commit and push if changed
         if: github.event_name != 'workflow_dispatch' || github.event.inputs.commit_changes == 'true'
         run: |
-          if [[ -n "$(git status --porcelain backend/thesis_monitor.json)" ]]; then
+          if [[ -n "$(git status --porcelain backend/thesis_monitor.json backend/provider_budget_ledger.json)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add backend/thesis_monitor.json
+            git add backend/thesis_monitor.json backend/provider_budget_ledger.json
             git commit -m "Update thesis monitor [skip ci]"
             git push
           else

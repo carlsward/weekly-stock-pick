@@ -1,3 +1,4 @@
+import json
 import unittest
 from pathlib import Path
 
@@ -651,6 +652,28 @@ def write_payloads(base_dir: Path) -> None:
         """.strip(),
         encoding="utf-8",
     )
+
+    data_quality = {
+        "status": "healthy",
+        "degraded_reason": None,
+        "reasons": [],
+        "provider_status": {},
+    }
+    for filename in (
+        "current_pick.json",
+        "risk_picks.json",
+        "history.json",
+        "news_scores.json",
+        "sector_scores.json",
+        "thesis_monitor.json",
+        "track_record.json",
+        "monthly_pick.json",
+        "monthly_history.json",
+    ):
+        path = base_dir / filename
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload["data_quality"] = data_quality
+        path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
 
 class ValidateOutputsTests(unittest.TestCase):

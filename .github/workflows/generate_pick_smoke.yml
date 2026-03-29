@@ -1,4 +1,4 @@
-name: Generate weekly stock pick smoke test
+name: Weekly pipeline smoke test
 
 on:
   workflow_dispatch:
@@ -16,19 +16,19 @@ on:
       global_news_limit:
         description: "Broad world-news articles fetched"
         required: false
-        default: "30"
+        default: "3"
         type: string
       sector_llm_article_limit:
         description: "World-news articles sent to GPT"
         required: false
-        default: "15"
+        default: "20"
         type: string
 
 permissions:
   contents: read
 
 jobs:
-  smoke-test:
+  weekly-pipeline-smoke:
     runs-on: ubuntu-latest
 
     steps:
@@ -49,94 +49,121 @@ jobs:
       - name: Run backend tests
         run: python -m unittest discover -s backend/tests -t .
 
+      - name: Describe smoke scope
+        run: echo "Testing the regular weekly pipeline on MSFT and CVX with live news and live price providers."
+
+      - name: Log provider configuration
+        env:
+          MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [[ -z "${MARKETAUX_API_TOKEN}" ]]; then
+            echo "WARN: MARKETAUX_API_TOKEN is missing. Smoke run will rely on fallback news sources."
+          fi
+          if [[ -z "${OPENAI_API_KEY}" ]]; then
+            echo "WARN: OPENAI_API_KEY is missing. Smoke sector analysis will degrade to neutral fallback."
+          fi
+          if [[ -z "${TWELVEDATA_API_KEY}" ]]; then
+            echo "WARN: TWELVEDATA_API_KEY is missing. Price data may fall back to Alpha Vantage or Stooq."
+          fi
+          if [[ -z "${ALPHA_VANTAGE_API_KEY}" ]]; then
+            echo "WARN: ALPHA_VANTAGE_API_KEY is missing. Secondary news and price fallback capacity will be reduced."
+          fi
+
       - name: Generate news_scores.json
         working-directory: backend
         env:
-          UNIVERSE_CSV_PATH: universe_test.csv
-          MARKETAUX_FIXTURE_PATH: fixtures/marketaux_smoke_news.json
+          UNIVERSE_CSV_PATH: universe_weekly_smoke.csv
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           ALLOW_MARKETAUX_FALLBACK: "true"
           COMPANY_NEWS_PROVIDER_MODE: "blended"
+          COMPANY_NEWS_SHORTLIST_SIZE: "15"
+          ENABLE_COMPANY_LLM_REVIEW: "true"
+          COMPANY_LLM_ARTICLE_LIMIT: "5"
           MARKETAUX_NEWS_LIMIT: ${{ github.event.inputs.company_news_limit || '3' }}
+          ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS: "12"
+          ALPHA_VANTAGE_MAX_COMPANY_REQUESTS: "6"
         run: python generate_news_scores.py
 
       - name: Generate sector_scores.json
         working-directory: backend
         env:
-          UNIVERSE_CSV_PATH: universe_test.csv
-          MARKETAUX_GLOBAL_FIXTURE_PATH: fixtures/marketaux_smoke_global.json
+          UNIVERSE_CSV_PATH: universe_weekly_smoke.csv
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
           ALLOW_LLM_FALLBACK: "true"
           ALLOW_MARKETAUX_FALLBACK: "true"
-          MARKETAUX_GLOBAL_NEWS_LIMIT: ${{ github.event.inputs.global_news_limit || '30' }}
-          SECTOR_LLM_ARTICLE_LIMIT: ${{ github.event.inputs.sector_llm_article_limit || '15' }}
+          MARKETAUX_GLOBAL_NEWS_LIMIT: ${{ github.event.inputs.global_news_limit || '3' }}
+          SECTOR_LLM_ARTICLE_LIMIT: ${{ github.event.inputs.sector_llm_article_limit || '20' }}
         run: python generate_sector_scores.py
 
       - name: Generate current_pick.json and risk_picks.json
         working-directory: backend
         env:
-          UNIVERSE_CSV_PATH: universe_test.csv
-          ENABLE_HISTORY_REALIZED_ENRICHMENT: "false"
-          FORCE_PRICE_FALLBACK: "true"
+          UNIVERSE_CSV_PATH: universe_weekly_smoke.csv
+          ENABLE_HISTORY_REALIZED_ENRICHMENT: "true"
+          ALLOW_STOOQ_FALLBACK: "false"
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
+          ALPHA_VANTAGE_REQUEST_INTERVAL_SECONDS: "12"
+          ALPHA_VANTAGE_MAX_PRICE_REQUESTS: "4"
         run: python generate_pick.py
 
       - name: Generate thesis_monitor.json
         working-directory: backend
         env:
-          UNIVERSE_CSV_PATH: universe_test.csv
-          MARKETAUX_FIXTURE_PATH: fixtures/marketaux_smoke_news.json
-          MARKETAUX_GLOBAL_FIXTURE_PATH: fixtures/marketaux_smoke_global.json
+          UNIVERSE_CSV_PATH: universe_weekly_smoke.csv
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
           COMPANY_NEWS_PROVIDER_MODE: "blended"
+          COMPANY_NEWS_SHORTLIST_SIZE: "15"
+          ENABLE_COMPANY_LLM_REVIEW: "true"
+          COMPANY_LLM_ARTICLE_LIMIT: "5"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: ${{ github.event.inputs.openai_model || 'gpt-5-mini' }}
           ALLOW_LLM_FALLBACK: "true"
           ALLOW_MARKETAUX_FALLBACK: "true"
-          FORCE_PRICE_FALLBACK: "true"
-          MARKETAUX_GLOBAL_NEWS_LIMIT: "20"
+          MARKETAUX_NEWS_LIMIT: "3"
+          MARKETAUX_GLOBAL_NEWS_LIMIT: "3"
           GDELT_GLOBAL_NEWS_LIMIT: "12"
           ALPHA_VANTAGE_GLOBAL_NEWS_LIMIT: "12"
-          SECTOR_LLM_ARTICLE_LIMIT: "10"
+          SECTOR_LLM_ARTICLE_LIMIT: "16"
+          ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS: "12"
+          ALPHA_VANTAGE_MAX_COMPANY_REQUESTS: "2"
+          ALLOW_STOOQ_FALLBACK: "false"
+          ALPHA_VANTAGE_REQUEST_INTERVAL_SECONDS: "12"
+          ALPHA_VANTAGE_MAX_PRICE_REQUESTS: "2"
         run: python generate_thesis_monitor.py
 
       - name: Generate track_record.json
         working-directory: backend
         env:
-          UNIVERSE_CSV_PATH: universe_test.csv
-          FORCE_PRICE_FALLBACK: "true"
-          ENABLE_HISTORY_REALIZED_ENRICHMENT: "false"
+          UNIVERSE_CSV_PATH: universe_weekly_smoke.csv
+          ENABLE_HISTORY_REALIZED_ENRICHMENT: "true"
+          ALLOW_STOOQ_FALLBACK: "false"
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
+          ALPHA_VANTAGE_REQUEST_INTERVAL_SECONDS: "12"
+          ALPHA_VANTAGE_MAX_PRICE_REQUESTS: "3"
         run: python generate_track_record.py
-
-      - name: Generate monthly_pick.json
-        working-directory: backend
-        env:
-          UNIVERSE_CSV_PATH: universe_test.csv
-          FORCE_PRICE_FALLBACK: "true"
-          ENABLE_MONTHLY_HISTORY_REALIZED_ENRICHMENT: "false"
-          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
-          ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
-        run: python generate_monthly_pick.py
 
       - name: Validate generated output contracts
         working-directory: backend
         env:
-          UNIVERSE_CSV_PATH: universe_test.csv
-        run: python validate_outputs.py
+          UNIVERSE_CSV_PATH: universe_weekly_smoke.csv
+        run: python validate_outputs.py --only weekly
 
       - name: Upload smoke test artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: backend-smoke-test-${{ github.run_number }}
+          name: backend-weekly-pipeline-smoke-${{ github.run_number }}
           path: |
             backend/current_pick.json
             backend/risk_picks.json
@@ -145,9 +172,5 @@ jobs:
             backend/sector_scores.json
             backend/thesis_monitor.json
             backend/track_record.json
-            backend/monthly_pick.json
-            backend/monthly_history.json
-            backend/universe_test.csv
-            backend/fixtures/marketaux_smoke_news.json
-            backend/fixtures/marketaux_smoke_global.json
+            backend/universe_weekly_smoke.csv
           if-no-files-found: ignore

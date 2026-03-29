@@ -65,7 +65,8 @@ jobs:
 
       - name: Skip outside weekly window
         if: steps.window.outputs.should_run != 'true'
-        run: echo "Skipping weekly run outside 07:30 America/New_York. Current NY time: ${{ steps.window.outputs.ny_time }}"
+        run: |
+          echo "Skipping weekly run outside 07:30 America/New_York. Current NY time: ${{ steps.window.outputs.ny_time }}"
 
   generate:
     needs: gate

@@ -71,7 +71,8 @@ jobs:
 
       - name: Skip outside monthly window
         if: steps.window.outputs.should_run != 'true'
-        run: echo "Skipping monthly run outside the allowed window. Current NY time: ${{ steps.window.outputs.ny_time }}"
+        run: |
+          echo "Skipping monthly run outside the allowed window. Current NY time: ${{ steps.window.outputs.ny_time }}"
 
   generate-monthly:
     needs: gate

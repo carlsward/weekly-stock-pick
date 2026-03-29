@@ -50,7 +50,8 @@ jobs:
 
       - name: Skip outside thesis-monitor window
         if: steps.window.outputs.should_run != 'true'
-        run: echo "Skipping thesis monitor outside 12:00 America/New_York. Current NY time: ${{ steps.window.outputs.ny_time }}"
+        run: |
+          echo "Skipping thesis monitor outside 12:00 America/New_York. Current NY time: ${{ steps.window.outputs.ny_time }}"
 
   thesis-monitor:
     needs: gate

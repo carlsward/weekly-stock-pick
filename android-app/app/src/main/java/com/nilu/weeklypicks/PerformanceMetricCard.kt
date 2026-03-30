@@ -11,7 +11,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.nilu.weeklypicks.ui.theme.CopperBright
 
 @Composable
 fun PerformanceMetricCard(
@@ -23,7 +22,7 @@ fun PerformanceMetricCard(
         modifier = modifier,
         shape = RoundedCornerShape(22.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.52f)
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.62f)
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
     ) {
@@ -34,7 +33,7 @@ fun PerformanceMetricCard(
             Text(
                 text = label.uppercase(),
                 style = MaterialTheme.typography.labelMedium,
-                color = CopperBright
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Text(
                 text = value,

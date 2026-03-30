@@ -1,5 +1,5 @@
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:inset="6dp">
+    android:inset="0dp">
     <bitmap
         android:gravity="fill"
         android:src="@drawable/hyrax_alpha_logo" />

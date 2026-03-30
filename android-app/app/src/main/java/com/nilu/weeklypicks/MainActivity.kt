@@ -55,6 +55,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.nilu.weeklypicks.ui.theme.HyraxAlphaTheme
 import com.nilu.weeklypicks.ui.theme.Copper
 import com.nilu.weeklypicks.ui.theme.CopperBright
+import com.nilu.weeklypicks.ui.theme.HyraxNavy
 import com.nilu.weeklypicks.ui.theme.RiskHighColor
 import com.nilu.weeklypicks.ui.theme.RiskLowColor
 import com.nilu.weeklypicks.ui.theme.RiskMediumColor
@@ -104,6 +105,19 @@ class MainActivity : ComponentActivity() {
                                             colors = listOf(
                                                 Copper.copy(alpha = 0.16f),
                                                 CopperBright.copy(alpha = 0.08f),
+                                                androidx.compose.ui.graphics.Color.Transparent
+                                            )
+                                        )
+                                    )
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .align(Alignment.TopStart)
+                                    .fillMaxSize()
+                                    .background(
+                                        Brush.radialGradient(
+                                            colors = listOf(
+                                                HyraxNavy.copy(alpha = 0.14f),
                                                 androidx.compose.ui.graphics.Color.Transparent
                                             )
                                         )
@@ -198,65 +212,79 @@ fun ConvictionPagerSection(
     Column(
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
-        Row(
+        Card(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(10.dp)
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.92f)
+            ),
+            border = BorderStroke(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.outline.copy(alpha = 0.18f)
+            ),
+            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
         ) {
-            pages.forEachIndexed { index, label ->
-                val selected = pagerState.currentPage == index
-                Card(
-                    modifier = Modifier
-                        .weight(1f)
-                        .clickable {
-                            scope.launch {
-                                pagerState.animateScrollToPage(index)
-                            }
-                        },
-                    colors = CardDefaults.cardColors(
-                        containerColor = if (selected) {
-                            MaterialTheme.colorScheme.surface
-                        } else {
-                            MaterialTheme.colorScheme.surface.copy(alpha = 0.52f)
-                        }
-                    ),
-                    border = BorderStroke(
-                        width = 1.dp,
-                        color = if (selected) {
-                            CopperBright.copy(alpha = 0.72f)
-                        } else {
-                            MaterialTheme.colorScheme.outline.copy(alpha = 0.18f)
-                        }
-                    ),
-                    elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
-                ) {
-                    Box(
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(6.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                pages.forEachIndexed { index, label ->
+                    val selected = pagerState.currentPage == index
+                    Card(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .background(
-                                if (selected) {
-                                    Brush.horizontalGradient(
-                                        listOf(
-                                            Copper.copy(alpha = 0.18f),
-                                            CopperBright.copy(alpha = 0.08f)
-                                        )
-                                    )
-                                } else {
-                                    Brush.horizontalGradient(
-                                        listOf(
-                                            MaterialTheme.colorScheme.surface.copy(alpha = 0.01f),
-                                            MaterialTheme.colorScheme.surface.copy(alpha = 0.01f)
-                                        )
-                                    )
+                            .weight(1f)
+                            .clickable {
+                                scope.launch {
+                                    pagerState.animateScrollToPage(index)
                                 }
-                            )
-                            .padding(horizontal = 16.dp, vertical = 14.dp),
-                        contentAlignment = Alignment.Center
+                            },
+                        colors = CardDefaults.cardColors(
+                            containerColor = if (selected) {
+                                MaterialTheme.colorScheme.surface
+                            } else {
+                                androidx.compose.ui.graphics.Color.Transparent
+                            }
+                        ),
+                        border = BorderStroke(
+                            width = 1.dp,
+                            color = if (selected) {
+                                CopperBright.copy(alpha = 0.72f)
+                            } else {
+                                androidx.compose.ui.graphics.Color.Transparent
+                            }
+                        ),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
                     ) {
-                        Text(
-                            text = label,
-                            style = MaterialTheme.typography.labelLarge,
-                            color = if (selected) CopperBright else MaterialTheme.colorScheme.onSurfaceVariant
-                        )
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .background(
+                                    if (selected) {
+                                        Brush.horizontalGradient(
+                                            listOf(
+                                                Copper.copy(alpha = 0.18f),
+                                                CopperBright.copy(alpha = 0.08f)
+                                            )
+                                        )
+                                    } else {
+                                        Brush.horizontalGradient(
+                                            listOf(
+                                                androidx.compose.ui.graphics.Color.Transparent,
+                                                androidx.compose.ui.graphics.Color.Transparent
+                                            )
+                                        )
+                                    }
+                                )
+                                .padding(horizontal = 16.dp, vertical = 14.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = label,
+                                style = MaterialTheme.typography.labelLarge,
+                                color = if (selected) CopperBright else MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                     }
                 }
             }
@@ -277,36 +305,6 @@ fun ConvictionPagerSection(
             }
         }
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                pages.indices.forEach { index ->
-                    val selected = pagerState.currentPage == index
-                    Box(
-                        modifier = Modifier
-                            .width(if (selected) 24.dp else 8.dp)
-                            .height(8.dp)
-                            .clip(MaterialTheme.shapes.extraLarge)
-                            .background(
-                                if (selected) {
-                                    Brush.horizontalGradient(
-                                        listOf(Copper, CopperBright)
-                                    )
-                                } else {
-                                    Brush.horizontalGradient(
-                                        listOf(
-                                            MaterialTheme.colorScheme.outline.copy(alpha = 0.22f),
-                                            MaterialTheme.colorScheme.outline.copy(alpha = 0.22f)
-                                        )
-                                    )
-                                }
-                            )
-                    )
-                }
-            }
-        }
     }
 }
 
@@ -420,7 +418,6 @@ fun HistorySection(
         .sortedBy { it.weekStart }
         .takeLast(6)
         .reversed()
-    val preview = recentEntries.firstOrNull()
     var expanded by rememberSaveable { mutableStateOf(false) }
 
     Card(
@@ -451,19 +448,6 @@ fun HistorySection(
                 TextButton(onClick = { expanded = !expanded }) {
                     Text(if (expanded) "Hide" else "Open")
                 }
-            }
-
-            preview?.let { latest ->
-                val previewText = if (latest.status == SelectionStatus.PICKED) {
-                    "Latest: ${latest.symbol} for ${latest.weekLabel}"
-                } else {
-                    "Latest week closed without a release pick."
-                }
-                Text(
-                    text = previewText,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
             }
 
             if (expanded) {
@@ -590,15 +574,25 @@ fun TrackRecordSection(
             }
 
             message?.let {
+                if (expanded) {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+
+            val summary = trackRecord?.summary
+            if (expanded && summary != null) {
                 Text(
-                    text = it,
+                    text = "${summary.closedPicks} closed picks • ${percentLabel(summary.winRate)} win rate",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 
-            val summary = trackRecord?.summary
-            if (summary != null) {
+            if (expanded && summary != null) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(10.dp)

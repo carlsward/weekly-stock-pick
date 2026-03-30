@@ -5,6 +5,7 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,13 +23,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.nilu.weeklypicks.ui.theme.BullGreen
 import com.nilu.weeklypicks.ui.theme.Copper
 import com.nilu.weeklypicks.ui.theme.CopperBright
-import com.nilu.weeklypicks.ui.theme.Graphite900
 
 @Composable
 fun HyraxBrandMark(
@@ -67,18 +69,16 @@ fun HyraxBrandMark(
             modifier = Modifier
                 .size(size * 0.82f)
                 .clip(RoundedCornerShape(size * 0.26f))
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(CopperBright, Copper, BullGreen)
-                    )
-                ),
+                .background(Color(0xFF102A5D)),
             contentAlignment = Alignment.Center
         ) {
-            Text(
-                text = "HA",
-                style = MaterialTheme.typography.labelLarge,
-                fontWeight = FontWeight.Bold,
-                color = Graphite900
+            Image(
+                painter = painterResource(id = R.drawable.hyrax_alpha_logo),
+                contentDescription = "Hyrax Alpha",
+                modifier = Modifier
+                    .size(size * 0.82f)
+                    .clip(RoundedCornerShape(size * 0.26f)),
+                contentScale = ContentScale.Crop
             )
         }
     }

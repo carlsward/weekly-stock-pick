@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-03-28T22:22:55Z",
+  "generated_at": "2026-03-30T15:37:05Z",
   "data_as_of": "2026-03-20",
   "expected_next_refresh_at": "2026-04-06T12:00:00Z",
   "stale_after": "2026-04-07T00:00:00Z",
@@ -23,22 +23,28 @@
   },
   "summary": {
     "total_weeks": 4,
-    "total_picks": 4,
-    "no_pick_weeks": 0,
+    "total_picks": 3,
+    "no_pick_weeks": 1,
     "closed_picks": 2,
-    "open_picks": 2,
+    "open_picks": 1,
     "win_rate": 0.5,
-    "beat_spy_rate": 0.0,
+    "beat_spy_rate": 0.5,
     "beat_sector_rate": 0.0,
-    "average_5d_return": -0.0087,
-    "median_5d_return": -0.0087,
-    "average_5d_excess_return": -0.032,
-    "average_5d_sector_excess_return": -0.0224,
-    "compounded_5d_return": -0.0176
+    "average_5d_return": 0.0229,
+    "median_5d_return": 0.0229,
+    "average_5d_excess_return": 0.0193,
+    "average_5d_sector_excess_return": -0.0272,
+    "compounded_5d_return": 0.0459
+  },
+  "signal_block_report": {
+    "status": "insufficient_data",
+    "scope": "picked_entries_only",
+    "sample_count": 0,
+    "summary": "Not enough closed weekly picks are available yet to compare technical-only conviction against block-adjusted conviction."
   },
   "risk_breakdown": {
     "low": {
-      "pick_count": 1,
+      "pick_count": 0,
       "closed_pick_count": 0,
       "win_rate": null,
       "average_5d_return": null,
@@ -48,8 +54,8 @@
       "pick_count": 3,
       "closed_pick_count": 2,
       "win_rate": 0.5,
-      "average_5d_return": -0.0087,
-      "average_5d_excess_return": -0.032
+      "average_5d_return": 0.0229,
+      "average_5d_excess_return": 0.0193
     },
     "high": {
       "pick_count": 0,
@@ -65,22 +71,22 @@
       "week_start": "2026-03-30",
       "week_end": "2026-04-03",
       "week_label": "Mar 30 - Apr 03, 2026",
-      "logged_at": "2026-03-28T22:22:52Z",
-      "status": "picked",
-      "status_reason": "HON cleared the commercial release thresholds for this market week with a score of 0.156 and medium confidence.",
-      "symbol": "HON",
-      "company_name": "Honeywell International Inc.",
-      "sector": "industrials",
-      "risk": "low",
-      "model_score": 0.156,
-      "confidence_score": 0.59,
-      "confidence_label": "medium",
-      "data_as_of": "2026-03-27",
+      "logged_at": "2026-03-30T15:29:28Z",
+      "status": "no_pick",
+      "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was CVX at 0.008.",
+      "symbol": null,
+      "company_name": null,
+      "sector": null,
+      "risk": null,
+      "model_score": null,
+      "confidence_score": null,
+      "confidence_label": null,
+      "data_as_of": "2026-03-30",
       "realized_5d_return": null,
       "realized_5d_excess_return": null,
       "realized_5d_sector_return": null,
       "realized_5d_sector_excess_return": null,
-      "outcome": "open"
+      "outcome": "no_pick"
     },
     {
       "week_id": "2026-W13",
@@ -120,11 +126,11 @@
       "confidence_score": 0.73,
       "confidence_label": "medium",
       "data_as_of": "2026-03-19",
-      "realized_5d_return": -0.0263,
-      "realized_5d_excess_return": -0.0436,
-      "realized_5d_sector_return": -0.0263,
-      "realized_5d_sector_excess_return": -0.0245,
-      "outcome": "loss"
+      "realized_5d_return": 0.0467,
+      "realized_5d_excess_return": 0.0706,
+      "realized_5d_sector_return": 0.0467,
+      "realized_5d_sector_excess_return": -0.0077,
+      "outcome": "win"
     },
     {
       "week_id": "2025-W47",
@@ -142,11 +148,104 @@
       "confidence_score": 0.79,
       "confidence_label": "high",
       "data_as_of": "2025-11-20",
-      "realized_5d_return": 0.0089,
-      "realized_5d_excess_return": -0.0204,
-      "realized_5d_sector_return": 0.0089,
-      "realized_5d_sector_excess_return": -0.0202,
-      "outcome": "win"
+      "realized_5d_return": -0.0008,
+      "realized_5d_excess_return": -0.032,
+      "realized_5d_sector_return": -0.0008,
+      "realized_5d_sector_excess_return": -0.0467,
+      "outcome": "loss"
     }
-  ]
+  ],
+  "data_quality": {
+    "status": "degraded",
+    "degraded_reason": "history: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.; history: news_scores: GDELT company news failed for at least one symbol.; history: sector_scores: GDELT global-news feed failed during this run.",
+    "reasons": [
+      "history: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
+      "history: news_scores: GDELT company news failed for at least one symbol.",
+      "history: sector_scores: GDELT global-news feed failed during this run."
+    ],
+    "provider_status": {
+      "alpha_vantage": {
+        "status": "healthy",
+        "used": 2,
+        "limit": 25,
+        "remaining": 23,
+        "categories": {
+          "company_news": 1,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "healthy",
+          "used": 2,
+          "limit": 25,
+          "remaining": 23,
+          "categories": {
+            "company_news": 1,
+            "global_news": 1
+          }
+        }
+      },
+      "gdelt": {
+        "status": "tracking_only",
+        "used": 2,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "company_news": 1,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "tracking_only",
+          "used": 2,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "company_news": 1,
+            "global_news": 1
+          }
+        }
+      },
+      "marketaux": {
+        "status": "healthy",
+        "used": 17,
+        "limit": 100,
+        "remaining": 83,
+        "categories": {
+          "company_news": 16,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "healthy",
+          "used": 17,
+          "limit": 100,
+          "remaining": 83,
+          "categories": {
+            "company_news": 16,
+            "global_news": 1
+          }
+        }
+      },
+      "twelvedata": {
+        "status": "healthy",
+        "used": 116,
+        "limit": 800,
+        "remaining": 684,
+        "categories": {
+          "price": 116
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "healthy",
+          "used": 116,
+          "limit": 800,
+          "remaining": 684,
+          "categories": {
+            "price": 116
+          }
+        }
+      }
+    }
+  }
 }

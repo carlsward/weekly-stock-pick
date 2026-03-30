@@ -14,13 +14,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. AAPL was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "MSFT": {
     "news_score": 0.5,
@@ -37,13 +38,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. MSFT was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "GOOGL": {
     "news_score": 0.5,
@@ -60,13 +62,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. GOOGL was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "AMZN": {
     "news_score": 0.5,
@@ -83,13 +86,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. AMZN was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "TSLA": {
     "news_score": 0.5,
@@ -106,13 +110,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. TSLA was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "META": {
     "news_score": 0.5,
@@ -129,36 +134,94 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. META was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "BRK.B": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
+    "news_score": 0.52,
+    "news_confidence": 0.86,
+    "raw_sentiment": 0.0571,
+    "calibrated_sentiment": 0.0499,
+    "article_count": 6,
+    "effective_article_count": 2.15,
+    "source_count": 5,
+    "average_relevance": 0.87,
+    "average_recency_weight": 0.55,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.19,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow neutral at 0.52, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 6 articles across 5 sources, 2.2 effective weighted articles, average relevance 0.87, average source quality 0.75, confidence 0.86.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "Fallback company-news feeds contributed to this symbol's evidence set: alpha_vantage.",
+      "News summary for BRK.B (Berkshire Hathaway Inc.): Cash per share of Berkshire Hathaway Inc. Class B – BSESOF:BRYN; Operating cash flow per share of Berkshire Hathaway Inc. Class B – BSESOF:BRYN; Berkshire Hathaway Inc. (Class B)"
     ],
-    "top_headlines": [],
-    "top_articles": [],
+    "top_headlines": [
+      "Cash per share of Berkshire Hathaway Inc. Class B – BSESOF:BRYN",
+      "Operating cash flow per share of Berkshire Hathaway Inc. Class B – BSESOF:BRYN",
+      "Berkshire Hathaway Inc. (Class B)"
+    ],
+    "top_articles": [
+      {
+        "feed": "alpha_vantage",
+        "title": "Berkshire Hathaway (BRK.A) Records Longest Losing Streak Since 2018 Under New CEO Abel",
+        "provider": "CoinCentral",
+        "url": "https://coincentral.com/berkshire-hathaway-brk-a-records-longest-losing-streak-since-2018-under-new-ceo-abel/",
+        "published_at": null,
+        "relevance_score": 0.8,
+        "sentiment": 0.21
+      },
+      {
+        "feed": "alpha_vantage",
+        "title": "Cash per share of Berkshire Hathaway Inc. Class B – BSESOF:BRYN",
+        "provider": "TradingView",
+        "url": "https://www.tradingview.com/symbols/BSESOF-BRYN/financials-statistics-and-ratios/cash-per-share/",
+        "published_at": null,
+        "relevance_score": 1.0,
+        "sentiment": 0.03
+      },
+      {
+        "feed": "alpha_vantage",
+        "title": "Operating cash flow per share of Berkshire Hathaway Inc. Class B – BSESOF:BRYN",
+        "provider": "TradingView",
+        "url": "https://www.tradingview.com/symbols/BSESOF-BRYN/financials-statistics-and-ratios/operating-cash-flow-per-share/",
+        "published_at": null,
+        "relevance_score": 1.0,
+        "sentiment": 0.02
+      },
+      {
+        "feed": "alpha_vantage",
+        "title": "Berkshire Hathaway Inc. (Class B)",
+        "provider": "Growbeansprout.com",
+        "url": "https://growbeansprout.com/quote/BRK-B",
+        "published_at": null,
+        "relevance_score": 1.0,
+        "sentiment": 0.03
+      },
+      {
+        "feed": "alpha_vantage",
+        "title": "Ajit Jain (NYSE: BRK) reports charitable gift of Berkshire Hathaway Class B shares",
+        "provider": "Stock Titan",
+        "url": "https://www.stocktitan.net/sec-filings/BRK/form-4-berkshire-hathaway-inc-insider-trading-activity-6814795d2b20.html",
+        "published_at": null,
+        "relevance_score": 0.8,
+        "sentiment": 0.04
+      }
+    ],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "company_provider_fallback_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "alpha_vantage"
+    ]
   },
   "NVDA": {
     "news_score": 0.5,
@@ -175,13 +238,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. NVDA was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "JPM": {
     "news_score": 0.5,
@@ -198,36 +262,75 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. JPM was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "JNJ": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
-    "dominant_signal": "neutral",
+    "news_score": 0.65,
+    "news_confidence": 0.8,
+    "raw_sentiment": 0.3654,
+    "calibrated_sentiment": 0.2909,
+    "article_count": 3,
+    "effective_article_count": 1.69,
+    "source_count": 2,
+    "average_relevance": 0.73,
+    "average_recency_weight": 0.94,
+    "average_source_quality": 0.84,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.38,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow bullish at 0.65, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.7 effective weighted articles, average relevance 0.73, average source quality 0.84, confidence 0.80.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for JNJ (Johnson & Johnson): NEW YORK, March 30, 2026 (GLOBE NEWSWIRE[+287 characters] \"We are delighted to collaborate with <e[+313 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "Royalty Pharma Announces R&D Funding Collaboration for Chronic Immune-Mediated Diseases",
+      "[DowJonesToday]Dow Futures Rise Amid Sharp Sector Rotation and Tech Sell-Off",
+      "[DowJonesToday]Dow Jones Faces Tech-Led Pressure Despite Positive Futures Start"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "[DowJonesToday]Dow Jones Faces Tech-Led Pressure Despite Positive Futures Start",
+        "provider": "thestockmarketwatch.com",
+        "url": "https://stockmarketwatch.com/stock-market-news/dowjonestodaydow-jones-faces-tech-led-pressure-despite-positive-futures-start/60327/",
+        "published_at": "2026-03-30T12:32:23Z",
+        "relevance_score": 0.62,
+        "sentiment": 0.48
+      },
+      {
+        "feed": "marketaux",
+        "title": "Royalty Pharma Announces R&D Funding Collaboration for Chronic Immune-Mediated Diseases",
+        "provider": "manilatimes.net",
+        "url": "https://www.manilatimes.net/2026/03/30/tmt-newswire/globenewswire/royalty-pharma-announces-rd-funding-collaboration-for-chronic-immune-mediated-diseases/2310408",
+        "published_at": "2026-03-30T11:20:16Z",
+        "relevance_score": 0.93,
+        "sentiment": 0.33
+      },
+      {
+        "feed": "marketaux",
+        "title": "[DowJonesToday]Dow Futures Rise Amid Sharp Sector Rotation and Tech Sell-Off",
+        "provider": "thestockmarketwatch.com",
+        "url": "https://stockmarketwatch.com/stock-market-news/dowjonestodaydow-futures-rise-amid-sharp-sector-rotation-and-tech-sell-off/60331/",
+        "published_at": "2026-03-30T13:10:16Z",
+        "relevance_score": 0.62,
+        "sentiment": 0.3
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "V": {
     "news_score": 0.5,
@@ -244,36 +347,75 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. V was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "WMT": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
-    "dominant_signal": "neutral",
+    "news_score": 0.6,
+    "news_confidence": 0.68,
+    "raw_sentiment": 0.3268,
+    "calibrated_sentiment": 0.2085,
+    "article_count": 3,
+    "effective_article_count": 1.11,
+    "source_count": 1,
+    "average_relevance": 0.55,
+    "average_recency_weight": 0.89,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.34,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow bullish at 0.60, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 1.1 effective weighted articles, average relevance 0.55, average source quality 0.75, confidence 0.68.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for WMT (Walmart Inc.): Walmart (WMT) and Costco (COST)[+254 characters] Walmart (NYSE:WMT) and[+283 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "Target Is Up 44%. Has It Finally Turned the Corner on Its Troubles?",
+      "5 Stocks Preventing a S&P 500 Correction (Hint: None Are in the \"Magnificent Seven\")",
+      "Nervous About the Market? 3 Vanguard ETFs That Were Made for Times Like These."
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Target Is Up 44%. Has It Finally Turned the Corner on Its Troubles?",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/target-44-finally-turned-corner-104103465.html",
+        "published_at": "2026-03-30T10:41:03Z",
+        "relevance_score": 0.55,
+        "sentiment": 0.54
+      },
+      {
+        "feed": "marketaux",
+        "title": "5 Stocks Preventing a S&P 500 Correction (Hint: None Are in the \"Magnificent Seven\")",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/5-stocks-preventing-p-500-090200407.html",
+        "published_at": "2026-03-30T09:02:00Z",
+        "relevance_score": 0.57,
+        "sentiment": 0.23
+      },
+      {
+        "feed": "marketaux",
+        "title": "Nervous About the Market? 3 Vanguard ETFs That Were Made for Times Like These.",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/nervous-market-3-vanguard-etfs-090000597.html",
+        "published_at": "2026-03-30T09:00:00Z",
+        "relevance_score": 0.54,
+        "sentiment": 0.2
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "PG": {
     "news_score": 0.5,
@@ -290,13 +432,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. PG was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "MA": {
     "news_score": 0.5,
@@ -313,13 +456,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. MA was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "DIS": {
     "news_score": 0.5,
@@ -336,13 +480,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. DIS was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "HD": {
     "news_score": 0.5,
@@ -359,13 +504,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. HD was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "BAC": {
     "news_score": 0.5,
@@ -382,13 +528,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. BAC was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "XOM": {
     "news_score": 0.5,
@@ -405,82 +552,181 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Recent XOM company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_low_quality_company_news",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "PFE": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
+    "news_score": 0.56,
+    "news_confidence": 0.74,
+    "raw_sentiment": 0.1698,
+    "calibrated_sentiment": 0.1218,
+    "article_count": 3,
+    "effective_article_count": 1.52,
+    "source_count": 1,
+    "average_relevance": 0.87,
+    "average_recency_weight": 0.74,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.45,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow neutral at 0.56, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 1.5 effective weighted articles, average relevance 0.87, average source quality 0.75, confidence 0.74.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for PFE (Pfizer Inc.): Pfizer Inc. (NYSE:[+303 characters] One notable movement in Pfizer [+111 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "Pfizer’s (PFE) Shares Up Since Jim Cramer Said “Pass”",
+      "Pfizer (PFE) – Among the 15 Large Cap Stocks with Highest Dividends",
+      "Is Now the Time to Buy Salesforce? Here's What the Numbers Reveal"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Pfizer’s (PFE) Shares Up Since Jim Cramer Said “Pass”",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/pfizer-pfe-shares-since-jim-110625418.html",
+        "published_at": "2026-03-30T11:06:25Z",
+        "relevance_score": 0.98,
+        "sentiment": 0.29
+      },
+      {
+        "feed": "marketaux",
+        "title": "Pfizer (PFE) – Among the 15 Large Cap Stocks with Highest Dividends",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/pfizer-pfe-among-15-large-060857822.html",
+        "published_at": "2026-03-30T06:08:57Z",
+        "relevance_score": 0.99,
+        "sentiment": 0.04
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "VZ": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
+    "news_score": 0.56,
+    "news_confidence": 0.68,
+    "raw_sentiment": 0.1837,
+    "calibrated_sentiment": 0.1171,
+    "article_count": 3,
+    "effective_article_count": 1.13,
+    "source_count": 1,
+    "average_relevance": 0.87,
+    "average_recency_weight": 0.56,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.56,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow neutral at 0.56, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 1.1 effective weighted articles, average relevance 0.87, average source quality 0.75, confidence 0.68.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for VZ (Verizon Communications Inc.): Verizon Communications[+260 characters] (NYSE:VZ) engages in the provis[+280 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "Verizon Communications (VZ) Price Target Bumped to $55",
+      "Goldman Sachs, Citi Raise Verizon (VZ) Targets, Highlight Shift to EBITDA and Cash Flow Focus",
+      "Why Retirees Should Consider These 3 Ultra-Safe Dividend Stocks Now"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Verizon Communications (VZ) Price Target Bumped to $55",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/verizon-communications-vz-price-target-060402051.html",
+        "published_at": "2026-03-30T06:04:02Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.3
+      },
+      {
+        "feed": "marketaux",
+        "title": "Goldman Sachs, Citi Raise Verizon (VZ) Targets, Highlight Shift to EBITDA and Cash Flow Focus",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/goldman-sachs-citi-raise-verizon-010933433.html",
+        "published_at": "2026-03-27T01:09:33Z",
+        "relevance_score": 0.97,
+        "sentiment": 0.19
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "NFLX": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
+    "news_score": 0.56,
+    "news_confidence": 0.69,
+    "raw_sentiment": 0.182,
+    "calibrated_sentiment": 0.1196,
+    "article_count": 3,
+    "effective_article_count": 1.16,
+    "source_count": 1,
+    "average_relevance": 0.69,
+    "average_recency_weight": 0.78,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.41,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow neutral at 0.56, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 1.2 effective weighted articles, average relevance 0.69, average source quality 0.75, confidence 0.69.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for NFLX (Netflix Inc.): Netflix Inc. is again [+193 characters] Don't Miss:\n\nContent Spending Grows\n\n<em[+297 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "Netflix Hikes Prices For All Plans As Content Spending Surges",
+      "Why Sigma Lithium Stock Rocketed Today",
+      "How High Can Disney's Streaming Profit Go?"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Netflix Hikes Prices For All Plans As Content Spending Surges",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/netflix-hikes-prices-plans-content-150111163.html",
+        "published_at": "2026-03-29T15:01:11Z",
+        "relevance_score": 0.97,
+        "sentiment": 0.26
+      },
+      {
+        "feed": "marketaux",
+        "title": "How High Can Disney's Streaming Profit Go?",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/high-disneys-streaming-profit-203500671.html",
+        "published_at": "2026-03-29T20:35:00Z",
+        "relevance_score": 0.63,
+        "sentiment": 0.25
+      },
+      {
+        "feed": "marketaux",
+        "title": "Why Sigma Lithium Stock Rocketed Today",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-sigma-lithium-stock-rocketed-141534969.html",
+        "published_at": "2026-03-30T14:15:34Z",
+        "relevance_score": 0.47,
+        "sentiment": 0.0
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "ADBE": {
     "news_score": 0.5,
@@ -497,13 +743,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. ADBE was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "CMCSA": {
     "news_score": 0.5,
@@ -520,59 +767,127 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. CMCSA was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "KO": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
-    "dominant_signal": "neutral",
+    "news_score": 0.64,
+    "news_confidence": 0.74,
+    "raw_sentiment": 0.395,
+    "calibrated_sentiment": 0.2827,
+    "article_count": 3,
+    "effective_article_count": 1.2,
+    "source_count": 2,
+    "average_relevance": 0.79,
+    "average_recency_weight": 0.68,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.38,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow bullish at 0.64, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.2 effective weighted articles, average relevance 0.79, average source quality 0.75, confidence 0.74.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for KO (The Coca-Cola Company): Its top holdings include Walmart (NASDAQ[+306 characters] The Coca-Cola[+408 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "Nervous About the Market? 3 Vanguard ETFs That Were Made for Times Like These.",
+      "Jefferies Bullish on The Coca-Cola Company (KO) Amid Strong Protein Business Outlook",
+      "Coca-Cola’s yellow caps are back — what they mean and why they’re compared to Mexican Coke"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Jefferies Bullish on The Coca-Cola Company (KO) Amid Strong Protein Business Outlook",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/jefferies-bullish-coca-cola-company-205155333.html",
+        "published_at": "2026-03-28T20:51:55Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.46
+      },
+      {
+        "feed": "marketaux",
+        "title": "Coca-Cola’s yellow caps are back — what they mean and why they’re compared to Mexican Coke",
+        "provider": "foxbusiness.com",
+        "url": "https://www.foxbusiness.com/fox-news-food-drink/coca-colas-yellow-caps-back-what-mean-why-theyre-compared-mexican-coke",
+        "published_at": "2026-03-29T12:00:27Z",
+        "relevance_score": 0.69,
+        "sentiment": 0.58
+      },
+      {
+        "feed": "marketaux",
+        "title": "Nervous About the Market? 3 Vanguard ETFs That Were Made for Times Like These.",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/nervous-market-3-vanguard-etfs-090000597.html",
+        "published_at": "2026-03-30T09:00:00Z",
+        "relevance_score": 0.68,
+        "sentiment": 0.2
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "T": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
-    "dominant_signal": "neutral",
+    "news_score": 0.39,
+    "news_confidence": 0.7,
+    "raw_sentiment": -0.325,
+    "calibrated_sentiment": -0.2172,
+    "article_count": 3,
+    "effective_article_count": 0.83,
+    "source_count": 3,
+    "average_relevance": 0.66,
+    "average_recency_weight": 0.58,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.47,
+    "dominant_signal": "bearish",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow bearish at 0.39, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.8 effective weighted articles, average relevance 0.66, average source quality 0.75, confidence 0.70.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for T (AT&T Inc.): In one of the worst cloud data breaches [+210 characters] Major companies using the product includ[+100 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "European Commission’s Data Stolen in Hack on AWS Account",
+      "Is Now the Time to Buy Salesforce? Here's What the Numbers Reveal",
+      "STMicroelectronics Reports on Resolutions to be Proposed at the 2026 Annual General Meeting of Shareholders"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "European Commission’s Data Stolen in Hack on AWS Account",
+        "provider": "insurancejournal.com",
+        "url": "https://www.insurancejournal.com/news/international/2026/03/30/863882.htm",
+        "published_at": "2026-03-30T12:07:27Z",
+        "relevance_score": 0.55,
+        "sentiment": -0.82
+      },
+      {
+        "feed": "marketaux",
+        "title": "Is Now the Time to Buy Salesforce? Here's What the Numbers Reveal",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/now-time-buy-salesforce-heres-090200377.html",
+        "published_at": "2026-03-28T09:02:00Z",
+        "relevance_score": 0.79,
+        "sentiment": 0.18
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "NKE": {
     "news_score": 0.5,
@@ -589,36 +904,66 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. NKE was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "MRK": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
+    "news_score": 0.58,
+    "news_confidence": 0.77,
+    "raw_sentiment": 0.2116,
+    "calibrated_sentiment": 0.1597,
+    "article_count": 3,
+    "effective_article_count": 1.47,
+    "source_count": 2,
+    "average_relevance": 0.79,
+    "average_recency_weight": 0.83,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.46,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow neutral at 0.58, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.5 effective weighted articles, average relevance 0.79, average source quality 0.75, confidence 0.77.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for MRK (Merck & Co. Inc.): Merck & Co., Inc</[+317 characters] Merck & Co., Inc</[+313 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "Merck (MRK) Shares Up Significantly Since Jim Cramer Advised to “Stay the Course”",
+      "Merck: Aggressive M&A Efforts To Prepare For A Keytruda Patent Cliff (NYSE:MRK)",
+      "This Top ETF Recently Added a Healthy Dose of These High-Yielding Dividend Stocks"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Merck (MRK) Shares Up Significantly Since Jim Cramer Advised to “Stay the Course”",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/merck-mrk-shares-significantly-since-110730217.html",
+        "published_at": "2026-03-30T11:07:30Z",
+        "relevance_score": 0.99,
+        "sentiment": 0.36
+      },
+      {
+        "feed": "marketaux",
+        "title": "Merck: Aggressive M&A Efforts To Prepare For A Keytruda Patent Cliff (NYSE:MRK)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4886920-merck-aggressive-m-and-ampa-efforts-to-prepare-for-a-keytruda-patent-cliff",
+        "published_at": "2026-03-29T13:29:54Z",
+        "relevance_score": 0.83,
+        "sentiment": 0.23
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "ABT": {
     "news_score": 0.5,
@@ -635,59 +980,128 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. ABT was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "PEP": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
+    "news_score": 0.56,
+    "news_confidence": 0.74,
+    "raw_sentiment": 0.1575,
+    "calibrated_sentiment": 0.1133,
+    "article_count": 3,
+    "effective_article_count": 1.21,
+    "source_count": 2,
+    "average_relevance": 0.75,
+    "average_recency_weight": 0.73,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.39,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow neutral at 0.56, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.2 effective weighted articles, average relevance 0.75, average source quality 0.75, confidence 0.74.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for PEP (PepsiCo Inc.): The investment story of PepsiCo[+111 characters] PepsiCo Stock: Elliott's Catalyst + 4% Yield = The Defensive Buy Of 2026 (NASDAQ:PEP)"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "PepsiCo Stock: Elliott's Catalyst + 4% Yield = The Defensive Buy Of 2026 (NASDAQ:PEP)",
+      "Nervous About the Market? 3 Vanguard ETFs That Were Made for Times Like These.",
+      "3 Reasons Celsius Stock Can Bounce Back in April"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "3 Reasons Celsius Stock Can Bounce Back in April",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-celsius-stock-bounce-172700397.html",
+        "published_at": "2026-03-29T17:27:00Z",
+        "relevance_score": 0.63,
+        "sentiment": 0.31
+      },
+      {
+        "feed": "marketaux",
+        "title": "Nervous About the Market? 3 Vanguard ETFs That Were Made for Times Like These.",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/nervous-market-3-vanguard-etfs-090000597.html",
+        "published_at": "2026-03-30T09:00:00Z",
+        "relevance_score": 0.63,
+        "sentiment": 0.2
+      },
+      {
+        "feed": "marketaux",
+        "title": "PepsiCo Stock: Elliott's Catalyst + 4% Yield = The Defensive Buy Of 2026 (NASDAQ:PEP)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4886918-pepsico-elliotts-catalyst-plus-4-percent-yield-the-defensive-buy-of-2026",
+        "published_at": "2026-03-29T13:09:10Z",
+        "relevance_score": 0.99,
+        "sentiment": 0.01
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "CSCO": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
-    "dominant_signal": "neutral",
+    "news_score": 0.64,
+    "news_confidence": 0.66,
+    "raw_sentiment": 0.4476,
+    "calibrated_sentiment": 0.2752,
+    "article_count": 3,
+    "effective_article_count": 1.01,
+    "source_count": 2,
+    "average_relevance": 0.65,
+    "average_recency_weight": 0.57,
+    "average_source_quality": 0.85,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.63,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow bullish at 0.64, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.0 effective weighted articles, average relevance 0.65, average source quality 0.85, confidence 0.66.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for CSCO (Cisco Systems Inc.): Shortly after the opening bell, we will [+188 characters] Cisco Systems With tec[+289 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "We're exiting this tech stock to replenish our cash pile after our annual charity donation",
+      "Here are our top and bottom stocks over the past month. Not much green on the board",
+      "Tech Growth Reimagined: Inside Global X’s Launch of NYSX"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "We're exiting this tech stock to replenish our cash pile after our annual charity donation",
+        "provider": "cnbc.com",
+        "url": "https://www.cnbc.com/2026/03/30/were-exiting-this-tech-stock-to-replenish-our-cash-pile-after-our-annual-charity-donation.html",
+        "published_at": "2026-03-30T12:57:45Z",
+        "relevance_score": 0.74,
+        "sentiment": 0.72
+      },
+      {
+        "feed": "marketaux",
+        "title": "Here are our top and bottom stocks over the past month. Not much green on the board",
+        "provider": "cnbc.com",
+        "url": "https://www.cnbc.com/2026/03/27/here-are-our-top-and-bottom-stocks-over-the-past-month-not-much-green-on-the-board.html",
+        "published_at": "2026-03-27T15:33:12Z",
+        "relevance_score": 0.57,
+        "sentiment": -0.45
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "ORCL": {
     "news_score": 0.5,
@@ -704,13 +1118,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. ORCL was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "INTC": {
     "news_score": 0.5,
@@ -727,13 +1142,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. INTC was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "CRM": {
     "news_score": 0.5,
@@ -750,13 +1166,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. CRM was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "COST": {
     "news_score": 0.5,
@@ -773,13 +1190,16 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Recent COST company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_low_quality_company_news",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "ACN": {
     "news_score": 0.5,
@@ -796,36 +1216,66 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. ACN was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "CVX": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
-    "dominant_signal": "neutral",
+    "news_score": 0.64,
+    "news_confidence": 0.67,
+    "raw_sentiment": 0.4443,
+    "calibrated_sentiment": 0.2798,
+    "article_count": 3,
+    "effective_article_count": 1.19,
+    "source_count": 1,
+    "average_relevance": 0.62,
+    "average_recency_weight": 0.82,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.38,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow bullish at 0.64, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 1.2 effective weighted articles, average relevance 0.62, average source quality 0.75, confidence 0.67.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for CVX (Chevron Corporation): Chevron (NYSE: CVX[+325 characters] Chevron benefits from these hig[+296 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "5 Stocks Preventing a S&P 500 Correction (Hint: None Are in the \"Magnificent Seven\")",
+      "2 Oil Giants to Buy Immediately as the Iran Crisis Pushes Crude Toward $100",
+      "This Vanguard ETF Is up 33% YTD and Still Has Massive Upside"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "2 Oil Giants to Buy Immediately as the Iran Crisis Pushes Crude Toward $100",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/2-oil-giants-buy-immediately-115000416.html",
+        "published_at": "2026-03-30T11:50:00Z",
+        "relevance_score": 0.64,
+        "sentiment": 0.73
+      },
+      {
+        "feed": "marketaux",
+        "title": "5 Stocks Preventing a S&P 500 Correction (Hint: None Are in the \"Magnificent Seven\")",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/5-stocks-preventing-p-500-090200407.html",
+        "published_at": "2026-03-30T09:02:00Z",
+        "relevance_score": 0.64,
+        "sentiment": 0.61
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "MCD": {
     "news_score": 0.5,
@@ -842,13 +1292,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. MCD was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "DHR": {
     "news_score": 0.5,
@@ -865,13 +1316,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. DHR was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "MDT": {
     "news_score": 0.5,
@@ -888,13 +1340,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. MDT was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "LLY": {
     "news_score": 0.5,
@@ -911,13 +1364,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. LLY was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "TXN": {
     "news_score": 0.5,
@@ -934,13 +1388,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. TXN was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "UNH": {
     "news_score": 0.5,
@@ -957,36 +1412,66 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. UNH was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "BMY": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
+    "news_score": 0.6,
+    "news_confidence": 0.77,
+    "raw_sentiment": 0.2548,
+    "calibrated_sentiment": 0.1931,
+    "article_count": 3,
+    "effective_article_count": 1.42,
+    "source_count": 2,
+    "average_relevance": 0.88,
+    "average_recency_weight": 0.73,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.44,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow neutral at 0.60, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.4 effective weighted articles, average relevance 0.88, average source quality 0.75, confidence 0.77.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for BMY (Bristol-Myers Squibb Company): Bristol-Myers Squi[+411 characters] Bristol-Myers Squi[+282 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "Bristol-Myers Squibb Gets FDA Approval for Hodgkin’s Lymphoma Treatment",
+      "15 Large-cap Stocks with Highest Dividends",
+      "Bristol-Myers Squibb (BMY) Faces Mixed Analyst Sentiment Despite Strong Momentum in Healthcare Industry"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Bristol-Myers Squibb Gets FDA Approval for Hodgkin’s Lymphoma Treatment",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/bristol-myers-squibb-gets-fda-060722838.html",
+        "published_at": "2026-03-30T06:07:22Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.34
+      },
+      {
+        "feed": "marketaux",
+        "title": "Bristol-Myers Squibb (BMY) Faces Mixed Analyst Sentiment Despite Strong Momentum in Healthcare Industry",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/bristol-myers-squibb-bmy-faces-205109228.html",
+        "published_at": "2026-03-28T20:51:09Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.37
+      }
+    ],
+    "last_updated": "2026-03-30",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "QCOM": {
     "news_score": 0.5,
@@ -1003,36 +1488,67 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. QCOM was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "HON": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
-    "dominant_signal": "neutral",
+    "news_score": 0.68,
+    "news_confidence": 0.72,
+    "raw_sentiment": 0.5185,
+    "calibrated_sentiment": 0.3565,
+    "article_count": 3,
+    "effective_article_count": 0.86,
+    "source_count": 3,
+    "average_relevance": 0.75,
+    "average_recency_weight": 0.45,
+    "average_source_quality": 0.79,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.6,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company-news provider coverage rated the news flow bullish at 0.68, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.9 effective weighted articles, average relevance 0.75, average source quality 0.79, confidence 0.72.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for HON (Honeywell International Inc.): Honeywell International</em[+292 characters] On March 20, Honeywell Inte[+225 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "top_headlines": [
+      "Honeywell (HON) Signs Defense Deal, Commits $500M for Capacity Upgrades",
+      "[DowJonesToday]Dow Jones Surges on Cooling Inflation Data and Healthcare Strength",
+      "Jim Cramer’s Hottest Defense Technology Stock Picks"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Honeywell (HON) Signs Defense Deal, Commits $500M for Capacity Upgrades",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/honeywell-hon-signs-defense-deal-200557317.html",
+        "published_at": "2026-03-29T20:05:57Z",
+        "relevance_score": 0.97,
+        "sentiment": 0.58
+      },
+      {
+        "feed": "marketaux",
+        "title": "[DowJonesToday]Dow Jones Surges on Cooling Inflation Data and Healthcare Strength",
+        "provider": "thestockmarketwatch.com",
+        "url": "https://stockmarketwatch.com/stock-market-news/dowjonestodaydow-jones-surges-on-cooling-inflation-data-and-healthcare-strength/60174/",
+        "published_at": "2026-03-25T18:09:33Z",
+        "relevance_score": 0.64,
+        "sentiment": 0.51
+      }
+    ],
+    "last_updated": "2026-03-29",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "AMGN": {
     "news_score": 0.5,
@@ -1049,13 +1565,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. AMGN was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "SBUX": {
     "news_score": 0.5,
@@ -1072,13 +1589,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. SBUX was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "LOW": {
     "news_score": 0.5,
@@ -1095,13 +1613,14 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. LOW was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "GE": {
     "news_score": 0.5,
@@ -1118,12 +1637,98 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "No recently identified relevant Marketaux articles passed the relevance and freshness filters, so the news contribution is neutral."
+      "Company news was only fetched for the weekly technical shortlist. GE was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_no_articles",
-    "llm_model": null
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
+  },
+  "data_quality": {
+    "status": "degraded",
+    "degraded_reason": "GDELT company news failed for at least one symbol.",
+    "reasons": [
+      "GDELT company news failed for at least one symbol."
+    ],
+    "provider_status": {
+      "alpha_vantage": {
+        "status": "healthy",
+        "used": 1,
+        "limit": 25,
+        "remaining": 24,
+        "categories": {
+          "company_news": 1
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "healthy",
+          "used": 1,
+          "limit": 25,
+          "remaining": 24,
+          "categories": {
+            "company_news": 1
+          }
+        }
+      },
+      "gdelt": {
+        "status": "degraded",
+        "used": 1,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "company_news": 1
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "tracking_only",
+          "used": 1,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "company_news": 1
+          }
+        }
+      },
+      "marketaux": {
+        "status": "healthy",
+        "used": 16,
+        "limit": 100,
+        "remaining": 84,
+        "categories": {
+          "company_news": 16
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "healthy",
+          "used": 16,
+          "limit": 100,
+          "remaining": 84,
+          "categories": {
+            "company_news": 16
+          }
+        }
+      },
+      "twelvedata": {
+        "status": "healthy",
+        "used": 58,
+        "limit": 800,
+        "remaining": 742,
+        "categories": {
+          "price": 58
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "healthy",
+          "used": 58,
+          "limit": 800,
+          "remaining": 742,
+          "categories": {
+            "price": 58
+          }
+        }
+      }
+    }
   }
 }

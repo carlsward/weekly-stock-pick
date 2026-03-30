@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-28T22:22:52Z",
-  "last_updated": "2026-03-28",
+  "generated_at": "2026-03-30T15:29:09Z",
+  "last_updated": "2026-03-30",
   "lookback_days": 3,
-  "article_count": 0,
-  "source_count": 0,
+  "article_count": 2,
+  "source_count": 2,
   "llm_model": "gpt-5-mini",
-  "summary": "Sector analysis was neutral because no reliable broad catalysts were found.",
+  "summary": "Two short-horizon items: (1) positive analyst/earnings framing on Visa likely supports near-term upside for Visa and the financials/card-network group via demand/transaction-volume sentiment and earnings trajectory; (2) a Toronto Rogers family estate fee dispute is a localized legal/governance story with negligible broad market impact over the next 1-15 trading days.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -15,7 +15,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Communication Services sector."
+        "No strong recent sector catalyst was found for Communication Services."
       ],
       "supporting_articles": []
     },
@@ -27,7 +27,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Consumer Discretionary sector."
+        "No strong recent sector catalyst was found for Consumer Discretionary."
       ],
       "supporting_articles": []
     },
@@ -39,7 +39,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Consumer Staples sector."
+        "No strong recent sector catalyst was found for Consumer Staples."
       ],
       "supporting_articles": []
     },
@@ -51,21 +51,41 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Energy sector."
+        "No strong recent sector catalyst was found for Energy."
       ],
       "supporting_articles": []
     },
     "financials": {
       "sector": "financials",
       "display_name": "Financials",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.55,
+      "confidence": 0.37,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-30",
       "reasons": [
-        "No recent broad catalyst clearly favored the Financials sector."
+        "Analyst note reiterating double-digit EPS growth and technical support around $290–$299 likely reinforces buyer interest in Visa in the near term. Transmission: improved earnings/growth visibility and resilient consumer/merchant spending lift expectations for transaction volumes and fee revenue, supporting Visa's stock and potentially peer card networks/banks. Market impact is company-focused but can modestly buoy financials sentiment; risks cited (AI, spending) temper magnitude."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Visa: Double-Digit EPS Growth Remains On Track, Shares Tag Key Technical Support (NYSE:V)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887094-visa-double-digit-eps-growth-remains-on-track-shares-tag-key-technical-support",
+          "published_at": "2026-03-30T14:47:42Z",
+          "impact": "positive",
+          "weight": 0.087,
+          "event_type": "earnings/guidance commentary",
+          "transmission_channel": "demand shifts / transaction volumes and earnings sentiment",
+          "affected_inputs": [
+            "consumer_spending",
+            "transaction_volumes",
+            "earnings expectations",
+            "market sentiment / equity technicals"
+          ],
+          "horizon": "1-2w",
+          "reason": "Analyst note reiterating double-digit EPS growth and technical support around $290–$299 likely reinforces buyer interest in Visa in the near term. Transmission: improved earnings/growth visibility and resilient consumer/merchant spending lift expectations for transaction volumes and fee revenue, supporting Visa's stock and potentially peer card networks/banks. Market impact is company-focused but can modestly buoy financials sentiment; risks cited (AI, spending) temper magnitude."
+        }
+      ]
     },
     "healthcare": {
       "sector": "healthcare",
@@ -75,7 +95,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Healthcare sector."
+        "No strong recent sector catalyst was found for Healthcare."
       ],
       "supporting_articles": []
     },
@@ -87,7 +107,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Industrials sector."
+        "No strong recent sector catalyst was found for Industrials."
       ],
       "supporting_articles": []
     },
@@ -99,7 +119,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Technology sector."
+        "No strong recent sector catalyst was found for Technology."
       ],
       "supporting_articles": []
     }
@@ -114,7 +134,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Apple Inc.."
+        "No strong recent world-news catalyst clearly favored Apple Inc.."
       ],
       "supporting_articles": []
     },
@@ -127,7 +147,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Microsoft Corporation."
+        "No strong recent world-news catalyst clearly favored Microsoft Corporation."
       ],
       "supporting_articles": []
     },
@@ -140,7 +160,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Alphabet Inc.."
+        "No strong recent world-news catalyst clearly favored Alphabet Inc.."
       ],
       "supporting_articles": []
     },
@@ -153,7 +173,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Amazon.com Inc.."
+        "No strong recent world-news catalyst clearly favored Amazon.com Inc.."
       ],
       "supporting_articles": []
     },
@@ -166,7 +186,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Tesla Inc.."
+        "No strong recent world-news catalyst clearly favored Tesla Inc.."
       ],
       "supporting_articles": []
     },
@@ -179,7 +199,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Meta Platforms Inc.."
+        "No strong recent world-news catalyst clearly favored Meta Platforms Inc.."
       ],
       "supporting_articles": []
     },
@@ -192,7 +212,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
+        "No strong recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
       ],
       "supporting_articles": []
     },
@@ -205,7 +225,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored NVIDIA Corporation."
+        "No strong recent world-news catalyst clearly favored NVIDIA Corporation."
       ],
       "supporting_articles": []
     },
@@ -218,7 +238,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored JPMorgan Chase & Co.."
+        "No strong recent world-news catalyst clearly favored JPMorgan Chase & Co.."
       ],
       "supporting_articles": []
     },
@@ -231,7 +251,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Johnson & Johnson."
+        "No strong recent world-news catalyst clearly favored Johnson & Johnson."
       ],
       "supporting_articles": []
     },
@@ -239,14 +259,34 @@
       "symbol": "V",
       "company_name": "Visa Inc.",
       "sector": "financials",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.56,
+      "confidence": 0.39,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-30",
       "reasons": [
-        "No recent world-news catalyst clearly favored Visa Inc.."
+        "Analyst note reiterating double-digit EPS growth and technical support around $290–$299 likely reinforces buyer interest in Visa in the near term. Transmission: improved earnings/growth visibility and resilient consumer/merchant spending lift expectations for transaction volumes and fee revenue, supporting Visa's stock and potentially peer card networks/banks. Market impact is company-focused but can modestly buoy financials sentiment; risks cited (AI, spending) temper magnitude."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Visa: Double-Digit EPS Growth Remains On Track, Shares Tag Key Technical Support (NYSE:V)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887094-visa-double-digit-eps-growth-remains-on-track-shares-tag-key-technical-support",
+          "published_at": "2026-03-30T14:47:42Z",
+          "impact": "positive",
+          "weight": 0.087,
+          "event_type": "earnings/guidance commentary",
+          "transmission_channel": "demand shifts / transaction volumes and earnings sentiment",
+          "affected_inputs": [
+            "consumer_spending",
+            "transaction_volumes",
+            "earnings expectations",
+            "market sentiment / equity technicals"
+          ],
+          "horizon": "1-2w",
+          "reason": "Analyst note reiterating double-digit EPS growth and technical support around $290–$299 likely reinforces buyer interest in Visa in the near term. Transmission: improved earnings/growth visibility and resilient consumer/merchant spending lift expectations for transaction volumes and fee revenue, supporting Visa's stock and potentially peer card networks/banks. Market impact is company-focused but can modestly buoy financials sentiment; risks cited (AI, spending) temper magnitude."
+        }
+      ]
     },
     "WMT": {
       "symbol": "WMT",
@@ -257,7 +297,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Walmart Inc.."
+        "No strong recent world-news catalyst clearly favored Walmart Inc.."
       ],
       "supporting_articles": []
     },
@@ -270,7 +310,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Procter & Gamble Company."
+        "No strong recent world-news catalyst clearly favored Procter & Gamble Company."
       ],
       "supporting_articles": []
     },
@@ -283,7 +323,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Mastercard Incorporated."
+        "No strong recent world-news catalyst clearly favored Mastercard Incorporated."
       ],
       "supporting_articles": []
     },
@@ -296,7 +336,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored The Walt Disney Company."
+        "No strong recent world-news catalyst clearly favored The Walt Disney Company."
       ],
       "supporting_articles": []
     },
@@ -309,7 +349,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored The Home Depot Inc.."
+        "No strong recent world-news catalyst clearly favored The Home Depot Inc.."
       ],
       "supporting_articles": []
     },
@@ -322,7 +362,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Bank of America Corporation."
+        "No strong recent world-news catalyst clearly favored Bank of America Corporation."
       ],
       "supporting_articles": []
     },
@@ -335,7 +375,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Exxon Mobil Corporation."
+        "No strong recent world-news catalyst clearly favored Exxon Mobil Corporation."
       ],
       "supporting_articles": []
     },
@@ -348,7 +388,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Pfizer Inc.."
+        "No strong recent world-news catalyst clearly favored Pfizer Inc.."
       ],
       "supporting_articles": []
     },
@@ -361,7 +401,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Verizon Communications Inc.."
+        "No strong recent world-news catalyst clearly favored Verizon Communications Inc.."
       ],
       "supporting_articles": []
     },
@@ -374,7 +414,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Netflix Inc.."
+        "No strong recent world-news catalyst clearly favored Netflix Inc.."
       ],
       "supporting_articles": []
     },
@@ -387,7 +427,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Adobe Inc.."
+        "No strong recent world-news catalyst clearly favored Adobe Inc.."
       ],
       "supporting_articles": []
     },
@@ -400,7 +440,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Comcast Corporation."
+        "No strong recent world-news catalyst clearly favored Comcast Corporation."
       ],
       "supporting_articles": []
     },
@@ -413,7 +453,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored The Coca-Cola Company."
+        "No strong recent world-news catalyst clearly favored The Coca-Cola Company."
       ],
       "supporting_articles": []
     },
@@ -426,7 +466,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored AT&T Inc.."
+        "No strong recent world-news catalyst clearly favored AT&T Inc.."
       ],
       "supporting_articles": []
     },
@@ -439,7 +479,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Nike Inc.."
+        "No strong recent world-news catalyst clearly favored Nike Inc.."
       ],
       "supporting_articles": []
     },
@@ -452,7 +492,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Merck & Co. Inc.."
+        "No strong recent world-news catalyst clearly favored Merck & Co. Inc.."
       ],
       "supporting_articles": []
     },
@@ -465,7 +505,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Abbott Laboratories."
+        "No strong recent world-news catalyst clearly favored Abbott Laboratories."
       ],
       "supporting_articles": []
     },
@@ -478,7 +518,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored PepsiCo Inc.."
+        "No strong recent world-news catalyst clearly favored PepsiCo Inc.."
       ],
       "supporting_articles": []
     },
@@ -491,7 +531,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Cisco Systems Inc.."
+        "No strong recent world-news catalyst clearly favored Cisco Systems Inc.."
       ],
       "supporting_articles": []
     },
@@ -504,7 +544,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Oracle Corporation."
+        "No strong recent world-news catalyst clearly favored Oracle Corporation."
       ],
       "supporting_articles": []
     },
@@ -517,7 +557,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Intel Corporation."
+        "No strong recent world-news catalyst clearly favored Intel Corporation."
       ],
       "supporting_articles": []
     },
@@ -530,7 +570,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Salesforce Inc.."
+        "No strong recent world-news catalyst clearly favored Salesforce Inc.."
       ],
       "supporting_articles": []
     },
@@ -543,7 +583,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Costco Wholesale Corporation."
+        "No strong recent world-news catalyst clearly favored Costco Wholesale Corporation."
       ],
       "supporting_articles": []
     },
@@ -556,7 +596,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Accenture plc."
+        "No strong recent world-news catalyst clearly favored Accenture plc."
       ],
       "supporting_articles": []
     },
@@ -569,7 +609,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Chevron Corporation."
+        "No strong recent world-news catalyst clearly favored Chevron Corporation."
       ],
       "supporting_articles": []
     },
@@ -582,7 +622,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored McDonald's Corporation."
+        "No strong recent world-news catalyst clearly favored McDonald's Corporation."
       ],
       "supporting_articles": []
     },
@@ -595,7 +635,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Danaher Corporation."
+        "No strong recent world-news catalyst clearly favored Danaher Corporation."
       ],
       "supporting_articles": []
     },
@@ -608,7 +648,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Medtronic plc."
+        "No strong recent world-news catalyst clearly favored Medtronic plc."
       ],
       "supporting_articles": []
     },
@@ -621,7 +661,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Eli Lilly and Company."
+        "No strong recent world-news catalyst clearly favored Eli Lilly and Company."
       ],
       "supporting_articles": []
     },
@@ -634,7 +674,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Texas Instruments Incorporated."
+        "No strong recent world-news catalyst clearly favored Texas Instruments Incorporated."
       ],
       "supporting_articles": []
     },
@@ -647,7 +687,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
+        "No strong recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
       ],
       "supporting_articles": []
     },
@@ -660,7 +700,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
+        "No strong recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
       ],
       "supporting_articles": []
     },
@@ -673,7 +713,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored QUALCOMM Incorporated."
+        "No strong recent world-news catalyst clearly favored QUALCOMM Incorporated."
       ],
       "supporting_articles": []
     },
@@ -686,7 +726,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Honeywell International Inc.."
+        "No strong recent world-news catalyst clearly favored Honeywell International Inc.."
       ],
       "supporting_articles": []
     },
@@ -699,7 +739,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Amgen Inc.."
+        "No strong recent world-news catalyst clearly favored Amgen Inc.."
       ],
       "supporting_articles": []
     },
@@ -712,7 +752,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Starbucks Corporation."
+        "No strong recent world-news catalyst clearly favored Starbucks Corporation."
       ],
       "supporting_articles": []
     },
@@ -725,7 +765,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Lowe's Companies Inc.."
+        "No strong recent world-news catalyst clearly favored Lowe's Companies Inc.."
       ],
       "supporting_articles": []
     },
@@ -738,10 +778,155 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored General Electric Company."
+        "No strong recent world-news catalyst clearly favored General Electric Company."
       ],
       "supporting_articles": []
     }
   },
-  "events": []
+  "events": [
+    {
+      "article_id": "news_3",
+      "title": "Visa: Double-Digit EPS Growth Remains On Track, Shares Tag Key Technical Support (NYSE:V)",
+      "feed": "marketaux",
+      "provider": "seekingalpha.com",
+      "url": "https://seekingalpha.com/article/4887094-visa-double-digit-eps-growth-remains-on-track-shares-tag-key-technical-support",
+      "published_at": "2026-03-30T14:47:42Z",
+      "event_type": "earnings/guidance commentary",
+      "transmission_channel": "demand shifts / transaction volumes and earnings sentiment",
+      "affected_inputs": [
+        "consumer_spending",
+        "transaction_volumes",
+        "earnings expectations",
+        "market sentiment / equity technicals"
+      ],
+      "horizon": "1-2w",
+      "market_relevance": 0.6,
+      "magnitude": 0.5,
+      "confidence": 0.65,
+      "beneficiary_sectors": [
+        "financials"
+      ],
+      "hurt_sectors": [],
+      "beneficiary_symbols": [
+        "V"
+      ],
+      "hurt_symbols": [],
+      "reason": "Analyst note reiterating double-digit EPS growth and technical support around $290–$299 likely reinforces buyer interest in Visa in the near term. Transmission: improved earnings/growth visibility and resilient consumer/merchant spending lift expectations for transaction volumes and fee revenue, supporting Visa's stock and potentially peer card networks/banks. Market impact is company-focused but can modestly buoy financials sentiment; risks cited (AI, spending) temper magnitude."
+    },
+    {
+      "article_id": "news_2",
+      "title": "Rogers Estate Fee Dispute Sparks Sports Empire Clash",
+      "feed": "marketaux",
+      "provider": "wealthmanagement.com",
+      "url": "https://www.wealthmanagement.com/high-net-worth/sports-billionaires-feud-over-3-000-an-hour-estate-trustee-bill",
+      "published_at": "2026-03-30T14:48:00Z",
+      "event_type": "legal / estate dispute",
+      "transmission_channel": "corporate governance / legal risk",
+      "affected_inputs": [
+        "legal costs",
+        "ownership/governance clarity",
+        "reputational risk"
+      ],
+      "horizon": "unclear",
+      "market_relevance": 0.1,
+      "magnitude": 0.1,
+      "confidence": 0.5,
+      "beneficiary_sectors": [],
+      "hurt_sectors": [],
+      "beneficiary_symbols": [],
+      "hurt_symbols": [],
+      "reason": "A family/estate fee dispute among Rogers owners is a localized governance/legal story primarily affecting parties involved and related Canadian assets. It does not present a clear short-horizon transmission to the tracked global sectors or major tracked symbols, so near-term market relevance is minimal."
+    }
+  ],
+  "data_quality": {
+    "status": "degraded",
+    "degraded_reason": "GDELT global-news feed failed during this run.",
+    "reasons": [
+      "GDELT global-news feed failed during this run."
+    ],
+    "provider_status": {
+      "alpha_vantage": {
+        "status": "healthy",
+        "used": 2,
+        "limit": 25,
+        "remaining": 23,
+        "categories": {
+          "company_news": 1,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "healthy",
+          "used": 2,
+          "limit": 25,
+          "remaining": 23,
+          "categories": {
+            "company_news": 1,
+            "global_news": 1
+          }
+        }
+      },
+      "gdelt": {
+        "status": "degraded",
+        "used": 2,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "company_news": 1,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "tracking_only",
+          "used": 2,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "company_news": 1,
+            "global_news": 1
+          }
+        }
+      },
+      "marketaux": {
+        "status": "healthy",
+        "used": 17,
+        "limit": 100,
+        "remaining": 83,
+        "categories": {
+          "company_news": 16,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "healthy",
+          "used": 17,
+          "limit": 100,
+          "remaining": 83,
+          "categories": {
+            "company_news": 16,
+            "global_news": 1
+          }
+        }
+      },
+      "twelvedata": {
+        "status": "healthy",
+        "used": 58,
+        "limit": 800,
+        "remaining": 742,
+        "categories": {
+          "price": 58
+        },
+        "daily": {
+          "date": "2026-03-30",
+          "status": "healthy",
+          "used": 58,
+          "limit": 800,
+          "remaining": 742,
+          "categories": {
+            "price": 58
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from unittest.mock import patch
 
 from backend.generate_sector_scores import (
@@ -19,13 +19,14 @@ from backend.generate_sector_scores import (
 
 class GenerateSectorScoresTests(unittest.TestCase):
     def _marketaux_global_item(self, title: str) -> dict:
+        published_at = (datetime.now(timezone.utc) - timedelta(hours=6)).replace(microsecond=0)
         return {
             "title": title,
             "description": "Oil prices and sector demand expectations moved after a global supply headline.",
             "snippet": "",
             "source": "Reuters",
             "url": f"https://example.com/{abs(hash(title))}",
-            "published_at": "2026-03-27T10:00:00Z",
+            "published_at": published_at.isoformat().replace("+00:00", "Z"),
             "entities": [{}, {}],
             "similar": [],
         }

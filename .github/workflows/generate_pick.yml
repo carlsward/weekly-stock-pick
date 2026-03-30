@@ -47,6 +47,8 @@ jobs:
     steps:
       - name: Resolve weekly schedule window
         id: window
+        env:
+          GITHUB_EVENT_SCHEDULE: ${{ github.event.schedule }}
         run: |
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
           import os
@@ -56,17 +58,22 @@ jobs:
           if os.getenv("GITHUB_EVENT_NAME") != "schedule":
               print("should_run=true")
               print("ny_time=manual")
+              print("event_schedule=manual")
           else:
               now = datetime.now(ZoneInfo("America/New_York"))
-              should_run = now.weekday() == 0 and now.hour == 7
+              schedule = os.getenv("GITHUB_EVENT_SCHEDULE", "")
+              utc_offset_hours = int(now.utcoffset().total_seconds() // 3600)
+              expected_schedule = "30 11 * * 1" if utc_offset_hours == -4 else "30 12 * * 1"
+              should_run = now.weekday() == 0 and schedule == expected_schedule
               print(f"should_run={'true' if should_run else 'false'}")
               print(f"ny_time={now.isoformat()}")
+              print(f"event_schedule={schedule}")
           PY
 
       - name: Skip outside weekly window
         if: steps.window.outputs.should_run != 'true'
         run: |
-          echo "Skipping weekly run outside 07:30 America/New_York. Current NY time: ${{ steps.window.outputs.ny_time }}"
+          echo "Skipping weekly run outside the active Monday schedule. Current NY time: ${{ steps.window.outputs.ny_time }}. Triggered cron: ${{ steps.window.outputs.event_schedule }}"
 
   generate:
     needs: gate

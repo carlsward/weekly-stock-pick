@@ -2,6 +2,12 @@
   "schema_version": 2,
   "model_version": "v3.3-monthly",
   "generated_at": "2026-03-28T22:22:55Z",
+  "data_quality": {
+    "status": "healthy",
+    "degraded_reason": null,
+    "reasons": [],
+    "provider_status": {}
+  },
   "entries": [
     {
       "month_id": "2026-03",

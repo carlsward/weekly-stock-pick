@@ -1,7 +1,8 @@
 import io
+import json
 import unittest
 from datetime import datetime, timedelta, timezone
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 from urllib.error import HTTPError
 
 import backend.generate_news_scores as generate_news_scores_module
@@ -11,11 +12,13 @@ from backend.generate_news_scores import (
     NewsArticle,
     aggregate_news_signal,
     aggregate_llm_news_signal,
+    build_alpha_vantage_company_query,
     build_signal_article_entries,
     build_marketaux_article,
     compute_finbert_sentiment,
     compute_recency_weight,
     compute_relevance_score,
+    fetch_alpha_vantage_company_payload,
     fetch_company_raw_news_sources,
     fetch_raw_news,
     fetch_symbol_news,
@@ -313,6 +316,51 @@ class GenerateNewsScoresTests(unittest.TestCase):
         self.assertEqual("2026-03-29T10:15:00Z", normalized["published_at"])
         self.assertEqual("MA", normalized["entities"][0]["symbol"])
         self.assertAlmostEqual(0.42, normalized["entities"][0]["sentiment_score"])
+
+    def test_build_alpha_vantage_company_query_normalizes_dot_ticker(self) -> None:
+        with patch.dict(
+            "os.environ",
+            {
+                "ALPHA_VANTAGE_API_KEY": "alpha",
+            },
+            clear=False,
+        ):
+            query = build_alpha_vantage_company_query(
+                "BRK.B",
+                datetime(2026, 3, 29, 10, 15, tzinfo=timezone.utc),
+            )
+
+        self.assertIn("tickers=BRK-B", query)
+        self.assertNotIn("tickers=BRK.B", query)
+
+    def test_fetch_alpha_vantage_company_payload_caps_feed_size(self) -> None:
+        response_payload = {
+            "feed": [{"title": f"Article {index}"} for index in range(50)],
+        }
+        response = MagicMock()
+        response.read.return_value = json.dumps(response_payload).encode("utf-8")
+        urlopen_mock = MagicMock()
+        urlopen_mock.return_value.__enter__.return_value = response
+
+        with patch.dict(
+            "os.environ",
+            {
+                "ALPHA_VANTAGE_API_KEY": "alpha",
+                "ALPHA_VANTAGE_MAX_COMPANY_REQUESTS": "6",
+                "ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS": "0",
+            },
+            clear=False,
+        ):
+            with patch("backend.generate_news_scores.urlopen", urlopen_mock):
+                with patch("backend.generate_news_scores.try_consume_alpha_vantage_company_request", return_value=True):
+                    with patch("backend.generate_news_scores.consume_provider_budget", return_value=True):
+                        with patch("backend.generate_news_scores.apply_alpha_vantage_company_request_spacing"):
+                            payload = fetch_alpha_vantage_company_payload(
+                                "CRM",
+                                datetime(2026, 3, 29, 10, 15, tzinfo=timezone.utc),
+                            )
+
+        self.assertEqual(6, len(payload))
 
     def test_fetch_company_raw_news_sources_uses_fallback_feeds_when_marketaux_is_exhausted(self) -> None:
         alpha_payload = [

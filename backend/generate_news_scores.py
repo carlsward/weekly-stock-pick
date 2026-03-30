@@ -948,10 +948,17 @@ def build_marketaux_query(symbol: str, published_after: datetime) -> str:
     return f"{MARKETAUX_NEWS_ENDPOINT}?{urlencode(params)}"
 
 
+def alpha_vantage_company_symbol(symbol: str) -> str:
+    normalized = symbol.strip().upper()
+    if "." in normalized:
+        return normalized.replace(".", "-")
+    return normalized
+
+
 def build_alpha_vantage_company_query(symbol: str, published_after: datetime) -> str:
     params = {
         "function": "NEWS_SENTIMENT",
-        "tickers": symbol,
+        "tickers": alpha_vantage_company_symbol(symbol),
         "time_from": published_after.strftime("%Y%m%dT%H%M"),
         "sort": "LATEST",
         "limit": str(configured_alpha_vantage_company_news_limit()),
@@ -1086,7 +1093,7 @@ def fetch_alpha_vantage_company_payload(symbol: str, published_after: datetime) 
             with urlopen(request, timeout=MARKETAUX_REQUEST_TIMEOUT_SECONDS) as response:
                 payload = json.loads(response.read().decode("utf-8"))
             if isinstance(payload, dict) and isinstance(payload.get("feed"), list):
-                return payload["feed"]
+                return payload["feed"][: configured_alpha_vantage_company_news_limit()]
             if isinstance(payload, dict):
                 message = (
                     str(payload.get("Information", "")).strip()
@@ -1131,14 +1138,22 @@ def fetch_gdelt_company_payload(symbol: str, company_name: str) -> List[dict]:
     for attempt in range(1, NEWS_FETCH_ATTEMPTS + 1):
         try:
             with urlopen(request, timeout=MARKETAUX_REQUEST_TIMEOUT_SECONDS) as response:
-                payload = json.loads(response.read().decode("utf-8"))
+                body = response.read().decode("utf-8", errors="replace").strip()
+            if not body:
+                raise RuntimeError("Empty GDELT response body")
+            if body.startswith("<"):
+                raise RuntimeError(f"Non-JSON GDELT response: {body[:120]}")
+            try:
+                payload = json.loads(body)
+            except json.JSONDecodeError as exc:
+                raise RuntimeError(f"Invalid GDELT JSON response: {body[:120]}") from exc
             if isinstance(payload, dict):
                 if isinstance(payload.get("articles"), list):
-                    return payload["articles"]
+                    return payload["articles"][: configured_gdelt_company_news_limit()]
                 if isinstance(payload.get("data"), list):
-                    return payload["data"]
+                    return payload["data"][: configured_gdelt_company_news_limit()]
             raise RuntimeError("Unexpected GDELT response shape")
-        except (HTTPError, URLError, TimeoutError, OSError, json.JSONDecodeError, RuntimeError) as exc:
+        except (HTTPError, URLError, TimeoutError, OSError, RuntimeError) as exc:
             last_error = exc
         if attempt < NEWS_FETCH_ATTEMPTS:
             time_module.sleep(NEWS_FETCH_RETRY_SECONDS * attempt)

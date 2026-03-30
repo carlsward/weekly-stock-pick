@@ -550,14 +550,22 @@ def fetch_gdelt_payload() -> List[dict]:
     for attempt in range(1, NEWS_FETCH_ATTEMPTS + 1):
         try:
             with urlopen(request, timeout=MARKETAUX_REQUEST_TIMEOUT_SECONDS) as response:
-                payload = json.loads(response.read().decode("utf-8"))
+                body = response.read().decode("utf-8", errors="replace").strip()
+            if not body:
+                raise RuntimeError("Empty GDELT response body")
+            if body.startswith("<"):
+                raise RuntimeError(f"Non-JSON GDELT response: {body[:120]}")
+            try:
+                payload = json.loads(body)
+            except json.JSONDecodeError as exc:
+                raise RuntimeError(f"Invalid GDELT JSON response: {body[:120]}") from exc
             if isinstance(payload, dict):
                 if isinstance(payload.get("articles"), list):
-                    return payload["articles"]
+                    return payload["articles"][: configured_gdelt_news_limit()]
                 if isinstance(payload.get("data"), list):
-                    return payload["data"]
+                    return payload["data"][: configured_gdelt_news_limit()]
             raise RuntimeError("Unexpected GDELT response shape")
-        except (HTTPError, URLError, TimeoutError, OSError, json.JSONDecodeError) as exc:
+        except (HTTPError, URLError, TimeoutError, OSError, RuntimeError) as exc:
             last_error = exc
         if attempt < NEWS_FETCH_ATTEMPTS:
             time_module.sleep(NEWS_FETCH_RETRY_SECONDS * attempt)
@@ -608,7 +616,7 @@ def fetch_alpha_vantage_payload(published_after: datetime) -> List[dict]:
             with urlopen(request, timeout=MARKETAUX_REQUEST_TIMEOUT_SECONDS) as response:
                 payload = json.loads(response.read().decode("utf-8"))
             if isinstance(payload, dict) and isinstance(payload.get("feed"), list):
-                return payload["feed"]
+                return payload["feed"][: configured_alpha_vantage_news_limit()]
             if isinstance(payload, dict):
                 message = (
                     str(payload.get("Information", "")).strip()

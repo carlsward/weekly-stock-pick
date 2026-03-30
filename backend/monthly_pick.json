@@ -24,6 +24,12 @@
     "overall_score": 0.12,
     "minimum_confidence": 0.6
   },
+  "data_quality": {
+    "status": "healthy",
+    "degraded_reason": null,
+    "reasons": [],
+    "provider_status": {}
+  },
   "selection": {
     "status": "no_pick",
     "status_reason": "No monthly candidate cleared the minimum confidence threshold of 0.60. The best score was MSFT at 0.136 with medium confidence.",

@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-30T15:29:09Z",
-  "last_updated": "2026-03-30",
+  "generated_at": "2026-03-31T15:36:34Z",
+  "last_updated": "2026-03-31",
   "lookback_days": 3,
-  "article_count": 2,
+  "article_count": 3,
   "source_count": 2,
   "llm_model": "gpt-5-mini",
-  "summary": "Two short-horizon items: (1) positive analyst/earnings framing on Visa likely supports near-term upside for Visa and the financials/card-network group via demand/transaction-volume sentiment and earnings trajectory; (2) a Toronto Rogers family estate fee dispute is a localized legal/governance story with negligible broad market impact over the next 1-15 trading days.",
+  "summary": "Three items: (1) Parnassus exited Pool Corp citing weak pool demand — narrow, likely low short‑term market relevance; (2) commentary about private‑credit/subprime‑style fears and rising CRE stress — transmission through credit spreads, bank losses, and risk‑off flows, likely negative for financials and supportive of defensive staples in the near term; (3) bearish note on Broadcom highlighting hyperscaler concentration and subscription risks — raises sentiment/valuation risk for semiconductor/A.I.-exposed tech names over the next 1–15 trading days.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -34,14 +34,35 @@
     "consumer_staples": {
       "sector": "consumer_staples",
       "display_name": "Consumer Staples",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.56,
+      "confidence": 0.36,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent sector catalyst was found for Consumer Staples."
+        "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "3 Terrifying Words From The Past",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887435-3-terrifying-words-from-the-past",
+          "published_at": "2026-03-31T14:46:20Z",
+          "impact": "positive",
+          "weight": 0.112,
+          "event_type": "credit stress / financial stability concerns",
+          "transmission_channel": "rising defaults and CRE strain -> wider credit spreads and higher loss provisions -> bank/credit‑provider balance‑sheet stress; triggers risk‑off flows and lower lending/transaction activity",
+          "affected_inputs": [
+            "credit spreads / funding costs",
+            "bank loan loss provisions",
+            "commercial real estate valuations",
+            "investor risk appetite / equity flows",
+            "transaction volumes (payments)"
+          ],
+          "horizon": "1-2w",
+          "reason": "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
+        }
+      ]
     },
     "energy": {
       "sector": "energy",
@@ -58,32 +79,33 @@
     "financials": {
       "sector": "financials",
       "display_name": "Financials",
-      "score": 0.55,
-      "confidence": 0.37,
+      "score": 0.44,
+      "confidence": 0.36,
       "direction": "neutral",
-      "last_updated": "2026-03-30",
+      "last_updated": "2026-03-31",
       "reasons": [
-        "Analyst note reiterating double-digit EPS growth and technical support around $290–$299 likely reinforces buyer interest in Visa in the near term. Transmission: improved earnings/growth visibility and resilient consumer/merchant spending lift expectations for transaction volumes and fee revenue, supporting Visa's stock and potentially peer card networks/banks. Market impact is company-focused but can modestly buoy financials sentiment; risks cited (AI, spending) temper magnitude."
+        "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
       ],
       "supporting_articles": [
         {
-          "title": "Visa: Double-Digit EPS Growth Remains On Track, Shares Tag Key Technical Support (NYSE:V)",
+          "title": "3 Terrifying Words From The Past",
           "feed": "marketaux",
           "provider": "seekingalpha.com",
-          "url": "https://seekingalpha.com/article/4887094-visa-double-digit-eps-growth-remains-on-track-shares-tag-key-technical-support",
-          "published_at": "2026-03-30T14:47:42Z",
-          "impact": "positive",
-          "weight": 0.087,
-          "event_type": "earnings/guidance commentary",
-          "transmission_channel": "demand shifts / transaction volumes and earnings sentiment",
+          "url": "https://seekingalpha.com/article/4887435-3-terrifying-words-from-the-past",
+          "published_at": "2026-03-31T14:46:20Z",
+          "impact": "negative",
+          "weight": 0.112,
+          "event_type": "credit stress / financial stability concerns",
+          "transmission_channel": "rising defaults and CRE strain -> wider credit spreads and higher loss provisions -> bank/credit‑provider balance‑sheet stress; triggers risk‑off flows and lower lending/transaction activity",
           "affected_inputs": [
-            "consumer_spending",
-            "transaction_volumes",
-            "earnings expectations",
-            "market sentiment / equity technicals"
+            "credit spreads / funding costs",
+            "bank loan loss provisions",
+            "commercial real estate valuations",
+            "investor risk appetite / equity flows",
+            "transaction volumes (payments)"
           ],
           "horizon": "1-2w",
-          "reason": "Analyst note reiterating double-digit EPS growth and technical support around $290–$299 likely reinforces buyer interest in Visa in the near term. Transmission: improved earnings/growth visibility and resilient consumer/merchant spending lift expectations for transaction volumes and fee revenue, supporting Visa's stock and potentially peer card networks/banks. Market impact is company-focused but can modestly buoy financials sentiment; risks cited (AI, spending) temper magnitude."
+          "reason": "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
         }
       ]
     },
@@ -114,14 +136,33 @@
     "technology": {
       "sector": "technology",
       "display_name": "Technology",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.48,
+      "confidence": 0.31,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent sector catalyst was found for Technology."
+        "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Broadcom: The Bear Case Nobody Wants To Hear (NASDAQ:AVGO)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887444-broadcom-the-bear-case-nobody-wants-to-hear",
+          "published_at": "2026-03-31T14:57:24Z",
+          "impact": "negative",
+          "weight": 0.042,
+          "event_type": "sector sentiment / concentration risk (semiconductors)",
+          "transmission_channel": "negative research narrative -> sentiment/valuation re‑rating for semiconductor suppliers exposed to hyperscalers and subscription/revenue concentration; potential multiple compression and risk premia on AI/capex‑linked names",
+          "affected_inputs": [
+            "hyperscaler capex demand for datacenter chips",
+            "semiconductor revenue concentration",
+            "valuation multiples for AI/enterprise semiconductor suppliers"
+          ],
+          "horizon": "1-2w",
+          "reason": "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
+        }
+      ]
     }
   },
   "symbol_scores": {
@@ -207,40 +248,101 @@
       "symbol": "BRK.B",
       "company_name": "Berkshire Hathaway Inc.",
       "sector": "financials",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.49,
+      "confidence": 0.36,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
+        "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "3 Terrifying Words From The Past",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887435-3-terrifying-words-from-the-past",
+          "published_at": "2026-03-31T14:46:20Z",
+          "impact": "negative",
+          "weight": 0.022,
+          "event_type": "credit stress / financial stability concerns",
+          "transmission_channel": "rising defaults and CRE strain -> wider credit spreads and higher loss provisions -> bank/credit‑provider balance‑sheet stress; triggers risk‑off flows and lower lending/transaction activity",
+          "affected_inputs": [
+            "credit spreads / funding costs",
+            "bank loan loss provisions",
+            "commercial real estate valuations",
+            "investor risk appetite / equity flows",
+            "transaction volumes (payments)"
+          ],
+          "horizon": "1-2w",
+          "reason": "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
+        }
+      ]
     },
     "NVDA": {
       "symbol": "NVDA",
       "company_name": "NVIDIA Corporation",
       "sector": "technology",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.49,
+      "confidence": 0.31,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored NVIDIA Corporation."
+        "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Broadcom: The Bear Case Nobody Wants To Hear (NASDAQ:AVGO)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887444-broadcom-the-bear-case-nobody-wants-to-hear",
+          "published_at": "2026-03-31T14:57:24Z",
+          "impact": "negative",
+          "weight": 0.011,
+          "event_type": "sector sentiment / concentration risk (semiconductors)",
+          "transmission_channel": "negative research narrative -> sentiment/valuation re‑rating for semiconductor suppliers exposed to hyperscalers and subscription/revenue concentration; potential multiple compression and risk premia on AI/capex‑linked names",
+          "affected_inputs": [
+            "hyperscaler capex demand for datacenter chips",
+            "semiconductor revenue concentration",
+            "valuation multiples for AI/enterprise semiconductor suppliers"
+          ],
+          "horizon": "1-2w",
+          "reason": "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
+        }
+      ]
     },
     "JPM": {
       "symbol": "JPM",
       "company_name": "JPMorgan Chase & Co.",
       "sector": "financials",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.49,
+      "confidence": 0.36,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored JPMorgan Chase & Co.."
+        "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "3 Terrifying Words From The Past",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887435-3-terrifying-words-from-the-past",
+          "published_at": "2026-03-31T14:46:20Z",
+          "impact": "negative",
+          "weight": 0.022,
+          "event_type": "credit stress / financial stability concerns",
+          "transmission_channel": "rising defaults and CRE strain -> wider credit spreads and higher loss provisions -> bank/credit‑provider balance‑sheet stress; triggers risk‑off flows and lower lending/transaction activity",
+          "affected_inputs": [
+            "credit spreads / funding costs",
+            "bank loan loss provisions",
+            "commercial real estate valuations",
+            "investor risk appetite / equity flows",
+            "transaction volumes (payments)"
+          ],
+          "horizon": "1-2w",
+          "reason": "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
+        }
+      ]
     },
     "JNJ": {
       "symbol": "JNJ",
@@ -259,32 +361,33 @@
       "symbol": "V",
       "company_name": "Visa Inc.",
       "sector": "financials",
-      "score": 0.56,
-      "confidence": 0.39,
+      "score": 0.49,
+      "confidence": 0.36,
       "direction": "neutral",
-      "last_updated": "2026-03-30",
+      "last_updated": "2026-03-31",
       "reasons": [
-        "Analyst note reiterating double-digit EPS growth and technical support around $290–$299 likely reinforces buyer interest in Visa in the near term. Transmission: improved earnings/growth visibility and resilient consumer/merchant spending lift expectations for transaction volumes and fee revenue, supporting Visa's stock and potentially peer card networks/banks. Market impact is company-focused but can modestly buoy financials sentiment; risks cited (AI, spending) temper magnitude."
+        "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
       ],
       "supporting_articles": [
         {
-          "title": "Visa: Double-Digit EPS Growth Remains On Track, Shares Tag Key Technical Support (NYSE:V)",
+          "title": "3 Terrifying Words From The Past",
           "feed": "marketaux",
           "provider": "seekingalpha.com",
-          "url": "https://seekingalpha.com/article/4887094-visa-double-digit-eps-growth-remains-on-track-shares-tag-key-technical-support",
-          "published_at": "2026-03-30T14:47:42Z",
-          "impact": "positive",
-          "weight": 0.087,
-          "event_type": "earnings/guidance commentary",
-          "transmission_channel": "demand shifts / transaction volumes and earnings sentiment",
+          "url": "https://seekingalpha.com/article/4887435-3-terrifying-words-from-the-past",
+          "published_at": "2026-03-31T14:46:20Z",
+          "impact": "negative",
+          "weight": 0.022,
+          "event_type": "credit stress / financial stability concerns",
+          "transmission_channel": "rising defaults and CRE strain -> wider credit spreads and higher loss provisions -> bank/credit‑provider balance‑sheet stress; triggers risk‑off flows and lower lending/transaction activity",
           "affected_inputs": [
-            "consumer_spending",
-            "transaction_volumes",
-            "earnings expectations",
-            "market sentiment / equity technicals"
+            "credit spreads / funding costs",
+            "bank loan loss provisions",
+            "commercial real estate valuations",
+            "investor risk appetite / equity flows",
+            "transaction volumes (payments)"
           ],
           "horizon": "1-2w",
-          "reason": "Analyst note reiterating double-digit EPS growth and technical support around $290–$299 likely reinforces buyer interest in Visa in the near term. Transmission: improved earnings/growth visibility and resilient consumer/merchant spending lift expectations for transaction volumes and fee revenue, supporting Visa's stock and potentially peer card networks/banks. Market impact is company-focused but can modestly buoy financials sentiment; risks cited (AI, spending) temper magnitude."
+          "reason": "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
         }
       ]
     },
@@ -305,27 +408,69 @@
       "symbol": "PG",
       "company_name": "Procter & Gamble Company",
       "sector": "consumer_staples",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.54,
+      "confidence": 0.37,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Procter & Gamble Company."
+        "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "3 Terrifying Words From The Past",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887435-3-terrifying-words-from-the-past",
+          "published_at": "2026-03-31T14:46:20Z",
+          "impact": "positive",
+          "weight": 0.056,
+          "event_type": "credit stress / financial stability concerns",
+          "transmission_channel": "rising defaults and CRE strain -> wider credit spreads and higher loss provisions -> bank/credit‑provider balance‑sheet stress; triggers risk‑off flows and lower lending/transaction activity",
+          "affected_inputs": [
+            "credit spreads / funding costs",
+            "bank loan loss provisions",
+            "commercial real estate valuations",
+            "investor risk appetite / equity flows",
+            "transaction volumes (payments)"
+          ],
+          "horizon": "1-2w",
+          "reason": "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
+        }
+      ]
     },
     "MA": {
       "symbol": "MA",
       "company_name": "Mastercard Incorporated",
       "sector": "financials",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.49,
+      "confidence": 0.36,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Mastercard Incorporated."
+        "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "3 Terrifying Words From The Past",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887435-3-terrifying-words-from-the-past",
+          "published_at": "2026-03-31T14:46:20Z",
+          "impact": "negative",
+          "weight": 0.022,
+          "event_type": "credit stress / financial stability concerns",
+          "transmission_channel": "rising defaults and CRE strain -> wider credit spreads and higher loss provisions -> bank/credit‑provider balance‑sheet stress; triggers risk‑off flows and lower lending/transaction activity",
+          "affected_inputs": [
+            "credit spreads / funding costs",
+            "bank loan loss provisions",
+            "commercial real estate valuations",
+            "investor risk appetite / equity flows",
+            "transaction volumes (payments)"
+          ],
+          "horizon": "1-2w",
+          "reason": "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
+        }
+      ]
     },
     "DIS": {
       "symbol": "DIS",
@@ -357,14 +502,35 @@
       "symbol": "BAC",
       "company_name": "Bank of America Corporation",
       "sector": "financials",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.49,
+      "confidence": 0.36,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Bank of America Corporation."
+        "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "3 Terrifying Words From The Past",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887435-3-terrifying-words-from-the-past",
+          "published_at": "2026-03-31T14:46:20Z",
+          "impact": "negative",
+          "weight": 0.022,
+          "event_type": "credit stress / financial stability concerns",
+          "transmission_channel": "rising defaults and CRE strain -> wider credit spreads and higher loss provisions -> bank/credit‑provider balance‑sheet stress; triggers risk‑off flows and lower lending/transaction activity",
+          "affected_inputs": [
+            "credit spreads / funding costs",
+            "bank loan loss provisions",
+            "commercial real estate valuations",
+            "investor risk appetite / equity flows",
+            "transaction volumes (payments)"
+          ],
+          "horizon": "1-2w",
+          "reason": "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
+        }
+      ]
     },
     "XOM": {
       "symbol": "XOM",
@@ -448,14 +614,35 @@
       "symbol": "KO",
       "company_name": "The Coca-Cola Company",
       "sector": "consumer_staples",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.54,
+      "confidence": 0.37,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Coca-Cola Company."
+        "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "3 Terrifying Words From The Past",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887435-3-terrifying-words-from-the-past",
+          "published_at": "2026-03-31T14:46:20Z",
+          "impact": "positive",
+          "weight": 0.056,
+          "event_type": "credit stress / financial stability concerns",
+          "transmission_channel": "rising defaults and CRE strain -> wider credit spreads and higher loss provisions -> bank/credit‑provider balance‑sheet stress; triggers risk‑off flows and lower lending/transaction activity",
+          "affected_inputs": [
+            "credit spreads / funding costs",
+            "bank loan loss provisions",
+            "commercial real estate valuations",
+            "investor risk appetite / equity flows",
+            "transaction volumes (payments)"
+          ],
+          "horizon": "1-2w",
+          "reason": "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
+        }
+      ]
     },
     "T": {
       "symbol": "T",
@@ -552,14 +739,33 @@
       "symbol": "INTC",
       "company_name": "Intel Corporation",
       "sector": "technology",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.49,
+      "confidence": 0.31,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Intel Corporation."
+        "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Broadcom: The Bear Case Nobody Wants To Hear (NASDAQ:AVGO)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887444-broadcom-the-bear-case-nobody-wants-to-hear",
+          "published_at": "2026-03-31T14:57:24Z",
+          "impact": "negative",
+          "weight": 0.011,
+          "event_type": "sector sentiment / concentration risk (semiconductors)",
+          "transmission_channel": "negative research narrative -> sentiment/valuation re‑rating for semiconductor suppliers exposed to hyperscalers and subscription/revenue concentration; potential multiple compression and risk premia on AI/capex‑linked names",
+          "affected_inputs": [
+            "hyperscaler capex demand for datacenter chips",
+            "semiconductor revenue concentration",
+            "valuation multiples for AI/enterprise semiconductor suppliers"
+          ],
+          "horizon": "1-2w",
+          "reason": "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
+        }
+      ]
     },
     "CRM": {
       "symbol": "CRM",
@@ -669,14 +875,33 @@
       "symbol": "TXN",
       "company_name": "Texas Instruments Incorporated",
       "sector": "technology",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.49,
+      "confidence": 0.31,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Texas Instruments Incorporated."
+        "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Broadcom: The Bear Case Nobody Wants To Hear (NASDAQ:AVGO)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887444-broadcom-the-bear-case-nobody-wants-to-hear",
+          "published_at": "2026-03-31T14:57:24Z",
+          "impact": "negative",
+          "weight": 0.011,
+          "event_type": "sector sentiment / concentration risk (semiconductors)",
+          "transmission_channel": "negative research narrative -> sentiment/valuation re‑rating for semiconductor suppliers exposed to hyperscalers and subscription/revenue concentration; potential multiple compression and risk premia on AI/capex‑linked names",
+          "affected_inputs": [
+            "hyperscaler capex demand for datacenter chips",
+            "semiconductor revenue concentration",
+            "valuation multiples for AI/enterprise semiconductor suppliers"
+          ],
+          "horizon": "1-2w",
+          "reason": "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
+        }
+      ]
     },
     "UNH": {
       "symbol": "UNH",
@@ -708,14 +933,33 @@
       "symbol": "QCOM",
       "company_name": "QUALCOMM Incorporated",
       "sector": "technology",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.49,
+      "confidence": 0.31,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-03-31",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored QUALCOMM Incorporated."
+        "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Broadcom: The Bear Case Nobody Wants To Hear (NASDAQ:AVGO)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4887444-broadcom-the-bear-case-nobody-wants-to-hear",
+          "published_at": "2026-03-31T14:57:24Z",
+          "impact": "negative",
+          "weight": 0.011,
+          "event_type": "sector sentiment / concentration risk (semiconductors)",
+          "transmission_channel": "negative research narrative -> sentiment/valuation re‑rating for semiconductor suppliers exposed to hyperscalers and subscription/revenue concentration; potential multiple compression and risk premia on AI/capex‑linked names",
+          "affected_inputs": [
+            "hyperscaler capex demand for datacenter chips",
+            "semiconductor revenue concentration",
+            "valuation multiples for AI/enterprise semiconductor suppliers"
+          ],
+          "horizon": "1-2w",
+          "reason": "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
+        }
+      ]
     },
     "HON": {
       "symbol": "HON",
@@ -786,56 +1030,97 @@
   "events": [
     {
       "article_id": "news_3",
-      "title": "Visa: Double-Digit EPS Growth Remains On Track, Shares Tag Key Technical Support (NYSE:V)",
+      "title": "Parnassus Mid Cap Fund Exited Pool Corp. (POOL) Due to Sluggish Demand in the Pool Market",
       "feed": "marketaux",
-      "provider": "seekingalpha.com",
-      "url": "https://seekingalpha.com/article/4887094-visa-double-digit-eps-growth-remains-on-track-shares-tag-key-technical-support",
-      "published_at": "2026-03-30T14:47:42Z",
-      "event_type": "earnings/guidance commentary",
-      "transmission_channel": "demand shifts / transaction volumes and earnings sentiment",
+      "provider": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/parnassus-mid-cap-fund-exited-143650052.html",
+      "published_at": "2026-03-31T14:36:50Z",
+      "event_type": "demand shock (narrow: pool market)",
+      "transmission_channel": "consumer demand shift -> lower retail/DIY spending for outdoor/pool products; localized revenue pressure for pool suppliers and related retail channels",
       "affected_inputs": [
-        "consumer_spending",
-        "transaction_volumes",
-        "earnings expectations",
-        "market sentiment / equity technicals"
+        "consumer discretionary demand",
+        "retail sales for outdoor/home improvement",
+        "dealer/distributor order volumes"
       ],
       "horizon": "1-2w",
-      "market_relevance": 0.6,
-      "magnitude": 0.5,
-      "confidence": 0.65,
-      "beneficiary_sectors": [
-        "financials"
-      ],
-      "hurt_sectors": [],
-      "beneficiary_symbols": [
-        "V"
-      ],
-      "hurt_symbols": [],
-      "reason": "Analyst note reiterating double-digit EPS growth and technical support around $290–$299 likely reinforces buyer interest in Visa in the near term. Transmission: improved earnings/growth visibility and resilient consumer/merchant spending lift expectations for transaction volumes and fee revenue, supporting Visa's stock and potentially peer card networks/banks. Market impact is company-focused but can modestly buoy financials sentiment; risks cited (AI, spending) temper magnitude."
-    },
-    {
-      "article_id": "news_2",
-      "title": "Rogers Estate Fee Dispute Sparks Sports Empire Clash",
-      "feed": "marketaux",
-      "provider": "wealthmanagement.com",
-      "url": "https://www.wealthmanagement.com/high-net-worth/sports-billionaires-feud-over-3-000-an-hour-estate-trustee-bill",
-      "published_at": "2026-03-30T14:48:00Z",
-      "event_type": "legal / estate dispute",
-      "transmission_channel": "corporate governance / legal risk",
-      "affected_inputs": [
-        "legal costs",
-        "ownership/governance clarity",
-        "reputational risk"
-      ],
-      "horizon": "unclear",
-      "market_relevance": 0.1,
+      "market_relevance": 0.2,
       "magnitude": 0.1,
-      "confidence": 0.5,
+      "confidence": 0.3,
       "beneficiary_sectors": [],
       "hurt_sectors": [],
       "beneficiary_symbols": [],
       "hurt_symbols": [],
-      "reason": "A family/estate fee dispute among Rogers owners is a localized governance/legal story primarily affecting parties involved and related Canadian assets. It does not present a clear short-horizon transmission to the tracked global sectors or major tracked symbols, so near-term market relevance is minimal."
+      "reason": "The note describes weak demand at Pool Corp (POOL). This is a narrow, company/sector-specific observation (pool market) with limited short‑horizon implications for the broader tracked universe. Possible second‑order effects on home‑improvement retailers exist, but the signal is weak and localized, so no definitive beneficiaries or losers among tracked names are assigned."
+    },
+    {
+      "article_id": "news_2",
+      "title": "3 Terrifying Words From The Past",
+      "feed": "marketaux",
+      "provider": "seekingalpha.com",
+      "url": "https://seekingalpha.com/article/4887435-3-terrifying-words-from-the-past",
+      "published_at": "2026-03-31T14:46:20Z",
+      "event_type": "credit stress / financial stability concerns",
+      "transmission_channel": "rising defaults and CRE strain -> wider credit spreads and higher loss provisions -> bank/credit‑provider balance‑sheet stress; triggers risk‑off flows and lower lending/transaction activity",
+      "affected_inputs": [
+        "credit spreads / funding costs",
+        "bank loan loss provisions",
+        "commercial real estate valuations",
+        "investor risk appetite / equity flows",
+        "transaction volumes (payments)"
+      ],
+      "horizon": "1-2w",
+      "market_relevance": 0.7,
+      "magnitude": 0.6,
+      "confidence": 0.6,
+      "beneficiary_sectors": [
+        "consumer_staples"
+      ],
+      "hurt_sectors": [
+        "financials"
+      ],
+      "beneficiary_symbols": [
+        "KO",
+        "PG"
+      ],
+      "hurt_symbols": [
+        "JPM",
+        "BAC",
+        "BRK.B",
+        "V",
+        "MA"
+      ],
+      "reason": "Rising private‑credit and CRE stresses increase perceived credit risk and could widen spreads and raise provisions for banks and credit originators (first‑order). That directly pressures financials (banks, insurers, credit managers). Second‑order effects: risk‑off positioning can favor defensive consumer staples. Payment processors and card networks (V, MA) can be pressured if consumer spending and transaction volumes slow. Berkshire (BRK.B) could be affected via insurance/investment exposures. Short horizon impact expected as markets reprices credit risk and bank earnings expectations."
+    },
+    {
+      "article_id": "news_1",
+      "title": "Broadcom: The Bear Case Nobody Wants To Hear (NASDAQ:AVGO)",
+      "feed": "marketaux",
+      "provider": "seekingalpha.com",
+      "url": "https://seekingalpha.com/article/4887444-broadcom-the-bear-case-nobody-wants-to-hear",
+      "published_at": "2026-03-31T14:57:24Z",
+      "event_type": "sector sentiment / concentration risk (semiconductors)",
+      "transmission_channel": "negative research narrative -> sentiment/valuation re‑rating for semiconductor suppliers exposed to hyperscalers and subscription/revenue concentration; potential multiple compression and risk premia on AI/capex‑linked names",
+      "affected_inputs": [
+        "hyperscaler capex demand for datacenter chips",
+        "semiconductor revenue concentration",
+        "valuation multiples for AI/enterprise semiconductor suppliers"
+      ],
+      "horizon": "1-2w",
+      "market_relevance": 0.5,
+      "magnitude": 0.4,
+      "confidence": 0.4,
+      "beneficiary_sectors": [],
+      "hurt_sectors": [
+        "technology"
+      ],
+      "beneficiary_symbols": [],
+      "hurt_symbols": [
+        "NVDA",
+        "INTC",
+        "QCOM",
+        "TXN"
+      ],
+      "reason": "A bearish note on Broadcom (AVGO) that highlights hyperscaler concentration and subscription risks can spill over to sentiment around other semiconductor/AI suppliers (first‑order: investor concern about revenue concentration and sustainability). That may cause short‑term multiple compression or profit‑taking in AI/capex exposed chip names. NVDA and other semiconductor/technology suppliers tied to datacenter demand or with hyperscaler exposure are the most directly analogous tracked names and thus the likeliest near‑term losers; beneficiaries are unclear on a 1–15 day horizon and are left empty."
     }
   ],
   "data_quality": {
@@ -855,7 +1140,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "healthy",
           "used": 2,
           "limit": 25,
@@ -876,7 +1161,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -897,7 +1182,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "healthy",
           "used": 17,
           "limit": 100,
@@ -917,7 +1202,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "healthy",
           "used": 58,
           "limit": 800,

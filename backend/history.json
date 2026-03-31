@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-03-30T15:29:28Z",
+  "generated_at": "2026-03-31T15:37:13Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -71,9 +71,9 @@
       "week_start": "2026-03-30",
       "week_end": "2026-04-03",
       "week_label": "Mar 30 - Apr 03, 2026",
-      "logged_at": "2026-03-30T15:29:28Z",
+      "logged_at": "2026-03-31T15:37:13Z",
       "status": "no_pick",
-      "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was CVX at 0.008.",
+      "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was XOM at -0.032.",
       "symbol": null,
       "company_name": null,
       "sector": null,
@@ -81,7 +81,7 @@
       "model_score": null,
       "confidence_score": null,
       "confidence_label": null,
-      "data_as_of": "2026-03-30",
+      "data_as_of": "2026-03-31",
       "model_version": "v3.3",
       "diagnostics": null
     }
@@ -104,7 +104,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "healthy",
           "used": 2,
           "limit": 25,
@@ -125,7 +125,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -146,7 +146,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "healthy",
           "used": 17,
           "limit": 100,
@@ -166,7 +166,7 @@
           "price": 116
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "healthy",
           "used": 116,
           "limit": 800,

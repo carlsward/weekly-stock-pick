@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-03-30T15:29:28Z",
-  "data_as_of": "2026-03-30",
+  "generated_at": "2026-03-31T15:37:13Z",
+  "data_as_of": "2026-03-31",
   "expected_next_refresh_at": "2026-04-06T12:00:00Z",
   "stale_after": "2026-04-07T00:00:00Z",
   "market_context": {
@@ -20,15 +20,15 @@
     "skipped_details": [],
     "model_calibration": {
       "technical_weights": {
-        "short_momentum": 0.0,
-        "medium_momentum": 0.0,
-        "trend_gap": 0.1896535801356562,
+        "short_momentum": 0.03782098001337208,
+        "medium_momentum": 0.13661072837447943,
+        "trend_gap": 0.0,
         "positive_ratio": 0.0,
         "volume_confirmation": 0.0,
         "market_relative": 0.0,
-        "sector_relative": 0.10589539041064773,
+        "sector_relative": 0.15276015569277787,
         "inverse_volatility": 0.0,
-        "inverse_downside": 0.7044510294536962,
+        "inverse_downside": 0.6728081359193706,
         "inverse_drawdown": 0.0
       },
       "block_weights": {
@@ -36,9 +36,9 @@
         "macro": 0.1,
         "sector": 0.08
       },
-      "technical_scale": 0.38369820340467875,
+      "technical_scale": 0.39533000448449807,
       "training_row_count": 2303,
-      "training_ic": -0.02656497829558522,
+      "training_ic": -0.004789503655927386,
       "block_row_count": 0,
       "source": "price_history_5d_excess_return+block_priors"
     }
@@ -70,7 +70,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "healthy",
           "used": 2,
           "limit": 25,
@@ -91,7 +91,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -112,7 +112,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "healthy",
           "used": 17,
           "limit": 100,
@@ -132,7 +132,7 @@
           "price": 116
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-03-31",
           "status": "healthy",
           "used": 116,
           "limit": 800,
@@ -146,16 +146,16 @@
   },
   "selection": {
     "status": "no_pick",
-    "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was CVX at 0.008.",
+    "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was XOM at -0.032.",
     "threshold_score": 0.1,
     "threshold_confidence": 0.55,
     "pick": null,
     "best_candidate": {
-      "symbol": "CVX",
-      "company_name": "Chevron Corporation",
+      "symbol": "XOM",
+      "company_name": "Exxon Mobil Corporation",
       "risk": "medium",
-      "model_score": 0.008,
-      "confidence_score": 0.7,
+      "model_score": -0.0315,
+      "confidence_score": 0.66,
       "confidence_label": "medium"
     }
   }

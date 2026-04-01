@@ -1,23 +1,24 @@
 {
   "schema_version": 2,
   "model_version": "v3.3-monthly",
-  "generated_at": "2026-03-28T22:22:55Z",
-  "data_as_of": "2026-03-27",
-  "expected_next_refresh_at": "2026-04-01T12:00:00Z",
-  "stale_after": "2026-04-04T12:00:00Z",
+  "generated_at": "2026-04-01T13:33:56Z",
+  "data_as_of": "2026-04-01",
+  "expected_next_refresh_at": "2026-05-01T12:00:00Z",
+  "stale_after": "2026-05-04T12:00:00Z",
   "period_context": {
     "timezone": "America/New_York",
-    "month_id": "2026-03",
-    "month_label": "March 2026",
-    "month_start": "2026-03-01",
-    "month_end": "2026-03-31",
-    "rebalance_date": "2026-03-01",
+    "month_id": "2026-04",
+    "month_label": "April 2026",
+    "month_start": "2026-04-01",
+    "month_end": "2026-04-30",
+    "rebalance_date": "2026-04-01",
     "horizon_trading_days": 20
   },
   "generation_summary": {
     "universe_size": 49,
     "evaluated_candidates": 49,
     "skipped_symbols": 0,
+    "price_provider_failures": 0,
     "skipped_details": []
   },
   "selection_thresholds": {
@@ -25,24 +26,200 @@
     "minimum_confidence": 0.6
   },
   "data_quality": {
-    "status": "healthy",
-    "degraded_reason": null,
-    "reasons": [],
-    "provider_status": {}
+    "status": "degraded",
+    "degraded_reason": "news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
+    "reasons": [
+      "news_scores: GDELT company news failed for at least one symbol.",
+      "sector_scores: GDELT global-news feed failed during this run."
+    ],
+    "provider_status": {
+      "alpha_vantage": {
+        "status": "healthy",
+        "used": 2,
+        "limit": 25,
+        "remaining": 23,
+        "categories": {
+          "company_news": 1,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-04-01",
+          "status": "healthy",
+          "used": 2,
+          "limit": 25,
+          "remaining": 23,
+          "categories": {
+            "company_news": 1,
+            "global_news": 1
+          }
+        }
+      },
+      "gdelt": {
+        "status": "tracking_only",
+        "used": 2,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "company_news": 1,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-04-01",
+          "status": "tracking_only",
+          "used": 2,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "company_news": 1,
+            "global_news": 1
+          }
+        }
+      },
+      "marketaux": {
+        "status": "healthy",
+        "used": 18,
+        "limit": 100,
+        "remaining": 82,
+        "categories": {
+          "company_news": 17,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-04-01",
+          "status": "healthy",
+          "used": 18,
+          "limit": 100,
+          "remaining": 82,
+          "categories": {
+            "company_news": 17,
+            "global_news": 1
+          }
+        }
+      },
+      "twelvedata": {
+        "status": "healthy",
+        "used": 116,
+        "limit": 800,
+        "remaining": 684,
+        "categories": {
+          "price": 116
+        },
+        "daily": {
+          "date": "2026-04-01",
+          "status": "healthy",
+          "used": 116,
+          "limit": 800,
+          "remaining": 684,
+          "categories": {
+            "price": 116
+          }
+        }
+      }
+    }
   },
   "selection": {
-    "status": "no_pick",
-    "status_reason": "No monthly candidate cleared the minimum confidence threshold of 0.60. The best score was MSFT at 0.136 with medium confidence.",
+    "status": "picked",
+    "status_reason": "CVX cleared the monthly release thresholds for Chevron Corporation with a score of 0.283 and high confidence.",
     "threshold_score": 0.12,
     "threshold_confidence": 0.6,
-    "pick": null,
-    "best_candidate": {
-      "symbol": "MSFT",
-      "company_name": "Microsoft Corporation",
-      "risk": "low",
-      "model_score": 0.1357,
-      "confidence_score": 0.55,
-      "confidence_label": "medium"
+    "pick": {
+      "symbol": "CVX",
+      "company_name": "Chevron Corporation",
+      "sector": "energy",
+      "risk": "medium",
+      "model_score": 0.2833,
+      "confidence_score": 0.79,
+      "confidence_label": "high",
+      "price_as_of": "2026-04-01",
+      "news_as_of": "2026-03-31",
+      "macro_as_of": null,
+      "sector_as_of": null,
+      "article_count": 3,
+      "metrics": {
+        "momentum_20d": 0.0895,
+        "momentum_60d": 0.237,
+        "daily_volatility": 0.0137,
+        "downside_volatility": 0.0125,
+        "max_drawdown_60d": 0.0528,
+        "price_vs_50d_average": 0.0802,
+        "positive_day_ratio_20d": 0.65,
+        "volume_trend_10d": 0.2382,
+        "market_relative_20d": 0.1398,
+        "market_relative_60d": 0.299,
+        "sector_relative_20d": 0.0137,
+        "sector_relative_60d": -0.0395,
+        "news_sentiment": 0.69,
+        "raw_news_sentiment": 0.4762,
+        "calibrated_news_sentiment": 0.3734,
+        "news_confidence": 0.79,
+        "macro_sentiment": 0.5,
+        "macro_confidence": 0.2,
+        "sector_sentiment": 0.5,
+        "sector_confidence": 0.2,
+        "effective_article_count": 1.3,
+        "source_count": 3,
+        "average_relevance": 0.79,
+        "technical_training_ic": 0.0499,
+        "technical_training_rows": 882,
+        "block_training_rows": 0
+      },
+      "score_breakdown": {
+        "trend_strength": 0.0407,
+        "relative_strength": 0.225,
+        "participation": 0.0,
+        "risk_control": -0.0424,
+        "technical_total": 0.2234,
+        "news_adjustment": 0.0467,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "signal_alignment": 0.0131,
+        "block_weight_news": 0.14,
+        "block_weight_macro": 0.12,
+        "block_weight_sector": 0.09,
+        "macro_dedup_penalty": 0.725,
+        "sector_dedup_penalty": 1.0,
+        "total": 0.2833
+      },
+      "reasons": [
+        "Medium-term trend stayed constructive: 20-day momentum is 9.0% and 60-day momentum is 23.7%.",
+        "Trend quality held up over the last month with 65% positive sessions and price trading 8.0% versus its 50-day average.",
+        "Relative strength is 14.0% versus SPY over 20 days and 1.4% versus the Energy benchmark.",
+        "Risk profile shows 1.4% daily volatility and a 5.3% drawdown over the last 60 trading days.",
+        "Company news contributed a bullish overlay at 0.69 with confidence 0.79.",
+        "Technical weights were calibrated on 882 historical symbol-month windows against 20-day excess return (IC 0.05).",
+        "Monthly model score is 0.283 with high confidence."
+      ],
+      "news_evidence": [
+        {
+          "title": "Oil Prices Are Near Multiyear Highs. Here's the Best Energy Stock to Buy With $1,000.",
+          "provider": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/sectors/energy/articles/oil-prices-near-multiyear-highs-152500449.html",
+          "published_at": "2026-03-31T15:25:00Z",
+          "relevance_score": 0.73,
+          "sentiment": 0.74,
+          "doc_type": null,
+          "company_relevance": null,
+          "materiality": null,
+          "llm_confidence": null,
+          "llm_impact_score": null,
+          "llm_reason": null
+        },
+        {
+          "title": "Chevron Corporation (CVX) is Attracting Investor Attention: Here is What You Should Know",
+          "provider": "zacks.com",
+          "url": "https://www.zacks.com/stock/news/2892059/chevron-corporation-cvx-is-attracting-investor-attention-here-is-what-you-should-know?cid=CS-ZC-FT-tale_of_the_tape|most_searched_stocks-2892059",
+          "published_at": "2026-03-31T13:00:06Z",
+          "relevance_score": 1.0,
+          "sentiment": 0.48,
+          "doc_type": null,
+          "company_relevance": null,
+          "materiality": null,
+          "llm_confidence": null,
+          "llm_impact_score": null,
+          "llm_reason": null
+        }
+      ],
+      "macro_evidence": []
     }
   }
 }

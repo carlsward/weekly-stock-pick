@@ -1,13 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.3-monthly",
-  "generated_at": "2026-03-28T22:22:55Z",
-  "data_quality": {
-    "status": "healthy",
-    "degraded_reason": null,
-    "reasons": [],
-    "provider_status": {}
-  },
+  "generated_at": "2026-04-01T13:33:56Z",
   "entries": [
     {
       "month_id": "2026-03",
@@ -27,7 +21,135 @@
       "confidence_label": null,
       "data_as_of": "2026-03-27",
       "model_version": "v3.3-monthly",
+      "realized_20d_return": null,
+      "realized_20d_excess_return": null,
       "diagnostics": null
+    },
+    {
+      "month_id": "2026-04",
+      "month_start": "2026-04-01",
+      "month_end": "2026-04-30",
+      "rebalance_date": "2026-04-01",
+      "month_label": "April 2026",
+      "logged_at": "2026-04-01T13:33:56Z",
+      "status": "picked",
+      "status_reason": "CVX cleared the monthly release thresholds for Chevron Corporation with a score of 0.283 and high confidence.",
+      "symbol": "CVX",
+      "company_name": "Chevron Corporation",
+      "sector": "energy",
+      "risk": "medium",
+      "model_score": 0.2833,
+      "confidence_score": 0.79,
+      "confidence_label": "high",
+      "data_as_of": "2026-04-01",
+      "model_version": "v3.3-monthly",
+      "diagnostics": {
+        "technical_total": 0.2234,
+        "news_adjustment": 0.0467,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.3002,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 882,
+        "technical_training_ic": 0.0499,
+        "block_training_rows": 0,
+        "news_macro_overlap": 0.5,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      }
     }
-  ]
+  ],
+  "data_quality": {
+    "status": "degraded",
+    "degraded_reason": "news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
+    "reasons": [
+      "news_scores: GDELT company news failed for at least one symbol.",
+      "sector_scores: GDELT global-news feed failed during this run."
+    ],
+    "provider_status": {
+      "alpha_vantage": {
+        "status": "healthy",
+        "used": 2,
+        "limit": 25,
+        "remaining": 23,
+        "categories": {
+          "company_news": 1,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-04-01",
+          "status": "healthy",
+          "used": 2,
+          "limit": 25,
+          "remaining": 23,
+          "categories": {
+            "company_news": 1,
+            "global_news": 1
+          }
+        }
+      },
+      "gdelt": {
+        "status": "tracking_only",
+        "used": 2,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "company_news": 1,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-04-01",
+          "status": "tracking_only",
+          "used": 2,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "company_news": 1,
+            "global_news": 1
+          }
+        }
+      },
+      "marketaux": {
+        "status": "healthy",
+        "used": 18,
+        "limit": 100,
+        "remaining": 82,
+        "categories": {
+          "company_news": 17,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-04-01",
+          "status": "healthy",
+          "used": 18,
+          "limit": 100,
+          "remaining": 82,
+          "categories": {
+            "company_news": 17,
+            "global_news": 1
+          }
+        }
+      },
+      "twelvedata": {
+        "status": "healthy",
+        "used": 116,
+        "limit": 800,
+        "remaining": 684,
+        "categories": {
+          "price": 116
+        },
+        "daily": {
+          "date": "2026-04-01",
+          "status": "healthy",
+          "used": 116,
+          "limit": 800,
+          "remaining": 684,
+          "categories": {
+            "price": 116
+          }
+        }
+      }
+    }
+  }
 }

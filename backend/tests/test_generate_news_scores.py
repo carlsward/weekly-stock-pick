@@ -39,6 +39,22 @@ def news_item(title: str, summary: str = "", description: str = "") -> dict:
     }
 
 
+def recent_utc(hours_ago: int = 12) -> datetime:
+    return datetime.now(timezone.utc).replace(microsecond=0) - timedelta(hours=hours_ago)
+
+
+def recent_iso(hours_ago: int = 12) -> str:
+    return recent_utc(hours_ago).isoformat().replace("+00:00", "Z")
+
+
+def recent_alpha_time(hours_ago: int = 12) -> str:
+    return recent_utc(hours_ago).strftime("%Y%m%dT%H%M")
+
+
+def recent_gdelt_time(hours_ago: int = 12) -> str:
+    return recent_utc(hours_ago).strftime("%Y%m%dT%H%M%SZ")
+
+
 class GenerateNewsScoresTests(unittest.TestCase):
     def tearDown(self) -> None:
         generate_news_scores_module.reset_marketaux_fetch_state()
@@ -368,7 +384,7 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "title": "Mastercard gains on stronger cross-border volumes",
                 "summary": "Payments spending improved.",
                 "url": "https://example.com/alpha",
-                "time_published": "20260329T1000",
+                "time_published": recent_alpha_time(),
                 "source": "Reuters",
                 "ticker_sentiment": [{"ticker": "MA", "ticker_sentiment_score": "0.3", "relevance_score": "0.9"}],
             }
@@ -378,7 +394,7 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "title": "Mastercard signs new bank partnership in Europe",
                 "url": "https://example.com/gdelt",
                 "domain": "ft.com",
-                "seendate": "20260329T083000Z",
+                "seendate": recent_gdelt_time(),
                 "snippet": "Partnership supports payment network expansion.",
             }
         ]
@@ -414,7 +430,7 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "title": "Mastercard signs new co-brand card deal",
                 "description": "The company expanded a large issuing partnership.",
                 "snippet": "",
-                "published_at": "2026-03-29T10:00:00Z",
+                "published_at": recent_iso(),
                 "source": "Reuters",
                 "url": "https://example.com/marketaux",
                 "entities": [{"symbol": "MA", "match_score": 18.0, "sentiment_score": 0.25, "highlights": []}],
@@ -424,7 +440,7 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "title": "Mastercard expands commercial payments platform",
                 "description": "The company launched another direct payments initiative.",
                 "snippet": "",
-                "published_at": "2026-03-29T08:30:00Z",
+                "published_at": recent_iso(13),
                 "source": "Bloomberg",
                 "url": "https://example.com/marketaux-2",
                 "entities": [{"symbol": "MA", "match_score": 17.0, "sentiment_score": 0.18, "highlights": []}],
@@ -461,7 +477,7 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "title": "Stocks rise as payment names trade with the market",
                 "description": "A broad market roundup with a weak mention of Mastercard.",
                 "snippet": "",
-                "published_at": "2026-03-29T10:00:00Z",
+                "published_at": recent_iso(),
                 "source": "Reuters",
                 "url": "https://example.com/marketaux-roundup",
                 "entities": [{"symbol": "MA", "match_score": 7.0, "sentiment_score": 0.05, "highlights": []}],
@@ -473,7 +489,7 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "title": "Mastercard signs new bank partnership in Europe",
                 "url": "https://example.com/gdelt",
                 "domain": "ft.com",
-                "seendate": "20260329T083000Z",
+                "seendate": recent_gdelt_time(),
                 "snippet": "Partnership supports payment network expansion.",
             }
         ]
@@ -575,7 +591,7 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "title": "Mastercard expands a bank partnership",
                 "url": "https://example.com/gdelt",
                 "domain": "ft.com",
-                "seendate": "20260329T083000Z",
+                "seendate": recent_gdelt_time(),
                 "snippet": "Partnership supports payment network expansion.",
             }
         ]
@@ -612,7 +628,7 @@ class GenerateNewsScoresTests(unittest.TestCase):
                     "title": "Mastercard expands payment network",
                     "description": "Mastercard announced a new payments partnership.",
                     "snippet": "Overall sentiment label: Bullish.",
-                    "published_at": "2026-03-29T10:00:00Z",
+                    "published_at": recent_iso(),
                     "source": "Reuters",
                     "url": "https://example.com/alpha",
                     "entities": [{"symbol": "MA", "sentiment_score": 0.35, "match_score": 18.0, "highlights": []}],
@@ -625,7 +641,7 @@ class GenerateNewsScoresTests(unittest.TestCase):
                     "title": "Mastercard rolls out new bank partnership",
                     "description": "Bank partnership expands commercial card reach.",
                     "snippet": "",
-                    "published_at": "2026-03-29T09:30:00Z",
+                    "published_at": recent_iso(13),
                     "source": "ft.com",
                     "url": "https://example.com/gdelt",
                     "entities": [],

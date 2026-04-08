@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-04-08T00:58:10Z",
+  "generated_at": "2026-04-08T16:52:59Z",
   "data_as_of": "2026-04-08",
-  "expected_next_refresh_at": "2026-04-09T00:58:10Z",
-  "stale_after": "2026-04-09T12:58:10Z",
+  "expected_next_refresh_at": "2026-04-09T16:52:59Z",
+  "stale_after": "2026-04-10T04:52:59Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W15",
@@ -28,89 +28,6 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run."
     ],
-    "provider_status": {
-      "alpha_vantage": {
-        "status": "healthy",
-        "used": 3,
-        "limit": 25,
-        "remaining": 22,
-        "categories": {
-          "company_news": 2,
-          "global_news": 1
-        },
-        "daily": {
-          "date": "2026-04-08",
-          "status": "healthy",
-          "used": 3,
-          "limit": 25,
-          "remaining": 22,
-          "categories": {
-            "company_news": 2,
-            "global_news": 1
-          }
-        }
-      },
-      "gdelt": {
-        "status": "tracking_only",
-        "used": 3,
-        "limit": null,
-        "remaining": null,
-        "categories": {
-          "company_news": 2,
-          "global_news": 1
-        },
-        "daily": {
-          "date": "2026-04-08",
-          "status": "tracking_only",
-          "used": 3,
-          "limit": null,
-          "remaining": null,
-          "categories": {
-            "company_news": 2,
-            "global_news": 1
-          }
-        }
-      },
-      "marketaux": {
-        "status": "healthy",
-        "used": 16,
-        "limit": 100,
-        "remaining": 84,
-        "categories": {
-          "company_news": 15,
-          "global_news": 1
-        },
-        "daily": {
-          "date": "2026-04-08",
-          "status": "healthy",
-          "used": 16,
-          "limit": 100,
-          "remaining": 84,
-          "categories": {
-            "company_news": 15,
-            "global_news": 1
-          }
-        }
-      },
-      "twelvedata": {
-        "status": "healthy",
-        "used": 116,
-        "limit": 800,
-        "remaining": 684,
-        "categories": {
-          "price": 116
-        },
-        "daily": {
-          "date": "2026-04-08",
-          "status": "healthy",
-          "used": 116,
-          "limit": 800,
-          "remaining": 684,
-          "categories": {
-            "price": 116
-          }
-        }
-      }
-    }
+    "provider_status": {}
   }
 }

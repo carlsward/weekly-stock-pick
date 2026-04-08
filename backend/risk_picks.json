@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-03-30T15:29:28Z",
-  "data_as_of": "2026-03-30",
-  "expected_next_refresh_at": "2026-04-06T12:00:00Z",
-  "stale_after": "2026-04-07T00:00:00Z",
+  "generated_at": "2026-04-08T00:50:34Z",
+  "data_as_of": "2026-04-08",
+  "expected_next_refresh_at": "2026-04-13T12:00:00Z",
+  "stale_after": "2026-04-14T00:00:00Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W14",
-    "week_label": "Mar 30 - Apr 03, 2026",
-    "week_start": "2026-03-30",
-    "week_end": "2026-04-03"
+    "week_id": "2026-W15",
+    "week_label": "Apr 06 - 10, 2026",
+    "week_start": "2026-04-06",
+    "week_end": "2026-04-10"
   },
   "generation_summary": {
     "universe_size": 49,
@@ -21,14 +21,14 @@
     "model_calibration": {
       "technical_weights": {
         "short_momentum": 0.0,
-        "medium_momentum": 0.0,
-        "trend_gap": 0.1896535801356562,
+        "medium_momentum": 0.007468853596879422,
+        "trend_gap": 0.23687675966009783,
         "positive_ratio": 0.0,
         "volume_confirmation": 0.0,
         "market_relative": 0.0,
-        "sector_relative": 0.10589539041064773,
+        "sector_relative": 0.13735844668123545,
         "inverse_volatility": 0.0,
-        "inverse_downside": 0.7044510294536962,
+        "inverse_downside": 0.6182959400617873,
         "inverse_drawdown": 0.0
       },
       "block_weights": {
@@ -36,9 +36,9 @@
         "macro": 0.1,
         "sector": 0.08
       },
-      "technical_scale": 0.38369820340467875,
+      "technical_scale": 0.4191600943506473,
       "training_row_count": 2303,
-      "training_ic": -0.02656497829558522,
+      "training_ic": -0.012873015239633277,
       "block_row_count": 0,
       "source": "price_history_5d_excess_return+block_priors"
     }
@@ -62,63 +62,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 2,
+        "used": 3,
         "limit": 25,
-        "remaining": 23,
+        "remaining": 22,
         "categories": {
-          "company_news": 1,
+          "company_news": 2,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-04-08",
           "status": "healthy",
-          "used": 2,
+          "used": 3,
           "limit": 25,
-          "remaining": 23,
+          "remaining": 22,
           "categories": {
-            "company_news": 1,
+            "company_news": 2,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 3,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 1,
+          "company_news": 2,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-04-08",
           "status": "tracking_only",
-          "used": 2,
+          "used": 3,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 1,
+            "company_news": 2,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 17,
+        "used": 16,
         "limit": 100,
-        "remaining": 83,
+        "remaining": 84,
         "categories": {
-          "company_news": 16,
+          "company_news": 15,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-04-08",
           "status": "healthy",
-          "used": 17,
+          "used": 16,
           "limit": 100,
-          "remaining": 83,
+          "remaining": 84,
           "categories": {
-            "company_news": 16,
+            "company_news": 15,
             "global_news": 1
           }
         }
@@ -132,7 +132,7 @@
           "price": 116
         },
         "daily": {
-          "date": "2026-03-30",
+          "date": "2026-04-08",
           "status": "healthy",
           "used": 116,
           "limit": 800,
@@ -146,63 +146,63 @@
   },
   "overall_selection": {
     "status": "no_pick",
-    "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was CVX at 0.008.",
+    "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was MRK at -0.005.",
     "threshold_score": 0.1,
     "threshold_confidence": 0.55,
     "pick": null,
     "best_candidate": {
-      "symbol": "CVX",
-      "company_name": "Chevron Corporation",
-      "risk": "medium",
-      "model_score": 0.008,
-      "confidence_score": 0.7,
+      "symbol": "MRK",
+      "company_name": "Merck & Co. Inc.",
+      "risk": "low",
+      "model_score": -0.0048,
+      "confidence_score": 0.62,
       "confidence_label": "medium"
     }
   },
   "risk_selections": {
     "low": {
       "status": "no_pick",
-      "status_reason": "No low-risk candidate cleared the minimum score threshold of 0.08. The best candidate was JNJ at -0.038.",
+      "status_reason": "No low-risk candidate cleared the minimum score threshold of 0.08. The best candidate was MRK at -0.005.",
       "threshold_score": 0.08,
       "threshold_confidence": 0.55,
       "pick": null,
       "best_candidate": {
-        "symbol": "JNJ",
-        "company_name": "Johnson & Johnson",
+        "symbol": "MRK",
+        "company_name": "Merck & Co. Inc.",
         "risk": "low",
-        "model_score": -0.0377,
-        "confidence_score": 0.6,
+        "model_score": -0.0048,
+        "confidence_score": 0.62,
         "confidence_label": "medium"
       }
     },
     "medium": {
       "status": "no_pick",
-      "status_reason": "No medium-risk candidate cleared the minimum score threshold of 0.10. The best candidate was CVX at 0.008.",
+      "status_reason": "No medium-risk candidate cleared the minimum score threshold of 0.10. The best candidate was NFLX at -0.028.",
       "threshold_score": 0.1,
       "threshold_confidence": 0.55,
       "pick": null,
       "best_candidate": {
-        "symbol": "CVX",
-        "company_name": "Chevron Corporation",
+        "symbol": "NFLX",
+        "company_name": "Netflix Inc.",
         "risk": "medium",
-        "model_score": 0.008,
-        "confidence_score": 0.7,
+        "model_score": -0.028,
+        "confidence_score": 0.57,
         "confidence_label": "medium"
       }
     },
     "high": {
       "status": "no_pick",
-      "status_reason": "No high-risk candidate cleared the minimum score threshold of 0.12. The best candidate was ACN at -0.234.",
+      "status_reason": "No high-risk candidate cleared the minimum score threshold of 0.12. The best candidate was UNH at -0.024.",
       "threshold_score": 0.12,
       "threshold_confidence": 0.55,
       "pick": null,
       "best_candidate": {
-        "symbol": "ACN",
-        "company_name": "Accenture plc",
+        "symbol": "UNH",
+        "company_name": "UnitedHealth Group Incorporated",
         "risk": "high",
-        "model_score": -0.2341,
-        "confidence_score": 0.26,
-        "confidence_label": "low"
+        "model_score": -0.0245,
+        "confidence_score": 0.61,
+        "confidence_label": "medium"
       }
     }
   }

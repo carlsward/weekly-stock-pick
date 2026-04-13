@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-04-08T00:49:56Z",
-  "last_updated": "2026-04-08",
+  "generated_at": "2026-04-13T12:50:47Z",
+  "last_updated": "2026-04-13",
   "lookback_days": 3,
-  "article_count": 3,
-  "source_count": 3,
+  "article_count": 0,
+  "source_count": 0,
   "llm_model": "gpt-5-mini",
-  "summary": "Three short items: (1) a narrow corporate securities disposition by ThreeD Capital tied to Avicanna with negligible broader market impact; (2) JPMorgan upgrading Indian aluminium producers on an anticipated aluminium upcycle driven by West Asia conflict-related supply disruptions — implies an aluminium supply shock that raises input costs for manufacturers and consumer goods, hurting industrials and consumer sectors over the next 1-15 trading days; (3) a thematic deep-value screen highlighting financials, energy, and housing cyclicals — mainly a low-amplitude sentiment/flow signal rather than a near-term market-moving event.",
+  "summary": "Sector analysis was neutral because no reliable broad catalysts were found.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -15,174 +15,57 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Communication Services."
+        "No recent broad catalyst clearly favored the Communication Services sector."
       ],
       "supporting_articles": []
     },
     "consumer_discretionary": {
       "sector": "consumer_discretionary",
       "display_name": "Consumer Discretionary",
-      "score": 0.49,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-04-08",
+      "last_updated": null,
       "reasons": [
-        "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific.",
-        "The weekly deep-value screen highlights concentration in financials, energy producers, and housing-related cyclicals. This is primarily a thematic/screening signal that could modestly influence short-term flows into these sectors but is not a discrete catalyst (e.g., policy or supply shock). Expect limited, low-amplitude sentiment-driven support for value cyclicals in the near term rather than a clear company-specific impact."
+        "No recent broad catalyst clearly favored the Consumer Discretionary sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "JPMorgan assigns overweight tag to Hindalco and Vedanta",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/markets/stocks/news/jpmorgan-assigns-overweight-tag-to-hindalco-and-vedanta/articleshow/130099468.cms",
-          "published_at": "2026-04-08T00:15:30Z",
-          "impact": "negative",
-          "weight": 0.067,
-          "event_type": "commodity supply shock / geopolitical disruption",
-          "transmission_channel": "raw-material supply constraint -> higher commodity prices -> input cost inflation for downstream manufacturers and consumer goods; potential commodity-price spillovers",
-          "affected_inputs": [
-            "aluminium supply",
-            "raw material costs for manufacturers",
-            "manufacturing margins",
-            "pricing for downstream goods (autos, packaging, appliances)"
-          ],
-          "horizon": "1-2w",
-          "reason": "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
-        },
-        {
-          "title": "This Week’s Deep-Value Landscape: Acquirer’s Multiple Large-Cap Screen",
-          "feed": "marketaux",
-          "provider": "acquirersmultiple.com",
-          "url": "https://acquirersmultiple.com/2026/04/this-weeks-deep-value-landscape-acquirers-multiple-large-cap-screen-13/",
-          "published_at": "2026-04-08T00:17:29Z",
-          "impact": "positive",
-          "weight": 0.047,
-          "event_type": "market-screen / investor-sentiment signal",
-          "transmission_channel": "investment-sentiment / flow reallocation toward deep-value cyclicals",
-          "affected_inputs": [
-            "demand for value/cyclical sectors",
-            "ETF/manager flows into screened sectors",
-            "short-term sector sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "The weekly deep-value screen highlights concentration in financials, energy producers, and housing-related cyclicals. This is primarily a thematic/screening signal that could modestly influence short-term flows into these sectors but is not a discrete catalyst (e.g., policy or supply shock). Expect limited, low-amplitude sentiment-driven support for value cyclicals in the near term rather than a clear company-specific impact."
-        }
-      ]
+      "supporting_articles": []
     },
     "consumer_staples": {
       "sector": "consumer_staples",
       "display_name": "Consumer Staples",
-      "score": 0.46,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-04-08",
+      "last_updated": null,
       "reasons": [
-        "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
+        "No recent broad catalyst clearly favored the Consumer Staples sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "JPMorgan assigns overweight tag to Hindalco and Vedanta",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/markets/stocks/news/jpmorgan-assigns-overweight-tag-to-hindalco-and-vedanta/articleshow/130099468.cms",
-          "published_at": "2026-04-08T00:15:30Z",
-          "impact": "negative",
-          "weight": 0.067,
-          "event_type": "commodity supply shock / geopolitical disruption",
-          "transmission_channel": "raw-material supply constraint -> higher commodity prices -> input cost inflation for downstream manufacturers and consumer goods; potential commodity-price spillovers",
-          "affected_inputs": [
-            "aluminium supply",
-            "raw material costs for manufacturers",
-            "manufacturing margins",
-            "pricing for downstream goods (autos, packaging, appliances)"
-          ],
-          "horizon": "1-2w",
-          "reason": "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
-        }
-      ]
+      "supporting_articles": []
     },
     "energy": {
       "sector": "energy",
       "display_name": "Energy",
-      "score": 0.63,
-      "confidence": 0.42,
-      "direction": "bullish",
-      "last_updated": "2026-04-08",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific.",
-        "The weekly deep-value screen highlights concentration in financials, energy producers, and housing-related cyclicals. This is primarily a thematic/screening signal that could modestly influence short-term flows into these sectors but is not a discrete catalyst (e.g., policy or supply shock). Expect limited, low-amplitude sentiment-driven support for value cyclicals in the near term rather than a clear company-specific impact."
+        "No recent broad catalyst clearly favored the Energy sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "JPMorgan assigns overweight tag to Hindalco and Vedanta",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/markets/stocks/news/jpmorgan-assigns-overweight-tag-to-hindalco-and-vedanta/articleshow/130099468.cms",
-          "published_at": "2026-04-08T00:15:30Z",
-          "impact": "positive",
-          "weight": 0.2,
-          "event_type": "commodity supply shock / geopolitical disruption",
-          "transmission_channel": "raw-material supply constraint -> higher commodity prices -> input cost inflation for downstream manufacturers and consumer goods; potential commodity-price spillovers",
-          "affected_inputs": [
-            "aluminium supply",
-            "raw material costs for manufacturers",
-            "manufacturing margins",
-            "pricing for downstream goods (autos, packaging, appliances)"
-          ],
-          "horizon": "1-2w",
-          "reason": "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
-        },
-        {
-          "title": "This Week’s Deep-Value Landscape: Acquirer’s Multiple Large-Cap Screen",
-          "feed": "marketaux",
-          "provider": "acquirersmultiple.com",
-          "url": "https://acquirersmultiple.com/2026/04/this-weeks-deep-value-landscape-acquirers-multiple-large-cap-screen-13/",
-          "published_at": "2026-04-08T00:17:29Z",
-          "impact": "positive",
-          "weight": 0.047,
-          "event_type": "market-screen / investor-sentiment signal",
-          "transmission_channel": "investment-sentiment / flow reallocation toward deep-value cyclicals",
-          "affected_inputs": [
-            "demand for value/cyclical sectors",
-            "ETF/manager flows into screened sectors",
-            "short-term sector sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "The weekly deep-value screen highlights concentration in financials, energy producers, and housing-related cyclicals. This is primarily a thematic/screening signal that could modestly influence short-term flows into these sectors but is not a discrete catalyst (e.g., policy or supply shock). Expect limited, low-amplitude sentiment-driven support for value cyclicals in the near term rather than a clear company-specific impact."
-        }
-      ]
+      "supporting_articles": []
     },
     "financials": {
       "sector": "financials",
       "display_name": "Financials",
-      "score": 0.52,
-      "confidence": 0.29,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-04-08",
+      "last_updated": null,
       "reasons": [
-        "The weekly deep-value screen highlights concentration in financials, energy producers, and housing-related cyclicals. This is primarily a thematic/screening signal that could modestly influence short-term flows into these sectors but is not a discrete catalyst (e.g., policy or supply shock). Expect limited, low-amplitude sentiment-driven support for value cyclicals in the near term rather than a clear company-specific impact."
+        "No recent broad catalyst clearly favored the Financials sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "This Week’s Deep-Value Landscape: Acquirer’s Multiple Large-Cap Screen",
-          "feed": "marketaux",
-          "provider": "acquirersmultiple.com",
-          "url": "https://acquirersmultiple.com/2026/04/this-weeks-deep-value-landscape-acquirers-multiple-large-cap-screen-13/",
-          "published_at": "2026-04-08T00:17:29Z",
-          "impact": "positive",
-          "weight": 0.047,
-          "event_type": "market-screen / investor-sentiment signal",
-          "transmission_channel": "investment-sentiment / flow reallocation toward deep-value cyclicals",
-          "affected_inputs": [
-            "demand for value/cyclical sectors",
-            "ETF/manager flows into screened sectors",
-            "short-term sector sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "The weekly deep-value screen highlights concentration in financials, energy producers, and housing-related cyclicals. This is primarily a thematic/screening signal that could modestly influence short-term flows into these sectors but is not a discrete catalyst (e.g., policy or supply shock). Expect limited, low-amplitude sentiment-driven support for value cyclicals in the near term rather than a clear company-specific impact."
-        }
-      ]
+      "supporting_articles": []
     },
     "healthcare": {
       "sector": "healthcare",
@@ -192,41 +75,21 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Healthcare."
+        "No recent broad catalyst clearly favored the Healthcare sector."
       ],
       "supporting_articles": []
     },
     "industrials": {
       "sector": "industrials",
       "display_name": "Industrials",
-      "score": 0.46,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-04-08",
+      "last_updated": null,
       "reasons": [
-        "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
+        "No recent broad catalyst clearly favored the Industrials sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "JPMorgan assigns overweight tag to Hindalco and Vedanta",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/markets/stocks/news/jpmorgan-assigns-overweight-tag-to-hindalco-and-vedanta/articleshow/130099468.cms",
-          "published_at": "2026-04-08T00:15:30Z",
-          "impact": "negative",
-          "weight": 0.067,
-          "event_type": "commodity supply shock / geopolitical disruption",
-          "transmission_channel": "raw-material supply constraint -> higher commodity prices -> input cost inflation for downstream manufacturers and consumer goods; potential commodity-price spillovers",
-          "affected_inputs": [
-            "aluminium supply",
-            "raw material costs for manufacturers",
-            "manufacturing margins",
-            "pricing for downstream goods (autos, packaging, appliances)"
-          ],
-          "horizon": "1-2w",
-          "reason": "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
-        }
-      ]
+      "supporting_articles": []
     },
     "technology": {
       "sector": "technology",
@@ -236,7 +99,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Technology."
+        "No recent broad catalyst clearly favored the Technology sector."
       ],
       "supporting_articles": []
     }
@@ -251,7 +114,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Apple Inc.."
+        "No recent world-news catalyst clearly favored Apple Inc.."
       ],
       "supporting_articles": []
     },
@@ -264,7 +127,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Microsoft Corporation."
+        "No recent world-news catalyst clearly favored Microsoft Corporation."
       ],
       "supporting_articles": []
     },
@@ -277,7 +140,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Alphabet Inc.."
+        "No recent world-news catalyst clearly favored Alphabet Inc.."
       ],
       "supporting_articles": []
     },
@@ -290,7 +153,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Amazon.com Inc.."
+        "No recent world-news catalyst clearly favored Amazon.com Inc.."
       ],
       "supporting_articles": []
     },
@@ -298,34 +161,14 @@
       "symbol": "TSLA",
       "company_name": "Tesla Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.47,
-      "confidence": 0.39,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-04-08",
+      "last_updated": null,
       "reasons": [
-        "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
+        "No recent world-news catalyst clearly favored Tesla Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "JPMorgan assigns overweight tag to Hindalco and Vedanta",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/markets/stocks/news/jpmorgan-assigns-overweight-tag-to-hindalco-and-vedanta/articleshow/130099468.cms",
-          "published_at": "2026-04-08T00:15:30Z",
-          "impact": "negative",
-          "weight": 0.04,
-          "event_type": "commodity supply shock / geopolitical disruption",
-          "transmission_channel": "raw-material supply constraint -> higher commodity prices -> input cost inflation for downstream manufacturers and consumer goods; potential commodity-price spillovers",
-          "affected_inputs": [
-            "aluminium supply",
-            "raw material costs for manufacturers",
-            "manufacturing margins",
-            "pricing for downstream goods (autos, packaging, appliances)"
-          ],
-          "horizon": "1-2w",
-          "reason": "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
-        }
-      ]
+      "supporting_articles": []
     },
     "META": {
       "symbol": "META",
@@ -336,7 +179,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Meta Platforms Inc.."
+        "No recent world-news catalyst clearly favored Meta Platforms Inc.."
       ],
       "supporting_articles": []
     },
@@ -349,7 +192,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
+        "No recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
       ],
       "supporting_articles": []
     },
@@ -362,7 +205,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored NVIDIA Corporation."
+        "No recent world-news catalyst clearly favored NVIDIA Corporation."
       ],
       "supporting_articles": []
     },
@@ -375,7 +218,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored JPMorgan Chase & Co.."
+        "No recent world-news catalyst clearly favored JPMorgan Chase & Co.."
       ],
       "supporting_articles": []
     },
@@ -388,7 +231,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Johnson & Johnson."
+        "No recent world-news catalyst clearly favored Johnson & Johnson."
       ],
       "supporting_articles": []
     },
@@ -401,7 +244,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Visa Inc.."
+        "No recent world-news catalyst clearly favored Visa Inc.."
       ],
       "supporting_articles": []
     },
@@ -414,7 +257,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Walmart Inc.."
+        "No recent world-news catalyst clearly favored Walmart Inc.."
       ],
       "supporting_articles": []
     },
@@ -427,7 +270,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Procter & Gamble Company."
+        "No recent world-news catalyst clearly favored Procter & Gamble Company."
       ],
       "supporting_articles": []
     },
@@ -440,7 +283,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Mastercard Incorporated."
+        "No recent world-news catalyst clearly favored Mastercard Incorporated."
       ],
       "supporting_articles": []
     },
@@ -453,7 +296,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Walt Disney Company."
+        "No recent world-news catalyst clearly favored The Walt Disney Company."
       ],
       "supporting_articles": []
     },
@@ -461,34 +304,14 @@
       "symbol": "HD",
       "company_name": "The Home Depot Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.47,
-      "confidence": 0.39,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-04-08",
+      "last_updated": null,
       "reasons": [
-        "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
+        "No recent world-news catalyst clearly favored The Home Depot Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "JPMorgan assigns overweight tag to Hindalco and Vedanta",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/markets/stocks/news/jpmorgan-assigns-overweight-tag-to-hindalco-and-vedanta/articleshow/130099468.cms",
-          "published_at": "2026-04-08T00:15:30Z",
-          "impact": "negative",
-          "weight": 0.04,
-          "event_type": "commodity supply shock / geopolitical disruption",
-          "transmission_channel": "raw-material supply constraint -> higher commodity prices -> input cost inflation for downstream manufacturers and consumer goods; potential commodity-price spillovers",
-          "affected_inputs": [
-            "aluminium supply",
-            "raw material costs for manufacturers",
-            "manufacturing margins",
-            "pricing for downstream goods (autos, packaging, appliances)"
-          ],
-          "horizon": "1-2w",
-          "reason": "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
-        }
-      ]
+      "supporting_articles": []
     },
     "BAC": {
       "symbol": "BAC",
@@ -499,7 +322,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Bank of America Corporation."
+        "No recent world-news catalyst clearly favored Bank of America Corporation."
       ],
       "supporting_articles": []
     },
@@ -512,7 +335,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Exxon Mobil Corporation."
+        "No recent world-news catalyst clearly favored Exxon Mobil Corporation."
       ],
       "supporting_articles": []
     },
@@ -525,7 +348,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Pfizer Inc.."
+        "No recent world-news catalyst clearly favored Pfizer Inc.."
       ],
       "supporting_articles": []
     },
@@ -538,7 +361,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Verizon Communications Inc.."
+        "No recent world-news catalyst clearly favored Verizon Communications Inc.."
       ],
       "supporting_articles": []
     },
@@ -551,7 +374,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Netflix Inc.."
+        "No recent world-news catalyst clearly favored Netflix Inc.."
       ],
       "supporting_articles": []
     },
@@ -564,7 +387,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Adobe Inc.."
+        "No recent world-news catalyst clearly favored Adobe Inc.."
       ],
       "supporting_articles": []
     },
@@ -577,7 +400,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Comcast Corporation."
+        "No recent world-news catalyst clearly favored Comcast Corporation."
       ],
       "supporting_articles": []
     },
@@ -590,7 +413,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Coca-Cola Company."
+        "No recent world-news catalyst clearly favored The Coca-Cola Company."
       ],
       "supporting_articles": []
     },
@@ -603,7 +426,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored AT&T Inc.."
+        "No recent world-news catalyst clearly favored AT&T Inc.."
       ],
       "supporting_articles": []
     },
@@ -616,7 +439,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Nike Inc.."
+        "No recent world-news catalyst clearly favored Nike Inc.."
       ],
       "supporting_articles": []
     },
@@ -629,7 +452,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Merck & Co. Inc.."
+        "No recent world-news catalyst clearly favored Merck & Co. Inc.."
       ],
       "supporting_articles": []
     },
@@ -642,7 +465,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Abbott Laboratories."
+        "No recent world-news catalyst clearly favored Abbott Laboratories."
       ],
       "supporting_articles": []
     },
@@ -655,7 +478,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored PepsiCo Inc.."
+        "No recent world-news catalyst clearly favored PepsiCo Inc.."
       ],
       "supporting_articles": []
     },
@@ -668,7 +491,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Cisco Systems Inc.."
+        "No recent world-news catalyst clearly favored Cisco Systems Inc.."
       ],
       "supporting_articles": []
     },
@@ -681,7 +504,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Oracle Corporation."
+        "No recent world-news catalyst clearly favored Oracle Corporation."
       ],
       "supporting_articles": []
     },
@@ -694,7 +517,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Intel Corporation."
+        "No recent world-news catalyst clearly favored Intel Corporation."
       ],
       "supporting_articles": []
     },
@@ -707,7 +530,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Salesforce Inc.."
+        "No recent world-news catalyst clearly favored Salesforce Inc.."
       ],
       "supporting_articles": []
     },
@@ -720,7 +543,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Costco Wholesale Corporation."
+        "No recent world-news catalyst clearly favored Costco Wholesale Corporation."
       ],
       "supporting_articles": []
     },
@@ -733,7 +556,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Accenture plc."
+        "No recent world-news catalyst clearly favored Accenture plc."
       ],
       "supporting_articles": []
     },
@@ -746,7 +569,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Chevron Corporation."
+        "No recent world-news catalyst clearly favored Chevron Corporation."
       ],
       "supporting_articles": []
     },
@@ -759,7 +582,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored McDonald's Corporation."
+        "No recent world-news catalyst clearly favored McDonald's Corporation."
       ],
       "supporting_articles": []
     },
@@ -772,7 +595,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Danaher Corporation."
+        "No recent world-news catalyst clearly favored Danaher Corporation."
       ],
       "supporting_articles": []
     },
@@ -785,7 +608,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Medtronic plc."
+        "No recent world-news catalyst clearly favored Medtronic plc."
       ],
       "supporting_articles": []
     },
@@ -798,7 +621,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Eli Lilly and Company."
+        "No recent world-news catalyst clearly favored Eli Lilly and Company."
       ],
       "supporting_articles": []
     },
@@ -811,7 +634,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Texas Instruments Incorporated."
+        "No recent world-news catalyst clearly favored Texas Instruments Incorporated."
       ],
       "supporting_articles": []
     },
@@ -824,7 +647,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
+        "No recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
       ],
       "supporting_articles": []
     },
@@ -837,7 +660,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
+        "No recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
       ],
       "supporting_articles": []
     },
@@ -850,7 +673,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored QUALCOMM Incorporated."
+        "No recent world-news catalyst clearly favored QUALCOMM Incorporated."
       ],
       "supporting_articles": []
     },
@@ -858,34 +681,14 @@
       "symbol": "HON",
       "company_name": "Honeywell International Inc.",
       "sector": "industrials",
-      "score": 0.47,
-      "confidence": 0.39,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-04-08",
+      "last_updated": null,
       "reasons": [
-        "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
+        "No recent world-news catalyst clearly favored Honeywell International Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "JPMorgan assigns overweight tag to Hindalco and Vedanta",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/markets/stocks/news/jpmorgan-assigns-overweight-tag-to-hindalco-and-vedanta/articleshow/130099468.cms",
-          "published_at": "2026-04-08T00:15:30Z",
-          "impact": "negative",
-          "weight": 0.04,
-          "event_type": "commodity supply shock / geopolitical disruption",
-          "transmission_channel": "raw-material supply constraint -> higher commodity prices -> input cost inflation for downstream manufacturers and consumer goods; potential commodity-price spillovers",
-          "affected_inputs": [
-            "aluminium supply",
-            "raw material costs for manufacturers",
-            "manufacturing margins",
-            "pricing for downstream goods (autos, packaging, appliances)"
-          ],
-          "horizon": "1-2w",
-          "reason": "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
-        }
-      ]
+      "supporting_articles": []
     },
     "AMGN": {
       "symbol": "AMGN",
@@ -896,7 +699,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Amgen Inc.."
+        "No recent world-news catalyst clearly favored Amgen Inc.."
       ],
       "supporting_articles": []
     },
@@ -909,7 +712,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Starbucks Corporation."
+        "No recent world-news catalyst clearly favored Starbucks Corporation."
       ],
       "supporting_articles": []
     },
@@ -917,161 +720,30 @@
       "symbol": "LOW",
       "company_name": "Lowe's Companies Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.47,
-      "confidence": 0.39,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-04-08",
+      "last_updated": null,
       "reasons": [
-        "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
+        "No recent world-news catalyst clearly favored Lowe's Companies Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "JPMorgan assigns overweight tag to Hindalco and Vedanta",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/markets/stocks/news/jpmorgan-assigns-overweight-tag-to-hindalco-and-vedanta/articleshow/130099468.cms",
-          "published_at": "2026-04-08T00:15:30Z",
-          "impact": "negative",
-          "weight": 0.04,
-          "event_type": "commodity supply shock / geopolitical disruption",
-          "transmission_channel": "raw-material supply constraint -> higher commodity prices -> input cost inflation for downstream manufacturers and consumer goods; potential commodity-price spillovers",
-          "affected_inputs": [
-            "aluminium supply",
-            "raw material costs for manufacturers",
-            "manufacturing margins",
-            "pricing for downstream goods (autos, packaging, appliances)"
-          ],
-          "horizon": "1-2w",
-          "reason": "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
-        }
-      ]
+      "supporting_articles": []
     },
     "GE": {
       "symbol": "GE",
       "company_name": "General Electric Company",
       "sector": "industrials",
-      "score": 0.47,
-      "confidence": 0.39,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-04-08",
+      "last_updated": null,
       "reasons": [
-        "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
+        "No recent world-news catalyst clearly favored General Electric Company."
       ],
-      "supporting_articles": [
-        {
-          "title": "JPMorgan assigns overweight tag to Hindalco and Vedanta",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/markets/stocks/news/jpmorgan-assigns-overweight-tag-to-hindalco-and-vedanta/articleshow/130099468.cms",
-          "published_at": "2026-04-08T00:15:30Z",
-          "impact": "negative",
-          "weight": 0.04,
-          "event_type": "commodity supply shock / geopolitical disruption",
-          "transmission_channel": "raw-material supply constraint -> higher commodity prices -> input cost inflation for downstream manufacturers and consumer goods; potential commodity-price spillovers",
-          "affected_inputs": [
-            "aluminium supply",
-            "raw material costs for manufacturers",
-            "manufacturing margins",
-            "pricing for downstream goods (autos, packaging, appliances)"
-          ],
-          "horizon": "1-2w",
-          "reason": "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
-        }
-      ]
+      "supporting_articles": []
     }
   },
-  "events": [
-    {
-      "article_id": "news_3",
-      "title": "ThreeD Capital Inc. Issues Early Warning Report in Connection with Disposition of Securities of Avicanna Inc.",
-      "feed": "marketaux",
-      "provider": "financialpost.com",
-      "url": "https://financialpost.com/globe-newswire/threed-capital-inc-issues-early-warning-report-in-connection-with-disposition-of-securities-of-avicanna-inc-2",
-      "published_at": "2026-04-07T23:49:36Z",
-      "event_type": "corporate securities disposition",
-      "transmission_channel": "equity supply / selling pressure",
-      "affected_inputs": [
-        "equity liquidity",
-        "issuer share supply",
-        "small-cap equity prices",
-        "investor sentiment (micro-cap)"
-      ],
-      "horizon": "1-3d",
-      "market_relevance": 1.0,
-      "magnitude": 1.0,
-      "confidence": 0.35,
-      "beneficiary_sectors": [],
-      "hurt_sectors": [],
-      "beneficiary_symbols": [],
-      "hurt_symbols": [],
-      "reason": "ThreeD Capital's early-warning report signals a disposition of shares in Avicanna — a micro-/small-cap cannabis-related position. The likely transmission is localized selling pressure on the specific issuer and peer small-caps in the cannabis/venture space. No meaningful exposure to tracked sectors or symbols; therefore negligible short-horizon impact on the tracked universe."
-    },
-    {
-      "article_id": "news_2",
-      "title": "JPMorgan assigns overweight tag to Hindalco and Vedanta",
-      "feed": "marketaux",
-      "provider": "economictimes.indiatimes.com",
-      "url": "https://economictimes.indiatimes.com/markets/stocks/news/jpmorgan-assigns-overweight-tag-to-hindalco-and-vedanta/articleshow/130099468.cms",
-      "published_at": "2026-04-08T00:15:30Z",
-      "event_type": "commodity supply shock / geopolitical disruption",
-      "transmission_channel": "raw-material supply constraint -> higher commodity prices -> input cost inflation for downstream manufacturers and consumer goods; potential commodity-price spillovers",
-      "affected_inputs": [
-        "aluminium supply",
-        "raw material costs for manufacturers",
-        "manufacturing margins",
-        "pricing for downstream goods (autos, packaging, appliances)"
-      ],
-      "horizon": "1-2w",
-      "market_relevance": 1.0,
-      "magnitude": 1.0,
-      "confidence": 0.7,
-      "beneficiary_sectors": [
-        "energy"
-      ],
-      "hurt_sectors": [
-        "industrials",
-        "consumer_discretionary",
-        "consumer_staples"
-      ],
-      "beneficiary_symbols": [],
-      "hurt_symbols": [
-        "TSLA",
-        "HD",
-        "LOW",
-        "HON",
-        "GE"
-      ],
-      "reason": "JPMorgan's upgrade of aluminium producers (Hindalco, Vedanta) rests on expected tightness in aluminium markets due to West Asia conflict-related disruptions. Transmission: reduced aluminium supply -> higher aluminium prices -> improved pricing power and margins for primary producers (materials, not in tracked list) and higher input costs for downstream manufacturers and consumer-goods firms. Near-term losers are manufacturers and consumer-facing companies with meaningful aluminium content (autos, appliances, packaging, construction supplies) — mapped to tracked industrials and consumer sectors. Geopolitical frictions can also lift crude/commodity risk premia, supporting energy names; however the article focuses on aluminium specifically, so beneficiaries among tracked symbols are not company-specific."
-    },
-    {
-      "article_id": "news_1",
-      "title": "This Week’s Deep-Value Landscape: Acquirer’s Multiple Large-Cap Screen",
-      "feed": "marketaux",
-      "provider": "acquirersmultiple.com",
-      "url": "https://acquirersmultiple.com/2026/04/this-weeks-deep-value-landscape-acquirers-multiple-large-cap-screen-13/",
-      "published_at": "2026-04-08T00:17:29Z",
-      "event_type": "market-screen / investor-sentiment signal",
-      "transmission_channel": "investment-sentiment / flow reallocation toward deep-value cyclicals",
-      "affected_inputs": [
-        "demand for value/cyclical sectors",
-        "ETF/manager flows into screened sectors",
-        "short-term sector sentiment"
-      ],
-      "horizon": "1-2w",
-      "market_relevance": 1.0,
-      "magnitude": 1.0,
-      "confidence": 0.3,
-      "beneficiary_sectors": [
-        "financials",
-        "energy",
-        "consumer_discretionary"
-      ],
-      "hurt_sectors": [],
-      "beneficiary_symbols": [],
-      "hurt_symbols": [],
-      "reason": "The weekly deep-value screen highlights concentration in financials, energy producers, and housing-related cyclicals. This is primarily a thematic/screening signal that could modestly influence short-term flows into these sectors but is not a discrete catalyst (e.g., policy or supply shock). Expect limited, low-amplitude sentiment-driven support for value cyclicals in the near term rather than a clear company-specific impact."
-    }
-  ],
+  "events": [],
   "data_quality": {
     "status": "degraded",
     "degraded_reason": "GDELT global-news feed failed during this run.",
@@ -1081,63 +753,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 3,
+        "used": 2,
         "limit": 25,
-        "remaining": 22,
+        "remaining": 23,
         "categories": {
-          "company_news": 2,
+          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
-          "used": 3,
+          "used": 2,
           "limit": 25,
-          "remaining": 22,
+          "remaining": 23,
           "categories": {
-            "company_news": 2,
+            "company_news": 1,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 3,
+        "used": 4,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 2,
+          "company_news": 3,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "tracking_only",
-          "used": 3,
+          "used": 4,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 2,
+            "company_news": 3,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 16,
+        "used": 17,
         "limit": 100,
-        "remaining": 84,
+        "remaining": 83,
         "categories": {
-          "company_news": 15,
+          "company_news": 16,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
-          "used": 16,
+          "used": 17,
           "limit": 100,
-          "remaining": 84,
+          "remaining": 83,
           "categories": {
-            "company_news": 15,
+            "company_news": 16,
             "global_news": 1
           }
         }
@@ -1151,7 +823,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
           "used": 58,
           "limit": 800,

@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-04-08T00:50:34Z",
-  "data_as_of": "2026-04-08",
-  "expected_next_refresh_at": "2026-04-13T12:00:00Z",
-  "stale_after": "2026-04-14T00:00:00Z",
+  "generated_at": "2026-04-13T12:50:47Z",
+  "data_as_of": "2026-04-13",
+  "expected_next_refresh_at": "2026-04-20T12:00:00Z",
+  "stale_after": "2026-04-21T00:00:00Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W15",
-    "week_label": "Apr 06 - 10, 2026",
-    "week_start": "2026-04-06",
-    "week_end": "2026-04-10"
+    "week_id": "2026-W16",
+    "week_label": "Apr 13 - 17, 2026",
+    "week_start": "2026-04-13",
+    "week_end": "2026-04-17"
   },
   "generation_summary": {
     "universe_size": 49,
@@ -20,15 +20,15 @@
     "skipped_details": [],
     "model_calibration": {
       "technical_weights": {
-        "short_momentum": 0.0,
-        "medium_momentum": 0.007468853596879422,
-        "trend_gap": 0.23687675966009783,
+        "short_momentum": 0.15039143974706692,
+        "medium_momentum": 0.15563083992163027,
+        "trend_gap": 0.0,
         "positive_ratio": 0.0,
-        "volume_confirmation": 0.0,
+        "volume_confirmation": 0.06699891025772575,
         "market_relative": 0.0,
-        "sector_relative": 0.13735844668123545,
+        "sector_relative": 0.08146115578170733,
         "inverse_volatility": 0.0,
-        "inverse_downside": 0.6182959400617873,
+        "inverse_downside": 0.5455176542918697,
         "inverse_drawdown": 0.0
       },
       "block_weights": {
@@ -36,9 +36,9 @@
         "macro": 0.1,
         "sector": 0.08
       },
-      "technical_scale": 0.4191600943506473,
+      "technical_scale": 0.45,
       "training_row_count": 2303,
-      "training_ic": -0.012873015239633277,
+      "training_ic": 0.003471071941546509,
       "block_row_count": 0,
       "source": "price_history_5d_excess_return+block_priors"
     }
@@ -62,63 +62,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 3,
+        "used": 2,
         "limit": 25,
-        "remaining": 22,
+        "remaining": 23,
         "categories": {
-          "company_news": 2,
+          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
-          "used": 3,
+          "used": 2,
           "limit": 25,
-          "remaining": 22,
+          "remaining": 23,
           "categories": {
-            "company_news": 2,
+            "company_news": 1,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 3,
+        "used": 4,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 2,
+          "company_news": 3,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "tracking_only",
-          "used": 3,
+          "used": 4,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 2,
+            "company_news": 3,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 16,
+        "used": 17,
         "limit": 100,
-        "remaining": 84,
+        "remaining": 83,
         "categories": {
-          "company_news": 15,
+          "company_news": 16,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
-          "used": 16,
+          "used": 17,
           "limit": 100,
-          "remaining": 84,
+          "remaining": 83,
           "categories": {
-            "company_news": 15,
+            "company_news": 16,
             "global_news": 1
           }
         }
@@ -132,7 +132,7 @@
           "price": 116
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
           "used": 116,
           "limit": 800,
@@ -146,16 +146,16 @@
   },
   "selection": {
     "status": "no_pick",
-    "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was MRK at -0.005.",
+    "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was TXN at 0.036.",
     "threshold_score": 0.1,
     "threshold_confidence": 0.55,
     "pick": null,
     "best_candidate": {
-      "symbol": "MRK",
-      "company_name": "Merck & Co. Inc.",
-      "risk": "low",
-      "model_score": -0.0048,
-      "confidence_score": 0.62,
+      "symbol": "TXN",
+      "company_name": "Texas Instruments Incorporated",
+      "risk": "medium",
+      "model_score": 0.0359,
+      "confidence_score": 0.61,
       "confidence_label": "medium"
     }
   }

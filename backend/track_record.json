@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-04-08T00:58:11Z",
+  "generated_at": "2026-04-13T12:58:24Z",
   "data_as_of": "2026-03-27",
-  "expected_next_refresh_at": "2026-04-13T12:00:00Z",
-  "stale_after": "2026-04-14T00:00:00Z",
+  "expected_next_refresh_at": "2026-04-20T12:00:00Z",
+  "stale_after": "2026-04-21T00:00:00Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W15",
-    "week_label": "Apr 06 - 10, 2026",
-    "week_start": "2026-04-06",
-    "week_end": "2026-04-10"
+    "week_id": "2026-W16",
+    "week_label": "Apr 13 - 17, 2026",
+    "week_start": "2026-04-13",
+    "week_end": "2026-04-17"
   },
   "selection_thresholds": {
     "overall_score": 0.1,
@@ -22,9 +22,9 @@
     "minimum_confidence": 0.55
   },
   "summary": {
-    "total_weeks": 5,
+    "total_weeks": 6,
     "total_picks": 3,
-    "no_pick_weeks": 2,
+    "no_pick_weeks": 3,
     "closed_picks": 3,
     "open_picks": 0,
     "win_rate": 0.3333,
@@ -66,6 +66,28 @@
     }
   },
   "entries": [
+    {
+      "week_id": "2026-W16",
+      "week_start": "2026-04-13",
+      "week_end": "2026-04-17",
+      "week_label": "Apr 13 - 17, 2026",
+      "logged_at": "2026-04-13T12:50:47Z",
+      "status": "no_pick",
+      "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was TXN at 0.036.",
+      "symbol": null,
+      "company_name": null,
+      "sector": null,
+      "risk": null,
+      "model_score": null,
+      "confidence_score": null,
+      "confidence_label": null,
+      "data_as_of": "2026-04-13",
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null,
+      "realized_5d_sector_return": null,
+      "realized_5d_sector_excess_return": null,
+      "outcome": "no_pick"
+    },
     {
       "week_id": "2026-W15",
       "week_start": "2026-04-06",
@@ -188,63 +210,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 3,
+        "used": 2,
         "limit": 25,
-        "remaining": 22,
+        "remaining": 23,
         "categories": {
-          "company_news": 2,
+          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
-          "used": 3,
+          "used": 2,
           "limit": 25,
-          "remaining": 22,
+          "remaining": 23,
           "categories": {
-            "company_news": 2,
+            "company_news": 1,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 3,
+        "used": 4,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 2,
+          "company_news": 3,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "tracking_only",
-          "used": 3,
+          "used": 4,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 2,
+            "company_news": 3,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 16,
+        "used": 17,
         "limit": 100,
-        "remaining": 84,
+        "remaining": 83,
         "categories": {
-          "company_news": 15,
+          "company_news": 16,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
-          "used": 16,
+          "used": 17,
           "limit": 100,
-          "remaining": 84,
+          "remaining": 83,
           "categories": {
-            "company_news": 15,
+            "company_news": 16,
             "global_news": 1
           }
         }
@@ -258,7 +280,7 @@
           "price": 116
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
           "used": 116,
           "limit": 800,

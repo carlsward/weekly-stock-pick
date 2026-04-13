@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-04-08T00:50:34Z",
+  "generated_at": "2026-04-13T12:50:47Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -104,6 +104,27 @@
       "confidence_label": null,
       "data_as_of": "2026-04-08",
       "model_version": "v3.3",
+      "diagnostics": null,
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W16",
+      "week_start": "2026-04-13",
+      "week_end": "2026-04-17",
+      "week_label": "Apr 13 - 17, 2026",
+      "logged_at": "2026-04-13T12:50:47Z",
+      "status": "no_pick",
+      "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was TXN at 0.036.",
+      "symbol": null,
+      "company_name": null,
+      "sector": null,
+      "risk": null,
+      "model_score": null,
+      "confidence_score": null,
+      "confidence_label": null,
+      "data_as_of": "2026-04-13",
+      "model_version": "v3.3",
       "diagnostics": null
     }
   ],
@@ -117,63 +138,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 3,
+        "used": 2,
         "limit": 25,
-        "remaining": 22,
+        "remaining": 23,
         "categories": {
-          "company_news": 2,
+          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
-          "used": 3,
+          "used": 2,
           "limit": 25,
-          "remaining": 22,
+          "remaining": 23,
           "categories": {
-            "company_news": 2,
+            "company_news": 1,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 3,
+        "used": 4,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 2,
+          "company_news": 3,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "tracking_only",
-          "used": 3,
+          "used": 4,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 2,
+            "company_news": 3,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 16,
+        "used": 17,
         "limit": 100,
-        "remaining": 84,
+        "remaining": 83,
         "categories": {
-          "company_news": 15,
+          "company_news": 16,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
-          "used": 16,
+          "used": 17,
           "limit": 100,
-          "remaining": 84,
+          "remaining": 83,
           "categories": {
-            "company_news": 15,
+            "company_news": 16,
             "global_news": 1
           }
         }
@@ -187,7 +208,7 @@
           "price": 116
         },
         "daily": {
-          "date": "2026-04-08",
+          "date": "2026-04-13",
           "status": "healthy",
           "used": 116,
           "limit": 800,

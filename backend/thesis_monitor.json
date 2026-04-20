@@ -1,21 +1,21 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-04-19T16:30:23Z",
-  "data_as_of": "2026-04-13",
-  "expected_next_refresh_at": "2026-04-20T16:30:23Z",
-  "stale_after": "2026-04-21T04:30:23Z",
+  "generated_at": "2026-04-20T13:03:43Z",
+  "data_as_of": "2026-04-20",
+  "expected_next_refresh_at": "2026-04-21T13:03:43Z",
+  "stale_after": "2026-04-22T01:03:43Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W16",
-    "week_label": "Apr 13 - 17, 2026",
-    "week_start": "2026-04-13",
-    "week_end": "2026-04-17"
+    "week_id": "2026-W17",
+    "week_label": "Apr 20 - 24, 2026",
+    "week_start": "2026-04-20",
+    "week_end": "2026-04-24"
   },
-  "source_dashboard_generated_at": "2026-04-13T12:50:47Z",
+  "source_dashboard_generated_at": "2026-04-20T12:56:07Z",
   "selection": {
     "status": "no_pick",
-    "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was TXN at 0.036.",
+    "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was MSFT at 0.004.",
     "threshold_score": 0.1,
     "threshold_confidence": 0.55
   },
@@ -28,6 +28,87 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run."
     ],
-    "provider_status": {}
+    "provider_status": {
+      "alpha_vantage": {
+        "status": "healthy",
+        "used": 1,
+        "limit": 25,
+        "remaining": 24,
+        "categories": {
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-04-20",
+          "status": "healthy",
+          "used": 1,
+          "limit": 25,
+          "remaining": 24,
+          "categories": {
+            "global_news": 1
+          }
+        }
+      },
+      "gdelt": {
+        "status": "tracking_only",
+        "used": 3,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "company_news": 2,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-04-20",
+          "status": "tracking_only",
+          "used": 3,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "company_news": 2,
+            "global_news": 1
+          }
+        }
+      },
+      "marketaux": {
+        "status": "healthy",
+        "used": 17,
+        "limit": 100,
+        "remaining": 83,
+        "categories": {
+          "company_news": 16,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-04-20",
+          "status": "healthy",
+          "used": 17,
+          "limit": 100,
+          "remaining": 83,
+          "categories": {
+            "company_news": 16,
+            "global_news": 1
+          }
+        }
+      },
+      "twelvedata": {
+        "status": "healthy",
+        "used": 116,
+        "limit": 800,
+        "remaining": 684,
+        "categories": {
+          "price": 116
+        },
+        "daily": {
+          "date": "2026-04-20",
+          "status": "healthy",
+          "used": 116,
+          "limit": 800,
+          "remaining": 684,
+          "categories": {
+            "price": 116
+          }
+        }
+      }
+    }
   }
 }

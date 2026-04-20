@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-04-13T12:50:47Z",
+  "generated_at": "2026-04-20T12:56:07Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -125,6 +125,27 @@
       "confidence_label": null,
       "data_as_of": "2026-04-13",
       "model_version": "v3.3",
+      "diagnostics": null,
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W17",
+      "week_start": "2026-04-20",
+      "week_end": "2026-04-24",
+      "week_label": "Apr 20 - 24, 2026",
+      "logged_at": "2026-04-20T12:56:07Z",
+      "status": "no_pick",
+      "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was MSFT at 0.004.",
+      "symbol": null,
+      "company_name": null,
+      "sector": null,
+      "risk": null,
+      "model_score": null,
+      "confidence_score": null,
+      "confidence_label": null,
+      "data_as_of": "2026-04-20",
+      "model_version": "v3.3",
       "diagnostics": null
     }
   ],
@@ -138,42 +159,40 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 2,
+        "used": 1,
         "limit": 25,
-        "remaining": 23,
+        "remaining": 24,
         "categories": {
-          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "healthy",
-          "used": 2,
+          "used": 1,
           "limit": 25,
-          "remaining": 23,
+          "remaining": 24,
           "categories": {
-            "company_news": 1,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 4,
+        "used": 3,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 3,
+          "company_news": 2,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "tracking_only",
-          "used": 4,
+          "used": 3,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 3,
+            "company_news": 2,
             "global_news": 1
           }
         }
@@ -188,7 +207,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "healthy",
           "used": 17,
           "limit": 100,
@@ -208,7 +227,7 @@
           "price": 116
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "healthy",
           "used": 116,
           "limit": 800,

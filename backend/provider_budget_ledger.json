@@ -71,6 +71,40 @@
           }
         }
       }
+    },
+    "2026-04-20": {
+      "providers": {
+        "twelvedata": {
+          "used": 116,
+          "limit": 800,
+          "categories": {
+            "price": 116
+          }
+        },
+        "marketaux": {
+          "used": 17,
+          "limit": 100,
+          "categories": {
+            "company_news": 16,
+            "global_news": 1
+          }
+        },
+        "gdelt": {
+          "used": 3,
+          "limit": null,
+          "categories": {
+            "company_news": 2,
+            "global_news": 1
+          }
+        },
+        "alpha_vantage": {
+          "used": 1,
+          "limit": 25,
+          "categories": {
+            "global_news": 1
+          }
+        }
+      }
     }
   }
 }

@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-04-13T12:50:47Z",
-  "data_as_of": "2026-04-13",
-  "expected_next_refresh_at": "2026-04-20T12:00:00Z",
-  "stale_after": "2026-04-21T00:00:00Z",
+  "generated_at": "2026-04-20T12:56:07Z",
+  "data_as_of": "2026-04-20",
+  "expected_next_refresh_at": "2026-04-27T12:00:00Z",
+  "stale_after": "2026-04-28T00:00:00Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W16",
-    "week_label": "Apr 13 - 17, 2026",
-    "week_start": "2026-04-13",
-    "week_end": "2026-04-17"
+    "week_id": "2026-W17",
+    "week_label": "Apr 20 - 24, 2026",
+    "week_start": "2026-04-20",
+    "week_end": "2026-04-24"
   },
   "generation_summary": {
     "universe_size": 49,
@@ -20,15 +20,15 @@
     "skipped_details": [],
     "model_calibration": {
       "technical_weights": {
-        "short_momentum": 0.15039143974706692,
-        "medium_momentum": 0.15563083992163027,
+        "short_momentum": 0.1762543471518465,
+        "medium_momentum": 0.07603619705810837,
         "trend_gap": 0.0,
         "positive_ratio": 0.0,
-        "volume_confirmation": 0.06699891025772575,
+        "volume_confirmation": 0.06416230011921477,
         "market_relative": 0.0,
-        "sector_relative": 0.08146115578170733,
+        "sector_relative": 0.0863860096122113,
         "inverse_volatility": 0.0,
-        "inverse_downside": 0.5455176542918697,
+        "inverse_downside": 0.5971611460586191,
         "inverse_drawdown": 0.0
       },
       "block_weights": {
@@ -38,7 +38,7 @@
       },
       "technical_scale": 0.45,
       "training_row_count": 2303,
-      "training_ic": 0.003471071941546509,
+      "training_ic": 0.002866625920044151,
       "block_row_count": 0,
       "source": "price_history_5d_excess_return+block_priors"
     }
@@ -62,42 +62,40 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 2,
+        "used": 1,
         "limit": 25,
-        "remaining": 23,
+        "remaining": 24,
         "categories": {
-          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "healthy",
-          "used": 2,
+          "used": 1,
           "limit": 25,
-          "remaining": 23,
+          "remaining": 24,
           "categories": {
-            "company_news": 1,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 4,
+        "used": 3,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 3,
+          "company_news": 2,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "tracking_only",
-          "used": 4,
+          "used": 3,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 3,
+            "company_news": 2,
             "global_news": 1
           }
         }
@@ -112,7 +110,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "healthy",
           "used": 17,
           "limit": 100,
@@ -132,7 +130,7 @@
           "price": 116
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "healthy",
           "used": 116,
           "limit": 800,
@@ -146,16 +144,16 @@
   },
   "selection": {
     "status": "no_pick",
-    "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was TXN at 0.036.",
+    "status_reason": "No overall candidate cleared the minimum score threshold of 0.10. The best candidate was MSFT at 0.004.",
     "threshold_score": 0.1,
     "threshold_confidence": 0.55,
     "pick": null,
     "best_candidate": {
-      "symbol": "TXN",
-      "company_name": "Texas Instruments Incorporated",
+      "symbol": "MSFT",
+      "company_name": "Microsoft Corporation",
       "risk": "medium",
-      "model_score": 0.0359,
-      "confidence_score": 0.61,
+      "model_score": 0.004,
+      "confidence_score": 0.58,
       "confidence_label": "medium"
     }
   }

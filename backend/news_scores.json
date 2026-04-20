@@ -14,75 +14,124 @@
     "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "Company news was only fetched for the weekly technical shortlist. AAPL was outside the current shortlist, so its company-news contribution stayed neutral."
+      "Recent AAPL company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral."
     ],
     "top_headlines": [],
     "top_articles": [],
     "last_updated": null,
-    "analysis_method": "neutral_shortlist_pruned",
+    "analysis_method": "neutral_low_quality_company_news",
     "llm_model": null,
-    "feeds_used": []
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "MSFT": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
-    "dominant_signal": "neutral",
-    "news_reasons": [
-      "Company news was only fetched for the weekly technical shortlist. MSFT was outside the current shortlist, so its company-news contribution stayed neutral."
-    ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_shortlist_pruned",
-    "llm_model": null,
-    "feeds_used": []
-  },
-  "GOOGL": {
-    "news_score": 0.66,
-    "news_confidence": 0.71,
-    "raw_sentiment": 0.4676,
-    "calibrated_sentiment": 0.3206,
-    "article_count": 1,
-    "effective_article_count": 0.59,
+    "news_score": 0.64,
+    "news_confidence": 0.69,
+    "raw_sentiment": 0.4357,
+    "calibrated_sentiment": 0.283,
+    "article_count": 2,
+    "effective_article_count": 1.01,
     "source_count": 1,
-    "average_relevance": 0.83,
-    "average_recency_weight": 0.94,
+    "average_relevance": 0.66,
+    "average_recency_weight": 0.97,
     "average_source_quality": 0.75,
     "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 1.0,
+    "dominant_weight_share": 0.64,
     "dominant_signal": "bullish",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow bullish at 0.66, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 1 articles across 1 sources, 0.6 effective weighted articles, average relevance 0.83, average source quality 0.75, confidence 0.71.",
+      "Company-news provider coverage rated the news flow bullish at 0.64, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 1 sources, 1.0 effective weighted articles, average relevance 0.66, average source quality 0.75, confidence 0.69.",
       "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
       "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
-      "News summary for GOOGL (Alphabet Inc.): In another sign that Alphabet ([+283 characters] Alphabet, of course, is best kn[+272 characters]"
+      "News summary for MSFT (Microsoft Corporation): Shares of Microsoft (NASDAQ[+271 characters] Last quarter, revenue from Azure, Mi[+280 characters]"
     ],
     "top_headlines": [
-      "Catalyst Alert: Anthropic Deal Makes Alphabet Stock a Must-Buy"
+      "Why Wall Street Loves Microsoft Stock Despite It Falling 23%",
+      "1 Stock-Split Vanguard ETF to Buy as the S&P 500 Turns Positive on the Year"
     ],
     "top_articles": [
       {
         "feed": "marketaux",
-        "title": "Catalyst Alert: Anthropic Deal Makes Alphabet Stock a Must-Buy",
+        "title": "Why Wall Street Loves Microsoft Stock Despite It Falling 23%",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/catalyst-alert-anthropic-deal-makes-094000072.html",
-        "published_at": "2026-04-13T09:40:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-wall-street-loves-microsoft-110600676.html",
+        "published_at": "2026-04-20T11:06:00Z",
         "relevance_score": 0.83,
-        "sentiment": 0.47
+        "sentiment": 0.39
+      },
+      {
+        "feed": "marketaux",
+        "title": "1 Stock-Split Vanguard ETF to Buy as the S&P 500 Turns Positive on the Year",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/1-stock-split-vanguard-etf-114800334.html",
+        "published_at": "2026-04-20T11:48:00Z",
+        "relevance_score": 0.49,
+        "sentiment": 0.51
       }
     ],
-    "last_updated": "2026-04-13",
+    "last_updated": "2026-04-20",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
+  },
+  "GOOGL": {
+    "news_score": 0.73,
+    "news_confidence": 0.83,
+    "raw_sentiment": 0.5415,
+    "calibrated_sentiment": 0.4571,
+    "article_count": 3,
+    "effective_article_count": 1.67,
+    "source_count": 3,
+    "average_relevance": 0.78,
+    "average_recency_weight": 0.95,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.44,
+    "dominant_signal": "bullish",
+    "news_reasons": [
+      "Company-news provider coverage rated the news flow bullish at 0.73, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.7 effective weighted articles, average relevance 0.78, average source quality 0.75, confidence 0.83.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for GOOGL (Alphabet Inc.): Even as we admire what Tesla, Nvidia, <e[+254 characters] Is Alphabet (GOOGL) The Best AI Stock to Buy in 2026?"
+    ],
+    "top_headlines": [
+      "Is Alphabet (GOOGL) The Best AI Stock to Buy in 2026?",
+      "Alphabet: Insane Performance, With Future Strength (NASDAQ:GOOGL)",
+      "1 Stock-Split Vanguard ETF to Buy as the S&P 500 Turns Positive on the Year"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Is Alphabet (GOOGL) The Best AI Stock to Buy in 2026?",
+        "provider": "insidermonkey.com",
+        "url": "https://www.insidermonkey.com/blog/is-alphabet-googl-the-best-ai-stock-to-buy-in-2026-1741194/",
+        "published_at": "2026-04-20T12:11:26Z",
+        "relevance_score": 0.99,
+        "sentiment": 0.68
+      },
+      {
+        "feed": "marketaux",
+        "title": "Alphabet: Insane Performance, With Future Strength (NASDAQ:GOOGL)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4891908-alphabet-insane-performance-with-future-strength",
+        "published_at": "2026-04-20T06:39:52Z",
+        "relevance_score": 0.83,
+        "sentiment": 0.38
+      },
+      {
+        "feed": "marketaux",
+        "title": "1 Stock-Split Vanguard ETF to Buy as the S&P 500 Turns Positive on the Year",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/1-stock-split-vanguard-etf-114800334.html",
+        "published_at": "2026-04-20T11:48:00Z",
+        "relevance_score": 0.52,
+        "sentiment": 0.51
+      }
+    ],
+    "last_updated": "2026-04-20",
     "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
     "feeds_used": [
@@ -90,60 +139,51 @@
     ]
   },
   "AMZN": {
-    "news_score": 0.61,
-    "news_confidence": 0.84,
-    "raw_sentiment": 0.256,
-    "calibrated_sentiment": 0.2179,
+    "news_score": 0.62,
+    "news_confidence": 0.74,
+    "raw_sentiment": 0.3266,
+    "calibrated_sentiment": 0.2337,
     "article_count": 3,
-    "effective_article_count": 1.98,
+    "effective_article_count": 1.31,
     "source_count": 2,
-    "average_relevance": 0.96,
-    "average_recency_weight": 0.89,
-    "average_source_quality": 0.77,
+    "average_relevance": 0.74,
+    "average_recency_weight": 0.77,
+    "average_source_quality": 0.75,
     "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.38,
+    "dominant_weight_share": 0.48,
     "dominant_signal": "bullish",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow bullish at 0.61, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 2.0 effective weighted articles, average relevance 0.96, average source quality 0.77, confidence 0.84.",
+      "Company-news provider coverage rated the news flow bullish at 0.62, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.3 effective weighted articles, average relevance 0.74, average source quality 0.75, confidence 0.74.",
       "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for AMZN (Amazon.com Inc.): Kevin Simpson, Capital Wealth Planning f[+292 characters] Capital One Financial, Amazon And Nvidia: CNBC’s Final Trades - Amazon.com (NASDAQ:AMZN), Capital One Fin"
+      "News summary for AMZN (Amazon.com Inc.): Amazon.com Inc. (N[+298 characters] Amazon.com Inc. (N[+263 characters]"
     ],
     "top_headlines": [
-      "Capital One Financial, Amazon And Nvidia: CNBC’s Final Trades - Amazon.com (NASDAQ:AMZN), Capital One Fin",
-      "Amazon (AMZN): Top High-Flying AI Stock to Buy",
-      "Jim Cramer on Amazon (AMZN): “Jassy Put My Mind at Ease in Incredible Fashion”"
+      "Amazon (AMZN) Price Target Lowered As CapEx Expected To Peak",
+      "Cramer Highlights Nike, Amazon, Nvidia Stock To Investors: 'Why Would You Sell It?'",
+      "Blue Origin launches New Glenn, suffers issue deploying craft"
     ],
     "top_articles": [
       {
         "feed": "marketaux",
-        "title": "Capital One Financial, Amazon And Nvidia: CNBC’s Final Trades - Amazon.com (NASDAQ:AMZN), Capital One Fin",
-        "provider": "benzinga.com",
-        "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/04/51775752/capital-one-financial-amazon-nvidia-and-more-on-cnbcs-final-trades",
-        "published_at": "2026-04-13T11:41:22Z",
-        "relevance_score": 0.93,
-        "sentiment": 0.35
+        "title": "Amazon (AMZN) Price Target Lowered As CapEx Expected To Peak",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-amzn-price-target-lowered-053101408.html",
+        "published_at": "2026-04-20T05:31:01Z",
+        "relevance_score": 0.97,
+        "sentiment": 0.43
       },
       {
         "feed": "marketaux",
-        "title": "Jim Cramer on Amazon (AMZN): “Jassy Put My Mind at Ease in Incredible Fashion”",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-amazon-amzn-jassy-220638946.html",
-        "published_at": "2026-04-12T22:06:38Z",
-        "relevance_score": 0.97,
-        "sentiment": 0.25
-      },
-      {
-        "feed": "marketaux",
-        "title": "Amazon (AMZN): Top High-Flying AI Stock to Buy",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-amzn-top-high-flying-090535366.html",
-        "published_at": "2026-04-13T09:05:35Z",
-        "relevance_score": 0.97,
-        "sentiment": 0.16
+        "title": "Blue Origin launches New Glenn, suffers issue deploying craft",
+        "provider": "fortune.com",
+        "url": "https://fortune.com/2026/04/19/blue-origin-new-glenn-rocket-launch-satellite-orbit-space-race-spacex/",
+        "published_at": "2026-04-19T15:25:09Z",
+        "relevance_score": 0.57,
+        "sentiment": 0.54
       }
     ],
-    "last_updated": "2026-04-13",
+    "last_updated": "2026-04-20",
     "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
     "feeds_used": [
@@ -151,74 +191,112 @@
     ]
   },
   "TSLA": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
-    "dominant_signal": "neutral",
-    "news_reasons": [
-      "Company news was only fetched for the weekly technical shortlist. TSLA was outside the current shortlist, so its company-news contribution stayed neutral."
-    ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_shortlist_pruned",
-    "llm_model": null,
-    "feeds_used": []
-  },
-  "META": {
-    "news_score": 0.58,
-    "news_confidence": 0.68,
-    "raw_sentiment": 0.2615,
-    "calibrated_sentiment": 0.1689,
-    "article_count": 2,
-    "effective_article_count": 1.02,
-    "source_count": 1,
-    "average_relevance": 0.91,
-    "average_recency_weight": 0.74,
-    "average_source_quality": 0.75,
+    "news_score": 0.45,
+    "news_confidence": 0.79,
+    "raw_sentiment": -0.1182,
+    "calibrated_sentiment": -0.0936,
+    "article_count": 3,
+    "effective_article_count": 1.75,
+    "source_count": 2,
+    "average_relevance": 0.74,
+    "average_recency_weight": 0.94,
+    "average_source_quality": 0.84,
     "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.55,
+    "dominant_weight_share": 0.37,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow neutral at 0.58, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 2 articles across 1 sources, 1.0 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.68.",
+      "Company-news provider coverage rated the news flow neutral at 0.45, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.7 effective weighted articles, average relevance 0.74, average source quality 0.84, confidence 0.79.",
       "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for META (Meta Platforms Inc.): Meta Platforms, In[+379 characters] Therefore, Unity will continue to offer [+248 characters]"
+      "News summary for TSLA (Tesla Inc.): Tesla Background\n\nUpon a compre[+226 characters] By considering the Debt-to-Equity ratio,[+212 characters]"
     ],
     "top_headlines": [
-      "Meta Platforms (META): Unity and Meta Extends Multi-Year Platform Support and Enterprise Agreement",
-      "Bull vs. Bear: Is Meta Platforms a Buy or Sell?"
+      "Evaluating Tesla Against Peers In Automobiles Industry - Tesla (NASDAQ:TSLA)",
+      "Stock Market Today: Wall Street Set To Pull Back As US-Iran Tensions Flare Again — Tesla, Intel, UnitedHe",
+      "Market Braces for High-Stakes Earnings Week as Energy Volatility Dominates Premarket Trading"
     ],
     "top_articles": [
       {
         "feed": "marketaux",
-        "title": "Meta Platforms (META): Unity and Meta Extends Multi-Year Platform Support and Enterprise Agreement",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/meta-platforms-meta-unity-meta-210422979.html",
-        "published_at": "2026-04-12T21:04:22Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.67
+        "title": "Stock Market Today: Wall Street Set To Pull Back As US-Iran Tensions Flare Again — Tesla, Intel, UnitedHe",
+        "provider": "benzinga.com",
+        "url": "https://www.benzinga.com/markets/equities/26/04/51906028/stock-market-today-wall-street-set-to-pull-back-as-us-iran-tensions-flare-again-tesla-intel-unit",
+        "published_at": "2026-04-20T08:56:42Z",
+        "relevance_score": 0.8,
+        "sentiment": -0.4
       },
       {
         "feed": "marketaux",
-        "title": "Bull vs. Bear: Is Meta Platforms a Buy or Sell?",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/bull-vs-bear-meta-platforms-195000921.html",
-        "published_at": "2026-04-12T19:50:00Z",
-        "relevance_score": 0.82,
-        "sentiment": -0.25
+        "title": "Evaluating Tesla Against Peers In Automobiles Industry - Tesla (NASDAQ:TSLA)",
+        "provider": "benzinga.com",
+        "url": "https://www.benzinga.com/insights/news/26/04/51906674/evaluating-tesla-against-peers-in-automobiles-industry",
+        "published_at": "2026-04-20T09:58:35Z",
+        "relevance_score": 0.83,
+        "sentiment": 0.06
+      },
+      {
+        "feed": "marketaux",
+        "title": "Market Braces for High-Stakes Earnings Week as Energy Volatility Dominates Premarket Trading",
+        "provider": "thestockmarketwatch.com",
+        "url": "https://www2.stockmarketwatch.com/stock-market-news/market-braces-for-high-stakes-earnings-week-as-energy-volatility-dominates-premarket-trading/61083/",
+        "published_at": "2026-04-20T10:07:28Z",
+        "relevance_score": 0.59,
+        "sentiment": 0.0
       }
     ],
-    "last_updated": "2026-04-12",
+    "last_updated": "2026-04-20",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
+  },
+  "META": {
+    "news_score": 0.74,
+    "news_confidence": 0.73,
+    "raw_sentiment": 0.6823,
+    "calibrated_sentiment": 0.4825,
+    "article_count": 3,
+    "effective_article_count": 1.45,
+    "source_count": 1,
+    "average_relevance": 0.88,
+    "average_recency_weight": 0.71,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.44,
+    "dominant_signal": "bullish",
+    "news_reasons": [
+      "Company-news provider coverage rated the news flow bullish at 0.74, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 1.5 effective weighted articles, average relevance 0.88, average source quality 0.75, confidence 0.73.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for META (Meta Platforms Inc.): Meta Platforms, In[+315 characters] Meta Platforms, In[+366 characters]"
+    ],
+    "top_headlines": [
+      "Meta (META) Gets Analyst Approval After Record App Downloads",
+      "Prediction: It's Not Too Late to Buy Broadcom Stock After Another Win for the Company",
+      "Broadcom (AVGO) Ranks Among Unrivaled Stocks of the Next 5 Years"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Meta (META) Gets Analyst Approval After Record App Downloads",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/meta-meta-gets-analyst-approval-053055118.html",
+        "published_at": "2026-04-20T05:30:55Z",
+        "relevance_score": 0.97,
+        "sentiment": 0.72
+      },
+      {
+        "feed": "marketaux",
+        "title": "Prediction: It's Not Too Late to Buy Broadcom Stock After Another Win for the Company",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/prediction-not-too-buy-broadcom-210500591.html",
+        "published_at": "2026-04-19T21:05:00Z",
+        "relevance_score": 0.75,
+        "sentiment": 0.86
+      }
+    ],
+    "last_updated": "2026-04-20",
     "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
     "feeds_used": [
@@ -250,117 +328,54 @@
     "feeds_used": []
   },
   "NVDA": {
-    "news_score": 0.64,
-    "news_confidence": 0.78,
-    "raw_sentiment": 0.3707,
-    "calibrated_sentiment": 0.2876,
-    "article_count": 3,
-    "effective_article_count": 1.37,
-    "source_count": 3,
-    "average_relevance": 0.6,
-    "average_recency_weight": 0.98,
-    "average_source_quality": 0.77,
-    "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.49,
-    "dominant_signal": "bullish",
+    "news_score": 0.5,
+    "news_confidence": 0.2,
+    "raw_sentiment": 0.0,
+    "calibrated_sentiment": 0.0,
+    "article_count": 0,
+    "effective_article_count": 0.0,
+    "source_count": 0,
+    "average_relevance": 0.0,
+    "average_recency_weight": 0.0,
+    "average_source_quality": 0.0,
+    "provider_sentiment_coverage": 0.0,
+    "dominant_weight_share": 0.0,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow bullish at 0.64, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 1.4 effective weighted articles, average relevance 0.60, average source quality 0.77, confidence 0.78.",
-      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for NVDA (NVIDIA Corporation): Don't forget to check out our premarket [+330 characters] Raymond James analyst Srini Pajjuri, on [+301 characters]"
+      "Recent NVDA company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral."
     ],
-    "top_headlines": [
-      "Capital One Financial, Amazon And Nvidia: CNBC’s Final Trades - Amazon.com (NASDAQ:AMZN), Capital One Fin",
-      "1 \"Magnificent Seven\" Stock That's a Better Buy Than the Other 6 Right Now",
-      "China went from uninvestable to unavoidable—and HK is cashing in with a slew of AI-centric IPOs"
-    ],
-    "top_articles": [
-      {
-        "feed": "marketaux",
-        "title": "Capital One Financial, Amazon And Nvidia: CNBC’s Final Trades - Amazon.com (NASDAQ:AMZN), Capital One Fin",
-        "provider": "benzinga.com",
-        "url": "https://www.benzinga.com/trading-ideas/long-ideas/26/04/51775752/capital-one-financial-amazon-nvidia-and-more-on-cnbcs-final-trades",
-        "published_at": "2026-04-13T11:41:22Z",
-        "relevance_score": 0.83,
-        "sentiment": 0.56
-      },
-      {
-        "feed": "marketaux",
-        "title": "1 \"Magnificent Seven\" Stock That's a Better Buy Than the Other 6 Right Now",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/1-magnificent-seven-stock-thats-114000136.html",
-        "published_at": "2026-04-13T11:40:00Z",
-        "relevance_score": 0.48,
-        "sentiment": 0.38
-      }
-    ],
-    "last_updated": "2026-04-13",
-    "analysis_method": "marketaux_entity_scoring",
+    "top_headlines": [],
+    "top_articles": [],
+    "last_updated": null,
+    "analysis_method": "neutral_low_quality_company_news",
     "llm_model": null,
     "feeds_used": [
       "marketaux"
     ]
   },
   "JPM": {
-    "news_score": 0.59,
-    "news_confidence": 0.77,
-    "raw_sentiment": 0.2327,
-    "calibrated_sentiment": 0.1778,
-    "article_count": 3,
-    "effective_article_count": 1.57,
-    "source_count": 2,
-    "average_relevance": 0.72,
-    "average_recency_weight": 0.87,
-    "average_source_quality": 0.84,
-    "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.41,
+    "news_score": 0.5,
+    "news_confidence": 0.2,
+    "raw_sentiment": 0.0,
+    "calibrated_sentiment": 0.0,
+    "article_count": 0,
+    "effective_article_count": 0.0,
+    "source_count": 0,
+    "average_relevance": 0.0,
+    "average_recency_weight": 0.0,
+    "average_source_quality": 0.0,
+    "provider_sentiment_coverage": 0.0,
+    "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow neutral at 0.59, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 1.6 effective weighted articles, average relevance 0.72, average source quality 0.84, confidence 0.77.",
-      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for JPM (JPMorgan Chase & Co.): JPMorgan Chase 2025 Chairman And CEO Letter To Shareholders (NYSE:JPM) Looking ahead to Tuesday, the pace quick[+330 characters]"
+      "Company news was only fetched for the weekly technical shortlist. JPM was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
-    "top_headlines": [
-      "JPMorgan Chase 2025 Chairman And CEO Letter To Shareholders (NYSE:JPM)",
-      "Market Outlook: Futures Retreat as Oil Surges and Earnings Season Begins with Goldman Sachs",
-      "Dollar Surges as US-Iran Peace Talks Falter; Hungary’s Tisza Party Poised for Supermajority"
-    ],
-    "top_articles": [
-      {
-        "feed": "marketaux",
-        "title": "Dollar Surges as US-Iran Peace Talks Falter; Hungary’s Tisza Party Poised for Supermajority",
-        "provider": "thestockmarketwatch.com",
-        "url": "https://www2.stockmarketwatch.com/stock-market-news/dollar-surges-as-us-iran-peace-talks-falter-hungarys-tisza-party-poised-for-supermajority/60818/",
-        "published_at": "2026-04-12T19:38:40Z",
-        "relevance_score": 0.62,
-        "sentiment": 0.59
-      },
-      {
-        "feed": "marketaux",
-        "title": "Market Outlook: Futures Retreat as Oil Surges and Earnings Season Begins with Goldman Sachs",
-        "provider": "thestockmarketwatch.com",
-        "url": "https://www2.stockmarketwatch.com/stock-market-news/market-outlook-futures-retreat-as-oil-surges-and-earnings-season-begins-with-goldman-sachs/60834/",
-        "published_at": "2026-04-13T10:07:20Z",
-        "relevance_score": 0.62,
-        "sentiment": 0.25
-      },
-      {
-        "feed": "marketaux",
-        "title": "JPMorgan Chase 2025 Chairman And CEO Letter To Shareholders (NYSE:JPM)",
-        "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4890146-jpmorgan-chase-2025-chairman-and-ceo-letter-to-shareholders",
-        "published_at": "2026-04-13T09:00:00Z",
-        "relevance_score": 0.93,
-        "sentiment": 0.0
-      }
-    ],
-    "last_updated": "2026-04-13",
-    "analysis_method": "marketaux_entity_scoring",
+    "top_headlines": [],
+    "top_articles": [],
+    "last_updated": null,
+    "analysis_method": "neutral_shortlist_pruned",
     "llm_model": null,
-    "feeds_used": [
-      "marketaux"
-    ]
+    "feeds_used": []
   },
   "JNJ": {
     "news_score": 0.5,
@@ -411,65 +426,28 @@
     "feeds_used": []
   },
   "WMT": {
-    "news_score": 0.6,
-    "news_confidence": 0.72,
-    "raw_sentiment": 0.2807,
-    "calibrated_sentiment": 0.1931,
-    "article_count": 3,
-    "effective_article_count": 0.95,
-    "source_count": 2,
-    "average_relevance": 0.94,
-    "average_recency_weight": 0.43,
-    "average_source_quality": 0.77,
-    "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.34,
+    "news_score": 0.5,
+    "news_confidence": 0.2,
+    "raw_sentiment": 0.0,
+    "calibrated_sentiment": 0.0,
+    "article_count": 0,
+    "effective_article_count": 0.0,
+    "source_count": 0,
+    "average_relevance": 0.0,
+    "average_recency_weight": 0.0,
+    "average_source_quality": 0.0,
+    "provider_sentiment_coverage": 0.0,
+    "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow neutral at 0.60, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 1.0 effective weighted articles, average relevance 0.94, average source quality 0.77, confidence 0.72.",
-      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for WMT (Walmart Inc.): Investors Heavily Search Walmart Inc. (WMT): Here is What You Need to Know Walmart Inc. (NASDAQ:W[+284 characters]"
+      "Company news was only fetched for the weekly technical shortlist. WMT was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
-    "top_headlines": [
-      "Investors Heavily Search Walmart Inc. (WMT): Here is What You Need to Know",
-      "Walmart Inc. (WMT): Israel Englander Is Bullish on This Retail Giant",
-      "Amazon vs. Walmart: The Retail War Just Picked a Winner"
-    ],
-    "top_articles": [
-      {
-        "feed": "marketaux",
-        "title": "Amazon vs. Walmart: The Retail War Just Picked a Winner",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/amazon-vs-walmart-retail-war-133913276.html",
-        "published_at": "2026-04-11T13:39:13Z",
-        "relevance_score": 0.83,
-        "sentiment": 0.46
-      },
-      {
-        "feed": "marketaux",
-        "title": "Walmart Inc. (WMT): Israel Englander Is Bullish on This Retail Giant",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/walmart-inc-wmt-israel-englander-142725529.html",
-        "published_at": "2026-04-10T14:27:25Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.39
-      },
-      {
-        "feed": "marketaux",
-        "title": "Investors Heavily Search Walmart Inc. (WMT): Here is What You Need to Know",
-        "provider": "zacks.com",
-        "url": "https://www.zacks.com/stock/news/2897998/investors-heavily-search-walmart-inc-wmt-here-is-what-you-need-to-know",
-        "published_at": "2026-04-10T13:00:05Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.0
-      }
-    ],
-    "last_updated": "2026-04-11",
-    "analysis_method": "marketaux_entity_scoring",
+    "top_headlines": [],
+    "top_articles": [],
+    "last_updated": null,
+    "analysis_method": "neutral_shortlist_pruned",
     "llm_model": null,
-    "feeds_used": [
-      "marketaux"
-    ]
+    "feeds_used": []
   },
   "PG": {
     "news_score": 0.5,
@@ -520,28 +498,55 @@
     "feeds_used": []
   },
   "DIS": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
+    "news_score": 0.52,
+    "news_confidence": 0.68,
+    "raw_sentiment": 0.0724,
+    "calibrated_sentiment": 0.0468,
+    "article_count": 2,
+    "effective_article_count": 0.48,
+    "source_count": 2,
+    "average_relevance": 0.67,
+    "average_recency_weight": 0.44,
+    "average_source_quality": 0.81,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.56,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "Company news was only fetched for the weekly technical shortlist. DIS was outside the current shortlist, so its company-news contribution stayed neutral."
+      "Company-news provider coverage rated the news flow neutral at 0.52, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.5 effective weighted articles, average relevance 0.67, average source quality 0.81, confidence 0.68.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for DIS (The Walt Disney Company): The Walt Disney</e[+290 characters] Corporate Strategy: Disney and China’s[+246 characters]"
     ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_shortlist_pruned",
+    "top_headlines": [
+      "Meta layoffs: 16,000 jobs on the line as Mark Zuckerberg plans major cuts in looming workforce shake-up",
+      "Middle East Ceasefire Sparks Relief Rally as Gulf Repair Bill Hits $58 Billion; ECB’s Muller Signals Rate Caution"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Meta layoffs: 16,000 jobs on the line as Mark Zuckerberg plans major cuts in looming workforce shake-up",
+        "provider": "economictimes.indiatimes.com",
+        "url": "https://economictimes.indiatimes.com/news/international/us/meta-layoffs-16000-jobs-on-the-line-as-mark-zuckerberg-plans-major-cuts-in-looming-workforce-shake-up/articleshow/130357367.cms",
+        "published_at": "2026-04-18T16:03:28Z",
+        "relevance_score": 0.72,
+        "sentiment": 0.13
+      },
+      {
+        "feed": "marketaux",
+        "title": "Middle East Ceasefire Sparks Relief Rally as Gulf Repair Bill Hits $58 Billion; ECB’s Muller Signals Rate Caution",
+        "provider": "thestockmarketwatch.com",
+        "url": "https://www2.stockmarketwatch.com/stock-market-news/middle-east-ceasefire-sparks-relief-rally-as-gulf-repair-bill-hits-58-billion-ecbs-muller-signals-rate-caution/61001/",
+        "published_at": "2026-04-17T08:38:30Z",
+        "relevance_score": 0.62,
+        "sentiment": 0.0
+      }
+    ],
+    "last_updated": "2026-04-18",
+    "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
-    "feeds_used": []
+    "feeds_used": [
+      "marketaux"
+    ]
   },
   "HD": {
     "news_score": 0.5,
@@ -568,60 +573,60 @@
     "feeds_used": []
   },
   "BAC": {
-    "news_score": 0.65,
-    "news_confidence": 0.75,
-    "raw_sentiment": 0.4011,
-    "calibrated_sentiment": 0.2929,
+    "news_score": 0.54,
+    "news_confidence": 0.66,
+    "raw_sentiment": 0.1217,
+    "calibrated_sentiment": 0.0744,
     "article_count": 3,
-    "effective_article_count": 0.94,
-    "source_count": 3,
+    "effective_article_count": 0.72,
+    "source_count": 2,
     "average_relevance": 0.71,
-    "average_recency_weight": 0.57,
-    "average_source_quality": 0.82,
+    "average_recency_weight": 0.46,
+    "average_source_quality": 0.75,
     "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.42,
-    "dominant_signal": "bullish",
+    "dominant_weight_share": 0.43,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow bullish at 0.65, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.9 effective weighted articles, average relevance 0.71, average source quality 0.82, confidence 0.75.",
+      "Company-news provider coverage rated the news flow neutral at 0.54, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.7 effective weighted articles, average relevance 0.71, average source quality 0.75, confidence 0.66.",
       "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for BAC (Bank of America Corporation): Banks Put On Alert As Powerful Anthropic AI Raises Cybersecurity Fears - Bank of America (NYSE:BAC), Citi Project pipeline updates could strongly [+293 characters]"
+      "News summary for BAC (Bank of America Corporation): Bank of America Corporation 5% NCUM PFD LL declares $0.3125 dividend (NYSE:BAC.PR.N) \"[N]uclear energy has, in many ways, bee[+277 characters]"
     ],
     "top_headlines": [
-      "Banks Put On Alert As Powerful Anthropic AI Raises Cybersecurity Fears - Bank of America (NYSE:BAC), Citi",
-      "Oklo Inc. Reports Soon. Here's Why I'd Buy Before the Number Drops.",
-      "[Earnings]TSM, JPM, and ASML Headline a Major Week of Financial and Tech Earnings"
+      "Bank of America Corporation 5% NCUM PFD LL declares $0.3125 dividend (NYSE:BAC.PR.N)",
+      "Can NuScale Power Survive a Market Selloff? Here's Why I'm Concerned.",
+      "Wall Street Is Wrong About Oracle Stock. Here's Why."
     ],
     "top_articles": [
       {
         "feed": "marketaux",
-        "title": "Oklo Inc. Reports Soon. Here's Why I'd Buy Before the Number Drops.",
+        "title": "Can NuScale Power Survive a Market Selloff? Here's Why I'm Concerned.",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/oklo-inc-reports-soon-heres-232500045.html",
-        "published_at": "2026-04-12T23:25:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/nuscale-power-survive-market-selloff-200500793.html",
+        "published_at": "2026-04-18T20:05:00Z",
+        "relevance_score": 0.58,
+        "sentiment": 0.72
+      },
+      {
+        "feed": "marketaux",
+        "title": "Wall Street Is Wrong About Oracle Stock. Here's Why.",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-wrong-oracle-stock-042000007.html",
+        "published_at": "2026-04-18T04:20:00Z",
         "relevance_score": 0.55,
-        "sentiment": 0.49
+        "sentiment": -0.42
       },
       {
         "feed": "marketaux",
-        "title": "Banks Put On Alert As Powerful Anthropic AI Raises Cybersecurity Fears - Bank of America (NYSE:BAC), Citi",
-        "provider": "benzinga.com",
-        "url": "https://www.benzinga.com/markets/equities/26/04/51769757/banks-put-on-alert-as-powerful-anthropic-ai-raises-cybersecurity-fears",
-        "published_at": "2026-04-11T18:46:21Z",
-        "relevance_score": 0.93,
-        "sentiment": 0.3
-      },
-      {
-        "feed": "marketaux",
-        "title": "[Earnings]TSM, JPM, and ASML Headline a Major Week of Financial and Tech Earnings",
-        "provider": "thestockmarketwatch.com",
-        "url": "https://www2.stockmarketwatch.com/stock-market-news/earningstsm-jpm-and-asml-headline-a-major-week-of-financial-and-tech-earnings/60758/",
-        "published_at": "2026-04-10T13:13:09Z",
-        "relevance_score": 0.64,
-        "sentiment": 0.45
+        "title": "Bank of America Corporation 5% NCUM PFD LL declares $0.3125 dividend (NYSE:BAC.PR.N)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/news/4576307-bank-of-america-corporation-5-percent-ncum-pfd-ll-declares-0_3125-dividend",
+        "published_at": "2026-04-17T20:38:40Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.0
       }
     ],
-    "last_updated": "2026-04-12",
+    "last_updated": "2026-04-18",
     "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
     "feeds_used": [
@@ -701,65 +706,28 @@
     "feeds_used": []
   },
   "NFLX": {
-    "news_score": 0.71,
-    "news_confidence": 0.83,
-    "raw_sentiment": 0.4967,
-    "calibrated_sentiment": 0.4145,
-    "article_count": 3,
-    "effective_article_count": 1.52,
-    "source_count": 3,
-    "average_relevance": 0.84,
-    "average_recency_weight": 0.79,
-    "average_source_quality": 0.79,
-    "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.37,
-    "dominant_signal": "bullish",
+    "news_score": 0.5,
+    "news_confidence": 0.2,
+    "raw_sentiment": 0.0,
+    "calibrated_sentiment": 0.0,
+    "article_count": 0,
+    "effective_article_count": 0.0,
+    "source_count": 0,
+    "average_relevance": 0.0,
+    "average_recency_weight": 0.0,
+    "average_source_quality": 0.0,
+    "provider_sentiment_coverage": 0.0,
+    "dominant_weight_share": 0.0,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow bullish at 0.71, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 1.5 effective weighted articles, average relevance 0.84, average source quality 0.79, confidence 0.83.",
-      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for NFLX (Netflix Inc.): Netflix, Inc. (NAS[+269 characters] Goldman Sachs Upgrades Netflix [+321 characters]"
+      "Company news was only fetched for the weekly technical shortlist. NFLX was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
-    "top_headlines": [
-      "Goldman Sachs Upgrades Netflix (NFLX) Stock to Buy from Neutral",
-      "1 Stock to Buy, 1 Stock to Sell This Week: Netflix, Johnson & Johnson",
-      "Market Outlook: Futures Retreat as Oil Surges and Earnings Season Begins with Goldman Sachs"
-    ],
-    "top_articles": [
-      {
-        "feed": "marketaux",
-        "title": "Goldman Sachs Upgrades Netflix (NFLX) Stock to Buy from Neutral",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/goldman-sachs-upgrades-netflix-nflx-210505157.html",
-        "published_at": "2026-04-12T21:05:05Z",
-        "relevance_score": 0.99,
-        "sentiment": 0.54
-      },
-      {
-        "feed": "marketaux",
-        "title": "Market Outlook: Futures Retreat as Oil Surges and Earnings Season Begins with Goldman Sachs",
-        "provider": "thestockmarketwatch.com",
-        "url": "https://www2.stockmarketwatch.com/stock-market-news/market-outlook-futures-retreat-as-oil-surges-and-earnings-season-begins-with-goldman-sachs/60834/",
-        "published_at": "2026-04-13T10:07:20Z",
-        "relevance_score": 0.57,
-        "sentiment": 0.51
-      },
-      {
-        "feed": "marketaux",
-        "title": "1 Stock to Buy, 1 Stock to Sell This Week: Netflix, Johnson & Johnson",
-        "provider": "investing.com",
-        "url": "https://www.investing.com/analysis/1-stock-to-buy-1-stock-to-sell-this-week-netflix-johnson--johnson-200678271",
-        "published_at": "2026-04-12T14:15:00Z",
-        "relevance_score": 0.96,
-        "sentiment": 0.43
-      }
-    ],
-    "last_updated": "2026-04-13",
-    "analysis_method": "marketaux_entity_scoring",
+    "top_headlines": [],
+    "top_articles": [],
+    "last_updated": null,
+    "analysis_method": "neutral_shortlist_pruned",
     "llm_model": null,
-    "feeds_used": [
-      "marketaux"
-    ]
+    "feeds_used": []
   },
   "ADBE": {
     "news_score": 0.5,
@@ -883,45 +851,27 @@
   },
   "MRK": {
     "news_score": 0.5,
-    "news_confidence": 0.66,
+    "news_confidence": 0.2,
     "raw_sentiment": 0.0,
     "calibrated_sentiment": 0.0,
-    "article_count": 1,
-    "effective_article_count": 0.26,
-    "source_count": 1,
-    "average_relevance": 0.98,
-    "average_recency_weight": 0.35,
-    "average_source_quality": 0.75,
-    "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 1.0,
+    "article_count": 0,
+    "effective_article_count": 0.0,
+    "source_count": 0,
+    "average_relevance": 0.0,
+    "average_recency_weight": 0.0,
+    "average_source_quality": 0.0,
+    "provider_sentiment_coverage": 0.0,
+    "dominant_weight_share": 0.0,
     "dominant_signal": "neutral",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow neutral at 0.50, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 1 articles across 1 sources, 0.3 effective weighted articles, average relevance 0.98, average source quality 0.75, confidence 0.66.",
-      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
-      "News summary for MRK (Merck & Co. Inc.): Rahway, New Jersey-based Merck [+250 characters] Merck & Co.'s Quarterly Earnings Preview: What You Need to Know"
+      "Company news was only fetched for the weekly technical shortlist. MRK was outside the current shortlist, so its company-news contribution stayed neutral."
     ],
-    "top_headlines": [
-      "Merck & Co.'s Quarterly Earnings Preview: What You Need to Know"
-    ],
-    "top_articles": [
-      {
-        "feed": "marketaux",
-        "title": "Merck & Co.'s Quarterly Earnings Preview: What You Need to Know",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/sectors/healthcare/articles/merck-co-quarterly-earnings-preview-133109687.html",
-        "published_at": "2026-04-09T13:31:09Z",
-        "relevance_score": 0.98,
-        "sentiment": 0.0
-      }
-    ],
-    "last_updated": "2026-04-09",
-    "analysis_method": "marketaux_entity_scoring",
+    "top_headlines": [],
+    "top_articles": [],
+    "last_updated": null,
+    "analysis_method": "neutral_shortlist_pruned",
     "llm_model": null,
-    "feeds_used": [
-      "marketaux"
-    ]
+    "feeds_used": []
   },
   "ABT": {
     "news_score": 0.5,
@@ -972,60 +922,60 @@
     "feeds_used": []
   },
   "CSCO": {
-    "news_score": 0.59,
-    "news_confidence": 0.67,
-    "raw_sentiment": 0.2781,
-    "calibrated_sentiment": 0.1742,
+    "news_score": 0.68,
+    "news_confidence": 0.71,
+    "raw_sentiment": 0.5409,
+    "calibrated_sentiment": 0.365,
     "article_count": 3,
-    "effective_article_count": 0.45,
-    "source_count": 3,
-    "average_relevance": 0.55,
-    "average_recency_weight": 0.36,
+    "effective_article_count": 0.96,
+    "source_count": 2,
+    "average_relevance": 0.87,
+    "average_recency_weight": 0.48,
     "average_source_quality": 0.75,
     "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.39,
-    "dominant_signal": "neutral",
+    "dominant_weight_share": 0.4,
+    "dominant_signal": "bullish",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow neutral at 0.59, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.4 effective weighted articles, average relevance 0.55, average source quality 0.75, confidence 0.67.",
+      "Company-news provider coverage rated the news flow bullish at 0.68, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.0 effective weighted articles, average relevance 0.87, average source quality 0.75, confidence 0.71.",
       "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for CSCO (Cisco Systems Inc.): Ltd\n\nTelefonaktiebolaget LM Ericsson\n\n<e[+225 characters] Rounding out the top group are Palantir [+147 characters]"
+      "News summary for CSCO (Cisco Systems Inc.): Cisco Systems, Inc[+300 characters] Photo by Alesia Kozik on Pexels\n\nCis[+290 characters]"
     ],
     "top_headlines": [
-      "Small Cell 5G Network Market to Reach USD 33.2 Billion by 2031 as Urban Densification and Private Networks Drive Adoption",
-      "Tech Stocks Are Experiencing Historic 50-Year Weakness. Should You Buy the Dip in This 1 ETF?",
-      "Bull vs. Bear: Is the AI Revolution Nearing a Dot-Com Correction?"
+      "Jim Cramer on Cisco (CSCO): “Chuck Robbins Is Doing a Terrific Job There”",
+      "Cisco Systems Inc. (CSCO) Price Target Raised to $96 by JPMorgan",
+      "10 Best Data Center Stocks to Buy for the Long Term"
     ],
     "top_articles": [
       {
         "feed": "marketaux",
-        "title": "Bull vs. Bear: Is the AI Revolution Nearing a Dot-Com Correction?",
-        "provider": "etftrends.com",
-        "url": "https://www.etftrends.com/thematic-investing-content-hub/bull-vs-bear-ai-revolution-nearing-dot-com-correction/",
-        "published_at": "2026-04-08T19:29:45Z",
-        "relevance_score": 0.5,
-        "sentiment": 0.51
-      },
-      {
-        "feed": "marketaux",
-        "title": "Small Cell 5G Network Market to Reach USD 33.2 Billion by 2031 as Urban Densification and Private Networks Drive Adoption",
-        "provider": "manilatimes.net",
-        "url": "https://www.manilatimes.net/2026/04/10/tmt-newswire/plentisoft/small-cell-5g-network-market-to-reach-usd-332-billion-by-2031-as-urban-densification-and-private-networks-drive-adoption/2318063",
-        "published_at": "2026-04-10T13:18:36Z",
-        "relevance_score": 0.58,
-        "sentiment": 0.18
-      },
-      {
-        "feed": "marketaux",
-        "title": "Tech Stocks Are Experiencing Historic 50-Year Weakness. Should You Buy the Dip in This 1 ETF?",
+        "title": "Jim Cramer on Cisco (CSCO): “Chuck Robbins Is Doing a Terrific Job There”",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/sectors/technology/articles/tech-stocks-experiencing-historic-50-131501307.html",
-        "published_at": "2026-04-09T13:15:01Z",
-        "relevance_score": 0.58,
-        "sentiment": 0.2
+        "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-cisco-csco-chuck-211845447.html",
+        "published_at": "2026-04-18T21:18:45Z",
+        "relevance_score": 0.97,
+        "sentiment": 0.86
+      },
+      {
+        "feed": "marketaux",
+        "title": "10 Best Data Center Stocks to Buy for the Long Term",
+        "provider": "insidermonkey.com",
+        "url": "https://www.insidermonkey.com/blog/10-best-data-center-stocks-to-buy-for-the-long-term-1739957/",
+        "published_at": "2026-04-18T06:32:55Z",
+        "relevance_score": 0.65,
+        "sentiment": 0.42
+      },
+      {
+        "feed": "marketaux",
+        "title": "Cisco Systems Inc. (CSCO) Price Target Raised to $96 by JPMorgan",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/cisco-systems-inc-csco-price-090944036.html",
+        "published_at": "2026-04-18T09:09:44Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.26
       }
     ],
-    "last_updated": "2026-04-10",
+    "last_updated": "2026-04-18",
     "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
     "feeds_used": [
@@ -1033,75 +983,111 @@
     ]
   },
   "ORCL": {
-    "news_score": 0.5,
-    "news_confidence": 0.2,
-    "raw_sentiment": 0.0,
-    "calibrated_sentiment": 0.0,
-    "article_count": 0,
-    "effective_article_count": 0.0,
-    "source_count": 0,
-    "average_relevance": 0.0,
-    "average_recency_weight": 0.0,
-    "average_source_quality": 0.0,
-    "provider_sentiment_coverage": 0.0,
-    "dominant_weight_share": 0.0,
-    "dominant_signal": "neutral",
-    "news_reasons": [
-      "Company news was only fetched for the weekly technical shortlist. ORCL was outside the current shortlist, so its company-news contribution stayed neutral."
-    ],
-    "top_headlines": [],
-    "top_articles": [],
-    "last_updated": null,
-    "analysis_method": "neutral_shortlist_pruned",
-    "llm_model": null,
-    "feeds_used": []
-  },
-  "INTC": {
-    "news_score": 0.66,
-    "news_confidence": 0.71,
-    "raw_sentiment": 0.4613,
-    "calibrated_sentiment": 0.3127,
-    "article_count": 3,
-    "effective_article_count": 1.09,
+    "news_score": 0.63,
+    "news_confidence": 0.76,
+    "raw_sentiment": 0.3434,
+    "calibrated_sentiment": 0.2546,
+    "article_count": 2,
+    "effective_article_count": 0.95,
     "source_count": 2,
-    "average_relevance": 0.83,
-    "average_recency_weight": 0.56,
-    "average_source_quality": 0.77,
+    "average_relevance": 0.91,
+    "average_recency_weight": 0.71,
+    "average_source_quality": 0.75,
     "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.41,
+    "dominant_weight_share": 0.6,
     "dominant_signal": "bullish",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow bullish at 0.66, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 1.1 effective weighted articles, average relevance 0.83, average source quality 0.77, confidence 0.71.",
+      "Company-news provider coverage rated the news flow bullish at 0.63, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.9 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.76.",
       "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for INTC (Intel Corporation): Intel Corporation (<em[+328 characters] Intel Corporation (<em[+346 characters]"
+      "News summary for ORCL (Oracle Corporation): Oracle ( ORCL ) and Amazon ( AM[+216 characters] Oracle: AWS Deal Implications (NYSE:ORCL)"
     ],
     "top_headlines": [
-      "Intel, Nebius, And Applied Optoelectronics Are Among the Top 10 Large-Cap Gainers Last Week (April 6-Apri",
-      "Intel (INTC) Appoints Aparna Bawa as EVP, Chief Legal & People Officer",
-      "Google (GOOGL), Intel (INTC) Partner to Advance AI Cloud Infrastructure"
+      "Oracle: AWS Deal Implications (NYSE:ORCL)",
+      "Oracle adds $100B in market cap on major announcement"
     ],
     "top_articles": [
       {
         "feed": "marketaux",
-        "title": "Intel, Nebius, And Applied Optoelectronics Are Among the Top 10 Large-Cap Gainers Last Week (April 6-Apri",
-        "provider": "benzinga.com",
-        "url": "https://www.benzinga.com/markets/large-cap/26/04/51770602/intel-nebius-and-applied-optoelectronics-are-among-the-top-10-large-cap-gainers-last-week-april",
-        "published_at": "2026-04-12T13:31:19Z",
-        "relevance_score": 0.81,
-        "sentiment": 0.89
+        "title": "Oracle adds $100B in market cap on major announcement",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/oracle-adds-100b-market-cap-191300427.html",
+        "published_at": "2026-04-18T19:13:00Z",
+        "relevance_score": 0.98,
+        "sentiment": 0.48
       },
       {
         "feed": "marketaux",
-        "title": "Intel (INTC) Appoints Aparna Bawa as EVP, Chief Legal & People Officer",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/intel-intc-appoints-aparna-bawa-173441016.html",
-        "published_at": "2026-04-11T17:34:41Z",
-        "relevance_score": 0.98,
-        "sentiment": 0.51
+        "title": "Oracle: AWS Deal Implications (NYSE:ORCL)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4891915-oracle-aws-deal-implications",
+        "published_at": "2026-04-20T07:49:29Z",
+        "relevance_score": 0.83,
+        "sentiment": 0.25
       }
     ],
-    "last_updated": "2026-04-12",
+    "last_updated": "2026-04-20",
+    "analysis_method": "marketaux_entity_scoring",
+    "llm_model": null,
+    "feeds_used": [
+      "marketaux"
+    ]
+  },
+  "INTC": {
+    "news_score": 0.57,
+    "news_confidence": 0.75,
+    "raw_sentiment": 0.2021,
+    "calibrated_sentiment": 0.1473,
+    "article_count": 3,
+    "effective_article_count": 1.35,
+    "source_count": 2,
+    "average_relevance": 0.86,
+    "average_recency_weight": 0.7,
+    "average_source_quality": 0.75,
+    "provider_sentiment_coverage": 1.0,
+    "dominant_weight_share": 0.39,
+    "dominant_signal": "neutral",
+    "news_reasons": [
+      "Company-news provider coverage rated the news flow neutral at 0.57, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.4 effective weighted articles, average relevance 0.86, average source quality 0.75, confidence 0.75.",
+      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
+      "News summary for INTC (Intel Corporation): Intel Corporation (<em[+319 characters] Photo by Christian Wiediger on Unsplash\n[+219 characters]"
+    ],
+    "top_headlines": [
+      "Jim Cramer on Intel: “Don’t Buy It Until You See the Quarter”",
+      "Intel Stock Has Added More Than $137 Billion in Value Since March 30. Here's What Happens Next.",
+      "Intel Has Gone Too Far Too Fast (Rating Downgrade) (NASDAQ:INTC)"
+    ],
+    "top_articles": [
+      {
+        "feed": "marketaux",
+        "title": "Intel Stock Has Added More Than $137 Billion in Value Since March 30. Here's What Happens Next.",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/intel-stock-added-more-137-173500487.html",
+        "published_at": "2026-04-19T17:35:00Z",
+        "relevance_score": 0.78,
+        "sentiment": 0.7
+      },
+      {
+        "feed": "marketaux",
+        "title": "Jim Cramer on Intel: “Don’t Buy It Until You See the Quarter”",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-intel-don-t-185143397.html",
+        "published_at": "2026-04-19T18:51:43Z",
+        "relevance_score": 0.97,
+        "sentiment": 0.11
+      },
+      {
+        "feed": "marketaux",
+        "title": "Intel Has Gone Too Far Too Fast (Rating Downgrade) (NASDAQ:INTC)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4891862-intel-has-gone-too-far-too-fast-rating-downgrade",
+        "published_at": "2026-04-19T13:29:54Z",
+        "relevance_score": 0.83,
+        "sentiment": -0.19
+      }
+    ],
+    "last_updated": "2026-04-19",
     "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
     "feeds_used": [
@@ -1181,60 +1167,60 @@
     "feeds_used": []
   },
   "CVX": {
-    "news_score": 0.65,
-    "news_confidence": 0.66,
-    "raw_sentiment": 0.4839,
-    "calibrated_sentiment": 0.2991,
+    "news_score": 0.55,
+    "news_confidence": 0.75,
+    "raw_sentiment": 0.1489,
+    "calibrated_sentiment": 0.1087,
     "article_count": 3,
-    "effective_article_count": 0.91,
-    "source_count": 1,
-    "average_relevance": 0.62,
-    "average_recency_weight": 0.64,
-    "average_source_quality": 0.75,
+    "effective_article_count": 1.34,
+    "source_count": 2,
+    "average_relevance": 0.82,
+    "average_recency_weight": 0.69,
+    "average_source_quality": 0.77,
     "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.37,
-    "dominant_signal": "bullish",
+    "dominant_weight_share": 0.49,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow bullish at 0.65, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 1 sources, 0.9 effective weighted articles, average relevance 0.62, average source quality 0.75, confidence 0.66.",
+      "Company-news provider coverage rated the news flow neutral at 0.55, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.3 effective weighted articles, average relevance 0.82, average source quality 0.77, confidence 0.75.",
       "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for CVX (Chevron Corporation): Chevron\n\nSpeaking of stocks tha[+266 characters] This of course bodes well for drillers a[+190 characters]"
+      "News summary for CVX (Chevron Corporation): The Geopolitical Windfall Big Oil Didn't Advertise - ConocoPhillips (NYSE:COP), Chevron (NYSE:CVX) Chevron Corporation (<[+215 characters]"
     ],
     "top_headlines": [
-      "3 Dividend Stocks Warren Buffett Would Buy in a Market Crash",
-      "Oil Surges 7% on Hormuz Blockade, U.S. Gulf Tanker Rush — 3 Stocks to Buy Now",
-      "Another Day of Iran-Led Volatility: Why the Case for Staying Invested Remains Intact"
+      "The Geopolitical Windfall Big Oil Didn't Advertise - ConocoPhillips (NYSE:COP), Chevron (NYSE:CVX)",
+      "Jim Cramer Shares Why He’d Buy Chevron (CVX)",
+      "4 Dividend Stocks to Double Up On Right Now"
     ],
     "top_articles": [
       {
         "feed": "marketaux",
-        "title": "3 Dividend Stocks Warren Buffett Would Buy in a Market Crash",
+        "title": "4 Dividend Stocks to Double Up On Right Now",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/3-dividend-stocks-warren-buffett-162500169.html",
-        "published_at": "2026-04-12T16:25:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/4-dividend-stocks-double-now-203500359.html",
+        "published_at": "2026-04-18T20:35:00Z",
         "relevance_score": 0.64,
-        "sentiment": 0.49
+        "sentiment": 0.47
       },
       {
         "feed": "marketaux",
-        "title": "Oil Surges 7% on Hormuz Blockade, U.S. Gulf Tanker Rush — 3 Stocks to Buy Now",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/sectors/energy/articles/oil-surges-7-hormuz-blockade-155936961.html",
-        "published_at": "2026-04-12T15:59:36Z",
-        "relevance_score": 0.61,
-        "sentiment": 0.48
+        "title": "The Geopolitical Windfall Big Oil Didn't Advertise - ConocoPhillips (NYSE:COP), Chevron (NYSE:CVX)",
+        "provider": "benzinga.com",
+        "url": "https://www.benzinga.com/markets/commodities/26/04/51907406/the-geopolitical-windfall-big-oil-didnt-advertise",
+        "published_at": "2026-04-20T10:30:17Z",
+        "relevance_score": 0.83,
+        "sentiment": 0.0
       },
       {
         "feed": "marketaux",
-        "title": "Another Day of Iran-Led Volatility: Why the Case for Staying Invested Remains Intact",
+        "title": "Jim Cramer Shares Why He’d Buy Chevron (CVX)",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/sectors/energy/articles/another-day-iran-led-volatility-230500686.html",
-        "published_at": "2026-04-11T23:05:00Z",
-        "relevance_score": 0.63,
-        "sentiment": 0.48
+        "url": "https://finance.yahoo.com/sectors/energy/articles/jim-cramer-shares-why-d-043057034.html",
+        "published_at": "2026-04-19T04:30:57Z",
+        "relevance_score": 0.99,
+        "sentiment": 0.18
       }
     ],
-    "last_updated": "2026-04-12",
+    "last_updated": "2026-04-20",
     "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
     "feeds_used": [
@@ -1338,51 +1324,41 @@
     "feeds_used": []
   },
   "TXN": {
-    "news_score": 0.6,
-    "news_confidence": 0.69,
-    "raw_sentiment": 0.3179,
-    "calibrated_sentiment": 0.2071,
-    "article_count": 2,
-    "effective_article_count": 0.96,
+    "news_score": 0.57,
+    "news_confidence": 0.67,
+    "raw_sentiment": 0.2263,
+    "calibrated_sentiment": 0.1406,
+    "article_count": 1,
+    "effective_article_count": 0.26,
     "source_count": 1,
     "average_relevance": 1.0,
-    "average_recency_weight": 0.64,
+    "average_recency_weight": 0.35,
     "average_source_quality": 0.75,
     "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.73,
-    "dominant_signal": "bullish",
+    "dominant_weight_share": 1.0,
+    "dominant_signal": "neutral",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow bullish at 0.60, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 2 articles across 1 sources, 1.0 effective weighted articles, average relevance 1.00, average source quality 0.75, confidence 0.69.",
+      "Company-news provider coverage rated the news flow neutral at 0.57, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.3 effective weighted articles, average relevance 1.00, average source quality 0.75, confidence 0.67.",
       "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
       "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
-      "News summary for TXN (Texas Instruments Incorporated): Texas Instruments [+313 characters] On March 5, Texas Instrumen[+264 characters]"
+      "News summary for TXN (Texas Instruments Incorporated): Texas Instruments Incorporated (TXN) Shareholder/Analyst Call Prepared Remarks Transcript"
     ],
     "top_headlines": [
-      "Texas Instruments (TXN) Is Entering A Critical Phase – What The $250 Price Target Suggests",
-      "What Makes Texas Instruments Incorporated (TXN) an Investment Bet?"
+      "Texas Instruments Incorporated (TXN) Shareholder/Analyst Call Prepared Remarks Transcript"
     ],
     "top_articles": [
       {
         "feed": "marketaux",
-        "title": "Texas Instruments (TXN) Is Entering A Critical Phase – What The $250 Price Target Suggests",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/texas-instruments-txn-entering-critical-090824062.html",
-        "published_at": "2026-04-13T09:08:24Z",
+        "title": "Texas Instruments Incorporated (TXN) Shareholder/Analyst Call Prepared Remarks Transcript",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4891272-texas-instruments-incorporated-txn-shareholder-analyst-call-prepared-remarks-transcript",
+        "published_at": "2026-04-16T14:31:46Z",
         "relevance_score": 1.0,
-        "sentiment": 0.29
-      },
-      {
-        "feed": "marketaux",
-        "title": "What Makes Texas Instruments Incorporated (TXN) an Investment Bet?",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/makes-texas-instruments-incorporated-txn-142815186.html",
-        "published_at": "2026-04-09T14:28:15Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.38
+        "sentiment": 0.23
       }
     ],
-    "last_updated": "2026-04-13",
+    "last_updated": "2026-04-16",
     "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
     "feeds_used": [
@@ -1390,50 +1366,51 @@
     ]
   },
   "UNH": {
-    "news_score": 0.7,
-    "news_confidence": 0.72,
-    "raw_sentiment": 0.5921,
-    "calibrated_sentiment": 0.4068,
-    "article_count": 2,
-    "effective_article_count": 0.53,
-    "source_count": 2,
-    "average_relevance": 0.99,
-    "average_recency_weight": 0.34,
-    "average_source_quality": 0.78,
+    "news_score": 0.62,
+    "news_confidence": 0.84,
+    "raw_sentiment": 0.2797,
+    "calibrated_sentiment": 0.2401,
+    "article_count": 3,
+    "effective_article_count": 1.78,
+    "source_count": 3,
+    "average_relevance": 0.87,
+    "average_recency_weight": 0.85,
+    "average_source_quality": 0.82,
     "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.54,
+    "dominant_weight_share": 0.4,
     "dominant_signal": "bullish",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow bullish at 0.70, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 2 articles across 2 sources, 0.5 effective weighted articles, average relevance 0.99, average source quality 0.78, confidence 0.72.",
+      "Company-news provider coverage rated the news flow bullish at 0.62, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.8 effective weighted articles, average relevance 0.87, average source quality 0.82, confidence 0.84.",
       "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for UNH (UnitedHealth Group Incorporated): UnitedHealth Group Incorporated (UNH) is Attracting Investor Attention: Here is What You Should Know UnitedHealth Group <em[+120 characters]"
+      "News summary for UNH (UnitedHealth Group Incorporated): UnitedHealth Group <em[+286 characters] UnitedHealth Group <em[+231 characters]"
     ],
     "top_headlines": [
-      "UnitedHealth Group Incorporated (UNH) is Attracting Investor Attention: Here is What You Should Know",
-      "Analysts Remain Confident in UnitedHealth (UNH)’s Growth Initiatives Outside of Its Main Insurance Operations"
+      "UnitedHealth Likely To Report Lower Q1 Earnings; These Most Accurate Analysts Revise Forecasts Ahead Of E",
+      "Jim Cramer Expects Strong Earnings Results From UnitedHealth",
+      "Market Braces for High-Stakes Earnings Week as Energy Volatility Dominates Premarket Trading"
     ],
     "top_articles": [
       {
         "feed": "marketaux",
-        "title": "Analysts Remain Confident in UnitedHealth (UNH)’s Growth Initiatives Outside of Its Main Insurance Operations",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/sectors/healthcare/articles/analysts-remain-confident-unitedhealth-unh-142348704.html",
-        "published_at": "2026-04-08T14:23:48Z",
+        "title": "UnitedHealth Likely To Report Lower Q1 Earnings; These Most Accurate Analysts Revise Forecasts Ahead Of E",
+        "provider": "benzinga.com",
+        "url": "https://www.benzinga.com/analyst-stock-ratings/price-target/26/04/51905145/unitedhealth-likely-to-report-lower-q1-earnings-these-most-accurate-analysts-r",
+        "published_at": "2026-04-20T06:36:19Z",
         "relevance_score": 0.99,
-        "sentiment": 0.73
+        "sentiment": 0.53
       },
       {
         "feed": "marketaux",
-        "title": "UnitedHealth Group Incorporated (UNH) is Attracting Investor Attention: Here is What You Should Know",
-        "provider": "zacks.com",
-        "url": "https://www.zacks.com/stock/news/2897185/unitedhealth-group-incorporated-unh-is-attracting-investor-attention-here-is-what-you-should-know",
-        "published_at": "2026-04-09T13:00:03Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.48
+        "title": "Jim Cramer Expects Strong Earnings Results From UnitedHealth",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-expects-strong-earnings-185118029.html",
+        "published_at": "2026-04-19T18:51:18Z",
+        "relevance_score": 0.99,
+        "sentiment": 0.12
       }
     ],
-    "last_updated": "2026-04-09",
+    "last_updated": "2026-04-20",
     "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
     "feeds_used": [
@@ -1561,136 +1538,70 @@
     "feeds_used": []
   },
   "LOW": {
-    "news_score": 0.57,
-    "news_confidence": 0.78,
-    "raw_sentiment": 0.1864,
-    "calibrated_sentiment": 0.1447,
-    "article_count": 6,
-    "effective_article_count": 2.08,
-    "source_count": 2,
-    "average_relevance": 0.84,
-    "average_recency_weight": 0.55,
-    "average_source_quality": 0.75,
+    "news_score": 0.65,
+    "news_confidence": 0.67,
+    "raw_sentiment": 0.4767,
+    "calibrated_sentiment": 0.2978,
+    "article_count": 1,
+    "effective_article_count": 0.27,
+    "source_count": 1,
+    "average_relevance": 1.0,
+    "average_recency_weight": 0.33,
+    "average_source_quality": 0.82,
     "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.2,
-    "dominant_signal": "neutral",
-    "news_reasons": [
-      "Company-news provider coverage rated the news flow neutral at 0.57, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 6 articles across 2 sources, 2.1 effective weighted articles, average relevance 0.84, average source quality 0.75, confidence 0.78.",
-      "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "Fallback company-news feeds contributed to this symbol's evidence set: alpha_vantage.",
-      "News summary for LOW (Lowe's Companies Inc.): State of Alaska Department of Revenue Sells 4,185 Shares of Lowe's Companies, Inc. $LOW; Robeco Institutional Asset Management B.V. Trims Position in Lowe's Companies, Inc. $LOW; Lowe's Companies, Inc. to host Fourth Quarter 2022 Earnings Conference Call on March 1"
-    ],
-    "top_headlines": [
-      "State of Alaska Department of Revenue Sells 4,185 Shares of Lowe's Companies, Inc. $LOW",
-      "Robeco Institutional Asset Management B.V. Trims Position in Lowe's Companies, Inc. $LOW",
-      "Lowe's Companies, Inc. to host Fourth Quarter 2022 Earnings Conference Call on March 1"
-    ],
-    "top_articles": [
-      {
-        "feed": "alpha_vantage",
-        "title": "Lowe's Companies, Inc. $LOW Shares Purchased by Sumitomo Mitsui Trust Group Inc.",
-        "provider": "MarketBeat",
-        "url": "https://www.marketbeat.com/instant-alerts/filing-lowes-companies-inc-low-shares-purchased-by-sumitomo-mitsui-trust-group-inc-2026-04-12/",
-        "published_at": null,
-        "relevance_score": 1.0,
-        "sentiment": 0.46
-      },
-      {
-        "feed": "alpha_vantage",
-        "title": "State of Alaska Department of Revenue Sells 4,185 Shares of Lowe's Companies, Inc. $LOW",
-        "provider": "MarketBeat",
-        "url": "https://www.marketbeat.com/instant-alerts/filing-state-of-alaska-department-of-revenue-sells-4185-shares-of-lowes-companies-inc-low-2026-04-13/",
-        "published_at": null,
-        "relevance_score": 1.0,
-        "sentiment": 0.14
-      },
-      {
-        "feed": "alpha_vantage",
-        "title": "Robeco Institutional Asset Management B.V. Trims Position in Lowe's Companies, Inc. $LOW",
-        "provider": "MarketBeat",
-        "url": "https://www.marketbeat.com/instant-alerts/filing-robeco-institutional-asset-management-bv-trims-position-in-lowes-companies-inc-low-2026-04-13/",
-        "published_at": null,
-        "relevance_score": 1.0,
-        "sentiment": 0.12
-      },
-      {
-        "feed": "alpha_vantage",
-        "title": "Lowe's Companies, Inc. to host Fourth Quarter 2022 Earnings Conference Call on March 1",
-        "provider": "GuruFocus",
-        "url": "https://www.gurufocus.com/news/1955141/lowes-companies-inc-to-host-fourth-quarter-2022-earnings-conference-call-on-march-1?mobile=true",
-        "published_at": null,
-        "relevance_score": 1.0,
-        "sentiment": 0.14
-      }
-    ],
-    "last_updated": null,
-    "analysis_method": "company_provider_fallback_scoring",
-    "llm_model": null,
-    "feeds_used": [
-      "alpha_vantage"
-    ]
-  },
-  "GE": {
-    "news_score": 0.74,
-    "news_confidence": 0.7,
-    "raw_sentiment": 0.7234,
-    "calibrated_sentiment": 0.4853,
-    "article_count": 3,
-    "effective_article_count": 0.63,
-    "source_count": 3,
-    "average_relevance": 0.64,
-    "average_recency_weight": 0.45,
-    "average_source_quality": 0.75,
-    "provider_sentiment_coverage": 1.0,
-    "dominant_weight_share": 0.46,
+    "dominant_weight_share": 1.0,
     "dominant_signal": "bullish",
     "news_reasons": [
-      "Company-news provider coverage rated the news flow bullish at 0.74, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.6 effective weighted articles, average relevance 0.64, average source quality 0.75, confidence 0.70.",
+      "Company-news provider coverage rated the news flow bullish at 0.65, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.3 effective weighted articles, average relevance 1.00, average source quality 0.82, confidence 0.67.",
       "Most of the weighted coverage included entity-level sentiment metadata, so the signal depended less on generic headline parsing.",
-      "News summary for GE (General Electric Company): GEV has performed on all of its major Fi[+333 characters] The family of companies spun out from <e[+313 characters]"
+      "One story cluster dominated the evidence set, so confidence was capped until more independent coverage appears.",
+      "News summary for LOW (Lowe's Companies Inc.): Lowe's Companies, Inc. (LOW) is Attracting Investor Attention: Here is What You Should Know"
     ],
     "top_headlines": [
-      "GE Vernova Isn't Priced For What It Has Already Become (NYSE:GEV)",
-      "The GE Family Divided: Comparing Valuations, Growth Rates, and Analyst Sentiment Across 3 Sectors",
-      "Oregon appellate ruling in PacifiCorp case could jeopardize $1 billion in wildfire victim damages"
+      "Lowe's Companies, Inc. (LOW) is Attracting Investor Attention: Here is What You Should Know"
     ],
     "top_articles": [
       {
         "feed": "marketaux",
-        "title": "GE Vernova Isn't Priced For What It Has Already Become (NYSE:GEV)",
-        "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4890065-ge-vernova-isnt-priced-for-what-it-has-already-become",
-        "published_at": "2026-04-12T10:55:01Z",
-        "relevance_score": 0.6,
-        "sentiment": 0.81
-      },
-      {
-        "feed": "marketaux",
-        "title": "The GE Family Divided: Comparing Valuations, Growth Rates, and Analyst Sentiment Across 3 Sectors",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/ge-family-divided-comparing-valuations-164029853.html",
-        "published_at": "2026-04-09T16:40:29Z",
-        "relevance_score": 0.74,
-        "sentiment": 0.61
-      },
-      {
-        "feed": "marketaux",
-        "title": "Oregon appellate ruling in PacifiCorp case could jeopardize $1 billion in wildfire victim damages",
-        "provider": "abcnews.go.com",
-        "url": "https://abcnews.com/Business/wireStory/oregon-appellate-ruling-pacificorp-case-jeopardize-1-billion-131859992",
-        "published_at": "2026-04-09T12:06:31Z",
-        "relevance_score": 0.57,
-        "sentiment": 0.71
+        "title": "Lowe's Companies, Inc. (LOW) is Attracting Investor Attention: Here is What You Should Know",
+        "provider": "zacks.com",
+        "url": "https://www.zacks.com/stock/news/2900464/lowes-companies-inc-low-is-attracting-investor-attention-here-is-what-you-should-know",
+        "published_at": "2026-04-15T13:00:03Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.48
       }
     ],
-    "last_updated": "2026-04-12",
+    "last_updated": "2026-04-15",
     "analysis_method": "marketaux_entity_scoring",
     "llm_model": null,
     "feeds_used": [
       "marketaux"
     ]
+  },
+  "GE": {
+    "news_score": 0.5,
+    "news_confidence": 0.2,
+    "raw_sentiment": 0.0,
+    "calibrated_sentiment": 0.0,
+    "article_count": 0,
+    "effective_article_count": 0.0,
+    "source_count": 0,
+    "average_relevance": 0.0,
+    "average_recency_weight": 0.0,
+    "average_source_quality": 0.0,
+    "provider_sentiment_coverage": 0.0,
+    "dominant_weight_share": 0.0,
+    "dominant_signal": "neutral",
+    "news_reasons": [
+      "Company news was only fetched for the weekly technical shortlist. GE was outside the current shortlist, so its company-news contribution stayed neutral."
+    ],
+    "top_headlines": [],
+    "top_articles": [],
+    "last_updated": null,
+    "analysis_method": "neutral_shortlist_pruned",
+    "llm_model": null,
+    "feeds_used": []
   },
   "data_quality": {
     "status": "degraded",
@@ -1699,41 +1610,22 @@
       "GDELT company news failed for at least one symbol."
     ],
     "provider_status": {
-      "alpha_vantage": {
-        "status": "healthy",
-        "used": 1,
-        "limit": 25,
-        "remaining": 24,
-        "categories": {
-          "company_news": 1
-        },
-        "daily": {
-          "date": "2026-04-13",
-          "status": "healthy",
-          "used": 1,
-          "limit": 25,
-          "remaining": 24,
-          "categories": {
-            "company_news": 1
-          }
-        }
-      },
       "gdelt": {
         "status": "degraded",
-        "used": 3,
+        "used": 2,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 3
+          "company_news": 2
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "tracking_only",
-          "used": 3,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 3
+            "company_news": 2
           }
         }
       },
@@ -1746,7 +1638,7 @@
           "company_news": 16
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "healthy",
           "used": 16,
           "limit": 100,
@@ -1765,7 +1657,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-04-13",
+          "date": "2026-04-20",
           "status": "healthy",
           "used": 58,
           "limit": 800,

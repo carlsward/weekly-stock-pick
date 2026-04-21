@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-04-20T16:57:00Z",
+  "generated_at": "2026-04-21T16:50:50Z",
   "data_as_of": "2026-04-20",
-  "expected_next_refresh_at": "2026-04-21T16:57:00Z",
-  "stale_after": "2026-04-22T04:57:00Z",
+  "expected_next_refresh_at": "2026-04-22T16:50:50Z",
+  "stale_after": "2026-04-23T04:50:50Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W17",

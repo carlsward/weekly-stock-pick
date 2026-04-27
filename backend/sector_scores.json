@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-04-20T12:55:50Z",
-  "last_updated": "2026-04-20",
+  "generated_at": "2026-04-27T13:15:56Z",
+  "last_updated": "2026-04-27",
   "lookback_days": 3,
   "article_count": 1,
   "source_count": 1,
   "llm_model": "gpt-5-mini",
-  "summary": "Analyst piece highlighting T-Mobile's strong growth and margins but noting a premium valuation. This is a single-company valuation/expectations story with limited short-horizon market impact. Possible small sentiment spillovers to US telecom/communication services peers, but unlikely to move broader indices or specific tracked names materially over the next 1-15 trading days.",
+  "summary": "A Seeking Alpha piece flags Harley‑Davidson (HOG) as a potential short‑squeeze candidate due to high short interest and company‑specific headwinds. Impact is likely limited to HOG share volatility and retail trading flows; negligible short‑horizon spillover to tracked sectors or symbols.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -745,28 +745,30 @@
   },
   "events": [
     {
-      "article_id": "news_1",
-      "title": "T-Mobile US: Top Of Class Growth, Top Of Class Valuation (NASDAQ:TMUS)",
+      "article_id": "news_3",
+      "title": "Harley-Davidson: Possibly The Next Big Short Squeeze (NYSE:HOG)",
       "feed": "marketaux",
       "provider": "seekingalpha.com",
-      "url": "https://seekingalpha.com/article/4891969-tmus-stock-top-class-growth-top-class-valuation",
-      "published_at": "2026-04-20T12:39:32Z",
-      "event_type": "company_analysis",
-      "transmission_channel": "valuation / investor sentiment / earnings expectations",
+      "url": "https://seekingalpha.com/article/4894561-harley-davidson-possibly-the-next-big-short-squeeze",
+      "published_at": "2026-04-27T12:46:43Z",
+      "event_type": "short_squeeze_risk",
+      "transmission_channel": "retail_trader_activity and short-covering; investor sentiment/market psychological flows",
       "affected_inputs": [
-        "equity valuations",
-        "investor sentiment",
-        "wireless operator revenue and margin expectations"
+        "equity_short_interest",
+        "retail_trading_volume",
+        "investor_sentiment",
+        "tariffs",
+        "demographic_trends"
       ],
       "horizon": "1-2w",
-      "market_relevance": 1.0,
-      "magnitude": 1.0,
+      "market_relevance": 0.15,
+      "magnitude": 0.2,
       "confidence": 0.4,
       "beneficiary_sectors": [],
       "hurt_sectors": [],
       "beneficiary_symbols": [],
       "hurt_symbols": [],
-      "reason": "This is an analyst commentary focused on a single wireless operator (T-Mobile) not in the tracked-symbol list. The primary transmission is through valuation and investor sentiment: the note reiterates strong growth/margins (supportive) but emphasizes a premium valuation (raises downside risk if results disappoint). That could produce modest sentiment moves within communication services (telecom operators) but is unlikely to produce a clear short-horizon directional impact on the tracked sector or listed companies. Given the narrow, company-specific nature and lack of direct news (earnings miss, guidance change, regulatory action, or supply shock), market relevance and expected magnitude are low."
+      "reason": "The article is company‑focused: it highlights high short interest and argues HOG is undervalued, which could catalyze retail‑driven short covering and idiosyncratic price volatility in HOG over the next several trading days to two weeks. Transmission is primarily psychological/flow‑driven (retail buying forcing short covering) rather than a broad fundamental supply/demand shock. The piece notes tariffs, aging customer base and secular market share declines, but those are company‑level fundamentals already likely reflected in valuation and do not imply an immediate material impact across tracked sectors or large-cap tracked symbols. Because HOG is not among the tracked symbols and the effect is narrow and speculative, beneficiary and hurt lists are left empty and overall market relevance is low."
     }
   ],
   "data_quality": {
@@ -785,7 +787,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -797,42 +799,40 @@
       },
       "gdelt": {
         "status": "degraded",
-        "used": 3,
+        "used": 1,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 2,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "tracking_only",
-          "used": 3,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 2,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 17,
+        "used": 16,
         "limit": 100,
-        "remaining": 83,
+        "remaining": 84,
         "categories": {
-          "company_news": 16,
+          "company_news": 15,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "healthy",
-          "used": 17,
+          "used": 16,
           "limit": 100,
-          "remaining": 83,
+          "remaining": 84,
           "categories": {
-            "company_news": 16,
+            "company_news": 15,
             "global_news": 1
           }
         }
@@ -846,7 +846,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "healthy",
           "used": 58,
           "limit": 800,

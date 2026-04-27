@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-04-20T13:03:44Z",
+  "generated_at": "2026-04-27T13:25:14Z",
   "data_as_of": "2026-03-27",
-  "expected_next_refresh_at": "2026-04-27T12:00:00Z",
-  "stale_after": "2026-04-28T00:00:00Z",
+  "expected_next_refresh_at": "2026-05-04T12:00:00Z",
+  "stale_after": "2026-05-05T00:00:00Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W17",
-    "week_label": "Apr 20 - 24, 2026",
-    "week_start": "2026-04-20",
-    "week_end": "2026-04-24"
+    "week_id": "2026-W18",
+    "week_label": "Apr 27 - May 01, 2026",
+    "week_start": "2026-04-27",
+    "week_end": "2026-05-01"
   },
   "selection_thresholds": {
     "overall_score": 0.1,
@@ -22,11 +22,11 @@
     "minimum_confidence": 0.55
   },
   "summary": {
-    "total_weeks": 7,
-    "total_picks": 3,
+    "total_weeks": 8,
+    "total_picks": 4,
     "no_pick_weeks": 4,
     "closed_picks": 3,
-    "open_picks": 0,
+    "open_picks": 1,
     "win_rate": 0.3333,
     "beat_spy_rate": 0.3333,
     "beat_sector_rate": 0.0,
@@ -58,7 +58,7 @@
       "average_5d_excess_return": -0.0184
     },
     "high": {
-      "pick_count": 0,
+      "pick_count": 1,
       "closed_pick_count": 0,
       "win_rate": null,
       "average_5d_return": null,
@@ -66,6 +66,28 @@
     }
   },
   "entries": [
+    {
+      "week_id": "2026-W18",
+      "week_start": "2026-04-27",
+      "week_end": "2026-05-01",
+      "week_label": "Apr 27 - May 01, 2026",
+      "logged_at": "2026-04-27T13:16:09Z",
+      "status": "picked",
+      "status_reason": "TXN cleared the commercial release thresholds for this market week with a score of 0.115 and medium confidence.",
+      "symbol": "TXN",
+      "company_name": "Texas Instruments Incorporated",
+      "sector": "technology",
+      "risk": "high",
+      "model_score": 0.1146,
+      "confidence_score": 0.71,
+      "confidence_label": "medium",
+      "data_as_of": "2026-04-27",
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null,
+      "realized_5d_sector_return": null,
+      "realized_5d_sector_excess_return": null,
+      "outcome": "open"
+    },
     {
       "week_id": "2026-W17",
       "week_start": "2026-04-20",
@@ -223,90 +245,86 @@
   ],
   "data_quality": {
     "status": "degraded",
-    "degraded_reason": "history: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.; history: news_scores: GDELT company news failed for at least one symbol.; history: sector_scores: GDELT global-news feed failed during this run.",
+    "degraded_reason": "history: sector_scores: GDELT global-news feed failed during this run.",
     "reasons": [
-      "history: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
-      "history: news_scores: GDELT company news failed for at least one symbol.",
       "history: sector_scores: GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 2,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 23,
         "categories": {
-          "global_news": 1
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "healthy",
-          "used": 1,
+          "used": 2,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 23,
           "categories": {
-            "global_news": 1
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 3,
+        "used": 2,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 2,
-          "global_news": 1
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "tracking_only",
-          "used": 3,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 2,
-            "global_news": 1
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 17,
+        "used": 18,
         "limit": 100,
-        "remaining": 83,
+        "remaining": 82,
         "categories": {
           "company_news": 16,
-          "global_news": 1
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "healthy",
-          "used": 17,
+          "used": 18,
           "limit": 100,
-          "remaining": 83,
+          "remaining": 82,
           "categories": {
             "company_news": 16,
-            "global_news": 1
+            "global_news": 2
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 116,
+        "used": 119,
         "limit": 800,
-        "remaining": 684,
+        "remaining": 681,
         "categories": {
-          "price": 116
+          "price": 119
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "healthy",
-          "used": 116,
+          "used": 119,
           "limit": 800,
-          "remaining": 684,
+          "remaining": 681,
           "categories": {
-            "price": 116
+            "price": 119
           }
         }
       }

@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.3",
-  "generated_at": "2026-04-20T12:56:07Z",
+  "generated_at": "2026-04-27T13:16:09Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -146,14 +146,47 @@
       "confidence_label": null,
       "data_as_of": "2026-04-20",
       "model_version": "v3.3",
-      "diagnostics": null
+      "diagnostics": null,
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W18",
+      "week_start": "2026-04-27",
+      "week_end": "2026-05-01",
+      "week_label": "Apr 27 - May 01, 2026",
+      "logged_at": "2026-04-27T13:16:09Z",
+      "status": "picked",
+      "status_reason": "TXN cleared the commercial release thresholds for this market week with a score of 0.115 and medium confidence.",
+      "symbol": "TXN",
+      "company_name": "Texas Instruments Incorporated",
+      "sector": "technology",
+      "risk": "high",
+      "model_score": 0.1146,
+      "confidence_score": 0.71,
+      "confidence_label": "medium",
+      "data_as_of": "2026-04-27",
+      "model_version": "v3.3",
+      "diagnostics": {
+        "technical_total": 0.0766,
+        "news_adjustment": 0.0346,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.1694,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 2303,
+        "technical_training_ic": 0.0018,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      }
     }
   ],
   "data_quality": {
     "status": "degraded",
-    "degraded_reason": "news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
+    "degraded_reason": "sector_scores: GDELT global-news feed failed during this run.",
     "reasons": [
-      "news_scores: GDELT company news failed for at least one symbol.",
       "sector_scores: GDELT global-news feed failed during this run."
     ],
     "provider_status": {
@@ -166,7 +199,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -178,42 +211,40 @@
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 3,
+        "used": 1,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 2,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "tracking_only",
-          "used": 3,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 2,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 17,
+        "used": 16,
         "limit": 100,
-        "remaining": 83,
+        "remaining": 84,
         "categories": {
-          "company_news": 16,
+          "company_news": 15,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "healthy",
-          "used": 17,
+          "used": 16,
           "limit": 100,
-          "remaining": 83,
+          "remaining": 84,
           "categories": {
-            "company_news": 16,
+            "company_news": 15,
             "global_news": 1
           }
         }
@@ -227,7 +258,7 @@
           "price": 116
         },
         "daily": {
-          "date": "2026-04-20",
+          "date": "2026-04-27",
           "status": "healthy",
           "used": 116,
           "limit": 800,

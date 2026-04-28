@@ -5,6 +5,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import pandas as pd
+import numpy as np
 
 from backend.generate_pick import (
     GenerationStats,
@@ -21,11 +22,13 @@ from backend.generate_pick import (
     dedupe_layer_penalties,
     default_model_calibration,
     fetch_price_frame,
+    fetch_stooq_price_frame,
     fetch_twelvedata_price_frame,
     market_day_age,
     build_price_series_from_frame,
     build_news_snapshot,
     build_market_week,
+    build_model_calibration,
     compute_confidence_score,
     compute_score_breakdown,
     derive_data_as_of,
@@ -161,6 +164,30 @@ class GeneratePickTests(unittest.TestCase):
         calibration = default_model_calibration()
         self.assertAlmostEqual(1.0, sum(calibration.technical_weights.values()), places=6)
         self.assertGreater(calibration.technical_scale, 0.0)
+
+    def test_low_ic_technical_calibration_keeps_default_priors(self) -> None:
+        default_weights = default_model_calibration().technical_weights
+        feature_count = len(default_weights)
+        rows = []
+        for index in range(200):
+            features = np.zeros(feature_count, dtype=float)
+            features[index % feature_count] = 1.0
+            rows.append((features, 0.01))
+
+        with patch("backend.generate_pick.load_cached_model_calibration", return_value=None):
+            with patch("backend.generate_pick.write_cached_model_calibration"):
+                with patch("backend.generate_pick.build_calibration_training_rows", return_value=rows):
+                    with patch("backend.generate_pick.information_coefficient", return_value=0.0):
+                        calibration = build_model_calibration(
+                            [("MSFT", "Microsoft Corporation")],
+                            {"MSFT": "technology"},
+                            [],
+                        )
+
+        self.assertEqual("price_history_low_ic_default_priors+block_priors", calibration.source)
+        self.assertEqual(len(rows), calibration.training_row_count)
+        self.assertEqual(0.0, calibration.training_ic)
+        self.assertEqual(default_weights, calibration.technical_weights)
 
     def test_blend_weight_maps_scales_learned_share_gradually(self) -> None:
         base = {"news": 0.14, "macro": 0.12, "sector": 0.09}
@@ -602,6 +629,45 @@ class GeneratePickTests(unittest.TestCase):
             stooq_symbol_variants("BRK.B"),
         )
 
+    def test_fetch_stooq_price_frame_sends_optional_api_key(self) -> None:
+        captured = {}
+
+        class DummyResponse:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, exc_type, exc, tb):
+                return False
+
+            def read(self):
+                return b"Date,Open,High,Low,Close,Volume\n2026-03-27,1,1,1,100,1000\n"
+
+        def fake_urlopen(request, timeout):
+            captured["url"] = request.full_url
+            return DummyResponse()
+
+        with patch.dict("os.environ", {"STOOQ_API_KEY": "stooq-test"}, clear=False):
+            with patch("backend.generate_pick.urlopen", side_effect=fake_urlopen):
+                frame = fetch_stooq_price_frame("SPY")
+
+        self.assertFalse(frame.empty)
+        self.assertIn("apikey=stooq-test", captured["url"])
+
+    def test_fetch_stooq_price_frame_rejects_api_key_instruction_page(self) -> None:
+        class DummyResponse:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, exc_type, exc, tb):
+                return False
+
+            def read(self):
+                return b"Get your apikey:\n1. Open https://stooq.com/q/d/?s=spy.us&get_apikey"
+
+        with patch("backend.generate_pick.urlopen", return_value=DummyResponse()):
+            with self.assertRaises(RuntimeError):
+                fetch_stooq_price_frame("SPY")
+
     def test_build_price_series_from_frame_uses_recent_sorted_data(self) -> None:
         frame = pd.DataFrame(
             {
@@ -751,7 +817,7 @@ class GeneratePickTests(unittest.TestCase):
         stooq_mock.assert_called_once_with("MSFT")
         self.assertFalse(fetched.empty)
 
-    def test_select_best_candidate_returns_no_pick_when_thresholds_fail(self) -> None:
+    def test_select_best_candidate_returns_low_confidence_pick_when_thresholds_fail(self) -> None:
         selection = select_best_candidate(
             [
                 build_candidate("LOW1", "low", 0.03, 0.80),
@@ -759,9 +825,25 @@ class GeneratePickTests(unittest.TestCase):
                 build_candidate("HIGH1", "high", 0.05, 0.80),
             ]
         )
-        self.assertEqual("no_pick", selection.status)
-        self.assertIsNone(selection.pick)
+        self.assertEqual("picked", selection.status)
+        self.assertFalse(selection.is_qualified)
+        self.assertEqual("low_confidence", selection.release_quality)
+        self.assertEqual("MID1", selection.pick.symbol)
         self.assertIsNotNone(selection.best_candidate)
+
+    def test_overall_selection_labels_candidate_below_risk_specific_score_floor(self) -> None:
+        selection = select_best_candidate(
+            [
+                build_candidate("HIGH1", "high", RISK_SELECTION_THRESHOLDS["high"] - 0.001, 0.80),
+                build_candidate("MID1", "medium", 0.09, 0.80),
+            ]
+        )
+
+        self.assertEqual("picked", selection.status)
+        self.assertFalse(selection.is_qualified)
+        self.assertEqual("HIGH1", selection.pick.symbol)
+        self.assertEqual(RISK_SELECTION_THRESHOLDS["high"], selection.threshold_score)
+        self.assertIn("high-risk bar", selection.status_reason)
 
     def test_select_best_candidate_returns_no_pick_when_no_candidates_exist(self) -> None:
         selection = select_best_candidate([])

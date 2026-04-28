@@ -1,7 +1,12 @@
 import unittest
 from unittest.mock import patch
 
-from backend.generate_track_record import build_signal_block_report, main
+from backend.generate_track_record import (
+    build_candidate_ranking_report,
+    build_no_pick_report,
+    build_signal_block_report,
+    main,
+)
 
 
 class GenerateTrackRecordTests(unittest.TestCase):
@@ -33,6 +38,42 @@ class GenerateTrackRecordTests(unittest.TestCase):
         self.assertIn("technical_only_ic", report)
         self.assertIn("full_model_ic", report)
         self.assertIn("ic_improvement_vs_technical", report)
+
+    @patch("backend.generate_track_record.realized_forward_return")
+    def test_build_candidate_ranking_report_uses_stored_top_candidates(self, realized_forward_return_mock) -> None:
+        realized_forward_return_mock.return_value = (0.02, 0.01)
+        entries = [
+            {
+                "week_id": f"2026-W{week:02d}",
+                "week_end": "2026-03-20",
+                "top_candidates": [
+                    {"rank": rank, "symbol": f"SYM{week}{rank}", "model_score": 0.20 - rank * 0.01}
+                    for rank in range(1, 6)
+                ],
+            }
+            for week in range(1, 4)
+        ]
+
+        report = build_candidate_ranking_report(entries)
+
+        self.assertEqual("ok", report["status"])
+        self.assertEqual(15, report["sample_count"])
+        self.assertIn("1", report["rank_buckets"])
+        self.assertEqual(3, report["rank_buckets"]["1"]["sample_count"])
+
+    @patch("backend.generate_track_record.realized_forward_return")
+    def test_build_no_pick_report_compares_no_pick_weeks_to_spy(self, realized_forward_return_mock) -> None:
+        realized_forward_return_mock.side_effect = [(-0.02, None), (0.03, None)]
+        report = build_no_pick_report(
+            [
+                {"status": "no_pick", "week_end": "2026-03-20"},
+                {"status": "no_pick", "week_end": "2026-03-27"},
+            ]
+        )
+
+        self.assertEqual("ok", report["status"])
+        self.assertEqual(2, report["sample_count"])
+        self.assertEqual(0.5, report["avoided_loss_rate"])
 
     @patch("backend.generate_track_record.write_json")
     @patch("backend.generate_track_record.realized_forward_return")
@@ -127,6 +168,7 @@ class GenerateTrackRecordTests(unittest.TestCase):
         realized_forward_return_mock.side_effect = [
             (0.034, 0.012),
             (0.034, 0.006),
+            (0.011, None),
         ]
 
         main()

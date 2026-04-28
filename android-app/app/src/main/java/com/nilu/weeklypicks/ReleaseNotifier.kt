@@ -56,7 +56,11 @@ internal fun buildReleaseNotificationPlan(
             val monitorText = overallPick.thesisMonitor?.headline?.lowercase()
             releaseMessage = buildString {
                 append("${overallPick.companyName} leads ${content.dashboard.marketContext.weekLabel}. ")
-                append("Confidence is ${overallPick.confidenceLabel}.")
+                if (overallSelection.isQualified) {
+                    append("Confidence is ${overallPick.confidenceLabel}.")
+                } else {
+                    append("This is a low-confidence release below the normal bar.")
+                }
                 if (!monitorText.isNullOrBlank()) {
                     append(" $monitorText.")
                 }

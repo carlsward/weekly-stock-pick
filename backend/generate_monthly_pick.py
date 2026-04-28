@@ -112,7 +112,7 @@ except ImportError:
     )
 
 
-MONTHLY_MODEL_VERSION = "v3.3-monthly"
+MONTHLY_MODEL_VERSION = "v3.4-monthly"
 MONTHLY_PICK_PATH = Path("monthly_pick.json")
 MONTHLY_HISTORY_PATH = Path("monthly_history.json")
 ENABLE_MONTHLY_HISTORY_REALIZED_ENRICHMENT_ENV = "ENABLE_MONTHLY_HISTORY_REALIZED_ENRICHMENT"
@@ -139,6 +139,7 @@ MONTHLY_CALIBRATION_STEP_DAYS = 10
 MONTHLY_CALIBRATION_MIN_ROWS = 120
 MONTHLY_CALIBRATION_RIDGE_ALPHA = 0.75
 MONTHLY_CALIBRATION_PREDICTION_PCTL = 0.90
+MONTHLY_CALIBRATION_MIN_ABS_IC = 0.03
 MONTHLY_TECHNICAL_SCORE_TARGET_SCALE = 0.34
 
 MONTHLY_BLOCK_BASE_PRIORS = {
@@ -895,21 +896,33 @@ def build_monthly_calibration(
                 [normalized_weights[name] for name in MONTHLY_TECHNICAL_FEATURE_ORDER],
                 dtype=float,
             )
+            training_ic = information_coefficient(raw_predictions, y)
             robust_scale = float(np.quantile(np.abs(raw_predictions), MONTHLY_CALIBRATION_PREDICTION_PCTL)) if len(raw_predictions) else 0.0
             technical_scale = clamp(
                 MONTHLY_TECHNICAL_SCORE_TARGET_SCALE / max(robust_scale, 1e-6),
                 0.16,
                 0.48,
             )
-            technical_calibration = ModelCalibration(
-                technical_weights=normalized_weights,
-                block_weights=dict(MONTHLY_BLOCK_BASE_PRIORS),
-                technical_scale=technical_scale,
-                training_row_count=len(training_rows),
-                training_ic=information_coefficient(raw_predictions, y),
-                block_row_count=0,
-                source="monthly_price_history_20d_excess_return",
-            )
+            if abs(training_ic) >= MONTHLY_CALIBRATION_MIN_ABS_IC:
+                technical_calibration = ModelCalibration(
+                    technical_weights=normalized_weights,
+                    block_weights=dict(MONTHLY_BLOCK_BASE_PRIORS),
+                    technical_scale=technical_scale,
+                    training_row_count=len(training_rows),
+                    training_ic=training_ic,
+                    block_row_count=0,
+                    source="monthly_price_history_20d_excess_return",
+                )
+            else:
+                technical_calibration = ModelCalibration(
+                    technical_weights=calibration.technical_weights,
+                    block_weights=dict(MONTHLY_BLOCK_BASE_PRIORS),
+                    technical_scale=calibration.technical_scale,
+                    training_row_count=len(training_rows),
+                    training_ic=training_ic,
+                    block_row_count=0,
+                    source="monthly_price_history_low_ic_default_priors",
+                )
             source = technical_calibration.source
 
     block_weights, block_row_count, block_source = calibrate_monthly_block_weights(history_entries)
@@ -1161,6 +1174,40 @@ def build_monthly_candidate(
     )
 
 
+def serialize_monthly_ranked_candidate_snapshot(candidate: MonthlyCandidate, rank: int) -> Dict[str, Any]:
+    return {
+        "rank": rank,
+        "symbol": candidate.symbol,
+        "company_name": candidate.company_name,
+        "sector": candidate.sector,
+        "risk": candidate.risk_level,
+        "model_score": round(candidate.total_score, 4),
+        "confidence_score": round(candidate.confidence_score, 2),
+        "confidence_label": candidate.confidence_label,
+        "price_as_of": candidate.price_as_of,
+        "news_as_of": candidate.news_as_of,
+        "article_count": candidate.article_count,
+        "diagnostics": {
+            "technical_total": round(candidate.score_breakdown["technical_total"], 4),
+            "news_adjustment": round(candidate.score_breakdown["weighted_news"], 4),
+            "macro_adjustment": round(candidate.score_breakdown["weighted_macro"], 4),
+            "sector_adjustment": round(candidate.score_breakdown["weighted_sector"], 4),
+            "signal_alignment": round(candidate.score_breakdown["weighted_signal_alignment"], 4),
+        },
+    }
+
+
+def serialize_monthly_top_candidate_snapshots(
+    candidates: Sequence[MonthlyCandidate],
+    limit: int = 10,
+) -> List[Dict[str, Any]]:
+    ranked = sorted(candidates, key=lambda item: item.total_score, reverse=True)
+    return [
+        serialize_monthly_ranked_candidate_snapshot(candidate, rank)
+        for rank, candidate in enumerate(ranked[:limit], start=1)
+    ]
+
+
 def get_monthly_candidates() -> Tuple[List[MonthlyCandidate], GenerationStats]:
     universe_path = resolve_universe_csv_path()
     universe = load_universe(universe_path)
@@ -1220,6 +1267,7 @@ def get_monthly_candidates() -> Tuple[List[MonthlyCandidate], GenerationStats]:
         price_provider_failures=price_provider_failures,
         degraded_reasons=degraded_reasons,
         model_calibration=None,
+        top_candidates=serialize_monthly_top_candidate_snapshots(candidates),
     )
 
 
@@ -1410,6 +1458,7 @@ def monthly_common_payload(
             "skipped_symbols": stats.skipped_symbols,
             "price_provider_failures": stats.price_provider_failures,
             "skipped_details": stats.skipped_details,
+            "top_candidates": stats.top_candidates,
         },
         "selection_thresholds": {
             "overall_score": MONTHLY_SELECTION_THRESHOLD,
@@ -1481,6 +1530,7 @@ def normalize_monthly_history_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
         "model_version": entry.get("model_version", MONTHLY_MODEL_VERSION),
         "realized_20d_return": entry.get("realized_20d_return"),
         "realized_20d_excess_return": entry.get("realized_20d_excess_return"),
+        "top_candidates": entry.get("top_candidates") if isinstance(entry.get("top_candidates"), list) else [],
         "diagnostics": entry.get("diagnostics") if isinstance(entry.get("diagnostics"), dict) else None,
     }
 
@@ -1490,6 +1540,7 @@ def build_monthly_history_entry(
     selection: MonthlySelectionDecision,
     generated_at: str,
     data_as_of: str,
+    top_candidates: Optional[List[Dict[str, Any]]] = None,
 ) -> Dict[str, Any]:
     pick = selection.pick
     return {
@@ -1510,6 +1561,7 @@ def build_monthly_history_entry(
         "confidence_label": pick.confidence_label if pick else None,
         "data_as_of": data_as_of,
         "model_version": MONTHLY_MODEL_VERSION,
+        "top_candidates": top_candidates or [],
         "diagnostics": (
             {
                 "technical_total": round(pick.score_breakdown["technical_total"], 4),
@@ -1616,13 +1668,20 @@ def update_monthly_history(
     generated_at: str,
     data_as_of: str,
     data_quality: Dict[str, Any],
+    top_candidates: Optional[List[Dict[str, Any]]] = None,
     history_path: Path = MONTHLY_HISTORY_PATH,
 ) -> Dict[str, Any]:
     entries = [
         normalize_monthly_history_entry(entry)
         for entry in load_existing_monthly_history_entries(history_path)
     ]
-    new_entry = build_monthly_history_entry(market_month, selection, generated_at, data_as_of)
+    new_entry = build_monthly_history_entry(
+        market_month,
+        selection,
+        generated_at,
+        data_as_of,
+        top_candidates=top_candidates,
+    )
 
     filtered_entries = [entry for entry in entries if entry.get("month_id") != market_month.month_id]
     filtered_entries.append(new_entry)
@@ -1676,6 +1735,7 @@ def main() -> None:
         generated_at=generated_at,
         data_as_of=data_as_of,
         data_quality=data_quality,
+        top_candidates=stats.top_candidates,
     )
     print("[INFO] monthly_pick.json and monthly_history.json updated.")
 

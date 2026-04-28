@@ -37,6 +37,31 @@ data class GenerationSummary(
     val skippedSymbols: Int
 )
 
+data class ProviderQuality(
+    val status: String,
+    val used: Int?,
+    val limit: Int?,
+    val remaining: Int?
+)
+
+data class DataQuality(
+    val status: String,
+    val degradedReason: String?,
+    val reasons: List<String>,
+    val providerStatus: Map<String, ProviderQuality>
+) {
+    val isDegraded: Boolean
+        get() = status.equals("degraded", ignoreCase = true)
+}
+
+fun healthyDataQuality(): DataQuality =
+    DataQuality(
+        status = "healthy",
+        degradedReason = null,
+        reasons = emptyList(),
+        providerStatus = emptyMap()
+    )
+
 data class SelectionThresholds(
     val overallScore: Double,
     val minimumConfidence: Double,
@@ -69,6 +94,8 @@ data class ScoreBreakdown(
     val downsidePenalty: Double,
     val drawdownPenalty: Double,
     val newsAdjustment: Double,
+    val macroAdjustment: Double,
+    val sectorAdjustment: Double,
     val signalAlignment: Double,
     val technicalTotal: Double,
     val total: Double
@@ -130,6 +157,8 @@ data class WeeklyPick(
 data class Selection(
     val status: SelectionStatus,
     val statusReason: String,
+    val isQualified: Boolean,
+    val releaseQuality: String,
     val thresholdScore: Double,
     val thresholdConfidence: Double,
     val pick: WeeklyPick?,
@@ -147,7 +176,8 @@ data class Dashboard(
     val generationSummary: GenerationSummary,
     val selectionThresholds: SelectionThresholds,
     val overallSelection: Selection,
-    val riskSelections: Map<String, Selection>
+    val riskSelections: Map<String, Selection>,
+    val dataQuality: DataQuality = healthyDataQuality()
 )
 
 data class DashboardSnapshot(
@@ -215,7 +245,8 @@ data class ThesisMonitorFeed(
     val marketContext: MarketContext,
     val sourceDashboardGeneratedAt: Instant,
     val selection: Selection,
-    val activePick: WeeklyPick?
+    val activePick: WeeklyPick?,
+    val dataQuality: DataQuality = healthyDataQuality()
 )
 
 data class TrackRecordSummary(
@@ -240,6 +271,24 @@ data class RiskTrackRecord(
     val winRate: Double?,
     val average5dReturn: Double?,
     val average5dExcessReturn: Double?
+)
+
+data class CandidateRankingReport(
+    val status: String,
+    val sampleCount: Int,
+    val top3Average5dExcessReturn: Double?,
+    val top3BeatSpyRate: Double?,
+    val top10Average5dExcessReturn: Double?,
+    val summary: String?
+)
+
+data class NoPickReport(
+    val status: String,
+    val sampleCount: Int,
+    val averageSpy5dReturnDuringNoPick: Double?,
+    val spyUpRateDuringNoPick: Double?,
+    val avoidedLossRate: Double?,
+    val summary: String?
 )
 
 data class TrackRecordEntry(
@@ -276,7 +325,10 @@ data class TrackRecordFeed(
     val selectionThresholds: SelectionThresholds,
     val summary: TrackRecordSummary,
     val riskBreakdown: Map<String, RiskTrackRecord>,
-    val entries: List<TrackRecordEntry>
+    val entries: List<TrackRecordEntry>,
+    val candidateRankingReport: CandidateRankingReport? = null,
+    val noPickReport: NoPickReport? = null,
+    val dataQuality: DataQuality = healthyDataQuality()
 )
 
 data class MonthlyPeriodContext(
@@ -362,7 +414,8 @@ data class MonthlyPickFeed(
     val periodContext: MonthlyPeriodContext,
     val generationSummary: GenerationSummary,
     val selectionThresholds: MonthlySelectionThresholds,
-    val selection: MonthlySelection
+    val selection: MonthlySelection,
+    val dataQuality: DataQuality = healthyDataQuality()
 )
 
 fun Dashboard.withLiveThesisMonitor(feed: ThesisMonitorFeed?): Dashboard {
@@ -417,8 +470,13 @@ fun buildWeeklyChangeSummary(
         }
 
         currentSelection.status == SelectionStatus.PICKED && previousEntry.status == SelectionStatus.NO_PICK &&
-            currentSymbol != null -> {
+            currentSymbol != null && currentSelection.isQualified -> {
             "The release is back with $currentSymbol"
+        }
+
+        currentSelection.status == SelectionStatus.PICKED && previousEntry.status == SelectionStatus.NO_PICK &&
+            currentSymbol != null -> {
+            "$currentSymbol leads, below the bar"
         }
 
         currentSelection.status == SelectionStatus.NO_PICK && previousEntry.status == SelectionStatus.PICKED &&
@@ -447,8 +505,12 @@ fun buildWeeklyChangeSummary(
             "This week moved from $previousSymbol to $currentSymbol, compared with ${previousEntry.weekLabel}."
         }
 
-        currentSelection.status == SelectionStatus.PICKED && currentSymbol != null -> {
+        currentSelection.status == SelectionStatus.PICKED && currentSelection.isQualified && currentSymbol != null -> {
             "A release-qualified pick is available again after ${previousEntry.weekLabel}."
+        }
+
+        currentSelection.status == SelectionStatus.PICKED && currentSymbol != null -> {
+            "$currentSymbol is the top ranked stock after ${previousEntry.weekLabel}, but it is labeled low confidence."
         }
 
         previousSymbol != null -> {

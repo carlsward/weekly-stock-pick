@@ -315,6 +315,123 @@ def build_signal_block_report(entries: List[Dict[str, Any]]) -> Dict[str, Any]:
     }
 
 
+def build_candidate_ranking_report(entries: List[Dict[str, Any]]) -> Dict[str, Any]:
+    samples: List[Dict[str, Any]] = []
+    for entry in entries:
+        week_end = entry.get("week_end")
+        top_candidates = entry.get("top_candidates")
+        if not isinstance(week_end, str) or not isinstance(top_candidates, list):
+            continue
+        for candidate in top_candidates:
+            if not isinstance(candidate, dict):
+                continue
+            symbol = str(candidate.get("symbol", "")).strip().upper()
+            rank = candidate.get("rank")
+            if not symbol or not isinstance(rank, int):
+                continue
+            realized_return, realized_excess = realized_forward_return(
+                symbol,
+                week_end,
+                MARKET_BENCHMARK_SYMBOL,
+            )
+            if not isinstance(realized_return, (int, float)) or not isinstance(realized_excess, (int, float)):
+                continue
+            samples.append(
+                {
+                    "week_id": entry.get("week_id"),
+                    "week_end": week_end,
+                    "rank": rank,
+                    "symbol": symbol,
+                    "model_score": candidate.get("model_score"),
+                    "realized_5d_return": realized_return,
+                    "realized_5d_excess_return": realized_excess,
+                }
+            )
+
+    if len(samples) < 10:
+        return {
+            "status": "insufficient_data",
+            "sample_count": len(samples),
+            "summary": "Not enough closed stored candidate rankings are available yet to evaluate rank quality.",
+        }
+
+    rank_buckets: Dict[str, Dict[str, Any]] = {}
+    for rank in range(1, 11):
+        rank_values = [
+            float(sample["realized_5d_excess_return"])
+            for sample in samples
+            if sample["rank"] == rank
+        ]
+        if not rank_values:
+            continue
+        rank_buckets[str(rank)] = {
+            "sample_count": len(rank_values),
+            "average_5d_excess_return": round_optional(safe_average(rank_values)),
+            "beat_spy_rate": round_optional(
+                len([value for value in rank_values if value > 0]) / len(rank_values),
+                4,
+            ),
+        }
+
+    top_3_values = [
+        float(sample["realized_5d_excess_return"])
+        for sample in samples
+        if int(sample["rank"]) <= 3
+    ]
+    top_10_values = [float(sample["realized_5d_excess_return"]) for sample in samples]
+
+    return {
+        "status": "ok",
+        "scope": "stored_weekly_top_candidates",
+        "sample_count": len(samples),
+        "rank_buckets": rank_buckets,
+        "top_3_average_5d_excess_return": round_optional(safe_average(top_3_values)),
+        "top_3_beat_spy_rate": round_optional(
+            len([value for value in top_3_values if value > 0]) / len(top_3_values)
+            if top_3_values
+            else None,
+            4,
+        ),
+        "top_10_average_5d_excess_return": round_optional(safe_average(top_10_values)),
+        "summary": "Stored weekly top-candidate rankings now have enough closed samples to monitor rank quality.",
+    }
+
+
+def build_no_pick_report(entries: List[Dict[str, Any]]) -> Dict[str, Any]:
+    spy_returns: List[float] = []
+    for entry in entries:
+        if entry.get("status") != "no_pick":
+            continue
+        week_end = entry.get("week_end")
+        if not isinstance(week_end, str):
+            continue
+        spy_return, _ = realized_forward_return(MARKET_BENCHMARK_SYMBOL, week_end)
+        if isinstance(spy_return, (int, float)):
+            spy_returns.append(float(spy_return))
+
+    if not spy_returns:
+        return {
+            "status": "insufficient_data",
+            "sample_count": 0,
+            "summary": "No closed no-pick weeks are available yet for cash-versus-SPY comparison.",
+        }
+
+    return {
+        "status": "ok",
+        "sample_count": len(spy_returns),
+        "average_spy_5d_return_during_no_pick": round_optional(safe_average(spy_returns)),
+        "spy_up_rate_during_no_pick": round_optional(
+            len([value for value in spy_returns if value > 0]) / len(spy_returns),
+            4,
+        ),
+        "avoided_loss_rate": round_optional(
+            len([value for value in spy_returns if value < 0]) / len(spy_returns),
+            4,
+        ),
+        "summary": "No-pick weeks are compared against holding SPY over the same forward 5-trading-day window.",
+    }
+
+
 def serialize_track_record_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
     return {
         "week_id": entry.get("week_id"),
@@ -389,6 +506,8 @@ def main() -> None:
         },
         "summary": build_summary_metrics(enriched_entries),
         "signal_block_report": build_signal_block_report(enriched_entries),
+        "candidate_ranking_report": build_candidate_ranking_report(enriched_entries),
+        "no_pick_report": build_no_pick_report(enriched_entries),
         "risk_breakdown": build_risk_breakdown(enriched_entries),
         "entries": serialized_entries,
         "data_quality": build_data_quality_block(

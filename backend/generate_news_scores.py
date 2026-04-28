@@ -72,14 +72,24 @@ DEFAULT_UNIVERSE_CSV_PATH = "universe.csv"
 MARKETAUX_NEWS_ENDPOINT = "https://api.marketaux.com/v1/news/all"
 ALPHA_VANTAGE_NEWS_ENDPOINT = "https://www.alphavantage.co/query"
 GDELT_DOC_ENDPOINT = "https://api.gdeltproject.org/api/v2/doc/doc"
+FINNHUB_COMPANY_NEWS_ENDPOINT = "https://finnhub.io/api/v1/company-news"
+SEC_COMPANY_TICKERS_ENDPOINT = "https://www.sec.gov/files/company_tickers.json"
+SEC_SUBMISSIONS_ENDPOINT_TEMPLATE = "https://data.sec.gov/submissions/CIK{cik:010d}.json"
 
 MARKETAUX_API_TOKEN_ENV = "MARKETAUX_API_TOKEN"
 ALPHA_VANTAGE_API_KEY_ENV = "ALPHA_VANTAGE_API_KEY"
+FINNHUB_API_KEY_ENV = "FINNHUB_API_KEY"
+ENABLE_SEC_EDGAR_NEWS_ENV = "ENABLE_SEC_EDGAR_NEWS"
+SEC_USER_AGENT_ENV = "SEC_USER_AGENT"
 ALLOW_MARKETAUX_FALLBACK_ENV = "ALLOW_MARKETAUX_FALLBACK"
 MARKETAUX_FIXTURE_PATH_ENV = "MARKETAUX_FIXTURE_PATH"
 MARKETAUX_NEWS_LIMIT_ENV = "MARKETAUX_NEWS_LIMIT"
 MARKETAUX_NEWS_LOOKBACK_DAYS_ENV = "MARKETAUX_NEWS_LOOKBACK_DAYS"
 MARKETAUX_REQUEST_INTERVAL_SECONDS_ENV = "MARKETAUX_REQUEST_INTERVAL_SECONDS"
+FINNHUB_COMPANY_NEWS_LIMIT_ENV = "FINNHUB_COMPANY_NEWS_LIMIT"
+FINNHUB_REQUEST_INTERVAL_SECONDS_ENV = "FINNHUB_REQUEST_INTERVAL_SECONDS"
+SEC_EDGAR_COMPANY_FILINGS_LIMIT_ENV = "SEC_EDGAR_COMPANY_FILINGS_LIMIT"
+SEC_REQUEST_INTERVAL_SECONDS_ENV = "SEC_REQUEST_INTERVAL_SECONDS"
 ALPHA_VANTAGE_COMPANY_NEWS_LIMIT_ENV = "ALPHA_VANTAGE_COMPANY_NEWS_LIMIT"
 ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS_ENV = "ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS"
 ALPHA_VANTAGE_MAX_COMPANY_REQUESTS_ENV = "ALPHA_VANTAGE_MAX_COMPANY_REQUESTS"
@@ -92,6 +102,12 @@ ALPHA_VANTAGE_DAILY_REQUEST_LIMIT = 25
 MARKETAUX_DEFAULT_NEWS_LIMIT = 3
 MARKETAUX_MAX_NEWS_LIMIT = 3
 MARKETAUX_DEFAULT_REQUEST_INTERVAL_SECONDS = 0.5
+FINNHUB_DEFAULT_COMPANY_NEWS_LIMIT = 6
+FINNHUB_MAX_COMPANY_NEWS_LIMIT = 12
+FINNHUB_DEFAULT_REQUEST_INTERVAL_SECONDS = 1.1
+SEC_DEFAULT_COMPANY_FILINGS_LIMIT = 3
+SEC_MAX_COMPANY_FILINGS_LIMIT = 5
+SEC_DEFAULT_REQUEST_INTERVAL_SECONDS = 0.15
 ALPHA_VANTAGE_DEFAULT_COMPANY_NEWS_LIMIT = 6
 ALPHA_VANTAGE_MAX_COMPANY_NEWS_LIMIT = 10
 ALPHA_VANTAGE_DEFAULT_COMPANY_REQUEST_INTERVAL_SECONDS = 12.0
@@ -130,7 +146,7 @@ MIN_RELEVANCE_SCORE = 0.45
 RECENCY_HALFLIFE_HOURS = 36.0
 NEWS_FETCH_ATTEMPTS = 3
 NEWS_FETCH_RETRY_SECONDS = 1.5
-DEFAULT_COMPANY_NEWS_SHORTLIST_SIZE = 15
+DEFAULT_COMPANY_NEWS_SHORTLIST_SIZE = 60
 
 POSITIVE_HINTS = (
     "beats earnings",
@@ -182,6 +198,9 @@ _marketaux_rate_limit_exhausted = False
 _alpha_vantage_last_request_monotonic: Optional[float] = None
 _alpha_vantage_company_request_count = 0
 _alpha_vantage_company_budget_exhausted = False
+_finnhub_last_request_monotonic: Optional[float] = None
+_sec_last_request_monotonic: Optional[float] = None
+_sec_ticker_map_cache: Optional[Dict[str, int]] = None
 
 
 def configured_news_lookback_days() -> int:
@@ -223,6 +242,20 @@ def configured_alpha_vantage_company_news_limit() -> int:
     return max(1, min(parsed, ALPHA_VANTAGE_MAX_COMPANY_NEWS_LIMIT))
 
 
+def configured_finnhub_company_news_limit() -> int:
+    raw_value = os.getenv(
+        FINNHUB_COMPANY_NEWS_LIMIT_ENV,
+        str(FINNHUB_DEFAULT_COMPANY_NEWS_LIMIT),
+    ).strip()
+    if not raw_value:
+        return FINNHUB_DEFAULT_COMPANY_NEWS_LIMIT
+    try:
+        parsed = int(raw_value)
+    except ValueError:
+        return FINNHUB_DEFAULT_COMPANY_NEWS_LIMIT
+    return max(1, min(parsed, FINNHUB_MAX_COMPANY_NEWS_LIMIT))
+
+
 def configured_alpha_vantage_company_request_interval_seconds() -> float:
     raw_value = os.getenv(
         ALPHA_VANTAGE_COMPANY_REQUEST_INTERVAL_SECONDS_ENV,
@@ -235,6 +268,48 @@ def configured_alpha_vantage_company_request_interval_seconds() -> float:
     except ValueError:
         return ALPHA_VANTAGE_DEFAULT_COMPANY_REQUEST_INTERVAL_SECONDS
     return max(0.0, min(parsed, 60.0))
+
+
+def configured_finnhub_request_interval_seconds() -> float:
+    raw_value = os.getenv(
+        FINNHUB_REQUEST_INTERVAL_SECONDS_ENV,
+        str(FINNHUB_DEFAULT_REQUEST_INTERVAL_SECONDS),
+    ).strip()
+    if not raw_value:
+        return FINNHUB_DEFAULT_REQUEST_INTERVAL_SECONDS
+    try:
+        parsed = float(raw_value)
+    except ValueError:
+        return FINNHUB_DEFAULT_REQUEST_INTERVAL_SECONDS
+    return max(0.0, min(parsed, 60.0))
+
+
+def configured_sec_request_interval_seconds() -> float:
+    raw_value = os.getenv(
+        SEC_REQUEST_INTERVAL_SECONDS_ENV,
+        str(SEC_DEFAULT_REQUEST_INTERVAL_SECONDS),
+    ).strip()
+    if not raw_value:
+        return SEC_DEFAULT_REQUEST_INTERVAL_SECONDS
+    try:
+        parsed = float(raw_value)
+    except ValueError:
+        return SEC_DEFAULT_REQUEST_INTERVAL_SECONDS
+    return max(0.0, min(parsed, 5.0))
+
+
+def configured_sec_company_filings_limit() -> int:
+    raw_value = os.getenv(
+        SEC_EDGAR_COMPANY_FILINGS_LIMIT_ENV,
+        str(SEC_DEFAULT_COMPANY_FILINGS_LIMIT),
+    ).strip()
+    if not raw_value:
+        return SEC_DEFAULT_COMPANY_FILINGS_LIMIT
+    try:
+        parsed = int(raw_value)
+    except ValueError:
+        return SEC_DEFAULT_COMPANY_FILINGS_LIMIT
+    return max(1, min(parsed, SEC_MAX_COMPANY_FILINGS_LIMIT))
 
 
 def configured_alpha_vantage_max_company_requests() -> int:
@@ -272,15 +347,35 @@ def configured_company_news_provider_mode() -> str:
     return "blended"
 
 
+def sec_edgar_news_enabled() -> bool:
+    raw = os.getenv(ENABLE_SEC_EDGAR_NEWS_ENV, "").strip().lower()
+    return raw in {"1", "true", "yes", "on"}
+
+
+def sec_user_agent() -> str:
+    configured = os.getenv(SEC_USER_AGENT_ENV, "").strip()
+    return configured or "weekly-stock-pick/1.0 contact=unknown"
+
+
+def finnhub_api_key(required: bool = False) -> str:
+    value = os.getenv(FINNHUB_API_KEY_ENV, "").strip()
+    if required and not value:
+        raise RuntimeError(f"Missing required environment variable {FINNHUB_API_KEY_ENV}")
+    return value
+
+
 def reset_marketaux_fetch_state() -> None:
     global _marketaux_last_request_monotonic, _marketaux_rate_limit_exhausted
     global _alpha_vantage_last_request_monotonic, _alpha_vantage_company_request_count
-    global _alpha_vantage_company_budget_exhausted
+    global _alpha_vantage_company_budget_exhausted, _finnhub_last_request_monotonic
+    global _sec_last_request_monotonic
     _marketaux_last_request_monotonic = None
     _marketaux_rate_limit_exhausted = False
     _alpha_vantage_last_request_monotonic = None
     _alpha_vantage_company_request_count = 0
     _alpha_vantage_company_budget_exhausted = False
+    _finnhub_last_request_monotonic = None
+    _sec_last_request_monotonic = None
 
 
 def apply_marketaux_request_spacing() -> None:
@@ -343,6 +438,38 @@ def apply_alpha_vantage_company_request_spacing() -> None:
             time_module.sleep(remaining)
 
     _alpha_vantage_last_request_monotonic = time_module.monotonic()
+
+
+def apply_finnhub_request_spacing() -> None:
+    global _finnhub_last_request_monotonic
+    minimum_interval = configured_finnhub_request_interval_seconds()
+    if minimum_interval <= 0:
+        _finnhub_last_request_monotonic = time_module.monotonic()
+        return
+
+    now = time_module.monotonic()
+    if _finnhub_last_request_monotonic is not None:
+        remaining = minimum_interval - (now - _finnhub_last_request_monotonic)
+        if remaining > 0:
+            time_module.sleep(remaining)
+
+    _finnhub_last_request_monotonic = time_module.monotonic()
+
+
+def apply_sec_request_spacing() -> None:
+    global _sec_last_request_monotonic
+    minimum_interval = configured_sec_request_interval_seconds()
+    if minimum_interval <= 0:
+        _sec_last_request_monotonic = time_module.monotonic()
+        return
+
+    now = time_module.monotonic()
+    if _sec_last_request_monotonic is not None:
+        remaining = minimum_interval - (now - _sec_last_request_monotonic)
+        if remaining > 0:
+            time_module.sleep(remaining)
+
+    _sec_last_request_monotonic = time_module.monotonic()
 
 
 def is_alpha_vantage_limit_message(message: str) -> bool:
@@ -600,6 +727,29 @@ def parse_gdelt_datetime(value: Optional[str]) -> Optional[datetime]:
     return None
 
 
+def parse_sec_datetime(value: Optional[str]) -> Optional[datetime]:
+    parsed = parse_iso_datetime(value)
+    if parsed is not None:
+        return parsed
+    if not value or not isinstance(value, str):
+        return None
+    normalized = value.strip()
+    if not normalized:
+        return None
+    try:
+        return datetime.strptime(normalized, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+
+
+def parse_finnhub_datetime(value: Any) -> Optional[datetime]:
+    if isinstance(value, (int, float)) and value > 0:
+        return datetime.fromtimestamp(value, tz=timezone.utc)
+    if isinstance(value, str) and value.strip().isdigit():
+        return datetime.fromtimestamp(int(value.strip()), tz=timezone.utc)
+    return parse_iso_datetime(value if isinstance(value, str) else None)
+
+
 def iso_utc(value: Optional[datetime]) -> Optional[str]:
     if value is None:
         return None
@@ -616,6 +766,10 @@ def strip_html_tags(text: str) -> str:
 
 def normalize_symbol_token(symbol: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", symbol.lower())
+
+
+def normalize_sec_ticker(symbol: str) -> str:
+    return symbol.strip().upper().replace(".", "-")
 
 
 def company_keywords(company_name: str) -> List[str]:
@@ -726,6 +880,9 @@ def source_quality_weight(provider: str, url: Optional[str]) -> float:
         "motley fool": 0.78,
         "seeking alpha": 0.78,
         "benzinga": 0.82,
+        "finnhub": 0.86,
+        "sec edgar": 1.00,
+        "sec.gov": 1.00,
     }
 
     for key, weight in premium_sources.items():
@@ -997,6 +1154,185 @@ def build_gdelt_company_query(symbol: str, company_name: str) -> str:
     return f"{GDELT_DOC_ENDPOINT}?{urlencode(params)}"
 
 
+def build_finnhub_company_query(symbol: str, published_after: datetime) -> str:
+    params = {
+        "symbol": symbol.strip().upper(),
+        "from": published_after.astimezone(timezone.utc).date().isoformat(),
+        "to": datetime.now(timezone.utc).date().isoformat(),
+        "token": finnhub_api_key(required=True),
+    }
+    return f"{FINNHUB_COMPANY_NEWS_ENDPOINT}?{urlencode(params)}"
+
+
+def fetch_json_request(url: str, provider: str, headers: Optional[Dict[str, str]] = None) -> Any:
+    request_headers = {
+        "Accept": "application/json",
+        "User-Agent": "weekly-stock-pick/1.0",
+    }
+    if headers:
+        request_headers.update(headers)
+    request = Request(url, headers=request_headers)
+    with urlopen(request, timeout=MARKETAUX_REQUEST_TIMEOUT_SECONDS) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def normalize_sec_ticker_map_payload(payload: Any) -> Dict[str, int]:
+    entries: Sequence[Any]
+    if isinstance(payload, dict):
+        entries = payload.values()
+    elif isinstance(payload, list):
+        entries = payload
+    else:
+        return {}
+
+    mapping: Dict[str, int] = {}
+    for item in entries:
+        if not isinstance(item, dict):
+            continue
+        ticker = str(item.get("ticker", "")).strip()
+        cik_value = item.get("cik_str")
+        if not ticker or cik_value in (None, ""):
+            continue
+        try:
+            mapping[normalize_sec_ticker(ticker)] = int(cik_value)
+        except (TypeError, ValueError):
+            continue
+    return mapping
+
+
+def fetch_sec_company_ticker_map() -> Dict[str, int]:
+    global _sec_ticker_map_cache
+    if _sec_ticker_map_cache is not None:
+        return dict(_sec_ticker_map_cache)
+
+    consume_provider_budget("sec_edgar", units=1, category="ticker_map")
+    apply_sec_request_spacing()
+    payload = fetch_json_request(
+        SEC_COMPANY_TICKERS_ENDPOINT,
+        "sec_edgar",
+        headers={"User-Agent": sec_user_agent()},
+    )
+    _sec_ticker_map_cache = normalize_sec_ticker_map_payload(payload)
+    return dict(_sec_ticker_map_cache)
+
+
+def sec_cik_for_symbol(symbol: str) -> Optional[int]:
+    return fetch_sec_company_ticker_map().get(normalize_sec_ticker(symbol))
+
+
+def fetch_sec_submissions_payload(cik: int) -> Dict[str, Any]:
+    consume_provider_budget("sec_edgar", units=1, category="submissions")
+    apply_sec_request_spacing()
+    payload = fetch_json_request(
+        SEC_SUBMISSIONS_ENDPOINT_TEMPLATE.format(cik=int(cik)),
+        "sec_edgar",
+        headers={"User-Agent": sec_user_agent()},
+    )
+    if not isinstance(payload, dict):
+        raise RuntimeError("Unexpected SEC submissions response shape")
+    return payload
+
+
+def sec_archive_url(cik: int, accession_number: str, primary_document: str) -> Optional[str]:
+    accession = accession_number.strip()
+    document = primary_document.strip()
+    if not accession or not document:
+        return None
+    compact_accession = accession.replace("-", "")
+    return (
+        "https://www.sec.gov/Archives/edgar/data/"
+        f"{int(cik)}/{compact_accession}/{document}"
+    )
+
+
+def normalize_sec_submission_recent_item(
+    item: Dict[str, Any],
+    symbol: str,
+    company_name: str,
+    cik: int,
+) -> Optional[dict]:
+    form = str(item.get("form", "")).strip().upper()
+    material_forms = {"8-K", "8-K/A", "10-Q", "10-Q/A", "10-K", "10-K/A", "6-K", "20-F", "40-F"}
+    if form not in material_forms:
+        return None
+
+    published_at = (
+        parse_sec_datetime(str(item.get("acceptanceDateTime", "")).strip())
+        or parse_sec_datetime(str(item.get("filingDate", "")).strip())
+    )
+    description = str(item.get("primaryDocDescription", "")).strip()
+    report_date = str(item.get("reportDate", "")).strip()
+    accession_number = str(item.get("accessionNumber", "")).strip()
+    primary_document = str(item.get("primaryDocument", "")).strip()
+    url = sec_archive_url(cik, accession_number, primary_document)
+
+    title_detail = description or "official SEC filing"
+    title = f"{company_name} filed {form}: {title_detail}"
+    fragments = [
+        f"Official SEC EDGAR {form} filing for {company_name} ({symbol}).",
+    ]
+    if report_date:
+        fragments.append(f"Report date: {report_date}.")
+    if accession_number:
+        fragments.append(f"Accession: {accession_number}.")
+
+    return {
+        "feed": "sec_edgar",
+        "title": title,
+        "description": " ".join(fragments),
+        "snippet": "Official SEC filing.",
+        "published_at": iso_utc(published_at),
+        "source": "SEC EDGAR",
+        "url": url,
+        "entities": [
+            {
+                "symbol": symbol.upper(),
+                "match_score": 22.0,
+                "sentiment_score": 0.0,
+                "highlights": [],
+            }
+        ],
+        "similar": [],
+    }
+
+
+def fetch_sec_recent_filings(symbol: str, company_name: str, published_after: datetime) -> List[dict]:
+    if not sec_edgar_news_enabled():
+        return []
+    cik = sec_cik_for_symbol(symbol)
+    if cik is None:
+        print(f"[WARN] [{symbol}] SEC EDGAR CIK mapping missing, skipping official filings feed.")
+        return []
+
+    payload = fetch_sec_submissions_payload(cik)
+    recent = payload.get("filings", {}).get("recent", {})
+    if not isinstance(recent, dict):
+        return []
+
+    forms = recent.get("form", [])
+    if not isinstance(forms, list):
+        return []
+
+    normalized_items: List[dict] = []
+    for index, _form in enumerate(forms):
+        item = {
+            key: values[index]
+            for key, values in recent.items()
+            if isinstance(values, list) and index < len(values)
+        }
+        filing = normalize_sec_submission_recent_item(item, symbol, company_name, cik)
+        if filing is None:
+            continue
+        published_at = parse_iso_datetime(str(filing.get("published_at", "")).strip())
+        if published_at is not None and published_at < published_after:
+            continue
+        normalized_items.append(filing)
+        if len(normalized_items) >= configured_sec_company_filings_limit():
+            break
+
+    return normalized_items
+
+
 def fetch_marketaux_payload(symbol: str, published_after: datetime) -> List[dict]:
     if allow_marketaux_fallback() and marketaux_rate_limit_exhausted():
         print(f"[WARN] [{symbol}] Marketaux rate limit already hit earlier in this run, returning neutral fallback data.")
@@ -1120,6 +1456,34 @@ def fetch_alpha_vantage_company_payload(symbol: str, published_after: datetime) 
 
     raise RuntimeError(
         f"Unable to fetch Alpha Vantage company news for {symbol} after {NEWS_FETCH_ATTEMPTS} attempts: {last_error}"
+    )
+
+
+def fetch_finnhub_company_payload(symbol: str, published_after: datetime) -> List[dict]:
+    if not finnhub_api_key(required=False):
+        print(f"[WARN] [{symbol}] Finnhub API key missing, skipping company-news fallback feed.")
+        return []
+
+    url = build_finnhub_company_query(symbol, published_after)
+    last_error: Optional[Exception] = None
+    for attempt in range(1, NEWS_FETCH_ATTEMPTS + 1):
+        try:
+            consume_provider_budget("finnhub", units=1, category="company_news")
+            apply_finnhub_request_spacing()
+            payload = fetch_json_request(url, "finnhub")
+            if isinstance(payload, list):
+                return payload[: configured_finnhub_company_news_limit()]
+            if isinstance(payload, dict):
+                message = str(payload.get("error", "") or payload.get("message", "")).strip()
+                raise RuntimeError(message or "Unexpected Finnhub response shape")
+            raise RuntimeError("Unexpected Finnhub response shape")
+        except (HTTPError, URLError, TimeoutError, OSError, json.JSONDecodeError, RuntimeError) as exc:
+            last_error = exc
+        if attempt < NEWS_FETCH_ATTEMPTS:
+            time_module.sleep(NEWS_FETCH_RETRY_SECONDS * attempt)
+
+    raise RuntimeError(
+        f"Unable to fetch Finnhub company news for {symbol} after {NEWS_FETCH_ATTEMPTS} attempts: {last_error}"
     )
 
 
@@ -1284,6 +1648,46 @@ def normalize_gdelt_company_item(item: dict) -> Optional[dict]:
     }
 
 
+def normalize_finnhub_company_item(item: dict, symbol: str) -> Optional[dict]:
+    if not isinstance(item, dict):
+        return None
+    title = str(item.get("headline", "") or item.get("title", "")).strip()
+    summary = str(item.get("summary", "") or item.get("teaser", "")).strip()
+    url = str(item.get("url", "")).strip() or None
+    source = str(item.get("source", "")).strip()
+    provider = f"Finnhub / {source}" if source else "Finnhub"
+    published_at = parse_finnhub_datetime(item.get("datetime") or item.get("published_at"))
+    category = str(item.get("category", "")).strip()
+    related = str(item.get("related", "")).strip()
+    if not title:
+        return None
+
+    snippet_parts = []
+    if category:
+        snippet_parts.append(f"Category: {category}.")
+    if related:
+        snippet_parts.append(f"Related: {related}.")
+
+    return {
+        "feed": "finnhub",
+        "title": title,
+        "description": summary,
+        "snippet": " ".join(snippet_parts),
+        "published_at": iso_utc(published_at),
+        "source": provider,
+        "url": url,
+        "entities": [
+            {
+                "symbol": symbol.upper(),
+                "match_score": 16.0,
+                "sentiment_score": None,
+                "highlights": [],
+            }
+        ],
+        "similar": [],
+    }
+
+
 def fetch_company_raw_news_sources(symbol: str, company_name: str) -> Dict[str, List[dict]]:
     fixture_payload = load_marketaux_fixture(symbol)
     if fixture_payload is not None:
@@ -1355,10 +1759,41 @@ def fetch_company_raw_news_sources(symbol: str, company_name: str) -> Dict[str, 
         raw_sources["gdelt"] = []
 
     if fetch_companion_sources:
-        primary_relevant_count = marketaux_relevant_count + count_relevant_company_articles(
+        gdelt_relevant_count = count_relevant_company_articles(
             raw_sources.get("gdelt", []),
             symbol,
             company_name,
+        )
+        should_fetch_finnhub = (
+            provider_mode == "fallback_only"
+            or marketaux_unavailable
+            or (marketaux_relevant_count + gdelt_relevant_count) < COMPANY_PRIMARY_MARKETAUX_TARGET
+        )
+        if should_fetch_finnhub and finnhub_api_key(required=False):
+            try:
+                raw_sources["finnhub"] = [
+                    item
+                    for item in (
+                        normalize_finnhub_company_item(raw_item, symbol)
+                        for raw_item in fetch_finnhub_company_payload(symbol, published_after)
+                    )
+                    if item is not None
+                ]
+            except Exception as exc:
+                print(f"[WARN] [{symbol}] Finnhub company-news fallback failed: {exc}")
+                record_runtime_event(
+                    f"Finnhub company-news fallback failed for at least one symbol.",
+                    provider="finnhub",
+                )
+                raw_sources["finnhub"] = []
+        else:
+            raw_sources["finnhub"] = []
+
+    if fetch_companion_sources:
+        primary_relevant_count = (
+            marketaux_relevant_count
+            + count_relevant_company_articles(raw_sources.get("gdelt", []), symbol, company_name)
+            + count_relevant_company_articles(raw_sources.get("finnhub", []), symbol, company_name)
         )
         if primary_relevant_count < COMPANY_ALPHA_VANTAGE_ESCALATION_FLOOR:
             try:
@@ -1379,6 +1814,17 @@ def fetch_company_raw_news_sources(symbol: str, company_name: str) -> Dict[str, 
                 raw_sources["alpha_vantage"] = []
         else:
             raw_sources["alpha_vantage"] = []
+
+    if sec_edgar_news_enabled():
+        try:
+            raw_sources["sec_edgar"] = fetch_sec_recent_filings(symbol, company_name, published_after)
+        except Exception as exc:
+            print(f"[WARN] [{symbol}] SEC EDGAR official filings feed failed: {exc}")
+            record_runtime_event(
+                f"SEC EDGAR official filings feed failed for at least one symbol.",
+                provider="sec_edgar",
+            )
+            raw_sources["sec_edgar"] = []
 
     return raw_sources
 
@@ -1697,10 +2143,14 @@ def summarize_texts(pipe, articles: List[NewsArticle]) -> str:
 
 
 def llm_news_enabled() -> bool:
-    raw = os.getenv(ENABLE_COMPANY_LLM_REVIEW_ENV, "").strip().lower()
-    if raw not in {"1", "true", "yes", "on"}:
+    if not company_llm_review_requested():
         return False
     return bool(openai_api_key(required=False))
+
+
+def company_llm_review_requested() -> bool:
+    raw = os.getenv(ENABLE_COMPANY_LLM_REVIEW_ENV, "").strip().lower()
+    return raw in {"1", "true", "yes", "on"}
 
 
 def build_company_news_prompt(
@@ -2414,6 +2864,11 @@ def main():
     universe = load_universe()
     llm_enabled = llm_news_enabled()
     model_name = openai_model() if llm_enabled else None
+    if company_llm_review_requested() and not llm_enabled:
+        record_runtime_event(
+            "Company-news GPT review was requested but OPENAI_API_KEY was missing, so heuristic company-news scoring was used.",
+            provider="openai",
+        )
     company_llm_limit = configured_llm_news_limit()
     try:
         shortlist_symbols = set(select_company_news_shortlist(universe))
@@ -2425,6 +2880,14 @@ def main():
         shortlist_symbols = {symbol for symbol, _ in universe}
     if not shortlist_symbols:
         shortlist_symbols = {symbol for symbol, _ in universe}
+    if len(shortlist_symbols) < len(universe):
+        record_runtime_event(
+            (
+                f"Company news was fetched for {len(shortlist_symbols)} of {len(universe)} active symbols; "
+                "symbols outside the shortlist received neutral company-news scores."
+            ),
+            provider="marketaux",
+        )
 
     out: Dict[str, dict] = {}
 

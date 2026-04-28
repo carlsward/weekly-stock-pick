@@ -120,6 +120,14 @@ fun WeeklyPickScreen(
                 )
             }
 
+            if (content.dashboard.dataQuality.isDegraded) {
+                StatusBanner(
+                    title = "Data quality degraded",
+                    message = dataQualitySummary(content.dashboard.dataQuality),
+                    accent = RiskHighColor
+                )
+            }
+
             content.thesisMonitorMessage?.let { thesisMessage ->
                 StatusBanner(
                     title = "Live thesis monitor",
@@ -128,9 +136,10 @@ fun WeeklyPickScreen(
                 )
             }
 
-            if (displaySelection.status == SelectionStatus.PICKED && displaySelection.pick != null) {
+            if (displaySelection.pick != null) {
                 PickDetails(
                     pick = displaySelection.pick,
+                    selection = displaySelection,
                     expanded = showResearchDetails,
                     onToggle = { showResearchDetails = !showResearchDetails }
                 )
@@ -426,6 +435,7 @@ private fun DeltaChip(
 @Composable
 private fun PickDetails(
     pick: WeeklyPick,
+    selection: Selection,
     expanded: Boolean,
     onToggle: () -> Unit
 ) {
@@ -474,6 +484,19 @@ private fun PickDetails(
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
+                if (!selection.isQualified) {
+                    Text(
+                        text = "Low-confidence release",
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.SemiBold,
+                        color = RiskHighColor
+                    )
+                    Text(
+                        text = selection.statusReason,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -520,6 +543,8 @@ private fun PickDetails(
                         "Momentum" to pick.scoreBreakdown.momentum,
                         "Volatility" to pick.scoreBreakdown.volatilityPenalty,
                         "News" to pick.scoreBreakdown.newsAdjustment,
+                        "Macro" to pick.scoreBreakdown.macroAdjustment,
+                        "Sector" to pick.scoreBreakdown.sectorAdjustment,
                         "Alignment" to pick.scoreBreakdown.signalAlignment
                     )
                     val maxMagnitude = contributions.maxOfOrNull { abs(it.second) }?.coerceAtLeast(0.01) ?: 0.01
@@ -537,7 +562,7 @@ private fun PickDetails(
                     }
                 }
 
-                ResearchBlock(title = "Why it qualified") {
+                ResearchBlock(title = if (selection.isQualified) "Why it qualified" else "Why it leads") {
                     primaryReasons.forEach { reason ->
                         Text(
                             text = "• $reason",
@@ -744,9 +769,9 @@ fun ModelInfoDialog(onDismiss: () -> Unit) {
         },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text("Hyrax Alpha is built around one premise: publish one stock for the coming week only when the edge looks real.")
+                Text("Hyrax Alpha is built around one premise: publish one stock for the coming week when the data is usable.")
                 Text("The model blends technical strength, company news, world-news overlays, and risk penalties into one conviction signal.")
-                Text("If nothing clears the bar, the app stays disciplined and returns no pick instead of forcing a weak idea.")
+                Text("If the top stock misses the normal bar, the app keeps the one-stock release but labels it low confidence.")
                 Text("This is a model-driven research tool, not financial advice. Verify the thesis independently before investing.")
             }
         },
@@ -839,6 +864,22 @@ private fun scoreBreakdownSummary(contributions: List<Pair<String, Double>>): St
             "${negative.first} is the main drag on the score."
 
         else ->
-            "The score is broadly balanced across momentum, volatility, news, and alignment."
+            "The score is broadly balanced across technical, news, macro, sector, and alignment inputs."
+    }
+}
+
+private fun dataQualitySummary(dataQuality: DataQuality): String {
+    val providerIssues = dataQuality.providerStatus
+        .filter { (_, status) -> status.status.lowercase(Locale.US) in setOf("degraded", "exhausted") }
+        .keys
+        .sorted()
+        .joinToString(", ")
+    val reason = dataQuality.degradedReason
+        ?: dataQuality.reasons.firstOrNull()
+        ?: "One or more backend data sources degraded during the latest run."
+    return if (providerIssues.isBlank()) {
+        reason
+    } else {
+        "$reason Providers: $providerIssues."
     }
 }

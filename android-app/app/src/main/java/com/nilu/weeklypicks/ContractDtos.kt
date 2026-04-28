@@ -83,7 +83,9 @@ private data class DashboardEnvelopeDto(
     @SerialName("overall_selection")
     val overallSelection: SelectionDto,
     @SerialName("risk_selections")
-    val riskSelections: Map<String, SelectionDto>
+    val riskSelections: Map<String, SelectionDto>,
+    @SerialName("data_quality")
+    val dataQuality: DataQualityDto? = null
 )
 
 @Serializable
@@ -110,6 +112,24 @@ private data class GenerationSummaryDto(
 )
 
 @Serializable
+private data class DataQualityDto(
+    val status: String = "healthy",
+    @SerialName("degraded_reason")
+    val degradedReason: String? = null,
+    val reasons: List<String> = emptyList(),
+    @SerialName("provider_status")
+    val providerStatus: Map<String, ProviderQualityDto> = emptyMap()
+)
+
+@Serializable
+private data class ProviderQualityDto(
+    val status: String = "tracking_only",
+    val used: Int? = null,
+    val limit: Int? = null,
+    val remaining: Int? = null
+)
+
+@Serializable
 private data class SelectionThresholdsDto(
     @SerialName("overall_score")
     val overallScore: Double,
@@ -124,6 +144,10 @@ private data class SelectionDto(
     val status: String,
     @SerialName("status_reason")
     val statusReason: String,
+    @SerialName("is_qualified")
+    val isQualified: Boolean? = null,
+    @SerialName("release_quality")
+    val releaseQuality: String? = null,
     @SerialName("threshold_score")
     val thresholdScore: Double,
     @SerialName("threshold_confidence")
@@ -213,6 +237,10 @@ private data class ScoreBreakdownDto(
     val drawdownPenalty: Double = 0.0,
     @SerialName("news_adjustment")
     val newsAdjustment: Double,
+    @SerialName("macro_adjustment")
+    val macroAdjustment: Double = 0.0,
+    @SerialName("sector_adjustment")
+    val sectorAdjustment: Double = 0.0,
     @SerialName("signal_alignment")
     val signalAlignment: Double = 0.0,
     @SerialName("technical_total")
@@ -309,7 +337,9 @@ private data class ThesisMonitorEnvelopeDto(
     val sourceDashboardGeneratedAt: String,
     val selection: SelectionDto,
     @SerialName("active_pick")
-    val activePick: WeeklyPickDto? = null
+    val activePick: WeeklyPickDto? = null,
+    @SerialName("data_quality")
+    val dataQuality: DataQualityDto? = null
 )
 
 @Serializable
@@ -333,7 +363,13 @@ private data class TrackRecordEnvelopeDto(
     val summary: TrackRecordSummaryDto,
     @SerialName("risk_breakdown")
     val riskBreakdown: Map<String, RiskTrackRecordDto>,
-    val entries: List<TrackRecordEntryDto>
+    val entries: List<TrackRecordEntryDto>,
+    @SerialName("candidate_ranking_report")
+    val candidateRankingReport: CandidateRankingReportDto? = null,
+    @SerialName("no_pick_report")
+    val noPickReport: NoPickReportDto? = null,
+    @SerialName("data_quality")
+    val dataQuality: DataQualityDto? = null
 )
 
 @Serializable
@@ -378,6 +414,34 @@ private data class RiskTrackRecordDto(
     val average5dReturn: Double? = null,
     @SerialName("average_5d_excess_return")
     val average5dExcessReturn: Double? = null
+)
+
+@Serializable
+private data class CandidateRankingReportDto(
+    val status: String,
+    @SerialName("sample_count")
+    val sampleCount: Int = 0,
+    @SerialName("top_3_average_5d_excess_return")
+    val top3Average5dExcessReturn: Double? = null,
+    @SerialName("top_3_beat_spy_rate")
+    val top3BeatSpyRate: Double? = null,
+    @SerialName("top_10_average_5d_excess_return")
+    val top10Average5dExcessReturn: Double? = null,
+    val summary: String? = null
+)
+
+@Serializable
+private data class NoPickReportDto(
+    val status: String,
+    @SerialName("sample_count")
+    val sampleCount: Int = 0,
+    @SerialName("average_spy_5d_return_during_no_pick")
+    val averageSpy5dReturnDuringNoPick: Double? = null,
+    @SerialName("spy_up_rate_during_no_pick")
+    val spyUpRateDuringNoPick: Double? = null,
+    @SerialName("avoided_loss_rate")
+    val avoidedLossRate: Double? = null,
+    val summary: String? = null
 )
 
 @Serializable
@@ -439,7 +503,9 @@ private data class MonthlyPickEnvelopeDto(
     val generationSummary: GenerationSummaryDto,
     @SerialName("selection_thresholds")
     val selectionThresholds: MonthlySelectionThresholdsDto,
-    val selection: MonthlySelectionDto
+    val selection: MonthlySelectionDto,
+    @SerialName("data_quality")
+    val dataQuality: DataQualityDto? = null
 )
 
 @Serializable
@@ -618,7 +684,8 @@ private fun DashboardEnvelopeDto.toModel(): Dashboard {
         generationSummary = generationSummary.toModel(),
         selectionThresholds = selectionThresholds.toModel(),
         overallSelection = overallSelection.toModel(),
-        riskSelections = riskSelections.mapValues { (_, selection) -> selection.toModel() }
+        riskSelections = riskSelections.mapValues { (_, selection) -> selection.toModel() },
+        dataQuality = dataQuality?.toModel() ?: healthyDataQuality()
     )
 }
 
@@ -640,6 +707,24 @@ private fun GenerationSummaryDto.toModel(): GenerationSummary {
     )
 }
 
+private fun DataQualityDto.toModel(): DataQuality {
+    return DataQuality(
+        status = status,
+        degradedReason = degradedReason,
+        reasons = reasons,
+        providerStatus = providerStatus.mapValues { (_, value) -> value.toModel() }
+    )
+}
+
+private fun ProviderQualityDto.toModel(): ProviderQuality {
+    return ProviderQuality(
+        status = status,
+        used = used,
+        limit = limit,
+        remaining = remaining
+    )
+}
+
 private fun SelectionThresholdsDto.toModel(): SelectionThresholds {
     return SelectionThresholds(
         overallScore = overallScore,
@@ -655,6 +740,12 @@ private fun SelectionDto.toModel(): Selection {
             else -> SelectionStatus.NO_PICK
         },
         statusReason = statusReason,
+        isQualified = isQualified ?: status.equals("picked", ignoreCase = true),
+        releaseQuality = releaseQuality ?: if (status.equals("picked", ignoreCase = true)) {
+            "qualified"
+        } else {
+            "no_pick"
+        },
         thresholdScore = thresholdScore,
         thresholdConfidence = thresholdConfidence,
         pick = pick?.toModel(),
@@ -716,6 +807,8 @@ private fun ScoreBreakdownDto.toModel(): ScoreBreakdown {
         downsidePenalty = downsidePenalty,
         drawdownPenalty = drawdownPenalty,
         newsAdjustment = newsAdjustment,
+        macroAdjustment = macroAdjustment,
+        sectorAdjustment = sectorAdjustment,
         signalAlignment = signalAlignment,
         technicalTotal = technicalTotal,
         total = total
@@ -802,7 +895,8 @@ private fun ThesisMonitorEnvelopeDto.toModel(): ThesisMonitorFeed {
         marketContext = marketContext.toModel(),
         sourceDashboardGeneratedAt = Instant.parse(sourceDashboardGeneratedAt),
         selection = selection.toModel(),
-        activePick = activePick?.toModel()
+        activePick = activePick?.toModel(),
+        dataQuality = dataQuality?.toModel() ?: healthyDataQuality()
     )
 }
 
@@ -818,7 +912,10 @@ private fun TrackRecordEnvelopeDto.toModel(): TrackRecordFeed {
         selectionThresholds = selectionThresholds.toModel(),
         summary = summary.toModel(),
         riskBreakdown = riskBreakdown.mapValues { (_, value) -> value.toModel() },
-        entries = entries.map { it.toModel() }
+        entries = entries.map { it.toModel() },
+        candidateRankingReport = candidateRankingReport?.toModel(),
+        noPickReport = noPickReport?.toModel(),
+        dataQuality = dataQuality?.toModel() ?: healthyDataQuality()
     )
 }
 
@@ -847,6 +944,28 @@ private fun RiskTrackRecordDto.toModel(): RiskTrackRecord {
         winRate = winRate,
         average5dReturn = average5dReturn,
         average5dExcessReturn = average5dExcessReturn
+    )
+}
+
+private fun CandidateRankingReportDto.toModel(): CandidateRankingReport {
+    return CandidateRankingReport(
+        status = status,
+        sampleCount = sampleCount,
+        top3Average5dExcessReturn = top3Average5dExcessReturn,
+        top3BeatSpyRate = top3BeatSpyRate,
+        top10Average5dExcessReturn = top10Average5dExcessReturn,
+        summary = summary
+    )
+}
+
+private fun NoPickReportDto.toModel(): NoPickReport {
+    return NoPickReport(
+        status = status,
+        sampleCount = sampleCount,
+        averageSpy5dReturnDuringNoPick = averageSpy5dReturnDuringNoPick,
+        spyUpRateDuringNoPick = spyUpRateDuringNoPick,
+        avoidedLossRate = avoidedLossRate,
+        summary = summary
     )
 }
 
@@ -889,7 +1008,8 @@ private fun MonthlyPickEnvelopeDto.toModel(): MonthlyPickFeed {
         periodContext = periodContext.toModel(),
         generationSummary = generationSummary.toModel(),
         selectionThresholds = selectionThresholds.toModel(),
-        selection = selection.toModel()
+        selection = selection.toModel(),
+        dataQuality = dataQuality?.toModel() ?: healthyDataQuality()
     )
 }
 
@@ -1099,6 +1219,8 @@ private fun LegacyRiskPickDto?.toLegacySelection(
     return Selection(
         status = if (pick != null) SelectionStatus.PICKED else SelectionStatus.NO_PICK,
         statusReason = statusReason,
+        isQualified = pick != null,
+        releaseQuality = if (pick != null) "qualified" else "no_pick",
         thresholdScore = thresholdScore,
         thresholdConfidence = DEFAULT_MINIMUM_CONFIDENCE,
         pick = pick,
@@ -1147,6 +1269,8 @@ private fun LegacyRiskPickDto.toLegacyWeeklyPick(): WeeklyPick {
             downsidePenalty = 0.0,
             drawdownPenalty = 0.0,
             newsAdjustment = 0.0,
+            macroAdjustment = 0.0,
+            sectorAdjustment = 0.0,
             signalAlignment = 0.0,
             technicalTotal = score,
             total = score

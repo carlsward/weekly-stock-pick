@@ -634,6 +634,41 @@ fun TrackRecordSection(
                         modifier = Modifier.weight(1f)
                     )
                 }
+
+                trackRecord.candidateRankingReport
+                    ?.takeIf { it.sampleCount > 0 }
+                    ?.let { ranking ->
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp)
+                        ) {
+                            PerformanceMetricCard(
+                                label = "Top 3 excess",
+                                value = signedPercentLabel(ranking.top3Average5dExcessReturn),
+                                modifier = Modifier.weight(1f)
+                            )
+                            PerformanceMetricCard(
+                                label = "Top 3 beat",
+                                value = percentLabel(ranking.top3BeatSpyRate),
+                                modifier = Modifier.weight(1f)
+                            )
+                            PerformanceMetricCard(
+                                label = "Top 10 excess",
+                                value = signedPercentLabel(ranking.top10Average5dExcessReturn),
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
+                    }
+
+                trackRecord.noPickReport
+                    ?.takeIf { it.sampleCount > 0 }
+                    ?.let { noPick ->
+                        Text(
+                            text = "No-pick weeks: SPY averaged ${signedPercentLabel(noPick.averageSpy5dReturnDuringNoPick)} over the same 5D window; avoided-loss rate ${percentLabel(noPick.avoidedLossRate)}.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
             }
 
             if (expanded && recentClosedEntries.isNotEmpty()) {

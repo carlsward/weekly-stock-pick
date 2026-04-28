@@ -102,6 +102,13 @@ jobs:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          ENABLE_SEC_EDGAR_NEWS: "true"
+          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || 'weekly-stock-pick/1.0 contact=unknown' }}
+          SEC_EDGAR_COMPANY_FILINGS_LIMIT: "3"
+          FINNHUB_COMPANY_NEWS_LIMIT: "6"
+          FINNHUB_REQUEST_INTERVAL_SECONDS: "1.1"
+          SEC_REQUEST_INTERVAL_SECONDS: "0.15"
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           if [[ -z "${MARKETAUX_API_TOKEN}" ]]; then
@@ -116,6 +123,12 @@ jobs:
           if [[ -z "${ALPHA_VANTAGE_API_KEY}" ]]; then
             echo "WARN: ALPHA_VANTAGE_API_KEY is missing. Secondary news and price fallback capacity will be reduced."
           fi
+          if [[ -z "${FINNHUB_API_KEY}" ]]; then
+            echo "INFO: FINNHUB_API_KEY is missing. Optional Finnhub company-news fallback will be skipped."
+          fi
+          if [[ "${SEC_USER_AGENT}" == *"contact=unknown"* ]]; then
+            echo "WARN: SEC_USER_AGENT is using the placeholder value. Set the repository variable for declared SEC EDGAR access."
+          fi
 
       - name: Generate news_scores.json
         working-directory: backend
@@ -125,10 +138,20 @@ jobs:
           MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
           TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY || secrets.TWELVE_DATA_API_KEY }}
           ALPHA_VANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY || secrets.ALPHA_VANTAGE_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          ENABLE_SEC_EDGAR_NEWS: "true"
+          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || 'weekly-stock-pick/1.0 contact=unknown' }}
+          SEC_EDGAR_COMPANY_FILINGS_LIMIT: "3"
+          FINNHUB_COMPANY_NEWS_LIMIT: "6"
+          FINNHUB_REQUEST_INTERVAL_SECONDS: "1.1"
+          SEC_REQUEST_INTERVAL_SECONDS: "0.15"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.openai_model || 'gpt-5-mini' }}
+          ALLOW_LLM_FALLBACK: "true"
           ALLOW_MARKETAUX_FALLBACK: "true"
           ALLOW_STOOQ_FALLBACK: "false"
           COMPANY_NEWS_PROVIDER_MODE: "blended"
-          COMPANY_NEWS_SHORTLIST_SIZE: "15"
+          COMPANY_NEWS_SHORTLIST_SIZE: "60"
           ENABLE_COMPANY_LLM_REVIEW: "true"
           COMPANY_LLM_ARTICLE_LIMIT: "5"
           MARKETAUX_NEWS_LIMIT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.company_news_limit || '3' }}

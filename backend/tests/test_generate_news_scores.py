@@ -20,10 +20,13 @@ from backend.generate_news_scores import (
     compute_relevance_score,
     fetch_alpha_vantage_company_payload,
     fetch_company_raw_news_sources,
+    fetch_sec_recent_filings,
     fetch_raw_news,
     fetch_symbol_news,
     latest_article_date,
     normalize_alpha_vantage_company_item,
+    normalize_finnhub_company_item,
+    normalize_sec_submission_recent_item,
     score_symbol_news,
     select_supporting_article_entries,
 )
@@ -349,6 +352,80 @@ class GenerateNewsScoresTests(unittest.TestCase):
         self.assertIn("tickers=BRK-B", query)
         self.assertNotIn("tickers=BRK.B", query)
 
+    def test_normalize_finnhub_company_item_maps_to_common_article_shape(self) -> None:
+        normalized = normalize_finnhub_company_item(
+            {
+                "headline": "Mastercard expands tokenized payments network",
+                "summary": "The company announced a broader bank rollout.",
+                "url": "https://example.com/finnhub",
+                "datetime": 1774778400,
+                "source": "Reuters",
+                "category": "company",
+                "related": "MA,V",
+            },
+            "MA",
+        )
+
+        self.assertIsNotNone(normalized)
+        self.assertEqual("finnhub", normalized["feed"])
+        self.assertEqual("Finnhub / Reuters", normalized["source"])
+        self.assertEqual("MA", normalized["entities"][0]["symbol"])
+        self.assertIn("Category: company.", normalized["snippet"])
+
+    def test_normalize_sec_submission_recent_item_builds_official_filing_article(self) -> None:
+        normalized = normalize_sec_submission_recent_item(
+            {
+                "form": "8-K",
+                "filingDate": "2026-03-29",
+                "acceptanceDateTime": "2026-03-29T12:34:56.000Z",
+                "reportDate": "2026-03-28",
+                "primaryDocDescription": "Current report",
+                "accessionNumber": "0000320193-26-000001",
+                "primaryDocument": "aapl-20260329.htm",
+            },
+            "AAPL",
+            "Apple Inc.",
+            320193,
+        )
+
+        self.assertIsNotNone(normalized)
+        self.assertEqual("sec_edgar", normalized["feed"])
+        self.assertEqual("SEC EDGAR", normalized["source"])
+        self.assertIn("Apple Inc. filed 8-K", normalized["title"])
+        self.assertIn("/Archives/edgar/data/320193/000032019326000001/aapl-20260329.htm", normalized["url"])
+
+    def test_fetch_sec_recent_filings_filters_recent_material_filings(self) -> None:
+        submissions_payload = {
+            "filings": {
+                "recent": {
+                    "form": ["4", "8-K", "10-Q"],
+                    "filingDate": ["2026-03-30", "2026-03-29", "2026-03-20"],
+                    "acceptanceDateTime": [
+                        "2026-03-30T12:00:00.000Z",
+                        "2026-03-29T12:00:00.000Z",
+                        "2026-03-20T12:00:00.000Z",
+                    ],
+                    "reportDate": ["2026-03-30", "2026-03-28", "2026-03-20"],
+                    "primaryDocDescription": ["Ownership", "Current report", "Quarterly report"],
+                    "accessionNumber": ["1", "0000320193-26-000001", "0000320193-26-000002"],
+                    "primaryDocument": ["xslF345X05/doc4.xml", "aapl-8k.htm", "aapl-10q.htm"],
+                }
+            }
+        }
+
+        with patch.dict("os.environ", {"ENABLE_SEC_EDGAR_NEWS": "true"}, clear=False):
+            with patch("backend.generate_news_scores.sec_cik_for_symbol", return_value=320193):
+                with patch("backend.generate_news_scores.fetch_sec_submissions_payload", return_value=submissions_payload):
+                    filings = fetch_sec_recent_filings(
+                        "AAPL",
+                        "Apple Inc.",
+                        datetime(2026, 3, 25, tzinfo=timezone.utc),
+                    )
+
+        self.assertEqual(1, len(filings))
+        self.assertEqual("sec_edgar", filings[0]["feed"])
+        self.assertIn("8-K", filings[0]["title"])
+
     def test_fetch_alpha_vantage_company_payload_caps_feed_size(self) -> None:
         response_payload = {
             "feed": [{"title": f"Article {index}"} for index in range(50)],
@@ -410,6 +487,8 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "MARKETAUX_API_TOKEN": "token",
                 "ALLOW_MARKETAUX_FALLBACK": "true",
                 "ALPHA_VANTAGE_API_KEY": "alpha",
+                "FINNHUB_API_KEY": "",
+                "ENABLE_SEC_EDGAR_NEWS": "false",
                 "MARKETAUX_REQUEST_INTERVAL_SECONDS": "0",
             },
             clear=False,
@@ -454,6 +533,8 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "MARKETAUX_API_TOKEN": "token",
                 "ALLOW_MARKETAUX_FALLBACK": "true",
                 "ALPHA_VANTAGE_API_KEY": "alpha",
+                "FINNHUB_API_KEY": "",
+                "ENABLE_SEC_EDGAR_NEWS": "false",
                 "COMPANY_NEWS_PROVIDER_MODE": "blended",
                 "MARKETAUX_REQUEST_INTERVAL_SECONDS": "0",
             },
@@ -500,6 +581,8 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "MARKETAUX_API_TOKEN": "token",
                 "ALLOW_MARKETAUX_FALLBACK": "true",
                 "ALPHA_VANTAGE_API_KEY": "alpha",
+                "FINNHUB_API_KEY": "",
+                "ENABLE_SEC_EDGAR_NEWS": "false",
                 "COMPANY_NEWS_PROVIDER_MODE": "blended",
                 "MARKETAUX_REQUEST_INTERVAL_SECONDS": "0",
             },
@@ -515,6 +598,46 @@ class GenerateNewsScoresTests(unittest.TestCase):
         self.assertEqual(1, len(raw_sources["gdelt"]))
         self.assertEqual(0, len(raw_sources["alpha_vantage"]))
         gdelt_mock.assert_called_once()
+        alpha_mock.assert_not_called()
+
+    def test_fetch_company_raw_news_sources_uses_finnhub_when_primary_coverage_is_still_thin(self) -> None:
+        marketaux_payload = []
+        gdelt_payload = []
+        finnhub_payload = [
+            {
+                "headline": "Mastercard expands tokenized payments network",
+                "summary": "The company announced a broader bank rollout.",
+                "url": "https://example.com/finnhub",
+                "datetime": int(recent_utc().timestamp()),
+                "source": "Reuters",
+                "category": "company",
+                "related": "MA",
+            }
+        ]
+
+        with patch.dict(
+            "os.environ",
+            {
+                "MARKETAUX_API_TOKEN": "token",
+                "ALLOW_MARKETAUX_FALLBACK": "true",
+                "ALPHA_VANTAGE_API_KEY": "alpha",
+                "FINNHUB_API_KEY": "finnhub",
+                "ENABLE_SEC_EDGAR_NEWS": "false",
+                "COMPANY_NEWS_PROVIDER_MODE": "blended",
+                "MARKETAUX_REQUEST_INTERVAL_SECONDS": "0",
+            },
+            clear=False,
+        ):
+            with patch("backend.generate_news_scores.load_marketaux_fixture", return_value=None):
+                with patch("backend.generate_news_scores.fetch_marketaux_payload", return_value=marketaux_payload):
+                    with patch("backend.generate_news_scores.fetch_gdelt_company_payload", return_value=gdelt_payload):
+                        with patch("backend.generate_news_scores.fetch_finnhub_company_payload", return_value=finnhub_payload) as finnhub_mock:
+                            with patch("backend.generate_news_scores.fetch_alpha_vantage_company_payload") as alpha_mock:
+                                raw_sources = fetch_company_raw_news_sources("MA", "Mastercard Incorporated")
+
+        self.assertEqual(1, len(raw_sources["finnhub"]))
+        self.assertEqual(0, len(raw_sources["alpha_vantage"]))
+        finnhub_mock.assert_called_once()
         alpha_mock.assert_not_called()
 
     def test_score_symbol_news_forces_neutral_when_llm_flags_low_quality_roundups(self) -> None:
@@ -602,6 +725,8 @@ class GenerateNewsScoresTests(unittest.TestCase):
                 "MARKETAUX_API_TOKEN": "token",
                 "ALLOW_MARKETAUX_FALLBACK": "true",
                 "ALPHA_VANTAGE_API_KEY": "alpha",
+                "FINNHUB_API_KEY": "",
+                "ENABLE_SEC_EDGAR_NEWS": "false",
                 "COMPANY_NEWS_PROVIDER_MODE": "fallback_only",
                 "MARKETAUX_REQUEST_INTERVAL_SECONDS": "0",
             },

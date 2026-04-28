@@ -13,15 +13,18 @@ The backend publishes checked-in JSON files that the Android client reads direct
 
 ## News provider
 
-- News generation uses Marketaux for article discovery.
-- The scheduled workflow expects a `MARKETAUX_API_TOKEN` GitHub Actions secret.
-- Company-specific news scoring is now a separate Marketaux-based layer that stays focused on direct company coverage, entity sentiment, recency, source quality, and story concentration.
-- The backend defaults to `MARKETAUX_NEWS_LIMIT=3` locally, but the scheduled workflow overrides that to deeper weekly coverage for the company-news layer.
-- For a real commercial release, the next Marketaux upgrade should still be a paid plan so each symbol can use deeper article coverage without being squeezed by provider limits.
+- News generation uses free or free-tier sources: Marketaux for primary article discovery, GDELT for keyless web-news fallback, Alpha Vantage NEWS_SENTIMENT as a capped secondary fallback, optional Finnhub company news, and optional SEC EDGAR company filings.
+- The scheduled workflow expects a `MARKETAUX_API_TOKEN` GitHub Actions secret. `ALPHA_VANTAGE_API_KEY` and `FINNHUB_API_KEY` are optional free-tier capacity boosters.
+- SEC EDGAR filings are keyless and official. Enable them with `ENABLE_SEC_EDGAR_NEWS=true` and set `SEC_USER_AGENT` to an app/contact string for SEC request etiquette.
+- Company-specific news scoring stays focused on direct company coverage, official filings, entity sentiment, recency, source quality, and story concentration.
+- The backend defaults to `MARKETAUX_NEWS_LIMIT=3` locally. Scheduled weekly and monthly workflows fetch company news across the active universe by setting `COMPANY_NEWS_SHORTLIST_SIZE=60`, which avoids giving only the technical shortlist a live-news boost.
+- Company-specific GPT article review requires `OPENAI_API_KEY` and `ENABLE_COMPANY_LLM_REVIEW=true`. If GPT review is requested but no key is available, `news_scores.json.data_quality` is marked degraded and the pipeline uses heuristic/provider sentiment scoring instead.
+- Paid news feeds are not required by the current pipeline; the free sources are layered first and provider limits are tracked in the budget ledger.
 
 ## Price data
 
-- Price history for the pick model now uses Stooq only.
+- Scheduled price history uses Twelve Data first and Alpha Vantage as a limited fallback.
+- Stooq remains an optional local fallback, but Stooq CSV downloads now require an API key for reliable use. Set `STOOQ_API_KEY` if `ALLOW_STOOQ_FALLBACK=true`.
 - Yahoo Finance is no longer used anywhere in the backend pipeline.
 
 ## World-news overlay
@@ -37,8 +40,11 @@ The backend publishes checked-in JSON files that the Android client reads direct
 ## Contract guarantees
 
 - Market weeks are anchored to `America/New_York`.
-- A release is only published when both score and confidence thresholds are met.
-- If a profile does not clear the thresholds, the contract returns `status = "no_pick"`.
+- The overall weekly release publishes the top ranked stock when market data is usable.
+- If the top stock clears both score and confidence thresholds, the contract marks `is_qualified = true` and `release_quality = "qualified"`.
+- If the top stock misses the normal bar, the contract still returns `status = "picked"` with `is_qualified = false` and `release_quality = "low_confidence"` so the app keeps the one-stock release while labeling the weaker setup.
+- The contract only returns `status = "no_pick"` when there is no usable candidate to rank, such as a full live-price-provider failure.
+- Per-risk profile selections can still return `status = "no_pick"` when that specific risk bucket does not clear its threshold.
 - The daily thesis monitor only re-checks the active weekly pick. It does not rerank the whole universe.
 - The monthly pick is generated separately from the weekly release and uses a 20-trading-day horizon, but the rebalance date is anchored to the first calendar day of the month.
 - Freshness metadata is included in every dashboard payload:
@@ -46,6 +52,11 @@ The backend publishes checked-in JSON files that the Android client reads direct
   - `data_as_of`
   - `expected_next_refresh_at`
   - `stale_after`
+- `generation_summary.top_candidates` stores the top ranked candidates for each release run so later track-record jobs can evaluate rank quality, not only the published pick.
+- `track_record.json` includes:
+  - published-pick performance versus SPY and sector ETFs
+  - candidate-ranking diagnostics from stored top candidates
+  - no-pick-week comparison against holding SPY
 
 ## Local checks
 
@@ -59,6 +70,11 @@ To generate fresh news locally:
 
 ```bash
 export MARKETAUX_API_TOKEN=your_token_here
+export ENABLE_SEC_EDGAR_NEWS=true
+export SEC_USER_AGENT="weekly-stock-pick/1.0 contact=you@example.com"
+# Optional free-tier capacity:
+export ALPHA_VANTAGE_API_KEY=your_alpha_vantage_key_here
+export FINNHUB_API_KEY=your_finnhub_key_here
 python3 backend/generate_news_scores.py
 ```
 

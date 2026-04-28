@@ -39,8 +39,10 @@ except ImportError:
         set_pipeline_scope,
     )
 
-MODEL_VERSION = "v3.3"
+MODEL_VERSION = "v3.4"
 SCHEMA_VERSION = 2
+RELEASE_QUALITY_QUALIFIED = "qualified"
+RELEASE_QUALITY_LOW_CONFIDENCE = "low_confidence"
 MARKET_TIMEZONE = "America/New_York"
 MARKET_TZ = ZoneInfo(MARKET_TIMEZONE)
 
@@ -89,6 +91,7 @@ PRICE_REQUEST_TIMEOUT_SECONDS = 20
 SIGNAL_ALIGNMENT_BASE = 0.03
 SIGNAL_ALIGNMENT_CONFIDENCE_SCALE = 0.04
 STOOQ_DAILY_ENDPOINT = "https://stooq.com/q/d/l/"
+STOOQ_API_KEY_ENV = "STOOQ_API_KEY"
 TWELVEDATA_TIME_SERIES_ENDPOINT = "https://api.twelvedata.com/time_series"
 TWELVEDATA_API_KEY_ENVS = ("TWELVEDATA_API_KEY", "TWELVE_DATA_API_KEY")
 TWELVEDATA_REQUEST_INTERVAL_SECONDS_ENV = "TWELVEDATA_REQUEST_INTERVAL_SECONDS"
@@ -115,6 +118,7 @@ CALIBRATION_STEP_DAYS = 5
 CALIBRATION_MIN_ROWS = 180
 CALIBRATION_RIDGE_ALPHA = 0.75
 CALIBRATION_PREDICTION_PCTL = 0.90
+CALIBRATION_MIN_ABS_IC = 0.03
 TECHNICAL_SCORE_TARGET_SCALE = 0.30
 BLOCK_CALIBRATION_MIN_ROWS = 12
 BLOCK_CALIBRATION_FULL_TRUST_ROWS = 48
@@ -295,6 +299,8 @@ class SelectionDecision:
     threshold_confidence: float
     pick: Optional[StockCandidate]
     best_candidate: Optional[StockCandidate]
+    is_qualified: bool = False
+    release_quality: str = RELEASE_QUALITY_LOW_CONFIDENCE
 
 
 @dataclass(frozen=True)
@@ -306,6 +312,7 @@ class GenerationStats:
     price_provider_failures: int = 0
     degraded_reasons: List[str] = field(default_factory=list)
     model_calibration: Optional[Dict[str, Any]] = None
+    top_candidates: List[Dict[str, Any]] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -385,6 +392,10 @@ def allow_stooq_fallback() -> bool:
     return raw in {"1", "true", "yes", "on"}
 
 
+def stooq_api_key() -> str:
+    return os.getenv(STOOQ_API_KEY_ENV, "").strip()
+
+
 def load_disk_price_frame(symbol: str) -> Optional[pd.DataFrame]:
     path = resolve_price_frame_cache_path(symbol)
     if not path.exists():
@@ -416,6 +427,7 @@ def serialize_model_calibration(calibration: ModelCalibration) -> Dict[str, Any]
         "technical_scale": calibration.technical_scale,
         "training_row_count": calibration.training_row_count,
         "training_ic": calibration.training_ic,
+        "minimum_abs_ic_for_learned_weights": CALIBRATION_MIN_ABS_IC,
         "block_row_count": calibration.block_row_count,
         "source": calibration.source,
     }
@@ -832,6 +844,9 @@ def fetch_stooq_price_frame(symbol: str) -> pd.DataFrame:
             "s": query_symbol,
             "i": "d",
         }
+        api_key = stooq_api_key()
+        if api_key:
+            params["apikey"] = api_key
         url = f"{STOOQ_DAILY_ENDPOINT}?{urlencode(params)}"
         request = Request(
             url,
@@ -860,7 +875,7 @@ def fetch_stooq_price_frame(symbol: str) -> pd.DataFrame:
         if not body:
             attempts.append(f"{query_symbol}: empty body")
             continue
-        if "No data" in body or "404 Not Found" in body:
+        if "No data" in body or "404 Not Found" in body or "Get your apikey" in body:
             attempts.append(f"{query_symbol}: no data")
             continue
 
@@ -1982,21 +1997,34 @@ def build_model_calibration(
                 {name: float(value) for name, value in zip(TECHNICAL_FEATURE_ORDER, beta.tolist())}
             )
             raw_predictions = x @ np.array([normalized_weights[name] for name in TECHNICAL_FEATURE_ORDER], dtype=float)
+            training_ic = information_coefficient(raw_predictions, y)
             robust_scale = float(np.quantile(np.abs(raw_predictions), CALIBRATION_PREDICTION_PCTL)) if len(raw_predictions) else 0.0
             technical_scale = clamp(
                 TECHNICAL_SCORE_TARGET_SCALE / max(robust_scale, 1e-6),
                 0.12,
                 0.45,
             )
-            technical_calibration = ModelCalibration(
-                technical_weights=normalized_weights,
-                block_weights=dict(BLOCK_BASE_PRIORS),
-                technical_scale=technical_scale,
-                training_row_count=len(training_rows),
-                training_ic=information_coefficient(raw_predictions, y),
-                block_row_count=0,
-                source="price_history_5d_excess_return",
-            )
+            if abs(training_ic) >= CALIBRATION_MIN_ABS_IC:
+                technical_calibration = ModelCalibration(
+                    technical_weights=normalized_weights,
+                    block_weights=dict(BLOCK_BASE_PRIORS),
+                    technical_scale=technical_scale,
+                    training_row_count=len(training_rows),
+                    training_ic=training_ic,
+                    block_row_count=0,
+                    source="price_history_5d_excess_return",
+                )
+            else:
+                default_calibration = default_model_calibration()
+                technical_calibration = ModelCalibration(
+                    technical_weights=default_calibration.technical_weights,
+                    block_weights=dict(BLOCK_BASE_PRIORS),
+                    technical_scale=default_calibration.technical_scale,
+                    training_row_count=len(training_rows),
+                    training_ic=training_ic,
+                    block_row_count=0,
+                    source="price_history_low_ic_default_priors",
+                )
             source = technical_calibration.source
 
     block_weights, block_row_count, block_source = calibrate_block_weights(history_entries)
@@ -2348,7 +2376,10 @@ def build_thesis_monitor(
         macro_state = "watch"
         macro_detail = "The global overlay is present, but not yet decisive."
 
-    if score_margin < 0.015 or confidence_margin < 0.03:
+    if score_margin < 0.0 or confidence_margin < 0.0:
+        margin_state = "risk"
+        margin_detail = "This is the top ranked stock, but it is below the normal release bar."
+    elif score_margin < 0.015 or confidence_margin < 0.03:
         margin_state = "risk"
         margin_detail = "The pick only barely cleared the release bar."
     elif score_margin < 0.04 or confidence_margin < 0.08:
@@ -2670,6 +2701,53 @@ def build_candidate(
     )
 
 
+def serialize_ranked_candidate_snapshot(candidate: StockCandidate, rank: int) -> Dict[str, Any]:
+    return {
+        "rank": rank,
+        "symbol": candidate.symbol,
+        "company_name": candidate.company_name,
+        "sector": candidate.sector,
+        "risk": candidate.risk_level,
+        "model_score": round(candidate.total_score, 4),
+        "confidence_score": round(candidate.confidence_score, 2),
+        "confidence_label": candidate.confidence_label,
+        "price_as_of": candidate.price_as_of,
+        "news_as_of": candidate.news_as_of,
+        "article_count": candidate.article_count,
+        "diagnostics": {
+            "technical_total": round(candidate.score_breakdown["technical_total"], 4),
+            "news_adjustment": round(candidate.score_breakdown["weighted_news"], 4),
+            "macro_adjustment": round(candidate.score_breakdown["weighted_macro"], 4),
+            "sector_adjustment": round(candidate.score_breakdown["weighted_sector"], 4),
+            "signal_alignment": round(candidate.score_breakdown["weighted_signal_alignment"], 4),
+            "news_signal_input": round(float(candidate.score_breakdown.get("centered_news", 0.0)) * candidate.news_confidence, 4),
+            "macro_signal_input": round(
+                float(candidate.score_breakdown.get("centered_macro", 0.0))
+                * candidate.macro_confidence
+                * candidate.score_breakdown.get("macro_dedup_penalty", 1.0),
+                4,
+            ),
+            "sector_signal_input": round(
+                float(candidate.score_breakdown.get("centered_sector", 0.0))
+                * candidate.sector_confidence
+                * candidate.score_breakdown.get("sector_dedup_penalty", 1.0),
+                4,
+            ),
+        },
+    }
+
+
+def serialize_top_candidate_snapshots(
+    candidates: Sequence[StockCandidate],
+    limit: int = 10,
+) -> List[Dict[str, Any]]:
+    ranked = sorted(candidates, key=lambda item: item.total_score, reverse=True)
+    return [
+        serialize_ranked_candidate_snapshot(candidate, rank)
+        for rank, candidate in enumerate(ranked[:limit], start=1)
+    ]
+
+
 def get_candidates() -> Tuple[List[StockCandidate], GenerationStats]:
     universe_path = resolve_universe_csv_path()
     universe = load_universe(universe_path)
@@ -2726,13 +2804,36 @@ def get_candidates() -> Tuple[List[StockCandidate], GenerationStats]:
         price_provider_failures=price_provider_failures,
         degraded_reasons=degraded_reasons,
         model_calibration=serialize_model_calibration(calibration),
+        top_candidates=serialize_top_candidate_snapshots(candidates),
     )
     return candidates, stats
 
 
-def qualifies(candidate: StockCandidate, threshold_score: float) -> bool:
+def score_threshold_for_candidate(
+    candidate: StockCandidate,
+    threshold_score: float,
+    *,
+    enforce_risk_threshold: bool = False,
+) -> float:
+    if not enforce_risk_threshold:
+        return threshold_score
+    risk_threshold = RISK_SELECTION_THRESHOLDS.get(candidate.risk_level, threshold_score)
+    return max(threshold_score, risk_threshold)
+
+
+def qualifies(
+    candidate: StockCandidate,
+    threshold_score: float,
+    *,
+    enforce_risk_threshold: bool = False,
+) -> bool:
+    effective_threshold = score_threshold_for_candidate(
+        candidate,
+        threshold_score,
+        enforce_risk_threshold=enforce_risk_threshold,
+    )
     return (
-        candidate.total_score >= threshold_score
+        candidate.total_score >= effective_threshold
         and candidate.confidence_score >= MIN_CONFIDENCE_THRESHOLD
     )
 
@@ -2758,6 +2859,7 @@ def build_no_pick_reason(
     best_candidate: Optional[StockCandidate],
     threshold_score: float,
     stats: Optional[GenerationStats] = None,
+    enforce_risk_threshold: bool = False,
 ) -> str:
     policy_reason = price_failure_no_pick_reason(label, stats)
     if policy_reason:
@@ -2766,7 +2868,18 @@ def build_no_pick_reason(
     if best_candidate is None:
         return f"No {label} candidate had enough clean data to evaluate this week."
 
-    if best_candidate.total_score < threshold_score:
+    effective_threshold = score_threshold_for_candidate(
+        best_candidate,
+        threshold_score,
+        enforce_risk_threshold=enforce_risk_threshold,
+    )
+    if best_candidate.total_score < effective_threshold:
+        if enforce_risk_threshold and effective_threshold > threshold_score:
+            return (
+                f"No {label} candidate cleared the required score threshold. "
+                f"The best candidate was {best_candidate.symbol} at {best_candidate.total_score:.3f}, "
+                f"below the {best_candidate.risk_level}-risk bar of {effective_threshold:.2f}."
+            )
         return (
             f"No {label} candidate cleared the minimum score threshold of {threshold_score:.2f}. "
             f"The best candidate was {best_candidate.symbol} at {best_candidate.total_score:.3f}."
@@ -2784,29 +2897,76 @@ def select_best_candidate(
     stats: Optional[GenerationStats] = None,
 ) -> SelectionDecision:
     ranked = sorted(candidates, key=lambda item: item.total_score, reverse=True)
-    qualified = [item for item in ranked if qualifies(item, OVERALL_SELECTION_THRESHOLD)]
+    qualified = [
+        item
+        for item in ranked
+        if qualifies(item, OVERALL_SELECTION_THRESHOLD, enforce_risk_threshold=True)
+    ]
     if qualified:
         winner = qualified[0]
+        effective_threshold = score_threshold_for_candidate(
+            winner,
+            OVERALL_SELECTION_THRESHOLD,
+            enforce_risk_threshold=True,
+        )
         return SelectionDecision(
             status="picked",
             status_reason=(
                 f"{winner.symbol} cleared the commercial release thresholds for this market week "
                 f"with a score of {winner.total_score:.3f} and {winner.confidence_label} confidence."
             ),
-            threshold_score=OVERALL_SELECTION_THRESHOLD,
+            threshold_score=effective_threshold,
             threshold_confidence=MIN_CONFIDENCE_THRESHOLD,
             pick=winner,
             best_candidate=winner,
+            is_qualified=True,
+            release_quality=RELEASE_QUALITY_QUALIFIED,
         )
 
     best_candidate = ranked[0] if ranked else None
+    if best_candidate is not None:
+        effective_threshold = score_threshold_for_candidate(
+            best_candidate,
+            OVERALL_SELECTION_THRESHOLD,
+            enforce_risk_threshold=True,
+        )
+        if best_candidate.total_score < effective_threshold and effective_threshold > OVERALL_SELECTION_THRESHOLD:
+            gap_detail = (
+                f"it is below the {best_candidate.risk_level}-risk bar of {effective_threshold:.2f}"
+            )
+        elif best_candidate.total_score < effective_threshold:
+            gap_detail = f"it is below the score bar of {effective_threshold:.2f}"
+        else:
+            gap_detail = f"confidence is below the {MIN_CONFIDENCE_THRESHOLD:.2f} minimum"
+        return SelectionDecision(
+            status="picked",
+            status_reason=(
+                f"{best_candidate.symbol} is the top ranked stock this week, but it did not clear the normal release bar. "
+                f"Treat it as a low-confidence pick because {gap_detail}."
+            ),
+            threshold_score=effective_threshold,
+            threshold_confidence=MIN_CONFIDENCE_THRESHOLD,
+            pick=best_candidate,
+            best_candidate=best_candidate,
+            is_qualified=False,
+            release_quality=RELEASE_QUALITY_LOW_CONFIDENCE,
+        )
+
     return SelectionDecision(
         status="no_pick",
-        status_reason=build_no_pick_reason("overall", best_candidate, OVERALL_SELECTION_THRESHOLD, stats),
+        status_reason=build_no_pick_reason(
+            "overall",
+            best_candidate,
+            OVERALL_SELECTION_THRESHOLD,
+            stats,
+            enforce_risk_threshold=True,
+        ),
         threshold_score=OVERALL_SELECTION_THRESHOLD,
         threshold_confidence=MIN_CONFIDENCE_THRESHOLD,
         pick=None,
         best_candidate=best_candidate,
+        is_qualified=False,
+        release_quality="no_pick",
     )
 
 
@@ -2832,6 +2992,8 @@ def select_best_per_risk(
                 threshold_confidence=MIN_CONFIDENCE_THRESHOLD,
                 pick=winner,
                 best_candidate=winner,
+                is_qualified=True,
+                release_quality=RELEASE_QUALITY_QUALIFIED,
             )
             continue
 
@@ -2843,6 +3005,8 @@ def select_best_per_risk(
             threshold_confidence=MIN_CONFIDENCE_THRESHOLD,
             pick=None,
             best_candidate=best_candidate,
+            is_qualified=False,
+            release_quality="no_pick",
         )
 
     return decisions
@@ -2939,6 +3103,8 @@ def serialize_selection(selection: SelectionDecision) -> Dict[str, Any]:
     payload: Dict[str, Any] = {
         "status": selection.status,
         "status_reason": selection.status_reason,
+        "is_qualified": selection.is_qualified,
+        "release_quality": selection.release_quality,
         "threshold_score": round(selection.threshold_score, 2),
         "threshold_confidence": round(selection.threshold_confidence, 2),
         "pick": serialize_candidate(
@@ -3006,6 +3172,7 @@ def common_payload(
             "price_provider_failures": stats.price_provider_failures,
             "skipped_details": stats.skipped_details,
             "model_calibration": stats.model_calibration,
+            "top_candidates": stats.top_candidates,
         },
         "selection_thresholds": {
             "overall_score": OVERALL_SELECTION_THRESHOLD,
@@ -3095,6 +3262,8 @@ def normalize_history_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
     week_end = entry.get("week_end") or week_start
     week_id = entry.get("week_id") or history_week_id(week_start)
     status = entry.get("status") or ("picked" if entry.get("symbol") else "no_pick")
+    raw_is_qualified = entry.get("is_qualified")
+    is_qualified = raw_is_qualified if isinstance(raw_is_qualified, bool) else status == "picked"
 
     return {
         "week_id": week_id,
@@ -3104,6 +3273,8 @@ def normalize_history_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
         "logged_at": entry.get("logged_at") or week_start,
         "status": status,
         "status_reason": entry.get("status_reason") or "",
+        "is_qualified": is_qualified,
+        "release_quality": entry.get("release_quality") or (RELEASE_QUALITY_QUALIFIED if status == "picked" else "no_pick"),
         "symbol": entry.get("symbol"),
         "company_name": entry.get("company_name"),
         "sector": entry.get("sector"),
@@ -3114,6 +3285,7 @@ def normalize_history_entry(entry: Dict[str, Any]) -> Dict[str, Any]:
         "data_as_of": entry.get("data_as_of"),
         "model_version": entry.get("model_version", MODEL_VERSION),
         "diagnostics": entry.get("diagnostics") if isinstance(entry.get("diagnostics"), dict) else None,
+        "top_candidates": entry.get("top_candidates") if isinstance(entry.get("top_candidates"), list) else [],
         "realized_5d_return": entry.get("realized_5d_return"),
         "realized_5d_excess_return": entry.get("realized_5d_excess_return"),
     }
@@ -3124,6 +3296,7 @@ def build_history_entry(
     selection: SelectionDecision,
     generated_at: str,
     data_as_of: str,
+    top_candidates: Optional[List[Dict[str, Any]]] = None,
 ) -> Dict[str, Any]:
     pick = selection.pick
     return {
@@ -3134,6 +3307,8 @@ def build_history_entry(
         "logged_at": generated_at,
         "status": selection.status,
         "status_reason": selection.status_reason,
+        "is_qualified": selection.is_qualified,
+        "release_quality": selection.release_quality,
         "symbol": pick.symbol if pick else None,
         "company_name": pick.company_name if pick else None,
         "sector": pick.sector if pick else None,
@@ -3143,6 +3318,7 @@ def build_history_entry(
         "confidence_label": pick.confidence_label if pick else None,
         "data_as_of": data_as_of,
         "model_version": MODEL_VERSION,
+        "top_candidates": top_candidates or [],
         "diagnostics": (
             {
                 "technical_total": round(pick.score_breakdown["technical_total"], 4),
@@ -3244,10 +3420,17 @@ def update_history(
     generated_at: str,
     data_as_of: str,
     data_quality: Optional[Dict[str, Any]] = None,
+    top_candidates: Optional[List[Dict[str, Any]]] = None,
     history_path: Path = HISTORY_PATH,
 ) -> Dict[str, Any]:
     entries = [normalize_history_entry(entry) for entry in load_existing_history_entries(history_path)]
-    new_entry = build_history_entry(market_week, selection, generated_at, data_as_of)
+    new_entry = build_history_entry(
+        market_week,
+        selection,
+        generated_at,
+        data_as_of,
+        top_candidates=top_candidates,
+    )
 
     filtered_entries = [entry for entry in entries if entry.get("week_id") != market_week.week_id]
     filtered_entries.append(new_entry)
@@ -3320,6 +3503,7 @@ def main() -> None:
         generated_at=generated_at,
         data_as_of=data_as_of,
         data_quality=data_quality,
+        top_candidates=stats.top_candidates,
     )
 
     print("[INFO] current_pick.json, risk_picks.json and history.json updated.")

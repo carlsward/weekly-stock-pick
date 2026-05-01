@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-04-30T17:10:21Z",
-  "data_as_of": "2026-04-30",
-  "expected_next_refresh_at": "2026-05-01T17:10:21Z",
-  "stale_after": "2026-05-02T05:10:21Z",
+  "generated_at": "2026-05-01T16:45:54Z",
+  "data_as_of": "2026-05-01",
+  "expected_next_refresh_at": "2026-05-02T16:45:54Z",
+  "stale_after": "2026-05-03T04:45:54Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W18",
@@ -24,99 +24,88 @@
     "company_name": "Texas Instruments Incorporated",
     "sector": "technology",
     "risk": "high",
-    "model_score": -0.0392,
+    "model_score": -0.0185,
     "confidence_score": 0.54,
     "confidence_label": "low",
-    "price_as_of": "2026-04-30",
+    "price_as_of": "2026-05-01",
     "news_as_of": "2026-04-27",
     "macro_as_of": null,
-    "sector_as_of": null,
-    "article_count": 3,
+    "sector_as_of": "2026-05-01",
+    "article_count": 2,
     "metrics": {
-      "momentum_5d": -0.0114,
-      "momentum_20d": 0.4213,
-      "daily_volatility": 0.0447,
-      "downside_volatility": 0.0149,
+      "momentum_5d": 0.0064,
+      "momentum_20d": 0.4313,
+      "daily_volatility": 0.0449,
+      "downside_volatility": 0.015,
       "max_drawdown_20d": 0.061,
-      "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.1916,
-      "volume_trend_5d": 0.1195,
-      "market_relative_5d": -0.0208,
-      "market_relative_20d": 0.302,
-      "sector_relative_5d": -0.028,
-      "sector_relative_20d": 0.2098,
-      "news_sentiment": 0.68,
+      "positive_day_ratio_10d": 0.5,
+      "price_vs_20d_average": 0.1698,
+      "volume_trend_5d": -0.06,
+      "market_relative_5d": -0.0046,
+      "market_relative_20d": 0.3004,
+      "sector_relative_5d": -0.0029,
+      "sector_relative_20d": 0.2037,
+      "news_sentiment": 0.69,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.351,
-      "news_confidence": 0.4,
+      "calibrated_news_sentiment": 0.3711,
+      "news_confidence": 0.43,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 0.33,
-      "source_count": 3,
+      "sector_sentiment": 0.68,
+      "sector_confidence": 0.43,
+      "effective_article_count": 0.29,
+      "source_count": 2,
       "average_relevance": 1.0,
       "technical_training_ic": 0.0018,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0661,
-      "short_momentum": -0.0132,
+      "momentum": 0.0736,
+      "short_momentum": 0.0074,
       "medium_momentum": 0.0254,
-      "trend_quality": 0.0026,
-      "volume_confirmation": 0.007,
+      "trend_quality": 0.0,
+      "volume_confirmation": -0.0035,
       "market_relative_strength": 0.0,
       "sector_relative_strength": 0.0444,
-      "volatility_penalty": -0.1434,
+      "volatility_penalty": -0.1437,
       "daily_volatility_penalty": -0.0,
-      "downside_penalty": -0.1434,
+      "downside_penalty": -0.1437,
       "drawdown_penalty": -0.0,
-      "news_adjustment": 0.0423,
+      "news_adjustment": 0.0464,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0,
-      "signal_alignment": -0.0042,
-      "technical_total": -0.0773,
-      "trend_strength": 0.0148,
+      "sector_adjustment": 0.0093,
+      "signal_alignment": -0.0041,
+      "technical_total": -0.0701,
+      "trend_strength": 0.0328,
       "relative_strength": 0.0444,
-      "participation": 0.007,
-      "risk_control": -0.1434,
+      "participation": -0.0035,
+      "risk_control": -0.1437,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.55,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
+      "news_sector_overlap": 0.75,
       "macro_sector_overlap": 0.0,
-      "total": -0.0392
+      "total": -0.0185
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is -1.1% and 20-day momentum is 42.1%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 19.2% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 0.6% and 20-day momentum is 43.1%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 17.0% relative to its 20-day average.",
       "Risk profile shows daily volatility around 4.5%, downside volatility near 1.5%, and a recent max drawdown of 6.1%.",
-      "Volume confirmation is 11.9% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is -2.1% versus SPY over 5 days and -2.8% versus the sector ETF.",
-      "News signal is bullish with score 0.68, confidence 0.40, and 0.3 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.82, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.3 effective weighted articles, average relevance 1.00, average source quality 0.77, confidence 0.72.",
+      "Volume confirmation is -6.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is -0.5% versus SPY over 5 days and -0.3% versus the sector ETF.",
+      "News signal is bullish with score 0.69, confidence 0.43, and 0.3 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.84, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.3 effective weighted articles, average relevance 1.00, average source quality 0.78, confidence 0.79.",
+      "Broad market news leaned bullish for the Technology sector with score 0.68 and confidence 0.43.",
+      "Three large private-credit firms publicly reassuring investors about AI-related risks to their software borrowers reduces perceived tail risk for those borrowers. First-order transmission: reassurance likely narrows credit spreads and eases short-term funding/liquidity concerns for mid-market software firms dependent on private credit, lowering the risk of defaults or distressed asset sales. Second-order effects: calmer funding conditions support software companies’ near-term cashflow, capex and M&A plans and reduces sector volatility and downside pressure on technology valuations. Impact is broad across technology/software exposure rather than company-specific, so beneficiaries are sector-level (technology). The short-horizon effect is modest and transitory (limited magnitude) but positive for sentiment and risk appetite in tech over the next 1–2 weeks.",
+      "Sector overlay was trimmed by 45% because it overlaps with company or macro themes.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is -0.039 with low confidence."
+      "Overall model score is -0.018 with low confidence."
     ],
     "news_evidence": [
-      {
-        "title": "Wolfe Research Raises Texas Instruments (TXN) PT to $315, Truist Lifts Target after Strong Q1",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/wolfe-research-raises-texas-instruments-163420854.html",
-        "published_at": "2026-04-26T16:34:20Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.44,
-        "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 0.8,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Reports of Wolfe Research and Truist raising targets following 'strong' Q1 results and upbeat Q2 guidance. Analyst upgrades and positive earnings/guidance commentary are directly relevant and likely to influence short-term price action."
-      },
       {
         "title": "Texas Instruments: The Backbone Of The Data Center Revolution (NASDAQ:TXN)",
         "provider": "seekingalpha.com",
@@ -124,30 +113,30 @@
         "published_at": "2026-04-27T16:00:02Z",
         "relevance_score": 1.0,
         "sentiment": 0.35,
-        "doc_type": "sector_macro",
+        "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.6,
+        "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Seeking Alpha thematic/analysis about TXN’s role in data-center and power markets and mentions expansion/acquisition. Useful for contextual sentiment but likely not delivering new, market-moving details for the next 1–10 trading days."
+        "llm_reason": "Seeking Alpha discusses TXN-specific initiatives (facility expansion, an acquisition into power market) which are directly relevant to the company. The content supports a positive structural thesis but appears analytical/opinion-based and likely has moderate rather than immediate impact on price in the 1–10 day horizon unless tied to a separate press release or earnings surprise."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
       "headline": "Support needs review",
-      "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
+      "summary": "Trend quality is still positive, but the tape is no longer decisive.",
       "alerts": [
-        "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
+        "Trend quality is still positive, but the tape is no longer decisive.",
         "Volatility expanded enough to weaken the setup.",
         "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "risk",
-          "value": "-1.1% 5D • 42.1% 20D",
-          "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
+          "state": "watch",
+          "value": "0.6% 5D • 43.1% 20D",
+          "detail": "Trend quality is still positive, but the tape is no longer decisive."
         },
         {
           "label": "Volatility",
@@ -158,7 +147,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.68 sentiment • 3 articles",
+          "value": "0.69 sentiment • 2 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -170,14 +159,14 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.139 score • -0.011 conf",
+          "value": "-0.118 score • -0.011 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
-          "state": "watch",
-          "value": "price 0 trading days • news 3 trading days • macro neutral • sector neutral",
-          "detail": "Freshness should be checked before acting: company news is 3 trading days old."
+          "state": "risk",
+          "value": "price 0 trading days • news 4 trading days • macro neutral • sector 0 trading days",
+          "detail": "Some of the supporting data is getting old enough to weaken monitoring quality: company news is 4 trading days old."
         }
       ]
     }
@@ -199,13 +188,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-30",
+          "date": "2026-05-01",
           "status": "healthy",
-          "used": 1,
+          "used": 4,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 21,
           "categories": {
-            "global_news": 1
+            "company_news": 2,
+            "global_news": 2
           }
         }
       },
@@ -218,13 +208,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-30",
+          "date": "2026-05-01",
           "status": "tracking_only",
-          "used": 1,
+          "used": 4,
           "limit": null,
           "remaining": null,
           "categories": {
-            "global_news": 1
+            "company_news": 2,
+            "global_news": 2
           }
         }
       },
@@ -238,14 +229,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-30",
+          "date": "2026-05-01",
           "status": "healthy",
-          "used": 2,
+          "used": 52,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 48,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 50,
+            "global_news": 2
           }
         }
       },
@@ -259,14 +250,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-04-30",
+          "date": "2026-05-01",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
@@ -279,13 +270,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-04-30",
+          "date": "2026-05-01",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

@@ -1,48 +1,476 @@
 {
   "schema_version": 2,
-  "model_version": "v3.3-monthly",
-  "generated_at": "2026-03-28T22:22:55Z",
-  "data_as_of": "2026-03-27",
-  "expected_next_refresh_at": "2026-04-01T12:00:00Z",
-  "stale_after": "2026-04-04T12:00:00Z",
+  "model_version": "v3.4-monthly",
+  "generated_at": "2026-05-01T13:39:59Z",
+  "data_as_of": "2026-05-01",
+  "expected_next_refresh_at": "2026-06-01T12:00:00Z",
+  "stale_after": "2026-06-04T12:00:00Z",
   "period_context": {
     "timezone": "America/New_York",
-    "month_id": "2026-03",
-    "month_label": "March 2026",
-    "month_start": "2026-03-01",
-    "month_end": "2026-03-31",
-    "rebalance_date": "2026-03-01",
+    "month_id": "2026-05",
+    "month_label": "May 2026",
+    "month_start": "2026-05-01",
+    "month_end": "2026-05-31",
+    "rebalance_date": "2026-05-01",
     "horizon_trading_days": 20
   },
   "generation_summary": {
     "universe_size": 49,
     "evaluated_candidates": 49,
     "skipped_symbols": 0,
-    "skipped_details": []
+    "price_provider_failures": 0,
+    "skipped_details": [],
+    "top_candidates": [
+      {
+        "rank": 1,
+        "symbol": "QCOM",
+        "company_name": "QUALCOMM Incorporated",
+        "sector": "technology",
+        "risk": "high",
+        "model_score": 0.3303,
+        "confidence_score": 0.83,
+        "confidence_label": "high",
+        "price_as_of": "2026-05-01",
+        "news_as_of": "2026-04-30",
+        "article_count": 5,
+        "diagnostics": {
+          "technical_total": 0.2031,
+          "news_adjustment": 0.1006,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0009,
+          "signal_alignment": 0.0257
+        }
+      },
+      {
+        "rank": 2,
+        "symbol": "GOOGL",
+        "company_name": "Alphabet Inc.",
+        "sector": "communication_services",
+        "risk": "high",
+        "model_score": 0.3273,
+        "confidence_score": 0.8,
+        "confidence_label": "high",
+        "price_as_of": "2026-05-01",
+        "news_as_of": "2026-05-01",
+        "article_count": 5,
+        "diagnostics": {
+          "technical_total": 0.1864,
+          "news_adjustment": 0.1141,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0268
+        }
+      },
+      {
+        "rank": 3,
+        "symbol": "TXN",
+        "company_name": "Texas Instruments Incorporated",
+        "sector": "technology",
+        "risk": "high",
+        "model_score": 0.2998,
+        "confidence_score": 0.71,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-01",
+        "news_as_of": "2026-04-26",
+        "article_count": 5,
+        "diagnostics": {
+          "technical_total": 0.2285,
+          "news_adjustment": 0.0547,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0009,
+          "signal_alignment": 0.0157
+        }
+      },
+      {
+        "rank": 4,
+        "symbol": "UNH",
+        "company_name": "UnitedHealth Group Incorporated",
+        "sector": "healthcare",
+        "risk": "high",
+        "model_score": 0.2705,
+        "confidence_score": 0.69,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-01",
+        "news_as_of": "2026-04-28",
+        "article_count": 4,
+        "diagnostics": {
+          "technical_total": 0.2381,
+          "news_adjustment": 0.0249,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0075
+        }
+      },
+      {
+        "rank": 5,
+        "symbol": "INTC",
+        "company_name": "Intel Corporation",
+        "sector": "technology",
+        "risk": "high",
+        "model_score": 0.2633,
+        "confidence_score": 0.7,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-01",
+        "news_as_of": "2026-04-30",
+        "article_count": 4,
+        "diagnostics": {
+          "technical_total": 0.2325,
+          "news_adjustment": 0.023,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0011,
+          "signal_alignment": 0.0067
+        }
+      },
+      {
+        "rank": 6,
+        "symbol": "NVDA",
+        "company_name": "NVIDIA Corporation",
+        "sector": "technology",
+        "risk": "high",
+        "model_score": 0.2093,
+        "confidence_score": 0.67,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-01",
+        "news_as_of": "2026-05-01",
+        "article_count": 3,
+        "diagnostics": {
+          "technical_total": 0.1253,
+          "news_adjustment": 0.0717,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0011,
+          "signal_alignment": 0.0113
+        }
+      },
+      {
+        "rank": 7,
+        "symbol": "SBUX",
+        "company_name": "Starbucks Corporation",
+        "sector": "consumer_discretionary",
+        "risk": "high",
+        "model_score": 0.2036,
+        "confidence_score": 0.66,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-01",
+        "news_as_of": "2026-04-28",
+        "article_count": 5,
+        "diagnostics": {
+          "technical_total": 0.148,
+          "news_adjustment": 0.0469,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0087
+        }
+      },
+      {
+        "rank": 8,
+        "symbol": "ORCL",
+        "company_name": "Oracle Corporation",
+        "sector": "technology",
+        "risk": "high",
+        "model_score": 0.1916,
+        "confidence_score": 0.61,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-01",
+        "news_as_of": "2026-04-30",
+        "article_count": 3,
+        "diagnostics": {
+          "technical_total": 0.1206,
+          "news_adjustment": 0.0607,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.001,
+          "signal_alignment": 0.0092
+        }
+      },
+      {
+        "rank": 9,
+        "symbol": "AMZN",
+        "company_name": "Amazon.com Inc.",
+        "sector": "consumer_discretionary",
+        "risk": "medium",
+        "model_score": 0.185,
+        "confidence_score": 0.65,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-01",
+        "news_as_of": "2026-04-29",
+        "article_count": 5,
+        "diagnostics": {
+          "technical_total": 0.1873,
+          "news_adjustment": -0.0023,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0
+        }
+      },
+      {
+        "rank": 10,
+        "symbol": "V",
+        "company_name": "Visa Inc.",
+        "sector": "financials",
+        "risk": "high",
+        "model_score": 0.17,
+        "confidence_score": 0.72,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-01",
+        "news_as_of": "2026-04-30",
+        "article_count": 5,
+        "diagnostics": {
+          "technical_total": 0.0597,
+          "news_adjustment": 0.1042,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": -0.0018,
+          "signal_alignment": 0.0078
+        }
+      }
+    ]
   },
   "selection_thresholds": {
     "overall_score": 0.12,
     "minimum_confidence": 0.6
   },
   "data_quality": {
-    "status": "healthy",
-    "degraded_reason": null,
-    "reasons": [],
-    "provider_status": {}
+    "status": "degraded",
+    "degraded_reason": "news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
+    "reasons": [
+      "news_scores: GDELT company news failed for at least one symbol.",
+      "sector_scores: GDELT global-news feed failed during this run."
+    ],
+    "provider_status": {
+      "alpha_vantage": {
+        "status": "healthy",
+        "used": 3,
+        "limit": 25,
+        "remaining": 22,
+        "categories": {
+          "company_news": 2,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-05-01",
+          "status": "healthy",
+          "used": 3,
+          "limit": 25,
+          "remaining": 22,
+          "categories": {
+            "company_news": 2,
+            "global_news": 1
+          }
+        }
+      },
+      "gdelt": {
+        "status": "tracking_only",
+        "used": 3,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "company_news": 2,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-05-01",
+          "status": "tracking_only",
+          "used": 3,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "company_news": 2,
+            "global_news": 1
+          }
+        }
+      },
+      "marketaux": {
+        "status": "healthy",
+        "used": 50,
+        "limit": 100,
+        "remaining": 50,
+        "categories": {
+          "company_news": 49,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-05-01",
+          "status": "healthy",
+          "used": 50,
+          "limit": 100,
+          "remaining": 50,
+          "categories": {
+            "company_news": 49,
+            "global_news": 1
+          }
+        }
+      },
+      "sec_edgar": {
+        "status": "tracking_only",
+        "used": 50,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "ticker_map": 1,
+          "submissions": 49
+        },
+        "daily": {
+          "date": "2026-05-01",
+          "status": "tracking_only",
+          "used": 50,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "ticker_map": 1,
+            "submissions": 49
+          }
+        }
+      },
+      "twelvedata": {
+        "status": "healthy",
+        "used": 58,
+        "limit": 800,
+        "remaining": 742,
+        "categories": {
+          "price": 58
+        },
+        "daily": {
+          "date": "2026-05-01",
+          "status": "healthy",
+          "used": 58,
+          "limit": 800,
+          "remaining": 742,
+          "categories": {
+            "price": 58
+          }
+        }
+      }
+    }
   },
   "selection": {
-    "status": "no_pick",
-    "status_reason": "No monthly candidate cleared the minimum confidence threshold of 0.60. The best score was MSFT at 0.136 with medium confidence.",
+    "status": "picked",
+    "status_reason": "QCOM cleared the monthly release thresholds for QUALCOMM Incorporated with a score of 0.330 and high confidence.",
     "threshold_score": 0.12,
     "threshold_confidence": 0.6,
-    "pick": null,
-    "best_candidate": {
-      "symbol": "MSFT",
-      "company_name": "Microsoft Corporation",
-      "risk": "low",
-      "model_score": 0.1357,
-      "confidence_score": 0.55,
-      "confidence_label": "medium"
+    "pick": {
+      "symbol": "QCOM",
+      "company_name": "QUALCOMM Incorporated",
+      "sector": "technology",
+      "risk": "high",
+      "model_score": 0.3303,
+      "confidence_score": 0.83,
+      "confidence_label": "high",
+      "price_as_of": "2026-05-01",
+      "news_as_of": "2026-04-30",
+      "macro_as_of": null,
+      "sector_as_of": "2026-05-01",
+      "article_count": 5,
+      "metrics": {
+        "momentum_20d": 0.3757,
+        "momentum_60d": 0.1716,
+        "daily_volatility": 0.0416,
+        "downside_volatility": 0.0159,
+        "max_drawdown_60d": 0.1667,
+        "price_vs_50d_average": 0.2766,
+        "positive_day_ratio_20d": 0.7,
+        "volume_trend_10d": 0.941,
+        "market_relative_20d": 0.2491,
+        "market_relative_60d": 0.1131,
+        "sector_relative_20d": 0.1573,
+        "sector_relative_60d": 0.0011,
+        "news_sentiment": 0.87,
+        "raw_news_sentiment": 0.7812,
+        "calibrated_news_sentiment": 0.7353,
+        "news_confidence": 0.95,
+        "macro_sentiment": 0.5,
+        "macro_confidence": 0.2,
+        "sector_sentiment": 0.52,
+        "sector_confidence": 0.17,
+        "effective_article_count": 2.09,
+        "source_count": 4,
+        "average_relevance": 0.99,
+        "technical_training_ic": 0.0192,
+        "technical_training_rows": 882,
+        "block_training_rows": 0
+      },
+      "score_breakdown": {
+        "trend_strength": 0.1664,
+        "relative_strength": 0.0455,
+        "participation": 0.0238,
+        "risk_control": -0.0326,
+        "technical_total": 0.2031,
+        "news_adjustment": 0.1006,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0009,
+        "signal_alignment": 0.0257,
+        "block_weight_news": 0.14,
+        "block_weight_macro": 0.12,
+        "block_weight_sector": 0.09,
+        "macro_dedup_penalty": 1.0,
+        "sector_dedup_penalty": 0.64,
+        "total": 0.3303
+      },
+      "reasons": [
+        "Medium-term trend stayed constructive: 20-day momentum is 37.6% and 60-day momentum is 17.2%.",
+        "Trend quality held up over the last month with 70% positive sessions and price trading 27.7% versus its 50-day average.",
+        "Relative strength is 24.9% versus SPY over 20 days and 15.7% versus the Technology benchmark.",
+        "Risk profile shows 4.2% daily volatility and a 16.7% drawdown over the last 60 trading days.",
+        "Company news contributed a bullish overlay at 0.87 with confidence 0.95.",
+        "Technical weights were calibrated on 882 historical symbol-month windows against 20-day excess return (IC 0.02).",
+        "Monthly model score is 0.330 with high confidence."
+      ],
+      "news_evidence": [
+        {
+          "title": "Tech Giant QUALCOMM Incorporated (Nasdaq: QCOM) Shares Surge Double Digits on Solid Q2 FY2026 Earnings Report",
+          "provider": "investorideas.com",
+          "url": "https://www.investorideas.com/news/2026/technology/04301-qualcomm-ai-earnings-semiconductor-growth.asp",
+          "published_at": "2026-04-30T17:40:00Z",
+          "relevance_score": 1.0,
+          "sentiment": 0.34,
+          "doc_type": "company_specific",
+          "company_relevance": 1.0,
+          "materiality": 1.0,
+          "llm_confidence": 1.0,
+          "llm_impact_score": 1.0,
+          "llm_reason": "Direct report of Qualcomm’s strong Q2 FY2026 earnings and an immediate large share-price move (+16%), which is highly material for short-term price action and sentiment."
+        },
+        {
+          "title": "QUALCOMM Incorporated filed 10-Q: 10-Q",
+          "provider": "SEC EDGAR",
+          "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432826000061/qcom-20260329.htm",
+          "published_at": "2026-04-29T20:03:22Z",
+          "relevance_score": 1.0,
+          "sentiment": 0.0,
+          "doc_type": "company_specific",
+          "company_relevance": 1.0,
+          "materiality": 1.0,
+          "llm_confidence": 1.0,
+          "llm_impact_score": 0.5,
+          "llm_reason": "Official 10-Q filing for the quarter; important for formal disclosure but typically incremental to the earnings release for near-term trading unless it contains unexpected items (no specifics provided here)."
+        },
+        {
+          "title": "QUALCOMM Incorporated filed 8-K: 8-K",
+          "provider": "SEC EDGAR",
+          "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432826000060/qcom-20260429.htm",
+          "published_at": "2026-04-29T20:02:20Z",
+          "relevance_score": 1.0,
+          "sentiment": 0.0,
+          "doc_type": "company_specific",
+          "company_relevance": 1.0,
+          "materiality": 1.0,
+          "llm_confidence": 1.0,
+          "llm_impact_score": 0.5,
+          "llm_reason": "8-K filing is company-specific and can be material, but without the filing’s content it is treated as routine/confirmatory to the earnings event; modest near-term impact unless it reveals new surprises."
+        },
+        {
+          "title": "QUALCOMM Incorporated (NASDAQ:QCOM) Q2 2026 Earnings Call Transcript",
+          "provider": "insidermonkey.com",
+          "url": "https://www.insidermonkey.com/blog/qualcomm-incorporated-nasdaqqcom-q2-2026-earnings-call-transcript-1751028/",
+          "published_at": "2026-04-30T12:15:18Z",
+          "relevance_score": 1.0,
+          "sentiment": 0.36,
+          "doc_type": "company_specific",
+          "company_relevance": 1.0,
+          "materiality": 1.0,
+          "llm_confidence": 1.0,
+          "llm_impact_score": 1.0,
+          "llm_reason": "Earnings call transcript with management commentary and guidance — high relevance and material for near-term expectations and investor sentiment, reinforcing the bullish earnings surprise."
+        }
+      ],
+      "macro_evidence": []
     }
   }
 }

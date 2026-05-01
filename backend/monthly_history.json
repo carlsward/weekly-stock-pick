@@ -1,13 +1,7 @@
 {
   "schema_version": 2,
-  "model_version": "v3.3-monthly",
-  "generated_at": "2026-03-28T22:22:55Z",
-  "data_quality": {
-    "status": "healthy",
-    "degraded_reason": null,
-    "reasons": [],
-    "provider_status": {}
-  },
+  "model_version": "v3.4-monthly",
+  "generated_at": "2026-05-01T13:39:59Z",
   "entries": [
     {
       "month_id": "2026-03",
@@ -27,7 +21,359 @@
       "confidence_label": null,
       "data_as_of": "2026-03-27",
       "model_version": "v3.3-monthly",
+      "realized_20d_return": null,
+      "realized_20d_excess_return": null,
+      "top_candidates": [],
       "diagnostics": null
+    },
+    {
+      "month_id": "2026-05",
+      "month_start": "2026-05-01",
+      "month_end": "2026-05-31",
+      "rebalance_date": "2026-05-01",
+      "month_label": "May 2026",
+      "logged_at": "2026-05-01T13:39:59Z",
+      "status": "picked",
+      "status_reason": "QCOM cleared the monthly release thresholds for QUALCOMM Incorporated with a score of 0.330 and high confidence.",
+      "symbol": "QCOM",
+      "company_name": "QUALCOMM Incorporated",
+      "sector": "technology",
+      "risk": "high",
+      "model_score": 0.3303,
+      "confidence_score": 0.83,
+      "confidence_label": "high",
+      "data_as_of": "2026-05-01",
+      "model_version": "v3.4-monthly",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "QCOM",
+          "company_name": "QUALCOMM Incorporated",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.3303,
+          "confidence_score": 0.83,
+          "confidence_label": "high",
+          "price_as_of": "2026-05-01",
+          "news_as_of": "2026-04-30",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.2031,
+            "news_adjustment": 0.1006,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0009,
+            "signal_alignment": 0.0257
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "GOOGL",
+          "company_name": "Alphabet Inc.",
+          "sector": "communication_services",
+          "risk": "high",
+          "model_score": 0.3273,
+          "confidence_score": 0.8,
+          "confidence_label": "high",
+          "price_as_of": "2026-05-01",
+          "news_as_of": "2026-05-01",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.1864,
+            "news_adjustment": 0.1141,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0268
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "TXN",
+          "company_name": "Texas Instruments Incorporated",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.2998,
+          "confidence_score": 0.71,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-01",
+          "news_as_of": "2026-04-26",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.2285,
+            "news_adjustment": 0.0547,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0009,
+            "signal_alignment": 0.0157
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "UNH",
+          "company_name": "UnitedHealth Group Incorporated",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": 0.2705,
+          "confidence_score": 0.69,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-01",
+          "news_as_of": "2026-04-28",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.2381,
+            "news_adjustment": 0.0249,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0075
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "INTC",
+          "company_name": "Intel Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.2633,
+          "confidence_score": 0.7,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-01",
+          "news_as_of": "2026-04-30",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.2325,
+            "news_adjustment": 0.023,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0011,
+            "signal_alignment": 0.0067
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "NVDA",
+          "company_name": "NVIDIA Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.2093,
+          "confidence_score": 0.67,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-01",
+          "news_as_of": "2026-05-01",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1253,
+            "news_adjustment": 0.0717,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0011,
+            "signal_alignment": 0.0113
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "SBUX",
+          "company_name": "Starbucks Corporation",
+          "sector": "consumer_discretionary",
+          "risk": "high",
+          "model_score": 0.2036,
+          "confidence_score": 0.66,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-01",
+          "news_as_of": "2026-04-28",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.148,
+            "news_adjustment": 0.0469,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0087
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "ORCL",
+          "company_name": "Oracle Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1916,
+          "confidence_score": 0.61,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-01",
+          "news_as_of": "2026-04-30",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1206,
+            "news_adjustment": 0.0607,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.001,
+            "signal_alignment": 0.0092
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "AMZN",
+          "company_name": "Amazon.com Inc.",
+          "sector": "consumer_discretionary",
+          "risk": "medium",
+          "model_score": 0.185,
+          "confidence_score": 0.65,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-01",
+          "news_as_of": "2026-04-29",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.1873,
+            "news_adjustment": -0.0023,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "V",
+          "company_name": "Visa Inc.",
+          "sector": "financials",
+          "risk": "high",
+          "model_score": 0.17,
+          "confidence_score": 0.72,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-01",
+          "news_as_of": "2026-04-30",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.0597,
+            "news_adjustment": 0.1042,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": -0.0018,
+            "signal_alignment": 0.0078
+          }
+        }
+      ],
+      "diagnostics": {
+        "technical_total": 0.2031,
+        "news_adjustment": 0.1006,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0009,
+        "news_signal_input": 0.703,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0038,
+        "technical_training_rows": 882,
+        "technical_training_ic": 0.0192,
+        "block_training_rows": 0,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.6,
+        "macro_sector_overlap": 0.0
+      }
     }
-  ]
+  ],
+  "data_quality": {
+    "status": "degraded",
+    "degraded_reason": "news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
+    "reasons": [
+      "news_scores: GDELT company news failed for at least one symbol.",
+      "sector_scores: GDELT global-news feed failed during this run."
+    ],
+    "provider_status": {
+      "alpha_vantage": {
+        "status": "healthy",
+        "used": 3,
+        "limit": 25,
+        "remaining": 22,
+        "categories": {
+          "company_news": 2,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-05-01",
+          "status": "healthy",
+          "used": 3,
+          "limit": 25,
+          "remaining": 22,
+          "categories": {
+            "company_news": 2,
+            "global_news": 1
+          }
+        }
+      },
+      "gdelt": {
+        "status": "tracking_only",
+        "used": 3,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "company_news": 2,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-05-01",
+          "status": "tracking_only",
+          "used": 3,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "company_news": 2,
+            "global_news": 1
+          }
+        }
+      },
+      "marketaux": {
+        "status": "healthy",
+        "used": 50,
+        "limit": 100,
+        "remaining": 50,
+        "categories": {
+          "company_news": 49,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-05-01",
+          "status": "healthy",
+          "used": 50,
+          "limit": 100,
+          "remaining": 50,
+          "categories": {
+            "company_news": 49,
+            "global_news": 1
+          }
+        }
+      },
+      "sec_edgar": {
+        "status": "tracking_only",
+        "used": 50,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "ticker_map": 1,
+          "submissions": 49
+        },
+        "daily": {
+          "date": "2026-05-01",
+          "status": "tracking_only",
+          "used": 50,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "ticker_map": 1,
+            "submissions": 49
+          }
+        }
+      },
+      "twelvedata": {
+        "status": "healthy",
+        "used": 58,
+        "limit": 800,
+        "remaining": 742,
+        "categories": {
+          "price": 58
+        },
+        "daily": {
+          "date": "2026-05-01",
+          "status": "healthy",
+          "used": 58,
+          "limit": 800,
+          "remaining": 742,
+          "categories": {
+            "price": 58
+          }
+        }
+      }
+    }
+  }
 }

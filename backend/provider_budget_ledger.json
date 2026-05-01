@@ -191,6 +191,49 @@
           }
         }
       }
+    },
+    "2026-05-01": {
+      "providers": {
+        "marketaux": {
+          "used": 50,
+          "limit": 100,
+          "categories": {
+            "company_news": 49,
+            "global_news": 1
+          }
+        },
+        "sec_edgar": {
+          "used": 50,
+          "limit": null,
+          "categories": {
+            "ticker_map": 1,
+            "submissions": 49
+          }
+        },
+        "gdelt": {
+          "used": 3,
+          "limit": null,
+          "categories": {
+            "company_news": 2,
+            "global_news": 1
+          }
+        },
+        "alpha_vantage": {
+          "used": 3,
+          "limit": 25,
+          "categories": {
+            "company_news": 2,
+            "global_news": 1
+          }
+        },
+        "twelvedata": {
+          "used": 58,
+          "limit": 800,
+          "categories": {
+            "price": 58
+          }
+        }
+      }
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-02T16:37:33Z",
-  "data_as_of": "2026-05-02",
-  "expected_next_refresh_at": "2026-05-03T16:37:33Z",
-  "stale_after": "2026-05-04T04:37:33Z",
+  "generated_at": "2026-05-03T16:39:19Z",
+  "data_as_of": "2026-05-01",
+  "expected_next_refresh_at": "2026-05-04T16:39:19Z",
+  "stale_after": "2026-05-05T04:39:19Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W18",
@@ -24,13 +24,13 @@
     "company_name": "Texas Instruments Incorporated",
     "sector": "technology",
     "risk": "high",
-    "model_score": -0.0553,
-    "confidence_score": 0.39,
+    "model_score": -0.0518,
+    "confidence_score": 0.38,
     "confidence_label": "low",
     "price_as_of": "2026-05-01",
     "news_as_of": null,
     "macro_as_of": null,
-    "sector_as_of": "2026-05-02",
+    "sector_as_of": null,
     "article_count": 0,
     "metrics": {
       "momentum_5d": 0.014,
@@ -51,8 +51,8 @@
       "news_confidence": 0.2,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.46,
-      "sector_confidence": 0.37,
+      "sector_sentiment": 0.5,
+      "sector_confidence": 0.2,
       "effective_article_count": 0.0,
       "source_count": 0,
       "average_relevance": 0.0,
@@ -73,7 +73,7 @@
       "drawdown_penalty": -0.0,
       "news_adjustment": 0.0,
       "macro_adjustment": 0.0,
-      "sector_adjustment": -0.0035,
+      "sector_adjustment": 0.0,
       "signal_alignment": 0.0,
       "technical_total": -0.0518,
       "trend_strength": 0.0415,
@@ -88,7 +88,7 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": -0.0553
+      "total": -0.0518
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is 1.4% and 20-day momentum is 44.2%.",
@@ -99,7 +99,7 @@
       "No recent relevant news passed the filter, so the news layer stayed neutral and contributed less confidence.",
       "Recent TXN company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is -0.055 with low confidence."
+      "Overall model score is -0.052 with low confidence."
     ],
     "news_evidence": [],
     "macro_evidence": [],
@@ -140,7 +140,7 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.155 score • -0.163 conf",
+          "value": "-0.152 score • -0.171 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
@@ -170,7 +170,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-02",
+          "date": "2026-05-03",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -190,7 +190,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-02",
+          "date": "2026-05-03",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -211,7 +211,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-02",
+          "date": "2026-05-03",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -232,7 +232,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-05-02",
+          "date": "2026-05-03",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -252,7 +252,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-05-02",
+          "date": "2026-05-03",
           "status": "healthy",
           "used": 3,
           "limit": 800,

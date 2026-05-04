@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
-  "model_version": "v3.3",
-  "generated_at": "2026-04-27T13:16:09Z",
-  "data_as_of": "2026-04-27",
-  "expected_next_refresh_at": "2026-05-04T12:00:00Z",
-  "stale_after": "2026-05-05T00:00:00Z",
+  "model_version": "v3.4",
+  "generated_at": "2026-05-04T13:31:56Z",
+  "data_as_of": "2026-05-04",
+  "expected_next_refresh_at": "2026-05-11T12:00:00Z",
+  "stale_after": "2026-05-12T00:00:00Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W18",
-    "week_label": "Apr 27 - May 01, 2026",
-    "week_start": "2026-04-27",
-    "week_end": "2026-05-01"
+    "week_id": "2026-W19",
+    "week_label": "May 04 - 08, 2026",
+    "week_start": "2026-05-04",
+    "week_end": "2026-05-08"
   },
   "generation_summary": {
     "universe_size": 49,
@@ -20,28 +20,261 @@
     "skipped_details": [],
     "model_calibration": {
       "technical_weights": {
-        "short_momentum": 0.20503813518420438,
-        "medium_momentum": 0.05639762672940659,
-        "trend_gap": 0.0,
-        "positive_ratio": 0.028884015905225068,
-        "volume_confirmation": 0.07785037760459734,
-        "market_relative": 0.0,
-        "sector_relative": 0.098566279682904,
-        "inverse_volatility": 0.0,
-        "inverse_downside": 0.5332635648936627,
-        "inverse_drawdown": 0.0
+        "short_momentum": 0.22,
+        "medium_momentum": 0.18,
+        "trend_gap": 0.06,
+        "positive_ratio": 0.08,
+        "volume_confirmation": 0.08,
+        "market_relative": 0.07,
+        "sector_relative": 0.05,
+        "inverse_volatility": 0.12,
+        "inverse_downside": 0.09,
+        "inverse_drawdown": 0.05
       },
       "block_weights": {
         "news": 0.18,
         "macro": 0.1,
         "sector": 0.08
       },
-      "technical_scale": 0.45,
+      "technical_scale": 0.3,
       "training_row_count": 2303,
-      "training_ic": 0.001807345910086189,
+      "training_ic": -0.02902831584175131,
+      "minimum_abs_ic_for_learned_weights": 0.03,
       "block_row_count": 0,
-      "source": "price_history_5d_excess_return+block_priors"
-    }
+      "source": "price_history_low_ic_default_priors+block_priors"
+    },
+    "top_candidates": [
+      {
+        "rank": 1,
+        "symbol": "GOOGL",
+        "company_name": "Alphabet Inc.",
+        "sector": "communication_services",
+        "risk": "high",
+        "model_score": 0.3179,
+        "confidence_score": 0.87,
+        "confidence_label": "high",
+        "price_as_of": "2026-05-04",
+        "news_as_of": "2026-05-04",
+        "article_count": 4,
+        "diagnostics": {
+          "technical_total": 0.1656,
+          "news_adjustment": 0.1255,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0268,
+          "news_signal_input": 0.646,
+          "macro_signal_input": 0.0,
+          "sector_signal_input": 0.0
+        }
+      },
+      {
+        "rank": 2,
+        "symbol": "AMZN",
+        "company_name": "Amazon.com Inc.",
+        "sector": "consumer_discretionary",
+        "risk": "medium",
+        "model_score": 0.2773,
+        "confidence_score": 0.85,
+        "confidence_label": "high",
+        "price_as_of": "2026-05-04",
+        "news_as_of": "2026-05-04",
+        "article_count": 4,
+        "diagnostics": {
+          "technical_total": 0.1306,
+          "news_adjustment": 0.1255,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0212,
+          "news_signal_input": 0.646,
+          "macro_signal_input": 0.0,
+          "sector_signal_input": 0.0
+        }
+      },
+      {
+        "rank": 3,
+        "symbol": "INTC",
+        "company_name": "Intel Corporation",
+        "sector": "technology",
+        "risk": "high",
+        "model_score": 0.2576,
+        "confidence_score": 0.79,
+        "confidence_label": "high",
+        "price_as_of": "2026-05-04",
+        "news_as_of": "2026-05-03",
+        "article_count": 3,
+        "diagnostics": {
+          "technical_total": 0.1144,
+          "news_adjustment": 0.1248,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0184,
+          "news_signal_input": 0.6384,
+          "macro_signal_input": 0.0,
+          "sector_signal_input": 0.0
+        }
+      },
+      {
+        "rank": 4,
+        "symbol": "UNH",
+        "company_name": "UnitedHealth Group Incorporated",
+        "sector": "healthcare",
+        "risk": "high",
+        "model_score": 0.2139,
+        "confidence_score": 0.8,
+        "confidence_label": "high",
+        "price_as_of": "2026-05-04",
+        "news_as_of": null,
+        "article_count": 6,
+        "diagnostics": {
+          "technical_total": 0.0996,
+          "news_adjustment": 0.1013,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.013,
+          "news_signal_input": 0.4992,
+          "macro_signal_input": 0.0,
+          "sector_signal_input": 0.0
+        }
+      },
+      {
+        "rank": 5,
+        "symbol": "LLY",
+        "company_name": "Eli Lilly and Company",
+        "sector": "healthcare",
+        "risk": "high",
+        "model_score": 0.2113,
+        "confidence_score": 0.73,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-04",
+        "news_as_of": "2026-05-03",
+        "article_count": 5,
+        "diagnostics": {
+          "technical_total": 0.0714,
+          "news_adjustment": 0.128,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0118,
+          "news_signal_input": 0.6552,
+          "macro_signal_input": 0.0,
+          "sector_signal_input": 0.0
+        }
+      },
+      {
+        "rank": 6,
+        "symbol": "QCOM",
+        "company_name": "QUALCOMM Incorporated",
+        "sector": "technology",
+        "risk": "high",
+        "model_score": 0.2035,
+        "confidence_score": 0.73,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-04",
+        "news_as_of": "2026-05-03",
+        "article_count": 5,
+        "diagnostics": {
+          "technical_total": 0.1353,
+          "news_adjustment": 0.058,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0101,
+          "news_signal_input": 0.2916,
+          "macro_signal_input": 0.0,
+          "sector_signal_input": 0.0
+        }
+      },
+      {
+        "rank": 7,
+        "symbol": "SBUX",
+        "company_name": "Starbucks Corporation",
+        "sector": "consumer_discretionary",
+        "risk": "high",
+        "model_score": 0.1763,
+        "confidence_score": 0.62,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-04",
+        "news_as_of": "2026-05-02",
+        "article_count": 2,
+        "diagnostics": {
+          "technical_total": 0.1225,
+          "news_adjustment": 0.0466,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0073,
+          "news_signal_input": 0.1646,
+          "macro_signal_input": 0.0,
+          "sector_signal_input": 0.0
+        }
+      },
+      {
+        "rank": 8,
+        "symbol": "AAPL",
+        "company_name": "Apple Inc.",
+        "sector": "technology",
+        "risk": "medium",
+        "model_score": 0.155,
+        "confidence_score": 0.75,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-04",
+        "news_as_of": "2026-05-04",
+        "article_count": 5,
+        "diagnostics": {
+          "technical_total": 0.0281,
+          "news_adjustment": 0.1225,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.0044,
+          "news_signal_input": 0.6156,
+          "macro_signal_input": 0.0,
+          "sector_signal_input": 0.0
+        }
+      },
+      {
+        "rank": 9,
+        "symbol": "V",
+        "company_name": "Visa Inc.",
+        "sector": "financials",
+        "risk": "high",
+        "model_score": 0.1122,
+        "confidence_score": 0.58,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-04",
+        "news_as_of": "2026-05-02",
+        "article_count": 3,
+        "diagnostics": {
+          "technical_total": 0.0788,
+          "news_adjustment": 0.0303,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": 0.003,
+          "news_signal_input": 0.09,
+          "macro_signal_input": 0.0,
+          "sector_signal_input": 0.0
+        }
+      },
+      {
+        "rank": 10,
+        "symbol": "BRK.B",
+        "company_name": "Berkshire Hathaway Inc.",
+        "sector": "financials",
+        "risk": "low",
+        "model_score": 0.0735,
+        "confidence_score": 0.73,
+        "confidence_label": "medium",
+        "price_as_of": "2026-05-04",
+        "news_as_of": "2026-05-04",
+        "article_count": 7,
+        "diagnostics": {
+          "technical_total": -0.0598,
+          "news_adjustment": 0.1445,
+          "macro_adjustment": 0.0,
+          "sector_adjustment": 0.0,
+          "signal_alignment": -0.0112,
+          "news_signal_input": 0.7728,
+          "macro_signal_input": 0.0,
+          "sector_signal_input": 0.0
+        }
+      }
+    ]
   },
   "selection_thresholds": {
     "overall_score": 0.1,
@@ -54,86 +287,112 @@
   },
   "data_quality": {
     "status": "degraded",
-    "degraded_reason": "sector_scores: GDELT global-news feed failed during this run.",
+    "degraded_reason": "news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
     "reasons": [
+      "news_scores: GDELT company news failed for at least one symbol.",
       "sector_scores: GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 7,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 18,
         "categories": {
+          "company_news": 6,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-27",
+          "date": "2026-05-04",
           "status": "healthy",
-          "used": 1,
+          "used": 7,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 18,
           "categories": {
+            "company_news": 6,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 1,
+        "used": 11,
         "limit": null,
         "remaining": null,
         "categories": {
+          "company_news": 10,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-27",
+          "date": "2026-05-04",
           "status": "tracking_only",
-          "used": 1,
+          "used": 11,
           "limit": null,
           "remaining": null,
           "categories": {
+            "company_news": 10,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 16,
+        "used": 50,
         "limit": 100,
-        "remaining": 84,
+        "remaining": 50,
         "categories": {
-          "company_news": 15,
+          "company_news": 49,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-27",
+          "date": "2026-05-04",
           "status": "healthy",
-          "used": 16,
+          "used": 50,
           "limit": 100,
-          "remaining": 84,
+          "remaining": 50,
           "categories": {
-            "company_news": 15,
+            "company_news": 49,
             "global_news": 1
+          }
+        }
+      },
+      "sec_edgar": {
+        "status": "tracking_only",
+        "used": 50,
+        "limit": null,
+        "remaining": null,
+        "categories": {
+          "ticker_map": 1,
+          "submissions": 49
+        },
+        "daily": {
+          "date": "2026-05-04",
+          "status": "tracking_only",
+          "used": 50,
+          "limit": null,
+          "remaining": null,
+          "categories": {
+            "ticker_map": 1,
+            "submissions": 49
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 116,
+        "used": 58,
         "limit": 800,
-        "remaining": 684,
+        "remaining": 742,
         "categories": {
-          "price": 116
+          "price": 58
         },
         "daily": {
-          "date": "2026-04-27",
+          "date": "2026-05-04",
           "status": "healthy",
-          "used": 116,
+          "used": 58,
           "limit": 800,
-          "remaining": 684,
+          "remaining": 742,
           "categories": {
-            "price": 116
+            "price": 58
           }
         }
       }
@@ -141,70 +400,72 @@
   },
   "selection": {
     "status": "picked",
-    "status_reason": "TXN cleared the commercial release thresholds for this market week with a score of 0.115 and medium confidence.",
-    "threshold_score": 0.1,
+    "status_reason": "GOOGL cleared the commercial release thresholds for this market week with a score of 0.318 and high confidence.",
+    "is_qualified": true,
+    "release_quality": "qualified",
+    "threshold_score": 0.12,
     "threshold_confidence": 0.55,
     "pick": {
-      "symbol": "TXN",
-      "company_name": "Texas Instruments Incorporated",
-      "sector": "technology",
+      "symbol": "GOOGL",
+      "company_name": "Alphabet Inc.",
+      "sector": "communication_services",
       "risk": "high",
-      "model_score": 0.1146,
-      "confidence_score": 0.71,
-      "confidence_label": "medium",
-      "price_as_of": "2026-04-24",
-      "news_as_of": "2026-04-26",
+      "model_score": 0.3179,
+      "confidence_score": 0.87,
+      "confidence_label": "high",
+      "price_as_of": "2026-05-04",
+      "news_as_of": "2026-05-04",
       "macro_as_of": null,
       "sector_as_of": null,
-      "article_count": 3,
+      "article_count": 4,
       "metrics": {
-        "momentum_5d": 0.2059,
-        "momentum_20d": 0.4329,
-        "daily_volatility": 0.0445,
-        "downside_volatility": 0.0131,
-        "max_drawdown_20d": 0.0361,
+        "momentum_5d": 0.1051,
+        "momentum_20d": 0.2906,
+        "daily_volatility": 0.0242,
+        "downside_volatility": 0.0083,
+        "max_drawdown_20d": 0.0275,
         "positive_day_ratio_10d": 0.7,
-        "price_vs_20d_average": 0.2692,
-        "volume_trend_5d": 1.3297,
-        "market_relative_5d": 0.1995,
-        "market_relative_20d": 0.2947,
-        "sector_relative_5d": 0.1617,
-        "sector_relative_20d": 0.185,
-        "news_sentiment": 0.61,
-        "raw_news_sentiment": 0.296,
-        "calibrated_news_sentiment": 0.2231,
-        "news_confidence": 0.77,
+        "price_vs_20d_average": 0.1341,
+        "volume_trend_5d": 0.4047,
+        "market_relative_5d": 0.0982,
+        "market_relative_20d": 0.1816,
+        "sector_relative_5d": 0.0983,
+        "sector_relative_20d": 0.2377,
+        "news_sentiment": 0.88,
+        "raw_news_sentiment": 1.0,
+        "calibrated_news_sentiment": 0.7678,
+        "news_confidence": 0.85,
         "macro_sentiment": 0.5,
         "macro_confidence": 0.2,
         "sector_sentiment": 0.5,
         "sector_confidence": 0.2,
-        "effective_article_count": 1.03,
-        "source_count": 3,
-        "average_relevance": 1.0,
-        "technical_training_ic": 0.0018,
+        "effective_article_count": 1.1,
+        "source_count": 2,
+        "average_relevance": 0.77,
+        "technical_training_ic": -0.029,
         "technical_training_rows": 2303
       },
       "score_breakdown": {
-        "momentum": 0.2022,
-        "short_momentum": 0.0923,
-        "medium_momentum": 0.0254,
-        "trend_quality": 0.0052,
-        "volume_confirmation": 0.035,
-        "market_relative_strength": 0.0,
-        "sector_relative_strength": 0.0444,
-        "volatility_penalty": -0.1257,
-        "daily_volatility_penalty": -0.0,
-        "downside_penalty": -0.1257,
-        "drawdown_penalty": -0.0,
-        "news_adjustment": 0.0346,
+        "momentum": 0.1998,
+        "short_momentum": 0.066,
+        "medium_momentum": 0.054,
+        "trend_quality": 0.0276,
+        "volume_confirmation": 0.0162,
+        "market_relative_strength": 0.021,
+        "sector_relative_strength": 0.015,
+        "volatility_penalty": -0.0342,
+        "daily_volatility_penalty": -0.0218,
+        "downside_penalty": -0.009,
+        "drawdown_penalty": -0.0034,
+        "news_adjustment": 0.1255,
         "macro_adjustment": 0.0,
         "sector_adjustment": 0.0,
-        "signal_alignment": 0.0034,
-        "technical_total": 0.0766,
-        "trend_strength": 0.1228,
-        "relative_strength": 0.0444,
-        "participation": 0.035,
-        "risk_control": -0.1257,
+        "signal_alignment": 0.0268,
+        "technical_total": 0.1656,
+        "trend_strength": 0.1476,
+        "relative_strength": 0.036,
+        "participation": 0.0162,
+        "risk_control": -0.0342,
         "block_weight_news": 0.18,
         "block_weight_macro": 0.1,
         "block_weight_sector": 0.08,
@@ -213,76 +474,104 @@
         "news_macro_overlap": 0.0,
         "news_sector_overlap": 0.0,
         "macro_sector_overlap": 0.0,
-        "total": 0.1146
+        "total": 0.3179
       },
       "reasons": [
-        "Price trend remains constructive: 5-day momentum is 20.6% and 20-day momentum is 43.3%.",
-        "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 26.9% relative to its 20-day average.",
-        "Risk profile shows daily volatility around 4.4%, downside volatility near 1.3%, and a recent max drawdown of 3.6%.",
-        "Volume confirmation is 133.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-        "Relative strength is 19.9% versus SPY over 5 days and 16.2% versus the sector ETF.",
-        "News signal is bullish with score 0.61, confidence 0.77, and 1.0 weighted articles across 3 sources.",
-        "Company-news provider coverage rated the news flow bullish at 0.61, after adjusting for relevance, recency, source quality, and story concentration.",
-        "Evidence quality: 3 articles across 3 sources, 1.0 effective weighted articles, average relevance 1.00, average source quality 0.75, confidence 0.77.",
-        "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-        "Overall model score is 0.115 with medium confidence."
+        "Price trend remains constructive: 5-day momentum is 10.5% and 20-day momentum is 29.1%.",
+        "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 13.4% relative to its 20-day average.",
+        "Risk profile shows daily volatility around 2.4%, downside volatility near 0.8%, and a recent max drawdown of 2.7%.",
+        "Volume confirmation is 40.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+        "Relative strength is 9.8% versus SPY over 5 days and 9.8% versus the sector ETF.",
+        "News signal is bullish with score 0.88, confidence 0.85, and 1.1 weighted articles across 2 sources.",
+        "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.88, after adjusting for relevance, recency, source quality, and story concentration.",
+        "Evidence quality: 4 articles across 2 sources, 1.1 effective weighted articles, average relevance 0.77, average source quality 0.88, confidence 0.85.",
+        "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.03).",
+        "Price action and news are pointing in the same direction, which raises trust in the setup.",
+        "Overall model score is 0.318 with high confidence."
       ],
       "news_evidence": [
         {
-          "title": "Wolfe Research Raises Texas Instruments (TXN) PT to $315, Truist Lifts Target after Strong Q1",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/wolfe-research-raises-texas-instruments-163420854.html",
-          "published_at": "2026-04-26T16:34:20Z",
+          "title": "Alphabet Inc. filed 10-Q: 10-Q",
+          "provider": "SEC EDGAR",
+          "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000048/goog-20260331.htm",
+          "published_at": "2026-04-30T01:02:11Z",
           "relevance_score": 1.0,
-          "sentiment": 0.44,
-          "doc_type": null,
-          "company_relevance": null,
-          "materiality": null,
-          "llm_confidence": null,
-          "llm_impact_score": null,
-          "llm_reason": null
+          "sentiment": 0.0,
+          "doc_type": "company_specific",
+          "company_relevance": 1.0,
+          "materiality": 1.0,
+          "llm_confidence": 1.0,
+          "llm_impact_score": 1.0,
+          "llm_reason": "Official SEC 10-Q for Alphabet (quarterly financials and disclosures). This is directly material and likely to affect trading in the short term depending on the reported financials and any new disclosures."
         },
         {
-          "title": "Texas Instruments Incorporated (NASDAQ:TXN) Q1 2026 Earnings Call Transcript",
-          "provider": "insidermonkey.com",
-          "url": "https://www.insidermonkey.com/blog/texas-instruments-incorporated-nasdaqtxn-q1-2026-earnings-call-transcript-1744797/",
-          "published_at": "2026-04-23T12:06:39Z",
+          "title": "Alphabet Inc. filed 8-K: 8-K",
+          "provider": "SEC EDGAR",
+          "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/goog-20260429.htm",
+          "published_at": "2026-04-29T20:01:35Z",
           "relevance_score": 1.0,
-          "sentiment": 0.3,
-          "doc_type": null,
-          "company_relevance": null,
-          "materiality": null,
-          "llm_confidence": null,
-          "llm_impact_score": null,
-          "llm_reason": null
+          "sentiment": 0.0,
+          "doc_type": "company_specific",
+          "company_relevance": 1.0,
+          "materiality": 1.0,
+          "llm_confidence": 1.0,
+          "llm_impact_score": 1.0,
+          "llm_reason": "Official 8-K filing for Alphabet signals a disclosed material event. The specific content (not provided here) determines magnitude/direction, so it's treated as company-specific and potentially market-moving over the next several trading days."
+        },
+        {
+          "title": "Nvidia Is Up 7% in 2026 While Marvell Technology Has Nearly Doubled. Here's Why.",
+          "provider": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-7-2026-while-marvell-122500481.html",
+          "published_at": "2026-05-04T12:25:00Z",
+          "relevance_score": 0.55,
+          "sentiment": 0.49,
+          "doc_type": "sector_macro",
+          "company_relevance": 1.0,
+          "materiality": 1.0,
+          "llm_confidence": 1.0,
+          "llm_impact_score": 1.0,
+          "llm_reason": "Article focuses on Nvidia and Marvell in the AI chip market. Indirectly relevant to Alphabet as an AI/cloud customer and competitor, but does not provide company-specific news likely to move GOOGL in the next 1–10 days."
+        },
+        {
+          "title": "Apple Just Gave Investors a $100 Billion Reason to Rethink the AI Spending Race",
+          "provider": "finance.yahoo.com",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/apple-just-gave-investors-100-112800073.html",
+          "published_at": "2026-05-04T11:28:00Z",
+          "relevance_score": 0.54,
+          "sentiment": 0.08,
+          "doc_type": "sector_macro",
+          "company_relevance": 1.0,
+          "materiality": 1.0,
+          "llm_confidence": 1.0,
+          "llm_impact_score": 1.0,
+          "llm_reason": "Discussion of Apple's cash flow and AI spending race is sector-level competitive context. Could influence broader tech sentiment but contains no Alphabet-specific information likely to materially change near-term GOOGL performance."
         }
       ],
       "macro_evidence": [],
       "thesis_monitor": {
-        "status": "risk",
-        "headline": "Support needs review",
-        "summary": "Volatility expanded enough to weaken the setup.",
+        "status": "watch",
+        "headline": "Support needs watching",
+        "summary": "Risk is still manageable, but volatility widened versus a clean setup.",
         "alerts": [
-          "Volatility expanded enough to weaken the setup.",
-          "The pick only barely cleared the release bar."
+          "Risk is still manageable, but volatility widened versus a clean setup."
         ],
         "signals": [
           {
             "label": "Momentum",
             "state": "positive",
-            "value": "20.6% 5D • 43.3% 20D",
+            "value": "10.5% 5D • 29.1% 20D",
             "detail": "Price action is still supporting the release thesis."
           },
           {
             "label": "Volatility",
-            "state": "risk",
-            "value": "4.4% daily • 3.6% drawdown",
-            "detail": "Volatility expanded enough to weaken the setup."
+            "state": "watch",
+            "value": "2.4% daily • 2.7% drawdown",
+            "detail": "Risk is still manageable, but volatility widened versus a clean setup."
           },
           {
             "label": "News",
             "state": "positive",
-            "value": "0.61 sentiment • 3 articles",
+            "value": "0.88 sentiment • 4 articles",
             "detail": "Recent news flow is supportive and diversified enough to back the setup."
           },
           {
@@ -293,14 +582,14 @@
           },
           {
             "label": "Margin",
-            "state": "risk",
-            "value": "+0.015 score • +0.159 conf",
-            "detail": "The pick only barely cleared the release bar."
+            "state": "positive",
+            "value": "+0.198 score • +0.322 conf",
+            "detail": "The pick cleared the release thresholds with room to spare."
           },
           {
             "label": "Freshness",
             "state": "positive",
-            "value": "price 1 trading day • news 1 trading day • macro neutral • sector neutral",
+            "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
             "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
           }
         ]

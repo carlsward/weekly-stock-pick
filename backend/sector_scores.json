@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-04-27T13:15:56Z",
-  "last_updated": "2026-04-27",
+  "generated_at": "2026-05-04T13:31:42Z",
+  "last_updated": "2026-05-04",
   "lookback_days": 3,
   "article_count": 1,
   "source_count": 1,
   "llm_model": "gpt-5-mini",
-  "summary": "A Seeking Alpha piece flags Harley‑Davidson (HOG) as a potential short‑squeeze candidate due to high short interest and company‑specific headwinds. Impact is likely limited to HOG share volatility and retail trading flows; negligible short‑horizon spillover to tracked sectors or symbols.",
+  "summary": "Cincinnati Financial (CINF) declared a $0.94 quarterly dividend, maintaining its prior payout and forward yield. The announcement is a company-specific dividend policy item with limited short-horizon market impact beyond the firm's stock; it may provide modest positive sentiment for the financials sector but is unlikely to move tracked symbols materially over the next 1-15 trading days.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -59,13 +59,33 @@
       "sector": "financials",
       "display_name": "Financials",
       "score": 0.5,
-      "confidence": 0.2,
+      "confidence": 0.34,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-05-04",
       "reasons": [
-        "No strong recent sector catalyst was found for Financials."
+        "A maintained quarterly dividend is a signal of stable earnings and capital allocation for Cincinnati Financial, which can modestly support sentiment for insurers and the broader financials sector. Because the story is company-specific (CINF) and CINF is not a tracked symbol, there is limited direct impact on tracked names. The likely effect is small and short-lived (within 1-2 weeks) — mainly supporting shareholder-income-focused flows into financials but unlikely to change fundamentals or materially move large tracked banks or financial stocks."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Cincinnati Financial declares $0.94 dividend (NASDAQ:CINF)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/news/4584684-cincinnati-financial-declares-0_94-dividend",
+          "published_at": "2026-05-04T13:08:58Z",
+          "impact": "positive",
+          "weight": 0.003,
+          "event_type": "dividend_declaration",
+          "transmission_channel": "capital_allocation / investor_sentiment (maintained dividend signals steady cash flow and shareholder returns)",
+          "affected_inputs": [
+            "dividends",
+            "capital_allocation",
+            "investor_sentiment",
+            "yield"
+          ],
+          "horizon": "1-2w",
+          "reason": "A maintained quarterly dividend is a signal of stable earnings and capital allocation for Cincinnati Financial, which can modestly support sentiment for insurers and the broader financials sector. Because the story is company-specific (CINF) and CINF is not a tracked symbol, there is limited direct impact on tracked names. The likely effect is small and short-lived (within 1-2 weeks) — mainly supporting shareholder-income-focused flows into financials but unlikely to change fundamentals or materially move large tracked banks or financial stocks."
+        }
+      ]
     },
     "healthcare": {
       "sector": "healthcare",
@@ -745,30 +765,31 @@
   },
   "events": [
     {
-      "article_id": "news_3",
-      "title": "Harley-Davidson: Possibly The Next Big Short Squeeze (NYSE:HOG)",
+      "article_id": "news_2",
+      "title": "Cincinnati Financial declares $0.94 dividend (NASDAQ:CINF)",
       "feed": "marketaux",
       "provider": "seekingalpha.com",
-      "url": "https://seekingalpha.com/article/4894561-harley-davidson-possibly-the-next-big-short-squeeze",
-      "published_at": "2026-04-27T12:46:43Z",
-      "event_type": "short_squeeze_risk",
-      "transmission_channel": "retail_trader_activity and short-covering; investor sentiment/market psychological flows",
+      "url": "https://seekingalpha.com/news/4584684-cincinnati-financial-declares-0_94-dividend",
+      "published_at": "2026-05-04T13:08:58Z",
+      "event_type": "dividend_declaration",
+      "transmission_channel": "capital_allocation / investor_sentiment (maintained dividend signals steady cash flow and shareholder returns)",
       "affected_inputs": [
-        "equity_short_interest",
-        "retail_trading_volume",
+        "dividends",
+        "capital_allocation",
         "investor_sentiment",
-        "tariffs",
-        "demographic_trends"
+        "yield"
       ],
       "horizon": "1-2w",
       "market_relevance": 0.15,
-      "magnitude": 0.2,
-      "confidence": 0.4,
-      "beneficiary_sectors": [],
+      "magnitude": 0.1,
+      "confidence": 0.6,
+      "beneficiary_sectors": [
+        "financials"
+      ],
       "hurt_sectors": [],
       "beneficiary_symbols": [],
       "hurt_symbols": [],
-      "reason": "The article is company‑focused: it highlights high short interest and argues HOG is undervalued, which could catalyze retail‑driven short covering and idiosyncratic price volatility in HOG over the next several trading days to two weeks. Transmission is primarily psychological/flow‑driven (retail buying forcing short covering) rather than a broad fundamental supply/demand shock. The piece notes tariffs, aging customer base and secular market share declines, but those are company‑level fundamentals already likely reflected in valuation and do not imply an immediate material impact across tracked sectors or large-cap tracked symbols. Because HOG is not among the tracked symbols and the effect is narrow and speculative, beneficiary and hurt lists are left empty and overall market relevance is low."
+      "reason": "A maintained quarterly dividend is a signal of stable earnings and capital allocation for Cincinnati Financial, which can modestly support sentiment for insurers and the broader financials sector. Because the story is company-specific (CINF) and CINF is not a tracked symbol, there is limited direct impact on tracked names. The likely effect is small and short-lived (within 1-2 weeks) — mainly supporting shareholder-income-focused flows into financials but unlikely to change fundamentals or materially move large tracked banks or financial stocks."
     }
   ],
   "data_quality": {
@@ -780,79 +801,85 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 7,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 18,
         "categories": {
+          "company_news": 6,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-27",
+          "date": "2026-05-04",
           "status": "healthy",
-          "used": 1,
+          "used": 7,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 18,
           "categories": {
+            "company_news": 6,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 11,
         "limit": null,
         "remaining": null,
         "categories": {
+          "company_news": 10,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-27",
+          "date": "2026-05-04",
           "status": "tracking_only",
-          "used": 1,
+          "used": 11,
           "limit": null,
           "remaining": null,
           "categories": {
+            "company_news": 10,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 16,
+        "used": 50,
         "limit": 100,
-        "remaining": 84,
+        "remaining": 50,
         "categories": {
-          "company_news": 15,
+          "company_news": 49,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-04-27",
+          "date": "2026-05-04",
           "status": "healthy",
-          "used": 16,
+          "used": 50,
           "limit": 100,
-          "remaining": 84,
+          "remaining": 50,
           "categories": {
-            "company_news": 15,
+            "company_news": 49,
             "global_news": 1
           }
         }
       },
-      "twelvedata": {
-        "status": "healthy",
-        "used": 58,
-        "limit": 800,
-        "remaining": 742,
+      "sec_edgar": {
+        "status": "tracking_only",
+        "used": 50,
+        "limit": null,
+        "remaining": null,
         "categories": {
-          "price": 58
+          "ticker_map": 1,
+          "submissions": 49
         },
         "daily": {
-          "date": "2026-04-27",
-          "status": "healthy",
-          "used": 58,
-          "limit": 800,
-          "remaining": 742,
+          "date": "2026-05-04",
+          "status": "tracking_only",
+          "used": 50,
+          "limit": null,
+          "remaining": null,
           "categories": {
-            "price": 58
+            "ticker_map": 1,
+            "submissions": 49
           }
         }
       }

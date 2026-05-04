@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-04T13:39:33Z",
+  "generated_at": "2026-05-04T17:23:59Z",
   "data_as_of": "2026-05-04",
-  "expected_next_refresh_at": "2026-05-05T13:39:33Z",
-  "stale_after": "2026-05-06T01:39:33Z",
+  "expected_next_refresh_at": "2026-05-05T17:23:59Z",
+  "stale_after": "2026-05-06T05:23:59Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W19",
@@ -24,62 +24,62 @@
     "company_name": "Alphabet Inc.",
     "sector": "communication_services",
     "risk": "high",
-    "model_score": 0.2462,
-    "confidence_score": 0.78,
-    "confidence_label": "high",
+    "model_score": 0.2107,
+    "confidence_score": 0.71,
+    "confidence_label": "medium",
     "price_as_of": "2026-05-04",
-    "news_as_of": "2026-05-04",
+    "news_as_of": "2026-04-30",
     "macro_as_of": null,
     "sector_as_of": null,
     "article_count": 5,
     "metrics": {
-      "momentum_5d": 0.0923,
-      "momentum_20d": 0.2756,
-      "daily_volatility": 0.0245,
-      "downside_volatility": 0.0083,
+      "momentum_5d": 0.0964,
+      "momentum_20d": 0.2804,
+      "daily_volatility": 0.0244,
+      "downside_volatility": 0.0079,
       "max_drawdown_20d": 0.0275,
       "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.1217,
-      "volume_trend_5d": 0.4052,
-      "market_relative_5d": 0.0855,
-      "market_relative_20d": 0.168,
-      "sector_relative_5d": 0.0874,
-      "sector_relative_20d": 0.2255,
-      "news_sentiment": 0.73,
-      "raw_news_sentiment": 0.7147,
-      "calibrated_news_sentiment": 0.4598,
-      "news_confidence": 0.74,
+      "price_vs_20d_average": 0.1256,
+      "volume_trend_5d": 0.4099,
+      "market_relative_5d": 0.0916,
+      "market_relative_20d": 0.1745,
+      "sector_relative_5d": 0.0914,
+      "sector_relative_20d": 0.23,
+      "news_sentiment": 0.67,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.3367,
+      "news_confidence": 0.4,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.68,
-      "source_count": 2,
-      "average_relevance": 0.78,
+      "effective_article_count": 0.34,
+      "source_count": 4,
+      "average_relevance": 0.73,
       "technical_training_ic": -0.029,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.195,
+      "momentum": 0.1952,
       "short_momentum": 0.066,
       "medium_momentum": 0.054,
       "trend_quality": 0.0228,
-      "volume_confirmation": 0.0162,
+      "volume_confirmation": 0.0164,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0344,
-      "daily_volatility_penalty": -0.0221,
-      "downside_penalty": -0.0089,
+      "volatility_penalty": -0.0339,
+      "daily_volatility_penalty": -0.022,
+      "downside_penalty": -0.0085,
       "drawdown_penalty": -0.0034,
-      "news_adjustment": 0.071,
+      "news_adjustment": 0.041,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0147,
-      "technical_total": 0.1606,
+      "signal_alignment": 0.0084,
+      "technical_total": 0.1613,
       "trend_strength": 0.1428,
       "relative_strength": 0.036,
-      "participation": 0.0162,
-      "risk_control": -0.0344,
+      "participation": 0.0164,
+      "risk_control": -0.0339,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,19 +88,19 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.2462
+      "total": 0.2107
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 9.2% and 20-day momentum is 27.6%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 12.2% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 2.5%, downside volatility near 0.8%, and a recent max drawdown of 2.7%.",
-      "Volume confirmation is 40.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 8.5% versus SPY over 5 days and 8.7% versus the sector ETF.",
-      "News signal is bullish with score 0.73, confidence 0.74, and 0.7 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.73, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 5 articles across 2 sources, 0.7 effective weighted articles, average relevance 0.78, average source quality 0.85, confidence 0.74.",
+      "Price trend remains constructive: 5-day momentum is 9.6% and 20-day momentum is 28.0%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 12.6% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 2.4%, downside volatility near 0.8%, and a recent max drawdown of 2.7%.",
+      "Volume confirmation is 41.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 9.2% versus SPY over 5 days and 9.1% versus the sector ETF.",
+      "News signal is bullish with score 0.67, confidence 0.40, and 0.3 weighted articles across 4 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.81, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 5 articles across 4 sources, 0.3 effective weighted articles, average relevance 0.73, average source quality 0.91, confidence 0.72.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.03).",
-      "Overall model score is 0.246 with high confidence."
+      "Overall model score is 0.211 with medium confidence."
     ],
     "news_evidence": [
       {
@@ -112,24 +112,10 @@
         "sentiment": 0.0,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
-        "materiality": 0.95,
-        "llm_confidence": 0.95,
-        "llm_impact_score": 0.9,
-        "llm_reason": "Official SEC 10-Q filing for Alphabet (report date 2026-03-31). Primary source filing with detailed financials and disclosures — highly material for short-term stock movement."
-      },
-      {
-        "title": "4 Reasons Alphabet's Cloud Growth Outpaced Its Larger Rivals",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/4-reasons-alphabets-cloud-growth-125200128.html",
-        "published_at": "2026-05-04T12:52:00Z",
-        "relevance_score": 0.82,
-        "sentiment": 0.16,
-        "doc_type": "company_specific",
-        "company_relevance": 0.9,
-        "materiality": 0.6,
-        "llm_confidence": 0.8,
-        "llm_impact_score": 0.6,
-        "llm_reason": "Focused analysis of Google Cloud's 63% Q1 revenue growth vs. peers — company-specific operational/growth narrative that can influence near-term investor sentiment and stock price."
+        "materiality": 0.7,
+        "llm_confidence": 0.85,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Official Alphabet 10-Q for quarter ended 2026-03-31. As a regulatory quarterly report, it can contain financial details, risk disclosures, or other items that influence near-term trading; likely the most material item in this set."
       },
       {
         "title": "Alphabet Inc. filed 8-K: 8-K",
@@ -139,11 +125,11 @@
         "relevance_score": 1.0,
         "sentiment": 0.0,
         "doc_type": "company_specific",
-        "company_relevance": 0.9,
+        "company_relevance": 1.0,
         "materiality": 0.6,
-        "llm_confidence": 0.6,
-        "llm_impact_score": 0.6,
-        "llm_reason": "SEC 8-K filing by Alphabet on 2026-04-29. 8-Ks can contain material events; lacking content detail, treat as potentially important but with uncertainty about actual impact."
+        "llm_confidence": 0.75,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Alphabet 8-K filing. 8-Ks can report a range of potentially material events (earnings release notice, executive changes, agreements). Without the filing text, it's treated as potentially market-moving but uncertain."
       }
     ],
     "macro_evidence": [],
@@ -159,19 +145,19 @@
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "9.2% 5D • 27.6% 20D",
+          "value": "9.6% 5D • 28.0% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "watch",
-          "value": "2.5% daily • 2.7% drawdown",
+          "value": "2.4% daily • 2.7% drawdown",
           "detail": "Risk is still manageable, but volatility widened versus a clean setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.73 sentiment • 5 articles",
+          "value": "0.67 sentiment • 5 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -183,13 +169,13 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.126 score • +0.232 conf",
+          "value": "+0.091 score • +0.157 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 2 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -207,104 +193,102 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 8,
+        "used": 1,
         "limit": 25,
-        "remaining": 17,
+        "remaining": 24,
         "categories": {
-          "company_news": 6,
-          "global_news": 2
+          "global_news": 1
         },
         "daily": {
           "date": "2026-05-04",
           "status": "healthy",
-          "used": 8,
+          "used": 9,
           "limit": 25,
-          "remaining": 17,
+          "remaining": 16,
           "categories": {
             "company_news": 6,
-            "global_news": 2
+            "global_news": 3
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 12,
+        "used": 1,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 10,
-          "global_news": 2
+          "global_news": 1
         },
         "daily": {
           "date": "2026-05-04",
           "status": "tracking_only",
-          "used": 12,
+          "used": 13,
           "limit": null,
           "remaining": null,
           "categories": {
             "company_news": 10,
-            "global_news": 2
+            "global_news": 3
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 52,
+        "used": 2,
         "limit": 100,
-        "remaining": 48,
+        "remaining": 98,
         "categories": {
-          "company_news": 50,
-          "global_news": 2
+          "company_news": 1,
+          "global_news": 1
         },
         "daily": {
           "date": "2026-05-04",
           "status": "healthy",
-          "used": 52,
+          "used": 54,
           "limit": 100,
-          "remaining": 48,
+          "remaining": 46,
           "categories": {
-            "company_news": 50,
-            "global_news": 2
+            "company_news": 51,
+            "global_news": 3
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 52,
+        "used": 2,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 2,
-          "submissions": 50
+          "ticker_map": 1,
+          "submissions": 1
         },
         "daily": {
           "date": "2026-05-04",
           "status": "tracking_only",
-          "used": 52,
+          "used": 54,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 2,
-            "submissions": 50
+            "ticker_map": 3,
+            "submissions": 51
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 61,
+        "used": 3,
         "limit": 800,
-        "remaining": 739,
+        "remaining": 797,
         "categories": {
-          "price": 61
+          "price": 3
         },
         "daily": {
           "date": "2026-05-04",
           "status": "healthy",
-          "used": 61,
+          "used": 64,
           "limit": 800,
-          "remaining": 739,
+          "remaining": 736,
           "categories": {
-            "price": 61
+            "price": 64
           }
         }
       }

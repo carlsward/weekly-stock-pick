@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-09T16:42:57Z",
-  "data_as_of": "2026-05-09",
-  "expected_next_refresh_at": "2026-05-10T16:42:57Z",
-  "stale_after": "2026-05-11T04:42:57Z",
+  "generated_at": "2026-05-10T16:43:29Z",
+  "data_as_of": "2026-05-10",
+  "expected_next_refresh_at": "2026-05-11T16:43:29Z",
+  "stale_after": "2026-05-12T04:43:29Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W19",
@@ -24,14 +24,14 @@
     "company_name": "Alphabet Inc.",
     "sector": "communication_services",
     "risk": "high",
-    "model_score": 0.2014,
-    "confidence_score": 0.76,
+    "model_score": 0.2514,
+    "confidence_score": 0.8,
     "confidence_label": "high",
     "price_as_of": "2026-05-08",
-    "news_as_of": "2026-05-09",
+    "news_as_of": "2026-05-10",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 3,
+    "article_count": 2,
     "metrics": {
       "momentum_5d": 0.0392,
       "momentum_20d": 0.2634,
@@ -45,17 +45,17 @@
       "market_relative_20d": 0.1638,
       "sector_relative_5d": 0.0372,
       "sector_relative_20d": 0.2311,
-      "news_sentiment": 0.75,
-      "raw_news_sentiment": 0.7527,
-      "calibrated_news_sentiment": 0.4943,
-      "news_confidence": 0.74,
+      "news_sentiment": 0.87,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.7438,
+      "news_confidence": 0.83,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.82,
+      "effective_article_count": 0.64,
       "source_count": 2,
-      "average_relevance": 0.78,
+      "average_relevance": 0.91,
       "technical_training_ic": -0.029,
       "technical_training_rows": 2303
     },
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0213,
       "downside_penalty": -0.0086,
       "drawdown_penalty": -0.0034,
-      "news_adjustment": 0.0771,
+      "news_adjustment": 0.1207,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0112,
+      "signal_alignment": 0.0176,
       "technical_total": 0.1131,
       "trend_strength": 0.1139,
       "relative_strength": 0.036,
@@ -88,7 +88,7 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.2014
+      "total": 0.2514
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is 3.9% and 20-day momentum is 26.3%.",
@@ -96,40 +96,26 @@
       "Risk profile shows daily volatility around 2.4%, downside volatility near 0.8%, and a recent max drawdown of 2.7%.",
       "Volume confirmation is -8.8% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is 1.5% versus SPY over 5 days and 3.7% versus the sector ETF.",
-      "News signal is bullish with score 0.75, confidence 0.74, and 0.8 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.75, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 0.8 effective weighted articles, average relevance 0.78, average source quality 0.79, confidence 0.74.",
+      "News signal is bullish with score 0.87, confidence 0.83, and 0.6 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.87, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.6 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.83.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.03).",
-      "Overall model score is 0.201 with high confidence."
+      "Overall model score is 0.251 with high confidence."
     ],
     "news_evidence": [
       {
-        "title": "Alphabet Inc. (GOOGL) Raises Over $17 billion Through Euro-denominated Bonds",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/alphabet-inc-googl-raises-over-144930413.html",
-        "published_at": "2026-05-09T14:49:30Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.45,
+        "title": "Alphabet: Please Don't Push This AI Rally Over The Cliff (Rating Downgrade) (NASDAQ:GOOGL)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4902209-alphabet-please-dont-push-this-ai-rally-over-the-cliff-downgrade",
+        "published_at": "2026-05-10T13:36:03Z",
+        "relevance_score": 0.83,
+        "sentiment": 0.17,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.85,
+        "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Direct, material financing announcement for Alphabet: ~€9bn (+ other issuance) to fund AI investments. This is company-specific and could influence near-term sentiment and liquidity expectations. Not likely to radically change fundamentals overnight, but meaningful enough to move the stock in the 1–10 day window if picked up by markets."
-      },
-      {
-        "title": "Global Market Pulse: ByteDance Ramps AI Spending to 200B Yuan Amid Middle East Escalation and Gold Supply Crunch",
-        "provider": "thestockmarketwatch.com",
-        "url": "https://www2.stockmarketwatch.com/stock-market-news/global-market-pulse-bytedance-ramps-ai-spending-to-200b-yuan-amid-middle-east-escalation-and-gold-supply-crunch/61753/",
-        "published_at": "2026-05-09T08:38:32Z",
-        "relevance_score": 0.51,
-        "sentiment": -0.4,
-        "doc_type": "sector_macro",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 0.6,
-        "llm_impact_score": -1.0,
-        "llm_reason": "ByteDance’s large increase in AI capex is sector-relevant and could raise competitive concerns and sentiment around AI incumbents. Effect on Alphabet over the next 1–10 days is likely modest (sector/competitive signal rather than direct company action), so this is a moderate short-term negative influence."
+        "llm_reason": "Retail research rating downgrade flags valuation risk and potential near-term selling pressure. More directly relevant to short-term price action than the feature piece, though Seeking Alpha's influence is limited versus major broker research or company news."
       }
     ],
     "macro_evidence": [],
@@ -157,7 +143,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.75 sentiment • 3 articles",
+          "value": "0.87 sentiment • 2 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -169,7 +155,7 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.081 score • +0.214 conf",
+          "value": "+0.131 score • +0.248 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
@@ -200,7 +186,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-09",
+          "date": "2026-05-10",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -219,7 +205,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-09",
+          "date": "2026-05-10",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -239,7 +225,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-09",
+          "date": "2026-05-10",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -260,7 +246,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-05-09",
+          "date": "2026-05-10",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -280,7 +266,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-05-09",
+          "date": "2026-05-10",
           "status": "healthy",
           "used": 3,
           "limit": 800,

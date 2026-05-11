@@ -1,18 +1,18 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-10T16:43:29Z",
-  "data_as_of": "2026-05-10",
-  "expected_next_refresh_at": "2026-05-11T16:43:29Z",
-  "stale_after": "2026-05-12T04:43:29Z",
+  "generated_at": "2026-05-11T14:31:32Z",
+  "data_as_of": "2026-05-11",
+  "expected_next_refresh_at": "2026-05-12T14:31:32Z",
+  "stale_after": "2026-05-13T02:31:32Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W19",
-    "week_label": "May 04 - 08, 2026",
-    "week_start": "2026-05-04",
-    "week_end": "2026-05-08"
+    "week_id": "2026-W20",
+    "week_label": "May 11 - 15, 2026",
+    "week_start": "2026-05-11",
+    "week_end": "2026-05-15"
   },
-  "source_dashboard_generated_at": "2026-05-04T13:31:56Z",
+  "source_dashboard_generated_at": "2026-05-11T14:23:56Z",
   "selection": {
     "status": "picked",
     "status_reason": "Live thesis monitor refreshed the active weekly pick.",
@@ -20,130 +20,144 @@
     "threshold_confidence": 0.55
   },
   "active_pick": {
-    "symbol": "GOOGL",
-    "company_name": "Alphabet Inc.",
-    "sector": "communication_services",
+    "symbol": "TSLA",
+    "company_name": "Tesla Inc.",
+    "sector": "consumer_discretionary",
     "risk": "high",
-    "model_score": 0.2514,
-    "confidence_score": 0.8,
-    "confidence_label": "high",
-    "price_as_of": "2026-05-08",
-    "news_as_of": "2026-05-10",
+    "model_score": 0.2169,
+    "confidence_score": 0.72,
+    "confidence_label": "medium",
+    "price_as_of": "2026-05-11",
+    "news_as_of": "2026-05-11",
     "macro_as_of": null,
-    "sector_as_of": null,
+    "sector_as_of": "2026-05-11",
     "article_count": 2,
     "metrics": {
-      "momentum_5d": 0.0392,
-      "momentum_20d": 0.2634,
-      "daily_volatility": 0.0237,
-      "downside_volatility": 0.0079,
-      "max_drawdown_20d": 0.0275,
-      "positive_day_ratio_10d": 0.7,
-      "price_vs_20d_average": 0.1211,
-      "volume_trend_5d": -0.0878,
-      "market_relative_5d": 0.0153,
-      "market_relative_20d": 0.1638,
-      "sector_relative_5d": 0.0372,
-      "sector_relative_20d": 0.2311,
-      "news_sentiment": 0.87,
+      "momentum_5d": 0.0629,
+      "momentum_20d": 0.1838,
+      "daily_volatility": 0.0261,
+      "downside_volatility": 0.0189,
+      "max_drawdown_20d": 0.0694,
+      "positive_day_ratio_10d": 0.6,
+      "price_vs_20d_average": 0.0697,
+      "volume_trend_5d": -0.3004,
+      "market_relative_5d": 0.0339,
+      "market_relative_20d": 0.1003,
+      "sector_relative_5d": 0.0535,
+      "sector_relative_20d": 0.1354,
+      "news_sentiment": 0.85,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.7438,
-      "news_confidence": 0.83,
+      "calibrated_news_sentiment": 0.6906,
+      "news_confidence": 0.75,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 0.64,
+      "sector_sentiment": 0.51,
+      "sector_confidence": 0.35,
+      "effective_article_count": 0.53,
       "source_count": 2,
-      "average_relevance": 0.91,
-      "technical_training_ic": -0.029,
+      "average_relevance": 0.64,
+      "technical_training_ic": -0.0203,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1464,
-      "short_momentum": 0.0323,
+      "momentum": 0.147,
+      "short_momentum": 0.0519,
       "medium_momentum": 0.054,
-      "trend_quality": 0.0276,
-      "volume_confirmation": -0.0035,
-      "market_relative_strength": 0.021,
+      "trend_quality": 0.0205,
+      "volume_confirmation": -0.012,
+      "market_relative_strength": 0.0176,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0334,
-      "daily_volatility_penalty": -0.0213,
-      "downside_penalty": -0.0086,
-      "drawdown_penalty": -0.0034,
-      "news_adjustment": 0.1207,
+      "volatility_penalty": -0.0525,
+      "daily_volatility_penalty": -0.0235,
+      "downside_penalty": -0.0204,
+      "drawdown_penalty": -0.0087,
+      "news_adjustment": 0.1087,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0,
-      "signal_alignment": 0.0176,
-      "technical_total": 0.1131,
-      "trend_strength": 0.1139,
-      "relative_strength": 0.036,
-      "participation": -0.0035,
-      "risk_control": -0.0334,
+      "sector_adjustment": 0.0006,
+      "signal_alignment": 0.0132,
+      "technical_total": 0.0944,
+      "trend_strength": 0.1264,
+      "relative_strength": 0.0326,
+      "participation": -0.012,
+      "risk_control": -0.0525,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.65,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
+      "news_sector_overlap": 0.2,
       "macro_sector_overlap": 0.0,
-      "total": 0.2514
+      "total": 0.2169
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 3.9% and 20-day momentum is 26.3%.",
-      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 12.1% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 2.4%, downside volatility near 0.8%, and a recent max drawdown of 2.7%.",
-      "Volume confirmation is -8.8% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 1.5% versus SPY over 5 days and 3.7% versus the sector ETF.",
-      "News signal is bullish with score 0.87, confidence 0.83, and 0.6 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.87, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 2 articles across 2 sources, 0.6 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.83.",
-      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.03).",
-      "Overall model score is 0.251 with high confidence."
+      "Price trend remains constructive: 5-day momentum is 6.3% and 20-day momentum is 18.4%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 7.0% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 2.6%, downside volatility near 1.9%, and a recent max drawdown of 6.9%.",
+      "Volume confirmation is -30.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 3.4% versus SPY over 5 days and 5.3% versus the sector ETF.",
+      "News signal is bullish with score 0.85, confidence 0.75, and 0.5 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.85, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.5 effective weighted articles, average relevance 0.64, average source quality 0.78, confidence 0.75.",
+      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.02).",
+      "Overall model score is 0.217 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Alphabet: Please Don't Push This AI Rally Over The Cliff (Rating Downgrade) (NASDAQ:GOOGL)",
-        "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4902209-alphabet-please-dont-push-this-ai-rally-over-the-cliff-downgrade",
-        "published_at": "2026-05-10T13:36:03Z",
+        "title": "Market Analysis: Tesla And Competitors In Automobiles Industry - Tesla (NASDAQ:TSLA)",
+        "provider": "benzinga.com",
+        "url": "https://www.benzinga.com/insights/news/26/05/52441065/market-analysis-tesla-and-competitors-in-automobiles-industry",
+        "published_at": "2026-05-11T09:59:16Z",
         "relevance_score": 0.83,
-        "sentiment": 0.17,
+        "sentiment": 0.14,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 1.0,
+        "llm_confidence": 0.7,
         "llm_impact_score": 1.0,
-        "llm_reason": "Retail research rating downgrade flags valuation risk and potential near-term selling pressure. More directly relevant to short-term price action than the feature piece, though Seeking Alpha's influence is limited versus major broker research or company news."
+        "llm_reason": "Direct analysis of Tesla and competitors with balance-sheet and ratio commentary. Informative for investor sentiment and relative valuation but appears to be analytical/background content rather than new, material company-specific news—limited immediate impact on near-term price."
+      },
+      {
+        "title": "The Gold Update: Gold Turns Higher While S&P Warning Signs Flash",
+        "provider": "investing.com",
+        "url": "https://www.investing.com/analysis/the-gold-update-gold-turns-higher-while-sp-warning-signs-flash-200680029",
+        "published_at": "2026-05-11T06:03:00Z",
+        "relevance_score": 0.46,
+        "sentiment": 0.58,
+        "doc_type": "sector_macro",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 0.6,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Macro market commentary (gold, S&P warning signs). Could influence broad risk sentiment that affects TSLA, but it is not Tesla-specific and unlikely to drive company-level moves without a larger market selloff or confirming macro data."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
-      "status": "watch",
-      "headline": "Support needs watching",
-      "summary": "Risk is still manageable, but volatility widened versus a clean setup.",
+      "status": "risk",
+      "headline": "Support needs review",
+      "summary": "Volatility expanded enough to weaken the setup.",
       "alerts": [
-        "Risk is still manageable, but volatility widened versus a clean setup.",
+        "Volatility expanded enough to weaken the setup.",
         "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "3.9% 5D • 26.3% 20D",
+          "value": "6.3% 5D • 18.4% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
-          "state": "watch",
-          "value": "2.4% daily • 2.7% drawdown",
-          "detail": "Risk is still manageable, but volatility widened versus a clean setup."
+          "state": "risk",
+          "value": "2.6% daily • 6.9% drawdown",
+          "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.87 sentiment • 2 articles",
+          "value": "0.85 sentiment • 2 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -155,7 +169,7 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.131 score • +0.248 conf",
+          "value": "+0.097 score • +0.171 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
@@ -179,100 +193,104 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 8,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 17,
         "categories": {
-          "global_news": 1
+          "company_news": 6,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-05-10",
+          "date": "2026-05-11",
           "status": "healthy",
-          "used": 1,
+          "used": 8,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 17,
           "categories": {
-            "global_news": 1
+            "company_news": 6,
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 17,
         "limit": null,
         "remaining": null,
         "categories": {
-          "global_news": 1
+          "company_news": 15,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-05-10",
+          "date": "2026-05-11",
           "status": "tracking_only",
-          "used": 1,
+          "used": 17,
           "limit": null,
           "remaining": null,
           "categories": {
-            "global_news": 1
+            "company_news": 15,
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 52,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 48,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 50,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-05-10",
+          "date": "2026-05-11",
           "status": "healthy",
-          "used": 2,
+          "used": 52,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 48,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 50,
+            "global_news": 2
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 52,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1,
-          "submissions": 1
+          "ticker_map": 2,
+          "submissions": 50
         },
         "daily": {
-          "date": "2026-05-10",
+          "date": "2026-05-11",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 3,
+        "used": 61,
         "limit": 800,
-        "remaining": 797,
+        "remaining": 739,
         "categories": {
-          "price": 3
+          "price": 61
         },
         "daily": {
-          "date": "2026-05-10",
+          "date": "2026-05-11",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

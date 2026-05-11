@@ -2,39 +2,6 @@
   "version": 1,
   "timezone": "UTC",
   "days": {
-    "2026-04-27": {
-      "providers": {
-        "twelvedata": {
-          "used": 122,
-          "limit": 800,
-          "categories": {
-            "price": 122
-          }
-        },
-        "marketaux": {
-          "used": 20,
-          "limit": 100,
-          "categories": {
-            "company_news": 17,
-            "global_news": 3
-          }
-        },
-        "gdelt": {
-          "used": 3,
-          "limit": null,
-          "categories": {
-            "global_news": 3
-          }
-        },
-        "alpha_vantage": {
-          "used": 3,
-          "limit": 25,
-          "categories": {
-            "global_news": 3
-          }
-        }
-      }
-    },
     "2026-04-28": {
       "providers": {
         "marketaux": {
@@ -570,6 +537,49 @@
           "limit": 800,
           "categories": {
             "price": 3
+          }
+        }
+      }
+    },
+    "2026-05-11": {
+      "providers": {
+        "marketaux": {
+          "used": 52,
+          "limit": 100,
+          "categories": {
+            "company_news": 50,
+            "global_news": 2
+          }
+        },
+        "sec_edgar": {
+          "used": 52,
+          "limit": null,
+          "categories": {
+            "ticker_map": 2,
+            "submissions": 50
+          }
+        },
+        "gdelt": {
+          "used": 17,
+          "limit": null,
+          "categories": {
+            "company_news": 15,
+            "global_news": 2
+          }
+        },
+        "alpha_vantage": {
+          "used": 8,
+          "limit": 25,
+          "categories": {
+            "company_news": 6,
+            "global_news": 2
+          }
+        },
+        "twelvedata": {
+          "used": 61,
+          "limit": 800,
+          "categories": {
+            "price": 61
           }
         }
       }

@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-04T13:31:42Z",
-  "last_updated": "2026-05-04",
+  "generated_at": "2026-05-11T14:23:55Z",
+  "last_updated": "2026-05-11",
   "lookback_days": 3,
-  "article_count": 1,
-  "source_count": 1,
+  "article_count": 0,
+  "source_count": 0,
   "llm_model": "gpt-5-mini",
-  "summary": "Cincinnati Financial (CINF) declared a $0.94 quarterly dividend, maintaining its prior payout and forward yield. The announcement is a company-specific dividend policy item with limited short-horizon market impact beyond the firm's stock; it may provide modest positive sentiment for the financials sector but is unlikely to move tracked symbols materially over the next 1-15 trading days.",
+  "summary": "Sector analysis was neutral because no reliable broad catalysts were found.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -15,7 +15,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Communication Services."
+        "No recent broad catalyst clearly favored the Communication Services sector."
       ],
       "supporting_articles": []
     },
@@ -27,7 +27,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Consumer Discretionary."
+        "No recent broad catalyst clearly favored the Consumer Discretionary sector."
       ],
       "supporting_articles": []
     },
@@ -39,7 +39,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Consumer Staples."
+        "No recent broad catalyst clearly favored the Consumer Staples sector."
       ],
       "supporting_articles": []
     },
@@ -51,7 +51,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Energy."
+        "No recent broad catalyst clearly favored the Energy sector."
       ],
       "supporting_articles": []
     },
@@ -59,33 +59,13 @@
       "sector": "financials",
       "display_name": "Financials",
       "score": 0.5,
-      "confidence": 0.34,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-04",
+      "last_updated": null,
       "reasons": [
-        "A maintained quarterly dividend is a signal of stable earnings and capital allocation for Cincinnati Financial, which can modestly support sentiment for insurers and the broader financials sector. Because the story is company-specific (CINF) and CINF is not a tracked symbol, there is limited direct impact on tracked names. The likely effect is small and short-lived (within 1-2 weeks) — mainly supporting shareholder-income-focused flows into financials but unlikely to change fundamentals or materially move large tracked banks or financial stocks."
+        "No recent broad catalyst clearly favored the Financials sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "Cincinnati Financial declares $0.94 dividend (NASDAQ:CINF)",
-          "feed": "marketaux",
-          "provider": "seekingalpha.com",
-          "url": "https://seekingalpha.com/news/4584684-cincinnati-financial-declares-0_94-dividend",
-          "published_at": "2026-05-04T13:08:58Z",
-          "impact": "positive",
-          "weight": 0.003,
-          "event_type": "dividend_declaration",
-          "transmission_channel": "capital_allocation / investor_sentiment (maintained dividend signals steady cash flow and shareholder returns)",
-          "affected_inputs": [
-            "dividends",
-            "capital_allocation",
-            "investor_sentiment",
-            "yield"
-          ],
-          "horizon": "1-2w",
-          "reason": "A maintained quarterly dividend is a signal of stable earnings and capital allocation for Cincinnati Financial, which can modestly support sentiment for insurers and the broader financials sector. Because the story is company-specific (CINF) and CINF is not a tracked symbol, there is limited direct impact on tracked names. The likely effect is small and short-lived (within 1-2 weeks) — mainly supporting shareholder-income-focused flows into financials but unlikely to change fundamentals or materially move large tracked banks or financial stocks."
-        }
-      ]
+      "supporting_articles": []
     },
     "healthcare": {
       "sector": "healthcare",
@@ -95,7 +75,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Healthcare."
+        "No recent broad catalyst clearly favored the Healthcare sector."
       ],
       "supporting_articles": []
     },
@@ -107,7 +87,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Industrials."
+        "No recent broad catalyst clearly favored the Industrials sector."
       ],
       "supporting_articles": []
     },
@@ -119,7 +99,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Technology."
+        "No recent broad catalyst clearly favored the Technology sector."
       ],
       "supporting_articles": []
     }
@@ -134,7 +114,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Apple Inc.."
+        "No recent world-news catalyst clearly favored Apple Inc.."
       ],
       "supporting_articles": []
     },
@@ -147,7 +127,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Microsoft Corporation."
+        "No recent world-news catalyst clearly favored Microsoft Corporation."
       ],
       "supporting_articles": []
     },
@@ -160,7 +140,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Alphabet Inc.."
+        "No recent world-news catalyst clearly favored Alphabet Inc.."
       ],
       "supporting_articles": []
     },
@@ -173,7 +153,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Amazon.com Inc.."
+        "No recent world-news catalyst clearly favored Amazon.com Inc.."
       ],
       "supporting_articles": []
     },
@@ -186,7 +166,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Tesla Inc.."
+        "No recent world-news catalyst clearly favored Tesla Inc.."
       ],
       "supporting_articles": []
     },
@@ -199,7 +179,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Meta Platforms Inc.."
+        "No recent world-news catalyst clearly favored Meta Platforms Inc.."
       ],
       "supporting_articles": []
     },
@@ -212,7 +192,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
+        "No recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
       ],
       "supporting_articles": []
     },
@@ -225,7 +205,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored NVIDIA Corporation."
+        "No recent world-news catalyst clearly favored NVIDIA Corporation."
       ],
       "supporting_articles": []
     },
@@ -238,7 +218,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored JPMorgan Chase & Co.."
+        "No recent world-news catalyst clearly favored JPMorgan Chase & Co.."
       ],
       "supporting_articles": []
     },
@@ -251,7 +231,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Johnson & Johnson."
+        "No recent world-news catalyst clearly favored Johnson & Johnson."
       ],
       "supporting_articles": []
     },
@@ -264,7 +244,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Visa Inc.."
+        "No recent world-news catalyst clearly favored Visa Inc.."
       ],
       "supporting_articles": []
     },
@@ -277,7 +257,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Walmart Inc.."
+        "No recent world-news catalyst clearly favored Walmart Inc.."
       ],
       "supporting_articles": []
     },
@@ -290,7 +270,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Procter & Gamble Company."
+        "No recent world-news catalyst clearly favored Procter & Gamble Company."
       ],
       "supporting_articles": []
     },
@@ -303,7 +283,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Mastercard Incorporated."
+        "No recent world-news catalyst clearly favored Mastercard Incorporated."
       ],
       "supporting_articles": []
     },
@@ -316,7 +296,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Walt Disney Company."
+        "No recent world-news catalyst clearly favored The Walt Disney Company."
       ],
       "supporting_articles": []
     },
@@ -329,7 +309,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Home Depot Inc.."
+        "No recent world-news catalyst clearly favored The Home Depot Inc.."
       ],
       "supporting_articles": []
     },
@@ -342,7 +322,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Bank of America Corporation."
+        "No recent world-news catalyst clearly favored Bank of America Corporation."
       ],
       "supporting_articles": []
     },
@@ -355,7 +335,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Exxon Mobil Corporation."
+        "No recent world-news catalyst clearly favored Exxon Mobil Corporation."
       ],
       "supporting_articles": []
     },
@@ -368,7 +348,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Pfizer Inc.."
+        "No recent world-news catalyst clearly favored Pfizer Inc.."
       ],
       "supporting_articles": []
     },
@@ -381,7 +361,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Verizon Communications Inc.."
+        "No recent world-news catalyst clearly favored Verizon Communications Inc.."
       ],
       "supporting_articles": []
     },
@@ -394,7 +374,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Netflix Inc.."
+        "No recent world-news catalyst clearly favored Netflix Inc.."
       ],
       "supporting_articles": []
     },
@@ -407,7 +387,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Adobe Inc.."
+        "No recent world-news catalyst clearly favored Adobe Inc.."
       ],
       "supporting_articles": []
     },
@@ -420,7 +400,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Comcast Corporation."
+        "No recent world-news catalyst clearly favored Comcast Corporation."
       ],
       "supporting_articles": []
     },
@@ -433,7 +413,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Coca-Cola Company."
+        "No recent world-news catalyst clearly favored The Coca-Cola Company."
       ],
       "supporting_articles": []
     },
@@ -446,7 +426,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored AT&T Inc.."
+        "No recent world-news catalyst clearly favored AT&T Inc.."
       ],
       "supporting_articles": []
     },
@@ -459,7 +439,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Nike Inc.."
+        "No recent world-news catalyst clearly favored Nike Inc.."
       ],
       "supporting_articles": []
     },
@@ -472,7 +452,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Merck & Co. Inc.."
+        "No recent world-news catalyst clearly favored Merck & Co. Inc.."
       ],
       "supporting_articles": []
     },
@@ -485,7 +465,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Abbott Laboratories."
+        "No recent world-news catalyst clearly favored Abbott Laboratories."
       ],
       "supporting_articles": []
     },
@@ -498,7 +478,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored PepsiCo Inc.."
+        "No recent world-news catalyst clearly favored PepsiCo Inc.."
       ],
       "supporting_articles": []
     },
@@ -511,7 +491,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Cisco Systems Inc.."
+        "No recent world-news catalyst clearly favored Cisco Systems Inc.."
       ],
       "supporting_articles": []
     },
@@ -524,7 +504,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Oracle Corporation."
+        "No recent world-news catalyst clearly favored Oracle Corporation."
       ],
       "supporting_articles": []
     },
@@ -537,7 +517,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Intel Corporation."
+        "No recent world-news catalyst clearly favored Intel Corporation."
       ],
       "supporting_articles": []
     },
@@ -550,7 +530,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Salesforce Inc.."
+        "No recent world-news catalyst clearly favored Salesforce Inc.."
       ],
       "supporting_articles": []
     },
@@ -563,7 +543,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Costco Wholesale Corporation."
+        "No recent world-news catalyst clearly favored Costco Wholesale Corporation."
       ],
       "supporting_articles": []
     },
@@ -576,7 +556,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Accenture plc."
+        "No recent world-news catalyst clearly favored Accenture plc."
       ],
       "supporting_articles": []
     },
@@ -589,7 +569,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Chevron Corporation."
+        "No recent world-news catalyst clearly favored Chevron Corporation."
       ],
       "supporting_articles": []
     },
@@ -602,7 +582,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored McDonald's Corporation."
+        "No recent world-news catalyst clearly favored McDonald's Corporation."
       ],
       "supporting_articles": []
     },
@@ -615,7 +595,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Danaher Corporation."
+        "No recent world-news catalyst clearly favored Danaher Corporation."
       ],
       "supporting_articles": []
     },
@@ -628,7 +608,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Medtronic plc."
+        "No recent world-news catalyst clearly favored Medtronic plc."
       ],
       "supporting_articles": []
     },
@@ -641,7 +621,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Eli Lilly and Company."
+        "No recent world-news catalyst clearly favored Eli Lilly and Company."
       ],
       "supporting_articles": []
     },
@@ -654,7 +634,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Texas Instruments Incorporated."
+        "No recent world-news catalyst clearly favored Texas Instruments Incorporated."
       ],
       "supporting_articles": []
     },
@@ -667,7 +647,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
+        "No recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
       ],
       "supporting_articles": []
     },
@@ -680,7 +660,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
+        "No recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
       ],
       "supporting_articles": []
     },
@@ -693,7 +673,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored QUALCOMM Incorporated."
+        "No recent world-news catalyst clearly favored QUALCOMM Incorporated."
       ],
       "supporting_articles": []
     },
@@ -706,7 +686,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Honeywell International Inc.."
+        "No recent world-news catalyst clearly favored Honeywell International Inc.."
       ],
       "supporting_articles": []
     },
@@ -719,7 +699,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Amgen Inc.."
+        "No recent world-news catalyst clearly favored Amgen Inc.."
       ],
       "supporting_articles": []
     },
@@ -732,7 +712,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Starbucks Corporation."
+        "No recent world-news catalyst clearly favored Starbucks Corporation."
       ],
       "supporting_articles": []
     },
@@ -745,7 +725,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Lowe's Companies Inc.."
+        "No recent world-news catalyst clearly favored Lowe's Companies Inc.."
       ],
       "supporting_articles": []
     },
@@ -758,40 +738,12 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored General Electric Company."
+        "No recent world-news catalyst clearly favored General Electric Company."
       ],
       "supporting_articles": []
     }
   },
-  "events": [
-    {
-      "article_id": "news_2",
-      "title": "Cincinnati Financial declares $0.94 dividend (NASDAQ:CINF)",
-      "feed": "marketaux",
-      "provider": "seekingalpha.com",
-      "url": "https://seekingalpha.com/news/4584684-cincinnati-financial-declares-0_94-dividend",
-      "published_at": "2026-05-04T13:08:58Z",
-      "event_type": "dividend_declaration",
-      "transmission_channel": "capital_allocation / investor_sentiment (maintained dividend signals steady cash flow and shareholder returns)",
-      "affected_inputs": [
-        "dividends",
-        "capital_allocation",
-        "investor_sentiment",
-        "yield"
-      ],
-      "horizon": "1-2w",
-      "market_relevance": 0.15,
-      "magnitude": 0.1,
-      "confidence": 0.6,
-      "beneficiary_sectors": [
-        "financials"
-      ],
-      "hurt_sectors": [],
-      "beneficiary_symbols": [],
-      "hurt_symbols": [],
-      "reason": "A maintained quarterly dividend is a signal of stable earnings and capital allocation for Cincinnati Financial, which can modestly support sentiment for insurers and the broader financials sector. Because the story is company-specific (CINF) and CINF is not a tracked symbol, there is limited direct impact on tracked names. The likely effect is small and short-lived (within 1-2 weeks) — mainly supporting shareholder-income-focused flows into financials but unlikely to change fundamentals or materially move large tracked banks or financial stocks."
-    }
-  ],
+  "events": [],
   "data_quality": {
     "status": "degraded",
     "degraded_reason": "GDELT global-news feed failed during this run.",
@@ -809,7 +761,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-04",
+          "date": "2026-05-11",
           "status": "healthy",
           "used": 7,
           "limit": 25,
@@ -822,21 +774,21 @@
       },
       "gdelt": {
         "status": "degraded",
-        "used": 11,
+        "used": 16,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 10,
+          "company_news": 15,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-04",
+          "date": "2026-05-11",
           "status": "tracking_only",
-          "used": 11,
+          "used": 16,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 10,
+            "company_news": 15,
             "global_news": 1
           }
         }
@@ -851,7 +803,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-04",
+          "date": "2026-05-11",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -872,7 +824,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-05-04",
+          "date": "2026-05-11",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

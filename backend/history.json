@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-11T14:23:56Z",
+  "generated_at": "2026-05-18T15:04:47Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -473,8 +473,8 @@
           }
         }
       ],
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null
+      "realized_5d_return": -0.01,
+      "realized_5d_excess_return": -0.0121
     },
     {
       "week_id": "2026-W20",
@@ -495,6 +495,20 @@
       "confidence_label": "medium",
       "data_as_of": "2026-05-11",
       "model_version": "v3.4",
+      "diagnostics": {
+        "technical_total": 0.1039,
+        "news_adjustment": 0.1146,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.5688,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 2303,
+        "technical_training_ic": -0.0203,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      },
       "top_candidates": [
         {
           "rank": 1,
@@ -727,16 +741,270 @@
           }
         }
       ],
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W21",
+      "week_start": "2026-05-18",
+      "week_end": "2026-05-22",
+      "week_label": "May 18 - 22, 2026",
+      "logged_at": "2026-05-18T15:04:47Z",
+      "status": "picked",
+      "status_reason": "CSCO cleared the commercial release thresholds for this market week with a score of 0.258 and high confidence.",
+      "is_qualified": true,
+      "release_quality": "qualified",
+      "symbol": "CSCO",
+      "company_name": "Cisco Systems Inc.",
+      "sector": "technology",
+      "risk": "high",
+      "model_score": 0.2584,
+      "confidence_score": 0.82,
+      "confidence_label": "high",
+      "data_as_of": "2026-05-18",
+      "model_version": "v3.4",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "CSCO",
+          "company_name": "Cisco Systems Inc.",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.2584,
+          "confidence_score": 0.82,
+          "confidence_label": "high",
+          "price_as_of": "2026-05-18",
+          "news_as_of": "2026-05-17",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.1604,
+            "news_adjustment": 0.0812,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0168,
+            "news_signal_input": 0.3952,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "COST",
+          "company_name": "Costco Wholesale Corporation",
+          "sector": "consumer_staples",
+          "risk": "medium",
+          "model_score": 0.1443,
+          "confidence_score": 0.66,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-18",
+          "news_as_of": "2026-05-14",
+          "article_count": 1,
+          "diagnostics": {
+            "technical_total": 0.0872,
+            "news_adjustment": 0.0514,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0057,
+            "news_signal_input": 0.1858,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "BRK.B",
+          "company_name": "Berkshire Hathaway Inc.",
+          "sector": "financials",
+          "risk": "low",
+          "model_score": 0.1423,
+          "confidence_score": 0.77,
+          "confidence_label": "high",
+          "price_as_of": "2026-05-18",
+          "news_as_of": null,
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0038,
+            "news_adjustment": 0.1379,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0007,
+            "news_signal_input": 0.7216,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "UNH",
+          "company_name": "UnitedHealth Group Incorporated",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": 0.1159,
+          "confidence_score": 0.65,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-18",
+          "news_as_of": "2026-05-16",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0602,
+            "news_adjustment": 0.0448,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0074,
+            "signal_alignment": 0.0034,
+            "news_signal_input": 0.1557,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0638
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "XOM",
+          "company_name": "Exxon Mobil Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": 0.1129,
+          "confidence_score": 0.63,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-18",
+          "news_as_of": "2026-05-15",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0655,
+            "news_adjustment": 0.0438,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0036,
+            "news_signal_input": 0.1457,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "AAPL",
+          "company_name": "Apple Inc.",
+          "sector": "technology",
+          "risk": "medium",
+          "model_score": 0.1092,
+          "confidence_score": 0.66,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-18",
+          "news_as_of": "2026-05-18",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0236,
+            "news_adjustment": 0.0831,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0025,
+            "news_signal_input": 0.3808,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "V",
+          "company_name": "Visa Inc.",
+          "sector": "financials",
+          "risk": "high",
+          "model_score": 0.1014,
+          "confidence_score": 0.68,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-18",
+          "news_as_of": "2026-05-17",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0018,
+            "news_adjustment": 0.0994,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0002,
+            "news_signal_input": 0.48,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "AMZN",
+          "company_name": "Amazon.com Inc.",
+          "sector": "consumer_discretionary",
+          "risk": "medium",
+          "model_score": 0.0791,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-18",
+          "news_as_of": "2026-05-18",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0137,
+            "news_adjustment": 0.0944,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0017,
+            "news_signal_input": 0.4464,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "NVDA",
+          "company_name": "NVIDIA Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.0763,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-18",
+          "news_as_of": "2026-05-18",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0111,
+            "news_adjustment": 0.0644,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0009,
+            "news_signal_input": 0.3066,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "GOOGL",
+          "company_name": "Alphabet Inc.",
+          "sector": "communication_services",
+          "risk": "high",
+          "model_score": 0.0763,
+          "confidence_score": 0.57,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-18",
+          "news_as_of": "2026-05-18",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0814,
+            "news_adjustment": -0.0051,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0,
+            "news_signal_input": -0.0192,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        }
+      ],
       "diagnostics": {
-        "technical_total": 0.1039,
-        "news_adjustment": 0.1146,
+        "technical_total": 0.1604,
+        "news_adjustment": 0.0812,
         "macro_adjustment": 0.0,
         "sector_adjustment": 0.0,
-        "news_signal_input": 0.5688,
+        "news_signal_input": 0.3952,
         "macro_signal_input": 0.0,
         "sector_signal_input": 0.0,
         "technical_training_rows": 2303,
-        "technical_training_ic": -0.0203,
+        "technical_training_ic": 0.0001,
         "news_macro_overlap": 0.0,
         "news_sector_overlap": 0.0,
         "macro_sector_overlap": 0.0
@@ -753,42 +1021,42 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 7,
+        "used": 5,
         "limit": 25,
-        "remaining": 18,
+        "remaining": 20,
         "categories": {
-          "company_news": 6,
+          "company_news": 4,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-11",
+          "date": "2026-05-18",
           "status": "healthy",
-          "used": 7,
+          "used": 5,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 20,
           "categories": {
-            "company_news": 6,
+            "company_news": 4,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 16,
+        "used": 13,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 15,
+          "company_news": 12,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-11",
+          "date": "2026-05-18",
           "status": "tracking_only",
-          "used": 16,
+          "used": 13,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 15,
+            "company_news": 12,
             "global_news": 1
           }
         }
@@ -803,7 +1071,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-11",
+          "date": "2026-05-18",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -824,7 +1092,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-05-11",
+          "date": "2026-05-18",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -844,7 +1112,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-05-11",
+          "date": "2026-05-18",
           "status": "healthy",
           "used": 58,
           "limit": 800,

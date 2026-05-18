@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-11T14:23:55Z",
-  "last_updated": "2026-05-11",
+  "generated_at": "2026-05-18T15:04:34Z",
+  "last_updated": "2026-05-18",
   "lookback_days": 3,
-  "article_count": 0,
-  "source_count": 0,
+  "article_count": 1,
+  "source_count": 1,
   "llm_model": "gpt-5-mini",
-  "summary": "Sector analysis was neutral because no reliable broad catalysts were found.",
+  "summary": "Maravai LifeSciences (MRVI) reported better earnings, raised guidance, and is seeing margin improvement from restructuring; upgrade to Buy follows. This is a company-specific positive catalyst likely to lift the firm and potentially produce small, short-horizon spillovers to life-sciences/tools peers and the broader healthcare equipment & supplies area.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -15,7 +15,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Communication Services sector."
+        "No strong recent sector catalyst was found for Communication Services."
       ],
       "supporting_articles": []
     },
@@ -27,7 +27,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Consumer Discretionary sector."
+        "No strong recent sector catalyst was found for Consumer Discretionary."
       ],
       "supporting_articles": []
     },
@@ -39,7 +39,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Consumer Staples sector."
+        "No strong recent sector catalyst was found for Consumer Staples."
       ],
       "supporting_articles": []
     },
@@ -51,7 +51,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Energy sector."
+        "No strong recent sector catalyst was found for Energy."
       ],
       "supporting_articles": []
     },
@@ -63,21 +63,41 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Financials sector."
+        "No strong recent sector catalyst was found for Financials."
       ],
       "supporting_articles": []
     },
     "healthcare": {
       "sector": "healthcare",
       "display_name": "Healthcare",
-      "score": 0.5,
-      "confidence": 0.2,
-      "direction": "neutral",
-      "last_updated": null,
+      "score": 0.64,
+      "confidence": 0.38,
+      "direction": "bullish",
+      "last_updated": "2026-05-18",
       "reasons": [
-        "No recent broad catalyst clearly favored the Healthcare sector."
+        "Maravai's stronger-than-expected results and raised guidance directly improve its near-term earnings outlook and margins (first-order effect). Restructuring that boosts EBITDA signals durable cost/efficiency gains and supports sentiment among investors in life-sciences reagents/tools names (second-order effect). The impact is company-specific and may modestly lift small-cap peers in healthcare equipment/supplies but is unlikely to move broad markets or tracked large-cap symbols. Therefore beneficiary exposure is mapped to the healthcare sector; no tracked symbols are specified."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Maravai LifeSciences: Better Earnings Drive Gains That Ought To Be Sustainable (MRVI)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4906023-maravai-lifesciences-better-earnings-drive-gains-that-ought-to-be-sustainable",
+          "published_at": "2026-05-18T14:19:09Z",
+          "impact": "positive",
+          "weight": 0.266,
+          "event_type": "earnings/guidance beat and analyst upgrade",
+          "transmission_channel": "earnings surprise -> guidance raise and restructuring-driven EBITDA improvement -> improved profitability and investor sentiment -> potential re-rating of small-cap life-sciences/tools peers",
+          "affected_inputs": [
+            "guidance",
+            "EBITDA",
+            "profitability",
+            "investor_sentiment"
+          ],
+          "horizon": "1-2w",
+          "reason": "Maravai's stronger-than-expected results and raised guidance directly improve its near-term earnings outlook and margins (first-order effect). Restructuring that boosts EBITDA signals durable cost/efficiency gains and supports sentiment among investors in life-sciences reagents/tools names (second-order effect). The impact is company-specific and may modestly lift small-cap peers in healthcare equipment/supplies but is unlikely to move broad markets or tracked large-cap symbols. Therefore beneficiary exposure is mapped to the healthcare sector; no tracked symbols are specified."
+        }
+      ]
     },
     "industrials": {
       "sector": "industrials",
@@ -87,7 +107,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Industrials sector."
+        "No strong recent sector catalyst was found for Industrials."
       ],
       "supporting_articles": []
     },
@@ -99,7 +119,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent broad catalyst clearly favored the Technology sector."
+        "No strong recent sector catalyst was found for Technology."
       ],
       "supporting_articles": []
     }
@@ -114,7 +134,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Apple Inc.."
+        "No strong recent world-news catalyst clearly favored Apple Inc.."
       ],
       "supporting_articles": []
     },
@@ -127,7 +147,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Microsoft Corporation."
+        "No strong recent world-news catalyst clearly favored Microsoft Corporation."
       ],
       "supporting_articles": []
     },
@@ -140,7 +160,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Alphabet Inc.."
+        "No strong recent world-news catalyst clearly favored Alphabet Inc.."
       ],
       "supporting_articles": []
     },
@@ -153,7 +173,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Amazon.com Inc.."
+        "No strong recent world-news catalyst clearly favored Amazon.com Inc.."
       ],
       "supporting_articles": []
     },
@@ -166,7 +186,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Tesla Inc.."
+        "No strong recent world-news catalyst clearly favored Tesla Inc.."
       ],
       "supporting_articles": []
     },
@@ -179,7 +199,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Meta Platforms Inc.."
+        "No strong recent world-news catalyst clearly favored Meta Platforms Inc.."
       ],
       "supporting_articles": []
     },
@@ -192,7 +212,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
+        "No strong recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
       ],
       "supporting_articles": []
     },
@@ -205,7 +225,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored NVIDIA Corporation."
+        "No strong recent world-news catalyst clearly favored NVIDIA Corporation."
       ],
       "supporting_articles": []
     },
@@ -218,7 +238,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored JPMorgan Chase & Co.."
+        "No strong recent world-news catalyst clearly favored JPMorgan Chase & Co.."
       ],
       "supporting_articles": []
     },
@@ -231,7 +251,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Johnson & Johnson."
+        "No strong recent world-news catalyst clearly favored Johnson & Johnson."
       ],
       "supporting_articles": []
     },
@@ -244,7 +264,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Visa Inc.."
+        "No strong recent world-news catalyst clearly favored Visa Inc.."
       ],
       "supporting_articles": []
     },
@@ -257,7 +277,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Walmart Inc.."
+        "No strong recent world-news catalyst clearly favored Walmart Inc.."
       ],
       "supporting_articles": []
     },
@@ -270,7 +290,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Procter & Gamble Company."
+        "No strong recent world-news catalyst clearly favored Procter & Gamble Company."
       ],
       "supporting_articles": []
     },
@@ -283,7 +303,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Mastercard Incorporated."
+        "No strong recent world-news catalyst clearly favored Mastercard Incorporated."
       ],
       "supporting_articles": []
     },
@@ -296,7 +316,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored The Walt Disney Company."
+        "No strong recent world-news catalyst clearly favored The Walt Disney Company."
       ],
       "supporting_articles": []
     },
@@ -309,7 +329,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored The Home Depot Inc.."
+        "No strong recent world-news catalyst clearly favored The Home Depot Inc.."
       ],
       "supporting_articles": []
     },
@@ -322,7 +342,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Bank of America Corporation."
+        "No strong recent world-news catalyst clearly favored Bank of America Corporation."
       ],
       "supporting_articles": []
     },
@@ -335,7 +355,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Exxon Mobil Corporation."
+        "No strong recent world-news catalyst clearly favored Exxon Mobil Corporation."
       ],
       "supporting_articles": []
     },
@@ -348,7 +368,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Pfizer Inc.."
+        "No strong recent world-news catalyst clearly favored Pfizer Inc.."
       ],
       "supporting_articles": []
     },
@@ -361,7 +381,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Verizon Communications Inc.."
+        "No strong recent world-news catalyst clearly favored Verizon Communications Inc.."
       ],
       "supporting_articles": []
     },
@@ -374,7 +394,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Netflix Inc.."
+        "No strong recent world-news catalyst clearly favored Netflix Inc.."
       ],
       "supporting_articles": []
     },
@@ -387,7 +407,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Adobe Inc.."
+        "No strong recent world-news catalyst clearly favored Adobe Inc.."
       ],
       "supporting_articles": []
     },
@@ -400,7 +420,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Comcast Corporation."
+        "No strong recent world-news catalyst clearly favored Comcast Corporation."
       ],
       "supporting_articles": []
     },
@@ -413,7 +433,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored The Coca-Cola Company."
+        "No strong recent world-news catalyst clearly favored The Coca-Cola Company."
       ],
       "supporting_articles": []
     },
@@ -426,7 +446,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored AT&T Inc.."
+        "No strong recent world-news catalyst clearly favored AT&T Inc.."
       ],
       "supporting_articles": []
     },
@@ -439,7 +459,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Nike Inc.."
+        "No strong recent world-news catalyst clearly favored Nike Inc.."
       ],
       "supporting_articles": []
     },
@@ -452,7 +472,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Merck & Co. Inc.."
+        "No strong recent world-news catalyst clearly favored Merck & Co. Inc.."
       ],
       "supporting_articles": []
     },
@@ -465,7 +485,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Abbott Laboratories."
+        "No strong recent world-news catalyst clearly favored Abbott Laboratories."
       ],
       "supporting_articles": []
     },
@@ -478,7 +498,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored PepsiCo Inc.."
+        "No strong recent world-news catalyst clearly favored PepsiCo Inc.."
       ],
       "supporting_articles": []
     },
@@ -491,7 +511,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Cisco Systems Inc.."
+        "No strong recent world-news catalyst clearly favored Cisco Systems Inc.."
       ],
       "supporting_articles": []
     },
@@ -504,7 +524,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Oracle Corporation."
+        "No strong recent world-news catalyst clearly favored Oracle Corporation."
       ],
       "supporting_articles": []
     },
@@ -517,7 +537,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Intel Corporation."
+        "No strong recent world-news catalyst clearly favored Intel Corporation."
       ],
       "supporting_articles": []
     },
@@ -530,7 +550,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Salesforce Inc.."
+        "No strong recent world-news catalyst clearly favored Salesforce Inc.."
       ],
       "supporting_articles": []
     },
@@ -543,7 +563,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Costco Wholesale Corporation."
+        "No strong recent world-news catalyst clearly favored Costco Wholesale Corporation."
       ],
       "supporting_articles": []
     },
@@ -556,7 +576,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Accenture plc."
+        "No strong recent world-news catalyst clearly favored Accenture plc."
       ],
       "supporting_articles": []
     },
@@ -569,7 +589,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Chevron Corporation."
+        "No strong recent world-news catalyst clearly favored Chevron Corporation."
       ],
       "supporting_articles": []
     },
@@ -582,7 +602,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored McDonald's Corporation."
+        "No strong recent world-news catalyst clearly favored McDonald's Corporation."
       ],
       "supporting_articles": []
     },
@@ -595,7 +615,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Danaher Corporation."
+        "No strong recent world-news catalyst clearly favored Danaher Corporation."
       ],
       "supporting_articles": []
     },
@@ -608,7 +628,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Medtronic plc."
+        "No strong recent world-news catalyst clearly favored Medtronic plc."
       ],
       "supporting_articles": []
     },
@@ -621,7 +641,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Eli Lilly and Company."
+        "No strong recent world-news catalyst clearly favored Eli Lilly and Company."
       ],
       "supporting_articles": []
     },
@@ -634,7 +654,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Texas Instruments Incorporated."
+        "No strong recent world-news catalyst clearly favored Texas Instruments Incorporated."
       ],
       "supporting_articles": []
     },
@@ -647,7 +667,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
+        "No strong recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
       ],
       "supporting_articles": []
     },
@@ -660,7 +680,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
+        "No strong recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
       ],
       "supporting_articles": []
     },
@@ -673,7 +693,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored QUALCOMM Incorporated."
+        "No strong recent world-news catalyst clearly favored QUALCOMM Incorporated."
       ],
       "supporting_articles": []
     },
@@ -686,7 +706,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Honeywell International Inc.."
+        "No strong recent world-news catalyst clearly favored Honeywell International Inc.."
       ],
       "supporting_articles": []
     },
@@ -699,7 +719,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Amgen Inc.."
+        "No strong recent world-news catalyst clearly favored Amgen Inc.."
       ],
       "supporting_articles": []
     },
@@ -712,7 +732,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Starbucks Corporation."
+        "No strong recent world-news catalyst clearly favored Starbucks Corporation."
       ],
       "supporting_articles": []
     },
@@ -725,7 +745,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored Lowe's Companies Inc.."
+        "No strong recent world-news catalyst clearly favored Lowe's Companies Inc.."
       ],
       "supporting_articles": []
     },
@@ -738,12 +758,40 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No recent world-news catalyst clearly favored General Electric Company."
+        "No strong recent world-news catalyst clearly favored General Electric Company."
       ],
       "supporting_articles": []
     }
   },
-  "events": [],
+  "events": [
+    {
+      "article_id": "news_3",
+      "title": "Maravai LifeSciences: Better Earnings Drive Gains That Ought To Be Sustainable (MRVI)",
+      "feed": "marketaux",
+      "provider": "seekingalpha.com",
+      "url": "https://seekingalpha.com/article/4906023-maravai-lifesciences-better-earnings-drive-gains-that-ought-to-be-sustainable",
+      "published_at": "2026-05-18T14:19:09Z",
+      "event_type": "earnings/guidance beat and analyst upgrade",
+      "transmission_channel": "earnings surprise -> guidance raise and restructuring-driven EBITDA improvement -> improved profitability and investor sentiment -> potential re-rating of small-cap life-sciences/tools peers",
+      "affected_inputs": [
+        "guidance",
+        "EBITDA",
+        "profitability",
+        "investor_sentiment"
+      ],
+      "horizon": "1-2w",
+      "market_relevance": 1.0,
+      "magnitude": 1.0,
+      "confidence": 0.5,
+      "beneficiary_sectors": [
+        "healthcare"
+      ],
+      "hurt_sectors": [],
+      "beneficiary_symbols": [],
+      "hurt_symbols": [],
+      "reason": "Maravai's stronger-than-expected results and raised guidance directly improve its near-term earnings outlook and margins (first-order effect). Restructuring that boosts EBITDA signals durable cost/efficiency gains and supports sentiment among investors in life-sciences reagents/tools names (second-order effect). The impact is company-specific and may modestly lift small-cap peers in healthcare equipment/supplies but is unlikely to move broad markets or tracked large-cap symbols. Therefore beneficiary exposure is mapped to the healthcare sector; no tracked symbols are specified."
+    }
+  ],
   "data_quality": {
     "status": "degraded",
     "degraded_reason": "GDELT global-news feed failed during this run.",
@@ -753,42 +801,42 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 7,
+        "used": 5,
         "limit": 25,
-        "remaining": 18,
+        "remaining": 20,
         "categories": {
-          "company_news": 6,
+          "company_news": 4,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-11",
+          "date": "2026-05-18",
           "status": "healthy",
-          "used": 7,
+          "used": 5,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 20,
           "categories": {
-            "company_news": 6,
+            "company_news": 4,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 16,
+        "used": 13,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 15,
+          "company_news": 12,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-11",
+          "date": "2026-05-18",
           "status": "tracking_only",
-          "used": 16,
+          "used": 13,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 15,
+            "company_news": 12,
             "global_news": 1
           }
         }
@@ -803,7 +851,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-11",
+          "date": "2026-05-18",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -824,7 +872,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-05-11",
+          "date": "2026-05-18",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-21T17:51:40Z",
-  "data_as_of": "2026-05-21",
-  "expected_next_refresh_at": "2026-05-22T17:51:40Z",
-  "stale_after": "2026-05-23T05:51:40Z",
+  "generated_at": "2026-05-22T17:45:15Z",
+  "data_as_of": "2026-05-22",
+  "expected_next_refresh_at": "2026-05-23T17:45:15Z",
+  "stale_after": "2026-05-24T05:45:15Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W21",
@@ -24,83 +24,86 @@
     "company_name": "Cisco Systems Inc.",
     "sector": "technology",
     "risk": "high",
-    "model_score": 0.1139,
-    "confidence_score": 0.68,
+    "model_score": 0.1027,
+    "confidence_score": 0.71,
     "confidence_label": "medium",
-    "price_as_of": "2026-05-21",
-    "news_as_of": "2026-05-19",
+    "price_as_of": "2026-05-22",
+    "news_as_of": "2026-05-20",
     "macro_as_of": null,
-    "sector_as_of": null,
+    "sector_as_of": "2026-05-22",
     "article_count": 4,
     "metrics": {
-      "momentum_5d": 0.0227,
-      "momentum_20d": 0.3337,
-      "daily_volatility": 0.0336,
+      "momentum_5d": 0.0176,
+      "momentum_20d": 0.3514,
+      "daily_volatility": 0.0335,
       "downside_volatility": 0.0203,
       "max_drawdown_20d": 0.0381,
       "positive_day_ratio_10d": 0.8,
-      "price_vs_20d_average": 0.1787,
-      "volume_trend_5d": -0.0307,
-      "market_relative_5d": 0.0283,
-      "market_relative_20d": 0.2698,
-      "sector_relative_5d": 0.0282,
-      "sector_relative_20d": 0.1641,
-      "news_sentiment": 0.62,
-      "raw_news_sentiment": 0.6564,
-      "calibrated_news_sentiment": 0.2327,
+      "price_vs_20d_average": 0.1816,
+      "volume_trend_5d": -0.1823,
+      "market_relative_5d": 0.0056,
+      "market_relative_20d": 0.2899,
+      "sector_relative_5d": -0.0107,
+      "sector_relative_20d": 0.1942,
+      "news_sentiment": 0.68,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.3552,
       "news_confidence": 0.41,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 0.39,
+      "sector_sentiment": 0.26,
+      "sector_confidence": 0.54,
+      "effective_article_count": 0.49,
       "source_count": 4,
       "average_relevance": 0.87,
       "technical_training_ic": 0.0001,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1399,
-      "short_momentum": 0.0187,
+      "momentum": 0.1296,
+      "short_momentum": 0.0145,
       "medium_momentum": 0.054,
       "trend_quality": 0.0324,
-      "volume_confirmation": -0.0012,
+      "volume_confirmation": -0.0073,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.057,
-      "daily_volatility_penalty": -0.0303,
+      "volatility_penalty": -0.0569,
+      "daily_volatility_penalty": -0.0302,
       "downside_penalty": -0.0219,
       "drawdown_penalty": -0.0048,
-      "news_adjustment": 0.028,
+      "news_adjustment": 0.0427,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0,
-      "signal_alignment": 0.003,
-      "technical_total": 0.0829,
-      "trend_strength": 0.1051,
+      "sector_adjustment": -0.0167,
+      "signal_alignment": 0.0039,
+      "technical_total": 0.0727,
+      "trend_strength": 0.1009,
       "relative_strength": 0.036,
-      "participation": -0.0012,
-      "risk_control": -0.057,
+      "participation": -0.0073,
+      "risk_control": -0.0569,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.65,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
+      "news_sector_overlap": 0.3333,
       "macro_sector_overlap": 0.0,
-      "total": 0.1139
+      "total": 0.1027
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 2.3% and 20-day momentum is 33.4%.",
-      "Trend quality is supported by 80% positive sessions over the last 10 trading days and the price sitting 17.9% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 1.8% and 20-day momentum is 35.1%.",
+      "Trend quality is supported by 80% positive sessions over the last 10 trading days and the price sitting 18.2% relative to its 20-day average.",
       "Risk profile shows daily volatility around 3.4%, downside volatility near 2.0%, and a recent max drawdown of 3.8%.",
-      "Volume confirmation is -3.1% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 2.8% versus SPY over 5 days and 2.8% versus the sector ETF.",
-      "News signal is bullish with score 0.62, confidence 0.41, and 0.4 weighted articles across 4 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.71, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 4 articles across 4 sources, 0.4 effective weighted articles, average relevance 0.87, average source quality 0.81, confidence 0.74.",
+      "Volume confirmation is -18.2% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 0.6% versus SPY over 5 days and -1.1% versus the sector ETF.",
+      "News signal is bullish with score 0.68, confidence 0.41, and 0.5 weighted articles across 4 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.82, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 4 articles across 4 sources, 0.5 effective weighted articles, average relevance 0.87, average source quality 0.81, confidence 0.74.",
+      "Broad market news leaned bearish for the Technology sector with score 0.26 and confidence 0.54.",
+      "University of Michigan consumer sentiment at a record low implies a weaker near-term consumer demand backdrop; modestly higher crude raises fuel costs and reduces disposable income. Transmission to markets: weaker consumer demand and rising cost pressures can depress sales of consumer-facing tech products and advertising/consumer services, and raise the risk that corporates pause discretionary IT spend if macro concerns deepen. Effects are broad and modest over the next 1-15 trading days; not company-specific to tracked symbols, so assign a mild near-term negative bias to the technology sector with low-to-moderate confidence.",
+      "Sector overlay was trimmed by 35% because it overlaps with company or macro themes.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.114 with medium confidence."
+      "Overall model score is 0.103 with medium confidence."
     ],
     "news_evidence": [
       {
@@ -112,10 +115,24 @@
         "sentiment": 0.0,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
-        "materiality": 0.9,
-        "llm_confidence": 0.85,
-        "llm_impact_score": 0.75,
-        "llm_reason": "Official SEC 10-Q filing for Cisco—primary source of potentially market-moving, company-specific information over the next several trading days; impact depends on the contents and whether results/risk disclosures surprise expectations."
+        "materiality": 1.0,
+        "llm_confidence": 0.95,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Official SEC EDGAR 10-Q filing for Cisco. Company filings are materially relevant for short-term trading because they can contain updated results, risk disclosures, guidance changes, or other items that market participants react to."
+      },
+      {
+        "title": "Palo Alto Networks Up 70%: Can the Rally Last Into June?",
+        "provider": "investing.com",
+        "url": "https://www.investing.com/analysis/palo-alto-networks-up-70-can-the-rally-last-into-june-200680638",
+        "published_at": "2026-05-20T12:23:00Z",
+        "relevance_score": 0.54,
+        "sentiment": 0.66,
+        "doc_type": "sector_macro",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 0.6,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Coverage of Palo Alto Networks’ rally. Relevant as sector/peer momentum (cybersecurity/software) that could bleed into Cisco’s security-related businesses, but not a direct company-specific catalyst for CSCO over the next 1–10 trading days."
       }
     ],
     "macro_evidence": [],
@@ -132,7 +149,7 @@
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "2.3% 5D • 33.4% 20D",
+          "value": "1.8% 5D • 35.1% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
@@ -144,7 +161,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.62 sentiment • 4 articles",
+          "value": "0.68 sentiment • 4 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -156,13 +173,13 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.006 score • +0.132 conf",
+          "value": "-0.017 score • +0.164 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 2 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 2 trading days • macro neutral • sector 0 trading days",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -187,7 +204,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-21",
+          "date": "2026-05-22",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -206,7 +223,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-21",
+          "date": "2026-05-22",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -226,7 +243,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-21",
+          "date": "2026-05-22",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -247,7 +264,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-05-21",
+          "date": "2026-05-22",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -267,7 +284,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-05-21",
+          "date": "2026-05-22",
           "status": "healthy",
           "used": 3,
           "limit": 800,

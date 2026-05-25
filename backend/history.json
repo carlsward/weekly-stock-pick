@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-18T15:04:47Z",
+  "generated_at": "2026-05-25T14:40:26Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -741,8 +741,8 @@
           }
         }
       ],
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null
+      "realized_5d_return": 0.0089,
+      "realized_5d_excess_return": 0.0002
     },
     {
       "week_id": "2026-W21",
@@ -763,6 +763,20 @@
       "confidence_label": "high",
       "data_as_of": "2026-05-18",
       "model_version": "v3.4",
+      "diagnostics": {
+        "technical_total": 0.1604,
+        "news_adjustment": 0.0812,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.3952,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 2303,
+        "technical_training_ic": 0.0001,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      },
       "top_candidates": [
         {
           "rank": 1,
@@ -995,18 +1009,272 @@
           }
         }
       ],
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W22",
+      "week_start": "2026-05-25",
+      "week_end": "2026-05-29",
+      "week_label": "May 25 - 29, 2026",
+      "logged_at": "2026-05-25T14:40:26Z",
+      "status": "picked",
+      "status_reason": "HON cleared the commercial release thresholds for this market week with a score of 0.243 and high confidence.",
+      "is_qualified": true,
+      "release_quality": "qualified",
+      "symbol": "HON",
+      "company_name": "Honeywell International Inc.",
+      "sector": "industrials",
+      "risk": "medium",
+      "model_score": 0.2431,
+      "confidence_score": 0.75,
+      "confidence_label": "high",
+      "data_as_of": "2026-05-25",
+      "model_version": "v3.4",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "HON",
+          "company_name": "Honeywell International Inc.",
+          "sector": "industrials",
+          "risk": "medium",
+          "model_score": 0.2431,
+          "confidence_score": 0.75,
+          "confidence_label": "high",
+          "price_as_of": "2026-05-22",
+          "news_as_of": "2026-05-24",
+          "article_count": 1,
+          "diagnostics": {
+            "technical_total": 0.1001,
+            "news_adjustment": 0.1296,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": -0.0034,
+            "signal_alignment": 0.0168,
+            "news_signal_input": 0.6708,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": -0.0289
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "LLY",
+          "company_name": "Eli Lilly and Company",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": 0.2143,
+          "confidence_score": 0.77,
+          "confidence_label": "high",
+          "price_as_of": "2026-05-22",
+          "news_as_of": "2026-05-24",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.1084,
+            "news_adjustment": 0.0929,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.013,
+            "news_signal_input": 0.464,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "MRK",
+          "company_name": "Merck & Co. Inc.",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1832,
+          "confidence_score": 0.72,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-22",
+          "news_as_of": "2026-05-23",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.1182,
+            "news_adjustment": 0.0565,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0085,
+            "news_signal_input": 0.2105,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "AAPL",
+          "company_name": "Apple Inc.",
+          "sector": "technology",
+          "risk": "medium",
+          "model_score": 0.1798,
+          "confidence_score": 0.74,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-22",
+          "news_as_of": "2026-05-25",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0779,
+            "news_adjustment": 0.0926,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0093,
+            "news_signal_input": 0.444,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "QCOM",
+          "company_name": "QUALCOMM Incorporated",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1505,
+          "confidence_score": 0.6,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-22",
+          "news_as_of": "2026-05-22",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0928,
+            "news_adjustment": 0.0516,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0061,
+            "news_signal_input": 0.188,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "JNJ",
+          "company_name": "Johnson & Johnson",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1327,
+          "confidence_score": 0.74,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-22",
+          "news_as_of": "2026-05-25",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0341,
+            "news_adjustment": 0.0944,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0041,
+            "news_signal_input": 0.4464,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "BRK.B",
+          "company_name": "Berkshire Hathaway Inc.",
+          "sector": "financials",
+          "risk": "low",
+          "model_score": 0.1266,
+          "confidence_score": 0.76,
+          "confidence_label": "high",
+          "price_as_of": "2026-05-22",
+          "news_as_of": null,
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.005,
+            "news_adjustment": 0.1207,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0008,
+            "news_signal_input": 0.6142,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "INTC",
+          "company_name": "Intel Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1253,
+          "confidence_score": 0.49,
+          "confidence_label": "low",
+          "price_as_of": "2026-05-22",
+          "news_as_of": "2026-05-23",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0831,
+            "news_adjustment": 0.0382,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.004,
+            "news_signal_input": 0.1246,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "TSLA",
+          "company_name": "Tesla Inc.",
+          "sector": "consumer_discretionary",
+          "risk": "high",
+          "model_score": 0.1055,
+          "confidence_score": 0.63,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-22",
+          "news_as_of": "2026-05-25",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0124,
+            "news_adjustment": 0.095,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": -0.0034,
+            "signal_alignment": 0.0015,
+            "news_signal_input": 0.4526,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": -0.0289
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "BMY",
+          "company_name": "Bristol-Myers Squibb Company",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.0948,
+          "confidence_score": 0.65,
+          "confidence_label": "medium",
+          "price_as_of": "2026-05-22",
+          "news_as_of": "2026-05-24",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0053,
+            "news_adjustment": 0.0889,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0006,
+            "news_signal_input": 0.4234,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        }
+      ],
       "diagnostics": {
-        "technical_total": 0.1604,
-        "news_adjustment": 0.0812,
+        "technical_total": 0.1001,
+        "news_adjustment": 0.1296,
         "macro_adjustment": 0.0,
-        "sector_adjustment": 0.0,
-        "news_signal_input": 0.3952,
+        "sector_adjustment": -0.0034,
+        "news_signal_input": 0.6708,
         "macro_signal_input": 0.0,
-        "sector_signal_input": 0.0,
+        "sector_signal_input": -0.0289,
         "technical_training_rows": 2303,
-        "technical_training_ic": 0.0001,
+        "technical_training_ic": 0.0219,
         "news_macro_overlap": 0.0,
-        "news_sector_overlap": 0.0,
+        "news_sector_overlap": 0.3333,
         "macro_sector_overlap": 0.0
       }
     }
@@ -1029,7 +1297,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-18",
+          "date": "2026-05-25",
           "status": "healthy",
           "used": 5,
           "limit": 25,
@@ -1042,21 +1310,21 @@
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 13,
+        "used": 10,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 12,
+          "company_news": 9,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-18",
+          "date": "2026-05-25",
           "status": "tracking_only",
-          "used": 13,
+          "used": 10,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 12,
+            "company_news": 9,
             "global_news": 1
           }
         }
@@ -1071,7 +1339,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-18",
+          "date": "2026-05-25",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -1092,7 +1360,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-05-18",
+          "date": "2026-05-25",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -1112,7 +1380,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-05-18",
+          "date": "2026-05-25",
           "status": "healthy",
           "used": 58,
           "limit": 800,

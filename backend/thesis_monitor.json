@@ -1,85 +1,85 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-24T16:53:11Z",
-  "data_as_of": "2026-05-23",
-  "expected_next_refresh_at": "2026-05-25T16:53:11Z",
-  "stale_after": "2026-05-26T04:53:11Z",
+  "generated_at": "2026-05-25T14:48:03Z",
+  "data_as_of": "2026-05-24",
+  "expected_next_refresh_at": "2026-05-26T14:48:03Z",
+  "stale_after": "2026-05-27T02:48:03Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W21",
-    "week_label": "May 18 - 22, 2026",
-    "week_start": "2026-05-18",
-    "week_end": "2026-05-22"
+    "week_id": "2026-W22",
+    "week_label": "May 25 - 29, 2026",
+    "week_start": "2026-05-25",
+    "week_end": "2026-05-29"
   },
-  "source_dashboard_generated_at": "2026-05-18T15:04:47Z",
+  "source_dashboard_generated_at": "2026-05-25T14:40:26Z",
   "selection": {
     "status": "picked",
     "status_reason": "Live thesis monitor refreshed the active weekly pick.",
-    "threshold_score": 0.12,
+    "threshold_score": 0.1,
     "threshold_confidence": 0.55
   },
   "active_pick": {
-    "symbol": "CSCO",
-    "company_name": "Cisco Systems Inc.",
-    "sector": "technology",
-    "risk": "high",
-    "model_score": 0.126,
-    "confidence_score": 0.72,
+    "symbol": "HON",
+    "company_name": "Honeywell International Inc.",
+    "sector": "industrials",
+    "risk": "medium",
+    "model_score": 0.1848,
+    "confidence_score": 0.68,
     "confidence_label": "medium",
     "price_as_of": "2026-05-22",
-    "news_as_of": "2026-05-23",
+    "news_as_of": "2026-05-24",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 4,
+    "article_count": 1,
     "metrics": {
-      "momentum_5d": 0.0186,
-      "momentum_20d": 0.3528,
-      "daily_volatility": 0.0335,
-      "downside_volatility": 0.0203,
-      "max_drawdown_20d": 0.0381,
-      "positive_day_ratio_10d": 0.8,
-      "price_vs_20d_average": 0.1827,
-      "volume_trend_5d": -0.023,
-      "market_relative_5d": 0.0098,
-      "market_relative_20d": 0.2953,
-      "sector_relative_5d": -0.0047,
-      "sector_relative_20d": 0.2015,
-      "news_sentiment": 0.64,
-      "raw_news_sentiment": 0.4954,
-      "calibrated_news_sentiment": 0.2812,
-      "news_confidence": 0.69,
+      "momentum_5d": 0.0688,
+      "momentum_20d": 0.0692,
+      "daily_volatility": 0.0158,
+      "downside_volatility": 0.0095,
+      "max_drawdown_20d": 0.0268,
+      "positive_day_ratio_10d": 0.5,
+      "price_vs_20d_average": 0.056,
+      "volume_trend_5d": 0.3432,
+      "market_relative_5d": 0.0596,
+      "market_relative_20d": 0.0237,
+      "sector_relative_5d": 0.0665,
+      "sector_relative_20d": 0.0736,
+      "news_sentiment": 0.74,
+      "raw_news_sentiment": 0.7,
+      "calibrated_news_sentiment": 0.4724,
+      "news_confidence": 0.76,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
       "effective_article_count": 0.29,
-      "source_count": 3,
-      "average_relevance": 0.81,
-      "technical_training_ic": 0.0001,
+      "source_count": 1,
+      "average_relevance": 0.91,
+      "technical_training_ic": 0.0219,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1368,
-      "short_momentum": 0.0154,
-      "medium_momentum": 0.054,
-      "trend_quality": 0.0324,
-      "volume_confirmation": -0.0009,
-      "market_relative_strength": 0.021,
-      "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0569,
-      "daily_volatility_penalty": -0.0302,
-      "downside_penalty": -0.0219,
-      "drawdown_penalty": -0.0048,
-      "news_adjustment": 0.0418,
+      "momentum": 0.1279,
+      "short_momentum": 0.0568,
+      "medium_momentum": 0.0208,
+      "trend_quality": 0.0126,
+      "volume_confirmation": 0.0137,
+      "market_relative_strength": 0.0109,
+      "sector_relative_strength": 0.0131,
+      "volatility_penalty": -0.0278,
+      "daily_volatility_penalty": -0.0142,
+      "downside_penalty": -0.0103,
+      "drawdown_penalty": -0.0033,
+      "news_adjustment": 0.075,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0043,
-      "technical_total": 0.0799,
-      "trend_strength": 0.1018,
-      "relative_strength": 0.036,
-      "participation": -0.0009,
-      "risk_control": -0.0569,
+      "signal_alignment": 0.0097,
+      "technical_total": 0.1001,
+      "trend_strength": 0.0901,
+      "relative_strength": 0.0241,
+      "participation": 0.0137,
+      "risk_control": -0.0278,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,77 +88,62 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.126
+      "total": 0.1848
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 1.9% and 20-day momentum is 35.3%.",
-      "Trend quality is supported by 80% positive sessions over the last 10 trading days and the price sitting 18.3% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 3.4%, downside volatility near 2.0%, and a recent max drawdown of 3.8%.",
-      "Volume confirmation is -2.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 1.0% versus SPY over 5 days and -0.5% versus the sector ETF.",
-      "News signal is bullish with score 0.64, confidence 0.69, and 0.3 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.64, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 4 articles across 3 sources, 0.3 effective weighted articles, average relevance 0.81, average source quality 0.81, confidence 0.69.",
-      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.126 with medium confidence."
+      "Price trend remains constructive: 5-day momentum is 6.9% and 20-day momentum is 6.9%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 5.6% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.6%, downside volatility near 1.0%, and a recent max drawdown of 2.7%.",
+      "Volume confirmation is 34.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 6.0% versus SPY over 5 days and 6.7% versus the sector ETF.",
+      "News signal is bullish with score 0.74, confidence 0.76, and 0.3 weighted articles across 1 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.74, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.3 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.76.",
+      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.02).",
+      "Overall model score is 0.185 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Cisco Systems Inc. filed 10-Q: 10-Q",
-        "provider": "SEC EDGAR",
-        "url": "https://www.sec.gov/Archives/edgar/data/858877/000085887726000078/csco-20260425.htm",
-        "published_at": "2026-05-19T20:36:11Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.0,
+        "title": "Honeywell International Nears June 29 Split With 'All Green Lights,' Reaffirms Outlook",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/honeywell-international-nears-june-29-210401987.html",
+        "published_at": "2026-05-24T21:04:01Z",
+        "relevance_score": 0.91,
+        "sentiment": 0.05,
         "doc_type": "company_specific",
         "company_relevance": 0.9,
         "materiality": 0.8,
-        "llm_confidence": 0.9,
-        "llm_impact_score": 0.6,
-        "llm_reason": "Official SEC 10-Q filing for Cisco. Quarterly filings can contain material financial results, guidance updates, or risk disclosures that may move the stock in the short term; treat as the most consequential item in this set."
-      },
-      {
-        "title": "Cisco (CSCO) Extends USGA Partnership to Integrate AI-Ready Infrastructure",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/sectors/technology/articles/cisco-csco-extends-usga-partnership-120359974.html",
-        "published_at": "2026-05-23T12:03:59Z",
-        "relevance_score": 0.97,
-        "sentiment": 0.57,
-        "doc_type": "company_specific",
-        "company_relevance": 0.5,
-        "materiality": 0.25,
-        "llm_confidence": 0.7,
-        "llm_impact_score": 0.2,
-        "llm_reason": "Announcement of a multiyear partnership extension with the USGA to deploy AI-ready networking and cybersecurity solutions. Positive for brand and execution on AI infrastructure strategy but unlikely to produce material financial impact in the next 1–10 trading days."
+        "llm_confidence": 0.8,
+        "llm_impact_score": 0.7,
+        "llm_reason": "The article reports management guidance that the corporate separation is on schedule for June 29 and reiterates outlook—directly relevant to HON in the next 1–10 trading days. Timely confirmation of the split and reaffirmed outlook reduces near-term execution risk and can be a positive catalyst, though market reaction could be muted or mixed depending on investor expectations and any remaining separation details."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
-      "status": "risk",
-      "headline": "Support needs review",
-      "summary": "Volatility expanded enough to weaken the setup.",
+      "status": "watch",
+      "headline": "Support needs watching",
+      "summary": "Trend quality is still positive, but the tape is no longer decisive.",
       "alerts": [
-        "Volatility expanded enough to weaken the setup.",
-        "The news layer is still thin, so conviction should stay measured.",
-        "The pick only barely cleared the release bar."
+        "Trend quality is still positive, but the tape is no longer decisive.",
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "positive",
-          "value": "1.9% 5D • 35.3% 20D",
-          "detail": "Price action is still supporting the release thesis."
+          "state": "watch",
+          "value": "6.9% 5D • 6.9% 20D",
+          "detail": "Trend quality is still positive, but the tape is no longer decisive."
         },
         {
           "label": "Volatility",
-          "state": "risk",
-          "value": "3.4% daily • 3.8% drawdown",
-          "detail": "Volatility expanded enough to weaken the setup."
+          "state": "positive",
+          "value": "1.6% daily • 2.7% drawdown",
+          "detail": "Volatility and drawdown remain controlled for this release."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.64 sentiment • 4 articles",
+          "value": "0.74 sentiment • 1 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -169,14 +154,14 @@
         },
         {
           "label": "Margin",
-          "state": "risk",
-          "value": "+0.006 score • +0.172 conf",
-          "detail": "The pick only barely cleared the release bar."
+          "state": "positive",
+          "value": "+0.085 score • +0.126 conf",
+          "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 1 trading day • news 1 trading day • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -189,105 +174,110 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
+      "GDELT company news failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 6,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 19,
         "categories": {
-          "global_news": 1
+          "company_news": 4,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-05-24",
+          "date": "2026-05-25",
           "status": "healthy",
-          "used": 1,
+          "used": 6,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 19,
           "categories": {
-            "global_news": 1
+            "company_news": 4,
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 12,
         "limit": null,
         "remaining": null,
         "categories": {
-          "global_news": 1
+          "company_news": 10,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-05-24",
+          "date": "2026-05-25",
           "status": "tracking_only",
-          "used": 1,
+          "used": 12,
           "limit": null,
           "remaining": null,
           "categories": {
-            "global_news": 1
+            "company_news": 10,
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 52,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 48,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 50,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-05-24",
+          "date": "2026-05-25",
           "status": "healthy",
-          "used": 2,
+          "used": 52,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 48,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 50,
+            "global_news": 2
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 52,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1,
-          "submissions": 1
+          "ticker_map": 2,
+          "submissions": 50
         },
         "daily": {
-          "date": "2026-05-24",
+          "date": "2026-05-25",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 3,
+        "used": 61,
         "limit": 800,
-        "remaining": 797,
+        "remaining": 739,
         "categories": {
-          "price": 3
+          "price": 61
         },
         "daily": {
-          "date": "2026-05-24",
+          "date": "2026-05-25",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

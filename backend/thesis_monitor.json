@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-25T14:48:03Z",
+  "generated_at": "2026-05-25T17:28:27Z",
   "data_as_of": "2026-05-24",
-  "expected_next_refresh_at": "2026-05-26T14:48:03Z",
-  "stale_after": "2026-05-27T02:48:03Z",
+  "expected_next_refresh_at": "2026-05-26T17:28:27Z",
+  "stale_after": "2026-05-27T05:28:27Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W22",
@@ -24,8 +24,8 @@
     "company_name": "Honeywell International Inc.",
     "sector": "industrials",
     "risk": "medium",
-    "model_score": 0.1848,
-    "confidence_score": 0.68,
+    "model_score": 0.2116,
+    "confidence_score": 0.69,
     "confidence_label": "medium",
     "price_as_of": "2026-05-22",
     "news_as_of": "2026-05-24",
@@ -45,15 +45,15 @@
       "market_relative_20d": 0.0237,
       "sector_relative_5d": 0.0665,
       "sector_relative_20d": 0.0736,
-      "news_sentiment": 0.74,
-      "raw_news_sentiment": 0.7,
-      "calibrated_news_sentiment": 0.4724,
-      "news_confidence": 0.76,
+      "news_sentiment": 0.82,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.6431,
+      "news_confidence": 0.74,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.29,
+      "effective_article_count": 0.22,
       "source_count": 1,
       "average_relevance": 0.91,
       "technical_training_ic": 0.0219,
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0142,
       "downside_penalty": -0.0103,
       "drawdown_penalty": -0.0033,
-      "news_adjustment": 0.075,
+      "news_adjustment": 0.0987,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0097,
+      "signal_alignment": 0.0127,
       "technical_total": 0.1001,
       "trend_strength": 0.0901,
       "relative_strength": 0.0241,
@@ -88,7 +88,7 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.1848
+      "total": 0.2116
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is 6.9% and 20-day momentum is 6.9%.",
@@ -96,11 +96,11 @@
       "Risk profile shows daily volatility around 1.6%, downside volatility near 1.0%, and a recent max drawdown of 2.7%.",
       "Volume confirmation is 34.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is 6.0% versus SPY over 5 days and 6.7% versus the sector ETF.",
-      "News signal is bullish with score 0.74, confidence 0.76, and 0.3 weighted articles across 1 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.74, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 1 articles across 1 sources, 0.3 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.76.",
+      "News signal is bullish with score 0.82, confidence 0.74, and 0.2 weighted articles across 1 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.82, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.2 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.74.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.02).",
-      "Overall model score is 0.185 with medium confidence."
+      "Overall model score is 0.212 with medium confidence."
     ],
     "news_evidence": [
       {
@@ -112,10 +112,10 @@
         "sentiment": 0.05,
         "doc_type": "company_specific",
         "company_relevance": 0.9,
-        "materiality": 0.8,
+        "materiality": 0.65,
         "llm_confidence": 0.8,
-        "llm_impact_score": 0.7,
-        "llm_reason": "The article reports management guidance that the corporate separation is on schedule for June 29 and reiterates outlook—directly relevant to HON in the next 1–10 trading days. Timely confirmation of the split and reaffirmed outlook reduces near-term execution risk and can be a positive catalyst, though market reaction could be muted or mixed depending on investor expectations and any remaining separation details."
+        "llm_impact_score": 1.0,
+        "llm_reason": "Direct comments from Honeywell's CFO indicating the planned separation is 'final stages' and on track for June 29, plus a reaffirmed outlook and customer activity notes. This materially reduces near-term execution risk and is likely to provide modest positive sentiment/momentum, although the actual separation date is beyond the 1–10 trading day horizon so immediate fundamental impact is limited."
       }
     ],
     "macro_evidence": [],
@@ -143,7 +143,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.74 sentiment • 1 articles",
+          "value": "0.82 sentiment • 1 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -155,7 +155,7 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.085 score • +0.126 conf",
+          "value": "+0.112 score • +0.144 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
@@ -180,104 +180,103 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 6,
+        "used": 1,
         "limit": 25,
-        "remaining": 19,
+        "remaining": 24,
         "categories": {
-          "company_news": 4,
-          "global_news": 2
+          "global_news": 1
         },
         "daily": {
           "date": "2026-05-25",
           "status": "healthy",
-          "used": 6,
+          "used": 7,
           "limit": 25,
-          "remaining": 19,
+          "remaining": 18,
           "categories": {
             "company_news": 4,
-            "global_news": 2
+            "global_news": 3
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 12,
+        "used": 2,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 10,
-          "global_news": 2
+          "company_news": 1,
+          "global_news": 1
         },
         "daily": {
           "date": "2026-05-25",
           "status": "tracking_only",
-          "used": 12,
+          "used": 14,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 10,
-            "global_news": 2
+            "company_news": 11,
+            "global_news": 3
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 52,
+        "used": 2,
         "limit": 100,
-        "remaining": 48,
+        "remaining": 98,
         "categories": {
-          "company_news": 50,
-          "global_news": 2
+          "company_news": 1,
+          "global_news": 1
         },
         "daily": {
           "date": "2026-05-25",
           "status": "healthy",
-          "used": 52,
+          "used": 54,
           "limit": 100,
-          "remaining": 48,
+          "remaining": 46,
           "categories": {
-            "company_news": 50,
-            "global_news": 2
+            "company_news": 51,
+            "global_news": 3
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 52,
+        "used": 2,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 2,
-          "submissions": 50
+          "ticker_map": 1,
+          "submissions": 1
         },
         "daily": {
           "date": "2026-05-25",
           "status": "tracking_only",
-          "used": 52,
+          "used": 54,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 2,
-            "submissions": 50
+            "ticker_map": 3,
+            "submissions": 51
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 61,
+        "used": 3,
         "limit": 800,
-        "remaining": 739,
+        "remaining": 797,
         "categories": {
-          "price": 61
+          "price": 3
         },
         "daily": {
           "date": "2026-05-25",
           "status": "healthy",
-          "used": 61,
+          "used": 64,
           "limit": 800,
-          "remaining": 739,
+          "remaining": 736,
           "categories": {
-            "price": 61
+            "price": 64
           }
         }
       }

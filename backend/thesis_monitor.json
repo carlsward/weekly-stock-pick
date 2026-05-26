@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-25T17:28:27Z",
-  "data_as_of": "2026-05-24",
-  "expected_next_refresh_at": "2026-05-26T17:28:27Z",
-  "stale_after": "2026-05-27T05:28:27Z",
+  "generated_at": "2026-05-26T18:18:25Z",
+  "data_as_of": "2026-05-26",
+  "expected_next_refresh_at": "2026-05-27T18:18:25Z",
+  "stale_after": "2026-05-28T06:18:25Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W22",
@@ -24,62 +24,62 @@
     "company_name": "Honeywell International Inc.",
     "sector": "industrials",
     "risk": "medium",
-    "model_score": 0.2116,
-    "confidence_score": 0.69,
+    "model_score": 0.1379,
+    "confidence_score": 0.59,
     "confidence_label": "medium",
-    "price_as_of": "2026-05-22",
+    "price_as_of": "2026-05-26",
     "news_as_of": "2026-05-24",
     "macro_as_of": null,
     "sector_as_of": null,
     "article_count": 1,
     "metrics": {
-      "momentum_5d": 0.0688,
-      "momentum_20d": 0.0692,
-      "daily_volatility": 0.0158,
-      "downside_volatility": 0.0095,
+      "momentum_5d": 0.0665,
+      "momentum_20d": 0.0925,
+      "daily_volatility": 0.0159,
+      "downside_volatility": 0.0098,
       "max_drawdown_20d": 0.0268,
       "positive_day_ratio_10d": 0.5,
-      "price_vs_20d_average": 0.056,
-      "volume_trend_5d": 0.3432,
-      "market_relative_5d": 0.0596,
-      "market_relative_20d": 0.0237,
-      "sector_relative_5d": 0.0665,
-      "sector_relative_20d": 0.0736,
-      "news_sentiment": 0.82,
+      "price_vs_20d_average": 0.0685,
+      "volume_trend_5d": 0.0055,
+      "market_relative_5d": 0.0506,
+      "market_relative_20d": 0.042,
+      "sector_relative_5d": 0.0454,
+      "sector_relative_20d": 0.082,
+      "news_sentiment": 0.67,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.6431,
-      "news_confidence": 0.74,
+      "calibrated_news_sentiment": 0.3252,
+      "news_confidence": 0.38,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.22,
+      "effective_article_count": 0.11,
       "source_count": 1,
       "average_relevance": 0.91,
       "technical_training_ic": 0.0219,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1279,
-      "short_momentum": 0.0568,
-      "medium_momentum": 0.0208,
-      "trend_quality": 0.0126,
-      "volume_confirmation": 0.0137,
-      "market_relative_strength": 0.0109,
-      "sector_relative_strength": 0.0131,
-      "volatility_penalty": -0.0278,
-      "daily_volatility_penalty": -0.0142,
-      "downside_penalty": -0.0103,
+      "momentum": 0.1223,
+      "short_momentum": 0.0548,
+      "medium_momentum": 0.0278,
+      "trend_quality": 0.0154,
+      "volume_confirmation": 0.0002,
+      "market_relative_strength": 0.0122,
+      "sector_relative_strength": 0.0119,
+      "volatility_penalty": -0.0282,
+      "daily_volatility_penalty": -0.0143,
+      "downside_penalty": -0.0106,
       "drawdown_penalty": -0.0033,
-      "news_adjustment": 0.0987,
+      "news_adjustment": 0.0391,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0127,
-      "technical_total": 0.1001,
-      "trend_strength": 0.0901,
+      "signal_alignment": 0.0047,
+      "technical_total": 0.0941,
+      "trend_strength": 0.098,
       "relative_strength": 0.0241,
-      "participation": 0.0137,
-      "risk_control": -0.0278,
+      "participation": 0.0002,
+      "risk_control": -0.0282,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,19 +88,19 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.2116
+      "total": 0.1379
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 6.9% and 20-day momentum is 6.9%.",
-      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 5.6% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 6.6% and 20-day momentum is 9.3%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 6.8% relative to its 20-day average.",
       "Risk profile shows daily volatility around 1.6%, downside volatility near 1.0%, and a recent max drawdown of 2.7%.",
-      "Volume confirmation is 34.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 6.0% versus SPY over 5 days and 6.7% versus the sector ETF.",
-      "News signal is bullish with score 0.82, confidence 0.74, and 0.2 weighted articles across 1 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.82, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 1 articles across 1 sources, 0.2 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.74.",
+      "Volume confirmation is 0.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 5.1% versus SPY over 5 days and 4.5% versus the sector ETF.",
+      "News signal is bullish with score 0.67, confidence 0.38, and 0.1 weighted articles across 1 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.80, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 1 articles across 1 sources, 0.1 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.69.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.02).",
-      "Overall model score is 0.212 with medium confidence."
+      "Overall model score is 0.138 with medium confidence."
     ],
     "news_evidence": [
       {
@@ -112,10 +112,10 @@
         "sentiment": 0.05,
         "doc_type": "company_specific",
         "company_relevance": 0.9,
-        "materiality": 0.65,
-        "llm_confidence": 0.8,
+        "materiality": 0.5,
+        "llm_confidence": 0.75,
         "llm_impact_score": 1.0,
-        "llm_reason": "Direct comments from Honeywell's CFO indicating the planned separation is 'final stages' and on track for June 29, plus a reaffirmed outlook and customer activity notes. This materially reduces near-term execution risk and is likely to provide modest positive sentiment/momentum, although the actual separation date is beyond the 1–10 trading day horizon so immediate fundamental impact is limited."
+        "llm_reason": "Direct company update: confirms progress toward planned separation and reaffirms outlook. Positive tone could support sentiment, but the major event (June 29 separation) is beyond the 1–10 trading day window, so immediate material impact is limited. Operational remarks (active customers, repair work) provide modest short-term reassurance."
       }
     ],
     "macro_evidence": [],
@@ -125,13 +125,14 @@
       "summary": "Trend quality is still positive, but the tape is no longer decisive.",
       "alerts": [
         "Trend quality is still positive, but the tape is no longer decisive.",
-        "The news layer is still thin, so conviction should stay measured."
+        "The news layer is still thin, so conviction should stay measured.",
+        "The pick still qualified, but the margin of safety is not wide."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "watch",
-          "value": "6.9% 5D • 6.9% 20D",
+          "value": "6.6% 5D • 9.3% 20D",
           "detail": "Trend quality is still positive, but the tape is no longer decisive."
         },
         {
@@ -143,7 +144,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.82 sentiment • 1 articles",
+          "value": "0.67 sentiment • 1 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -154,14 +155,14 @@
         },
         {
           "label": "Margin",
-          "state": "positive",
-          "value": "+0.112 score • +0.144 conf",
-          "detail": "The pick cleared the release thresholds with room to spare."
+          "state": "watch",
+          "value": "+0.038 score • +0.044 conf",
+          "detail": "The pick still qualified, but the margin of safety is not wide."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 1 trading day • news 1 trading day • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 2 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -187,14 +188,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-25",
+          "date": "2026-05-26",
           "status": "healthy",
-          "used": 7,
+          "used": 1,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 24,
           "categories": {
-            "company_news": 4,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -208,14 +208,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-25",
+          "date": "2026-05-26",
           "status": "tracking_only",
-          "used": 14,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 11,
-            "global_news": 3
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -229,14 +229,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-25",
+          "date": "2026-05-26",
           "status": "healthy",
-          "used": 54,
+          "used": 2,
           "limit": 100,
-          "remaining": 46,
+          "remaining": 98,
           "categories": {
-            "company_news": 51,
-            "global_news": 3
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -250,14 +250,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-05-25",
+          "date": "2026-05-26",
           "status": "tracking_only",
-          "used": 54,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 3,
-            "submissions": 51
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -270,13 +270,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-05-25",
+          "date": "2026-05-26",
           "status": "healthy",
-          "used": 64,
+          "used": 3,
           "limit": 800,
-          "remaining": 736,
+          "remaining": 797,
           "categories": {
-            "price": 64
+            "price": 3
           }
         }
       }

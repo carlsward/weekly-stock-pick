@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-05-27T18:20:34Z",
-  "data_as_of": "2026-05-27",
-  "expected_next_refresh_at": "2026-05-28T18:20:34Z",
-  "stale_after": "2026-05-29T06:20:34Z",
+  "generated_at": "2026-05-28T18:30:24Z",
+  "data_as_of": "2026-05-28",
+  "expected_next_refresh_at": "2026-05-29T18:30:24Z",
+  "stale_after": "2026-05-30T06:30:24Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W22",
@@ -24,62 +24,62 @@
     "company_name": "Honeywell International Inc.",
     "sector": "industrials",
     "risk": "medium",
-    "model_score": 0.1641,
-    "confidence_score": 0.65,
-    "confidence_label": "medium",
-    "price_as_of": "2026-05-27",
-    "news_as_of": "2026-05-24",
+    "model_score": 0.2493,
+    "confidence_score": 0.8,
+    "confidence_label": "high",
+    "price_as_of": "2026-05-28",
+    "news_as_of": "2026-05-27",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 1,
+    "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.0738,
-      "momentum_20d": 0.0951,
-      "daily_volatility": 0.0159,
-      "downside_volatility": 0.0098,
+      "momentum_5d": 0.0711,
+      "momentum_20d": 0.1073,
+      "daily_volatility": 0.0155,
+      "downside_volatility": 0.0091,
       "max_drawdown_20d": 0.0268,
       "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0704,
-      "volume_trend_5d": 0.0476,
-      "market_relative_5d": 0.05,
-      "market_relative_20d": 0.0387,
-      "sector_relative_5d": 0.0382,
-      "sector_relative_20d": 0.0728,
-      "news_sentiment": 0.7,
+      "price_vs_20d_average": 0.0638,
+      "volume_trend_5d": -0.0124,
+      "market_relative_5d": 0.0519,
+      "market_relative_20d": 0.0439,
+      "sector_relative_5d": 0.05,
+      "sector_relative_20d": 0.0803,
+      "news_sentiment": 0.88,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.4058,
-      "news_confidence": 0.46,
+      "calibrated_news_sentiment": 0.7546,
+      "news_confidence": 0.84,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.27,
-      "source_count": 1,
-      "average_relevance": 0.91,
+      "effective_article_count": 0.97,
+      "source_count": 2,
+      "average_relevance": 0.96,
       "technical_training_ic": 0.0219,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.134,
-      "short_momentum": 0.0609,
-      "medium_momentum": 0.0285,
-      "trend_quality": 0.0206,
-      "volume_confirmation": 0.0019,
-      "market_relative_strength": 0.0116,
-      "sector_relative_strength": 0.0104,
-      "volatility_penalty": -0.0282,
-      "daily_volatility_penalty": -0.0143,
-      "downside_penalty": -0.0106,
+      "momentum": 0.1343,
+      "short_momentum": 0.0587,
+      "medium_momentum": 0.0322,
+      "trend_quality": 0.0192,
+      "volume_confirmation": -0.0005,
+      "market_relative_strength": 0.0126,
+      "sector_relative_strength": 0.0122,
+      "volatility_penalty": -0.0271,
+      "daily_volatility_penalty": -0.0139,
+      "downside_penalty": -0.0098,
       "drawdown_penalty": -0.0033,
-      "news_adjustment": 0.0514,
+      "news_adjustment": 0.1248,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0069,
-      "technical_total": 0.1058,
-      "trend_strength": 0.1101,
-      "relative_strength": 0.022,
-      "participation": 0.0019,
-      "risk_control": -0.0282,
+      "signal_alignment": 0.0173,
+      "technical_total": 0.1073,
+      "trend_strength": 0.11,
+      "relative_strength": 0.0248,
+      "participation": -0.0005,
+      "risk_control": -0.0271,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,21 +88,35 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.1641
+      "total": 0.2493
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 7.4% and 20-day momentum is 9.5%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 7.0% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.6%, downside volatility near 1.0%, and a recent max drawdown of 2.7%.",
-      "Volume confirmation is 4.8% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 5.0% versus SPY over 5 days and 3.8% versus the sector ETF.",
-      "News signal is bullish with score 0.70, confidence 0.46, and 0.3 weighted articles across 1 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.87, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 1 articles across 1 sources, 0.3 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.83.",
+      "Price trend remains constructive: 5-day momentum is 7.1% and 20-day momentum is 10.7%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 6.4% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.5%, downside volatility near 0.9%, and a recent max drawdown of 2.7%.",
+      "Volume confirmation is -1.2% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 5.2% versus SPY over 5 days and 5.0% versus the sector ETF.",
+      "News signal is bullish with score 0.88, confidence 0.84, and 1.0 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.88, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 1.0 effective weighted articles, average relevance 0.96, average source quality 0.83, confidence 0.84.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.02).",
-      "Overall model score is 0.164 with medium confidence."
+      "Overall model score is 0.249 with high confidence."
     ],
     "news_evidence": [
+      {
+        "title": "Honeywell International Inc. filed 8-K: 8-K",
+        "provider": "SEC EDGAR",
+        "url": "https://www.sec.gov/Archives/edgar/data/773840/000119312526242011/d35048d8k.htm",
+        "published_at": "2026-05-27T20:36:23Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.0,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "An SEC Form 8-K for Honeywell is inherently company-specific and can contain market-moving disclosures. However, no filing contents are provided here, so the potential impact over the next 1-10 trading days is uncertain and cannot be scored as high."
+      },
       {
         "title": "Honeywell International Nears June 29 Split With 'All Green Lights,' Reaffirms Outlook",
         "provider": "finance.yahoo.com",
@@ -115,7 +129,7 @@
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Direct company update: management says the planned separation is in final stages and reaffirms outlook, reducing execution risk. This is meaningful company-specific news that is modestly positive. However, the announced split date (June 29) is beyond the 1–10 trading day horizon, so immediate market impact is likely limited to a modest sentiment boost rather than a near-term operational change."
+        "llm_reason": "Direct management commentary: CFO said the planned separation is on track for June 29 and reiterated the outlook. This is timely, company-specific, and likely to influence investor expectations and flows in the next 1-10 trading days (positive bias)."
       }
     ],
     "macro_evidence": [],
@@ -124,26 +138,25 @@
       "headline": "Support needs watching",
       "summary": "The news layer is still thin, so conviction should stay measured.",
       "alerts": [
-        "The news layer is still thin, so conviction should stay measured.",
-        "Freshness should be checked before acting: company news is 3 trading days old."
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "7.4% 5D • 9.5% 20D",
+          "value": "7.1% 5D • 10.7% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "positive",
-          "value": "1.6% daily • 2.7% drawdown",
+          "value": "1.5% daily • 2.7% drawdown",
           "detail": "Volatility and drawdown remain controlled for this release."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.70 sentiment • 1 articles",
+          "value": "0.88 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -155,14 +168,14 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.064 score • +0.097 conf",
+          "value": "+0.149 score • +0.247 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
-          "state": "watch",
-          "value": "price 0 trading days • news 3 trading days • macro neutral • sector neutral",
-          "detail": "Freshness should be checked before acting: company news is 3 trading days old."
+          "state": "positive",
+          "value": "price 0 trading days • news 1 trading day • macro neutral • sector neutral",
+          "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
     }
@@ -174,7 +187,6 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
-      "GDELT company news failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
@@ -187,7 +199,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-27",
+          "date": "2026-05-28",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -199,21 +211,19 @@
       },
       "gdelt": {
         "status": "degraded",
-        "used": 2,
+        "used": 1,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-27",
+          "date": "2026-05-28",
           "status": "tracking_only",
-          "used": 2,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 1,
             "global_news": 1
           }
         }
@@ -228,7 +238,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-27",
+          "date": "2026-05-28",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -249,7 +259,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-05-27",
+          "date": "2026-05-28",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -269,7 +279,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-05-27",
+          "date": "2026-05-28",
           "status": "healthy",
           "used": 3,
           "limit": 800,

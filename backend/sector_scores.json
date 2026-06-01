@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-25T14:40:06Z",
-  "last_updated": "2026-05-25",
+  "generated_at": "2026-06-01T17:18:59Z",
+  "last_updated": "2026-06-01",
   "lookback_days": 3,
-  "article_count": 1,
-  "source_count": 1,
+  "article_count": 0,
+  "source_count": 0,
   "llm_model": "gpt-5-mini",
-  "summary": "Chevron CEO warning that a Middle East conflict could spark 1970s-style oil shortages raises near-term risk of higher crude and fuel prices. Transmission is a supply shock to oil that increases fuel and logistics costs, squeezes consumer discretionary demand and margins, benefits integrated oil majors, and boosts defensive grocers.",
+  "summary": "Sector analysis was neutral because no reliable broad catalysts were found.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -15,108 +15,45 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Communication Services."
+        "No recent broad catalyst clearly favored the Communication Services sector."
       ],
       "supporting_articles": []
     },
     "consumer_discretionary": {
       "sector": "consumer_discretionary",
       "display_name": "Consumer Discretionary",
-      "score": 0.44,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent broad catalyst clearly favored the Consumer Discretionary sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "negative",
-          "weight": 0.122,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "consumer_staples": {
       "sector": "consumer_staples",
       "display_name": "Consumer Staples",
-      "score": 0.56,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent broad catalyst clearly favored the Consumer Staples sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "positive",
-          "weight": 0.122,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "energy": {
       "sector": "energy",
       "display_name": "Energy",
-      "score": 0.56,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent broad catalyst clearly favored the Energy sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "positive",
-          "weight": 0.122,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "financials": {
       "sector": "financials",
@@ -126,7 +63,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Financials."
+        "No recent broad catalyst clearly favored the Financials sector."
       ],
       "supporting_articles": []
     },
@@ -138,42 +75,21 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Healthcare."
+        "No recent broad catalyst clearly favored the Healthcare sector."
       ],
       "supporting_articles": []
     },
     "industrials": {
       "sector": "industrials",
       "display_name": "Industrials",
-      "score": 0.44,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent broad catalyst clearly favored the Industrials sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "negative",
-          "weight": 0.122,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "technology": {
       "sector": "technology",
@@ -183,7 +99,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Technology."
+        "No recent broad catalyst clearly favored the Technology sector."
       ],
       "supporting_articles": []
     }
@@ -198,7 +114,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Apple Inc.."
+        "No recent world-news catalyst clearly favored Apple Inc.."
       ],
       "supporting_articles": []
     },
@@ -211,7 +127,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Microsoft Corporation."
+        "No recent world-news catalyst clearly favored Microsoft Corporation."
       ],
       "supporting_articles": []
     },
@@ -224,7 +140,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Alphabet Inc.."
+        "No recent world-news catalyst clearly favored Alphabet Inc.."
       ],
       "supporting_articles": []
     },
@@ -232,35 +148,14 @@
       "symbol": "AMZN",
       "company_name": "Amazon.com Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.47,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent world-news catalyst clearly favored Amazon.com Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "negative",
-          "weight": 0.049,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "TSLA": {
       "symbol": "TSLA",
@@ -271,7 +166,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Tesla Inc.."
+        "No recent world-news catalyst clearly favored Tesla Inc.."
       ],
       "supporting_articles": []
     },
@@ -284,7 +179,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Meta Platforms Inc.."
+        "No recent world-news catalyst clearly favored Meta Platforms Inc.."
       ],
       "supporting_articles": []
     },
@@ -297,7 +192,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
+        "No recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
       ],
       "supporting_articles": []
     },
@@ -310,7 +205,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored NVIDIA Corporation."
+        "No recent world-news catalyst clearly favored NVIDIA Corporation."
       ],
       "supporting_articles": []
     },
@@ -323,7 +218,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored JPMorgan Chase & Co.."
+        "No recent world-news catalyst clearly favored JPMorgan Chase & Co.."
       ],
       "supporting_articles": []
     },
@@ -336,7 +231,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Johnson & Johnson."
+        "No recent world-news catalyst clearly favored Johnson & Johnson."
       ],
       "supporting_articles": []
     },
@@ -349,7 +244,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Visa Inc.."
+        "No recent world-news catalyst clearly favored Visa Inc.."
       ],
       "supporting_articles": []
     },
@@ -357,35 +252,14 @@
       "symbol": "WMT",
       "company_name": "Walmart Inc.",
       "sector": "consumer_staples",
-      "score": 0.53,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent world-news catalyst clearly favored Walmart Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "positive",
-          "weight": 0.049,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "PG": {
       "symbol": "PG",
@@ -396,7 +270,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Procter & Gamble Company."
+        "No recent world-news catalyst clearly favored Procter & Gamble Company."
       ],
       "supporting_articles": []
     },
@@ -409,7 +283,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Mastercard Incorporated."
+        "No recent world-news catalyst clearly favored Mastercard Incorporated."
       ],
       "supporting_articles": []
     },
@@ -422,7 +296,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Walt Disney Company."
+        "No recent world-news catalyst clearly favored The Walt Disney Company."
       ],
       "supporting_articles": []
     },
@@ -430,35 +304,14 @@
       "symbol": "HD",
       "company_name": "The Home Depot Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.47,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent world-news catalyst clearly favored The Home Depot Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "negative",
-          "weight": 0.049,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "BAC": {
       "symbol": "BAC",
@@ -469,7 +322,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Bank of America Corporation."
+        "No recent world-news catalyst clearly favored Bank of America Corporation."
       ],
       "supporting_articles": []
     },
@@ -477,35 +330,14 @@
       "symbol": "XOM",
       "company_name": "Exxon Mobil Corporation",
       "sector": "energy",
-      "score": 0.53,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent world-news catalyst clearly favored Exxon Mobil Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "positive",
-          "weight": 0.049,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "PFE": {
       "symbol": "PFE",
@@ -516,7 +348,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Pfizer Inc.."
+        "No recent world-news catalyst clearly favored Pfizer Inc.."
       ],
       "supporting_articles": []
     },
@@ -529,7 +361,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Verizon Communications Inc.."
+        "No recent world-news catalyst clearly favored Verizon Communications Inc.."
       ],
       "supporting_articles": []
     },
@@ -542,7 +374,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Netflix Inc.."
+        "No recent world-news catalyst clearly favored Netflix Inc.."
       ],
       "supporting_articles": []
     },
@@ -555,7 +387,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Adobe Inc.."
+        "No recent world-news catalyst clearly favored Adobe Inc.."
       ],
       "supporting_articles": []
     },
@@ -568,7 +400,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Comcast Corporation."
+        "No recent world-news catalyst clearly favored Comcast Corporation."
       ],
       "supporting_articles": []
     },
@@ -576,35 +408,14 @@
       "symbol": "KO",
       "company_name": "The Coca-Cola Company",
       "sector": "consumer_staples",
-      "score": 0.53,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent world-news catalyst clearly favored The Coca-Cola Company."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "positive",
-          "weight": 0.049,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "T": {
       "symbol": "T",
@@ -615,7 +426,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored AT&T Inc.."
+        "No recent world-news catalyst clearly favored AT&T Inc.."
       ],
       "supporting_articles": []
     },
@@ -628,7 +439,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Nike Inc.."
+        "No recent world-news catalyst clearly favored Nike Inc.."
       ],
       "supporting_articles": []
     },
@@ -641,7 +452,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Merck & Co. Inc.."
+        "No recent world-news catalyst clearly favored Merck & Co. Inc.."
       ],
       "supporting_articles": []
     },
@@ -654,7 +465,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Abbott Laboratories."
+        "No recent world-news catalyst clearly favored Abbott Laboratories."
       ],
       "supporting_articles": []
     },
@@ -667,7 +478,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored PepsiCo Inc.."
+        "No recent world-news catalyst clearly favored PepsiCo Inc.."
       ],
       "supporting_articles": []
     },
@@ -680,7 +491,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Cisco Systems Inc.."
+        "No recent world-news catalyst clearly favored Cisco Systems Inc.."
       ],
       "supporting_articles": []
     },
@@ -693,7 +504,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Oracle Corporation."
+        "No recent world-news catalyst clearly favored Oracle Corporation."
       ],
       "supporting_articles": []
     },
@@ -706,7 +517,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Intel Corporation."
+        "No recent world-news catalyst clearly favored Intel Corporation."
       ],
       "supporting_articles": []
     },
@@ -719,7 +530,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Salesforce Inc.."
+        "No recent world-news catalyst clearly favored Salesforce Inc.."
       ],
       "supporting_articles": []
     },
@@ -727,35 +538,14 @@
       "symbol": "COST",
       "company_name": "Costco Wholesale Corporation",
       "sector": "consumer_staples",
-      "score": 0.53,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent world-news catalyst clearly favored Costco Wholesale Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "positive",
-          "weight": 0.049,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "ACN": {
       "symbol": "ACN",
@@ -766,7 +556,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Accenture plc."
+        "No recent world-news catalyst clearly favored Accenture plc."
       ],
       "supporting_articles": []
     },
@@ -774,69 +564,27 @@
       "symbol": "CVX",
       "company_name": "Chevron Corporation",
       "sector": "energy",
-      "score": 0.53,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent world-news catalyst clearly favored Chevron Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "positive",
-          "weight": 0.049,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "MCD": {
       "symbol": "MCD",
       "company_name": "McDonald's Corporation",
       "sector": "consumer_discretionary",
-      "score": 0.47,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent world-news catalyst clearly favored McDonald's Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "negative",
-          "weight": 0.049,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "DHR": {
       "symbol": "DHR",
@@ -847,7 +595,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Danaher Corporation."
+        "No recent world-news catalyst clearly favored Danaher Corporation."
       ],
       "supporting_articles": []
     },
@@ -860,7 +608,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Medtronic plc."
+        "No recent world-news catalyst clearly favored Medtronic plc."
       ],
       "supporting_articles": []
     },
@@ -873,7 +621,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Eli Lilly and Company."
+        "No recent world-news catalyst clearly favored Eli Lilly and Company."
       ],
       "supporting_articles": []
     },
@@ -886,7 +634,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Texas Instruments Incorporated."
+        "No recent world-news catalyst clearly favored Texas Instruments Incorporated."
       ],
       "supporting_articles": []
     },
@@ -899,7 +647,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
+        "No recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
       ],
       "supporting_articles": []
     },
@@ -912,7 +660,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
+        "No recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
       ],
       "supporting_articles": []
     },
@@ -925,7 +673,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored QUALCOMM Incorporated."
+        "No recent world-news catalyst clearly favored QUALCOMM Incorporated."
       ],
       "supporting_articles": []
     },
@@ -938,7 +686,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Honeywell International Inc.."
+        "No recent world-news catalyst clearly favored Honeywell International Inc.."
       ],
       "supporting_articles": []
     },
@@ -951,7 +699,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Amgen Inc.."
+        "No recent world-news catalyst clearly favored Amgen Inc.."
       ],
       "supporting_articles": []
     },
@@ -959,69 +707,27 @@
       "symbol": "SBUX",
       "company_name": "Starbucks Corporation",
       "sector": "consumer_discretionary",
-      "score": 0.47,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent world-news catalyst clearly favored Starbucks Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "negative",
-          "weight": 0.049,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "LOW": {
       "symbol": "LOW",
       "company_name": "Lowe's Companies Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.47,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-05-25",
+      "last_updated": null,
       "reasons": [
-        "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
+        "No recent world-news catalyst clearly favored Lowe's Companies Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-          "feed": "marketaux",
-          "provider": "finance.yahoo.com",
-          "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-          "published_at": "2026-05-25T13:35:00Z",
-          "impact": "negative",
-          "weight": 0.049,
-          "event_type": "geopolitical",
-          "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-          "affected_inputs": [
-            "crude oil",
-            "transportation fuel",
-            "logistics / trucking costs",
-            "consumer discretionary spending",
-            "retailer operating margins"
-          ],
-          "horizon": "1-2w",
-          "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-        }
-      ]
+      "supporting_articles": []
     },
     "GE": {
       "symbol": "GE",
@@ -1032,57 +738,12 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored General Electric Company."
+        "No recent world-news catalyst clearly favored General Electric Company."
       ],
       "supporting_articles": []
     }
   },
-  "events": [
-    {
-      "article_id": "news_3",
-      "title": "If Wirth Is Right About a 1970s-Style Oil Crisis, These Retail Stocks Could Take the Biggest Hit This Summer.",
-      "feed": "marketaux",
-      "provider": "finance.yahoo.com",
-      "url": "https://finance.yahoo.com/sectors/energy/articles/wirth-1970s-style-oil-crisis-133500555.html",
-      "published_at": "2026-05-25T13:35:00Z",
-      "event_type": "geopolitical",
-      "transmission_channel": "energy supply shock -> higher crude and fuel prices -> higher transportation/logistics costs and consumer fuel bills -> reduced discretionary spending and margin pressure for retailers; rotation into energy and defensive staples",
-      "affected_inputs": [
-        "crude oil",
-        "transportation fuel",
-        "logistics / trucking costs",
-        "consumer discretionary spending",
-        "retailer operating margins"
-      ],
-      "horizon": "1-2w",
-      "market_relevance": 0.7,
-      "magnitude": 0.6,
-      "confidence": 0.6,
-      "beneficiary_sectors": [
-        "energy",
-        "consumer_staples"
-      ],
-      "hurt_sectors": [
-        "consumer_discretionary",
-        "industrials"
-      ],
-      "beneficiary_symbols": [
-        "XOM",
-        "CVX",
-        "WMT",
-        "COST",
-        "KO"
-      ],
-      "hurt_symbols": [
-        "AMZN",
-        "HD",
-        "LOW",
-        "MCD",
-        "SBUX"
-      ],
-      "reason": "A heightened Middle East conflict raises risk of crude supply disruptions (supply shock), pushing oil and gasoline prices higher. Higher fuel costs increase logistics and distribution expenses for retailers and restaurants, and raise consumer fuel bills, reducing discretionary spending. First-order winners are large integrated energy producers (XOM, CVX) that benefit from higher hydrocarbon prices and margins. Defensive consumer staples and big-box grocers (WMT, COST, KO) tend to outperform during fuel-driven consumer stress as shoppers shift toward necessities and value formats. Hurt are consumer discretionary retailers and restaurants (AMZN, HD, LOW, MCD, SBUX) that face margin pressure from higher transport costs and potential demand erosion as consumers cut nonessential spending. Industrials with heavy fuel/transport exposure may also be pressured by higher operating costs. Impacts are most likely to play out over the next 1-10 trading days as markets reprice energy risk and near-term demand implications."
-    }
-  ],
+  "events": [],
   "data_quality": {
     "status": "degraded",
     "degraded_reason": "GDELT global-news feed failed during this run.",
@@ -1100,7 +761,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-25",
+          "date": "2026-06-01",
           "status": "healthy",
           "used": 5,
           "limit": 25,
@@ -1113,21 +774,21 @@
       },
       "gdelt": {
         "status": "degraded",
-        "used": 10,
+        "used": 9,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 9,
+          "company_news": 8,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-25",
+          "date": "2026-06-01",
           "status": "tracking_only",
-          "used": 10,
+          "used": 9,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 9,
+            "company_news": 8,
             "global_news": 1
           }
         }
@@ -1142,7 +803,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-05-25",
+          "date": "2026-06-01",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -1163,7 +824,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-05-25",
+          "date": "2026-06-01",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

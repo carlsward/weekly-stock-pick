@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-02T19:36:45Z",
-  "data_as_of": "2026-06-02",
-  "expected_next_refresh_at": "2026-06-03T19:36:45Z",
-  "stale_after": "2026-06-04T07:36:45Z",
+  "generated_at": "2026-06-03T19:42:24Z",
+  "data_as_of": "2026-06-03",
+  "expected_next_refresh_at": "2026-06-04T19:42:24Z",
+  "stale_after": "2026-06-05T07:42:24Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W23",
@@ -24,136 +24,119 @@
     "company_name": "Oracle Corporation",
     "sector": "technology",
     "risk": "high",
-    "model_score": 0.2092,
-    "confidence_score": 0.72,
-    "confidence_label": "medium",
-    "price_as_of": "2026-06-02",
-    "news_as_of": "2026-06-01",
-    "macro_as_of": "2026-06-02",
-    "sector_as_of": "2026-06-02",
+    "model_score": 0.2652,
+    "confidence_score": 0.81,
+    "confidence_label": "high",
+    "price_as_of": "2026-06-03",
+    "news_as_of": "2026-06-03",
+    "macro_as_of": null,
+    "sector_as_of": "2026-06-03",
     "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.2675,
-      "momentum_20d": 0.3572,
-      "daily_volatility": 0.039,
-      "downside_volatility": 0.0232,
+      "momentum_5d": 0.2125,
+      "momentum_20d": 0.2492,
+      "daily_volatility": 0.0417,
+      "downside_volatility": 0.0288,
       "max_drawdown_20d": 0.0739,
       "positive_day_ratio_10d": 0.7,
-      "price_vs_20d_average": 0.2317,
-      "volume_trend_5d": 0.3442,
-      "market_relative_5d": 0.2527,
-      "market_relative_20d": 0.2832,
-      "sector_relative_5d": 0.1864,
-      "sector_relative_20d": 0.112,
-      "news_sentiment": 0.74,
+      "price_vs_20d_average": 0.1521,
+      "volume_trend_5d": 0.5717,
+      "market_relative_5d": 0.2045,
+      "market_relative_20d": 0.1968,
+      "sector_relative_5d": 0.1353,
+      "sector_relative_20d": 0.0504,
+      "news_sentiment": 0.87,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.4737,
-      "news_confidence": 0.61,
-      "macro_sentiment": 0.52,
-      "macro_confidence": 0.37,
-      "sector_sentiment": 0.52,
-      "sector_confidence": 0.36,
-      "effective_article_count": 0.04,
+      "calibrated_news_sentiment": 0.7421,
+      "news_confidence": 0.8,
+      "macro_sentiment": 0.5,
+      "macro_confidence": 0.2,
+      "sector_sentiment": 0.37,
+      "sector_confidence": 0.44,
+      "effective_article_count": 0.84,
       "source_count": 3,
-      "average_relevance": 0.56,
+      "average_relevance": 0.8,
       "technical_training_ic": 0.0023,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1974,
+      "momentum": 0.2065,
       "short_momentum": 0.066,
       "medium_momentum": 0.054,
       "trend_quality": 0.0276,
-      "volume_confirmation": 0.0138,
+      "volume_confirmation": 0.0229,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0694,
-      "daily_volatility_penalty": -0.0351,
-      "downside_penalty": -0.025,
+      "volatility_penalty": -0.0722,
+      "daily_volatility_penalty": -0.036,
+      "downside_penalty": -0.027,
       "drawdown_penalty": -0.0092,
-      "news_adjustment": 0.0679,
-      "macro_adjustment": 0.0016,
-      "sector_adjustment": 0.0007,
-      "signal_alignment": 0.0111,
-      "technical_total": 0.128,
+      "news_adjustment": 0.1185,
+      "macro_adjustment": 0.0,
+      "sector_adjustment": -0.0081,
+      "signal_alignment": 0.0205,
+      "technical_total": 0.1342,
       "trend_strength": 0.1476,
       "relative_strength": 0.036,
-      "participation": 0.0138,
-      "risk_control": -0.0694,
+      "participation": 0.0229,
+      "risk_control": -0.0722,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
-      "macro_dedup_penalty": 0.7,
-      "sector_dedup_penalty": 0.4,
-      "news_macro_overlap": 0.4,
-      "news_sector_overlap": 0.4,
-      "macro_sector_overlap": 1.0,
-      "total": 0.2092
+      "macro_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.65,
+      "news_macro_overlap": 0.0,
+      "news_sector_overlap": 0.25,
+      "macro_sector_overlap": 0.0,
+      "total": 0.2652
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 26.7% and 20-day momentum is 35.7%.",
-      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 23.2% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 3.9%, downside volatility near 2.3%, and a recent max drawdown of 7.4%.",
-      "Volume confirmation is 34.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 25.3% versus SPY over 5 days and 18.6% versus the sector ETF.",
-      "News signal is bullish with score 0.74, confidence 0.61, and 0.0 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.74, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.0 effective weighted articles, average relevance 0.56, average source quality 0.75, confidence 0.61.",
+      "Price trend remains constructive: 5-day momentum is 21.3% and 20-day momentum is 24.9%.",
+      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 15.2% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 4.2%, downside volatility near 2.9%, and a recent max drawdown of 7.4%.",
+      "Volume confirmation is 57.2% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 20.4% versus SPY over 5 days and 13.5% versus the sector ETF.",
+      "News signal is bullish with score 0.87, confidence 0.80, and 0.8 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.87, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.8 effective weighted articles, average relevance 0.80, average source quality 0.75, confidence 0.80.",
+      "Broad market news leaned bearish for the Technology sector with score 0.37 and confidence 0.44.",
+      "Alphabet's surprise announcement of larger-than-expected AI spending and the dilution debate transmits to markets primarily through capital-markets channels: announced or expected equity issuance dilutes existing shareholders and pressures valuation multiples near-term. Higher AI capex increases cash burn and can cause investor re-rating of large-cap tech growth prospects. Short-term market reaction is typically negative for the broader technology cohort as investors reduce exposure to perceived near-term dilution and higher funding requirements; this is consistent with the reported immediate ~3.9% drop in the stock. Second-order effects (increased demand for AI infrastructure vendors) may benefit some suppliers over a longer horizon, but within the next 1-15 trading days the dominant effect is valuation/ sentiment pressure on the technology sector.",
+      "Sector overlay was trimmed by 35% because it overlaps with company or macro themes.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.209 with medium confidence."
+      "Price action and news are pointing in the same direction, which raises trust in the setup.",
+      "Overall model score is 0.265 with high confidence."
     ],
     "news_evidence": [
       {
-        "title": "NVIDIA Unveils Vera, the CPU for Agents",
-        "provider": "manilatimes.net",
-        "url": "https://www.manilatimes.net/2026/06/01/tmt-newswire/globenewswire/nvidia-unveils-vera-the-cpu-for-agents/2355347",
-        "published_at": "2026-06-01T04:11:46Z",
-        "relevance_score": 0.56,
-        "sentiment": 0.01,
-        "doc_type": "sector_macro",
-        "company_relevance": 0.25,
+        "title": "Buy, Hold, or Sell: Is Oracle Stock a Buy at $245?",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/buy-hold-sell-oracle-stock-165655141.html",
+        "published_at": "2026-06-03T16:56:55Z",
+        "relevance_score": 0.83,
+        "sentiment": 0.23,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.7,
+        "llm_confidence": 0.8,
         "llm_impact_score": 1.0,
-        "llm_reason": "NVIDIA’s new CPU is data‑center/hardware ecosystem news. It could influence cloud workloads and vendor partnerships longer term and may affect demand dynamics for cloud infrastructure providers (including Oracle Cloud), but the announcement is not Oracle-specific and is unlikely to drive immediate short-term price moves for ORCL."
+        "llm_reason": "Direct, company-specific analysis highlighting Oracle's large contracted backlog and AI/cloud narrative; likely to move sentiment and trading interest over the next few sessions."
       },
       {
-        "title": "Texas emerges as US' new economic powerhouse amid California exodus",
-        "provider": "economictimes.indiatimes.com",
-        "url": "https://economictimes.indiatimes.com/news/international/global-trends/texas-emerges-as-us-new-economic-powerhouse-amid-california-exodus/articleshow/131438994.cms",
-        "published_at": "2026-06-01T09:18:41Z",
-        "relevance_score": 0.59,
-        "sentiment": 0.05,
-        "doc_type": "sector_macro",
-        "company_relevance": 0.2,
+        "title": "Oracle: Profit From Others' Speculation, Stick To Intrinsic Value (Downgrade) (NYSE:ORCL)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4911113-oracle-profit-from-others-speculation-stick-to-intrinsic-value-downgrade",
+        "published_at": "2026-06-02T19:36:36Z",
+        "relevance_score": 0.99,
+        "sentiment": 0.39,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.6,
+        "llm_confidence": 0.75,
         "llm_impact_score": 1.0,
-        "llm_reason": "Regional/relocation trend story about Texas. Oracle moved its HQ to Austin in 2020, so the piece is tangentially relevant to corporate footprint and talent/real-estate dynamics, but provides no company-specific news that would affect ORCL share price within 1–10 trading days."
+        "llm_reason": "A visible opinion/downgrade piece (Seeking Alpha) that could temper momentum after a strong run; affects sentiment but contains no new operational data."
       }
     ],
-    "macro_evidence": [
-      {
-        "title": "Companies Push Employees to Use AI — Just Not Too Much",
-        "feed": "marketaux",
-        "provider": "livemint.com",
-        "url": "https://www.livemint.com/companies/companies-push-employees-to-use-ai-just-not-too-much-11780425476622.html",
-        "published_at": "2026-06-02T18:37:56Z",
-        "impact": "positive",
-        "weight": 0.036,
-        "event_type": "Corporate AI adoption policy",
-        "transmission_channel": "demand shift for AI/cloud services; corporate cost controls affecting cloud compute usage and IT budgets",
-        "affected_inputs": [
-          "corporate IT/cloud spend",
-          "compute (GPU/CPU) consumption",
-          "enterprise SaaS/AI tool demand",
-          "employee productivity tools",
-          "internal governance/policy on tool usage"
-        ],
-        "horizon": "1-2w",
-        "reason": "Companies are encouraging AI use (supporting ongoing demand for enterprise AI software, cloud and managed services) but also gatekeeping access to limit rising compute costs. First-order: signaling continued adoption of generative AI boosts near-term demand for cloud & enterprise AI platforms (positive for Technology vendors). Second-order: tighter internal controls and cost-shepherding can mute near-term incremental cloud consumption. Net near-term effect is modestly positive for Technology broadly and for cloud-capable vendors like ORCL, but magnitude is small and dependent on how widespread and strict the gatekeeping is."
-      }
-    ],
+    "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
       "headline": "Support needs review",
@@ -166,37 +149,37 @@
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "26.7% 5D • 35.7% 20D",
+          "value": "21.3% 5D • 24.9% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "3.9% daily • 7.4% drawdown",
+          "value": "4.2% daily • 7.4% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.74 sentiment • 3 articles",
+          "value": "0.87 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
           "state": "positive",
-          "value": "0.52 overlay • 0.37 conf",
+          "value": "0.50 overlay • 0.20 conf",
           "detail": "No strong world-news headwind is currently working against the setup."
         },
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.089 score • +0.167 conf",
+          "value": "+0.145 score • +0.255 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 1 trading day • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector 0 trading days",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -221,14 +204,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-02",
+          "date": "2026-06-03",
           "status": "healthy",
-          "used": 4,
+          "used": 1,
           "limit": 25,
-          "remaining": 21,
+          "remaining": 24,
           "categories": {
-            "company_news": 2,
-            "global_news": 2
+            "global_news": 1
           }
         }
       },
@@ -241,14 +223,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-02",
+          "date": "2026-06-03",
           "status": "tracking_only",
-          "used": 6,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 4,
-            "global_news": 2
+            "global_news": 1
           }
         }
       },
@@ -262,14 +243,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-02",
+          "date": "2026-06-03",
           "status": "healthy",
-          "used": 52,
+          "used": 2,
           "limit": 100,
-          "remaining": 48,
+          "remaining": 98,
           "categories": {
-            "company_news": 50,
-            "global_news": 2
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -283,14 +264,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-06-02",
+          "date": "2026-06-03",
           "status": "tracking_only",
-          "used": 52,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 2,
-            "submissions": 50
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -303,13 +284,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-06-02",
+          "date": "2026-06-03",
           "status": "healthy",
-          "used": 61,
+          "used": 3,
           "limit": 800,
-          "remaining": 739,
+          "remaining": 797,
           "categories": {
-            "price": 61
+            "price": 3
           }
         }
       }

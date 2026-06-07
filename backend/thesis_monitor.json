@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-06T17:01:45Z",
-  "data_as_of": "2026-06-06",
-  "expected_next_refresh_at": "2026-06-07T17:01:45Z",
-  "stale_after": "2026-06-08T05:01:45Z",
+  "generated_at": "2026-06-07T17:06:29Z",
+  "data_as_of": "2026-06-07",
+  "expected_next_refresh_at": "2026-06-08T17:06:29Z",
+  "stale_after": "2026-06-09T05:06:29Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W23",
@@ -24,13 +24,13 @@
     "company_name": "Oracle Corporation",
     "sector": "technology",
     "risk": "high",
-    "model_score": 0.0854,
-    "confidence_score": 0.65,
+    "model_score": 0.075,
+    "confidence_score": 0.63,
     "confidence_label": "medium",
     "price_as_of": "2026-06-05",
     "news_as_of": "2026-06-06",
     "macro_as_of": null,
-    "sector_as_of": "2026-06-06",
+    "sector_as_of": "2026-06-07",
     "article_count": 3,
     "metrics": {
       "momentum_5d": -0.0536,
@@ -45,15 +45,15 @@
       "market_relative_20d": 0.0892,
       "sector_relative_5d": 0.0027,
       "sector_relative_20d": 0.0335,
-      "news_sentiment": 0.9,
+      "news_sentiment": 0.88,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.8052,
-      "news_confidence": 0.87,
+      "calibrated_news_sentiment": 0.765,
+      "news_confidence": 0.85,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.52,
-      "sector_confidence": 0.37,
-      "effective_article_count": 0.96,
+      "sector_sentiment": 0.47,
+      "sector_confidence": 0.35,
+      "effective_article_count": 0.69,
       "source_count": 3,
       "average_relevance": 0.88,
       "technical_training_ic": 0.0023,
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.036,
       "downside_penalty": -0.027,
       "drawdown_penalty": -0.015,
-      "news_adjustment": 0.1337,
+      "news_adjustment": 0.1255,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.001,
-      "signal_alignment": -0.0073,
+      "sector_adjustment": -0.0017,
+      "signal_alignment": -0.0068,
       "technical_total": -0.042,
       "trend_strength": 0.0007,
       "relative_strength": 0.0113,
@@ -84,11 +84,11 @@
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 0.55,
+      "sector_dedup_penalty": 0.65,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.75,
+      "news_sector_overlap": 0.1429,
       "macro_sector_overlap": 0.0,
-      "total": 0.0854
+      "total": 0.075
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is -5.4% and 20-day momentum is 9.8%.",
@@ -96,11 +96,11 @@
       "Risk profile shows daily volatility around 4.8%, downside volatility near 4.3%, and a recent max drawdown of 13.9%.",
       "Volume confirmation is 61.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is -2.9% versus SPY over 5 days and 0.3% versus the sector ETF.",
-      "News signal is bullish with score 0.90, confidence 0.87, and 1.0 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.90, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 1.0 effective weighted articles, average relevance 0.88, average source quality 0.77, confidence 0.87.",
+      "News signal is bullish with score 0.88, confidence 0.85, and 0.7 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.88, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.7 effective weighted articles, average relevance 0.88, average source quality 0.77, confidence 0.85.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.085 with medium confidence."
+      "Overall model score is 0.075 with medium confidence."
     ],
     "news_evidence": [
       {
@@ -115,7 +115,7 @@
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Company-specific bullish analysis (Seeking Alpha) highlighting AI/cloud growth and potential breakout; opinion-driven and somewhat promotional, so moderate near-term predictive value."
+        "llm_reason": "Bullish Seeking Alpha piece highlighting AI-cloud-driven breakout potential for ORCL. Opinion/analysis can move retail sentiment short-term but contains no hard catalyst or new corporate data, so materiality is moderate."
       },
       {
         "title": "Oracle (ORCL) – Among the 10 No-Brainer Dividend Stocks to Buy",
@@ -129,7 +129,7 @@
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Relevant company news: cites Scotiabank raising price target to $290 (from $215) and reiterating Outperform, plus inclusion in a dividend-stock list — this analyst action and coverage can move short-term price."
+        "llm_reason": "Yahoo Finance item noting inclusion in a dividend-stock list and reporting a Scotiabank price-target raise to $290 with an Outperform reiteration, citing Oracle’s AI/cloud positioning. Analyst action is a tangible, near-term market signal and increases the likelihood of positive price reaction."
       }
     ],
     "macro_evidence": [],
@@ -158,7 +158,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.90 sentiment • 3 articles",
+          "value": "0.88 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -170,7 +170,7 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.035 score • +0.095 conf",
+          "value": "-0.045 score • +0.079 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
@@ -201,7 +201,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-06",
+          "date": "2026-06-07",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -220,7 +220,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-06",
+          "date": "2026-06-07",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -240,7 +240,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-06",
+          "date": "2026-06-07",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -261,7 +261,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-06-06",
+          "date": "2026-06-07",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -281,7 +281,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-06-06",
+          "date": "2026-06-07",
           "status": "healthy",
           "used": 3,
           "limit": 800,

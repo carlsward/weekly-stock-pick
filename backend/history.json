@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-01T17:18:59Z",
+  "generated_at": "2026-06-08T15:18:03Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -1009,8 +1009,8 @@
           }
         }
       ],
-      "realized_5d_return": -0.0002,
-      "realized_5d_excess_return": -0.0156
+      "realized_5d_return": 0.0076,
+      "realized_5d_excess_return": -0.0095
     },
     {
       "week_id": "2026-W22",
@@ -1277,8 +1277,8 @@
           }
         }
       ],
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null
+      "realized_5d_return": -0.1004,
+      "realized_5d_excess_return": -0.0773
     },
     {
       "week_id": "2026-W23",
@@ -1299,6 +1299,20 @@
       "confidence_label": "medium",
       "data_as_of": "2026-06-01",
       "model_version": "v3.4",
+      "diagnostics": {
+        "technical_total": 0.1104,
+        "news_adjustment": 0.0908,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.426,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 2303,
+        "technical_training_ic": 0.0023,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      },
       "top_candidates": [
         {
           "rank": 1,
@@ -1531,16 +1545,270 @@
           }
         }
       ],
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W24",
+      "week_start": "2026-06-08",
+      "week_end": "2026-06-12",
+      "week_label": "Jun 08 - 12, 2026",
+      "logged_at": "2026-06-08T15:18:03Z",
+      "status": "picked",
+      "status_reason": "MDT cleared the commercial release thresholds for this market week with a score of 0.214 and medium confidence.",
+      "is_qualified": true,
+      "release_quality": "qualified",
+      "symbol": "MDT",
+      "company_name": "Medtronic plc",
+      "sector": "healthcare",
+      "risk": "high",
+      "model_score": 0.2143,
+      "confidence_score": 0.71,
+      "confidence_label": "medium",
+      "data_as_of": "2026-06-08",
+      "model_version": "v3.4",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "MDT",
+          "company_name": "Medtronic plc",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": 0.2143,
+          "confidence_score": 0.71,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-08",
+          "news_as_of": "2026-06-08",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0771,
+            "news_adjustment": 0.1248,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0124,
+            "news_signal_input": 0.6384,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "LLY",
+          "company_name": "Eli Lilly and Company",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1827,
+          "confidence_score": 0.66,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-08",
+          "news_as_of": "2026-06-06",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1321,
+            "news_adjustment": 0.0433,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0073,
+            "news_signal_input": 0.1491,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "DHR",
+          "company_name": "Danaher Corporation",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1804,
+          "confidence_score": 0.77,
+          "confidence_label": "high",
+          "price_as_of": "2026-06-08",
+          "news_as_of": "2026-06-07",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0398,
+            "news_adjustment": 0.1337,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0069,
+            "news_signal_input": 0.696,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "CSCO",
+          "company_name": "Cisco Systems Inc.",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1558,
+          "confidence_score": 0.69,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-08",
+          "news_as_of": "2026-06-07",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.062,
+            "news_adjustment": 0.0776,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0099,
+            "signal_alignment": 0.0062,
+            "news_signal_input": 0.3588,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0915
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "MRK",
+          "company_name": "Merck & Co. Inc.",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": 0.1069,
+          "confidence_score": 0.58,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-08",
+          "news_as_of": "2026-06-05",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0589,
+            "news_adjustment": 0.0446,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0033,
+            "news_signal_input": 0.1537,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "JNJ",
+          "company_name": "Johnson & Johnson",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.103,
+          "confidence_score": 0.62,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-08",
+          "news_as_of": "2026-06-08",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0137,
+            "news_adjustment": 0.0877,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0015,
+            "news_signal_input": 0.4118,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "AMGN",
+          "company_name": "Amgen Inc.",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.0915,
+          "confidence_score": 0.62,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-08",
+          "news_as_of": "2026-06-05",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0491,
+            "news_adjustment": 0.0398,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0025,
+            "news_signal_input": 0.1325,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "CVX",
+          "company_name": "Chevron Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": 0.0862,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-08",
+          "news_as_of": "2026-06-08",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0199,
+            "news_adjustment": 0.1089,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0028,
+            "news_signal_input": 0.544,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "ABT",
+          "company_name": "Abbott Laboratories",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.0639,
+          "confidence_score": 0.61,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-08",
+          "news_as_of": "2026-06-06",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.0333,
+            "news_adjustment": 0.0294,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0012,
+            "news_signal_input": 0.0985,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "XOM",
+          "company_name": "Exxon Mobil Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": 0.0594,
+          "confidence_score": 0.55,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-08",
+          "news_as_of": "2026-06-08",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": -0.0328,
+            "news_adjustment": 0.0963,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0041,
+            "news_signal_input": 0.465,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        }
+      ],
       "diagnostics": {
-        "technical_total": 0.1104,
-        "news_adjustment": 0.0908,
+        "technical_total": 0.0771,
+        "news_adjustment": 0.1248,
         "macro_adjustment": 0.0,
         "sector_adjustment": 0.0,
-        "news_signal_input": 0.426,
+        "news_signal_input": 0.6384,
         "macro_signal_input": 0.0,
         "sector_signal_input": 0.0,
         "technical_training_rows": 2303,
-        "technical_training_ic": 0.0023,
+        "technical_training_ic": 0.0003,
         "news_macro_overlap": 0.0,
         "news_sector_overlap": 0.0,
         "macro_sector_overlap": 0.0
@@ -1565,7 +1833,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-01",
+          "date": "2026-06-08",
           "status": "healthy",
           "used": 5,
           "limit": 25,
@@ -1578,21 +1846,21 @@
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 9,
+        "used": 14,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 8,
+          "company_news": 13,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-01",
+          "date": "2026-06-08",
           "status": "tracking_only",
-          "used": 9,
+          "used": 14,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 8,
+            "company_news": 13,
             "global_news": 1
           }
         }
@@ -1607,7 +1875,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-01",
+          "date": "2026-06-08",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -1628,7 +1896,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-06-01",
+          "date": "2026-06-08",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -1648,7 +1916,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-06-01",
+          "date": "2026-06-08",
           "status": "healthy",
           "used": 58,
           "limit": 800,

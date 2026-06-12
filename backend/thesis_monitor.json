@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-11T18:41:48Z",
-  "data_as_of": "2026-06-11",
-  "expected_next_refresh_at": "2026-06-12T18:41:48Z",
-  "stale_after": "2026-06-13T06:41:48Z",
+  "generated_at": "2026-06-12T18:00:13Z",
+  "data_as_of": "2026-06-12",
+  "expected_next_refresh_at": "2026-06-13T18:00:13Z",
+  "stale_after": "2026-06-14T06:00:13Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W24",
@@ -24,62 +24,62 @@
     "company_name": "Medtronic plc",
     "sector": "healthcare",
     "risk": "high",
-    "model_score": 0.0074,
-    "confidence_score": 0.55,
+    "model_score": -0.0166,
+    "confidence_score": 0.52,
     "confidence_label": "low",
-    "price_as_of": "2026-06-11",
+    "price_as_of": "2026-06-12",
     "news_as_of": "2026-06-08",
     "macro_as_of": null,
     "sector_as_of": null,
     "article_count": 3,
     "metrics": {
-      "momentum_5d": -0.0189,
-      "momentum_20d": 0.0547,
+      "momentum_5d": -0.0165,
+      "momentum_20d": 0.0436,
       "daily_volatility": 0.0206,
-      "downside_volatility": 0.0139,
+      "downside_volatility": 0.0132,
       "max_drawdown_20d": 0.0617,
       "positive_day_ratio_10d": 0.5,
-      "price_vs_20d_average": 0.0309,
-      "volume_trend_5d": -0.3,
-      "market_relative_5d": 0.0114,
-      "market_relative_20d": 0.066,
-      "sector_relative_5d": -0.0345,
-      "sector_relative_20d": 0.0013,
-      "news_sentiment": 0.69,
+      "price_vs_20d_average": 0.028,
+      "volume_trend_5d": -0.4294,
+      "market_relative_5d": -0.0215,
+      "market_relative_20d": 0.0532,
+      "sector_relative_5d": -0.022,
+      "sector_relative_20d": -0.0056,
+      "news_sentiment": 0.65,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.3869,
-      "news_confidence": 0.45,
+      "calibrated_news_sentiment": 0.3042,
+      "news_confidence": 0.36,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.46,
+      "effective_article_count": 0.13,
       "source_count": 3,
       "average_relevance": 0.94,
       "technical_training_ic": 0.0003,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0028,
-      "short_momentum": -0.0156,
-      "medium_momentum": 0.0164,
-      "trend_quality": 0.0069,
-      "volume_confirmation": -0.012,
-      "market_relative_strength": 0.0102,
-      "sector_relative_strength": -0.0031,
-      "volatility_penalty": -0.0412,
-      "daily_volatility_penalty": -0.0186,
-      "downside_penalty": -0.015,
+      "momentum": -0.0098,
+      "short_momentum": -0.0136,
+      "medium_momentum": 0.0131,
+      "trend_quality": 0.0063,
+      "volume_confirmation": -0.0172,
+      "market_relative_strength": 0.0042,
+      "sector_relative_strength": -0.0026,
+      "volatility_penalty": -0.0405,
+      "daily_volatility_penalty": -0.0185,
+      "downside_penalty": -0.0143,
       "drawdown_penalty": -0.0077,
-      "news_adjustment": 0.0482,
+      "news_adjustment": 0.036,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": -0.0024,
-      "technical_total": -0.0384,
-      "trend_strength": 0.0078,
-      "relative_strength": 0.007,
-      "participation": -0.012,
-      "risk_control": -0.0412,
+      "signal_alignment": -0.0023,
+      "technical_total": -0.0503,
+      "trend_strength": 0.0058,
+      "relative_strength": 0.0016,
+      "participation": -0.0172,
+      "risk_control": -0.0405,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,19 +88,19 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0074
+      "total": -0.0166
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is -1.9% and 20-day momentum is 5.5%.",
-      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 3.1% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 2.1%, downside volatility near 1.4%, and a recent max drawdown of 6.2%.",
-      "Volume confirmation is -30.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 1.1% versus SPY over 5 days and -3.5% versus the sector ETF.",
-      "News signal is bullish with score 0.69, confidence 0.45, and 0.5 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.85, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.5 effective weighted articles, average relevance 0.94, average source quality 0.75, confidence 0.81.",
+      "Price trend remains constructive: 5-day momentum is -1.6% and 20-day momentum is 4.4%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 2.8% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 2.1%, downside volatility near 1.3%, and a recent max drawdown of 6.2%.",
+      "Volume confirmation is -42.9% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is -2.1% versus SPY over 5 days and -2.2% versus the sector ETF.",
+      "News signal is bullish with score 0.65, confidence 0.36, and 0.1 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.78, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.1 effective weighted articles, average relevance 0.94, average source quality 0.75, confidence 0.66.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.007 with low confidence."
+      "Overall model score is -0.017 with low confidence."
     ],
     "news_evidence": [
       {
@@ -111,25 +111,11 @@
         "relevance_score": 1.0,
         "sentiment": -0.27,
         "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
+        "company_relevance": 0.9,
+        "materiality": 0.7,
+        "llm_confidence": 0.7,
         "llm_impact_score": 1.0,
-        "llm_reason": "Headlined M&A involving Medtronic is direct company news and can move the stock in the 1–10 day window. Impact depends on deal size/terms and strategic fit (pain-intervention/neuromodulation). Source is a retail financial site; details/confirmation from company or major outlets would raise confidence."
-      },
-      {
-        "title": "Can Medtronic Finally Challenge Intuitive Surgical's Robotic Surgical Systems Dominance?",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/sectors/healthcare/articles/medtronic-finally-challenge-intuitive-surgicals-114100566.html",
-        "published_at": "2026-06-08T11:41:00Z",
-        "relevance_score": 0.83,
-        "sentiment": 0.29,
-        "doc_type": "sector_macro",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Analytical article on Medtronic's ability to compete in surgical robotics is relevant to strategy and long-term outlook but provides little new, specific information likely to move the stock in the next 1–10 trading days."
+        "llm_reason": "Article reports an acquisition (SPR Therapeutics) by Medtronic — a direct corporate action that could alter revenue/profit expectations for pain-intervention/neuromodulation and prompt a short-term market reaction. Source is a financial site (InsiderMonkey) so verification via official press release is recommended, hence slightly reduced confidence."
       }
     ],
     "macro_evidence": [],
@@ -146,7 +132,7 @@
         {
           "label": "Momentum",
           "state": "risk",
-          "value": "-1.9% 5D • 5.5% 20D",
+          "value": "-1.6% 5D • 4.4% 20D",
           "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
         },
         {
@@ -158,7 +144,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.69 sentiment • 3 articles",
+          "value": "0.65 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -170,14 +156,14 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.113 score • -0.000 conf",
+          "value": "-0.137 score • -0.033 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
-          "state": "watch",
-          "value": "price 0 trading days • news 3 trading days • macro neutral • sector neutral",
-          "detail": "Freshness should be checked before acting: company news is 3 trading days old."
+          "state": "risk",
+          "value": "price 0 trading days • news 4 trading days • macro neutral • sector neutral",
+          "detail": "Some of the supporting data is getting old enough to weaken monitoring quality: company news is 4 trading days old."
         }
       ]
     }
@@ -201,7 +187,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-11",
+          "date": "2026-06-12",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -220,7 +206,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-11",
+          "date": "2026-06-12",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -232,22 +218,22 @@
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 4,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 96,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 2,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-06-11",
+          "date": "2026-06-12",
           "status": "healthy",
-          "used": 2,
+          "used": 4,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 96,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 2,
+            "global_news": 2
           }
         }
       },
@@ -261,7 +247,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-06-11",
+          "date": "2026-06-12",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -281,7 +267,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-06-11",
+          "date": "2026-06-12",
           "status": "healthy",
           "used": 3,
           "limit": 800,

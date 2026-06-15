@@ -1,44 +1,23 @@
 {
-  "generated_at": "2026-06-08T15:17:50Z",
-  "last_updated": "2026-06-08",
+  "generated_at": "2026-06-15T16:47:44Z",
+  "last_updated": "2026-06-15",
   "lookback_days": 3,
-  "article_count": 1,
-  "source_count": 1,
+  "article_count": 0,
+  "source_count": 0,
   "llm_model": "gpt-5-mini",
-  "summary": "US market rally led by AI optimism; Nvidia and Intel jumped as Nasdaq outperformed after tech-led buying and AI-driven demand expectations. Short-horizon upside for technology and ad/communication platforms from valuation rerating and flows.",
+  "summary": "Sector analysis was neutral because no reliable broad catalysts were found.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
       "display_name": "Communication Services",
-      "score": 0.66,
-      "confidence": 0.44,
-      "direction": "bullish",
-      "last_updated": "2026-06-08",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "First-order: Headlines of an 'AI boom' lift expectations for stronger demand for AI accelerators and higher semiconductor capex, directly boosting sentiment toward chip makers (NVIDIA, Intel). That drives buying into technology-heavy indices (Nasdaq) and triggers valuation multiple expansion. Second-order: higher AI adoption expectations support ad and cloud platforms via increased monetization and cloud spend, helping communication services. Short-horizon transmission is dominated by flows (ETF reallocation, momentum buying) and analyst/market re‑rating. The article specifically cites Nvidia and Intel — hence those symbols are direct beneficiaries; broader tech and communication services gain from positive sentiment and rotation. No clear company-specific negative shock identified for short horizon, so hurt lists are left empty."
+        "No recent broad catalyst clearly favored the Communication Services sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "Why is the US stock market rallying big today? Dow Jones, S&P 500 and Nasdaq surge on AI boom — Nvidia and Intel jump as Nasdaq significantly outperformed both the Dow and S&P",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/news/international/us/why-is-the-us-stock-market-rallying-big-today-dow-jones-sp-500-and-nasdaq-surge-on-ai-boom-nvidia-and-intel-jump-as-nasdaq-significantly-outperformed-both-the-dow-and-sp/articleshow/131591098.cms",
-          "published_at": "2026-06-08T15:07:20Z",
-          "impact": "positive",
-          "weight": 0.314,
-          "event_type": "technology_sentiment/AI catalyst",
-          "transmission_channel": "demand shift for AI chips -> revenue/earnings upside expectations; valuation re‑rating and short‑term ETF/institutional flows and momentum",
-          "affected_inputs": [
-            "AI chip demand expectations",
-            "semiconductor capex forecasts",
-            "technology sector valuations/multiples",
-            "equity risk appetite/flows (ETF/momentum)",
-            "advertising and cloud AI spending expectations"
-          ],
-          "horizon": "1-3d",
-          "reason": "First-order: Headlines of an 'AI boom' lift expectations for stronger demand for AI accelerators and higher semiconductor capex, directly boosting sentiment toward chip makers (NVIDIA, Intel). That drives buying into technology-heavy indices (Nasdaq) and triggers valuation multiple expansion. Second-order: higher AI adoption expectations support ad and cloud platforms via increased monetization and cloud spend, helping communication services. Short-horizon transmission is dominated by flows (ETF reallocation, momentum buying) and analyst/market re‑rating. The article specifically cites Nvidia and Intel — hence those symbols are direct beneficiaries; broader tech and communication services gain from positive sentiment and rotation. No clear company-specific negative shock identified for short horizon, so hurt lists are left empty."
-        }
-      ]
+      "supporting_articles": []
     },
     "consumer_discretionary": {
       "sector": "consumer_discretionary",
@@ -48,7 +27,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Consumer Discretionary."
+        "No recent broad catalyst clearly favored the Consumer Discretionary sector."
       ],
       "supporting_articles": []
     },
@@ -60,7 +39,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Consumer Staples."
+        "No recent broad catalyst clearly favored the Consumer Staples sector."
       ],
       "supporting_articles": []
     },
@@ -72,7 +51,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Energy."
+        "No recent broad catalyst clearly favored the Energy sector."
       ],
       "supporting_articles": []
     },
@@ -84,7 +63,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Financials."
+        "No recent broad catalyst clearly favored the Financials sector."
       ],
       "supporting_articles": []
     },
@@ -96,7 +75,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Healthcare."
+        "No recent broad catalyst clearly favored the Healthcare sector."
       ],
       "supporting_articles": []
     },
@@ -108,42 +87,21 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Industrials."
+        "No recent broad catalyst clearly favored the Industrials sector."
       ],
       "supporting_articles": []
     },
     "technology": {
       "sector": "technology",
       "display_name": "Technology",
-      "score": 0.66,
-      "confidence": 0.44,
-      "direction": "bullish",
-      "last_updated": "2026-06-08",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "First-order: Headlines of an 'AI boom' lift expectations for stronger demand for AI accelerators and higher semiconductor capex, directly boosting sentiment toward chip makers (NVIDIA, Intel). That drives buying into technology-heavy indices (Nasdaq) and triggers valuation multiple expansion. Second-order: higher AI adoption expectations support ad and cloud platforms via increased monetization and cloud spend, helping communication services. Short-horizon transmission is dominated by flows (ETF reallocation, momentum buying) and analyst/market re‑rating. The article specifically cites Nvidia and Intel — hence those symbols are direct beneficiaries; broader tech and communication services gain from positive sentiment and rotation. No clear company-specific negative shock identified for short horizon, so hurt lists are left empty."
+        "No recent broad catalyst clearly favored the Technology sector."
       ],
-      "supporting_articles": [
-        {
-          "title": "Why is the US stock market rallying big today? Dow Jones, S&P 500 and Nasdaq surge on AI boom — Nvidia and Intel jump as Nasdaq significantly outperformed both the Dow and S&P",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/news/international/us/why-is-the-us-stock-market-rallying-big-today-dow-jones-sp-500-and-nasdaq-surge-on-ai-boom-nvidia-and-intel-jump-as-nasdaq-significantly-outperformed-both-the-dow-and-sp/articleshow/131591098.cms",
-          "published_at": "2026-06-08T15:07:20Z",
-          "impact": "positive",
-          "weight": 0.314,
-          "event_type": "technology_sentiment/AI catalyst",
-          "transmission_channel": "demand shift for AI chips -> revenue/earnings upside expectations; valuation re‑rating and short‑term ETF/institutional flows and momentum",
-          "affected_inputs": [
-            "AI chip demand expectations",
-            "semiconductor capex forecasts",
-            "technology sector valuations/multiples",
-            "equity risk appetite/flows (ETF/momentum)",
-            "advertising and cloud AI spending expectations"
-          ],
-          "horizon": "1-3d",
-          "reason": "First-order: Headlines of an 'AI boom' lift expectations for stronger demand for AI accelerators and higher semiconductor capex, directly boosting sentiment toward chip makers (NVIDIA, Intel). That drives buying into technology-heavy indices (Nasdaq) and triggers valuation multiple expansion. Second-order: higher AI adoption expectations support ad and cloud platforms via increased monetization and cloud spend, helping communication services. Short-horizon transmission is dominated by flows (ETF reallocation, momentum buying) and analyst/market re‑rating. The article specifically cites Nvidia and Intel — hence those symbols are direct beneficiaries; broader tech and communication services gain from positive sentiment and rotation. No clear company-specific negative shock identified for short horizon, so hurt lists are left empty."
-        }
-      ]
+      "supporting_articles": []
     }
   },
   "symbol_scores": {
@@ -156,7 +114,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Apple Inc.."
+        "No recent world-news catalyst clearly favored Apple Inc.."
       ],
       "supporting_articles": []
     },
@@ -169,7 +127,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Microsoft Corporation."
+        "No recent world-news catalyst clearly favored Microsoft Corporation."
       ],
       "supporting_articles": []
     },
@@ -182,7 +140,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Alphabet Inc.."
+        "No recent world-news catalyst clearly favored Alphabet Inc.."
       ],
       "supporting_articles": []
     },
@@ -195,7 +153,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Amazon.com Inc.."
+        "No recent world-news catalyst clearly favored Amazon.com Inc.."
       ],
       "supporting_articles": []
     },
@@ -208,7 +166,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Tesla Inc.."
+        "No recent world-news catalyst clearly favored Tesla Inc.."
       ],
       "supporting_articles": []
     },
@@ -221,7 +179,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Meta Platforms Inc.."
+        "No recent world-news catalyst clearly favored Meta Platforms Inc.."
       ],
       "supporting_articles": []
     },
@@ -234,7 +192,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
+        "No recent world-news catalyst clearly favored Berkshire Hathaway Inc.."
       ],
       "supporting_articles": []
     },
@@ -242,35 +200,14 @@
       "symbol": "NVDA",
       "company_name": "NVIDIA Corporation",
       "sector": "technology",
-      "score": 0.69,
-      "confidence": 0.47,
-      "direction": "bullish",
-      "last_updated": "2026-06-08",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "First-order: Headlines of an 'AI boom' lift expectations for stronger demand for AI accelerators and higher semiconductor capex, directly boosting sentiment toward chip makers (NVIDIA, Intel). That drives buying into technology-heavy indices (Nasdaq) and triggers valuation multiple expansion. Second-order: higher AI adoption expectations support ad and cloud platforms via increased monetization and cloud spend, helping communication services. Short-horizon transmission is dominated by flows (ETF reallocation, momentum buying) and analyst/market re‑rating. The article specifically cites Nvidia and Intel — hence those symbols are direct beneficiaries; broader tech and communication services gain from positive sentiment and rotation. No clear company-specific negative shock identified for short horizon, so hurt lists are left empty."
+        "No recent world-news catalyst clearly favored NVIDIA Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "Why is the US stock market rallying big today? Dow Jones, S&P 500 and Nasdaq surge on AI boom — Nvidia and Intel jump as Nasdaq significantly outperformed both the Dow and S&P",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/news/international/us/why-is-the-us-stock-market-rallying-big-today-dow-jones-sp-500-and-nasdaq-surge-on-ai-boom-nvidia-and-intel-jump-as-nasdaq-significantly-outperformed-both-the-dow-and-sp/articleshow/131591098.cms",
-          "published_at": "2026-06-08T15:07:20Z",
-          "impact": "positive",
-          "weight": 0.314,
-          "event_type": "technology_sentiment/AI catalyst",
-          "transmission_channel": "demand shift for AI chips -> revenue/earnings upside expectations; valuation re‑rating and short‑term ETF/institutional flows and momentum",
-          "affected_inputs": [
-            "AI chip demand expectations",
-            "semiconductor capex forecasts",
-            "technology sector valuations/multiples",
-            "equity risk appetite/flows (ETF/momentum)",
-            "advertising and cloud AI spending expectations"
-          ],
-          "horizon": "1-3d",
-          "reason": "First-order: Headlines of an 'AI boom' lift expectations for stronger demand for AI accelerators and higher semiconductor capex, directly boosting sentiment toward chip makers (NVIDIA, Intel). That drives buying into technology-heavy indices (Nasdaq) and triggers valuation multiple expansion. Second-order: higher AI adoption expectations support ad and cloud platforms via increased monetization and cloud spend, helping communication services. Short-horizon transmission is dominated by flows (ETF reallocation, momentum buying) and analyst/market re‑rating. The article specifically cites Nvidia and Intel — hence those symbols are direct beneficiaries; broader tech and communication services gain from positive sentiment and rotation. No clear company-specific negative shock identified for short horizon, so hurt lists are left empty."
-        }
-      ]
+      "supporting_articles": []
     },
     "JPM": {
       "symbol": "JPM",
@@ -281,7 +218,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored JPMorgan Chase & Co.."
+        "No recent world-news catalyst clearly favored JPMorgan Chase & Co.."
       ],
       "supporting_articles": []
     },
@@ -294,7 +231,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Johnson & Johnson."
+        "No recent world-news catalyst clearly favored Johnson & Johnson."
       ],
       "supporting_articles": []
     },
@@ -307,7 +244,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Visa Inc.."
+        "No recent world-news catalyst clearly favored Visa Inc.."
       ],
       "supporting_articles": []
     },
@@ -320,7 +257,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Walmart Inc.."
+        "No recent world-news catalyst clearly favored Walmart Inc.."
       ],
       "supporting_articles": []
     },
@@ -333,7 +270,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Procter & Gamble Company."
+        "No recent world-news catalyst clearly favored Procter & Gamble Company."
       ],
       "supporting_articles": []
     },
@@ -346,7 +283,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Mastercard Incorporated."
+        "No recent world-news catalyst clearly favored Mastercard Incorporated."
       ],
       "supporting_articles": []
     },
@@ -359,7 +296,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Walt Disney Company."
+        "No recent world-news catalyst clearly favored The Walt Disney Company."
       ],
       "supporting_articles": []
     },
@@ -372,7 +309,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Home Depot Inc.."
+        "No recent world-news catalyst clearly favored The Home Depot Inc.."
       ],
       "supporting_articles": []
     },
@@ -385,7 +322,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Bank of America Corporation."
+        "No recent world-news catalyst clearly favored Bank of America Corporation."
       ],
       "supporting_articles": []
     },
@@ -398,7 +335,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Exxon Mobil Corporation."
+        "No recent world-news catalyst clearly favored Exxon Mobil Corporation."
       ],
       "supporting_articles": []
     },
@@ -411,7 +348,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Pfizer Inc.."
+        "No recent world-news catalyst clearly favored Pfizer Inc.."
       ],
       "supporting_articles": []
     },
@@ -424,7 +361,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Verizon Communications Inc.."
+        "No recent world-news catalyst clearly favored Verizon Communications Inc.."
       ],
       "supporting_articles": []
     },
@@ -437,7 +374,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Netflix Inc.."
+        "No recent world-news catalyst clearly favored Netflix Inc.."
       ],
       "supporting_articles": []
     },
@@ -450,7 +387,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Adobe Inc.."
+        "No recent world-news catalyst clearly favored Adobe Inc.."
       ],
       "supporting_articles": []
     },
@@ -463,7 +400,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Comcast Corporation."
+        "No recent world-news catalyst clearly favored Comcast Corporation."
       ],
       "supporting_articles": []
     },
@@ -476,7 +413,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Coca-Cola Company."
+        "No recent world-news catalyst clearly favored The Coca-Cola Company."
       ],
       "supporting_articles": []
     },
@@ -489,7 +426,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored AT&T Inc.."
+        "No recent world-news catalyst clearly favored AT&T Inc.."
       ],
       "supporting_articles": []
     },
@@ -502,7 +439,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Nike Inc.."
+        "No recent world-news catalyst clearly favored Nike Inc.."
       ],
       "supporting_articles": []
     },
@@ -515,7 +452,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Merck & Co. Inc.."
+        "No recent world-news catalyst clearly favored Merck & Co. Inc.."
       ],
       "supporting_articles": []
     },
@@ -528,7 +465,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Abbott Laboratories."
+        "No recent world-news catalyst clearly favored Abbott Laboratories."
       ],
       "supporting_articles": []
     },
@@ -541,7 +478,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored PepsiCo Inc.."
+        "No recent world-news catalyst clearly favored PepsiCo Inc.."
       ],
       "supporting_articles": []
     },
@@ -554,7 +491,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Cisco Systems Inc.."
+        "No recent world-news catalyst clearly favored Cisco Systems Inc.."
       ],
       "supporting_articles": []
     },
@@ -567,7 +504,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Oracle Corporation."
+        "No recent world-news catalyst clearly favored Oracle Corporation."
       ],
       "supporting_articles": []
     },
@@ -575,35 +512,14 @@
       "symbol": "INTC",
       "company_name": "Intel Corporation",
       "sector": "technology",
-      "score": 0.69,
-      "confidence": 0.47,
-      "direction": "bullish",
-      "last_updated": "2026-06-08",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "First-order: Headlines of an 'AI boom' lift expectations for stronger demand for AI accelerators and higher semiconductor capex, directly boosting sentiment toward chip makers (NVIDIA, Intel). That drives buying into technology-heavy indices (Nasdaq) and triggers valuation multiple expansion. Second-order: higher AI adoption expectations support ad and cloud platforms via increased monetization and cloud spend, helping communication services. Short-horizon transmission is dominated by flows (ETF reallocation, momentum buying) and analyst/market re‑rating. The article specifically cites Nvidia and Intel — hence those symbols are direct beneficiaries; broader tech and communication services gain from positive sentiment and rotation. No clear company-specific negative shock identified for short horizon, so hurt lists are left empty."
+        "No recent world-news catalyst clearly favored Intel Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "Why is the US stock market rallying big today? Dow Jones, S&P 500 and Nasdaq surge on AI boom — Nvidia and Intel jump as Nasdaq significantly outperformed both the Dow and S&P",
-          "feed": "marketaux",
-          "provider": "economictimes.indiatimes.com",
-          "url": "https://economictimes.indiatimes.com/news/international/us/why-is-the-us-stock-market-rallying-big-today-dow-jones-sp-500-and-nasdaq-surge-on-ai-boom-nvidia-and-intel-jump-as-nasdaq-significantly-outperformed-both-the-dow-and-sp/articleshow/131591098.cms",
-          "published_at": "2026-06-08T15:07:20Z",
-          "impact": "positive",
-          "weight": 0.314,
-          "event_type": "technology_sentiment/AI catalyst",
-          "transmission_channel": "demand shift for AI chips -> revenue/earnings upside expectations; valuation re‑rating and short‑term ETF/institutional flows and momentum",
-          "affected_inputs": [
-            "AI chip demand expectations",
-            "semiconductor capex forecasts",
-            "technology sector valuations/multiples",
-            "equity risk appetite/flows (ETF/momentum)",
-            "advertising and cloud AI spending expectations"
-          ],
-          "horizon": "1-3d",
-          "reason": "First-order: Headlines of an 'AI boom' lift expectations for stronger demand for AI accelerators and higher semiconductor capex, directly boosting sentiment toward chip makers (NVIDIA, Intel). That drives buying into technology-heavy indices (Nasdaq) and triggers valuation multiple expansion. Second-order: higher AI adoption expectations support ad and cloud platforms via increased monetization and cloud spend, helping communication services. Short-horizon transmission is dominated by flows (ETF reallocation, momentum buying) and analyst/market re‑rating. The article specifically cites Nvidia and Intel — hence those symbols are direct beneficiaries; broader tech and communication services gain from positive sentiment and rotation. No clear company-specific negative shock identified for short horizon, so hurt lists are left empty."
-        }
-      ]
+      "supporting_articles": []
     },
     "CRM": {
       "symbol": "CRM",
@@ -614,7 +530,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Salesforce Inc.."
+        "No recent world-news catalyst clearly favored Salesforce Inc.."
       ],
       "supporting_articles": []
     },
@@ -627,7 +543,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Costco Wholesale Corporation."
+        "No recent world-news catalyst clearly favored Costco Wholesale Corporation."
       ],
       "supporting_articles": []
     },
@@ -640,7 +556,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Accenture plc."
+        "No recent world-news catalyst clearly favored Accenture plc."
       ],
       "supporting_articles": []
     },
@@ -653,7 +569,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Chevron Corporation."
+        "No recent world-news catalyst clearly favored Chevron Corporation."
       ],
       "supporting_articles": []
     },
@@ -666,7 +582,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored McDonald's Corporation."
+        "No recent world-news catalyst clearly favored McDonald's Corporation."
       ],
       "supporting_articles": []
     },
@@ -679,7 +595,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Danaher Corporation."
+        "No recent world-news catalyst clearly favored Danaher Corporation."
       ],
       "supporting_articles": []
     },
@@ -692,7 +608,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Medtronic plc."
+        "No recent world-news catalyst clearly favored Medtronic plc."
       ],
       "supporting_articles": []
     },
@@ -705,7 +621,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Eli Lilly and Company."
+        "No recent world-news catalyst clearly favored Eli Lilly and Company."
       ],
       "supporting_articles": []
     },
@@ -718,7 +634,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Texas Instruments Incorporated."
+        "No recent world-news catalyst clearly favored Texas Instruments Incorporated."
       ],
       "supporting_articles": []
     },
@@ -731,7 +647,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
+        "No recent world-news catalyst clearly favored UnitedHealth Group Incorporated."
       ],
       "supporting_articles": []
     },
@@ -744,7 +660,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
+        "No recent world-news catalyst clearly favored Bristol-Myers Squibb Company."
       ],
       "supporting_articles": []
     },
@@ -757,7 +673,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored QUALCOMM Incorporated."
+        "No recent world-news catalyst clearly favored QUALCOMM Incorporated."
       ],
       "supporting_articles": []
     },
@@ -770,7 +686,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Honeywell International Inc.."
+        "No recent world-news catalyst clearly favored Honeywell International Inc.."
       ],
       "supporting_articles": []
     },
@@ -783,7 +699,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Amgen Inc.."
+        "No recent world-news catalyst clearly favored Amgen Inc.."
       ],
       "supporting_articles": []
     },
@@ -796,7 +712,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Starbucks Corporation."
+        "No recent world-news catalyst clearly favored Starbucks Corporation."
       ],
       "supporting_articles": []
     },
@@ -809,7 +725,7 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Lowe's Companies Inc.."
+        "No recent world-news catalyst clearly favored Lowe's Companies Inc.."
       ],
       "supporting_articles": []
     },
@@ -822,45 +738,12 @@
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent world-news catalyst clearly favored General Electric Company."
+        "No recent world-news catalyst clearly favored General Electric Company."
       ],
       "supporting_articles": []
     }
   },
-  "events": [
-    {
-      "article_id": "news_1",
-      "title": "Why is the US stock market rallying big today? Dow Jones, S&P 500 and Nasdaq surge on AI boom — Nvidia and Intel jump as Nasdaq significantly outperformed both the Dow and S&P",
-      "feed": "marketaux",
-      "provider": "economictimes.indiatimes.com",
-      "url": "https://economictimes.indiatimes.com/news/international/us/why-is-the-us-stock-market-rallying-big-today-dow-jones-sp-500-and-nasdaq-surge-on-ai-boom-nvidia-and-intel-jump-as-nasdaq-significantly-outperformed-both-the-dow-and-sp/articleshow/131591098.cms",
-      "published_at": "2026-06-08T15:07:20Z",
-      "event_type": "technology_sentiment/AI catalyst",
-      "transmission_channel": "demand shift for AI chips -> revenue/earnings upside expectations; valuation re‑rating and short‑term ETF/institutional flows and momentum",
-      "affected_inputs": [
-        "AI chip demand expectations",
-        "semiconductor capex forecasts",
-        "technology sector valuations/multiples",
-        "equity risk appetite/flows (ETF/momentum)",
-        "advertising and cloud AI spending expectations"
-      ],
-      "horizon": "1-3d",
-      "market_relevance": 1.0,
-      "magnitude": 1.0,
-      "confidence": 0.7,
-      "beneficiary_sectors": [
-        "technology",
-        "communication_services"
-      ],
-      "hurt_sectors": [],
-      "beneficiary_symbols": [
-        "NVDA",
-        "INTC"
-      ],
-      "hurt_symbols": [],
-      "reason": "First-order: Headlines of an 'AI boom' lift expectations for stronger demand for AI accelerators and higher semiconductor capex, directly boosting sentiment toward chip makers (NVIDIA, Intel). That drives buying into technology-heavy indices (Nasdaq) and triggers valuation multiple expansion. Second-order: higher AI adoption expectations support ad and cloud platforms via increased monetization and cloud spend, helping communication services. Short-horizon transmission is dominated by flows (ETF reallocation, momentum buying) and analyst/market re‑rating. The article specifically cites Nvidia and Intel — hence those symbols are direct beneficiaries; broader tech and communication services gain from positive sentiment and rotation. No clear company-specific negative shock identified for short horizon, so hurt lists are left empty."
-    }
-  ],
+  "events": [],
   "data_quality": {
     "status": "degraded",
     "degraded_reason": "GDELT global-news feed failed during this run.",
@@ -870,42 +753,42 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 5,
+        "used": 4,
         "limit": 25,
-        "remaining": 20,
+        "remaining": 21,
         "categories": {
-          "company_news": 4,
+          "company_news": 3,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-08",
+          "date": "2026-06-15",
           "status": "healthy",
-          "used": 5,
+          "used": 4,
           "limit": 25,
-          "remaining": 20,
+          "remaining": 21,
           "categories": {
-            "company_news": 4,
+            "company_news": 3,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 14,
+        "used": 7,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 13,
+          "company_news": 6,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-08",
+          "date": "2026-06-15",
           "status": "tracking_only",
-          "used": 14,
+          "used": 7,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 13,
+            "company_news": 6,
             "global_news": 1
           }
         }
@@ -920,7 +803,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-08",
+          "date": "2026-06-15",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -941,7 +824,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-06-08",
+          "date": "2026-06-15",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

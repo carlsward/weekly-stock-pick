@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-08T15:27:00Z",
-  "data_as_of": "2026-05-29",
-  "expected_next_refresh_at": "2026-06-15T12:00:00Z",
-  "stale_after": "2026-06-16T00:00:00Z",
+  "generated_at": "2026-06-15T16:56:50Z",
+  "data_as_of": "2026-06-05",
+  "expected_next_refresh_at": "2026-06-22T12:00:00Z",
+  "stale_after": "2026-06-23T00:00:00Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W24",
-    "week_label": "Jun 08 - 12, 2026",
-    "week_start": "2026-06-08",
-    "week_end": "2026-06-12"
+    "week_id": "2026-W25",
+    "week_label": "Jun 15 - 19, 2026",
+    "week_start": "2026-06-15",
+    "week_end": "2026-06-19"
   },
   "selection_thresholds": {
     "overall_score": 0.1,
@@ -22,85 +22,93 @@
     "minimum_confidence": 0.55
   },
   "summary": {
-    "total_weeks": 14,
-    "total_picks": 10,
+    "total_weeks": 15,
+    "total_picks": 11,
     "no_pick_weeks": 4,
-    "closed_picks": 8,
+    "closed_picks": 9,
     "open_picks": 2,
-    "win_rate": 0.5,
-    "beat_spy_rate": 0.375,
+    "win_rate": 0.4444,
+    "beat_spy_rate": 0.3333,
     "beat_sector_rate": 0.0,
-    "average_5d_return": -0.0103,
-    "median_5d_return": 0.0034,
-    "average_5d_excess_return": -0.0192,
-    "average_5d_sector_excess_return": -0.0395,
-    "compounded_5d_return": -0.0867
+    "average_5d_return": -0.0245,
+    "median_5d_return": -0.0008,
+    "average_5d_excess_return": -0.0329,
+    "average_5d_sector_excess_return": -0.0528,
+    "compounded_5d_return": -0.213
   },
   "signal_block_report": {
-    "status": "insufficient_data",
+    "status": "ok",
     "scope": "picked_entries_only",
-    "sample_count": 5,
-    "summary": "Not enough closed weekly picks are available yet to compare technical-only conviction against block-adjusted conviction."
+    "sample_count": 6,
+    "technical_only_ic": 0.1759,
+    "full_model_ic": -0.0079,
+    "block_adjustment_ic": -0.1921,
+    "ic_improvement_vs_technical": -0.1838,
+    "average_block_adjustment": 0.0955,
+    "average_news_signal_input": 0.4794,
+    "average_macro_signal_input": 0.0,
+    "average_sector_signal_input": -0.0048,
+    "summary": "On closed picked weeks, block adjustments are currently hurting the realized excess-return fit versus technical-only conviction."
   },
   "candidate_ranking_report": {
     "status": "ok",
     "scope": "stored_weekly_top_candidates",
-    "sample_count": 40,
+    "sample_count": 50,
     "rank_buckets": {
       "1": {
-        "sample_count": 4,
-        "average_5d_excess_return": -0.0247,
-        "beat_spy_rate": 0.25
+        "sample_count": 5,
+        "average_5d_excess_return": -0.0484,
+        "beat_spy_rate": 0.2
       },
       "2": {
-        "sample_count": 4,
-        "average_5d_excess_return": 0.0034,
-        "beat_spy_rate": 0.5
+        "sample_count": 5,
+        "average_5d_excess_return": -0.0359,
+        "beat_spy_rate": 0.4
       },
       "3": {
-        "sample_count": 4,
-        "average_5d_excess_return": -0.0474,
-        "beat_spy_rate": 0.25
+        "sample_count": 5,
+        "average_5d_excess_return": -0.0603,
+        "beat_spy_rate": 0.2
       },
       "4": {
-        "sample_count": 4,
-        "average_5d_excess_return": -0.0094,
-        "beat_spy_rate": 0.5
+        "sample_count": 5,
+        "average_5d_excess_return": -0.0175,
+        "beat_spy_rate": 0.4
       },
       "5": {
-        "sample_count": 4,
-        "average_5d_excess_return": 0.0148,
-        "beat_spy_rate": 0.5
+        "sample_count": 5,
+        "average_5d_excess_return": 0.0151,
+        "beat_spy_rate": 0.6
       },
       "6": {
-        "sample_count": 4,
-        "average_5d_excess_return": -0.0152,
-        "beat_spy_rate": 0.25
+        "sample_count": 5,
+        "average_5d_excess_return": -0.0074,
+        "beat_spy_rate": 0.4
       },
       "7": {
-        "sample_count": 4,
-        "average_5d_excess_return": 0.0139,
-        "beat_spy_rate": 0.75
+        "sample_count": 5,
+        "average_5d_excess_return": -0.0024,
+        "beat_spy_rate": 0.6
       },
       "8": {
-        "sample_count": 4,
-        "average_5d_excess_return": -0.032,
-        "beat_spy_rate": 0.25
+        "sample_count": 5,
+        "average_5d_excess_return": -0.0266,
+        "beat_spy_rate": 0.2
       },
       "9": {
-        "sample_count": 4,
-        "average_5d_excess_return": -0.0065,
-        "beat_spy_rate": 0.75
+        "sample_count": 5,
+        "average_5d_excess_return": 0.0027,
+        "beat_spy_rate": 0.8
       },
       "10": {
-        "sample_count": 4,
-        "average_5d_excess_return": -0.0001,
-        "beat_spy_rate": 0.5
+        "sample_count": 5,
+        "average_5d_excess_return": -0.0058,
+        "beat_spy_rate": 0.4
       }
     },
-    "top_3_average_5d_excess_return": -0.0229,
-    "top_3_beat_spy_rate": 0.3333,
-    "top_10_average_5d_excess_return": -0.0103,
+    "top_3_average_5d_excess_return": -0.0482,
+    "top_3_beat_spy_rate": 0.2667,
+    "top_10_average_5d_excess_return": -0.0186,
     "summary": "Stored weekly top-candidate rankings now have enough closed samples to monitor rank quality."
   },
   "no_pick_report": {
@@ -120,7 +128,7 @@
       "average_5d_excess_return": null
     },
     "medium": {
-      "pick_count": 4,
+      "pick_count": 5,
       "closed_pick_count": 4,
       "win_rate": 0.25,
       "average_5d_return": -0.0282,
@@ -128,13 +136,35 @@
     },
     "high": {
       "pick_count": 6,
-      "closed_pick_count": 4,
-      "win_rate": 0.75,
-      "average_5d_return": 0.0076,
-      "average_5d_excess_return": -0.0052
+      "closed_pick_count": 5,
+      "win_rate": 0.6,
+      "average_5d_return": -0.0215,
+      "average_5d_excess_return": -0.0328
     }
   },
   "entries": [
+    {
+      "week_id": "2026-W25",
+      "week_start": "2026-06-15",
+      "week_end": "2026-06-19",
+      "week_label": "Jun 15 - 19, 2026",
+      "logged_at": "2026-06-15T16:47:44Z",
+      "status": "picked",
+      "status_reason": "BAC cleared the commercial release thresholds for this market week with a score of 0.235 and high confidence.",
+      "symbol": "BAC",
+      "company_name": "Bank of America Corporation",
+      "sector": "financials",
+      "risk": "medium",
+      "model_score": 0.2349,
+      "confidence_score": 0.81,
+      "confidence_label": "high",
+      "data_as_of": "2026-06-15",
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null,
+      "realized_5d_sector_return": null,
+      "realized_5d_sector_excess_return": null,
+      "outcome": "open"
+    },
     {
       "week_id": "2026-W24",
       "week_start": "2026-06-08",
@@ -173,11 +203,11 @@
       "confidence_score": 0.73,
       "confidence_label": "medium",
       "data_as_of": "2026-06-01",
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null,
-      "realized_5d_sector_return": null,
-      "realized_5d_sector_excess_return": null,
-      "outcome": "open"
+      "realized_5d_return": -0.1383,
+      "realized_5d_excess_return": -0.1432,
+      "realized_5d_sector_return": -0.1383,
+      "realized_5d_sector_excess_return": -0.1593,
+      "outcome": "loss"
     },
     {
       "week_id": "2026-W22",
@@ -455,42 +485,42 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 6,
+        "used": 5,
         "limit": 25,
-        "remaining": 19,
+        "remaining": 20,
         "categories": {
-          "company_news": 4,
+          "company_news": 3,
           "global_news": 2
         },
         "daily": {
-          "date": "2026-06-08",
+          "date": "2026-06-15",
           "status": "healthy",
-          "used": 6,
+          "used": 5,
           "limit": 25,
-          "remaining": 19,
+          "remaining": 20,
           "categories": {
-            "company_news": 4,
+            "company_news": 3,
             "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 15,
+        "used": 8,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 13,
+          "company_news": 6,
           "global_news": 2
         },
         "daily": {
-          "date": "2026-06-08",
+          "date": "2026-06-15",
           "status": "tracking_only",
-          "used": 15,
+          "used": 8,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 13,
+            "company_news": 6,
             "global_news": 2
           }
         }
@@ -505,7 +535,7 @@
           "global_news": 2
         },
         "daily": {
-          "date": "2026-06-08",
+          "date": "2026-06-15",
           "status": "healthy",
           "used": 52,
           "limit": 100,
@@ -526,7 +556,7 @@
           "submissions": 50
         },
         "daily": {
-          "date": "2026-06-08",
+          "date": "2026-06-15",
           "status": "tracking_only",
           "used": 52,
           "limit": null,
@@ -546,7 +576,7 @@
           "price": 61
         },
         "daily": {
-          "date": "2026-06-08",
+          "date": "2026-06-15",
           "status": "healthy",
           "used": 61,
           "limit": 800,

@@ -2,49 +2,6 @@
   "version": 1,
   "timezone": "UTC",
   "days": {
-    "2026-06-01": {
-      "providers": {
-        "marketaux": {
-          "used": 54,
-          "limit": 100,
-          "categories": {
-            "company_news": 51,
-            "global_news": 3
-          }
-        },
-        "sec_edgar": {
-          "used": 54,
-          "limit": null,
-          "categories": {
-            "ticker_map": 3,
-            "submissions": 51
-          }
-        },
-        "gdelt": {
-          "used": 11,
-          "limit": null,
-          "categories": {
-            "company_news": 8,
-            "global_news": 3
-          }
-        },
-        "alpha_vantage": {
-          "used": 7,
-          "limit": 25,
-          "categories": {
-            "company_news": 4,
-            "global_news": 3
-          }
-        },
-        "twelvedata": {
-          "used": 64,
-          "limit": 800,
-          "categories": {
-            "price": 64
-          }
-        }
-      }
-    },
     "2026-06-02": {
       "providers": {
         "marketaux": {
@@ -579,6 +536,49 @@
           "limit": 800,
           "categories": {
             "price": 3
+          }
+        }
+      }
+    },
+    "2026-06-15": {
+      "providers": {
+        "marketaux": {
+          "used": 52,
+          "limit": 100,
+          "categories": {
+            "company_news": 50,
+            "global_news": 2
+          }
+        },
+        "sec_edgar": {
+          "used": 52,
+          "limit": null,
+          "categories": {
+            "ticker_map": 2,
+            "submissions": 50
+          }
+        },
+        "gdelt": {
+          "used": 8,
+          "limit": null,
+          "categories": {
+            "company_news": 6,
+            "global_news": 2
+          }
+        },
+        "alpha_vantage": {
+          "used": 5,
+          "limit": 25,
+          "categories": {
+            "company_news": 3,
+            "global_news": 2
+          }
+        },
+        "twelvedata": {
+          "used": 61,
+          "limit": 800,
+          "categories": {
+            "price": 61
           }
         }
       }

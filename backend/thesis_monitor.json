@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-15T19:38:22Z",
-  "data_as_of": "2026-06-15",
-  "expected_next_refresh_at": "2026-06-16T19:38:22Z",
-  "stale_after": "2026-06-17T07:38:22Z",
+  "generated_at": "2026-06-16T19:29:01Z",
+  "data_as_of": "2026-06-16",
+  "expected_next_refresh_at": "2026-06-17T19:29:01Z",
+  "stale_after": "2026-06-18T07:29:01Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W25",
@@ -24,61 +24,61 @@
     "company_name": "Bank of America Corporation",
     "sector": "financials",
     "risk": "medium",
-    "model_score": 0.0868,
-    "confidence_score": 0.63,
+    "model_score": 0.0801,
+    "confidence_score": 0.61,
     "confidence_label": "medium",
-    "price_as_of": "2026-06-15",
-    "news_as_of": "2026-06-15",
+    "price_as_of": "2026-06-16",
+    "news_as_of": "2026-06-16",
     "macro_as_of": null,
     "sector_as_of": null,
     "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.0442,
-      "momentum_20d": 0.1252,
-      "daily_volatility": 0.0117,
-      "downside_volatility": 0.0088,
+      "momentum_5d": 0.0413,
+      "momentum_20d": 0.1179,
+      "daily_volatility": 0.0116,
+      "downside_volatility": 0.0089,
       "max_drawdown_20d": 0.0274,
       "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0609,
-      "volume_trend_5d": -0.3073,
-      "market_relative_5d": 0.0233,
-      "market_relative_20d": 0.1026,
-      "sector_relative_5d": 0.0123,
-      "sector_relative_20d": 0.0726,
+      "price_vs_20d_average": 0.0676,
+      "volume_trend_5d": -0.3481,
+      "market_relative_5d": 0.0216,
+      "market_relative_20d": 0.0992,
+      "sector_relative_5d": 0.0072,
+      "sector_relative_20d": 0.0664,
       "news_sentiment": 0.52,
-      "raw_news_sentiment": 0.1075,
-      "calibrated_news_sentiment": 0.0492,
-      "news_confidence": 0.61,
+      "raw_news_sentiment": 0.106,
+      "calibrated_news_sentiment": 0.0397,
+      "news_confidence": 0.54,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.15,
-      "source_count": 2,
-      "average_relevance": 0.7,
+      "effective_article_count": 0.03,
+      "source_count": 3,
+      "average_relevance": 0.58,
       "technical_training_ic": 0.0008,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1047,
-      "short_momentum": 0.0365,
-      "medium_momentum": 0.0376,
-      "trend_quality": 0.0185,
-      "volume_confirmation": -0.0123,
-      "market_relative_strength": 0.0165,
-      "sector_relative_strength": 0.008,
+      "momentum": 0.0982,
+      "short_momentum": 0.034,
+      "medium_momentum": 0.0354,
+      "trend_quality": 0.02,
+      "volume_confirmation": -0.0139,
+      "market_relative_strength": 0.0159,
+      "sector_relative_strength": 0.0069,
       "volatility_penalty": -0.0235,
-      "daily_volatility_penalty": -0.0106,
-      "downside_penalty": -0.0095,
+      "daily_volatility_penalty": -0.0105,
+      "downside_penalty": -0.0096,
       "drawdown_penalty": -0.0034,
-      "news_adjustment": 0.0057,
+      "news_adjustment": 0.0054,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
       "signal_alignment": 0.0,
-      "technical_total": 0.0812,
-      "trend_strength": 0.0925,
-      "relative_strength": 0.0245,
-      "participation": -0.0123,
+      "technical_total": 0.0748,
+      "trend_strength": 0.0894,
+      "relative_strength": 0.0228,
+      "participation": -0.0139,
       "risk_control": -0.0235,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
@@ -88,34 +88,34 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0868
+      "total": 0.0801
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 4.4% and 20-day momentum is 12.5%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 6.1% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 4.1% and 20-day momentum is 11.8%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 6.8% relative to its 20-day average.",
       "Risk profile shows daily volatility around 1.2%, downside volatility near 0.9%, and a recent max drawdown of 2.7%.",
-      "Volume confirmation is -30.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 2.3% versus SPY over 5 days and 1.2% versus the sector ETF.",
-      "News signal is neutral with score 0.52, confidence 0.61, and 0.1 weighted articles across 2 sources.",
+      "Volume confirmation is -34.8% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 2.2% versus SPY over 5 days and 0.7% versus the sector ETF.",
+      "News signal is neutral with score 0.52, confidence 0.54, and 0.0 weighted articles across 3 sources.",
       "GPT-5 article classification and company-news provider coverage rated the news flow neutral at 0.52, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 0.1 effective weighted articles, average relevance 0.70, average source quality 0.75, confidence 0.61.",
+      "Evidence quality: 3 articles across 3 sources, 0.0 effective weighted articles, average relevance 0.58, average source quality 0.75, confidence 0.54.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.087 with medium confidence."
+      "Overall model score is 0.080 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Bank of America Reports Growth in Demand for AI enabled Treasury and FX Tools Across APAC Region",
-        "provider": "crowdfundinsider.com",
-        "url": "https://www.crowdfundinsider.com/2026/06/285656-bank-of-america-reports-growth-in-demand-for-ai-enabled-treasury-and-fx-tools-across-apac-region/",
-        "published_at": "2026-06-15T14:40:31Z",
-        "relevance_score": 0.91,
-        "sentiment": 0.39,
-        "doc_type": "company_specific",
-        "company_relevance": 0.9,
-        "materiality": 0.35,
-        "llm_confidence": 0.75,
+        "title": "The SpaceX IPO Just Handed Wall Street's Big Banks a Huge Payday. Here's What It Means for Their Stocks.",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-ipo-just-handed-wall-115000285.html",
+        "published_at": "2026-06-16T11:50:00Z",
+        "relevance_score": 0.64,
+        "sentiment": 0.0,
+        "doc_type": "sector_macro",
+        "company_relevance": 0.5,
+        "materiality": 0.4,
+        "llm_confidence": 0.6,
         "llm_impact_score": 0.12,
-        "llm_reason": "Direct Bank of America announcement about increased demand for its AI-enabled treasury and FX tools in APAC. This is company-specific and supports modest near-term revenue/fee growth expectations, but the effect is likely limited in magnitude over a 1–10 trading day horizon."
+        "llm_reason": "Discusses the SpaceX IPO and the windfall for major underwriting banks. Relevant to BAC as a large investment bank (potential fee/revenue boost and positive sentiment), but coverage is sector-wide and not BAC-specific, so effect on BAC’s stock over the next 1–10 days is modest and indirect."
       }
     ],
     "macro_evidence": [],
@@ -131,7 +131,7 @@
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "4.4% 5D • 12.5% 20D",
+          "value": "4.1% 5D • 11.8% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
@@ -155,7 +155,7 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.013 score • +0.077 conf",
+          "value": "-0.020 score • +0.063 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
@@ -186,14 +186,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-15",
+          "date": "2026-06-16",
           "status": "healthy",
-          "used": 6,
+          "used": 1,
           "limit": 25,
-          "remaining": 19,
+          "remaining": 24,
           "categories": {
-            "company_news": 3,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -206,14 +205,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-15",
+          "date": "2026-06-16",
           "status": "tracking_only",
-          "used": 9,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 6,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -227,14 +225,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-15",
+          "date": "2026-06-16",
           "status": "healthy",
-          "used": 54,
+          "used": 2,
           "limit": 100,
-          "remaining": 46,
+          "remaining": 98,
           "categories": {
-            "company_news": 51,
-            "global_news": 3
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -248,14 +246,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-06-15",
+          "date": "2026-06-16",
           "status": "tracking_only",
-          "used": 54,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 3,
-            "submissions": 51
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -268,13 +266,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-06-15",
+          "date": "2026-06-16",
           "status": "healthy",
-          "used": 64,
+          "used": 3,
           "limit": 800,
-          "remaining": 736,
+          "remaining": 797,
           "categories": {
-            "price": 64
+            "price": 3
           }
         }
       }

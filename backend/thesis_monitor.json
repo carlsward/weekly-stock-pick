@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-17T18:09:26Z",
-  "data_as_of": "2026-06-17",
-  "expected_next_refresh_at": "2026-06-18T18:09:26Z",
-  "stale_after": "2026-06-19T06:09:26Z",
+  "generated_at": "2026-06-18T18:22:02Z",
+  "data_as_of": "2026-06-18",
+  "expected_next_refresh_at": "2026-06-19T18:22:02Z",
+  "stale_after": "2026-06-20T06:22:02Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W25",
@@ -24,62 +24,62 @@
     "company_name": "Bank of America Corporation",
     "sector": "financials",
     "risk": "medium",
-    "model_score": 0.1672,
-    "confidence_score": 0.72,
+    "model_score": 0.0701,
+    "confidence_score": 0.57,
     "confidence_label": "medium",
-    "price_as_of": "2026-06-17",
+    "price_as_of": "2026-06-18",
     "news_as_of": "2026-06-16",
     "macro_as_of": null,
     "sector_as_of": null,
     "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.0477,
-      "momentum_20d": 0.127,
-      "daily_volatility": 0.0117,
-      "downside_volatility": 0.0089,
+      "momentum_5d": 0.0195,
+      "momentum_20d": 0.0977,
+      "daily_volatility": 0.0121,
+      "downside_volatility": 0.0082,
       "max_drawdown_20d": 0.0274,
-      "positive_day_ratio_10d": 0.7,
-      "price_vs_20d_average": 0.0698,
-      "volume_trend_5d": -0.348,
-      "market_relative_5d": 0.0179,
-      "market_relative_20d": 0.1075,
-      "sector_relative_5d": 0.0042,
-      "sector_relative_20d": 0.0569,
-      "news_sentiment": 0.75,
+      "positive_day_ratio_10d": 0.5,
+      "price_vs_20d_average": 0.0486,
+      "volume_trend_5d": -0.2522,
+      "market_relative_5d": 0.0073,
+      "market_relative_20d": 0.0897,
+      "sector_relative_5d": 0.0006,
+      "sector_relative_20d": 0.0577,
+      "news_sentiment": 0.62,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.4924,
-      "news_confidence": 0.63,
+      "calibrated_news_sentiment": 0.2418,
+      "news_confidence": 0.33,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.13,
+      "effective_article_count": 0.03,
       "source_count": 3,
-      "average_relevance": 0.58,
+      "average_relevance": 0.59,
       "technical_training_ic": 0.0008,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.111,
-      "short_momentum": 0.0393,
-      "medium_momentum": 0.0381,
-      "trend_quality": 0.0253,
-      "volume_confirmation": -0.0139,
-      "market_relative_strength": 0.0164,
-      "sector_relative_strength": 0.0057,
-      "volatility_penalty": -0.0235,
-      "daily_volatility_penalty": -0.0105,
-      "downside_penalty": -0.0096,
+      "momentum": 0.0644,
+      "short_momentum": 0.0161,
+      "medium_momentum": 0.0293,
+      "trend_quality": 0.0109,
+      "volume_confirmation": -0.0101,
+      "market_relative_strength": 0.0127,
+      "sector_relative_strength": 0.0055,
+      "volatility_penalty": -0.0232,
+      "daily_volatility_penalty": -0.0109,
+      "downside_penalty": -0.0089,
       "drawdown_penalty": -0.0034,
-      "news_adjustment": 0.0717,
+      "news_adjustment": 0.0275,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.008,
-      "technical_total": 0.0875,
-      "trend_strength": 0.1027,
-      "relative_strength": 0.0222,
-      "participation": -0.0139,
-      "risk_control": -0.0235,
+      "signal_alignment": 0.0014,
+      "technical_total": 0.0412,
+      "trend_strength": 0.0563,
+      "relative_strength": 0.0182,
+      "participation": -0.0101,
+      "risk_control": -0.0232,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,64 +88,52 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.1672
+      "total": 0.0701
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 4.8% and 20-day momentum is 12.7%.",
-      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 7.0% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.2%, downside volatility near 0.9%, and a recent max drawdown of 2.7%.",
-      "Volume confirmation is -34.8% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 1.8% versus SPY over 5 days and 0.4% versus the sector ETF.",
-      "News signal is bullish with score 0.75, confidence 0.63, and 0.1 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.75, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.1 effective weighted articles, average relevance 0.58, average source quality 0.75, confidence 0.63.",
+      "Price trend remains constructive: 5-day momentum is 1.9% and 20-day momentum is 9.8%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 4.9% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.2%, downside volatility near 0.8%, and a recent max drawdown of 2.7%.",
+      "Volume confirmation is -25.2% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 0.7% versus SPY over 5 days and 0.1% versus the sector ETF.",
+      "News signal is bullish with score 0.62, confidence 0.33, and 0.0 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.72, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.0 effective weighted articles, average relevance 0.59, average source quality 0.75, confidence 0.60.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.167 with medium confidence."
+      "Overall model score is 0.070 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "The SpaceX IPO Just Handed Wall Street's Big Banks a Huge Payday. Here's What It Means for Their Stocks.",
+        "title": "Banking ETFs: How Do KBWB and FTXO Compare to Each Other?",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-ipo-just-handed-wall-115000285.html",
-        "published_at": "2026-06-16T11:50:00Z",
-        "relevance_score": 0.64,
-        "sentiment": 0.0,
+        "url": "https://finance.yahoo.com/markets/stocks/articles/banking-etfs-kbwb-ftxo-compare-133001055.html",
+        "published_at": "2026-06-16T13:30:01Z",
+        "relevance_score": 0.62,
+        "sentiment": 0.42,
         "doc_type": "sector_macro",
-        "company_relevance": 1.0,
+        "company_relevance": 0.3,
         "materiality": 1.0,
-        "llm_confidence": 0.7,
+        "llm_confidence": 0.75,
         "llm_impact_score": 1.0,
-        "llm_reason": "Covers the SpaceX IPO underwriting windfall for major investment banks. Likely benefits large banks' investment-banking revenue and sentiment (which can lift BAC modestly), but the piece is sector-level and does not provide BAC-specific fee allocations or guaranteed near-term impact."
-      },
-      {
-        "title": "US stocks: Dow hits record high as oil slides; SpaceX shares soar",
-        "provider": "economictimes.indiatimes.com",
-        "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/us-stocks-dow-touches-record-high-as-oil-prices-slide-retreats-below-80/articleshow/131773643.cms",
-        "published_at": "2026-06-16T13:37:19Z",
-        "relevance_score": 0.53,
-        "sentiment": 0.72,
-        "doc_type": "market_roundup",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 0.8,
-        "llm_impact_score": 1.0,
-        "llm_reason": "General market recap (Dow record, oil slide, SpaceX shares). Could influence BAC via broad market sentiment/flows but contains no BAC-specific developments—limited predictive value for BAC over the next 1–10 trading days."
+        "llm_reason": "ETF comparison (KBWB vs FTXO) is sector-level and could influence investor flows and sentiment toward large U.S. banks that are constituents of those ETFs (including BAC). However, it's a product/comparison piece without new fundamental news about BAC, so near-term impact is modest."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
-      "status": "watch",
-      "headline": "Support needs watching",
-      "summary": "The news layer is still thin, so conviction should stay measured.",
+      "status": "risk",
+      "headline": "Support needs review",
+      "summary": "Trend quality is still positive, but the tape is no longer decisive.",
       "alerts": [
-        "The news layer is still thin, so conviction should stay measured."
+        "Trend quality is still positive, but the tape is no longer decisive.",
+        "The news layer is still thin, so conviction should stay measured.",
+        "This is the top ranked stock, but it is below the normal release bar."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "positive",
-          "value": "4.8% 5D • 12.7% 20D",
-          "detail": "Price action is still supporting the release thesis."
+          "state": "watch",
+          "value": "1.9% 5D • 9.8% 20D",
+          "detail": "Trend quality is still positive, but the tape is no longer decisive."
         },
         {
           "label": "Volatility",
@@ -156,7 +144,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.75 sentiment • 3 articles",
+          "value": "0.62 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -167,14 +155,14 @@
         },
         {
           "label": "Margin",
-          "state": "positive",
-          "value": "+0.067 score • +0.166 conf",
-          "detail": "The pick cleared the release thresholds with room to spare."
+          "state": "risk",
+          "value": "-0.030 score • +0.022 conf",
+          "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 1 trading day • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 2 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -199,7 +187,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-17",
+          "date": "2026-06-18",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -218,7 +206,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-17",
+          "date": "2026-06-18",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -238,7 +226,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-17",
+          "date": "2026-06-18",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -259,7 +247,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-06-17",
+          "date": "2026-06-18",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -279,7 +267,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-06-17",
+          "date": "2026-06-18",
           "status": "healthy",
           "used": 3,
           "limit": 800,

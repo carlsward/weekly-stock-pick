@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-20T17:17:04Z",
+  "generated_at": "2026-06-21T17:19:57Z",
   "data_as_of": "2026-06-19",
-  "expected_next_refresh_at": "2026-06-21T17:17:04Z",
-  "stale_after": "2026-06-22T05:17:04Z",
+  "expected_next_refresh_at": "2026-06-22T17:19:57Z",
+  "stale_after": "2026-06-23T05:19:57Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W25",
@@ -24,8 +24,8 @@
     "company_name": "Bank of America Corporation",
     "sector": "financials",
     "risk": "medium",
-    "model_score": 0.0532,
-    "confidence_score": 0.6,
+    "model_score": 0.0826,
+    "confidence_score": 0.58,
     "confidence_label": "medium",
     "price_as_of": "2026-06-18",
     "news_as_of": "2026-06-19",
@@ -45,15 +45,15 @@
       "market_relative_20d": 0.0889,
       "sector_relative_5d": 0.0008,
       "sector_relative_20d": 0.0579,
-      "news_sentiment": 0.5,
-      "raw_news_sentiment": 0.0,
-      "calibrated_news_sentiment": 0.0,
-      "news_confidence": 0.72,
+      "news_sentiment": 0.62,
+      "raw_news_sentiment": 0.9702,
+      "calibrated_news_sentiment": 0.2366,
+      "news_confidence": 0.33,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.19,
+      "effective_article_count": 0.04,
       "source_count": 3,
       "average_relevance": 0.72,
       "technical_training_ic": 0.0008,
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0109,
       "downside_penalty": -0.0089,
       "drawdown_penalty": -0.0034,
-      "news_adjustment": 0.0,
+      "news_adjustment": 0.0275,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0,
+      "signal_alignment": 0.0019,
       "technical_total": 0.0532,
       "trend_strength": 0.0554,
       "relative_strength": 0.018,
@@ -88,7 +88,7 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0532
+      "total": 0.0826
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is 1.9% and 20-day momentum is 9.7%.",
@@ -96,11 +96,11 @@
       "Risk profile shows daily volatility around 1.2%, downside volatility near 0.8%, and a recent max drawdown of 2.7%.",
       "Volume confirmation is 7.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is 0.7% versus SPY over 5 days and 0.1% versus the sector ETF.",
-      "News signal is neutral with score 0.50, confidence 0.72, and 0.2 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow neutral at 0.50, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.2 effective weighted articles, average relevance 0.72, average source quality 0.75, confidence 0.72.",
+      "News signal is bullish with score 0.62, confidence 0.33, and 0.0 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.72, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.0 effective weighted articles, average relevance 0.72, average source quality 0.75, confidence 0.60.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.053 with medium confidence."
+      "Overall model score is 0.083 with medium confidence."
     ],
     "news_evidence": [
       {
@@ -111,25 +111,11 @@
         "relevance_score": 0.6,
         "sentiment": 0.0,
         "doc_type": "sector_macro",
-        "company_relevance": 1.0,
+        "company_relevance": 0.4,
         "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 0.0,
-        "llm_reason": "ETF comparison (IYF vs. KRE) is sector‑level analysis relevant to financial stocks including BAC. It could modestly influence flows or sector sentiment, but it is indirect and not specific to Bank of America's fundamentals or news, so near‑term impact on BAC is limited and uncertain."
-      },
-      {
-        "title": "Juneteenth 2026: What's open and closed? Find out if banks, USPS, stock markets, and retail stores are operating",
-        "provider": "livemint.com",
-        "url": "https://www.livemint.com/news/us-news/juneteenth-2026-whats-open-and-closed-find-out-if-banks-usps-stock-markets-and-retail-stores-are-operating-11781874411876.html",
-        "published_at": "2026-06-19T13:18:02Z",
-        "relevance_score": 0.56,
-        "sentiment": 0.34,
-        "doc_type": "market_roundup",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 0.0,
-        "llm_reason": "Holiday hours/closures (Juneteenth) affecting banks, USPS, and markets are operational and calendar information that can affect trading volumes and intraday liquidity. These are logistical rather than fundamental and do not imply a directional move for BAC, though they may slightly affect short‑term trading patterns."
+        "llm_confidence": 0.7,
+        "llm_impact_score": 1.0,
+        "llm_reason": "ETF comparison of IYF vs. KRE focuses on financial-sector allocations and regional-bank risks. Relevant to sector sentiment and potential fund flows that could indirectly affect BAC in the short term, but it provides no BAC-specific news or catalysts, so expected impact is small."
       }
     ],
     "macro_evidence": [],
@@ -158,7 +144,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.50 sentiment • 3 articles",
+          "value": "0.62 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -170,7 +156,7 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.047 score • +0.052 conf",
+          "value": "-0.017 score • +0.028 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
@@ -201,7 +187,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-20",
+          "date": "2026-06-21",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -220,7 +206,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-20",
+          "date": "2026-06-21",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -240,7 +226,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-20",
+          "date": "2026-06-21",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -261,7 +247,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-06-20",
+          "date": "2026-06-21",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -281,7 +267,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-06-20",
+          "date": "2026-06-21",
           "status": "healthy",
           "used": 3,
           "limit": 800,

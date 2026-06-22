@@ -1,18 +1,18 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-21T17:19:57Z",
-  "data_as_of": "2026-06-19",
-  "expected_next_refresh_at": "2026-06-22T17:19:57Z",
-  "stale_after": "2026-06-23T05:19:57Z",
+  "generated_at": "2026-06-22T16:39:42Z",
+  "data_as_of": "2026-06-22",
+  "expected_next_refresh_at": "2026-06-23T16:39:42Z",
+  "stale_after": "2026-06-24T04:39:42Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W25",
-    "week_label": "Jun 15 - 19, 2026",
-    "week_start": "2026-06-15",
-    "week_end": "2026-06-19"
+    "week_id": "2026-W26",
+    "week_label": "Jun 22 - 26, 2026",
+    "week_start": "2026-06-22",
+    "week_end": "2026-06-26"
   },
-  "source_dashboard_generated_at": "2026-06-15T16:47:44Z",
+  "source_dashboard_generated_at": "2026-06-22T16:32:05Z",
   "selection": {
     "status": "picked",
     "status_reason": "Live thesis monitor refreshed the active weekly pick.",
@@ -20,131 +20,144 @@
     "threshold_confidence": 0.55
   },
   "active_pick": {
-    "symbol": "BAC",
-    "company_name": "Bank of America Corporation",
+    "symbol": "JPM",
+    "company_name": "JPMorgan Chase & Co.",
     "sector": "financials",
     "risk": "medium",
-    "model_score": 0.0826,
-    "confidence_score": 0.58,
+    "model_score": 0.184,
+    "confidence_score": 0.73,
     "confidence_label": "medium",
-    "price_as_of": "2026-06-18",
-    "news_as_of": "2026-06-19",
+    "price_as_of": "2026-06-22",
+    "news_as_of": "2026-06-22",
     "macro_as_of": null,
-    "sector_as_of": null,
+    "sector_as_of": "2026-06-22",
     "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.0189,
-      "momentum_20d": 0.097,
-      "daily_volatility": 0.0121,
-      "downside_volatility": 0.0083,
-      "max_drawdown_20d": 0.0274,
-      "positive_day_ratio_10d": 0.5,
-      "price_vs_20d_average": 0.048,
-      "volume_trend_5d": 0.0747,
-      "market_relative_5d": 0.0066,
-      "market_relative_20d": 0.0889,
-      "sector_relative_5d": 0.0008,
-      "sector_relative_20d": 0.0579,
-      "news_sentiment": 0.62,
-      "raw_news_sentiment": 0.9702,
-      "calibrated_news_sentiment": 0.2366,
-      "news_confidence": 0.33,
+      "momentum_5d": 0.0345,
+      "momentum_20d": 0.095,
+      "daily_volatility": 0.0161,
+      "downside_volatility": 0.0138,
+      "max_drawdown_20d": 0.0331,
+      "positive_day_ratio_10d": 0.6,
+      "price_vs_20d_average": 0.0637,
+      "volume_trend_5d": 0.1645,
+      "market_relative_5d": 0.0308,
+      "market_relative_20d": 0.0925,
+      "sector_relative_5d": 0.0259,
+      "sector_relative_20d": 0.0531,
+      "news_sentiment": 0.83,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.6566,
+      "news_confidence": 0.74,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 0.04,
+      "sector_confidence": 0.3,
+      "effective_article_count": 0.53,
       "source_count": 3,
-      "average_relevance": 0.72,
-      "technical_training_ic": 0.0008,
+      "average_relevance": 0.62,
+      "technical_training_ic": 0.0042,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0765,
-      "short_momentum": 0.0156,
-      "medium_momentum": 0.0291,
-      "trend_quality": 0.0108,
-      "volume_confirmation": 0.003,
-      "market_relative_strength": 0.0125,
-      "sector_relative_strength": 0.0055,
-      "volatility_penalty": -0.0233,
-      "daily_volatility_penalty": -0.0109,
-      "downside_penalty": -0.0089,
-      "drawdown_penalty": -0.0034,
-      "news_adjustment": 0.0275,
+      "momentum": 0.1062,
+      "short_momentum": 0.0284,
+      "medium_momentum": 0.0285,
+      "trend_quality": 0.0191,
+      "volume_confirmation": 0.0066,
+      "market_relative_strength": 0.0162,
+      "sector_relative_strength": 0.0074,
+      "volatility_penalty": -0.0335,
+      "daily_volatility_penalty": -0.0145,
+      "downside_penalty": -0.0149,
+      "drawdown_penalty": -0.0041,
+      "news_adjustment": 0.1018,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0019,
-      "technical_total": 0.0532,
-      "trend_strength": 0.0554,
-      "relative_strength": 0.018,
-      "participation": 0.003,
-      "risk_control": -0.0233,
+      "signal_alignment": 0.0095,
+      "technical_total": 0.0727,
+      "trend_strength": 0.0761,
+      "relative_strength": 0.0236,
+      "participation": 0.0066,
+      "risk_control": -0.0335,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.6,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
+      "news_sector_overlap": 0.6667,
       "macro_sector_overlap": 0.0,
-      "total": 0.0826
+      "total": 0.184
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 1.9% and 20-day momentum is 9.7%.",
-      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 4.8% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.2%, downside volatility near 0.8%, and a recent max drawdown of 2.7%.",
-      "Volume confirmation is 7.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 0.7% versus SPY over 5 days and 0.1% versus the sector ETF.",
-      "News signal is bullish with score 0.62, confidence 0.33, and 0.0 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.72, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.0 effective weighted articles, average relevance 0.72, average source quality 0.75, confidence 0.60.",
+      "Price trend remains constructive: 5-day momentum is 3.4% and 20-day momentum is 9.5%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 6.4% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.6%, downside volatility near 1.4%, and a recent max drawdown of 3.3%.",
+      "Volume confirmation is 16.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 3.1% versus SPY over 5 days and 2.6% versus the sector ETF.",
+      "News signal is bullish with score 0.83, confidence 0.74, and 0.5 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.83, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.5 effective weighted articles, average relevance 0.62, average source quality 0.75, confidence 0.74.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.083 with medium confidence."
+      "Overall model score is 0.184 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "IYF vs. KRE: Which Financial Sector ETF Is the Better Buy?",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/iyf-vs-kre-financial-sector-155538164.html",
-        "published_at": "2026-06-19T15:55:38Z",
-        "relevance_score": 0.6,
-        "sentiment": 0.0,
+        "title": "Work from home? For FIFA World Cup, even JPMorgan says yes",
+        "provider": "economictimes.indiatimes.com",
+        "url": "https://economictimes.indiatimes.com/news/sports/work-from-home-for-fifa-world-cup-even-jpmorgan-says-yes/articleshow/131906533.cms",
+        "published_at": "2026-06-22T10:27:50Z",
+        "relevance_score": 0.68,
+        "sentiment": -0.32,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 0.8,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Mentions JPMorgan explicitly (temporary WFH for World Cup). This is a short-term operational/HR/PR decision with negligible impact on earnings, capital, or near-term stock performance."
+      },
+      {
+        "title": "Global banks drive India asset-backed securities sales to record",
+        "provider": "thehindubusinessline.com",
+        "url": "https://www.thehindubusinessline.com/money-and-banking/global-banks-drive-india-asset-backed-securities-sales-to-record/article71131819.ece",
+        "published_at": "2026-06-22T05:51:05Z",
+        "relevance_score": 0.62,
+        "sentiment": -0.34,
         "doc_type": "sector_macro",
-        "company_relevance": 0.4,
+        "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 0.7,
         "llm_impact_score": 1.0,
-        "llm_reason": "ETF comparison of IYF vs. KRE focuses on financial-sector allocations and regional-bank risks. Relevant to sector sentiment and potential fund flows that could indirectly affect BAC in the short term, but it provides no BAC-specific news or catalysts, so expected impact is small."
+        "llm_reason": "Covers global banks increasing participation in India ABS issuance. JPM may be a participant, so this is sector-relevant to its investment and capital markets activities, but it lacks JPM-specific near-term implications for price or guidance."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
-      "status": "risk",
-      "headline": "Support needs review",
-      "summary": "Trend quality is still positive, but the tape is no longer decisive.",
+      "status": "watch",
+      "headline": "Support needs watching",
+      "summary": "Risk is still manageable, but volatility widened versus a clean setup.",
       "alerts": [
-        "Trend quality is still positive, but the tape is no longer decisive.",
-        "The news layer is still thin, so conviction should stay measured.",
-        "This is the top ranked stock, but it is below the normal release bar."
+        "Risk is still manageable, but volatility widened versus a clean setup.",
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "watch",
-          "value": "1.9% 5D • 9.7% 20D",
-          "detail": "Trend quality is still positive, but the tape is no longer decisive."
+          "state": "positive",
+          "value": "3.4% 5D • 9.5% 20D",
+          "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
-          "state": "positive",
-          "value": "1.2% daily • 2.7% drawdown",
-          "detail": "Volatility and drawdown remain controlled for this release."
+          "state": "watch",
+          "value": "1.6% daily • 3.3% drawdown",
+          "detail": "Risk is still manageable, but volatility widened versus a clean setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.62 sentiment • 3 articles",
+          "value": "0.83 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -155,14 +168,14 @@
         },
         {
           "label": "Margin",
-          "state": "risk",
-          "value": "-0.017 score • +0.028 conf",
-          "detail": "This is the top ranked stock, but it is below the normal release bar."
+          "state": "positive",
+          "value": "+0.084 score • +0.184 conf",
+          "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 1 trading day • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -180,100 +193,104 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 7,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 18,
         "categories": {
-          "global_news": 1
+          "company_news": 5,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-06-21",
+          "date": "2026-06-22",
           "status": "healthy",
-          "used": 1,
+          "used": 7,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 18,
           "categories": {
-            "global_news": 1
+            "company_news": 5,
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 17,
         "limit": null,
         "remaining": null,
         "categories": {
-          "global_news": 1
+          "company_news": 15,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-06-21",
+          "date": "2026-06-22",
           "status": "tracking_only",
-          "used": 1,
+          "used": 17,
           "limit": null,
           "remaining": null,
           "categories": {
-            "global_news": 1
+            "company_news": 15,
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 52,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 48,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 50,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-06-21",
+          "date": "2026-06-22",
           "status": "healthy",
-          "used": 2,
+          "used": 52,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 48,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 50,
+            "global_news": 2
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 52,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1,
-          "submissions": 1
+          "ticker_map": 2,
+          "submissions": 50
         },
         "daily": {
-          "date": "2026-06-21",
+          "date": "2026-06-22",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 3,
+        "used": 61,
         "limit": 800,
-        "remaining": 797,
+        "remaining": 739,
         "categories": {
-          "price": 3
+          "price": 61
         },
         "daily": {
-          "date": "2026-06-21",
+          "date": "2026-06-22",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

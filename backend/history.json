@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-15T16:47:44Z",
+  "generated_at": "2026-06-22T16:32:05Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -1813,8 +1813,8 @@
           }
         }
       ],
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null
+      "realized_5d_return": -0.0102,
+      "realized_5d_excess_return": -0.0141
     },
     {
       "week_id": "2026-W25",
@@ -1835,6 +1835,20 @@
       "confidence_label": "high",
       "data_as_of": "2026-06-15",
       "model_version": "v3.4",
+      "diagnostics": {
+        "technical_total": 0.0902,
+        "news_adjustment": 0.1296,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.6708,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 2303,
+        "technical_training_ic": 0.0008,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      },
       "top_candidates": [
         {
           "rank": 1,
@@ -2067,8 +2081,262 @@
           }
         }
       ],
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W26",
+      "week_start": "2026-06-22",
+      "week_end": "2026-06-26",
+      "week_label": "Jun 22 - 26, 2026",
+      "logged_at": "2026-06-22T16:32:05Z",
+      "status": "picked",
+      "status_reason": "JPM cleared the commercial release thresholds for this market week with a score of 0.213 and high confidence.",
+      "is_qualified": true,
+      "release_quality": "qualified",
+      "symbol": "JPM",
+      "company_name": "JPMorgan Chase & Co.",
+      "sector": "financials",
+      "risk": "medium",
+      "model_score": 0.2129,
+      "confidence_score": 0.77,
+      "confidence_label": "high",
+      "data_as_of": "2026-06-22",
+      "model_version": "v3.4",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "JPM",
+          "company_name": "JPMorgan Chase & Co.",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.2129,
+          "confidence_score": 0.77,
+          "confidence_label": "high",
+          "price_as_of": "2026-06-22",
+          "news_as_of": "2026-06-22",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0713,
+            "news_adjustment": 0.1296,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0119,
+            "news_signal_input": 0.6708,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "BAC",
+          "company_name": "Bank of America Corporation",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.1632,
+          "confidence_score": 0.7,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-22",
+          "news_as_of": "2026-06-22",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0778,
+            "news_adjustment": 0.0776,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0078,
+            "news_signal_input": 0.3588,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "GE",
+          "company_name": "General Electric Company",
+          "sector": "industrials",
+          "risk": "high",
+          "model_score": 0.1299,
+          "confidence_score": 0.55,
+          "confidence_label": "low",
+          "price_as_of": "2026-06-22",
+          "news_as_of": null,
+          "article_count": 0,
+          "diagnostics": {
+            "technical_total": 0.1299,
+            "news_adjustment": 0.0,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0,
+            "news_signal_input": 0.0,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "TXN",
+          "company_name": "Texas Instruments Incorporated",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1224,
+          "confidence_score": 0.55,
+          "confidence_label": "low",
+          "price_as_of": "2026-06-22",
+          "news_as_of": "2026-06-18",
+          "article_count": 1,
+          "diagnostics": {
+            "technical_total": 0.0738,
+            "news_adjustment": 0.0444,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0042,
+            "news_signal_input": 0.1517,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "UNH",
+          "company_name": "UnitedHealth Group Incorporated",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1084,
+          "confidence_score": 0.7,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-22",
+          "news_as_of": "2026-06-22",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0035,
+            "news_adjustment": 0.1044,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0005,
+            "news_signal_input": 0.5148,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "INTC",
+          "company_name": "Intel Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1034,
+          "confidence_score": 0.42,
+          "confidence_label": "low",
+          "price_as_of": "2026-06-22",
+          "news_as_of": null,
+          "article_count": 0,
+          "diagnostics": {
+            "technical_total": 0.1034,
+            "news_adjustment": 0.0,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0,
+            "news_signal_input": 0.0,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "V",
+          "company_name": "Visa Inc.",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.0787,
+          "confidence_score": 0.63,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-22",
+          "news_as_of": "2026-06-22",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0134,
+            "news_adjustment": 0.0938,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0016,
+            "news_signal_input": 0.4402,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "DIS",
+          "company_name": "The Walt Disney Company",
+          "sector": "communication_services",
+          "risk": "medium",
+          "model_score": 0.0622,
+          "confidence_score": 0.54,
+          "confidence_label": "low",
+          "price_as_of": "2026-06-22",
+          "news_as_of": "2026-06-20",
+          "article_count": 1,
+          "diagnostics": {
+            "technical_total": 0.0086,
+            "news_adjustment": 0.053,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0006,
+            "news_signal_input": 0.1931,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "AAPL",
+          "company_name": "Apple Inc.",
+          "sector": "technology",
+          "risk": "medium",
+          "model_score": 0.0588,
+          "confidence_score": 0.6,
+          "confidence_label": "medium",
+          "price_as_of": "2026-06-22",
+          "news_as_of": "2026-06-22",
+          "article_count": 1,
+          "diagnostics": {
+            "technical_total": -0.0313,
+            "news_adjustment": 0.0938,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0038,
+            "news_signal_input": 0.4402,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "HON",
+          "company_name": "Honeywell International Inc.",
+          "sector": "industrials",
+          "risk": "high",
+          "model_score": 0.0494,
+          "confidence_score": 0.54,
+          "confidence_label": "low",
+          "price_as_of": "2026-06-22",
+          "news_as_of": "2026-06-19",
+          "article_count": 1,
+          "diagnostics": {
+            "technical_total": -0.0018,
+            "news_adjustment": 0.0514,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0001,
+            "news_signal_input": 0.1858,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        }
+      ],
       "diagnostics": {
-        "technical_total": 0.0902,
+        "technical_total": 0.0713,
         "news_adjustment": 0.1296,
         "macro_adjustment": 0.0,
         "sector_adjustment": 0.0,
@@ -2076,7 +2344,7 @@
         "macro_signal_input": 0.0,
         "sector_signal_input": 0.0,
         "technical_training_rows": 2303,
-        "technical_training_ic": 0.0008,
+        "technical_training_ic": 0.0042,
         "news_macro_overlap": 0.0,
         "news_sector_overlap": 0.0,
         "macro_sector_overlap": 0.0
@@ -2093,42 +2361,42 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 4,
+        "used": 6,
         "limit": 25,
-        "remaining": 21,
+        "remaining": 19,
         "categories": {
-          "company_news": 3,
+          "company_news": 5,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-15",
+          "date": "2026-06-22",
           "status": "healthy",
-          "used": 4,
+          "used": 6,
           "limit": 25,
-          "remaining": 21,
+          "remaining": 19,
           "categories": {
-            "company_news": 3,
+            "company_news": 5,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 7,
+        "used": 16,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 6,
+          "company_news": 15,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-15",
+          "date": "2026-06-22",
           "status": "tracking_only",
-          "used": 7,
+          "used": 16,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 6,
+            "company_news": 15,
             "global_news": 1
           }
         }
@@ -2143,7 +2411,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-15",
+          "date": "2026-06-22",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -2164,7 +2432,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-06-15",
+          "date": "2026-06-22",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -2184,7 +2452,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-06-15",
+          "date": "2026-06-22",
           "status": "healthy",
           "used": 58,
           "limit": 800,

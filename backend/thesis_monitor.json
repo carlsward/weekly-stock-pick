@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-22T19:18:48Z",
-  "data_as_of": "2026-06-22",
-  "expected_next_refresh_at": "2026-06-23T19:18:48Z",
-  "stale_after": "2026-06-24T07:18:48Z",
+  "generated_at": "2026-06-23T17:45:54Z",
+  "data_as_of": "2026-06-23",
+  "expected_next_refresh_at": "2026-06-24T17:45:54Z",
+  "stale_after": "2026-06-25T05:45:54Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W26",
@@ -24,62 +24,62 @@
     "company_name": "JPMorgan Chase & Co.",
     "sector": "financials",
     "risk": "medium",
-    "model_score": 0.1718,
-    "confidence_score": 0.71,
+    "model_score": 0.1795,
+    "confidence_score": 0.72,
     "confidence_label": "medium",
-    "price_as_of": "2026-06-22",
-    "news_as_of": "2026-06-22",
+    "price_as_of": "2026-06-23",
+    "news_as_of": "2026-06-23",
     "macro_as_of": null,
     "sector_as_of": null,
     "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.0365,
-      "momentum_20d": 0.0971,
-      "daily_volatility": 0.0162,
+      "momentum_5d": 0.0471,
+      "momentum_20d": 0.0916,
+      "daily_volatility": 0.016,
       "downside_volatility": 0.0138,
       "max_drawdown_20d": 0.0331,
-      "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0657,
-      "volume_trend_5d": 0.172,
-      "market_relative_5d": 0.0333,
-      "market_relative_20d": 0.0952,
-      "sector_relative_5d": 0.0306,
-      "sector_relative_20d": 0.058,
-      "news_sentiment": 0.79,
+      "positive_day_ratio_10d": 0.7,
+      "price_vs_20d_average": 0.0675,
+      "volume_trend_5d": 0.1896,
+      "market_relative_5d": 0.0722,
+      "market_relative_20d": 0.1041,
+      "sector_relative_5d": 0.0394,
+      "sector_relative_20d": 0.0508,
+      "news_sentiment": 0.76,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.5785,
-      "news_confidence": 0.68,
+      "calibrated_news_sentiment": 0.5119,
+      "news_confidence": 0.65,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.24,
-      "source_count": 3,
-      "average_relevance": 0.62,
+      "effective_article_count": 0.19,
+      "source_count": 2,
+      "average_relevance": 0.83,
       "technical_training_ic": 0.0042,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1109,
-      "short_momentum": 0.0301,
-      "medium_momentum": 0.0291,
-      "trend_quality": 0.0196,
-      "volume_confirmation": 0.0069,
-      "market_relative_strength": 0.0169,
-      "sector_relative_strength": 0.0083,
-      "volatility_penalty": -0.0336,
-      "daily_volatility_penalty": -0.0146,
+      "momentum": 0.1282,
+      "short_momentum": 0.0389,
+      "medium_momentum": 0.0275,
+      "trend_quality": 0.0248,
+      "volume_confirmation": 0.0076,
+      "market_relative_strength": 0.021,
+      "sector_relative_strength": 0.0084,
+      "volatility_penalty": -0.0335,
+      "daily_volatility_penalty": -0.0144,
       "downside_penalty": -0.0149,
       "drawdown_penalty": -0.0041,
-      "news_adjustment": 0.086,
+      "news_adjustment": 0.0756,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0085,
-      "technical_total": 0.0772,
-      "trend_strength": 0.0788,
-      "relative_strength": 0.0252,
-      "participation": 0.0069,
-      "risk_control": -0.0336,
+      "signal_alignment": 0.0092,
+      "technical_total": 0.0947,
+      "trend_strength": 0.0911,
+      "relative_strength": 0.0294,
+      "participation": 0.0076,
+      "risk_control": -0.0335,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,48 +88,34 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.1718
+      "total": 0.1795
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 3.7% and 20-day momentum is 9.7%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 6.6% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 4.7% and 20-day momentum is 9.2%.",
+      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 6.8% relative to its 20-day average.",
       "Risk profile shows daily volatility around 1.6%, downside volatility near 1.4%, and a recent max drawdown of 3.3%.",
-      "Volume confirmation is 17.2% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 3.3% versus SPY over 5 days and 3.1% versus the sector ETF.",
-      "News signal is bullish with score 0.79, confidence 0.68, and 0.2 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.79, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.2 effective weighted articles, average relevance 0.62, average source quality 0.75, confidence 0.68.",
+      "Volume confirmation is 19.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 7.2% versus SPY over 5 days and 3.9% versus the sector ETF.",
+      "News signal is bullish with score 0.76, confidence 0.65, and 0.2 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.76, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.2 effective weighted articles, average relevance 0.83, average source quality 0.75, confidence 0.65.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.172 with medium confidence."
+      "Overall model score is 0.179 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Global banks drive India asset-backed securities sales to record",
-        "provider": "thehindubusinessline.com",
-        "url": "https://www.thehindubusinessline.com/money-and-banking/global-banks-drive-india-asset-backed-securities-sales-to-record/article71131819.ece",
-        "published_at": "2026-06-22T05:51:05Z",
-        "relevance_score": 0.62,
-        "sentiment": -0.34,
+        "title": "What are the Fed's bank 'stress tests' and what's new this year?",
+        "provider": "economictimes.indiatimes.com",
+        "url": "https://economictimes.indiatimes.com/news/international/business/what-are-the-feds-bank-stress-tests-and-whats-new-this-year/articleshow/131934068.cms",
+        "published_at": "2026-06-23T11:25:36Z",
+        "relevance_score": 0.61,
+        "sentiment": -0.51,
         "doc_type": "sector_macro",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.7,
+        "llm_confidence": 0.8,
         "llm_impact_score": 1.0,
-        "llm_reason": "Coverage of global banks increasing participation in India ABS markets is sector-relevant and could imply fee/underwriting opportunities for large banks like JPM, but without a JPM-specific transaction or announcement it is unlikely to move the stock in the next 1–10 trading days."
-      },
-      {
-        "title": "A stock trader’s guide to navigating a rare ‘Super El Niño’",
-        "provider": "fortune.com",
-        "url": "https://fortune.com/2026/06/21/stock-investing-rare-super-el-nino-energy-agriculture-mining-insurance/",
-        "published_at": "2026-06-21T14:51:11Z",
-        "relevance_score": 0.57,
-        "sentiment": -0.05,
-        "doc_type": "sector_macro",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 0.7,
-        "llm_impact_score": 1.0,
-        "llm_reason": "A thematic piece on Super El Niño addresses macro/sectoral risk and trading strategies; it may affect sector flows in risk assets over time but provides no JPM-specific near-term catalysts for the next 1–10 trading days."
+        "llm_reason": "Explains the Federal Reserve's annual bank stress tests being released today. Results and any new rule changes or commentary can materially affect large banks' capital plans, dividends, and buybacks and can drive short-term stock moves. The article is sector-level but directly relevant to JPMorgan; however it does not report JPM-specific outcomes, so the directional impact is uncertain until results are published."
       }
     ],
     "macro_evidence": [],
@@ -145,7 +131,7 @@
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "3.7% 5D • 9.7% 20D",
+          "value": "4.7% 5D • 9.2% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
@@ -157,7 +143,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.79 sentiment • 3 articles",
+          "value": "0.76 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -169,7 +155,7 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.072 score • +0.155 conf",
+          "value": "+0.079 score • +0.174 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
@@ -188,25 +174,25 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
-      "GDELT global-news feed failed during this run."
+      "GDELT global-news feed failed during this run.",
+      "Alpha Vantage global-news fallback failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
-        "status": "healthy",
-        "used": 1,
+        "status": "degraded",
+        "used": 3,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 22,
         "categories": {
-          "global_news": 1
+          "global_news": 3
         },
         "daily": {
-          "date": "2026-06-22",
+          "date": "2026-06-23",
           "status": "healthy",
-          "used": 8,
+          "used": 3,
           "limit": 25,
-          "remaining": 17,
+          "remaining": 22,
           "categories": {
-            "company_news": 5,
             "global_news": 3
           }
         }
@@ -220,14 +206,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-22",
+          "date": "2026-06-23",
           "status": "tracking_only",
-          "used": 18,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 15,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -241,14 +226,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-22",
+          "date": "2026-06-23",
           "status": "healthy",
-          "used": 54,
+          "used": 2,
           "limit": 100,
-          "remaining": 46,
+          "remaining": 98,
           "categories": {
-            "company_news": 51,
-            "global_news": 3
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -262,14 +247,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-06-22",
+          "date": "2026-06-23",
           "status": "tracking_only",
-          "used": 54,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 3,
-            "submissions": 51
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -282,13 +267,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-06-22",
+          "date": "2026-06-23",
           "status": "healthy",
-          "used": 64,
+          "used": 3,
           "limit": 800,
-          "remaining": 736,
+          "remaining": 797,
           "categories": {
-            "price": 64
+            "price": 3
           }
         }
       }

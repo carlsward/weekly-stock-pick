@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-27T16:59:27Z",
-  "data_as_of": "2026-06-26",
-  "expected_next_refresh_at": "2026-06-28T16:59:27Z",
-  "stale_after": "2026-06-29T04:59:27Z",
+  "generated_at": "2026-06-28T16:59:44Z",
+  "data_as_of": "2026-06-27",
+  "expected_next_refresh_at": "2026-06-29T16:59:44Z",
+  "stale_after": "2026-06-30T04:59:44Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W26",
@@ -24,14 +24,14 @@
     "company_name": "JPMorgan Chase & Co.",
     "sector": "financials",
     "risk": "medium",
-    "model_score": 0.0554,
-    "confidence_score": 0.47,
-    "confidence_label": "low",
+    "model_score": 0.1986,
+    "confidence_score": 0.79,
+    "confidence_label": "high",
     "price_as_of": "2026-06-26",
-    "news_as_of": null,
+    "news_as_of": "2026-06-27",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 0,
+    "article_count": 4,
     "metrics": {
       "momentum_5d": 0.0118,
       "momentum_20d": 0.1089,
@@ -45,17 +45,17 @@
       "market_relative_20d": 0.1479,
       "sector_relative_5d": 0.0118,
       "sector_relative_20d": 0.0613,
-      "news_sentiment": 0.5,
-      "raw_news_sentiment": 0.0,
-      "calibrated_news_sentiment": 0.0,
-      "news_confidence": 0.2,
+      "news_sentiment": 0.9,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.7924,
+      "news_confidence": 0.87,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.0,
-      "source_count": 0,
-      "average_relevance": 0.0,
+      "effective_article_count": 1.02,
+      "source_count": 4,
+      "average_relevance": 1.0,
       "technical_training_ic": 0.0042,
       "technical_training_rows": 2303
     },
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0138,
       "downside_penalty": -0.0132,
       "drawdown_penalty": -0.0031,
-      "news_adjustment": 0.0,
+      "news_adjustment": 0.1337,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0,
+      "signal_alignment": 0.0096,
       "technical_total": 0.0554,
       "trend_strength": 0.055,
       "relative_strength": 0.0279,
@@ -88,7 +88,7 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0554
+      "total": 0.1986
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is 1.2% and 20-day momentum is 10.9%.",
@@ -96,21 +96,49 @@
       "Risk profile shows daily volatility around 1.5%, downside volatility near 1.2%, and a recent max drawdown of 2.5%.",
       "Volume confirmation is 6.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is 3.6% versus SPY over 5 days and 1.2% versus the sector ETF.",
-      "No recent relevant news passed the filter, so the news layer stayed neutral and contributed less confidence.",
-      "Recent JPM company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral.",
+      "News signal is bullish with score 0.90, confidence 0.87, and 1.0 weighted articles across 4 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.90, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 4 articles across 4 sources, 1.0 effective weighted articles, average relevance 1.00, average source quality 0.83, confidence 0.87.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.055 with low confidence."
+      "Overall model score is 0.199 with high confidence."
     ],
-    "news_evidence": [],
+    "news_evidence": [
+      {
+        "title": "JPMorgan Chase & Co. Names Doug Petno and Troy Rohrbaugh as Co-Presidents",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-chase-co-names-doug-183617065.html",
+        "published_at": "2026-06-27T18:36:17Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.57,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Company announcement of internal promotions to co-presidents is clearly company-specific governance news. It signals succession/management structure but does not indicate immediate changes to guidance, capital, or results; likely modest near-term market reaction only."
+      },
+      {
+        "title": "JPMorgan Chase & Co. filed 8-K: 8-K",
+        "provider": "SEC EDGAR",
+        "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961726000241/jpm-20260624.htm",
+        "published_at": "2026-06-25T11:59:33Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.0,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "An SEC 8-K filing is potentially material. Without the filing contents, it's treated as company-specific and potentially significant (could relate to officer changes, governance, or other events). Impact estimate is moderate but confidence is limited due to lack of detail."
+      }
+    ],
     "macro_evidence": [],
     "thesis_monitor": {
-      "status": "risk",
-      "headline": "Support needs review",
+      "status": "watch",
+      "headline": "Support needs watching",
       "summary": "Risk is still manageable, but volatility widened versus a clean setup.",
       "alerts": [
-        "Risk is still manageable, but volatility widened versus a clean setup.",
-        "No recent company-specific articles passed the filters, so the thesis rests mostly on price action.",
-        "This is the top ranked stock, but it is below the normal release bar."
+        "Risk is still manageable, but volatility widened versus a clean setup."
       ],
       "signals": [
         {
@@ -127,9 +155,9 @@
         },
         {
           "label": "News",
-          "state": "watch",
-          "value": "0.50 sentiment • 0 articles",
-          "detail": "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
+          "state": "positive",
+          "value": "0.90 sentiment • 4 articles",
+          "detail": "Recent news flow is supportive and diversified enough to back the setup."
         },
         {
           "label": "Macro",
@@ -139,14 +167,14 @@
         },
         {
           "label": "Margin",
-          "state": "risk",
-          "value": "-0.045 score • -0.075 conf",
-          "detail": "This is the top ranked stock, but it is below the normal release bar."
+          "state": "positive",
+          "value": "+0.099 score • +0.239 conf",
+          "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news no fresh signal • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -159,7 +187,6 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
-      "SEC EDGAR official filings feed failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
@@ -172,7 +199,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-27",
+          "date": "2026-06-28",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -191,7 +218,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-27",
+          "date": "2026-06-28",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -211,7 +238,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-27",
+          "date": "2026-06-28",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -223,21 +250,23 @@
         }
       },
       "sec_edgar": {
-        "status": "degraded",
-        "used": 1,
+        "status": "tracking_only",
+        "used": 2,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1
+          "ticker_map": 1,
+          "submissions": 1
         },
         "daily": {
-          "date": "2026-06-27",
+          "date": "2026-06-28",
           "status": "tracking_only",
-          "used": 1,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -250,7 +279,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-06-27",
+          "date": "2026-06-28",
           "status": "healthy",
           "used": 3,
           "limit": 800,

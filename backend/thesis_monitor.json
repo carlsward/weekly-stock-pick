@@ -1,18 +1,18 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-28T16:59:44Z",
-  "data_as_of": "2026-06-27",
-  "expected_next_refresh_at": "2026-06-29T16:59:44Z",
-  "stale_after": "2026-06-30T04:59:44Z",
+  "generated_at": "2026-06-29T15:28:28Z",
+  "data_as_of": "2026-06-29",
+  "expected_next_refresh_at": "2026-06-30T15:28:28Z",
+  "stale_after": "2026-07-01T03:28:28Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W26",
-    "week_label": "Jun 22 - 26, 2026",
-    "week_start": "2026-06-22",
-    "week_end": "2026-06-26"
+    "week_id": "2026-W27",
+    "week_label": "Jun 29 - Jul 03, 2026",
+    "week_start": "2026-06-29",
+    "week_end": "2026-07-03"
   },
-  "source_dashboard_generated_at": "2026-06-22T16:32:05Z",
+  "source_dashboard_generated_at": "2026-06-29T15:20:50Z",
   "selection": {
     "status": "picked",
     "status_reason": "Live thesis monitor refreshed the active weekly pick.",
@@ -20,66 +20,66 @@
     "threshold_confidence": 0.55
   },
   "active_pick": {
-    "symbol": "JPM",
-    "company_name": "JPMorgan Chase & Co.",
-    "sector": "financials",
+    "symbol": "JNJ",
+    "company_name": "Johnson & Johnson",
+    "sector": "healthcare",
     "risk": "medium",
-    "model_score": 0.1986,
-    "confidence_score": 0.79,
-    "confidence_label": "high",
-    "price_as_of": "2026-06-26",
-    "news_as_of": "2026-06-27",
+    "model_score": 0.2473,
+    "confidence_score": 0.74,
+    "confidence_label": "medium",
+    "price_as_of": "2026-06-29",
+    "news_as_of": "2026-06-28",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 4,
+    "article_count": 2,
     "metrics": {
-      "momentum_5d": 0.0118,
-      "momentum_20d": 0.1089,
-      "daily_volatility": 0.0153,
+      "momentum_5d": 0.1048,
+      "momentum_20d": 0.134,
+      "daily_volatility": 0.0159,
       "downside_volatility": 0.0122,
-      "max_drawdown_20d": 0.0247,
+      "max_drawdown_20d": 0.0518,
       "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0347,
-      "volume_trend_5d": 0.0634,
-      "market_relative_5d": 0.0364,
-      "market_relative_20d": 0.1479,
-      "sector_relative_5d": 0.0118,
-      "sector_relative_20d": 0.0613,
-      "news_sentiment": 0.9,
+      "price_vs_20d_average": 0.0834,
+      "volume_trend_5d": 0.1215,
+      "market_relative_5d": 0.1153,
+      "market_relative_20d": 0.1634,
+      "sector_relative_5d": 0.0358,
+      "sector_relative_20d": 0.059,
+      "news_sentiment": 0.82,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.7924,
-      "news_confidence": 0.87,
+      "calibrated_news_sentiment": 0.6411,
+      "news_confidence": 0.77,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 1.02,
-      "source_count": 4,
-      "average_relevance": 1.0,
-      "technical_training_ic": 0.0042,
+      "effective_article_count": 0.57,
+      "source_count": 1,
+      "average_relevance": 0.81,
+      "technical_training_ic": 0.0162,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0854,
-      "short_momentum": 0.0097,
-      "medium_momentum": 0.0327,
-      "trend_quality": 0.0126,
-      "volume_confirmation": 0.0025,
+      "momentum": 0.1638,
+      "short_momentum": 0.066,
+      "medium_momentum": 0.0402,
+      "trend_quality": 0.0228,
+      "volume_confirmation": 0.0049,
       "market_relative_strength": 0.021,
-      "sector_relative_strength": 0.0069,
-      "volatility_penalty": -0.03,
-      "daily_volatility_penalty": -0.0138,
-      "downside_penalty": -0.0132,
-      "drawdown_penalty": -0.0031,
-      "news_adjustment": 0.1337,
+      "sector_relative_strength": 0.0089,
+      "volatility_penalty": -0.0339,
+      "daily_volatility_penalty": -0.0143,
+      "downside_penalty": -0.0131,
+      "drawdown_penalty": -0.0065,
+      "news_adjustment": 0.1006,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0096,
-      "technical_total": 0.0554,
-      "trend_strength": 0.055,
-      "relative_strength": 0.0279,
-      "participation": 0.0025,
-      "risk_control": -0.03,
+      "signal_alignment": 0.0168,
+      "technical_total": 0.1298,
+      "trend_strength": 0.129,
+      "relative_strength": 0.0299,
+      "participation": 0.0049,
+      "risk_control": -0.0339,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,48 +88,34 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.1986
+      "total": 0.2473
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 1.2% and 20-day momentum is 10.9%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 3.5% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.5%, downside volatility near 1.2%, and a recent max drawdown of 2.5%.",
-      "Volume confirmation is 6.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 3.6% versus SPY over 5 days and 1.2% versus the sector ETF.",
-      "News signal is bullish with score 0.90, confidence 0.87, and 1.0 weighted articles across 4 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.90, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 4 articles across 4 sources, 1.0 effective weighted articles, average relevance 1.00, average source quality 0.83, confidence 0.87.",
-      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.199 with high confidence."
+      "Price trend remains constructive: 5-day momentum is 10.5% and 20-day momentum is 13.4%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 8.3% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.6%, downside volatility near 1.2%, and a recent max drawdown of 5.2%.",
+      "Volume confirmation is 12.2% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 11.5% versus SPY over 5 days and 3.6% versus the sector ETF.",
+      "News signal is bullish with score 0.82, confidence 0.77, and 0.6 weighted articles across 1 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.82, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 1 sources, 0.6 effective weighted articles, average relevance 0.81, average source quality 0.75, confidence 0.77.",
+      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.02).",
+      "Overall model score is 0.247 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "JPMorgan Chase & Co. Names Doug Petno and Troy Rohrbaugh as Co-Presidents",
+        "title": "Johnson & Johnson (JNJ) Beats Lawsuit Alleging that Talc caused Three Women’s Cancer",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-chase-co-names-doug-183617065.html",
-        "published_at": "2026-06-27T18:36:17Z",
+        "url": "https://finance.yahoo.com/healthcare/articles/johnson-johnson-jnj-beats-lawsuit-195754103.html",
+        "published_at": "2026-06-28T19:57:54Z",
         "relevance_score": 1.0,
-        "sentiment": 0.57,
+        "sentiment": -0.23,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Company announcement of internal promotions to co-presidents is clearly company-specific governance news. It signals succession/management structure but does not indicate immediate changes to guidance, capital, or results; likely modest near-term market reaction only."
-      },
-      {
-        "title": "JPMorgan Chase & Co. filed 8-K: 8-K",
-        "provider": "SEC EDGAR",
-        "url": "https://www.sec.gov/Archives/edgar/data/19617/000001961726000241/jpm-20260624.htm",
-        "published_at": "2026-06-25T11:59:33Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.0,
-        "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "An SEC 8-K filing is potentially material. Without the filing contents, it's treated as company-specific and potentially significant (could relate to officer changes, governance, or other events). Impact estimate is moderate but confidence is limited due to lack of detail."
+        "llm_reason": "Article reports a favorable jury finding in a talc-related lawsuit against JNJ — a company-specific legal development that reduces litigation overhang and uncertainty. This is material for investor sentiment and potential liability expectations, likely modestly positive for the stock over the next 1–10 trading days."
       }
     ],
     "macro_evidence": [],
@@ -138,26 +124,27 @@
       "headline": "Support needs watching",
       "summary": "Risk is still manageable, but volatility widened versus a clean setup.",
       "alerts": [
-        "Risk is still manageable, but volatility widened versus a clean setup."
+        "Risk is still manageable, but volatility widened versus a clean setup.",
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "1.2% 5D • 10.9% 20D",
+          "value": "10.5% 5D • 13.4% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "watch",
-          "value": "1.5% daily • 2.5% drawdown",
+          "value": "1.6% daily • 5.2% drawdown",
           "detail": "Risk is still manageable, but volatility widened versus a clean setup."
         },
         {
           "label": "News",
-          "state": "positive",
-          "value": "0.90 sentiment • 4 articles",
-          "detail": "Recent news flow is supportive and diversified enough to back the setup."
+          "state": "watch",
+          "value": "0.82 sentiment • 2 articles",
+          "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
@@ -168,13 +155,13 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.099 score • +0.239 conf",
+          "value": "+0.147 score • +0.193 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 1 trading day • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -182,9 +169,11 @@
   },
   "data_quality": {
     "status": "degraded",
-    "degraded_reason": "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.; risk_picks: news_scores: GDELT company news failed for at least one symbol.; risk_picks: sector_scores: GDELT global-news feed failed during this run.",
+    "degraded_reason": "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; GDELT company news failed for at least one symbol.; news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; news_scores: GDELT company news failed for at least one symbol.; risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; GDELT company news failed for at least one symbol.; risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.",
     "reasons": [
-      "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
+      "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; GDELT company news failed for at least one symbol.; news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; news_scores: GDELT company news failed for at least one symbol.",
+      "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; GDELT company news failed for at least one symbol.",
+      "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
       "GDELT global-news feed failed during this run."
@@ -192,100 +181,104 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 7,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 18,
         "categories": {
-          "global_news": 1
+          "company_news": 5,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-06-28",
+          "date": "2026-06-29",
           "status": "healthy",
-          "used": 1,
+          "used": 7,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 18,
           "categories": {
-            "global_news": 1
+            "company_news": 5,
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 10,
         "limit": null,
         "remaining": null,
         "categories": {
-          "global_news": 1
+          "company_news": 8,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-06-28",
+          "date": "2026-06-29",
           "status": "tracking_only",
-          "used": 1,
+          "used": 10,
           "limit": null,
           "remaining": null,
           "categories": {
-            "global_news": 1
+            "company_news": 8,
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 54,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 46,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 52,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-06-28",
+          "date": "2026-06-29",
           "status": "healthy",
-          "used": 2,
+          "used": 54,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 46,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 52,
+            "global_news": 2
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 52,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1,
-          "submissions": 1
+          "ticker_map": 2,
+          "submissions": 50
         },
         "daily": {
-          "date": "2026-06-28",
+          "date": "2026-06-29",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 3,
+        "used": 61,
         "limit": 800,
-        "remaining": 797,
+        "remaining": 739,
         "categories": {
-          "price": 3
+          "price": 61
         },
         "daily": {
-          "date": "2026-06-28",
+          "date": "2026-06-29",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-06-29T18:03:52Z",
-  "data_as_of": "2026-06-29",
-  "expected_next_refresh_at": "2026-06-30T18:03:52Z",
-  "stale_after": "2026-07-01T06:03:52Z",
+  "generated_at": "2026-06-30T17:47:10Z",
+  "data_as_of": "2026-06-30",
+  "expected_next_refresh_at": "2026-07-01T17:47:10Z",
+  "stale_after": "2026-07-02T05:47:10Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W27",
@@ -24,62 +24,62 @@
     "company_name": "Johnson & Johnson",
     "sector": "healthcare",
     "risk": "medium",
-    "model_score": 0.2948,
-    "confidence_score": 0.8,
-    "confidence_label": "high",
-    "price_as_of": "2026-06-29",
-    "news_as_of": "2026-06-29",
+    "model_score": 0.1444,
+    "confidence_score": 0.65,
+    "confidence_label": "medium",
+    "price_as_of": "2026-06-30",
+    "news_as_of": "2026-06-30",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 2,
+    "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.1103,
-      "momentum_20d": 0.1396,
-      "daily_volatility": 0.0159,
+      "momentum_5d": 0.0717,
+      "momentum_20d": 0.1464,
+      "daily_volatility": 0.016,
       "downside_volatility": 0.0122,
       "max_drawdown_20d": 0.0518,
       "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0884,
-      "volume_trend_5d": 0.1327,
-      "market_relative_5d": 0.1159,
-      "market_relative_20d": 0.164,
-      "sector_relative_5d": 0.0382,
-      "sector_relative_20d": 0.0614,
-      "news_sentiment": 0.91,
-      "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.8268,
-      "news_confidence": 0.89,
+      "price_vs_20d_average": 0.0782,
+      "volume_trend_5d": 0.0129,
+      "market_relative_5d": 0.053,
+      "market_relative_20d": 0.1647,
+      "sector_relative_5d": 0.0246,
+      "sector_relative_20d": 0.0647,
+      "news_sentiment": 0.57,
+      "raw_news_sentiment": 0.2847,
+      "calibrated_news_sentiment": 0.1425,
+      "news_confidence": 0.63,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.95,
-      "source_count": 2,
-      "average_relevance": 0.81,
+      "effective_article_count": 0.17,
+      "source_count": 3,
+      "average_relevance": 0.74,
       "technical_training_ic": 0.0162,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1663,
-      "short_momentum": 0.066,
-      "medium_momentum": 0.0419,
-      "trend_quality": 0.0228,
-      "volume_confirmation": 0.0053,
+      "momentum": 0.1554,
+      "short_momentum": 0.0592,
+      "medium_momentum": 0.0439,
+      "trend_quality": 0.0224,
+      "volume_confirmation": 0.0005,
       "market_relative_strength": 0.021,
-      "sector_relative_strength": 0.0093,
-      "volatility_penalty": -0.0339,
-      "daily_volatility_penalty": -0.0143,
-      "downside_penalty": -0.0131,
+      "sector_relative_strength": 0.0084,
+      "volatility_penalty": -0.0341,
+      "daily_volatility_penalty": -0.0144,
+      "downside_penalty": -0.0132,
       "drawdown_penalty": -0.0065,
-      "news_adjustment": 0.1387,
+      "news_adjustment": 0.0201,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0237,
-      "technical_total": 0.1324,
-      "trend_strength": 0.1307,
-      "relative_strength": 0.0303,
-      "participation": 0.0053,
-      "risk_control": -0.0339,
+      "signal_alignment": 0.0031,
+      "technical_total": 0.1212,
+      "trend_strength": 0.1255,
+      "relative_strength": 0.0294,
+      "participation": 0.0005,
+      "risk_control": -0.0341,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,49 +88,34 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.2948
+      "total": 0.1444
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 11.0% and 20-day momentum is 14.0%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 8.8% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 7.2% and 20-day momentum is 14.6%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 7.8% relative to its 20-day average.",
       "Risk profile shows daily volatility around 1.6%, downside volatility near 1.2%, and a recent max drawdown of 5.2%.",
-      "Volume confirmation is 13.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 11.6% versus SPY over 5 days and 3.8% versus the sector ETF.",
-      "News signal is bullish with score 0.91, confidence 0.89, and 0.9 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.91, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 2 articles across 2 sources, 1.0 effective weighted articles, average relevance 0.81, average source quality 0.78, confidence 0.89.",
+      "Volume confirmation is 1.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 5.3% versus SPY over 5 days and 2.5% versus the sector ETF.",
+      "News signal is neutral with score 0.57, confidence 0.63, and 0.2 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow neutral at 0.57, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.2 effective weighted articles, average relevance 0.74, average source quality 0.82, confidence 0.63.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.02).",
-      "Price action and news are pointing in the same direction, which raises trust in the setup.",
-      "Overall model score is 0.295 with high confidence."
+      "Overall model score is 0.144 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Johnson & Johnson (JNJ) Surges 4.0%: Is This an Indication of Further Gains?",
+        "title": "Johnson & Johnson (JNJ) Is a Trending Stock: Facts to Know Before Betting on It",
         "provider": "zacks.com",
-        "url": "https://www.zacks.com/stock/news/2944595/johnson-johnson-jnj-surges-40-is-this-an-indication-of-further-gains?cid=CS-ZC-FT-tale_of_the_tape|daily_price_change_3%-2944595",
-        "published_at": "2026-06-29T14:42:00Z",
+        "url": "https://www.zacks.com/stock/news/2945161/johnson-johnson-jnj-is-a-trending-stock-facts-to-know-before-betting-on-it?cid=CS-ZC-FT-tale_of_the_tape|most_searched_stocks-2945161",
+        "published_at": "2026-06-30T13:00:07Z",
         "relevance_score": 1.0,
-        "sentiment": 0.34,
+        "sentiment": 0.0,
         "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Directly about JNJ: reports a 4% intraday surge, higher-than-average volume, and upward earnings estimate revisions—items that are relevant for 1–10 day price action. Impact is moderately bullish but appears momentum-driven and lacks new fundamental catalysts or detailed guidance, so materiality is moderate."
-      },
-      {
-        "title": "Stock market today: S&P 500, Nasdaq, Dow futures climb as a halt to US-Iranian attacks is called",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/live/copy-copy-stock-market-today-dow-sp-500-nasdaq-rise-amid-iran-deal-hopes-earnings-rush-224230573.html",
-        "published_at": "2026-06-28T22:42:30Z",
-        "relevance_score": 0.62,
-        "sentiment": 0.65,
-        "doc_type": "sector_macro",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Macro/market-level news: US-Iran de-escalation boosting futures and broad indices. This is relevant because JNJ is sensitive to overall market risk sentiment, but the piece contains no company-specific information so the expected short-term impact on JNJ is small and driven only by general market moves."
+        "company_relevance": 0.8,
+        "materiality": 0.4,
+        "llm_confidence": 0.7,
+        "llm_impact_score": 0.3,
+        "llm_reason": "Directly about Johnson & Johnson and its investor appeal; however it reads as a trending/primer piece rather than new material news (no reported earnings, FDA actions, or M&A), so likely limited short-term market-moving content."
       }
     ],
     "macro_evidence": [],
@@ -146,7 +131,7 @@
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "11.0% 5D • 14.0% 20D",
+          "value": "7.2% 5D • 14.6% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
@@ -158,7 +143,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.91 sentiment • 2 articles",
+          "value": "0.57 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -170,7 +155,7 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.195 score • +0.252 conf",
+          "value": "+0.044 score • +0.097 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
@@ -191,27 +176,25 @@
       "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
-      "GDELT global-news feed failed during this run.",
-      "Alpha Vantage global-news fallback failed during this run."
+      "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
-        "status": "degraded",
-        "used": 3,
+        "status": "healthy",
+        "used": 1,
         "limit": 25,
-        "remaining": 22,
+        "remaining": 24,
         "categories": {
-          "global_news": 3
+          "global_news": 1
         },
         "daily": {
-          "date": "2026-06-29",
+          "date": "2026-06-30",
           "status": "healthy",
-          "used": 10,
+          "used": 1,
           "limit": 25,
-          "remaining": 15,
+          "remaining": 24,
           "categories": {
-            "company_news": 5,
-            "global_news": 5
+            "global_news": 1
           }
         }
       },
@@ -224,14 +207,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-29",
+          "date": "2026-06-30",
           "status": "tracking_only",
-          "used": 11,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 8,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -245,14 +227,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-29",
+          "date": "2026-06-30",
           "status": "healthy",
-          "used": 56,
+          "used": 2,
           "limit": 100,
-          "remaining": 44,
+          "remaining": 98,
           "categories": {
-            "company_news": 53,
-            "global_news": 3
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -266,14 +248,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-06-29",
+          "date": "2026-06-30",
           "status": "tracking_only",
-          "used": 54,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 3,
-            "submissions": 51
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -286,13 +268,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-06-29",
+          "date": "2026-06-30",
           "status": "healthy",
-          "used": 64,
+          "used": 3,
           "limit": 800,
-          "remaining": 736,
+          "remaining": 797,
           "categories": {
-            "price": 64
+            "price": 3
           }
         }
       }

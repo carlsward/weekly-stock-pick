@@ -538,42 +538,42 @@
     "2026-07-01": {
       "providers": {
         "marketaux": {
-          "used": 50,
+          "used": 52,
           "limit": 100,
           "categories": {
-            "company_news": 49,
-            "global_news": 1
+            "company_news": 50,
+            "global_news": 2
           }
         },
         "gdelt": {
-          "used": 5,
+          "used": 6,
           "limit": null,
           "categories": {
             "company_news": 4,
-            "global_news": 1
+            "global_news": 2
           }
         },
         "alpha_vantage": {
-          "used": 5,
+          "used": 6,
           "limit": 25,
           "categories": {
             "company_news": 4,
-            "global_news": 1
+            "global_news": 2
           }
         },
         "sec_edgar": {
-          "used": 50,
+          "used": 52,
           "limit": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 49
+            "ticker_map": 2,
+            "submissions": 50
           }
         },
         "twelvedata": {
-          "used": 61,
+          "used": 64,
           "limit": 800,
           "categories": {
-            "price": 61
+            "price": 64
           }
         }
       }

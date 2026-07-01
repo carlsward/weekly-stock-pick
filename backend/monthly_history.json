@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4-monthly",
-  "generated_at": "2026-06-02T16:24:50Z",
+  "generated_at": "2026-07-01T14:53:43Z",
   "entries": [
     {
       "month_id": "2026-03",
@@ -282,6 +282,8 @@
       "confidence_label": "high",
       "data_as_of": "2026-06-02",
       "model_version": "v3.4-monthly",
+      "realized_20d_return": -0.0319,
+      "realized_20d_excess_return": -0.0166,
       "top_candidates": [
         {
           "rank": 1,
@@ -499,6 +501,228 @@
         "news_sector_overlap": 0.3333,
         "macro_sector_overlap": 0.0
       }
+    },
+    {
+      "month_id": "2026-07",
+      "month_start": "2026-07-01",
+      "month_end": "2026-07-31",
+      "rebalance_date": "2026-07-01",
+      "month_label": "July 2026",
+      "logged_at": "2026-07-01T14:53:43Z",
+      "status": "no_pick",
+      "status_reason": "No monthly candidate cleared the minimum score threshold of 0.12. The best candidate was V at 0.018.",
+      "symbol": null,
+      "company_name": null,
+      "sector": null,
+      "risk": null,
+      "model_score": null,
+      "confidence_score": null,
+      "confidence_label": null,
+      "data_as_of": "2026-07-01",
+      "model_version": "v3.4-monthly",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "V",
+          "company_name": "Visa Inc.",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.0176,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-01",
+          "news_as_of": "2026-06-30",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": -0.065,
+            "news_adjustment": 0.0874,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0024,
+            "signal_alignment": -0.0071
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "JPM",
+          "company_name": "JPMorgan Chase & Co.",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.0068,
+          "confidence_score": 0.65,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-01",
+          "news_as_of": "2026-07-01",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": -0.0819,
+            "news_adjustment": 0.0965,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0021,
+            "signal_alignment": -0.01
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "BAC",
+          "company_name": "Bank of America Corporation",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": -0.0092,
+          "confidence_score": 0.54,
+          "confidence_label": "low",
+          "price_as_of": "2026-07-01",
+          "news_as_of": "2026-06-30",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0538,
+            "news_adjustment": 0.0452,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0024,
+            "signal_alignment": -0.0031
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "JNJ",
+          "company_name": "Johnson & Johnson",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": -0.0196,
+          "confidence_score": 0.6,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-01",
+          "news_as_of": "2026-06-30",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0958,
+            "news_adjustment": 0.0866,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0105
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "UNH",
+          "company_name": "UnitedHealth Group Incorporated",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": -0.0248,
+          "confidence_score": 0.57,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-01",
+          "news_as_of": "2026-06-29",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0496,
+            "news_adjustment": 0.0264,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0016
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "AMGN",
+          "company_name": "Amgen Inc.",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": -0.032,
+          "confidence_score": 0.6,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-01",
+          "news_as_of": "2026-07-01",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.1098,
+            "news_adjustment": 0.0903,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0125
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "BRK.B",
+          "company_name": "Berkshire Hathaway Inc.",
+          "sector": "financials",
+          "risk": "low",
+          "model_score": -0.0326,
+          "confidence_score": 0.62,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-01",
+          "news_as_of": null,
+          "article_count": 6,
+          "diagnostics": {
+            "technical_total": -0.0536,
+            "news_adjustment": 0.0204,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0021,
+            "signal_alignment": -0.0014
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "LLY",
+          "company_name": "Eli Lilly and Company",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": -0.0429,
+          "confidence_score": 0.53,
+          "confidence_label": "low",
+          "price_as_of": "2026-07-01",
+          "news_as_of": "2026-06-30",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0948,
+            "news_adjustment": 0.0589,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.007
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "PG",
+          "company_name": "Procter & Gamble Company",
+          "sector": "consumer_staples",
+          "risk": "medium",
+          "model_score": -0.0539,
+          "confidence_score": 0.62,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-01",
+          "news_as_of": null,
+          "article_count": 6,
+          "diagnostics": {
+            "technical_total": -0.1176,
+            "news_adjustment": 0.0747,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0111
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "GE",
+          "company_name": "General Electric Company",
+          "sector": "industrials",
+          "risk": "medium",
+          "model_score": -0.06,
+          "confidence_score": 0.57,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-01",
+          "news_as_of": "2026-06-30",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": -0.123,
+            "news_adjustment": 0.0745,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0115
+          }
+        }
+      ],
+      "diagnostics": null
     }
   ],
   "data_quality": {
@@ -511,21 +735,21 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 3,
+        "used": 5,
         "limit": 25,
-        "remaining": 22,
+        "remaining": 20,
         "categories": {
-          "company_news": 2,
+          "company_news": 4,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-02",
+          "date": "2026-07-01",
           "status": "healthy",
-          "used": 3,
+          "used": 5,
           "limit": 25,
-          "remaining": 22,
+          "remaining": 20,
           "categories": {
-            "company_news": 2,
+            "company_news": 4,
             "global_news": 1
           }
         }
@@ -540,7 +764,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-02",
+          "date": "2026-07-01",
           "status": "tracking_only",
           "used": 5,
           "limit": null,
@@ -561,7 +785,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-02",
+          "date": "2026-07-01",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -582,7 +806,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-06-02",
+          "date": "2026-07-01",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -595,20 +819,20 @@
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 58,
+        "used": 61,
         "limit": 800,
-        "remaining": 742,
+        "remaining": 739,
         "categories": {
-          "price": 58
+          "price": 61
         },
         "daily": {
-          "date": "2026-06-02",
+          "date": "2026-07-01",
           "status": "healthy",
-          "used": 58,
+          "used": 61,
           "limit": 800,
-          "remaining": 742,
+          "remaining": 739,
           "categories": {
-            "price": 58
+            "price": 61
           }
         }
       }

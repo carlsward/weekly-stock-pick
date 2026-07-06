@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-29T15:20:50Z",
-  "last_updated": "2026-06-29",
+  "generated_at": "2026-07-06T15:03:08Z",
+  "last_updated": "2026-07-06",
   "lookback_days": 3,
   "article_count": 0,
   "source_count": 0,
@@ -761,7 +761,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-29",
+          "date": "2026-07-06",
           "status": "healthy",
           "used": 6,
           "limit": 25,
@@ -774,42 +774,42 @@
       },
       "gdelt": {
         "status": "degraded",
-        "used": 9,
+        "used": 12,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 8,
+          "company_news": 11,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-29",
+          "date": "2026-07-06",
           "status": "tracking_only",
-          "used": 9,
+          "used": 12,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 8,
+            "company_news": 11,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 52,
+        "used": 50,
         "limit": 100,
-        "remaining": 48,
+        "remaining": 50,
         "categories": {
-          "company_news": 51,
+          "company_news": 49,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-06-29",
+          "date": "2026-07-06",
           "status": "healthy",
-          "used": 52,
+          "used": 50,
           "limit": 100,
-          "remaining": 48,
+          "remaining": 50,
           "categories": {
-            "company_news": 51,
+            "company_news": 49,
             "global_news": 1
           }
         }
@@ -824,7 +824,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-06-29",
+          "date": "2026-07-06",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

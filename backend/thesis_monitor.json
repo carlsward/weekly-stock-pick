@@ -1,18 +1,18 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-05T16:57:30Z",
-  "data_as_of": "2026-07-05",
-  "expected_next_refresh_at": "2026-07-06T16:57:30Z",
-  "stale_after": "2026-07-07T04:57:30Z",
+  "generated_at": "2026-07-06T15:10:48Z",
+  "data_as_of": "2026-07-06",
+  "expected_next_refresh_at": "2026-07-07T15:10:48Z",
+  "stale_after": "2026-07-08T03:10:48Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W27",
-    "week_label": "Jun 29 - Jul 03, 2026",
-    "week_start": "2026-06-29",
-    "week_end": "2026-07-03"
+    "week_id": "2026-W28",
+    "week_label": "Jul 06 - 10, 2026",
+    "week_start": "2026-07-06",
+    "week_end": "2026-07-10"
   },
-  "source_dashboard_generated_at": "2026-06-29T15:20:50Z",
+  "source_dashboard_generated_at": "2026-07-06T15:03:08Z",
   "selection": {
     "status": "picked",
     "status_reason": "Live thesis monitor refreshed the active weekly pick.",
@@ -20,66 +20,66 @@
     "threshold_confidence": 0.55
   },
   "active_pick": {
-    "symbol": "JNJ",
-    "company_name": "Johnson & Johnson",
-    "sector": "healthcare",
+    "symbol": "V",
+    "company_name": "Visa Inc.",
+    "sector": "financials",
     "risk": "medium",
-    "model_score": 0.1407,
-    "confidence_score": 0.66,
+    "model_score": 0.1384,
+    "confidence_score": 0.68,
     "confidence_label": "medium",
-    "price_as_of": "2026-07-02",
-    "news_as_of": "2026-07-05",
+    "price_as_of": "2026-07-06",
+    "news_as_of": "2026-07-04",
     "macro_as_of": null,
     "sector_as_of": null,
     "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.0742,
-      "momentum_20d": 0.1783,
-      "daily_volatility": 0.0176,
-      "downside_volatility": 0.0142,
-      "max_drawdown_20d": 0.0518,
-      "positive_day_ratio_10d": 0.8,
-      "price_vs_20d_average": 0.0911,
-      "volume_trend_5d": 0.0646,
-      "market_relative_5d": 0.059,
-      "market_relative_20d": 0.1932,
-      "sector_relative_5d": 0.021,
-      "sector_relative_20d": 0.0618,
-      "news_sentiment": 0.5,
-      "raw_news_sentiment": 0.0,
-      "calibrated_news_sentiment": 0.0,
-      "news_confidence": 0.49,
+      "momentum_5d": 0.054,
+      "momentum_20d": 0.1068,
+      "daily_volatility": 0.0143,
+      "downside_volatility": 0.0111,
+      "max_drawdown_20d": 0.0214,
+      "positive_day_ratio_10d": 0.7,
+      "price_vs_20d_average": 0.0652,
+      "volume_trend_5d": -0.0195,
+      "market_relative_5d": 0.0242,
+      "market_relative_20d": 0.117,
+      "sector_relative_5d": 0.0099,
+      "sector_relative_20d": 0.0332,
+      "news_sentiment": 0.66,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.3204,
+      "news_confidence": 0.4,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.0,
-      "source_count": 2,
-      "average_relevance": 0.6,
-      "technical_training_ic": 0.0162,
+      "effective_article_count": 0.4,
+      "source_count": 1,
+      "average_relevance": 0.59,
+      "technical_training_ic": 0.0088,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1784,
-      "short_momentum": 0.0612,
-      "medium_momentum": 0.0535,
-      "trend_quality": 0.0324,
-      "volume_confirmation": 0.0026,
-      "market_relative_strength": 0.021,
-      "sector_relative_strength": 0.0078,
-      "volatility_penalty": -0.0377,
-      "daily_volatility_penalty": -0.0159,
-      "downside_penalty": -0.0154,
-      "drawdown_penalty": -0.0065,
-      "news_adjustment": 0.0,
+      "momentum": 0.1226,
+      "short_momentum": 0.0445,
+      "medium_momentum": 0.032,
+      "trend_quality": 0.0243,
+      "volume_confirmation": -0.0008,
+      "market_relative_strength": 0.0185,
+      "sector_relative_strength": 0.004,
+      "volatility_penalty": -0.0275,
+      "daily_volatility_penalty": -0.0128,
+      "downside_penalty": -0.012,
+      "drawdown_penalty": -0.0027,
+      "news_adjustment": 0.0385,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0,
-      "technical_total": 0.1407,
-      "trend_strength": 0.1471,
-      "relative_strength": 0.0288,
-      "participation": 0.0026,
-      "risk_control": -0.0377,
+      "signal_alignment": 0.0047,
+      "technical_total": 0.0952,
+      "trend_strength": 0.1009,
+      "relative_strength": 0.0226,
+      "participation": -0.0008,
+      "risk_control": -0.0275,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,48 +88,48 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.1407
+      "total": 0.1384
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 7.4% and 20-day momentum is 17.8%.",
-      "Trend quality is supported by 80% positive sessions over the last 10 trading days and the price sitting 9.1% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.8%, downside volatility near 1.4%, and a recent max drawdown of 5.2%.",
-      "Volume confirmation is 6.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 5.9% versus SPY over 5 days and 2.1% versus the sector ETF.",
-      "News signal is neutral with score 0.50, confidence 0.49, and 0.0 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow neutral at 0.50, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 0.0 effective weighted articles, average relevance 0.60, average source quality 0.80, confidence 0.49.",
-      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.02).",
-      "Overall model score is 0.141 with medium confidence."
+      "Price trend remains constructive: 5-day momentum is 5.4% and 20-day momentum is 10.7%.",
+      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 6.5% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.4%, downside volatility near 1.1%, and a recent max drawdown of 2.1%.",
+      "Volume confirmation is -1.9% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 2.4% versus SPY over 5 days and 1.0% versus the sector ETF.",
+      "News signal is bullish with score 0.66, confidence 0.40, and 0.4 weighted articles across 1 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.79, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 0.4 effective weighted articles, average relevance 0.59, average source quality 0.75, confidence 0.73.",
+      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.01).",
+      "Overall model score is 0.138 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "IHE vs. PJP: Which Pharmaceutical ETF Is the Better Buy for Investors?",
+        "title": "Visa Is Having a Rare Down Year. Is the Cash Flow Machine Finally a Bargain?",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/healthcare/articles/ihe-vs-pjp-pharmaceutical-etf-153628526.html",
-        "published_at": "2026-07-05T15:36:28Z",
-        "relevance_score": 0.65,
-        "sentiment": 0.15,
-        "doc_type": "sector_macro",
-        "company_relevance": 0.2,
-        "materiality": 0.1,
-        "llm_confidence": 0.6,
-        "llm_impact_score": 0.0,
-        "llm_reason": "ETF comparison of pharmaceutical ETFs is sector-focused and may affect investor flows into pharma broadly, but contains no J&J-specific news or catalysts likely to move JNJ in the next 1–10 trading days."
+        "url": "https://finance.yahoo.com/markets/stocks/articles/visa-having-rare-down-cash-131600177.html",
+        "published_at": "2026-07-04T13:16:00Z",
+        "relevance_score": 0.74,
+        "sentiment": -0.19,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Directly about Visa's stock performance, valuation, and headwinds. This analysis can affect short-term sentiment and trading activity. However, it appears to be market commentary/valuation discussion rather than announcing new company-specific events or guidance, so likely moderate but not decisive near-term impact."
       },
       {
-        "title": "Here are the 3 big things we're watching in the stock market this week",
-        "provider": "cnbc.com",
-        "url": "https://www.cnbc.com/2026/07/05/here-are-the-3-big-things-were-watching-in-the-stock-market-this-week.html",
-        "published_at": "2026-07-05T14:01:01Z",
-        "relevance_score": 0.52,
-        "sentiment": 0.79,
-        "doc_type": "market_roundup",
-        "company_relevance": 0.2,
-        "materiality": 0.15,
-        "llm_confidence": 0.7,
-        "llm_impact_score": 0.0,
-        "llm_reason": "Broad market preview covering macro data and earnings season; could influence market sentiment and thus JNJ indirectly, but contains no J&J-specific developments or near-term catalysts."
+        "title": "A New Stablecoin Is Taking Aim at Circle's USDC. Here's What Investors Need to Know.",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/crypto/articles/stablecoin-taking-aim-circles-usdc-151100931.html",
+        "published_at": "2026-07-04T15:11:00Z",
+        "relevance_score": 0.57,
+        "sentiment": 0.78,
+        "doc_type": "sector_macro",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "News of a new stablecoin (Open USD) is relevant to the payments/crypto ecosystem and could matter to Visa over time if it involves partnerships or changes in settlement flows. The article does not mention Visa specifically, and adoption/partnership developments are unlikely to move Visa materially within 1–10 trading days."
       }
     ],
     "macro_evidence": [],
@@ -139,25 +139,26 @@
       "summary": "Risk is still manageable, but volatility widened versus a clean setup.",
       "alerts": [
         "Risk is still manageable, but volatility widened versus a clean setup.",
-        "The news layer is still thin, so conviction should stay measured."
+        "The news layer is still thin, so conviction should stay measured.",
+        "The pick still qualified, but the margin of safety is not wide."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "7.4% 5D • 17.8% 20D",
+          "value": "5.4% 5D • 10.7% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "watch",
-          "value": "1.8% daily • 5.2% drawdown",
+          "value": "1.4% daily • 2.1% drawdown",
           "detail": "Risk is still manageable, but volatility widened versus a clean setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.50 sentiment • 3 articles",
+          "value": "0.66 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -168,14 +169,14 @@
         },
         {
           "label": "Margin",
-          "state": "positive",
-          "value": "+0.041 score • +0.110 conf",
-          "detail": "The pick cleared the release thresholds with room to spare."
+          "state": "watch",
+          "value": "+0.038 score • +0.125 conf",
+          "detail": "The pick still qualified, but the margin of safety is not wide."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 1 trading day • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 1 trading day • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -183,11 +184,9 @@
   },
   "data_quality": {
     "status": "degraded",
-    "degraded_reason": "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; GDELT company news failed for at least one symbol.; news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; news_scores: GDELT company news failed for at least one symbol.; risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; GDELT company news failed for at least one symbol.; risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.",
+    "degraded_reason": "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.; risk_picks: news_scores: GDELT company news failed for at least one symbol.; risk_picks: sector_scores: GDELT global-news feed failed during this run.",
     "reasons": [
-      "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; GDELT company news failed for at least one symbol.; news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; news_scores: GDELT company news failed for at least one symbol.",
-      "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; GDELT company news failed for at least one symbol.",
-      "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.",
+      "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
       "GDELT global-news feed failed during this run."
@@ -195,100 +194,104 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 7,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 18,
         "categories": {
-          "global_news": 1
+          "company_news": 5,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-07-05",
+          "date": "2026-07-06",
           "status": "healthy",
-          "used": 1,
+          "used": 7,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 18,
           "categories": {
-            "global_news": 1
+            "company_news": 5,
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 13,
         "limit": null,
         "remaining": null,
         "categories": {
-          "global_news": 1
+          "company_news": 11,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-07-05",
+          "date": "2026-07-06",
           "status": "tracking_only",
-          "used": 1,
+          "used": 13,
           "limit": null,
           "remaining": null,
           "categories": {
-            "global_news": 1
+            "company_news": 11,
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 52,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 48,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 50,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-07-05",
+          "date": "2026-07-06",
           "status": "healthy",
-          "used": 2,
+          "used": 52,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 48,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 50,
+            "global_news": 2
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 52,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1,
-          "submissions": 1
+          "ticker_map": 2,
+          "submissions": 50
         },
         "daily": {
-          "date": "2026-07-05",
+          "date": "2026-07-06",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 3,
+        "used": 61,
         "limit": 800,
-        "remaining": 797,
+        "remaining": 739,
         "categories": {
-          "price": 3
+          "price": 61
         },
         "daily": {
-          "date": "2026-07-05",
+          "date": "2026-07-06",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-07T17:52:29Z",
-  "data_as_of": "2026-07-07",
-  "expected_next_refresh_at": "2026-07-08T17:52:29Z",
-  "stale_after": "2026-07-09T05:52:29Z",
+  "generated_at": "2026-07-08T17:20:47Z",
+  "data_as_of": "2026-07-08",
+  "expected_next_refresh_at": "2026-07-09T17:20:47Z",
+  "stale_after": "2026-07-10T05:20:47Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W28",
@@ -24,61 +24,61 @@
     "company_name": "Visa Inc.",
     "sector": "financials",
     "risk": "medium",
-    "model_score": 0.0987,
-    "confidence_score": 0.69,
-    "confidence_label": "medium",
-    "price_as_of": "2026-07-07",
-    "news_as_of": "2026-07-07",
+    "model_score": 0.0298,
+    "confidence_score": 0.45,
+    "confidence_label": "low",
+    "price_as_of": "2026-07-08",
+    "news_as_of": null,
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 3,
+    "article_count": 0,
     "metrics": {
-      "momentum_5d": 0.0253,
-      "momentum_20d": 0.0826,
-      "daily_volatility": 0.0146,
-      "downside_volatility": 0.011,
-      "max_drawdown_20d": 0.0326,
-      "positive_day_ratio_10d": 0.7,
-      "price_vs_20d_average": 0.0483,
-      "volume_trend_5d": -0.0452,
-      "market_relative_5d": 0.0147,
-      "market_relative_20d": 0.0664,
-      "sector_relative_5d": -0.0191,
-      "sector_relative_20d": 0.0083,
-      "news_sentiment": 0.67,
-      "raw_news_sentiment": 0.5823,
-      "calibrated_news_sentiment": 0.3483,
-      "news_confidence": 0.69,
+      "momentum_5d": 0.0126,
+      "momentum_20d": 0.0868,
+      "daily_volatility": 0.0143,
+      "downside_volatility": 0.0102,
+      "max_drawdown_20d": 0.0406,
+      "positive_day_ratio_10d": 0.6,
+      "price_vs_20d_average": 0.0351,
+      "volume_trend_5d": -0.0809,
+      "market_relative_5d": 0.015,
+      "market_relative_20d": 0.0784,
+      "sector_relative_5d": -0.0167,
+      "sector_relative_20d": 0.023,
+      "news_sentiment": 0.5,
+      "raw_news_sentiment": 0.0,
+      "calibrated_news_sentiment": 0.0,
+      "news_confidence": 0.2,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.64,
-      "source_count": 1,
-      "average_relevance": 0.88,
+      "effective_article_count": 0.0,
+      "source_count": 0,
+      "average_relevance": 0.0,
       "technical_training_ic": 0.0088,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.074,
-      "short_momentum": 0.0209,
-      "medium_momentum": 0.0248,
-      "trend_quality": 0.0205,
-      "volume_confirmation": -0.0018,
-      "market_relative_strength": 0.0106,
-      "sector_relative_strength": -0.001,
+      "momentum": 0.0588,
+      "short_momentum": 0.0104,
+      "medium_momentum": 0.026,
+      "trend_quality": 0.0127,
+      "volume_confirmation": -0.0032,
+      "market_relative_strength": 0.0123,
+      "sector_relative_strength": 0.0006,
       "volatility_penalty": -0.029,
-      "daily_volatility_penalty": -0.0131,
-      "downside_penalty": -0.0118,
-      "drawdown_penalty": -0.0041,
-      "news_adjustment": 0.0508,
+      "daily_volatility_penalty": -0.0129,
+      "downside_penalty": -0.011,
+      "drawdown_penalty": -0.0051,
+      "news_adjustment": 0.0,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0029,
-      "technical_total": 0.045,
-      "trend_strength": 0.0662,
-      "relative_strength": 0.0096,
-      "participation": -0.0018,
+      "signal_alignment": 0.0,
+      "technical_total": 0.0298,
+      "trend_strength": 0.0491,
+      "relative_strength": 0.0128,
+      "participation": -0.0032,
       "risk_control": -0.029,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
@@ -88,91 +88,47 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0987
+      "total": 0.0298
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 2.5% and 20-day momentum is 8.3%.",
-      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 4.8% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.5%, downside volatility near 1.1%, and a recent max drawdown of 3.3%.",
-      "Volume confirmation is -4.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 1.5% versus SPY over 5 days and -1.9% versus the sector ETF.",
-      "News signal is bullish with score 0.67, confidence 0.69, and 0.6 weighted articles across 1 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.67, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 1 sources, 0.6 effective weighted articles, average relevance 0.88, average source quality 0.75, confidence 0.69.",
+      "Price trend remains constructive: 5-day momentum is 1.3% and 20-day momentum is 8.7%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 3.5% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.4%, downside volatility near 1.0%, and a recent max drawdown of 4.1%.",
+      "Volume confirmation is -8.1% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 1.5% versus SPY over 5 days and -1.7% versus the sector ETF.",
+      "No recent relevant news passed the filter, so the news layer stayed neutral and contributed less confidence.",
+      "Recent V company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.01).",
-      "Overall model score is 0.099 with medium confidence."
+      "Overall model score is 0.030 with low confidence."
     ],
-    "news_evidence": [
-      {
-        "title": "Visa: Buy The Next Sell-Off, Not The Rally (NYSE:V)",
-        "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4920270-visa-buy-the-next-sell-off-not-the-rally",
-        "published_at": "2026-07-07T16:30:30Z",
-        "relevance_score": 0.83,
-        "sentiment": 0.0,
-        "doc_type": "company_specific",
-        "company_relevance": 0.92,
-        "materiality": 0.65,
-        "llm_confidence": 0.67,
-        "llm_impact_score": 0.6,
-        "llm_reason": "Company-focused commentary emphasizing strong Q2 results (20% EPS growth, robust volumes) and recommending buying on pullbacks. High relevance and moderately material for short-term trading because it reinforces positive earnings momentum and could support buying interest during dips."
-      },
-      {
-        "title": "Visa: Still An Exceptional Business, But Risks Are Rising (NYSE:V)",
-        "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4920256-visa-still-an-exceptional-business-but-risks-are-rising",
-        "published_at": "2026-07-07T10:43:38Z",
-        "relevance_score": 0.98,
-        "sentiment": -0.14,
-        "doc_type": "company_specific",
-        "company_relevance": 0.88,
-        "materiality": 0.55,
-        "llm_confidence": 0.65,
-        "llm_impact_score": 0.45,
-        "llm_reason": "Analyst piece focused on Visa that explicitly weighs Q2 results against rising macro risks and rates the stock Hold. Directly relevant to Visa and can influence short-term sentiment, but contains analysis/opinion rather than new company disclosures — moderate materiality for 1–10 day horizon as it may dampen enthusiasm but not likely to move fundamentals."
-      },
-      {
-        "title": "Visa: How Visa Is Turning Disruption Into Opportunity (NYSE:V)",
-        "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4920157-visa-how-visa-is-turning-disruption-into-opportunity",
-        "published_at": "2026-07-06T21:14:42Z",
-        "relevance_score": 0.83,
-        "sentiment": 0.08,
-        "doc_type": "company_specific",
-        "company_relevance": 0.95,
-        "materiality": 0.7,
-        "llm_confidence": 0.68,
-        "llm_impact_score": 0.7,
-        "llm_reason": "Positive analysis highlighting Q2 revenue +17%, EPS +20% and strategic shift to value‑added services (~30% of revenue). Highly relevant and relatively material for the near term as it frames Visa's growth drivers and may bolster bullish sentiment among investors assessing earnings implications."
-      }
-    ],
+    "news_evidence": [],
     "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
       "headline": "Support needs review",
-      "summary": "The news layer is still thin, so conviction should stay measured.",
+      "summary": "No recent company-specific articles passed the filters, so the thesis rests mostly on price action.",
       "alerts": [
-        "The news layer is still thin, so conviction should stay measured.",
+        "No recent company-specific articles passed the filters, so the thesis rests mostly on price action.",
         "This is the top ranked stock, but it is below the normal release bar."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "2.5% 5D • 8.3% 20D",
+          "value": "1.3% 5D • 8.7% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "positive",
-          "value": "1.5% daily • 3.3% drawdown",
+          "value": "1.4% daily • 4.1% drawdown",
           "detail": "Volatility and drawdown remain controlled for this release."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.67 sentiment • 3 articles",
-          "detail": "The news layer is still thin, so conviction should stay measured."
+          "value": "0.50 sentiment • 0 articles",
+          "detail": "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
         },
         {
           "label": "Macro",
@@ -183,13 +139,13 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.001 score • +0.140 conf",
+          "value": "-0.070 score • -0.098 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news no fresh signal • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -214,7 +170,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-07",
+          "date": "2026-07-08",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -233,7 +189,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-07",
+          "date": "2026-07-08",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -253,7 +209,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-07",
+          "date": "2026-07-08",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -274,7 +230,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-07-07",
+          "date": "2026-07-08",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -287,20 +243,20 @@
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 6,
+        "used": 3,
         "limit": 800,
-        "remaining": 794,
+        "remaining": 797,
         "categories": {
-          "price": 6
+          "price": 3
         },
         "daily": {
-          "date": "2026-07-07",
+          "date": "2026-07-08",
           "status": "healthy",
-          "used": 6,
+          "used": 3,
           "limit": 800,
-          "remaining": 794,
+          "remaining": 797,
           "categories": {
-            "price": 6
+            "price": 3
           }
         }
       }

@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-11T16:44:11Z",
-  "data_as_of": "2026-07-11",
-  "expected_next_refresh_at": "2026-07-12T16:44:11Z",
-  "stale_after": "2026-07-13T04:44:11Z",
+  "generated_at": "2026-07-12T16:49:11Z",
+  "data_as_of": "2026-07-12",
+  "expected_next_refresh_at": "2026-07-13T16:49:11Z",
+  "stale_after": "2026-07-14T04:49:11Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W28",
@@ -24,13 +24,13 @@
     "company_name": "Visa Inc.",
     "sector": "financials",
     "risk": "medium",
-    "model_score": 0.0713,
-    "confidence_score": 0.7,
+    "model_score": 0.0676,
+    "confidence_score": 0.69,
     "confidence_label": "medium",
     "price_as_of": "2026-07-10",
     "news_as_of": "2026-07-11",
     "macro_as_of": null,
-    "sector_as_of": null,
+    "sector_as_of": "2026-07-12",
     "article_count": 3,
     "metrics": {
       "momentum_5d": -0.0363,
@@ -45,15 +45,15 @@
       "market_relative_20d": 0.0383,
       "sector_relative_5d": -0.0379,
       "sector_relative_20d": 0.013,
-      "news_sentiment": 0.83,
+      "news_sentiment": 0.82,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.6678,
-      "news_confidence": 0.78,
+      "calibrated_news_sentiment": 0.6404,
+      "news_confidence": 0.77,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 0.67,
+      "sector_confidence": 0.32,
+      "effective_article_count": 0.52,
       "source_count": 1,
       "average_relevance": 0.72,
       "technical_training_ic": 0.0088,
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0124,
       "downside_penalty": -0.0114,
       "drawdown_penalty": -0.005,
-      "news_adjustment": 0.1044,
+      "news_adjustment": 0.1006,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": -0.0039,
+      "signal_alignment": -0.0038,
       "technical_total": -0.0292,
       "trend_strength": 0.011,
       "relative_strength": -0.0038,
@@ -88,7 +88,7 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0713
+      "total": 0.0676
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is -3.6% and 20-day momentum is 8.1%.",
@@ -96,11 +96,11 @@
       "Risk profile shows daily volatility around 1.4%, downside volatility near 1.1%, and a recent max drawdown of 4.0%.",
       "Volume confirmation is -19.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is -4.9% versus SPY over 5 days and -3.8% versus the sector ETF.",
-      "News signal is bullish with score 0.83, confidence 0.78, and 0.7 weighted articles across 1 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.83, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 1 sources, 0.7 effective weighted articles, average relevance 0.72, average source quality 0.75, confidence 0.78.",
+      "News signal is bullish with score 0.82, confidence 0.77, and 0.5 weighted articles across 1 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.82, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 0.5 effective weighted articles, average relevance 0.72, average source quality 0.75, confidence 0.77.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.01).",
-      "Overall model score is 0.071 with medium confidence."
+      "Overall model score is 0.068 with medium confidence."
     ],
     "news_evidence": [
       {
@@ -115,7 +115,7 @@
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Directly about Visa: discusses Visa being pulled into the stablecoin conversation and highlights a Bank of America buy reiteration with a $410 target. This is company-specific news that can affect investor sentiment and trading in the near term, though fundamental impact depends on follow-up details and market reaction."
+        "llm_reason": "Directly about Visa being pulled into the stablecoin conversation and cites a Bank of America reiteration of a Buy and $410 target. This is company-specific and net mildly bullish, but the piece appears more narrative/analytical than reporting a concrete, near-term catalyst (e.g., earnings, guidance, regulatory decision)."
       },
       {
         "title": "American Express Reports Earnings on July 24. Here's Why Card-Fee Growth Matters More Than Spending This Quarter.",
@@ -129,7 +129,7 @@
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Focused on American Express earnings and card-fee dynamics — useful for sector/peer context but not materially specific to Visa. May influence short-term payments-sector sentiment, but limited direct impact on Visa over the next 1–10 trading days."
+        "llm_reason": "American Express earnings commentary is relevant to payments/card-sector sentiment (fees vs. spending), which can flow through to Visa. However, it is about a competitor and provides indirect, medium-term signals rather than an immediate Visa-specific catalyst over the next 1–10 trading days."
       },
       {
         "title": "Sony To Set Up U.S. Stablecoin Trust Bank",
@@ -143,7 +143,7 @@
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Sony setting up a U.S. stablecoin trust bank is broader stablecoin ecosystem news. Indirectly relevant to Visa via payments/stablecoin infrastructure trends, but unlikely to cause a material short-term move in Visa shares over the next 1–10 trading days."
+        "llm_reason": "Sony setting up a U.S. stablecoin trust bank is an industry-level development that could incrementally support broader stablecoin adoption and potential payment-rail partnerships. The linkage to Visa is indirect and unlikely to be a near-term mover for Visa's stock over 1–10 trading days."
       }
     ],
     "macro_evidence": [],
@@ -172,7 +172,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.83 sentiment • 3 articles",
+          "value": "0.82 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -184,7 +184,7 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.029 score • +0.146 conf",
+          "value": "-0.032 score • +0.143 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
@@ -215,7 +215,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-11",
+          "date": "2026-07-12",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -234,7 +234,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-11",
+          "date": "2026-07-12",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -254,7 +254,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-11",
+          "date": "2026-07-12",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -275,7 +275,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-07-11",
+          "date": "2026-07-12",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -295,7 +295,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-07-11",
+          "date": "2026-07-12",
           "status": "healthy",
           "used": 3,
           "limit": 800,

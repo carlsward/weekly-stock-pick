@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-06T15:03:08Z",
+  "generated_at": "2026-07-13T14:06:09Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -2349,8 +2349,8 @@
           }
         }
       ],
-      "realized_5d_return": 0.0229,
-      "realized_5d_excess_return": -0.0062
+      "realized_5d_return": 0.0263,
+      "realized_5d_excess_return": -0.0041
     },
     {
       "week_id": "2026-W27",
@@ -2617,8 +2617,8 @@
           }
         }
       ],
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null
+      "realized_5d_return": -0.023,
+      "realized_5d_excess_return": -0.0362
     },
     {
       "week_id": "2026-W28",
@@ -2639,6 +2639,20 @@
       "confidence_label": "medium",
       "data_as_of": "2026-07-06",
       "model_version": "v3.4",
+      "diagnostics": {
+        "technical_total": 0.0911,
+        "news_adjustment": 0.0349,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.1094,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 2303,
+        "technical_training_ic": 0.0088,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      },
       "top_candidates": [
         {
           "rank": 1,
@@ -2871,16 +2885,270 @@
           }
         }
       ],
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W29",
+      "week_start": "2026-07-13",
+      "week_end": "2026-07-17",
+      "week_label": "Jul 13 - 17, 2026",
+      "logged_at": "2026-07-13T14:06:09Z",
+      "status": "picked",
+      "status_reason": "META cleared the commercial release thresholds for this market week with a score of 0.241 and high confidence.",
+      "is_qualified": true,
+      "release_quality": "qualified",
+      "symbol": "META",
+      "company_name": "Meta Platforms Inc.",
+      "sector": "communication_services",
+      "risk": "high",
+      "model_score": 0.241,
+      "confidence_score": 0.76,
+      "confidence_label": "high",
+      "data_as_of": "2026-07-13",
+      "model_version": "v3.4",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "META",
+          "company_name": "Meta Platforms Inc.",
+          "sector": "communication_services",
+          "risk": "high",
+          "model_score": 0.241,
+          "confidence_score": 0.76,
+          "confidence_label": "high",
+          "price_as_of": "2026-07-13",
+          "news_as_of": "2026-07-13",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1108,
+            "news_adjustment": 0.1139,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0163,
+            "news_signal_input": 0.5616,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "SBUX",
+          "company_name": "Starbucks Corporation",
+          "sector": "consumer_discretionary",
+          "risk": "medium",
+          "model_score": 0.1582,
+          "confidence_score": 0.72,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-13",
+          "news_as_of": "2026-07-13",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0528,
+            "news_adjustment": 0.0987,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0067,
+            "news_signal_input": 0.4736,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "UNH",
+          "company_name": "UnitedHealth Group Incorporated",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1234,
+          "confidence_score": 0.69,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-13",
+          "news_as_of": null,
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.0092,
+            "news_adjustment": 0.1128,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0013,
+            "news_signal_input": 0.567,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "NVDA",
+          "company_name": "NVIDIA Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.108,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-13",
+          "news_as_of": "2026-07-13",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0335,
+            "news_adjustment": 0.0714,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0031,
+            "news_signal_input": 0.345,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "DHR",
+          "company_name": "Danaher Corporation",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.0951,
+          "confidence_score": 0.61,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-13",
+          "news_as_of": "2026-07-10",
+          "article_count": 1,
+          "diagnostics": {
+            "technical_total": 0.0408,
+            "news_adjustment": 0.0516,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0027,
+            "news_signal_input": 0.188,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "PG",
+          "company_name": "Procter & Gamble Company",
+          "sector": "consumer_staples",
+          "risk": "medium",
+          "model_score": 0.0825,
+          "confidence_score": 0.74,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-13",
+          "news_as_of": null,
+          "article_count": 6,
+          "diagnostics": {
+            "technical_total": -0.0416,
+            "news_adjustment": 0.1311,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0071,
+            "news_signal_input": 0.6864,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "CMCSA",
+          "company_name": "Comcast Corporation",
+          "sector": "communication_services",
+          "risk": "high",
+          "model_score": 0.0825,
+          "confidence_score": 0.72,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-13",
+          "news_as_of": null,
+          "article_count": 6,
+          "diagnostics": {
+            "technical_total": -0.0277,
+            "news_adjustment": 0.1142,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0041,
+            "news_signal_input": 0.581,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "JNJ",
+          "company_name": "Johnson & Johnson",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.0742,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-13",
+          "news_as_of": "2026-07-13",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0218,
+            "news_adjustment": 0.0987,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0028,
+            "news_signal_input": 0.4736,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "V",
+          "company_name": "Visa Inc.",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.0587,
+          "confidence_score": 0.63,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-13",
+          "news_as_of": "2026-07-11",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0161,
+            "news_adjustment": 0.0417,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0009,
+            "news_signal_input": 0.1425,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "BAC",
+          "company_name": "Bank of America Corporation",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.0525,
+          "confidence_score": 0.62,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-13",
+          "news_as_of": "2026-07-13",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0229,
+            "news_adjustment": 0.0776,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0023,
+            "news_signal_input": 0.3588,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        }
+      ],
       "diagnostics": {
-        "technical_total": 0.0911,
-        "news_adjustment": 0.0349,
+        "technical_total": 0.1108,
+        "news_adjustment": 0.1139,
         "macro_adjustment": 0.0,
         "sector_adjustment": 0.0,
-        "news_signal_input": 0.1094,
+        "news_signal_input": 0.5616,
         "macro_signal_input": 0.0,
         "sector_signal_input": 0.0,
         "technical_training_rows": 2303,
-        "technical_training_ic": 0.0088,
+        "technical_training_ic": -0.0136,
         "news_macro_overlap": 0.0,
         "news_sector_overlap": 0.0,
         "macro_sector_overlap": 0.0
@@ -2897,42 +3165,42 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 6,
+        "used": 7,
         "limit": 25,
-        "remaining": 19,
+        "remaining": 18,
         "categories": {
-          "company_news": 5,
+          "company_news": 6,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-06",
+          "date": "2026-07-13",
           "status": "healthy",
-          "used": 6,
+          "used": 7,
           "limit": 25,
-          "remaining": 19,
+          "remaining": 18,
           "categories": {
-            "company_news": 5,
+            "company_news": 6,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 12,
+        "used": 18,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 11,
+          "company_news": 17,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-06",
+          "date": "2026-07-13",
           "status": "tracking_only",
-          "used": 12,
+          "used": 18,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 11,
+            "company_news": 17,
             "global_news": 1
           }
         }
@@ -2947,7 +3215,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-06",
+          "date": "2026-07-13",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -2968,7 +3236,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-07-06",
+          "date": "2026-07-13",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -2988,7 +3256,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-07-06",
+          "date": "2026-07-13",
           "status": "healthy",
           "used": 58,
           "limit": 800,

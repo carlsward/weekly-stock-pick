@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-18T16:45:06Z",
-  "data_as_of": "2026-07-18",
-  "expected_next_refresh_at": "2026-07-19T16:45:06Z",
-  "stale_after": "2026-07-20T04:45:06Z",
+  "generated_at": "2026-07-19T16:46:49Z",
+  "data_as_of": "2026-07-19",
+  "expected_next_refresh_at": "2026-07-20T16:46:49Z",
+  "stale_after": "2026-07-21T04:46:49Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W29",
@@ -24,13 +24,13 @@
     "company_name": "Meta Platforms Inc.",
     "sector": "communication_services",
     "risk": "high",
-    "model_score": 0.099,
-    "confidence_score": 0.72,
+    "model_score": 0.0664,
+    "confidence_score": 0.67,
     "confidence_label": "medium",
     "price_as_of": "2026-07-17",
-    "news_as_of": "2026-07-17",
-    "macro_as_of": "2026-07-18",
-    "sector_as_of": "2026-07-18",
+    "news_as_of": "2026-07-19",
+    "macro_as_of": "2026-07-19",
+    "sector_as_of": "2026-07-19",
     "article_count": 3,
     "metrics": {
       "momentum_5d": -0.0347,
@@ -45,17 +45,17 @@
       "market_relative_20d": 0.1346,
       "sector_relative_5d": -0.026,
       "sector_relative_20d": 0.1233,
-      "news_sentiment": 0.76,
+      "news_sentiment": 0.8,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.5298,
-      "news_confidence": 0.65,
-      "macro_sentiment": 0.81,
-      "macro_confidence": 0.64,
-      "sector_sentiment": 0.77,
-      "sector_confidence": 0.58,
-      "effective_article_count": 0.28,
-      "source_count": 2,
-      "average_relevance": 0.63,
+      "calibrated_news_sentiment": 0.5961,
+      "news_confidence": 0.71,
+      "macro_sentiment": 0.41,
+      "macro_confidence": 0.42,
+      "sector_sentiment": 0.42,
+      "sector_confidence": 0.39,
+      "effective_article_count": 0.58,
+      "source_count": 1,
+      "average_relevance": 0.75,
       "technical_training_ic": -0.0136,
       "technical_training_rows": 2303
     },
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0298,
       "downside_penalty": -0.027,
       "drawdown_penalty": -0.0074,
-      "news_adjustment": 0.0756,
-      "macro_adjustment": 0.0251,
-      "sector_adjustment": 0.0121,
-      "signal_alignment": -0.0012,
+      "news_adjustment": 0.0908,
+      "macro_adjustment": -0.0075,
+      "sector_adjustment": -0.0029,
+      "signal_alignment": -0.0015,
       "technical_total": -0.0126,
       "trend_strength": 0.0328,
       "relative_strength": 0.0242,
@@ -83,12 +83,12 @@
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
-      "macro_dedup_penalty": 0.5417,
+      "macro_dedup_penalty": 0.7,
       "sector_dedup_penalty": 0.4,
-      "news_macro_overlap": 0.8333,
-      "news_sector_overlap": 0.8333,
+      "news_macro_overlap": 0.1667,
+      "news_sector_overlap": 0.1667,
       "macro_sector_overlap": 1.0,
-      "total": 0.099
+      "total": 0.0664
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is -3.5% and 20-day momentum is 13.8%.",
@@ -96,86 +96,67 @@
       "Risk profile shows daily volatility around 3.3%, downside volatility near 2.6%, and a recent max drawdown of 6.0%.",
       "Volume confirmation is -13.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is -2.0% versus SPY over 5 days and -2.6% versus the sector ETF.",
-      "News signal is bullish with score 0.76, confidence 0.65, and 0.3 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.76, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 0.3 effective weighted articles, average relevance 0.63, average source quality 0.75, confidence 0.65.",
-      "Broad world news leaned bullish for Meta Platforms Inc. with score 0.81 and confidence 0.64.",
-      "Headline highlights AI capex as a key variable for QQQ/mega-cap performance. Higher expected AI capex supports revenue and monetization potential for platform players that host or deploy large models (communication services leaders). That can lift near-term sentiment and valuation for names like META; conversely, disappointment on the capex/monetization story would pressure multiples. Short-horizon transmission is primarily through earnings/forward guidance revisions and multiple re-rating.",
-      "Macro impact was trimmed by 46% because it overlaps with company-news themes.",
-      "Broad market news leaned bullish for the Communication Services sector with score 0.77 and confidence 0.58.",
-      "Headline highlights AI capex as a key variable for QQQ/mega-cap performance. Higher expected AI capex supports revenue and monetization potential for platform players that host or deploy large models (communication services leaders). That can lift near-term sentiment and valuation for names like META; conversely, disappointment on the capex/monetization story would pressure multiples. Short-horizon transmission is primarily through earnings/forward guidance revisions and multiple re-rating.",
+      "News signal is bullish with score 0.80, confidence 0.71, and 0.6 weighted articles across 1 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.80, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 1 sources, 0.6 effective weighted articles, average relevance 0.75, average source quality 0.75, confidence 0.71.",
+      "Broad world news leaned bearish for Meta Platforms Inc. with score 0.41 and confidence 0.42.",
+      "Hyperscaler-driven DRAM/HBM tightness raises memory prices and short-term hardware costs for companies building large AI infrastructure. First-order: higher component costs increase near-term capex and opex for data-center operators and large AI model runners. Second-order: higher deployment costs can delay rollouts or compress margins, prompting short-term investor repricing for major AI-capable communication-services firms (e.g., Meta). Result: communication-services (and tracked META) face near-term pressure from an input-cost shock.",
+      "Macro impact was trimmed by 30% because it overlaps with company-news themes.",
+      "Broad market news leaned bearish for the Communication Services sector with score 0.42 and confidence 0.39.",
+      "Hyperscaler-driven DRAM/HBM tightness raises memory prices and short-term hardware costs for companies building large AI infrastructure. First-order: higher component costs increase near-term capex and opex for data-center operators and large AI model runners. Second-order: higher deployment costs can delay rollouts or compress margins, prompting short-term investor repricing for major AI-capable communication-services firms (e.g., Meta). Result: communication-services (and tracked META) face near-term pressure from an input-cost shock.",
       "Sector overlay was trimmed by 60% because it overlaps with company or macro themes.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.01).",
-      "Overall model score is 0.099 with medium confidence."
+      "Overall model score is 0.066 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Nebius’ $775 Million Debt Deal Changes Everything About Its AI Growth Story",
+        "title": "Meta Platforms Is Up 21% This Month, and Here Is What's Driving the Surge",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/technology/ai/articles/nebius-775-million-debt-deal-161015706.html",
-        "published_at": "2026-07-17T16:10:15Z",
-        "relevance_score": 0.69,
-        "sentiment": -0.4,
-        "doc_type": "sector_macro",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/meta-platforms-21-month-whats-195000181.html",
+        "published_at": "2026-07-18T19:50:00Z",
+        "relevance_score": 0.82,
+        "sentiment": 0.3,
+        "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.7,
+        "llm_confidence": 0.9,
         "llm_impact_score": 1.0,
-        "llm_reason": "Discusses AI infrastructure financing and references hyperscalers (including Meta) committing large capex to data centers/GPUs. Relevant to Meta's long-term capex backdrop but is indirect and not new or company-specific enough to be material in the next 1–10 trading days."
+        "llm_reason": "Directly discusses a 21% rally and the drivers behind it (market cap change, ad recovery/AI momentum/etc.). This is the most actionable item for short-term price prediction because it documents recent momentum and specific catalysts that could continue to move the stock in the next 1–10 trading days."
       },
       {
-        "title": "AMD: Jefferies eyes Anthropic deal as Advancing AI 2026 event nears",
+        "title": "Goldman Sachs Warns on AI’s Debt Tsunami — Is the AI Boom?",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/technology/ai/articles/amd-jefferies-eyes-anthropic-deal-165400435.html",
-        "published_at": "2026-07-17T16:54:00Z",
-        "relevance_score": 0.64,
-        "sentiment": 0.0,
+        "url": "https://finance.yahoo.com/technology/ai/articles/goldman-sachs-warns-ai-debt-150748535.html",
+        "published_at": "2026-07-19T15:07:48Z",
+        "relevance_score": 0.5,
+        "sentiment": 0.18,
         "doc_type": "sector_macro",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.7,
+        "llm_confidence": 0.8,
         "llm_impact_score": 1.0,
-        "llm_reason": "AMD-focused preview of an AI event and potential GPU/product announcements. Could affect GPU supply/pricing expectations that matter to Meta's infrastructure plans, but is not direct Meta news and unlikely to produce an immediate, material move for META within 1–10 trading days absent a major surprise."
+        "llm_reason": "Goldman Sachs warning about heavy debt issuance by major AI spenders is a sector-level risk that can negatively affect sentiment for hyperscalers including Meta. Relevant for short-term volatility and risk premium shifts, but less directly actionable than company-specific news for immediate 1–10 day price moves."
       }
     ],
     "macro_evidence": [
       {
-        "title": "The AI Capex Question Every QQQ Holder Should Be Asking Right Now",
+        "title": "AI Is Keeping DRAM Prices High — Here’s Exactly When the Market Finally Loosens Up",
         "feed": "marketaux",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/ai-capex-every-qqq-holder-161100385.html",
-        "published_at": "2026-07-18T16:11:00Z",
-        "impact": "positive",
-        "weight": 0.356,
-        "event_type": "sector/ETF capex thesis",
-        "transmission_channel": "capex expectations -> valuation & demand shift for AI services / AI infrastructure",
+        "url": "https://finance.yahoo.com/technology/ai/articles/ai-keeping-dram-prices-high-130031963.html",
+        "published_at": "2026-07-19T16:06:29Z",
+        "impact": "negative",
+        "weight": 0.145,
+        "event_type": "supply constraint / input cost shock (DRAM/HBM)",
+        "transmission_channel": "input cost shock -> higher hardware & operating costs for AI/data-center operators; tighter supply gives memory suppliers pricing power",
         "affected_inputs": [
-          "capex budgets",
-          "earnings outlook",
-          "valuation multiples",
-          "AI infrastructure demand"
+          "DRAM wafer capacity",
+          "HBM demand",
+          "AI compute demand",
+          "hardware costs (memory)"
         ],
         "horizon": "1-2w",
-        "reason": "Headline highlights AI capex as a key variable for QQQ/mega-cap performance. Higher expected AI capex supports revenue and monetization potential for platform players that host or deploy large models (communication services leaders). That can lift near-term sentiment and valuation for names like META; conversely, disappointment on the capex/monetization story would pressure multiples. Short-horizon transmission is primarily through earnings/forward guidance revisions and multiple re-rating."
-      },
-      {
-        "title": "AMD vs. Arm vs. Intel: The Best Stock to Play the Rise of Agentic AI",
-        "feed": "marketaux",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/amd-vs-arm-vs-intel-162100375.html",
-        "published_at": "2026-07-18T16:21:00Z",
-        "impact": "positive",
-        "weight": 0.231,
-        "event_type": "technology/industry comparison",
-        "transmission_channel": "hardware demand shift -> reduced training/deployment costs and increased capacity for AI services",
-        "affected_inputs": [
-          "AI hardware demand",
-          "data center capacity",
-          "costs of model training",
-          "platform capability"
-        ],
-        "horizon": "1-2w",
-        "reason": "Discussion of CPU/GPU winners for agentic AI implies rising hardware deployment and potentially lower marginal costs/capacity constraints for AI model providers. Communication services platforms that deliver AI features (e.g., META) could benefit from improved economics and product momentum, supporting short-term sentiment."
+        "reason": "Hyperscaler-driven DRAM/HBM tightness raises memory prices and short-term hardware costs for companies building large AI infrastructure. First-order: higher component costs increase near-term capex and opex for data-center operators and large AI model runners. Second-order: higher deployment costs can delay rollouts or compress margins, prompting short-term investor repricing for major AI-capable communication-services firms (e.g., Meta). Result: communication-services (and tracked META) face near-term pressure from an input-cost shock."
       }
     ],
     "thesis_monitor": {
@@ -203,19 +184,19 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.76 sentiment • 3 articles",
+          "value": "0.80 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
-          "state": "positive",
-          "value": "0.81 overlay • 0.64 conf",
-          "detail": "Recent world news added a supportive company-level overlay."
+          "state": "watch",
+          "value": "0.41 overlay • 0.42 conf",
+          "detail": "The global overlay is present, but not yet decisive."
         },
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.021 score • +0.166 conf",
+          "value": "-0.054 score • +0.125 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
@@ -246,7 +227,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-18",
+          "date": "2026-07-19",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -265,7 +246,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-18",
+          "date": "2026-07-19",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -285,7 +266,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-18",
+          "date": "2026-07-19",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -306,7 +287,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-07-18",
+          "date": "2026-07-19",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -326,7 +307,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-07-18",
+          "date": "2026-07-19",
           "status": "healthy",
           "used": 3,
           "limit": 800,

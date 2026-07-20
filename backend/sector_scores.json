@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-13T14:05:58Z",
-  "last_updated": "2026-07-13",
+  "generated_at": "2026-07-20T13:49:29Z",
+  "last_updated": "2026-07-20",
   "lookback_days": 3,
-  "article_count": 1,
-  "source_count": 1,
+  "article_count": 2,
+  "source_count": 2,
   "llm_model": "gpt-5-mini",
-  "summary": "Analysis of a Seeking Alpha piece on Bayer (BAYZF) noting continued debt concerns despite valuation upside; company-specific credit/valuation narrative with limited short-term market spillovers for tracked sectors/symbols.",
+  "summary": "Both items have limited short-term market impact. The Ryanair note signals company-specific resilience (strong cash/buyback) but acknowledges near-term headwinds for European airlines — modestly positive for low-cost carriers and selective travel names over the next 1–2 weeks. The AM Best rating affirmation for Vantage is a narrow credit-story item with minimal market implications beyond modestly reduced counterparty/credit concerns in reinsurance/financials over the next few days.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -23,13 +23,34 @@
       "sector": "consumer_discretionary",
       "display_name": "Consumer Discretionary",
       "score": 0.5,
-      "confidence": 0.2,
+      "confidence": 0.34,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-07-20",
       "reasons": [
-        "No strong recent sector catalyst was found for Consumer Discretionary."
+        "Ryanair's update emphasizes a strong liquidity position (€2.7bn) and share buyback/incentives that support near-term shareholder upside relative to EU peers. Transmission: (1) balance-sheet strength and buybacks can support the stock or sentiment for low-cost carriers (positive for industrials/travel-related consumer discretionary) as investors favor well-capitalized operators; (2) the note flags near-term turbulence (costs, demand volatility, operational disruptions) that can weigh on revenues/earnings for airlines in the next few weeks. Net short-horizon effect is modest; sector-level benefit to efficient low-cost carriers is plausible while headline uncertainty keeps impact limited."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Ryanair: Near-Term Turbulence, But Long-Term Advantage Remains Intact (NASDAQ:RYAAY)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4923434-ryanair-near-term-turbulence-but-long-term-advantage-remains-intact",
+          "published_at": "2026-07-20T13:13:56Z",
+          "impact": "positive",
+          "weight": 0.006,
+          "event_type": "company_operational_update",
+          "transmission_channel": "balance_sheet_and_pricing_power (net cash, buybacks) + demand shift and cost headwinds (near-term turbulence)",
+          "affected_inputs": [
+            "corporate_cash_positions",
+            "share_buybacks",
+            "pricing_power/fares",
+            "demand for air travel",
+            "operating costs (fuel/labor)"
+          ],
+          "horizon": "1-2w",
+          "reason": "Ryanair's update emphasizes a strong liquidity position (€2.7bn) and share buyback/incentives that support near-term shareholder upside relative to EU peers. Transmission: (1) balance-sheet strength and buybacks can support the stock or sentiment for low-cost carriers (positive for industrials/travel-related consumer discretionary) as investors favor well-capitalized operators; (2) the note flags near-term turbulence (costs, demand volatility, operational disruptions) that can weigh on revenues/earnings for airlines in the next few weeks. Net short-horizon effect is modest; sector-level benefit to efficient low-cost carriers is plausible while headline uncertainty keeps impact limited."
+        }
+      ]
     },
     "consumer_staples": {
       "sector": "consumer_staples",
@@ -59,13 +80,32 @@
       "sector": "financials",
       "display_name": "Financials",
       "score": 0.5,
-      "confidence": 0.2,
+      "confidence": 0.38,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-07-20",
       "reasons": [
-        "No strong recent sector catalyst was found for Financials."
+        "AM Best's affirmation leaves Vantage Risk's credit profile unchanged following leadership changes. Transmission: affirmation reduces near-term uncertainty about counterparty solvency, modestly lowering credit-risk premia and supporting reinsurer/insurer sentiment. Impact is narrow and small — limited to reinsurance/insurance market confidence — so short-horizon relevance to broader financials is minor."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "AM Best affirms Vantage’s credit ratings post recent leadership changes",
+          "feed": "marketaux",
+          "provider": "reinsurancene.ws",
+          "url": "https://www.reinsurancene.ws/am-best-affirms-vantages-credit-ratings-post-recent-leadership-changes/",
+          "published_at": "2026-07-20T13:00:18Z",
+          "impact": "positive",
+          "weight": 0.0,
+          "event_type": "credit_rating_affirmation",
+          "transmission_channel": "counterparty_credit_risk_stability -> reduced short-term credit/solvency concern for reinsurance counterparties",
+          "affected_inputs": [
+            "counterparty_risk",
+            "credit_spreads",
+            "reinsurance_capacity"
+          ],
+          "horizon": "1-3d",
+          "reason": "AM Best's affirmation leaves Vantage Risk's credit profile unchanged following leadership changes. Transmission: affirmation reduces near-term uncertainty about counterparty solvency, modestly lowering credit-risk premia and supporting reinsurer/insurer sentiment. Impact is narrow and small — limited to reinsurance/insurance market confidence — so short-horizon relevance to broader financials is minor."
+        }
+      ]
     },
     "healthcare": {
       "sector": "healthcare",
@@ -83,13 +123,34 @@
       "sector": "industrials",
       "display_name": "Industrials",
       "score": 0.5,
-      "confidence": 0.2,
+      "confidence": 0.34,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-07-20",
       "reasons": [
-        "No strong recent sector catalyst was found for Industrials."
+        "Ryanair's update emphasizes a strong liquidity position (€2.7bn) and share buyback/incentives that support near-term shareholder upside relative to EU peers. Transmission: (1) balance-sheet strength and buybacks can support the stock or sentiment for low-cost carriers (positive for industrials/travel-related consumer discretionary) as investors favor well-capitalized operators; (2) the note flags near-term turbulence (costs, demand volatility, operational disruptions) that can weigh on revenues/earnings for airlines in the next few weeks. Net short-horizon effect is modest; sector-level benefit to efficient low-cost carriers is plausible while headline uncertainty keeps impact limited."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Ryanair: Near-Term Turbulence, But Long-Term Advantage Remains Intact (NASDAQ:RYAAY)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4923434-ryanair-near-term-turbulence-but-long-term-advantage-remains-intact",
+          "published_at": "2026-07-20T13:13:56Z",
+          "impact": "positive",
+          "weight": 0.006,
+          "event_type": "company_operational_update",
+          "transmission_channel": "balance_sheet_and_pricing_power (net cash, buybacks) + demand shift and cost headwinds (near-term turbulence)",
+          "affected_inputs": [
+            "corporate_cash_positions",
+            "share_buybacks",
+            "pricing_power/fares",
+            "demand for air travel",
+            "operating costs (fuel/labor)"
+          ],
+          "horizon": "1-2w",
+          "reason": "Ryanair's update emphasizes a strong liquidity position (€2.7bn) and share buyback/incentives that support near-term shareholder upside relative to EU peers. Transmission: (1) balance-sheet strength and buybacks can support the stock or sentiment for low-cost carriers (positive for industrials/travel-related consumer discretionary) as investors favor well-capitalized operators; (2) the note flags near-term turbulence (costs, demand volatility, operational disruptions) that can weigh on revenues/earnings for airlines in the next few weeks. Net short-horizon effect is modest; sector-level benefit to efficient low-cost carriers is plausible while headline uncertainty keeps impact limited."
+        }
+      ]
     },
     "technology": {
       "sector": "technology",
@@ -745,28 +806,59 @@
   },
   "events": [
     {
-      "article_id": "news_1",
-      "title": "Bayer: Debt Remains A Problem, Value Remains Compelling (OTCMKTS:BAYZF)",
+      "article_id": "news_2",
+      "title": "Ryanair: Near-Term Turbulence, But Long-Term Advantage Remains Intact (NASDAQ:RYAAY)",
       "feed": "marketaux",
       "provider": "seekingalpha.com",
-      "url": "https://seekingalpha.com/article/4921570-bayer-debt-remains-a-problem-value-remains-compelling",
-      "published_at": "2026-07-13T13:38:56Z",
-      "event_type": "corporate_credit_and_valuation_update",
-      "transmission_channel": "corporate credit risk → investor sentiment → equity valuation/volatility",
+      "url": "https://seekingalpha.com/article/4923434-ryanair-near-term-turbulence-but-long-term-advantage-remains-intact",
+      "published_at": "2026-07-20T13:13:56Z",
+      "event_type": "company_operational_update",
+      "transmission_channel": "balance_sheet_and_pricing_power (net cash, buybacks) + demand shift and cost headwinds (near-term turbulence)",
       "affected_inputs": [
-        "corporate_debt",
-        "equity_valuation",
-        "investor_sentiment"
+        "corporate_cash_positions",
+        "share_buybacks",
+        "pricing_power/fares",
+        "demand for air travel",
+        "operating costs (fuel/labor)"
       ],
       "horizon": "1-2w",
-      "market_relevance": 1.0,
-      "magnitude": 1.0,
+      "market_relevance": 0.25,
+      "magnitude": 0.2,
       "confidence": 0.6,
-      "beneficiary_sectors": [],
+      "beneficiary_sectors": [
+        "industrials",
+        "consumer_discretionary"
+      ],
       "hurt_sectors": [],
       "beneficiary_symbols": [],
       "hurt_symbols": [],
-      "reason": "The article is an analyst/opinion update focused on Bayer’s balance-sheet (debt) and valuation. Transmission is primarily company-specific: concerns about high debt can weigh on Bayer equity via credit-risk repricing and investor sentiment, while a bullish valuation view could limit downside. This is not a macro, geopolitical, or sector-wide shock and does not mention or directly affect any tracked US-listed companies. Therefore expected short-horizon market impact on the broader allowed sectors and tracked symbols is minimal; impact is limited to Bayer (not in tracked symbols) and possibly its bondholders. Low market_relevance and magnitude reflect the narrow, company-specific nature and lack of clear spillovers to tracked sectors/symbols."
+      "reason": "Ryanair's update emphasizes a strong liquidity position (€2.7bn) and share buyback/incentives that support near-term shareholder upside relative to EU peers. Transmission: (1) balance-sheet strength and buybacks can support the stock or sentiment for low-cost carriers (positive for industrials/travel-related consumer discretionary) as investors favor well-capitalized operators; (2) the note flags near-term turbulence (costs, demand volatility, operational disruptions) that can weigh on revenues/earnings for airlines in the next few weeks. Net short-horizon effect is modest; sector-level benefit to efficient low-cost carriers is plausible while headline uncertainty keeps impact limited."
+    },
+    {
+      "article_id": "news_3",
+      "title": "AM Best affirms Vantage’s credit ratings post recent leadership changes",
+      "feed": "marketaux",
+      "provider": "reinsurancene.ws",
+      "url": "https://www.reinsurancene.ws/am-best-affirms-vantages-credit-ratings-post-recent-leadership-changes/",
+      "published_at": "2026-07-20T13:00:18Z",
+      "event_type": "credit_rating_affirmation",
+      "transmission_channel": "counterparty_credit_risk_stability -> reduced short-term credit/solvency concern for reinsurance counterparties",
+      "affected_inputs": [
+        "counterparty_risk",
+        "credit_spreads",
+        "reinsurance_capacity"
+      ],
+      "horizon": "1-3d",
+      "market_relevance": 0.05,
+      "magnitude": 0.05,
+      "confidence": 0.8,
+      "beneficiary_sectors": [
+        "financials"
+      ],
+      "hurt_sectors": [],
+      "beneficiary_symbols": [],
+      "hurt_symbols": [],
+      "reason": "AM Best's affirmation leaves Vantage Risk's credit profile unchanged following leadership changes. Transmission: affirmation reduces near-term uncertainty about counterparty solvency, modestly lowering credit-risk premia and supporting reinsurer/insurer sentiment. Impact is narrow and small — limited to reinsurance/insurance market confidence — so short-horizon relevance to broader financials is minor."
     }
   ],
   "data_quality": {
@@ -786,7 +878,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-13",
+          "date": "2026-07-20",
           "status": "healthy",
           "used": 7,
           "limit": 25,
@@ -799,21 +891,21 @@
       },
       "gdelt": {
         "status": "degraded",
-        "used": 18,
+        "used": 15,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 17,
+          "company_news": 14,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-13",
+          "date": "2026-07-20",
           "status": "tracking_only",
-          "used": 18,
+          "used": 15,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 17,
+            "company_news": 14,
             "global_news": 1
           }
         }
@@ -828,7 +920,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-13",
+          "date": "2026-07-20",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -849,7 +941,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-07-13",
+          "date": "2026-07-20",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

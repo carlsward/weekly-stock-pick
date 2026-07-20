@@ -1,208 +1,194 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-19T16:46:49Z",
-  "data_as_of": "2026-07-19",
-  "expected_next_refresh_at": "2026-07-20T16:46:49Z",
-  "stale_after": "2026-07-21T04:46:49Z",
+  "generated_at": "2026-07-20T13:57:27Z",
+  "data_as_of": "2026-07-20",
+  "expected_next_refresh_at": "2026-07-21T13:57:27Z",
+  "stale_after": "2026-07-22T01:57:27Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W29",
-    "week_label": "Jul 13 - 17, 2026",
-    "week_start": "2026-07-13",
-    "week_end": "2026-07-17"
+    "week_id": "2026-W30",
+    "week_label": "Jul 20 - 24, 2026",
+    "week_start": "2026-07-20",
+    "week_end": "2026-07-24"
   },
-  "source_dashboard_generated_at": "2026-07-13T14:06:09Z",
+  "source_dashboard_generated_at": "2026-07-20T13:49:50Z",
   "selection": {
     "status": "picked",
     "status_reason": "Live thesis monitor refreshed the active weekly pick.",
-    "threshold_score": 0.12,
+    "threshold_score": 0.1,
     "threshold_confidence": 0.55
   },
   "active_pick": {
-    "symbol": "META",
-    "company_name": "Meta Platforms Inc.",
-    "sector": "communication_services",
-    "risk": "high",
-    "model_score": 0.0664,
-    "confidence_score": 0.67,
-    "confidence_label": "medium",
-    "price_as_of": "2026-07-17",
-    "news_as_of": "2026-07-19",
-    "macro_as_of": "2026-07-19",
-    "sector_as_of": "2026-07-19",
-    "article_count": 3,
+    "symbol": "DHR",
+    "company_name": "Danaher Corporation",
+    "sector": "healthcare",
+    "risk": "medium",
+    "model_score": 0.1993,
+    "confidence_score": 0.82,
+    "confidence_label": "high",
+    "price_as_of": "2026-07-20",
+    "news_as_of": null,
+    "macro_as_of": null,
+    "sector_as_of": null,
+    "article_count": 6,
     "metrics": {
-      "momentum_5d": -0.0347,
-      "momentum_20d": 0.1382,
-      "daily_volatility": 0.0331,
-      "downside_volatility": 0.0255,
-      "max_drawdown_20d": 0.0595,
-      "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0673,
-      "volume_trend_5d": -0.1345,
-      "market_relative_5d": -0.0195,
-      "market_relative_20d": 0.1346,
-      "sector_relative_5d": -0.026,
-      "sector_relative_20d": 0.1233,
-      "news_sentiment": 0.8,
-      "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.5961,
-      "news_confidence": 0.71,
-      "macro_sentiment": 0.41,
-      "macro_confidence": 0.42,
-      "sector_sentiment": 0.42,
-      "sector_confidence": 0.39,
-      "effective_article_count": 0.58,
-      "source_count": 1,
-      "average_relevance": 0.75,
-      "technical_training_ic": -0.0136,
+      "momentum_5d": 0.0195,
+      "momentum_20d": 0.1518,
+      "daily_volatility": 0.0179,
+      "downside_volatility": 0.0147,
+      "max_drawdown_20d": 0.0362,
+      "positive_day_ratio_10d": 0.7,
+      "price_vs_20d_average": 0.0473,
+      "volume_trend_5d": -0.1162,
+      "market_relative_5d": 0.0241,
+      "market_relative_20d": 0.1532,
+      "sector_relative_5d": 0.023,
+      "sector_relative_20d": 0.0697,
+      "news_sentiment": 0.86,
+      "raw_news_sentiment": 0.8839,
+      "calibrated_news_sentiment": 0.722,
+      "news_confidence": 0.84,
+      "macro_sentiment": 0.5,
+      "macro_confidence": 0.2,
+      "sector_sentiment": 0.5,
+      "sector_confidence": 0.2,
+      "effective_article_count": 1.08,
+      "source_count": 4,
+      "average_relevance": 0.76,
+      "technical_training_ic": -0.0131,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0516,
-      "short_momentum": -0.0286,
-      "medium_momentum": 0.0415,
-      "trend_quality": 0.02,
-      "volume_confirmation": -0.0054,
-      "market_relative_strength": 0.0151,
-      "sector_relative_strength": 0.0091,
-      "volatility_penalty": -0.0642,
-      "daily_volatility_penalty": -0.0298,
-      "downside_penalty": -0.027,
-      "drawdown_penalty": -0.0074,
-      "news_adjustment": 0.0908,
-      "macro_adjustment": -0.0075,
-      "sector_adjustment": -0.0029,
-      "signal_alignment": -0.0015,
-      "technical_total": -0.0126,
-      "trend_strength": 0.0328,
-      "relative_strength": 0.0242,
-      "participation": -0.0054,
-      "risk_control": -0.0642,
+      "momentum": 0.1069,
+      "short_momentum": 0.0161,
+      "medium_momentum": 0.0455,
+      "trend_quality": 0.0202,
+      "volume_confirmation": -0.0046,
+      "market_relative_strength": 0.021,
+      "sector_relative_strength": 0.0087,
+      "volatility_penalty": -0.0365,
+      "daily_volatility_penalty": -0.0161,
+      "downside_penalty": -0.0159,
+      "drawdown_penalty": -0.0045,
+      "news_adjustment": 0.1182,
+      "macro_adjustment": 0.0,
+      "sector_adjustment": 0.0,
+      "signal_alignment": 0.0107,
+      "technical_total": 0.0704,
+      "trend_strength": 0.0819,
+      "relative_strength": 0.0297,
+      "participation": -0.0046,
+      "risk_control": -0.0365,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
-      "macro_dedup_penalty": 0.7,
-      "sector_dedup_penalty": 0.4,
-      "news_macro_overlap": 0.1667,
-      "news_sector_overlap": 0.1667,
-      "macro_sector_overlap": 1.0,
-      "total": 0.0664
+      "macro_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 1.0,
+      "news_macro_overlap": 0.0,
+      "news_sector_overlap": 0.0,
+      "macro_sector_overlap": 0.0,
+      "total": 0.1993
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is -3.5% and 20-day momentum is 13.8%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 6.7% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 3.3%, downside volatility near 2.6%, and a recent max drawdown of 6.0%.",
-      "Volume confirmation is -13.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is -2.0% versus SPY over 5 days and -2.6% versus the sector ETF.",
-      "News signal is bullish with score 0.80, confidence 0.71, and 0.6 weighted articles across 1 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.80, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 1 sources, 0.6 effective weighted articles, average relevance 0.75, average source quality 0.75, confidence 0.71.",
-      "Broad world news leaned bearish for Meta Platforms Inc. with score 0.41 and confidence 0.42.",
-      "Hyperscaler-driven DRAM/HBM tightness raises memory prices and short-term hardware costs for companies building large AI infrastructure. First-order: higher component costs increase near-term capex and opex for data-center operators and large AI model runners. Second-order: higher deployment costs can delay rollouts or compress margins, prompting short-term investor repricing for major AI-capable communication-services firms (e.g., Meta). Result: communication-services (and tracked META) face near-term pressure from an input-cost shock.",
-      "Macro impact was trimmed by 30% because it overlaps with company-news themes.",
-      "Broad market news leaned bearish for the Communication Services sector with score 0.42 and confidence 0.39.",
-      "Hyperscaler-driven DRAM/HBM tightness raises memory prices and short-term hardware costs for companies building large AI infrastructure. First-order: higher component costs increase near-term capex and opex for data-center operators and large AI model runners. Second-order: higher deployment costs can delay rollouts or compress margins, prompting short-term investor repricing for major AI-capable communication-services firms (e.g., Meta). Result: communication-services (and tracked META) face near-term pressure from an input-cost shock.",
-      "Sector overlay was trimmed by 60% because it overlaps with company or macro themes.",
+      "Price trend remains constructive: 5-day momentum is 1.9% and 20-day momentum is 15.2%.",
+      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 4.7% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.8%, downside volatility near 1.5%, and a recent max drawdown of 3.6%.",
+      "Volume confirmation is -11.6% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 2.4% versus SPY over 5 days and 2.3% versus the sector ETF.",
+      "News signal is bullish with score 0.86, confidence 0.84, and 1.1 weighted articles across 4 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.86, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 6 articles across 4 sources, 1.1 effective weighted articles, average relevance 0.76, average source quality 0.75, confidence 0.84.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.01).",
-      "Overall model score is 0.066 with medium confidence."
+      "Overall model score is 0.199 with high confidence."
     ],
     "news_evidence": [
       {
-        "title": "Meta Platforms Is Up 21% This Month, and Here Is What's Driving the Surge",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/meta-platforms-21-month-whats-195000181.html",
-        "published_at": "2026-07-18T19:50:00Z",
-        "relevance_score": 0.82,
-        "sentiment": 0.3,
+        "title": "Danaher stock remains supported by earnings and margins",
+        "provider": "ad-hoc-news.de",
+        "url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/danaher-stock-remains-supported-by-earnings-and-margins/69808661",
+        "published_at": "None",
+        "relevance_score": 0.96,
+        "sentiment": 0.26,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.9,
+        "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Directly discusses a 21% rally and the drivers behind it (market cap change, ad recovery/AI momentum/etc.). This is the most actionable item for short-term price prediction because it documents recent momentum and specific catalysts that could continue to move the stock in the next 1–10 trading days."
+        "llm_reason": "Direct commentary on Danaher's recent revenue, strong adjusted operating margin, and profitability profile; supports positive sentiment but contains no new catalyst that would sharply move the stock in the immediate term."
       },
       {
-        "title": "Goldman Sachs Warns on AI’s Debt Tsunami — Is the AI Boom?",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/technology/ai/articles/goldman-sachs-warns-ai-debt-150748535.html",
-        "published_at": "2026-07-19T15:07:48Z",
-        "relevance_score": 0.5,
-        "sentiment": 0.18,
-        "doc_type": "sector_macro",
+        "title": "Danaher (DHR) Q2 Earnings Report Preview: What To Look For",
+        "provider": "FinancialContent",
+        "url": "https://www.financialcontent.com/article/stockstory-2026-7-20-danaher-dhr-q2-earnings-report-preview-what-to-look-for",
+        "published_at": "None",
+        "relevance_score": 0.78,
+        "sentiment": 0.28,
+        "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.8,
+        "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Goldman Sachs warning about heavy debt issuance by major AI spenders is a sector-level risk that can negatively affect sentiment for hyperscalers including Meta. Relevant for short-term volatility and risk premium shifts, but less directly actionable than company-specific news for immediate 1–10 day price moves."
-      }
-    ],
-    "macro_evidence": [
+        "llm_reason": "Earnings preview ahead of an imminent Q2 release — a clear near-term catalyst likely to drive stock moves depending on results and guidance."
+      },
       {
-        "title": "AI Is Keeping DRAM Prices High — Here’s Exactly When the Market Finally Loosens Up",
-        "feed": "marketaux",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/technology/ai/articles/ai-keeping-dram-prices-high-130031963.html",
-        "published_at": "2026-07-19T16:06:29Z",
-        "impact": "negative",
-        "weight": 0.145,
-        "event_type": "supply constraint / input cost shock (DRAM/HBM)",
-        "transmission_channel": "input cost shock -> higher hardware & operating costs for AI/data-center operators; tighter supply gives memory suppliers pricing power",
-        "affected_inputs": [
-          "DRAM wafer capacity",
-          "HBM demand",
-          "AI compute demand",
-          "hardware costs (memory)"
-        ],
-        "horizon": "1-2w",
-        "reason": "Hyperscaler-driven DRAM/HBM tightness raises memory prices and short-term hardware costs for companies building large AI infrastructure. First-order: higher component costs increase near-term capex and opex for data-center operators and large AI model runners. Second-order: higher deployment costs can delay rollouts or compress margins, prompting short-term investor repricing for major AI-capable communication-services firms (e.g., Meta). Result: communication-services (and tracked META) face near-term pressure from an input-cost shock."
+        "title": "Danaher (DHR) Is Expanding Diagnostics With A StatLab Medical Products Deal",
+        "provider": "Yahoo Finance",
+        "url": "https://finance.yahoo.com/healthcare/articles/danaher-dhr-expanding-diagnostics-statlab-111223030.html",
+        "published_at": "None",
+        "relevance_score": 0.78,
+        "sentiment": 0.32,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Announcement of Danaher's Leica Biosystems acquisition of StatLab is a company-level M&A development that can affect near-term sentiment, especially if details on size/timing or integration are clarified."
       }
     ],
+    "macro_evidence": [],
     "thesis_monitor": {
-      "status": "risk",
-      "headline": "Support needs review",
-      "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
+      "status": "watch",
+      "headline": "Support needs watching",
+      "summary": "Risk is still manageable, but volatility widened versus a clean setup.",
       "alerts": [
-        "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
-        "Volatility expanded enough to weaken the setup.",
-        "The news layer is still thin, so conviction should stay measured."
+        "Risk is still manageable, but volatility widened versus a clean setup."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "risk",
-          "value": "-3.5% 5D • 13.8% 20D",
-          "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
+          "state": "positive",
+          "value": "1.9% 5D • 15.2% 20D",
+          "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
-          "state": "risk",
-          "value": "3.3% daily • 6.0% drawdown",
-          "detail": "Volatility expanded enough to weaken the setup."
+          "state": "watch",
+          "value": "1.8% daily • 3.6% drawdown",
+          "detail": "Risk is still manageable, but volatility widened versus a clean setup."
         },
         {
           "label": "News",
-          "state": "watch",
-          "value": "0.80 sentiment • 3 articles",
-          "detail": "The news layer is still thin, so conviction should stay measured."
+          "state": "positive",
+          "value": "0.86 sentiment • 6 articles",
+          "detail": "Recent news flow is supportive and diversified enough to back the setup."
         },
         {
           "label": "Macro",
-          "state": "watch",
-          "value": "0.41 overlay • 0.42 conf",
-          "detail": "The global overlay is present, but not yet decisive."
+          "state": "positive",
+          "value": "0.50 overlay • 0.20 conf",
+          "detail": "No strong world-news headwind is currently working against the setup."
         },
         {
           "label": "Margin",
-          "state": "risk",
-          "value": "-0.054 score • +0.125 conf",
-          "detail": "This is the top ranked stock, but it is below the normal release bar."
+          "state": "positive",
+          "value": "+0.099 score • +0.272 conf",
+          "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro 0 trading days • sector 0 trading days",
+          "value": "price 0 trading days • news no fresh signal • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -215,105 +201,110 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
+      "GDELT company news failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 9,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 16,
         "categories": {
-          "global_news": 1
+          "company_news": 7,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-07-19",
+          "date": "2026-07-20",
           "status": "healthy",
-          "used": 1,
+          "used": 9,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 16,
           "categories": {
-            "global_news": 1
+            "company_news": 7,
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 17,
         "limit": null,
         "remaining": null,
         "categories": {
-          "global_news": 1
+          "company_news": 15,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-07-19",
+          "date": "2026-07-20",
           "status": "tracking_only",
-          "used": 1,
+          "used": 17,
           "limit": null,
           "remaining": null,
           "categories": {
-            "global_news": 1
+            "company_news": 15,
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 52,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 48,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 50,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-07-19",
+          "date": "2026-07-20",
           "status": "healthy",
-          "used": 2,
+          "used": 52,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 48,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 50,
+            "global_news": 2
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 52,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1,
-          "submissions": 1
+          "ticker_map": 2,
+          "submissions": 50
         },
         "daily": {
-          "date": "2026-07-19",
+          "date": "2026-07-20",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 3,
+        "used": 61,
         "limit": 800,
-        "remaining": 797,
+        "remaining": 739,
         "categories": {
-          "price": 3
+          "price": 61
         },
         "daily": {
-          "date": "2026-07-19",
+          "date": "2026-07-20",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

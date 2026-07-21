@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-20T17:24:50Z",
-  "data_as_of": "2026-07-20",
-  "expected_next_refresh_at": "2026-07-21T17:24:50Z",
-  "stale_after": "2026-07-22T05:24:50Z",
+  "generated_at": "2026-07-21T17:07:17Z",
+  "data_as_of": "2026-07-21",
+  "expected_next_refresh_at": "2026-07-22T17:07:17Z",
+  "stale_after": "2026-07-23T05:07:17Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W30",
@@ -23,175 +23,210 @@
     "symbol": "DHR",
     "company_name": "Danaher Corporation",
     "sector": "healthcare",
-    "risk": "medium",
-    "model_score": 0.1907,
-    "confidence_score": 0.81,
-    "confidence_label": "high",
-    "price_as_of": "2026-07-20",
-    "news_as_of": null,
-    "macro_as_of": null,
-    "sector_as_of": "2026-07-20",
-    "article_count": 6,
+    "risk": "high",
+    "model_score": -0.2927,
+    "confidence_score": 0.57,
+    "confidence_label": "medium",
+    "price_as_of": "2026-07-21",
+    "news_as_of": "2026-07-21",
+    "macro_as_of": "2026-07-21",
+    "sector_as_of": "2026-07-21",
+    "article_count": 5,
     "metrics": {
-      "momentum_5d": 0.0132,
-      "momentum_20d": 0.1447,
-      "daily_volatility": 0.0181,
-      "downside_volatility": 0.0137,
-      "max_drawdown_20d": 0.0362,
-      "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0412,
-      "volume_trend_5d": -0.0742,
-      "market_relative_5d": 0.0199,
-      "market_relative_20d": 0.1485,
-      "sector_relative_5d": 0.0207,
-      "sector_relative_20d": 0.0674,
-      "news_sentiment": 0.86,
-      "raw_news_sentiment": 0.8818,
-      "calibrated_news_sentiment": 0.7229,
-      "news_confidence": 0.85,
-      "macro_sentiment": 0.5,
-      "macro_confidence": 0.2,
-      "sector_sentiment": 0.57,
-      "sector_confidence": 0.45,
-      "effective_article_count": 1.1,
-      "source_count": 5,
-      "average_relevance": 0.79,
+      "momentum_5d": -0.1198,
+      "momentum_20d": -0.0168,
+      "daily_volatility": 0.0348,
+      "downside_volatility": 0.0475,
+      "max_drawdown_20d": 0.1454,
+      "positive_day_ratio_10d": 0.5,
+      "price_vs_20d_average": -0.0994,
+      "volume_trend_5d": 0.2038,
+      "market_relative_5d": -0.1161,
+      "market_relative_20d": -0.0224,
+      "sector_relative_5d": -0.1258,
+      "sector_relative_20d": -0.0742,
+      "news_sentiment": 0.07,
+      "raw_news_sentiment": -1.0,
+      "calibrated_news_sentiment": -0.8525,
+      "news_confidence": 0.86,
+      "macro_sentiment": 0.53,
+      "macro_confidence": 0.39,
+      "sector_sentiment": 0.52,
+      "sector_confidence": 0.37,
+      "effective_article_count": 1.95,
+      "source_count": 3,
+      "average_relevance": 0.99,
       "technical_training_ic": -0.0131,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0946,
-      "short_momentum": 0.0109,
-      "medium_momentum": 0.0434,
-      "trend_quality": 0.0141,
-      "volume_confirmation": -0.003,
-      "market_relative_strength": 0.021,
-      "sector_relative_strength": 0.0083,
-      "volatility_penalty": -0.0356,
-      "daily_volatility_penalty": -0.0163,
-      "downside_penalty": -0.0148,
-      "drawdown_penalty": -0.0045,
-      "news_adjustment": 0.1189,
-      "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0037,
-      "signal_alignment": 0.0091,
-      "technical_total": 0.059,
-      "trend_strength": 0.0683,
-      "relative_strength": 0.0293,
-      "participation": -0.003,
-      "risk_control": -0.0356,
+      "momentum": -0.1141,
+      "short_momentum": -0.066,
+      "medium_momentum": -0.005,
+      "trend_quality": -0.018,
+      "volume_confirmation": 0.0082,
+      "market_relative_strength": -0.0182,
+      "sector_relative_strength": -0.015,
+      "volatility_penalty": -0.0733,
+      "daily_volatility_penalty": -0.0313,
+      "downside_penalty": -0.027,
+      "drawdown_penalty": -0.015,
+      "news_adjustment": -0.1429,
+      "macro_adjustment": 0.0023,
+      "sector_adjustment": 0.0007,
+      "signal_alignment": 0.0346,
+      "technical_total": -0.1874,
+      "trend_strength": -0.089,
+      "relative_strength": -0.0332,
+      "participation": 0.0082,
+      "risk_control": -0.0733,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
-      "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 0.55,
-      "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.75,
-      "macro_sector_overlap": 0.0,
-      "total": 0.1907
+      "macro_dedup_penalty": 0.67,
+      "sector_dedup_penalty": 0.4,
+      "news_macro_overlap": 0.6,
+      "news_sector_overlap": 0.6,
+      "macro_sector_overlap": 1.0,
+      "total": -0.2927
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 1.3% and 20-day momentum is 14.5%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 4.1% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.8%, downside volatility near 1.4%, and a recent max drawdown of 3.6%.",
-      "Volume confirmation is -7.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 2.0% versus SPY over 5 days and 2.1% versus the sector ETF.",
-      "News signal is bullish with score 0.86, confidence 0.85, and 1.1 weighted articles across 5 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.86, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 6 articles across 5 sources, 1.1 effective weighted articles, average relevance 0.79, average source quality 0.75, confidence 0.85.",
-      "Broad market news leaned bullish for the Healthcare sector with score 0.57 and confidence 0.45.",
-      "Eli Lilly's acquisition of AtaiBeckley for up to $3.8B is a material strategic bet on psychedelic therapeutics. Near term this should boost sentiment toward large-cap pharma and specialty drug developers working on novel CNS indications (positive for healthcare sector equity flows). The deal raises expectations around future revenue/R&D synergies for Lilly specifically (not a tracked symbol here) and may lift comparable biotech names; regulatory and clinical-readout risk remains. No direct impact on DHR.",
-      "Sector overlay was trimmed by 45% because it overlaps with company or macro themes.",
+      "Price trend remains constructive: 5-day momentum is -12.0% and 20-day momentum is -1.7%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting -9.9% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 3.5%, downside volatility near 4.8%, and a recent max drawdown of 14.5%.",
+      "Volume confirmation is 20.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is -11.6% versus SPY over 5 days and -12.6% versus the sector ETF.",
+      "News signal is bearish with score 0.07, confidence 0.86, and 1.9 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bearish at 0.07, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 5 articles across 3 sources, 2.0 effective weighted articles, average relevance 0.99, average source quality 0.85, confidence 0.86.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.01).",
-      "Overall model score is 0.191 with high confidence."
+      "Price action and news are pointing in the same direction, which raises trust in the setup.",
+      "Overall model score is -0.293 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Danaher stock remains supported by earnings and margins",
-        "provider": "ad-hoc-news.de",
-        "url": "https://www.ad-hoc-news.de/boerse/news/ueberblick/danaher-stock-remains-supported-by-earnings-and-margins/69808661",
-        "published_at": "None",
-        "relevance_score": 0.96,
-        "sentiment": 0.28,
+        "title": "Danaher Slides 13% Despite Higher Q2 Earnings, Revenue And Full-Year Outlook",
+        "provider": "rttnews.com",
+        "url": "https://www.rttnews.com/story.aspx?Id=3668898",
+        "published_at": "2026-07-21T15:15:30Z",
+        "relevance_score": 0.99,
+        "sentiment": 0.41,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Directly discusses Danaher's recent financials (2025 revenue and strong adjusted operating margin) and investor focus on core revenue re-acceleration. This is company-specific context that supports sentiment but does not introduce a clear near-term catalyst beyond reiterating strengths and risks."
+        "llm_confidence": 0.85,
+        "llm_impact_score": -1.0,
+        "llm_reason": "Direct report of a ~13% intraday share decline tied to Danaher's Q2 release; immediate market reaction is highly material for the 1-10 day horizon."
       },
       {
-        "title": "Danaher Q2 2026 earnings preview",
-        "provider": "MSN",
-        "url": "https://www.msn.com/en-us/money/human-resources/danaher-q2-2026-earnings-preview/ar-AA28iIuq?ocid=finance-verthp-feeds",
-        "published_at": "None",
-        "relevance_score": 0.78,
-        "sentiment": 0.02,
+        "title": "Danaher Corporation (DHR) Q2 2026 Earnings Call Transcript",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4923768-danaher-corporation-dhr-q2-2026-earnings-call-transcript",
+        "published_at": "2026-07-21T16:03:59Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.44,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Earnings preview for Danaher ahead of Q2 2026—relevant for short-term trading around the report but contains no new data or analyst revisions that would materially change the outlook by itself."
+        "llm_confidence": 0.75,
+        "llm_impact_score": -1.0,
+        "llm_reason": "Full earnings call transcript contains management commentary and Q&A that can clarify drivers of the stock move and influence short-term sentiment and trading."
       },
       {
-        "title": "Danaher (DHR) Q2 Earnings Report Preview: What To Look For",
-        "provider": "FinancialContent",
-        "url": "https://www.financialcontent.com/article/stockstory-2026-7-20-danaher-dhr-q2-earnings-report-preview-what-to-look-for",
-        "published_at": "None",
-        "relevance_score": 0.78,
-        "sentiment": 0.29,
+        "title": "Danaher Corporation filed 10-Q: 10-Q",
+        "provider": "SEC EDGAR",
+        "url": "https://www.sec.gov/Archives/edgar/data/313616/000031361626000161/dhr-20260626.htm",
+        "published_at": "2026-07-20T17:48:38Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.0,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "More detailed Q2 earnings preview citing expected ~2.8% revenue growth and contextualizing prior EPS beat and sector sentiment. Raises probability of earnings-driven moves this week but remains a preview, not new results or guidance changes."
+        "llm_confidence": 0.6,
+        "llm_impact_score": -1.0,
+        "llm_reason": "The 10-Q is the formal quarterly filing; it contains detailed financials and disclosures but is largely confirmatory after the earnings release—moderate short-term relevance."
+      },
+      {
+        "title": "Danaher Corporation filed 8-K: 8-K",
+        "provider": "SEC EDGAR",
+        "url": "https://www.sec.gov/Archives/edgar/data/313616/000031361626000163/dhr-20260721.htm",
+        "published_at": "2026-07-20T17:55:01Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.0,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 0.5,
+        "llm_impact_score": -1.0,
+        "llm_reason": "An 8-K was filed (contents unspecified here). 8-Ks can be material, but without details the expected short-term impact is uncertain—treated as potentially relevant."
       }
     ],
-    "macro_evidence": [],
+    "macro_evidence": [
+      {
+        "title": "Danaher Q2 Earnings Review: Nothing Exciting For Me To Buy This Dip (NYSE:DHR)",
+        "feed": "marketaux",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4923830-danaher-q2-earnings-review-nothing-exciting-for-me-to-buy-this-dip",
+        "published_at": "2026-07-21T16:20:16Z",
+        "impact": "positive",
+        "weight": 0.043,
+        "event_type": "earnings_release",
+        "transmission_channel": "revenue/earnings surprise -> investor sentiment / valuation re-rating (company-specific demand signal)",
+        "affected_inputs": [
+          "revenue",
+          "earnings",
+          "segment growth (Biotechnology, Diagnostics, Life Sciences)",
+          "guidance / forward outlook",
+          "investor sentiment / valuation"
+        ],
+        "horizon": "1-2w",
+        "reason": "Danaher's Q2 beat signals continued end-market demand across its Biotechnology, Diagnostics, and Life Sciences segments, a first-order positive for the healthcare-equipment/diagnostics supply chain and for DHR specifically (supports near-term revenue and cashflow expectations). The author notes no compelling buy-the-dip catalyst, implying limited upside beyond the earnings relief; thus the likely short-horizon impact is modestly positive (limits downside, small lift to sentiment/valuation) rather than a strong bullish re-rating. Primary transmission is a company earnings/demand signal improving near-term expectations for revenue and margins, translating into a small to moderate positive effect on healthcare sector sentiment and DHR's stock over the next 1–2 weeks."
+      }
+    ],
     "thesis_monitor": {
-      "status": "watch",
-      "headline": "Support needs watching",
-      "summary": "Risk is still manageable, but volatility widened versus a clean setup.",
+      "status": "risk",
+      "headline": "Support needs review",
+      "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
       "alerts": [
-        "Risk is still manageable, but volatility widened versus a clean setup."
+        "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
+        "Volatility expanded enough to weaken the setup.",
+        "Recent news tone leaned negative with enough confidence to matter."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "positive",
-          "value": "1.3% 5D • 14.5% 20D",
-          "detail": "Price action is still supporting the release thesis."
+          "state": "risk",
+          "value": "-12.0% 5D • -1.7% 20D",
+          "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
         },
         {
           "label": "Volatility",
-          "state": "watch",
-          "value": "1.8% daily • 3.6% drawdown",
-          "detail": "Risk is still manageable, but volatility widened versus a clean setup."
+          "state": "risk",
+          "value": "3.5% daily • 14.5% drawdown",
+          "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
-          "state": "positive",
-          "value": "0.86 sentiment • 6 articles",
-          "detail": "Recent news flow is supportive and diversified enough to back the setup."
+          "state": "risk",
+          "value": "0.07 sentiment • 5 articles",
+          "detail": "Recent news tone leaned negative with enough confidence to matter."
         },
         {
           "label": "Macro",
           "state": "positive",
-          "value": "0.50 overlay • 0.20 conf",
+          "value": "0.53 overlay • 0.39 conf",
           "detail": "No strong world-news headwind is currently working against the setup."
         },
         {
           "label": "Margin",
-          "state": "positive",
-          "value": "+0.091 score • +0.260 conf",
-          "detail": "The pick cleared the release thresholds with room to spare."
+          "state": "risk",
+          "value": "-0.393 score • +0.024 conf",
+          "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news no fresh signal • macro neutral • sector 0 trading days",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -204,49 +239,44 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
-      "GDELT company news failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 2,
+        "used": 1,
         "limit": 25,
-        "remaining": 23,
+        "remaining": 24,
         "categories": {
-          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-20",
+          "date": "2026-07-21",
           "status": "healthy",
-          "used": 11,
+          "used": 1,
           "limit": 25,
-          "remaining": 14,
+          "remaining": 24,
           "categories": {
-            "company_news": 8,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 2,
+        "used": 1,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-20",
+          "date": "2026-07-21",
           "status": "tracking_only",
-          "used": 19,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 16,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -260,14 +290,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-20",
+          "date": "2026-07-21",
           "status": "healthy",
-          "used": 54,
+          "used": 2,
           "limit": 100,
-          "remaining": 46,
+          "remaining": 98,
           "categories": {
-            "company_news": 51,
-            "global_news": 3
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -281,14 +311,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-07-20",
+          "date": "2026-07-21",
           "status": "tracking_only",
-          "used": 54,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 3,
-            "submissions": 51
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -301,13 +331,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-07-20",
+          "date": "2026-07-21",
           "status": "healthy",
-          "used": 64,
+          "used": 3,
           "limit": 800,
-          "remaining": 736,
+          "remaining": 797,
           "categories": {
-            "price": 64
+            "price": 3
           }
         }
       }

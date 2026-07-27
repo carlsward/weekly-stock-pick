@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-20T13:49:50Z",
+  "generated_at": "2026-07-27T14:19:35Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -3153,8 +3153,8 @@
           }
         }
       ],
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null
+      "realized_5d_return": -0.0787,
+      "realized_5d_excess_return": -0.0732
     },
     {
       "week_id": "2026-W30",
@@ -3175,6 +3175,20 @@
       "confidence_label": "high",
       "data_as_of": "2026-07-20",
       "model_version": "v3.4",
+      "diagnostics": {
+        "technical_total": 0.0588,
+        "news_adjustment": 0.1182,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.6048,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 2303,
+        "technical_training_ic": -0.0131,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      },
       "top_candidates": [
         {
           "rank": 1,
@@ -3407,16 +3421,270 @@
           }
         }
       ],
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W31",
+      "week_start": "2026-07-27",
+      "week_end": "2026-07-31",
+      "week_label": "Jul 27 - 31, 2026",
+      "logged_at": "2026-07-27T14:19:35Z",
+      "status": "picked",
+      "status_reason": "T cleared the commercial release thresholds for this market week with a score of 0.234 and high confidence.",
+      "is_qualified": true,
+      "release_quality": "qualified",
+      "symbol": "T",
+      "company_name": "AT&T Inc.",
+      "sector": "communication_services",
+      "risk": "high",
+      "model_score": 0.2335,
+      "confidence_score": 0.77,
+      "confidence_label": "high",
+      "data_as_of": "2026-07-27",
+      "model_version": "v3.4",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "T",
+          "company_name": "AT&T Inc.",
+          "sector": "communication_services",
+          "risk": "high",
+          "model_score": 0.2335,
+          "confidence_score": 0.77,
+          "confidence_label": "high",
+          "price_as_of": "2026-07-27",
+          "news_as_of": "2026-07-26",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.0997,
+            "news_adjustment": 0.1185,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0153,
+            "news_signal_input": 0.592,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "JPM",
+          "company_name": "JPMorgan Chase & Co.",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.2125,
+          "confidence_score": 0.84,
+          "confidence_label": "high",
+          "price_as_of": "2026-07-27",
+          "news_as_of": "2026-07-27",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.0664,
+            "news_adjustment": 0.1345,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0115,
+            "news_signal_input": 0.704,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "ABT",
+          "company_name": "Abbott Laboratories",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": 0.2081,
+          "confidence_score": 0.82,
+          "confidence_label": "high",
+          "price_as_of": "2026-07-27",
+          "news_as_of": "2026-07-27",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0474,
+            "news_adjustment": 0.1514,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0093,
+            "news_signal_input": 0.8096,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "JNJ",
+          "company_name": "Johnson & Johnson",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.174,
+          "confidence_score": 0.75,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-27",
+          "news_as_of": "2026-07-27",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0641,
+            "news_adjustment": 0.1015,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0084,
+            "news_signal_input": 0.534,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "XOM",
+          "company_name": "Exxon Mobil Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": 0.1399,
+          "confidence_score": 0.67,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-27",
+          "news_as_of": "2026-07-22",
+          "article_count": 1,
+          "diagnostics": {
+            "technical_total": 0.0908,
+            "news_adjustment": 0.044,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0051,
+            "news_signal_input": 0.1477,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "AMGN",
+          "company_name": "Amgen Inc.",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1244,
+          "confidence_score": 0.65,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-27",
+          "news_as_of": "2026-07-26",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0548,
+            "news_adjustment": 0.065,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0046,
+            "news_signal_input": 0.2806,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "BAC",
+          "company_name": "Bank of America Corporation",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.1041,
+          "confidence_score": 0.67,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-27",
+          "news_as_of": "2026-07-25",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.0511,
+            "news_adjustment": 0.0498,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0032,
+            "news_signal_input": 0.1786,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "BRK.B",
+          "company_name": "Berkshire Hathaway Inc.",
+          "sector": "financials",
+          "risk": "low",
+          "model_score": 0.0971,
+          "confidence_score": 0.71,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-27",
+          "news_as_of": null,
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": -0.0346,
+            "news_adjustment": 0.1379,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0062,
+            "news_signal_input": 0.7216,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "AAPL",
+          "company_name": "Apple Inc.",
+          "sector": "technology",
+          "risk": "medium",
+          "model_score": 0.0906,
+          "confidence_score": 0.48,
+          "confidence_label": "low",
+          "price_as_of": "2026-07-27",
+          "news_as_of": null,
+          "article_count": 0,
+          "diagnostics": {
+            "technical_total": 0.0906,
+            "news_adjustment": 0.0,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0,
+            "news_signal_input": 0.0,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "VZ",
+          "company_name": "Verizon Communications Inc.",
+          "sector": "communication_services",
+          "risk": "high",
+          "model_score": 0.0896,
+          "confidence_score": 0.61,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-27",
+          "news_as_of": "2026-07-24",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.0454,
+            "news_adjustment": 0.0418,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0024,
+            "news_signal_input": 0.1525,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        }
+      ],
       "diagnostics": {
-        "technical_total": 0.0588,
-        "news_adjustment": 0.1182,
+        "technical_total": 0.0997,
+        "news_adjustment": 0.1185,
         "macro_adjustment": 0.0,
         "sector_adjustment": 0.0,
-        "news_signal_input": 0.6048,
+        "news_signal_input": 0.592,
         "macro_signal_input": 0.0,
         "sector_signal_input": 0.0,
         "technical_training_rows": 2303,
-        "technical_training_ic": -0.0131,
+        "technical_training_ic": -0.017,
         "news_macro_overlap": 0.0,
         "news_sector_overlap": 0.0,
         "macro_sector_overlap": 0.0
@@ -3441,7 +3709,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-20",
+          "date": "2026-07-27",
           "status": "healthy",
           "used": 7,
           "limit": 25,
@@ -3454,42 +3722,42 @@
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 15,
+        "used": 17,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 14,
+          "company_news": 16,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-20",
+          "date": "2026-07-27",
           "status": "tracking_only",
-          "used": 15,
+          "used": 17,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 14,
+            "company_news": 16,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 50,
+        "used": 52,
         "limit": 100,
-        "remaining": 50,
+        "remaining": 48,
         "categories": {
-          "company_news": 49,
+          "company_news": 51,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-20",
+          "date": "2026-07-27",
           "status": "healthy",
-          "used": 50,
+          "used": 52,
           "limit": 100,
-          "remaining": 50,
+          "remaining": 48,
           "categories": {
-            "company_news": 49,
+            "company_news": 51,
             "global_news": 1
           }
         }
@@ -3504,7 +3772,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-07-20",
+          "date": "2026-07-27",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -3524,7 +3792,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-07-20",
+          "date": "2026-07-27",
           "status": "healthy",
           "used": 58,
           "limit": 800,

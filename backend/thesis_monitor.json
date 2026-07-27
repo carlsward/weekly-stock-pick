@@ -1,85 +1,85 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-26T16:49:49Z",
-  "data_as_of": "2026-07-24",
-  "expected_next_refresh_at": "2026-07-27T16:49:49Z",
-  "stale_after": "2026-07-28T04:49:49Z",
+  "generated_at": "2026-07-27T14:27:11Z",
+  "data_as_of": "2026-07-27",
+  "expected_next_refresh_at": "2026-07-28T14:27:11Z",
+  "stale_after": "2026-07-29T02:27:11Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W30",
-    "week_label": "Jul 20 - 24, 2026",
-    "week_start": "2026-07-20",
-    "week_end": "2026-07-24"
+    "week_id": "2026-W31",
+    "week_label": "Jul 27 - 31, 2026",
+    "week_start": "2026-07-27",
+    "week_end": "2026-07-31"
   },
-  "source_dashboard_generated_at": "2026-07-20T13:49:50Z",
+  "source_dashboard_generated_at": "2026-07-27T14:19:35Z",
   "selection": {
     "status": "picked",
     "status_reason": "Live thesis monitor refreshed the active weekly pick.",
-    "threshold_score": 0.1,
+    "threshold_score": 0.12,
     "threshold_confidence": 0.55
   },
   "active_pick": {
-    "symbol": "DHR",
-    "company_name": "Danaher Corporation",
-    "sector": "healthcare",
+    "symbol": "T",
+    "company_name": "AT&T Inc.",
+    "sector": "communication_services",
     "risk": "high",
-    "model_score": -0.0253,
-    "confidence_score": 0.59,
-    "confidence_label": "medium",
-    "price_as_of": "2026-07-24",
-    "news_as_of": null,
+    "model_score": 0.2318,
+    "confidence_score": 0.77,
+    "confidence_label": "high",
+    "price_as_of": "2026-07-27",
+    "news_as_of": "2026-07-26",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 6,
+    "article_count": 4,
     "metrics": {
-      "momentum_5d": -0.0605,
-      "momentum_20d": -0.0089,
-      "daily_volatility": 0.0329,
-      "downside_volatility": 0.0388,
-      "max_drawdown_20d": 0.1268,
-      "positive_day_ratio_10d": 0.5,
-      "price_vs_20d_average": -0.0171,
-      "volume_trend_5d": 2.2151,
-      "market_relative_5d": -0.0549,
-      "market_relative_20d": -0.0151,
-      "sector_relative_5d": -0.069,
-      "sector_relative_20d": -0.0512,
+      "momentum_5d": 0.1091,
+      "momentum_20d": 0.0715,
+      "daily_volatility": 0.0226,
+      "downside_volatility": 0.0255,
+      "max_drawdown_20d": 0.0986,
+      "positive_day_ratio_10d": 0.7,
+      "price_vs_20d_average": 0.1186,
+      "volume_trend_5d": 0.2127,
+      "market_relative_5d": 0.1127,
+      "market_relative_20d": 0.056,
+      "sector_relative_5d": 0.1365,
+      "sector_relative_20d": 0.0522,
       "news_sentiment": 0.86,
-      "raw_news_sentiment": 0.9137,
-      "calibrated_news_sentiment": 0.7284,
-      "news_confidence": 0.84,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.7287,
+      "news_confidence": 0.82,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.99,
-      "source_count": 4,
-      "average_relevance": 0.67,
-      "technical_training_ic": -0.0131,
+      "effective_article_count": 0.85,
+      "source_count": 3,
+      "average_relevance": 0.86,
+      "technical_training_ic": -0.017,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": -0.0529,
-      "short_momentum": -0.0499,
-      "medium_momentum": -0.0027,
-      "trend_quality": -0.0039,
-      "volume_confirmation": 0.024,
-      "market_relative_strength": -0.0092,
-      "sector_relative_strength": -0.0113,
-      "volatility_penalty": -0.0716,
-      "daily_volatility_penalty": -0.0296,
+      "momentum": 0.1596,
+      "short_momentum": 0.066,
+      "medium_momentum": 0.0215,
+      "trend_quality": 0.0276,
+      "volume_confirmation": 0.0085,
+      "market_relative_strength": 0.021,
+      "sector_relative_strength": 0.015,
+      "volatility_penalty": -0.0596,
+      "daily_volatility_penalty": -0.0203,
       "downside_penalty": -0.027,
-      "drawdown_penalty": -0.015,
-      "news_adjustment": 0.1182,
+      "drawdown_penalty": -0.0123,
+      "news_adjustment": 0.1168,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": -0.019,
-      "technical_total": -0.1245,
-      "trend_strength": -0.0564,
-      "relative_strength": -0.0205,
-      "participation": 0.024,
-      "risk_control": -0.0716,
+      "signal_alignment": 0.0151,
+      "technical_total": 0.0999,
+      "trend_strength": 0.1151,
+      "relative_strength": 0.036,
+      "participation": 0.0085,
+      "risk_control": -0.0596,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,91 +88,76 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": -0.0253
+      "total": 0.2318
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is -6.0% and 20-day momentum is -0.9%.",
-      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting -1.7% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 3.3%, downside volatility near 3.9%, and a recent max drawdown of 12.7%.",
-      "Volume confirmation is 221.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is -5.5% versus SPY over 5 days and -6.9% versus the sector ETF.",
-      "News signal is bullish with score 0.86, confidence 0.84, and 1.0 weighted articles across 4 sources.",
+      "Price trend remains constructive: 5-day momentum is 10.9% and 20-day momentum is 7.2%.",
+      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 11.9% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 2.3%, downside volatility near 2.6%, and a recent max drawdown of 9.9%.",
+      "Volume confirmation is 21.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 11.3% versus SPY over 5 days and 13.6% versus the sector ETF.",
+      "News signal is bullish with score 0.86, confidence 0.82, and 0.8 weighted articles across 3 sources.",
       "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.86, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 6 articles across 4 sources, 1.0 effective weighted articles, average relevance 0.67, average source quality 0.75, confidence 0.84.",
-      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.01).",
-      "Overall model score is -0.025 with medium confidence."
+      "Evidence quality: 4 articles across 3 sources, 0.9 effective weighted articles, average relevance 0.86, average source quality 0.81, confidence 0.82.",
+      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.02).",
+      "Overall model score is 0.232 with high confidence."
     ],
     "news_evidence": [
       {
-        "title": "Danaher Corporation Revenue Breakdown – EUROTLX:4DHR",
-        "provider": "TradingView",
-        "url": "https://www.tradingview.com/symbols/EUROTLX-4DHR/financials-segments/",
-        "published_at": "None",
-        "relevance_score": 1.0,
-        "sentiment": 0.15,
+        "title": "AT&T Beat on Earnings, Announced a $10 Billion Buyback, and Still Trades at 8 Times Earnings With a 4.6% Yield.",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/t-beat-earnings-announced-10-222500597.html",
+        "published_at": "2026-07-26T22:25:00Z",
+        "relevance_score": 0.82,
+        "sentiment": 0.5,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Direct revenue breakdown for Danaher. Useful for background but appears to be static/historical data with no new catalyst or guidance; unlikely to move the stock over the next 1–10 trading days."
+        "llm_reason": "Reports an earnings beat and a $10B buyback—both material corporate developments that are likely to influence AT&T's share price in the short term."
       },
       {
-        "title": "Danaher Corp (DHR) Revenue Breakdown: Business Segments, Regional Revenue & Profit Contribution",
-        "provider": "TradingKey",
-        "url": "https://www.tradingkey.com/markets/stocks/dhr/revenue",
-        "published_at": "None",
-        "relevance_score": 0.78,
-        "sentiment": 0.04,
+        "title": "AT&T Inc. filed 10-Q: 10-Q AT&T INC. 2ND QUARTER 2026 FORM 10-Q INLINE",
+        "provider": "SEC EDGAR",
+        "url": "https://www.sec.gov/Archives/edgar/data/732717/000073271726000297/t-20260630.htm",
+        "published_at": "2026-07-22T20:07:05Z",
+        "relevance_score": 0.95,
+        "sentiment": 0.0,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Another revenue/region breakdown for Danaher. Informative for longer-term analysis but provides no fresh news or near-term catalyst; low expected short-term impact."
-      },
-      {
-        "title": "UTMD|Utah Medical Products Inc|Price:67.140|Chg%:+2.960",
-        "provider": "TradingKey",
-        "url": "https://www.tradingkey.com/markets/stocks/utmd",
-        "published_at": "None",
-        "relevance_score": 0.52,
-        "sentiment": 0.13,
-        "doc_type": "sector_macro",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Coverage of Utah Medical Products (UTMD), a healthcare-equipment company. May offer a faint sector-level sentiment signal, but the piece is company-specific to UTMD and unlikely to materially affect Danaher near-term."
+        "llm_reason": "Official SEC 10‑Q filing for Q2 2026 — primary source containing detailed financials and disclosures; materially relevant and likely to affect near-term trading as investors digest details."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
       "headline": "Support needs review",
-      "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
+      "summary": "Volatility expanded enough to weaken the setup.",
       "alerts": [
-        "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
         "Volatility expanded enough to weaken the setup.",
         "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "risk",
-          "value": "-6.0% 5D • -0.9% 20D",
-          "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
+          "state": "positive",
+          "value": "10.9% 5D • 7.2% 20D",
+          "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "3.3% daily • 12.7% drawdown",
+          "value": "2.3% daily • 9.9% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.86 sentiment • 6 articles",
+          "value": "0.86 sentiment • 4 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -183,14 +168,14 @@
         },
         {
           "label": "Margin",
-          "state": "risk",
-          "value": "-0.125 score • +0.043 conf",
-          "detail": "This is the top ranked stock, but it is below the normal release bar."
+          "state": "positive",
+          "value": "+0.112 score • +0.216 conf",
+          "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news no fresh signal • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 1 trading day • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -203,110 +188,109 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
-      "GDELT company news failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 2,
+        "used": 8,
         "limit": 25,
-        "remaining": 23,
+        "remaining": 17,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 6,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-07-26",
+          "date": "2026-07-27",
           "status": "healthy",
-          "used": 2,
+          "used": 8,
           "limit": 25,
-          "remaining": 23,
+          "remaining": 17,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 6,
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 2,
+        "used": 18,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 16,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-07-26",
+          "date": "2026-07-27",
           "status": "tracking_only",
-          "used": 2,
+          "used": 18,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 16,
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 54,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 46,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 52,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-07-26",
+          "date": "2026-07-27",
           "status": "healthy",
-          "used": 2,
+          "used": 54,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 46,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 52,
+            "global_news": 2
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 52,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1,
-          "submissions": 1
+          "ticker_map": 2,
+          "submissions": 50
         },
         "daily": {
-          "date": "2026-07-26",
+          "date": "2026-07-27",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 3,
+        "used": 61,
         "limit": 800,
-        "remaining": 797,
+        "remaining": 739,
         "categories": {
-          "price": 3
+          "price": 61
         },
         "daily": {
-          "date": "2026-07-26",
+          "date": "2026-07-27",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

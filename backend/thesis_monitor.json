@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-27T17:36:35Z",
-  "data_as_of": "2026-07-27",
-  "expected_next_refresh_at": "2026-07-28T17:36:35Z",
-  "stale_after": "2026-07-29T05:36:35Z",
+  "generated_at": "2026-07-28T17:19:39Z",
+  "data_as_of": "2026-07-28",
+  "expected_next_refresh_at": "2026-07-29T17:19:39Z",
+  "stale_after": "2026-07-30T05:19:39Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W31",
@@ -24,112 +24,101 @@
     "company_name": "AT&T Inc.",
     "sector": "communication_services",
     "risk": "high",
-    "model_score": 0.2144,
+    "model_score": 0.2154,
     "confidence_score": 0.74,
     "confidence_label": "medium",
-    "price_as_of": "2026-07-27",
-    "news_as_of": "2026-07-27",
+    "price_as_of": "2026-07-28",
+    "news_as_of": "2026-07-28",
     "macro_as_of": null,
-    "sector_as_of": null,
-    "article_count": 4,
+    "sector_as_of": "2026-07-28",
+    "article_count": 2,
     "metrics": {
-      "momentum_5d": 0.1141,
-      "momentum_20d": 0.0764,
-      "daily_volatility": 0.0226,
-      "downside_volatility": 0.0255,
-      "max_drawdown_20d": 0.0986,
-      "positive_day_ratio_10d": 0.7,
-      "price_vs_20d_average": 0.1234,
-      "volume_trend_5d": 0.2305,
-      "market_relative_5d": 0.122,
-      "market_relative_20d": 0.0648,
-      "sector_relative_5d": 0.1428,
-      "sector_relative_20d": 0.058,
-      "news_sentiment": 0.82,
+      "momentum_5d": 0.1128,
+      "momentum_20d": 0.1352,
+      "daily_volatility": 0.0204,
+      "downside_volatility": 0.0223,
+      "max_drawdown_20d": 0.0614,
+      "positive_day_ratio_10d": 0.8,
+      "price_vs_20d_average": 0.1303,
+      "volume_trend_5d": 0.0281,
+      "market_relative_5d": 0.1232,
+      "market_relative_20d": 0.1347,
+      "sector_relative_5d": 0.1156,
+      "sector_relative_20d": 0.1159,
+      "news_sentiment": 0.75,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.6492,
-      "news_confidence": 0.75,
+      "calibrated_news_sentiment": 0.5008,
+      "news_confidence": 0.63,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 0.58,
-      "source_count": 3,
-      "average_relevance": 0.81,
+      "sector_sentiment": 0.6,
+      "sector_confidence": 0.44,
+      "effective_article_count": 0.09,
+      "source_count": 2,
+      "average_relevance": 0.82,
       "technical_training_ic": -0.017,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1617,
+      "momentum": 0.1761,
       "short_momentum": 0.066,
-      "medium_momentum": 0.0229,
-      "trend_quality": 0.0276,
-      "volume_confirmation": 0.0092,
+      "medium_momentum": 0.0406,
+      "trend_quality": 0.0324,
+      "volume_confirmation": 0.0011,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0597,
-      "daily_volatility_penalty": -0.0204,
-      "downside_penalty": -0.027,
-      "drawdown_penalty": -0.0123,
-      "news_adjustment": 0.0994,
+      "volatility_penalty": -0.0501,
+      "daily_volatility_penalty": -0.0183,
+      "downside_penalty": -0.0241,
+      "drawdown_penalty": -0.0077,
+      "news_adjustment": 0.0717,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0,
-      "signal_alignment": 0.0131,
-      "technical_total": 0.102,
-      "trend_strength": 0.1165,
+      "sector_adjustment": 0.0062,
+      "signal_alignment": 0.0116,
+      "technical_total": 0.126,
+      "trend_strength": 0.139,
       "relative_strength": 0.036,
-      "participation": 0.0092,
-      "risk_control": -0.0597,
+      "participation": 0.0011,
+      "risk_control": -0.0501,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.65,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
+      "news_sector_overlap": 0.5,
       "macro_sector_overlap": 0.0,
-      "total": 0.2144
+      "total": 0.2154
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 11.4% and 20-day momentum is 7.6%.",
-      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 12.3% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 2.3%, downside volatility near 2.6%, and a recent max drawdown of 9.9%.",
-      "Volume confirmation is 23.1% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 12.2% versus SPY over 5 days and 14.3% versus the sector ETF.",
-      "News signal is bullish with score 0.82, confidence 0.75, and 0.6 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.82, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 4 articles across 3 sources, 0.6 effective weighted articles, average relevance 0.81, average source quality 0.81, confidence 0.75.",
+      "Price trend remains constructive: 5-day momentum is 11.3% and 20-day momentum is 13.5%.",
+      "Trend quality is supported by 80% positive sessions over the last 10 trading days and the price sitting 13.0% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 2.0%, downside volatility near 2.2%, and a recent max drawdown of 6.1%.",
+      "Volume confirmation is 2.8% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 12.3% versus SPY over 5 days and 11.6% versus the sector ETF.",
+      "News signal is bullish with score 0.75, confidence 0.63, and 0.1 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.75, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.1 effective weighted articles, average relevance 0.82, average source quality 0.75, confidence 0.63.",
+      "Broad market news leaned bullish for the Communication Services sector with score 0.60 and confidence 0.44.",
+      "A $14B Meta–BlackRock JV to build a large AI data-center campus increases near-term demand expectations for AI compute capacity, server hardware, construction and power. This directly supports revenue and growth narratives for large-cap AI/cloud platforms (communication-services names) and lifts sector sentiment. In the next 1–15 trading days the main effect is positive sector sentiment and re-rating of AI infrastructure beneficiaries; the item does not single out any tracked symbol (T).",
+      "Sector overlay was trimmed by 35% because it overlaps with company or macro themes.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.02).",
-      "Overall model score is 0.214 with medium confidence."
+      "Overall model score is 0.215 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "AT&T: 235% Coverage, Fiber Growth Surge, Low P/E (NYSE:T)",
-        "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4925875-at-and-t-235-percent-coverage-fiber-growth-surge-low-pe",
-        "published_at": "2026-07-27T14:35:32Z",
+        "title": "Quantum Advantage? AT&T Achieves 240X Acceleration With D-Wave Quantum Computer",
+        "provider": "forbes.com",
+        "url": "https://www.forbes.com/sites/johnkoetsier/2026/07/27/quantum-advantage-att-achieves-240x-acceleration-with-d-wave-quantum-computer/",
+        "published_at": "2026-07-28T03:46:35Z",
         "relevance_score": 0.82,
-        "sentiment": 0.48,
-        "doc_type": "company_specific",
-        "company_relevance": 0.9,
-        "materiality": 0.7,
-        "llm_confidence": 0.8,
+        "sentiment": 0.2,
+        "doc_type": "sector_macro",
+        "company_relevance": 0.4,
+        "materiality": 1.0,
+        "llm_confidence": 0.7,
         "llm_impact_score": 1.0,
-        "llm_reason": "Earnings/operational summary highlighting +1M Advanced Connectivity adds, record fiber growth, and +7% FCF — positive company-specific fundamentals that can support near-term bullishness, though much of this appears to be reiteration/analysis of Q2 results already released."
-      },
-      {
-        "title": "AT&T Inc. filed 10-Q: 10-Q AT&T INC. 2ND QUARTER 2026 FORM 10-Q INLINE",
-        "provider": "SEC EDGAR",
-        "url": "https://www.sec.gov/Archives/edgar/data/732717/000073271726000297/t-20260630.htm",
-        "published_at": "2026-07-22T20:07:05Z",
-        "relevance_score": 0.95,
-        "sentiment": 0.0,
-        "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 0.9,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Official SEC 10-Q for Q2 2026 — primary source containing detailed financials, balance sheet, cash flow and disclosures (dividend outlook, debt-reduction commentary). Highly material for near-term trading and for verifying/quantifying the earnings details discussed elsewhere."
+        "llm_reason": "Reports an AT&T/D‑Wave technical milestone (claimed 240x acceleration) that is positive for strategic/technology perception but appears technical/noncommercial. Absent immediate revenue, contracts, or material guidance changes, this is unlikely to have meaningful near‑term impact on AT&T's share price."
       }
     ],
     "macro_evidence": [],
@@ -145,19 +134,19 @@
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "11.4% 5D • 7.6% 20D",
+          "value": "11.3% 5D • 13.5% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "2.3% daily • 9.9% drawdown",
+          "value": "2.0% daily • 6.1% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.82 sentiment • 4 articles",
+          "value": "0.75 sentiment • 2 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -169,13 +158,13 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.094 score • +0.188 conf",
+          "value": "+0.095 score • +0.193 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector 0 trading days",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -200,14 +189,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-07-28",
           "status": "healthy",
-          "used": 9,
+          "used": 1,
           "limit": 25,
-          "remaining": 16,
+          "remaining": 24,
           "categories": {
-            "company_news": 6,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -220,14 +208,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-07-28",
           "status": "tracking_only",
-          "used": 19,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 16,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -241,14 +228,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-07-28",
           "status": "healthy",
-          "used": 56,
+          "used": 2,
           "limit": 100,
-          "remaining": 44,
+          "remaining": 98,
           "categories": {
-            "company_news": 53,
-            "global_news": 3
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -262,14 +249,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-07-28",
           "status": "tracking_only",
-          "used": 54,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 3,
-            "submissions": 51
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -282,13 +269,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-07-28",
           "status": "healthy",
-          "used": 64,
+          "used": 3,
           "limit": 800,
-          "remaining": 736,
+          "remaining": 797,
           "categories": {
-            "price": 64
+            "price": 3
           }
         }
       }

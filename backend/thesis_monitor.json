@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-30T17:16:10Z",
-  "data_as_of": "2026-07-30",
-  "expected_next_refresh_at": "2026-07-31T17:16:10Z",
-  "stale_after": "2026-08-01T05:16:10Z",
+  "generated_at": "2026-07-31T17:20:57Z",
+  "data_as_of": "2026-07-31",
+  "expected_next_refresh_at": "2026-08-01T17:20:57Z",
+  "stale_after": "2026-08-02T05:20:57Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W31",
@@ -24,62 +24,62 @@
     "company_name": "AT&T Inc.",
     "sector": "communication_services",
     "risk": "medium",
-    "model_score": 0.0897,
-    "confidence_score": 0.62,
-    "confidence_label": "medium",
-    "price_as_of": "2026-07-30",
+    "model_score": 0.0069,
+    "confidence_score": 0.53,
+    "confidence_label": "low",
+    "price_as_of": "2026-07-31",
     "news_as_of": "2026-07-28",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 3,
+    "article_count": 2,
     "metrics": {
-      "momentum_5d": 0.0113,
-      "momentum_20d": 0.1338,
-      "daily_volatility": 0.019,
-      "downside_volatility": 0.0183,
-      "max_drawdown_20d": 0.0584,
+      "momentum_5d": -0.04,
+      "momentum_20d": 0.1256,
+      "daily_volatility": 0.0191,
+      "downside_volatility": 0.017,
+      "max_drawdown_20d": 0.0606,
       "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0455,
-      "volume_trend_5d": -0.3615,
-      "market_relative_5d": 0.0093,
-      "market_relative_20d": 0.1431,
-      "sector_relative_5d": 0.0048,
-      "sector_relative_20d": 0.1731,
-      "news_sentiment": 0.69,
+      "price_vs_20d_average": 0.0371,
+      "volume_trend_5d": -0.3834,
+      "market_relative_5d": -0.0483,
+      "market_relative_20d": 0.1247,
+      "sector_relative_5d": -0.0519,
+      "sector_relative_20d": 0.1462,
+      "news_sentiment": 0.63,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.369,
-      "news_confidence": 0.43,
+      "calibrated_news_sentiment": 0.2595,
+      "news_confidence": 0.31,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.59,
+      "effective_article_count": 0.07,
       "source_count": 2,
-      "average_relevance": 0.79,
+      "average_relevance": 0.77,
       "technical_training_ic": -0.017,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0851,
-      "short_momentum": 0.0093,
-      "medium_momentum": 0.0401,
-      "trend_quality": 0.015,
-      "volume_confirmation": -0.0145,
-      "market_relative_strength": 0.02,
-      "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0441,
-      "daily_volatility_penalty": -0.0171,
-      "downside_penalty": -0.0197,
-      "drawdown_penalty": -0.0073,
-      "news_adjustment": 0.0464,
+      "momentum": 0.0214,
+      "short_momentum": -0.033,
+      "medium_momentum": 0.0377,
+      "trend_quality": 0.0131,
+      "volume_confirmation": -0.0153,
+      "market_relative_strength": 0.01,
+      "sector_relative_strength": 0.0088,
+      "volatility_penalty": -0.0432,
+      "daily_volatility_penalty": -0.0172,
+      "downside_penalty": -0.0184,
+      "drawdown_penalty": -0.0076,
+      "news_adjustment": 0.0296,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0024,
-      "technical_total": 0.0409,
-      "trend_strength": 0.0645,
-      "relative_strength": 0.035,
-      "participation": -0.0145,
-      "risk_control": -0.0441,
+      "signal_alignment": -0.0008,
+      "technical_total": -0.0218,
+      "trend_strength": 0.0178,
+      "relative_strength": 0.0189,
+      "participation": -0.0153,
+      "risk_control": -0.0432,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,19 +88,19 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0897
+      "total": 0.0069
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 1.1% and 20-day momentum is 13.4%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 4.6% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.9%, downside volatility near 1.8%, and a recent max drawdown of 5.8%.",
-      "Volume confirmation is -36.2% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 0.9% versus SPY over 5 days and 0.5% versus the sector ETF.",
-      "News signal is bullish with score 0.69, confidence 0.43, and 0.6 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.84, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 0.6 effective weighted articles, average relevance 0.79, average source quality 0.83, confidence 0.79.",
+      "Price trend remains constructive: 5-day momentum is -4.0% and 20-day momentum is 12.6%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 3.7% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.9%, downside volatility near 1.7%, and a recent max drawdown of 6.1%.",
+      "Volume confirmation is -38.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is -4.8% versus SPY over 5 days and -5.2% versus the sector ETF.",
+      "News signal is bullish with score 0.63, confidence 0.31, and 0.1 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.74, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.1 effective weighted articles, average relevance 0.77, average source quality 0.88, confidence 0.57.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.02).",
-      "Overall model score is 0.090 with medium confidence."
+      "Overall model score is 0.007 with low confidence."
     ],
     "news_evidence": [
       {
@@ -111,54 +111,40 @@
         "relevance_score": 0.95,
         "sentiment": 0.0,
         "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
+        "company_relevance": 0.9,
+        "materiality": 0.6,
+        "llm_confidence": 0.4,
         "llm_impact_score": 1.0,
-        "llm_reason": "Official SEC Form 8-K for AT&T — 8-Ks often report material events (earnings-related disclosures, management changes, dividends, significant contracts, litigation, etc.). Content is not provided here, so it could be material but the lack of details reduces confidence; monitor the filing text for specifics."
-      },
-      {
-        "title": "AT&T (T) Remains Competitive Despite Satellite Connectivity Concerns",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/t-t-remains-competitive-despite-130409846.html",
-        "published_at": "2026-07-28T13:04:09Z",
-        "relevance_score": 0.82,
-        "sentiment": 0.3,
-        "doc_type": "sector_macro",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Fund manager letter and market commentary mentioning AT&T's competitiveness amid satellite connectivity concerns. Useful for sentiment/positioning but unlikely to cause a direct, short-term price move for AT&T absent new, company-specific facts."
+        "llm_reason": "Direct SEC 8-K for AT&T — by nature could contain material information that moves the stock over the next 1–10 trading days, but the article text provides no details. Treat as potentially important pending review of the filing."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
       "headline": "Support needs review",
-      "summary": "Volatility expanded enough to weaken the setup.",
+      "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
       "alerts": [
+        "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
         "Volatility expanded enough to weaken the setup.",
-        "The news layer is still thin, so conviction should stay measured.",
-        "This is the top ranked stock, but it is below the normal release bar."
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "positive",
-          "value": "1.1% 5D • 13.4% 20D",
-          "detail": "Price action is still supporting the release thesis."
+          "state": "risk",
+          "value": "-4.0% 5D • 12.6% 20D",
+          "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "1.9% daily • 5.8% drawdown",
+          "value": "1.9% daily • 6.1% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.69 sentiment • 3 articles",
+          "value": "0.63 sentiment • 2 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -170,14 +156,14 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.030 score • +0.066 conf",
+          "value": "-0.113 score • -0.020 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
-          "state": "positive",
-          "value": "price 0 trading days • news 2 trading days • macro neutral • sector neutral",
-          "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
+          "state": "watch",
+          "value": "price 0 trading days • news 3 trading days • macro neutral • sector neutral",
+          "detail": "Freshness should be checked before acting: company news is 3 trading days old."
         }
       ]
     }
@@ -189,6 +175,7 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
+      "GDELT company news failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
@@ -201,7 +188,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-30",
+          "date": "2026-07-31",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -213,19 +200,21 @@
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 2,
         "limit": null,
         "remaining": null,
         "categories": {
+          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-30",
+          "date": "2026-07-31",
           "status": "tracking_only",
-          "used": 1,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
+            "company_news": 1,
             "global_news": 1
           }
         }
@@ -240,7 +229,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-30",
+          "date": "2026-07-31",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -261,7 +250,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-07-30",
+          "date": "2026-07-31",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -281,7 +270,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-07-30",
+          "date": "2026-07-31",
           "status": "healthy",
           "used": 3,
           "limit": 800,

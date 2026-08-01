@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4-monthly",
-  "generated_at": "2026-07-01T14:53:43Z",
+  "generated_at": "2026-08-01T13:34:51Z",
   "entries": [
     {
       "month_id": "2026-03",
@@ -520,6 +520,8 @@
       "confidence_label": null,
       "data_as_of": "2026-07-01",
       "model_version": "v3.4-monthly",
+      "realized_20d_return": null,
+      "realized_20d_excess_return": null,
       "top_candidates": [
         {
           "rank": 1,
@@ -723,6 +725,228 @@
         }
       ],
       "diagnostics": null
+    },
+    {
+      "month_id": "2026-08",
+      "month_start": "2026-08-01",
+      "month_end": "2026-08-31",
+      "rebalance_date": "2026-08-01",
+      "month_label": "August 2026",
+      "logged_at": "2026-08-01T13:34:51Z",
+      "status": "no_pick",
+      "status_reason": "No monthly candidate cleared the minimum score threshold of 0.12. The best candidate was BRK.B at 0.049.",
+      "symbol": null,
+      "company_name": null,
+      "sector": null,
+      "risk": null,
+      "model_score": null,
+      "confidence_score": null,
+      "confidence_label": null,
+      "data_as_of": "2026-08-01",
+      "model_version": "v3.4-monthly",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "BRK.B",
+          "company_name": "Berkshire Hathaway Inc.",
+          "sector": "financials",
+          "risk": "low",
+          "model_score": 0.0489,
+          "confidence_score": 0.73,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-31",
+          "news_as_of": null,
+          "article_count": 6,
+          "diagnostics": {
+            "technical_total": -0.0564,
+            "news_adjustment": 0.1049,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0079,
+            "signal_alignment": -0.0075
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "V",
+          "company_name": "Visa Inc.",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.0287,
+          "confidence_score": 0.67,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-31",
+          "news_as_of": "2026-07-31",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": -0.0684,
+            "news_adjustment": 0.0971,
+            "macro_adjustment": 0.0035,
+            "sector_adjustment": 0.0048,
+            "signal_alignment": -0.0084
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "MA",
+          "company_name": "Mastercard Incorporated",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.024,
+          "confidence_score": 0.7,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-31",
+          "news_as_of": "2026-07-30",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": -0.054,
+            "news_adjustment": 0.0748,
+            "macro_adjustment": 0.0035,
+            "sector_adjustment": 0.0048,
+            "signal_alignment": -0.0051
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "AMGN",
+          "company_name": "Amgen Inc.",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.0154,
+          "confidence_score": 0.61,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-31",
+          "news_as_of": "2026-07-31",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": -0.0617,
+            "news_adjustment": 0.0836,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0065
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "BAC",
+          "company_name": "Bank of America Corporation",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.0044,
+          "confidence_score": 0.69,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-31",
+          "news_as_of": "2026-07-31",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": -0.0866,
+            "news_adjustment": 0.0928,
+            "macro_adjustment": 0.0035,
+            "sector_adjustment": 0.0048,
+            "signal_alignment": -0.0101
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "BMY",
+          "company_name": "Bristol-Myers Squibb Company",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": -0.0024,
+          "confidence_score": 0.69,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-31",
+          "news_as_of": "2026-07-31",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": -0.107,
+            "news_adjustment": 0.1209,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0163
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "ABT",
+          "company_name": "Abbott Laboratories",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": -0.0029,
+          "confidence_score": 0.65,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-31",
+          "news_as_of": "2026-07-28",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0992,
+            "news_adjustment": 0.1101,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0138
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "KO",
+          "company_name": "The Coca-Cola Company",
+          "sector": "consumer_staples",
+          "risk": "medium",
+          "model_score": -0.0232,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-31",
+          "news_as_of": "2026-07-30",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": -0.1097,
+            "news_adjustment": 0.1003,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0139
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "CVX",
+          "company_name": "Chevron Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": -0.0555,
+          "confidence_score": 0.56,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-31",
+          "news_as_of": "2026-07-31",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": -0.1219,
+            "news_adjustment": 0.0785,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.012
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "JPM",
+          "company_name": "JPMorgan Chase & Co.",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": -0.0594,
+          "confidence_score": 0.63,
+          "confidence_label": "medium",
+          "price_as_of": "2026-07-31",
+          "news_as_of": "2026-07-31",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": -0.121,
+            "news_adjustment": 0.0629,
+            "macro_adjustment": 0.0035,
+            "sector_adjustment": 0.0048,
+            "signal_alignment": -0.0096
+          }
+        }
+      ],
+      "diagnostics": null
     }
   ],
   "data_quality": {
@@ -735,42 +959,42 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 5,
+        "used": 3,
         "limit": 25,
-        "remaining": 20,
+        "remaining": 22,
         "categories": {
-          "company_news": 4,
+          "company_news": 2,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-01",
+          "date": "2026-08-01",
           "status": "healthy",
-          "used": 5,
+          "used": 3,
           "limit": 25,
-          "remaining": 20,
+          "remaining": 22,
           "categories": {
-            "company_news": 4,
+            "company_news": 2,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 5,
+        "used": 4,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 4,
+          "company_news": 3,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-01",
+          "date": "2026-08-01",
           "status": "tracking_only",
-          "used": 5,
+          "used": 4,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 4,
+            "company_news": 3,
             "global_news": 1
           }
         }
@@ -785,7 +1009,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-01",
+          "date": "2026-08-01",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -806,7 +1030,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-07-01",
+          "date": "2026-08-01",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -819,20 +1043,20 @@
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 61,
+        "used": 58,
         "limit": 800,
-        "remaining": 739,
+        "remaining": 742,
         "categories": {
-          "price": 61
+          "price": 58
         },
         "daily": {
-          "date": "2026-07-01",
+          "date": "2026-08-01",
           "status": "healthy",
-          "used": 61,
+          "used": 58,
           "limit": 800,
-          "remaining": 739,
+          "remaining": 742,
           "categories": {
-            "price": 61
+            "price": 58
           }
         }
       }

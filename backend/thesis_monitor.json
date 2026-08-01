@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-31T17:20:57Z",
+  "generated_at": "2026-08-01T16:51:09Z",
   "data_as_of": "2026-07-31",
-  "expected_next_refresh_at": "2026-08-01T17:20:57Z",
-  "stale_after": "2026-08-02T05:20:57Z",
+  "expected_next_refresh_at": "2026-08-02T16:51:09Z",
+  "stale_after": "2026-08-03T04:51:09Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W31",
@@ -24,8 +24,8 @@
     "company_name": "AT&T Inc.",
     "sector": "communication_services",
     "risk": "medium",
-    "model_score": 0.0069,
-    "confidence_score": 0.53,
+    "model_score": 0.0034,
+    "confidence_score": 0.54,
     "confidence_label": "low",
     "price_as_of": "2026-07-31",
     "news_as_of": "2026-07-28",
@@ -33,53 +33,53 @@
     "sector_as_of": null,
     "article_count": 2,
     "metrics": {
-      "momentum_5d": -0.04,
-      "momentum_20d": 0.1256,
+      "momentum_5d": -0.0365,
+      "momentum_20d": 0.1297,
       "daily_volatility": 0.0191,
-      "downside_volatility": 0.017,
-      "max_drawdown_20d": 0.0606,
-      "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0371,
-      "volume_trend_5d": -0.3834,
-      "market_relative_5d": -0.0483,
-      "market_relative_20d": 0.1247,
-      "sector_relative_5d": -0.0519,
-      "sector_relative_20d": 0.1462,
-      "news_sentiment": 0.63,
-      "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.2595,
-      "news_confidence": 0.31,
+      "downside_volatility": 0.0184,
+      "max_drawdown_20d": 0.0588,
+      "positive_day_ratio_10d": 0.7,
+      "price_vs_20d_average": 0.0407,
+      "volume_trend_5d": -0.2702,
+      "market_relative_5d": -0.0469,
+      "market_relative_20d": 0.1263,
+      "sector_relative_5d": -0.0537,
+      "sector_relative_20d": 0.1439,
+      "news_sentiment": 0.55,
+      "raw_news_sentiment": 0.4426,
+      "calibrated_news_sentiment": 0.1114,
+      "news_confidence": 0.3,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.07,
+      "effective_article_count": 0.06,
       "source_count": 2,
       "average_relevance": 0.77,
       "technical_training_ic": -0.017,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0214,
-      "short_momentum": -0.033,
-      "medium_momentum": 0.0377,
-      "trend_quality": 0.0131,
-      "volume_confirmation": -0.0153,
-      "market_relative_strength": 0.01,
-      "sector_relative_strength": 0.0088,
-      "volatility_penalty": -0.0432,
+      "momentum": 0.0357,
+      "short_momentum": -0.0301,
+      "medium_momentum": 0.0389,
+      "trend_quality": 0.0187,
+      "volume_confirmation": -0.0108,
+      "market_relative_strength": 0.0104,
+      "sector_relative_strength": 0.0085,
+      "volatility_penalty": -0.0444,
       "daily_volatility_penalty": -0.0172,
-      "downside_penalty": -0.0184,
-      "drawdown_penalty": -0.0076,
-      "news_adjustment": 0.0296,
+      "downside_penalty": -0.0198,
+      "drawdown_penalty": -0.0073,
+      "news_adjustment": 0.0122,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": -0.0008,
-      "technical_total": -0.0218,
-      "trend_strength": 0.0178,
+      "signal_alignment": -0.0001,
+      "technical_total": -0.0087,
+      "trend_strength": 0.0276,
       "relative_strength": 0.0189,
-      "participation": -0.0153,
-      "risk_control": -0.0432,
+      "participation": -0.0108,
+      "risk_control": -0.0444,
       "block_weight_news": 0.18,
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
@@ -88,19 +88,19 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0069
+      "total": 0.0034
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is -4.0% and 20-day momentum is 12.6%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 3.7% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.9%, downside volatility near 1.7%, and a recent max drawdown of 6.1%.",
-      "Volume confirmation is -38.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is -4.8% versus SPY over 5 days and -5.2% versus the sector ETF.",
-      "News signal is bullish with score 0.63, confidence 0.31, and 0.1 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.74, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 2 articles across 2 sources, 0.1 effective weighted articles, average relevance 0.77, average source quality 0.88, confidence 0.57.",
+      "Price trend remains constructive: 5-day momentum is -3.6% and 20-day momentum is 13.0%.",
+      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 4.1% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.9%, downside volatility near 1.8%, and a recent max drawdown of 5.9%.",
+      "Volume confirmation is -27.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is -4.7% versus SPY over 5 days and -5.4% versus the sector ETF.",
+      "News signal is neutral with score 0.55, confidence 0.30, and 0.1 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.60, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.1 effective weighted articles, average relevance 0.77, average source quality 0.88, confidence 0.55.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.02).",
-      "Overall model score is 0.007 with low confidence."
+      "Overall model score is 0.003 with low confidence."
     ],
     "news_evidence": [
       {
@@ -113,9 +113,9 @@
         "doc_type": "company_specific",
         "company_relevance": 0.9,
         "materiality": 0.6,
-        "llm_confidence": 0.4,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Direct SEC 8-K for AT&T — by nature could contain material information that moves the stock over the next 1–10 trading days, but the article text provides no details. Treat as potentially important pending review of the filing."
+        "llm_confidence": 0.35,
+        "llm_impact_score": 0.5,
+        "llm_reason": "An 8-K is a company-specific SEC filing and can contain material disclosures that affect the stock in the short term (e.g., leadership changes, earnings-related items, debt or dividend actions). However, the text provided contains no details about the filing’s content, so its actual impact is uncertain. Recommend reviewing the 8-K contents to update assessment."
       }
     ],
     "macro_evidence": [],
@@ -132,19 +132,19 @@
         {
           "label": "Momentum",
           "state": "risk",
-          "value": "-4.0% 5D • 12.6% 20D",
+          "value": "-3.6% 5D • 13.0% 20D",
           "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "1.9% daily • 6.1% drawdown",
+          "value": "1.9% daily • 5.9% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.63 sentiment • 2 articles",
+          "value": "0.55 sentiment • 2 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -156,7 +156,7 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.113 score • -0.020 conf",
+          "value": "-0.117 score • -0.007 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
@@ -188,13 +188,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-31",
+          "date": "2026-08-01",
           "status": "healthy",
-          "used": 1,
+          "used": 4,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 21,
           "categories": {
-            "global_news": 1
+            "company_news": 2,
+            "global_news": 2
           }
         }
       },
@@ -208,14 +209,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-31",
+          "date": "2026-08-01",
           "status": "tracking_only",
-          "used": 2,
+          "used": 6,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 4,
+            "global_news": 2
           }
         }
       },
@@ -229,14 +230,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-31",
+          "date": "2026-08-01",
           "status": "healthy",
-          "used": 2,
+          "used": 52,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 48,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 50,
+            "global_news": 2
           }
         }
       },
@@ -250,14 +251,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-07-31",
+          "date": "2026-08-01",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
@@ -270,13 +271,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-07-31",
+          "date": "2026-08-01",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

@@ -1,18 +1,18 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-02T16:49:41Z",
-  "data_as_of": "2026-07-31",
-  "expected_next_refresh_at": "2026-08-03T16:49:41Z",
-  "stale_after": "2026-08-04T04:49:41Z",
+  "generated_at": "2026-08-03T14:36:19Z",
+  "data_as_of": "2026-08-03",
+  "expected_next_refresh_at": "2026-08-04T14:36:19Z",
+  "stale_after": "2026-08-05T02:36:19Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W31",
-    "week_label": "Jul 27 - 31, 2026",
-    "week_start": "2026-07-27",
-    "week_end": "2026-07-31"
+    "week_id": "2026-W32",
+    "week_label": "Aug 03 - 07, 2026",
+    "week_start": "2026-08-03",
+    "week_end": "2026-08-07"
   },
-  "source_dashboard_generated_at": "2026-07-27T14:19:35Z",
+  "source_dashboard_generated_at": "2026-08-03T14:28:42Z",
   "selection": {
     "status": "picked",
     "status_reason": "Live thesis monitor refreshed the active weekly pick.",
@@ -20,88 +20,133 @@
     "threshold_confidence": 0.55
   },
   "active_pick": {
-    "symbol": "T",
-    "company_name": "AT&T Inc.",
-    "sector": "communication_services",
-    "risk": "medium",
-    "model_score": -0.0087,
-    "confidence_score": 0.44,
-    "confidence_label": "low",
-    "price_as_of": "2026-07-31",
-    "news_as_of": null,
+    "symbol": "AMZN",
+    "company_name": "Amazon.com Inc.",
+    "sector": "consumer_discretionary",
+    "risk": "high",
+    "model_score": 0.2698,
+    "confidence_score": 0.73,
+    "confidence_label": "medium",
+    "price_as_of": "2026-08-03",
+    "news_as_of": "2026-08-03",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 0,
+    "article_count": 4,
     "metrics": {
-      "momentum_5d": -0.0365,
-      "momentum_20d": 0.1297,
-      "daily_volatility": 0.0191,
-      "downside_volatility": 0.0184,
-      "max_drawdown_20d": 0.0588,
-      "positive_day_ratio_10d": 0.7,
-      "price_vs_20d_average": 0.0407,
-      "volume_trend_5d": -0.2702,
-      "market_relative_5d": -0.0469,
-      "market_relative_20d": 0.1263,
-      "sector_relative_5d": -0.0537,
-      "sector_relative_20d": 0.1439,
-      "news_sentiment": 0.5,
-      "raw_news_sentiment": 0.0,
-      "calibrated_news_sentiment": 0.0,
-      "news_confidence": 0.2,
+      "momentum_5d": 0.2317,
+      "momentum_20d": 0.1673,
+      "daily_volatility": 0.0392,
+      "downside_volatility": 0.0174,
+      "max_drawdown_20d": 0.111,
+      "positive_day_ratio_10d": 0.3,
+      "price_vs_20d_average": 0.159,
+      "volume_trend_5d": 0.7865,
+      "market_relative_5d": 0.2063,
+      "market_relative_20d": 0.162,
+      "sector_relative_5d": 0.1546,
+      "sector_relative_20d": 0.165,
+      "news_sentiment": 0.9,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.8047,
+      "news_confidence": 0.87,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.0,
-      "source_count": 0,
-      "average_relevance": 0.0,
-      "technical_training_ic": -0.017,
+      "effective_article_count": 1.1,
+      "source_count": 3,
+      "average_relevance": 0.79,
+      "technical_training_ic": 0.0019,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0357,
-      "short_momentum": -0.0301,
-      "medium_momentum": 0.0389,
-      "trend_quality": 0.0187,
-      "volume_confirmation": -0.0108,
-      "market_relative_strength": 0.0104,
-      "sector_relative_strength": 0.0085,
-      "volatility_penalty": -0.0444,
-      "daily_volatility_penalty": -0.0172,
-      "downside_penalty": -0.0198,
-      "drawdown_penalty": -0.0073,
-      "news_adjustment": 0.0,
+      "momentum": 0.1846,
+      "short_momentum": 0.066,
+      "medium_momentum": 0.0502,
+      "trend_quality": 0.0084,
+      "volume_confirmation": 0.024,
+      "market_relative_strength": 0.021,
+      "sector_relative_strength": 0.015,
+      "volatility_penalty": -0.068,
+      "daily_volatility_penalty": -0.0353,
+      "downside_penalty": -0.0188,
+      "drawdown_penalty": -0.0139,
+      "news_adjustment": 0.133,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0,
-      "technical_total": -0.0087,
-      "trend_strength": 0.0276,
-      "relative_strength": 0.0189,
-      "participation": -0.0108,
-      "risk_control": -0.0444,
-      "block_weight_news": 0.18,
-      "block_weight_macro": 0.1,
-      "block_weight_sector": 0.08,
+      "signal_alignment": 0.0202,
+      "technical_total": 0.1166,
+      "trend_strength": 0.1246,
+      "relative_strength": 0.036,
+      "participation": 0.024,
+      "risk_control": -0.068,
+      "block_weight_news": 0.179,
+      "block_weight_macro": 0.0993,
+      "block_weight_sector": 0.0816,
       "macro_dedup_penalty": 1.0,
       "sector_dedup_penalty": 1.0,
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": -0.0087
+      "total": 0.2698
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is -3.6% and 20-day momentum is 13.0%.",
-      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 4.1% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.9%, downside volatility near 1.8%, and a recent max drawdown of 5.9%.",
-      "Volume confirmation is -27.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is -4.7% versus SPY over 5 days and -5.4% versus the sector ETF.",
-      "No recent relevant news passed the filter, so the news layer stayed neutral and contributed less confidence.",
-      "Recent T company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral.",
-      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.02).",
-      "Overall model score is -0.009 with low confidence."
+      "Price trend remains constructive: 5-day momentum is 23.2% and 20-day momentum is 16.7%.",
+      "Trend quality is supported by 30% positive sessions over the last 10 trading days and the price sitting 15.9% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 3.9%, downside volatility near 1.7%, and a recent max drawdown of 11.1%.",
+      "Volume confirmation is 78.6% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 20.6% versus SPY over 5 days and 15.5% versus the sector ETF.",
+      "News signal is bullish with score 0.90, confidence 0.87, and 1.1 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.90, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 4 articles across 3 sources, 1.1 effective weighted articles, average relevance 0.79, average source quality 0.88, confidence 0.87.",
+      "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
+      "Price action and news are pointing in the same direction, which raises trust in the setup.",
+      "Overall model score is 0.270 with medium confidence."
     ],
-    "news_evidence": [],
+    "news_evidence": [
+      {
+        "title": "Amazon.com Inc. filed 10-Q: 10-Q",
+        "provider": "SEC EDGAR",
+        "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm",
+        "published_at": "2026-07-30T22:11:13Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.0,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "This is Amazon's official SEC Form 10-Q for the period ending 2026-06-30. A 10-Q can contain material financial results, risk disclosures, and forward-looking information that can move the stock in the short term. Impact depends on the filing contents (results, guidance, reserve items), so it's rated high relevance but moderate uncertainty until parsed."
+      },
+      {
+        "title": "Amazon.com Inc. filed 8-K: 8-K",
+        "provider": "SEC EDGAR",
+        "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260730.htm",
+        "published_at": "2026-07-30T20:06:23Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.0,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "An Amazon 8-K often announces specific material events (e.g., leadership changes, major contracts, restatements). Such items can be market-moving over the next few trading days; classification is company-specific and likely material, but actual impact depends on the 8-K content."
+      },
+      {
+        "title": "What Salesforce’s (CRM) $1.6 Billion VA Contract Signals for Its Government Cloud Strategy",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/technology/ai/articles/salesforce-crm-1-6-billion-100007361.html",
+        "published_at": "2026-08-03T10:00:07Z",
+        "relevance_score": 0.63,
+        "sentiment": -0.32,
+        "doc_type": "sector_macro",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Article centers on Salesforce winning a VA cloud contract and broader federal cloud/AI demand. That is a sector-level signal which could modestly indicate stronger government cloud spending (potentially positive for AWS), but it does not provide company-specific, actionable information about Amazon in the next 1–10 days."
+      }
+    ],
     "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
@@ -109,27 +154,26 @@
       "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
       "alerts": [
         "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
-        "Volatility expanded enough to weaken the setup.",
-        "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
+        "Volatility expanded enough to weaken the setup."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "risk",
-          "value": "-3.6% 5D • 13.0% 20D",
+          "value": "23.2% 5D • 16.7% 20D",
           "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "1.9% daily • 5.9% drawdown",
+          "value": "3.9% daily • 11.1% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
-          "state": "watch",
-          "value": "0.50 sentiment • 0 articles",
-          "detail": "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
+          "state": "positive",
+          "value": "0.90 sentiment • 4 articles",
+          "detail": "Recent news flow is supportive and diversified enough to back the setup."
         },
         {
           "label": "Macro",
@@ -139,14 +183,14 @@
         },
         {
           "label": "Margin",
-          "state": "risk",
-          "value": "-0.129 score • -0.105 conf",
-          "detail": "This is the top ranked stock, but it is below the normal release bar."
+          "state": "positive",
+          "value": "+0.150 score • +0.178 conf",
+          "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news no fresh signal • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -159,108 +203,109 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
-      "GDELT company news failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 7,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 18,
         "categories": {
-          "global_news": 1
+          "company_news": 5,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-08-02",
+          "date": "2026-08-03",
           "status": "healthy",
-          "used": 1,
+          "used": 7,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 18,
           "categories": {
-            "global_news": 1
+            "company_news": 5,
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 2,
+        "used": 16,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 14,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-08-02",
+          "date": "2026-08-03",
           "status": "tracking_only",
-          "used": 2,
+          "used": 16,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 14,
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 57,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 43,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 55,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-08-02",
+          "date": "2026-08-03",
           "status": "healthy",
-          "used": 2,
+          "used": 57,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 43,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 55,
+            "global_news": 2
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 52,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1,
-          "submissions": 1
+          "ticker_map": 2,
+          "submissions": 50
         },
         "daily": {
-          "date": "2026-08-02",
+          "date": "2026-08-03",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 3,
+        "used": 61,
         "limit": 800,
-        "remaining": 797,
+        "remaining": 739,
         "categories": {
-          "price": 3
+          "price": 61
         },
         "daily": {
-          "date": "2026-08-02",
+          "date": "2026-08-03",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

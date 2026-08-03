@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-07-27T14:19:35Z",
+  "generated_at": "2026-08-03T14:28:42Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -3421,8 +3421,8 @@
           }
         }
       ],
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null
+      "realized_5d_return": 0.0182,
+      "realized_5d_excess_return": 0.0071
     },
     {
       "week_id": "2026-W31",
@@ -3443,6 +3443,20 @@
       "confidence_label": "high",
       "data_as_of": "2026-07-27",
       "model_version": "v3.4",
+      "diagnostics": {
+        "technical_total": 0.0997,
+        "news_adjustment": 0.1185,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.592,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 2303,
+        "technical_training_ic": -0.017,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      },
       "top_candidates": [
         {
           "rank": 1,
@@ -3675,16 +3689,270 @@
           }
         }
       ],
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W32",
+      "week_start": "2026-08-03",
+      "week_end": "2026-08-07",
+      "week_label": "Aug 03 - 07, 2026",
+      "logged_at": "2026-08-03T14:28:42Z",
+      "status": "picked",
+      "status_reason": "AMZN cleared the commercial release thresholds for this market week with a score of 0.249 and medium confidence.",
+      "is_qualified": true,
+      "release_quality": "qualified",
+      "symbol": "AMZN",
+      "company_name": "Amazon.com Inc.",
+      "sector": "consumer_discretionary",
+      "risk": "high",
+      "model_score": 0.2489,
+      "confidence_score": 0.71,
+      "confidence_label": "medium",
+      "data_as_of": "2026-08-03",
+      "model_version": "v3.4",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "AMZN",
+          "company_name": "Amazon.com Inc.",
+          "sector": "consumer_discretionary",
+          "risk": "high",
+          "model_score": 0.2489,
+          "confidence_score": 0.71,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-03",
+          "news_as_of": "2026-08-03",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.1175,
+            "news_adjustment": 0.114,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0174,
+            "news_signal_input": 0.5688,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "MSFT",
+          "company_name": "Microsoft Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.2368,
+          "confidence_score": 0.75,
+          "confidence_label": "high",
+          "price_as_of": "2026-08-03",
+          "news_as_of": "2026-07-29",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1452,
+            "news_adjustment": 0.0495,
+            "macro_adjustment": 0.0168,
+            "sector_adjustment": 0.0161,
+            "signal_alignment": 0.0092,
+            "news_signal_input": 0.1786,
+            "macro_signal_input": 0.1336,
+            "sector_signal_input": 0.1629
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "ACN",
+          "company_name": "Accenture plc",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.19,
+          "confidence_score": 0.68,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-03",
+          "news_as_of": "2026-07-31",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.1152,
+            "news_adjustment": 0.0493,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0183,
+            "signal_alignment": 0.0073,
+            "news_signal_input": 0.1764,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.1852
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "BRK.B",
+          "company_name": "Berkshire Hathaway Inc.",
+          "sector": "financials",
+          "risk": "low",
+          "model_score": 0.1781,
+          "confidence_score": 0.82,
+          "confidence_label": "high",
+          "price_as_of": "2026-08-03",
+          "news_as_of": null,
+          "article_count": 6,
+          "diagnostics": {
+            "technical_total": 0.0378,
+            "news_adjustment": 0.1338,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0066,
+            "news_signal_input": 0.704,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "AMGN",
+          "company_name": "Amgen Inc.",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.161,
+          "confidence_score": 0.74,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-03",
+          "news_as_of": "2026-08-03",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.0196,
+            "news_adjustment": 0.1379,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0035,
+            "news_signal_input": 0.7298,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "BMY",
+          "company_name": "Bristol-Myers Squibb Company",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.152,
+          "confidence_score": 0.72,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-03",
+          "news_as_of": "2026-07-31",
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": 0.0927,
+            "news_adjustment": 0.0529,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0063,
+            "news_signal_input": 0.1954,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "GOOGL",
+          "company_name": "Alphabet Inc.",
+          "sector": "communication_services",
+          "risk": "high",
+          "model_score": 0.1458,
+          "confidence_score": 0.62,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-03",
+          "news_as_of": "2026-08-03",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0359,
+            "news_adjustment": 0.105,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0049,
+            "news_signal_input": 0.51,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "KO",
+          "company_name": "The Coca-Cola Company",
+          "sector": "consumer_staples",
+          "risk": "medium",
+          "model_score": 0.1412,
+          "confidence_score": 0.68,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-03",
+          "news_as_of": "2026-08-03",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0313,
+            "news_adjustment": 0.1057,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0043,
+            "news_signal_input": 0.5168,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "MA",
+          "company_name": "Mastercard Incorporated",
+          "sector": "financials",
+          "risk": "medium",
+          "model_score": 0.1379,
+          "confidence_score": 0.68,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-03",
+          "news_as_of": "2026-07-30",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.0762,
+            "news_adjustment": 0.0562,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0055,
+            "news_signal_input": 0.2105,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "CRM",
+          "company_name": "Salesforce Inc.",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1369,
+          "confidence_score": 0.7,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-03",
+          "news_as_of": null,
+          "article_count": 6,
+          "diagnostics": {
+            "technical_total": 0.0951,
+            "news_adjustment": 0.0209,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0183,
+            "signal_alignment": 0.0026,
+            "news_signal_input": 0.098,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.1852
+          }
+        }
+      ],
       "diagnostics": {
-        "technical_total": 0.0997,
-        "news_adjustment": 0.1185,
+        "technical_total": 0.1175,
+        "news_adjustment": 0.114,
         "macro_adjustment": 0.0,
         "sector_adjustment": 0.0,
-        "news_signal_input": 0.592,
+        "news_signal_input": 0.5688,
         "macro_signal_input": 0.0,
         "sector_signal_input": 0.0,
         "technical_training_rows": 2303,
-        "technical_training_ic": -0.017,
+        "technical_training_ic": 0.0019,
         "news_macro_overlap": 0.0,
         "news_sector_overlap": 0.0,
         "macro_sector_overlap": 0.0
@@ -3701,63 +3969,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 7,
+        "used": 6,
         "limit": 25,
-        "remaining": 18,
+        "remaining": 19,
         "categories": {
-          "company_news": 6,
+          "company_news": 5,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-08-03",
           "status": "healthy",
-          "used": 7,
+          "used": 6,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 19,
           "categories": {
-            "company_news": 6,
+            "company_news": 5,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 17,
+        "used": 15,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 16,
+          "company_news": 14,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-08-03",
           "status": "tracking_only",
-          "used": 17,
+          "used": 15,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 16,
+            "company_news": 14,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 52,
+        "used": 55,
         "limit": 100,
-        "remaining": 48,
+        "remaining": 45,
         "categories": {
-          "company_news": 51,
+          "company_news": 54,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-08-03",
           "status": "healthy",
-          "used": 52,
+          "used": 55,
           "limit": 100,
-          "remaining": 48,
+          "remaining": 45,
           "categories": {
-            "company_news": 51,
+            "company_news": 54,
             "global_news": 1
           }
         }
@@ -3772,7 +4040,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-08-03",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -3792,7 +4060,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-08-03",
           "status": "healthy",
           "used": 58,
           "limit": 800,

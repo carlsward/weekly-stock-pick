@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-27T14:19:22Z",
-  "last_updated": "2026-07-27",
+  "generated_at": "2026-08-03T14:28:20Z",
+  "last_updated": "2026-08-03",
   "lookback_days": 3,
-  "article_count": 1,
+  "article_count": 2,
   "source_count": 1,
   "llm_model": "gpt-5-mini",
-  "summary": "Morgan Stanley Infrastructure Partners agreed to buy Epic Energy, an Australian gas pipeline operator, signaling continued private/infrastructure capital demand for energy midstream assets. Short-term market impact is likely limited and sector-specific (energy infrastructure and deal-related financials) rather than broad commodity or large-cap effects.",
+  "summary": "Two analyst/coverage pieces on major AI/cloud/semiconductor names. Microsoft commentary frames a post-earnings reset and reacceleration in Azure and gaming that should support near-term sentiment for MSFT and broader software/tech exposure. The Nvidia piece highlights a pause in perception of the AI capex wave — signalling a possible short-term digestion/inventory or sentiment-driven pullback in NVDA and AI-infrastructure exposure before the next capex leg.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -47,65 +47,25 @@
       "sector": "energy",
       "display_name": "Energy",
       "score": 0.5,
-      "confidence": 0.34,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-07-27",
+      "last_updated": null,
       "reasons": [
-        "Morgan Stanley Infrastructure Partners acquiring Epic Energy is a sector-specific M&A event that primarily affects valuations in the energy midstream/infrastructure space. The deal demonstrates continued demand from private infrastructure investors for regulated or long-life gas pipeline cash flows, which can lift sentiment and valuations for comparable listed energy infrastructure assets over the short term. Financials (investment managers, M&A advisors, lenders) may also see modest positive sentiment from increased deal activity. The transaction does not materially change gas supply or prices, so commodity-sensitive producers or large-cap energy names are unlikely to be directly affected in the 1-15 day horizon. No tracked company is directly named, so symbol-specific impacts are not assigned."
+        "No strong recent sector catalyst was found for Energy."
       ],
-      "supporting_articles": [
-        {
-          "title": "Morgan Stanley Infrastructure Partners to acquire Epic Energy (MS:NYSE)",
-          "feed": "marketaux",
-          "provider": "seekingalpha.com",
-          "url": "https://seekingalpha.com/news/4618711-morgan-stanley-infrastructure-partners-to-acquire-epic-energy",
-          "published_at": "2026-07-27T13:20:18Z",
-          "impact": "positive",
-          "weight": 0.004,
-          "event_type": "M&A / acquisition",
-          "transmission_channel": "private infrastructure capital flows -> higher valuations for energy midstream assets; deal premium and M&A signaling can lift listed pipeline/infrastructure names and spur investor appetite for similar assets",
-          "affected_inputs": [
-            "M&A_activity",
-            "capital_flows",
-            "asset_valuations",
-            "infrastructure_cashflows"
-          ],
-          "horizon": "1-2w",
-          "reason": "Morgan Stanley Infrastructure Partners acquiring Epic Energy is a sector-specific M&A event that primarily affects valuations in the energy midstream/infrastructure space. The deal demonstrates continued demand from private infrastructure investors for regulated or long-life gas pipeline cash flows, which can lift sentiment and valuations for comparable listed energy infrastructure assets over the short term. Financials (investment managers, M&A advisors, lenders) may also see modest positive sentiment from increased deal activity. The transaction does not materially change gas supply or prices, so commodity-sensitive producers or large-cap energy names are unlikely to be directly affected in the 1-15 day horizon. No tracked company is directly named, so symbol-specific impacts are not assigned."
-        }
-      ]
+      "supporting_articles": []
     },
     "financials": {
       "sector": "financials",
       "display_name": "Financials",
       "score": 0.5,
-      "confidence": 0.34,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-07-27",
+      "last_updated": null,
       "reasons": [
-        "Morgan Stanley Infrastructure Partners acquiring Epic Energy is a sector-specific M&A event that primarily affects valuations in the energy midstream/infrastructure space. The deal demonstrates continued demand from private infrastructure investors for regulated or long-life gas pipeline cash flows, which can lift sentiment and valuations for comparable listed energy infrastructure assets over the short term. Financials (investment managers, M&A advisors, lenders) may also see modest positive sentiment from increased deal activity. The transaction does not materially change gas supply or prices, so commodity-sensitive producers or large-cap energy names are unlikely to be directly affected in the 1-15 day horizon. No tracked company is directly named, so symbol-specific impacts are not assigned."
+        "No strong recent sector catalyst was found for Financials."
       ],
-      "supporting_articles": [
-        {
-          "title": "Morgan Stanley Infrastructure Partners to acquire Epic Energy (MS:NYSE)",
-          "feed": "marketaux",
-          "provider": "seekingalpha.com",
-          "url": "https://seekingalpha.com/news/4618711-morgan-stanley-infrastructure-partners-to-acquire-epic-energy",
-          "published_at": "2026-07-27T13:20:18Z",
-          "impact": "positive",
-          "weight": 0.004,
-          "event_type": "M&A / acquisition",
-          "transmission_channel": "private infrastructure capital flows -> higher valuations for energy midstream assets; deal premium and M&A signaling can lift listed pipeline/infrastructure names and spur investor appetite for similar assets",
-          "affected_inputs": [
-            "M&A_activity",
-            "capital_flows",
-            "asset_valuations",
-            "infrastructure_cashflows"
-          ],
-          "horizon": "1-2w",
-          "reason": "Morgan Stanley Infrastructure Partners acquiring Epic Energy is a sector-specific M&A event that primarily affects valuations in the energy midstream/infrastructure space. The deal demonstrates continued demand from private infrastructure investors for regulated or long-life gas pipeline cash flows, which can lift sentiment and valuations for comparable listed energy infrastructure assets over the short term. Financials (investment managers, M&A advisors, lenders) may also see modest positive sentiment from increased deal activity. The transaction does not materially change gas supply or prices, so commodity-sensitive producers or large-cap energy names are unlikely to be directly affected in the 1-15 day horizon. No tracked company is directly named, so symbol-specific impacts are not assigned."
-        }
-      ]
+      "supporting_articles": []
     },
     "healthcare": {
       "sector": "healthcare",
@@ -134,14 +94,54 @@
     "technology": {
       "sector": "technology",
       "display_name": "Technology",
-      "score": 0.5,
-      "confidence": 0.2,
-      "direction": "neutral",
-      "last_updated": null,
+      "score": 0.75,
+      "confidence": 0.57,
+      "direction": "bullish",
+      "last_updated": "2026-08-03",
       "reasons": [
-        "No strong recent sector catalyst was found for Technology."
+        "The article frames Microsoft as undervalued after earnings, emphasizing double-digit Azure/cloud growth and a gaming reset. Transmission to markets is primarily via demand and growth expectations for cloud and gaming (supporting revenue and margin outlook) and via improved investor sentiment/valuation multiple expansion. In the 1-3 day window expect positive sentiment flows into MSFT and possibly broader software/tech peers as analysts and momentum traders reprice forward growth; there is no clear direct negative first-order impact on other tracked sectors or symbols.",
+        "The piece describes a temporary perception 'pause' before the next AI wave, pointing to shifts in the AI infrastructure capex cycle and investor expectations. Short-term transmission is via softened near-term demand or delayed orders (inventory/capex timing) and sentiment-driven repricing of AI leaders. Over the next 1-14 trading days this can cause volatile, sentiment-led moves in NVIDIA shares and related tech/AI-infrastructure exposure; longer-term fundamentals remain tied to data-center AI demand. The article does not identify specific tracked competitors as direct losers, so impacts are focused on NVDA and the technology sector."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Microsoft: The Gaming Sun Will Rise Again (NASDAQ:MSFT)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4929478-microsoft-the-gaming-sun-will-rise-again",
+          "published_at": "2026-08-03T13:45:54Z",
+          "impact": "positive",
+          "weight": 0.297,
+          "event_type": "company earnings/coverage",
+          "transmission_channel": "demand shift (cloud & gaming); investor sentiment / valuation re-rating",
+          "affected_inputs": [
+            "Azure / cloud revenue growth",
+            "gaming segment revenue and monetization",
+            "AI-related services demand",
+            "investor risk premium / valuation multiples"
+          ],
+          "horizon": "1-3d",
+          "reason": "The article frames Microsoft as undervalued after earnings, emphasizing double-digit Azure/cloud growth and a gaming reset. Transmission to markets is primarily via demand and growth expectations for cloud and gaming (supporting revenue and margin outlook) and via improved investor sentiment/valuation multiple expansion. In the 1-3 day window expect positive sentiment flows into MSFT and possibly broader software/tech peers as analysts and momentum traders reprice forward growth; there is no clear direct negative first-order impact on other tracked sectors or symbols."
+        },
+        {
+          "title": "Nvidia's Pause Before The Next AI Wave (NASDAQ:NVDA)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4929479-nvidias-pause-before-the-next-ai-wave",
+          "published_at": "2026-08-03T13:46:08Z",
+          "impact": "positive",
+          "weight": 0.243,
+          "event_type": "company / industry cycle update",
+          "transmission_channel": "capex/inventory cycle and demand shift for AI infrastructure; investor sentiment",
+          "affected_inputs": [
+            "data-center GPU demand",
+            "customer AI training/inference capex timing",
+            "inventory and ordering cadence",
+            "AI infrastructure valuation premium"
+          ],
+          "horizon": "1-2w",
+          "reason": "The piece describes a temporary perception 'pause' before the next AI wave, pointing to shifts in the AI infrastructure capex cycle and investor expectations. Short-term transmission is via softened near-term demand or delayed orders (inventory/capex timing) and sentiment-driven repricing of AI leaders. Over the next 1-14 trading days this can cause volatile, sentiment-led moves in NVIDIA shares and related tech/AI-infrastructure exposure; longer-term fundamentals remain tied to data-center AI demand. The article does not identify specific tracked competitors as direct losers, so impacts are focused on NVDA and the technology sector."
+        }
+      ]
     }
   },
   "symbol_scores": {
@@ -162,14 +162,34 @@
       "symbol": "MSFT",
       "company_name": "Microsoft Corporation",
       "sector": "technology",
-      "score": 0.5,
-      "confidence": 0.2,
-      "direction": "neutral",
-      "last_updated": null,
+      "score": 0.68,
+      "confidence": 0.53,
+      "direction": "bullish",
+      "last_updated": "2026-08-03",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Microsoft Corporation."
+        "The article frames Microsoft as undervalued after earnings, emphasizing double-digit Azure/cloud growth and a gaming reset. Transmission to markets is primarily via demand and growth expectations for cloud and gaming (supporting revenue and margin outlook) and via improved investor sentiment/valuation multiple expansion. In the 1-3 day window expect positive sentiment flows into MSFT and possibly broader software/tech peers as analysts and momentum traders reprice forward growth; there is no clear direct negative first-order impact on other tracked sectors or symbols."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Microsoft: The Gaming Sun Will Rise Again (NASDAQ:MSFT)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4929478-microsoft-the-gaming-sun-will-rise-again",
+          "published_at": "2026-08-03T13:45:54Z",
+          "impact": "positive",
+          "weight": 0.297,
+          "event_type": "company earnings/coverage",
+          "transmission_channel": "demand shift (cloud & gaming); investor sentiment / valuation re-rating",
+          "affected_inputs": [
+            "Azure / cloud revenue growth",
+            "gaming segment revenue and monetization",
+            "AI-related services demand",
+            "investor risk premium / valuation multiples"
+          ],
+          "horizon": "1-3d",
+          "reason": "The article frames Microsoft as undervalued after earnings, emphasizing double-digit Azure/cloud growth and a gaming reset. Transmission to markets is primarily via demand and growth expectations for cloud and gaming (supporting revenue and margin outlook) and via improved investor sentiment/valuation multiple expansion. In the 1-3 day window expect positive sentiment flows into MSFT and possibly broader software/tech peers as analysts and momentum traders reprice forward growth; there is no clear direct negative first-order impact on other tracked sectors or symbols."
+        }
+      ]
     },
     "GOOGL": {
       "symbol": "GOOGL",
@@ -240,14 +260,34 @@
       "symbol": "NVDA",
       "company_name": "NVIDIA Corporation",
       "sector": "technology",
-      "score": 0.5,
-      "confidence": 0.2,
-      "direction": "neutral",
-      "last_updated": null,
+      "score": 0.65,
+      "confidence": 0.51,
+      "direction": "bullish",
+      "last_updated": "2026-08-03",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored NVIDIA Corporation."
+        "The piece describes a temporary perception 'pause' before the next AI wave, pointing to shifts in the AI infrastructure capex cycle and investor expectations. Short-term transmission is via softened near-term demand or delayed orders (inventory/capex timing) and sentiment-driven repricing of AI leaders. Over the next 1-14 trading days this can cause volatile, sentiment-led moves in NVIDIA shares and related tech/AI-infrastructure exposure; longer-term fundamentals remain tied to data-center AI demand. The article does not identify specific tracked competitors as direct losers, so impacts are focused on NVDA and the technology sector."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Nvidia's Pause Before The Next AI Wave (NASDAQ:NVDA)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4929479-nvidias-pause-before-the-next-ai-wave",
+          "published_at": "2026-08-03T13:46:08Z",
+          "impact": "positive",
+          "weight": 0.243,
+          "event_type": "company / industry cycle update",
+          "transmission_channel": "capex/inventory cycle and demand shift for AI infrastructure; investor sentiment",
+          "affected_inputs": [
+            "data-center GPU demand",
+            "customer AI training/inference capex timing",
+            "inventory and ordering cadence",
+            "AI infrastructure valuation premium"
+          ],
+          "horizon": "1-2w",
+          "reason": "The piece describes a temporary perception 'pause' before the next AI wave, pointing to shifts in the AI infrastructure capex cycle and investor expectations. Short-term transmission is via softened near-term demand or delayed orders (inventory/capex timing) and sentiment-driven repricing of AI leaders. Over the next 1-14 trading days this can cause volatile, sentiment-led moves in NVIDIA shares and related tech/AI-infrastructure exposure; longer-term fundamentals remain tied to data-center AI demand. The article does not identify specific tracked competitors as direct losers, so impacts are focused on NVDA and the technology sector."
+        }
+      ]
     },
     "JPM": {
       "symbol": "JPM",
@@ -786,31 +826,61 @@
   "events": [
     {
       "article_id": "news_3",
-      "title": "Morgan Stanley Infrastructure Partners to acquire Epic Energy (MS:NYSE)",
+      "title": "Microsoft: The Gaming Sun Will Rise Again (NASDAQ:MSFT)",
       "feed": "marketaux",
       "provider": "seekingalpha.com",
-      "url": "https://seekingalpha.com/news/4618711-morgan-stanley-infrastructure-partners-to-acquire-epic-energy",
-      "published_at": "2026-07-27T13:20:18Z",
-      "event_type": "M&A / acquisition",
-      "transmission_channel": "private infrastructure capital flows -> higher valuations for energy midstream assets; deal premium and M&A signaling can lift listed pipeline/infrastructure names and spur investor appetite for similar assets",
+      "url": "https://seekingalpha.com/article/4929478-microsoft-the-gaming-sun-will-rise-again",
+      "published_at": "2026-08-03T13:45:54Z",
+      "event_type": "company earnings/coverage",
+      "transmission_channel": "demand shift (cloud & gaming); investor sentiment / valuation re-rating",
       "affected_inputs": [
-        "M&A_activity",
-        "capital_flows",
-        "asset_valuations",
-        "infrastructure_cashflows"
+        "Azure / cloud revenue growth",
+        "gaming segment revenue and monetization",
+        "AI-related services demand",
+        "investor risk premium / valuation multiples"
       ],
-      "horizon": "1-2w",
-      "market_relevance": 0.3,
-      "magnitude": 0.2,
-      "confidence": 0.6,
+      "horizon": "1-3d",
+      "market_relevance": 1.0,
+      "magnitude": 1.0,
+      "confidence": 1.0,
       "beneficiary_sectors": [
-        "energy",
-        "financials"
+        "technology"
       ],
       "hurt_sectors": [],
-      "beneficiary_symbols": [],
+      "beneficiary_symbols": [
+        "MSFT"
+      ],
       "hurt_symbols": [],
-      "reason": "Morgan Stanley Infrastructure Partners acquiring Epic Energy is a sector-specific M&A event that primarily affects valuations in the energy midstream/infrastructure space. The deal demonstrates continued demand from private infrastructure investors for regulated or long-life gas pipeline cash flows, which can lift sentiment and valuations for comparable listed energy infrastructure assets over the short term. Financials (investment managers, M&A advisors, lenders) may also see modest positive sentiment from increased deal activity. The transaction does not materially change gas supply or prices, so commodity-sensitive producers or large-cap energy names are unlikely to be directly affected in the 1-15 day horizon. No tracked company is directly named, so symbol-specific impacts are not assigned."
+      "reason": "The article frames Microsoft as undervalued after earnings, emphasizing double-digit Azure/cloud growth and a gaming reset. Transmission to markets is primarily via demand and growth expectations for cloud and gaming (supporting revenue and margin outlook) and via improved investor sentiment/valuation multiple expansion. In the 1-3 day window expect positive sentiment flows into MSFT and possibly broader software/tech peers as analysts and momentum traders reprice forward growth; there is no clear direct negative first-order impact on other tracked sectors or symbols."
+    },
+    {
+      "article_id": "news_2",
+      "title": "Nvidia's Pause Before The Next AI Wave (NASDAQ:NVDA)",
+      "feed": "marketaux",
+      "provider": "seekingalpha.com",
+      "url": "https://seekingalpha.com/article/4929479-nvidias-pause-before-the-next-ai-wave",
+      "published_at": "2026-08-03T13:46:08Z",
+      "event_type": "company / industry cycle update",
+      "transmission_channel": "capex/inventory cycle and demand shift for AI infrastructure; investor sentiment",
+      "affected_inputs": [
+        "data-center GPU demand",
+        "customer AI training/inference capex timing",
+        "inventory and ordering cadence",
+        "AI infrastructure valuation premium"
+      ],
+      "horizon": "1-2w",
+      "market_relevance": 1.0,
+      "magnitude": 1.0,
+      "confidence": 1.0,
+      "beneficiary_sectors": [
+        "technology"
+      ],
+      "hurt_sectors": [],
+      "beneficiary_symbols": [
+        "NVDA"
+      ],
+      "hurt_symbols": [],
+      "reason": "The piece describes a temporary perception 'pause' before the next AI wave, pointing to shifts in the AI infrastructure capex cycle and investor expectations. Short-term transmission is via softened near-term demand or delayed orders (inventory/capex timing) and sentiment-driven repricing of AI leaders. Over the next 1-14 trading days this can cause volatile, sentiment-led moves in NVIDIA shares and related tech/AI-infrastructure exposure; longer-term fundamentals remain tied to data-center AI demand. The article does not identify specific tracked competitors as direct losers, so impacts are focused on NVDA and the technology sector."
     }
   ],
   "data_quality": {
@@ -822,63 +892,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 7,
+        "used": 6,
         "limit": 25,
-        "remaining": 18,
+        "remaining": 19,
         "categories": {
-          "company_news": 6,
+          "company_news": 5,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-08-03",
           "status": "healthy",
-          "used": 7,
+          "used": 6,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 19,
           "categories": {
-            "company_news": 6,
+            "company_news": 5,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 17,
+        "used": 15,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 16,
+          "company_news": 14,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-08-03",
           "status": "tracking_only",
-          "used": 17,
+          "used": 15,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 16,
+            "company_news": 14,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 52,
+        "used": 55,
         "limit": 100,
-        "remaining": 48,
+        "remaining": 45,
         "categories": {
-          "company_news": 51,
+          "company_news": 54,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-08-03",
           "status": "healthy",
-          "used": 52,
+          "used": 55,
           "limit": 100,
-          "remaining": 48,
+          "remaining": 45,
           "categories": {
-            "company_news": 51,
+            "company_news": 54,
             "global_news": 1
           }
         }
@@ -893,7 +963,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-07-27",
+          "date": "2026-08-03",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

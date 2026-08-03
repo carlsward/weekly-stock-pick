@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-03T14:36:19Z",
+  "generated_at": "2026-08-03T17:46:30Z",
   "data_as_of": "2026-08-03",
-  "expected_next_refresh_at": "2026-08-04T14:36:19Z",
-  "stale_after": "2026-08-05T02:36:19Z",
+  "expected_next_refresh_at": "2026-08-04T17:46:30Z",
+  "stale_after": "2026-08-05T05:46:30Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W32",
@@ -24,84 +24,83 @@
     "company_name": "Amazon.com Inc.",
     "sector": "consumer_discretionary",
     "risk": "high",
-    "model_score": 0.2698,
-    "confidence_score": 0.73,
+    "model_score": 0.2504,
+    "confidence_score": 0.71,
     "confidence_label": "medium",
     "price_as_of": "2026-08-03",
     "news_as_of": "2026-08-03",
     "macro_as_of": null,
-    "sector_as_of": null,
+    "sector_as_of": "2026-08-03",
     "article_count": 4,
     "metrics": {
-      "momentum_5d": 0.2317,
-      "momentum_20d": 0.1673,
-      "daily_volatility": 0.0392,
+      "momentum_5d": 0.2279,
+      "momentum_20d": 0.1637,
+      "daily_volatility": 0.039,
       "downside_volatility": 0.0174,
       "max_drawdown_20d": 0.111,
       "positive_day_ratio_10d": 0.3,
-      "price_vs_20d_average": 0.159,
-      "volume_trend_5d": 0.7865,
-      "market_relative_5d": 0.2063,
-      "market_relative_20d": 0.162,
-      "sector_relative_5d": 0.1546,
-      "sector_relative_20d": 0.165,
-      "news_sentiment": 0.9,
+      "price_vs_20d_average": 0.1556,
+      "volume_trend_5d": 0.8131,
+      "market_relative_5d": 0.1981,
+      "market_relative_20d": 0.1542,
+      "sector_relative_5d": 0.1522,
+      "sector_relative_20d": 0.1626,
+      "news_sentiment": 0.87,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.8047,
-      "news_confidence": 0.87,
+      "calibrated_news_sentiment": 0.7402,
+      "news_confidence": 0.81,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 1.1,
+      "sector_sentiment": 0.47,
+      "sector_confidence": 0.35,
+      "effective_article_count": 0.84,
       "source_count": 3,
-      "average_relevance": 0.79,
+      "average_relevance": 0.9,
       "technical_training_ic": 0.0019,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1846,
+      "momentum": 0.1835,
       "short_momentum": 0.066,
-      "medium_momentum": 0.0502,
+      "medium_momentum": 0.0491,
       "trend_quality": 0.0084,
       "volume_confirmation": 0.024,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.068,
-      "daily_volatility_penalty": -0.0353,
+      "volatility_penalty": -0.0678,
+      "daily_volatility_penalty": -0.0351,
       "downside_penalty": -0.0188,
       "drawdown_penalty": -0.0139,
-      "news_adjustment": 0.133,
+      "news_adjustment": 0.1186,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0,
-      "signal_alignment": 0.0202,
-      "technical_total": 0.1166,
-      "trend_strength": 0.1246,
+      "sector_adjustment": -0.0017,
+      "signal_alignment": 0.0178,
+      "technical_total": 0.1157,
+      "trend_strength": 0.1235,
       "relative_strength": 0.036,
       "participation": 0.024,
-      "risk_control": -0.068,
+      "risk_control": -0.0678,
       "block_weight_news": 0.179,
       "block_weight_macro": 0.0993,
       "block_weight_sector": 0.0816,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.65,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
+      "news_sector_overlap": 0.5,
       "macro_sector_overlap": 0.0,
-      "total": 0.2698
+      "total": 0.2504
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 23.2% and 20-day momentum is 16.7%.",
-      "Trend quality is supported by 30% positive sessions over the last 10 trading days and the price sitting 15.9% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 22.8% and 20-day momentum is 16.4%.",
+      "Trend quality is supported by 30% positive sessions over the last 10 trading days and the price sitting 15.6% relative to its 20-day average.",
       "Risk profile shows daily volatility around 3.9%, downside volatility near 1.7%, and a recent max drawdown of 11.1%.",
-      "Volume confirmation is 78.6% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 20.6% versus SPY over 5 days and 15.5% versus the sector ETF.",
-      "News signal is bullish with score 0.90, confidence 0.87, and 1.1 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.90, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 4 articles across 3 sources, 1.1 effective weighted articles, average relevance 0.79, average source quality 0.88, confidence 0.87.",
+      "Volume confirmation is 81.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 19.8% versus SPY over 5 days and 15.2% versus the sector ETF.",
+      "News signal is bullish with score 0.87, confidence 0.81, and 0.8 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.87, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 4 articles across 3 sources, 0.8 effective weighted articles, average relevance 0.90, average source quality 0.88, confidence 0.81.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Price action and news are pointing in the same direction, which raises trust in the setup.",
-      "Overall model score is 0.270 with medium confidence."
+      "Overall model score is 0.250 with medium confidence."
     ],
     "news_evidence": [
       {
@@ -114,9 +113,9 @@
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 1.0,
+        "llm_confidence": 0.95,
         "llm_impact_score": 1.0,
-        "llm_reason": "This is Amazon's official SEC Form 10-Q for the period ending 2026-06-30. A 10-Q can contain material financial results, risk disclosures, and forward-looking information that can move the stock in the short term. Impact depends on the filing contents (results, guidance, reserve items), so it's rated high relevance but moderate uncertainty until parsed."
+        "llm_reason": "Official SEC 10-Q for Amazon (report date 2026-06-30). Contains quarterly financials and disclosures that are highly material for short-term trading and valuation."
       },
       {
         "title": "Amazon.com Inc. filed 8-K: 8-K",
@@ -127,24 +126,24 @@
         "sentiment": 0.0,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
+        "materiality": 0.85,
+        "llm_confidence": 0.85,
         "llm_impact_score": 1.0,
-        "llm_reason": "An Amazon 8-K often announces specific material events (e.g., leadership changes, major contracts, restatements). Such items can be market-moving over the next few trading days; classification is company-specific and likely material, but actual impact depends on the 8-K content."
+        "llm_reason": "Official SEC 8-K filing (2026-07-30). 8-Ks often disclose material events; content not provided here but the filing itself is likely to be a meaningful near-term catalyst or information source."
       },
       {
-        "title": "What Salesforce’s (CRM) $1.6 Billion VA Contract Signals for Its Government Cloud Strategy",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/technology/ai/articles/salesforce-crm-1-6-billion-100007361.html",
-        "published_at": "2026-08-03T10:00:07Z",
-        "relevance_score": 0.63,
-        "sentiment": -0.32,
-        "doc_type": "sector_macro",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
+        "title": "Amazon's Secret Margin Story Isn't AWS Alone (NASDAQ:AMZN)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4929510-amazon-secret-margin-story-isnt-aws-alone",
+        "published_at": "2026-08-03T15:03:53Z",
+        "relevance_score": 0.97,
+        "sentiment": 0.22,
+        "doc_type": "company_specific",
+        "company_relevance": 0.75,
+        "materiality": 0.65,
+        "llm_confidence": 0.7,
         "llm_impact_score": 1.0,
-        "llm_reason": "Article centers on Salesforce winning a VA cloud contract and broader federal cloud/AI demand. That is a sector-level signal which could modestly indicate stronger government cloud spending (potentially positive for AWS), but it does not provide company-specific, actionable information about Amazon in the next 1–10 days."
+        "llm_reason": "Company-focused analysis arguing margins are expanding beyond AWS (ads, subscriptions, AI demand). Opinion/research piece can affect sentiment in the near term but is not a primary new factual catalyst."
       }
     ],
     "macro_evidence": [],
@@ -154,13 +153,14 @@
       "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
       "alerts": [
         "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
-        "Volatility expanded enough to weaken the setup."
+        "Volatility expanded enough to weaken the setup.",
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "risk",
-          "value": "23.2% 5D • 16.7% 20D",
+          "value": "22.8% 5D • 16.4% 20D",
           "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
         },
         {
@@ -171,9 +171,9 @@
         },
         {
           "label": "News",
-          "state": "positive",
-          "value": "0.90 sentiment • 4 articles",
-          "detail": "Recent news flow is supportive and diversified enough to back the setup."
+          "state": "watch",
+          "value": "0.87 sentiment • 4 articles",
+          "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
@@ -184,7 +184,7 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.150 score • +0.178 conf",
+          "value": "+0.130 score • +0.159 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
@@ -208,104 +208,102 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 7,
+        "used": 1,
         "limit": 25,
-        "remaining": 18,
+        "remaining": 24,
         "categories": {
-          "company_news": 5,
-          "global_news": 2
+          "global_news": 1
         },
         "daily": {
           "date": "2026-08-03",
           "status": "healthy",
-          "used": 7,
+          "used": 8,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 17,
           "categories": {
             "company_news": 5,
-            "global_news": 2
+            "global_news": 3
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 16,
+        "used": 1,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 14,
-          "global_news": 2
+          "global_news": 1
         },
         "daily": {
           "date": "2026-08-03",
           "status": "tracking_only",
-          "used": 16,
+          "used": 17,
           "limit": null,
           "remaining": null,
           "categories": {
             "company_news": 14,
-            "global_news": 2
+            "global_news": 3
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 57,
+        "used": 2,
         "limit": 100,
-        "remaining": 43,
+        "remaining": 98,
         "categories": {
-          "company_news": 55,
-          "global_news": 2
+          "company_news": 1,
+          "global_news": 1
         },
         "daily": {
           "date": "2026-08-03",
           "status": "healthy",
-          "used": 57,
+          "used": 59,
           "limit": 100,
-          "remaining": 43,
+          "remaining": 41,
           "categories": {
-            "company_news": 55,
-            "global_news": 2
+            "company_news": 56,
+            "global_news": 3
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 52,
+        "used": 2,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 2,
-          "submissions": 50
+          "ticker_map": 1,
+          "submissions": 1
         },
         "daily": {
           "date": "2026-08-03",
           "status": "tracking_only",
-          "used": 52,
+          "used": 54,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 2,
-            "submissions": 50
+            "ticker_map": 3,
+            "submissions": 51
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 61,
+        "used": 3,
         "limit": 800,
-        "remaining": 739,
+        "remaining": 797,
         "categories": {
-          "price": 61
+          "price": 3
         },
         "daily": {
           "date": "2026-08-03",
           "status": "healthy",
-          "used": 61,
+          "used": 64,
           "limit": 800,
-          "remaining": 739,
+          "remaining": 736,
           "categories": {
-            "price": 61
+            "price": 64
           }
         }
       }

@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-03T17:46:30Z",
-  "data_as_of": "2026-08-03",
-  "expected_next_refresh_at": "2026-08-04T17:46:30Z",
-  "stale_after": "2026-08-05T05:46:30Z",
+  "generated_at": "2026-08-04T17:30:00Z",
+  "data_as_of": "2026-08-04",
+  "expected_next_refresh_at": "2026-08-05T17:30:00Z",
+  "stale_after": "2026-08-06T05:30:00Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W32",
@@ -24,85 +24,103 @@
     "company_name": "Amazon.com Inc.",
     "sector": "consumer_discretionary",
     "risk": "high",
-    "model_score": 0.2504,
-    "confidence_score": 0.71,
-    "confidence_label": "medium",
-    "price_as_of": "2026-08-03",
-    "news_as_of": "2026-08-03",
+    "model_score": 0.2704,
+    "confidence_score": 0.78,
+    "confidence_label": "high",
+    "price_as_of": "2026-08-04",
+    "news_as_of": "2026-08-04",
     "macro_as_of": null,
-    "sector_as_of": "2026-08-03",
-    "article_count": 4,
+    "sector_as_of": "2026-08-04",
+    "article_count": 5,
     "metrics": {
-      "momentum_5d": 0.2279,
-      "momentum_20d": 0.1637,
-      "daily_volatility": 0.039,
-      "downside_volatility": 0.0174,
+      "momentum_5d": 0.2067,
+      "momentum_20d": 0.1325,
+      "daily_volatility": 0.0395,
+      "downside_volatility": 0.0176,
       "max_drawdown_20d": 0.111,
       "positive_day_ratio_10d": 0.3,
-      "price_vs_20d_average": 0.1556,
-      "volume_trend_5d": 0.8131,
-      "market_relative_5d": 0.1981,
-      "market_relative_20d": 0.1542,
-      "sector_relative_5d": 0.1522,
-      "sector_relative_20d": 0.1626,
-      "news_sentiment": 0.87,
+      "price_vs_20d_average": 0.1256,
+      "volume_trend_5d": 0.9976,
+      "market_relative_5d": 0.1593,
+      "market_relative_20d": 0.0981,
+      "sector_relative_5d": 0.1469,
+      "sector_relative_20d": 0.1234,
+      "news_sentiment": 0.94,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.7402,
-      "news_confidence": 0.81,
+      "calibrated_news_sentiment": 0.8756,
+      "news_confidence": 0.92,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.47,
-      "sector_confidence": 0.35,
-      "effective_article_count": 0.84,
+      "sector_sentiment": 0.39,
+      "sector_confidence": 0.41,
+      "effective_article_count": 1.7,
       "source_count": 3,
-      "average_relevance": 0.9,
+      "average_relevance": 0.82,
       "technical_training_ic": 0.0019,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1835,
+      "momentum": 0.1742,
       "short_momentum": 0.066,
-      "medium_momentum": 0.0491,
+      "medium_momentum": 0.0398,
       "trend_quality": 0.0084,
       "volume_confirmation": 0.024,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0678,
-      "daily_volatility_penalty": -0.0351,
-      "downside_penalty": -0.0188,
+      "volatility_penalty": -0.0684,
+      "daily_volatility_penalty": -0.0355,
+      "downside_penalty": -0.019,
       "drawdown_penalty": -0.0139,
-      "news_adjustment": 0.1186,
+      "news_adjustment": 0.1506,
       "macro_adjustment": 0.0,
-      "sector_adjustment": -0.0017,
-      "signal_alignment": 0.0178,
-      "technical_total": 0.1157,
-      "trend_strength": 0.1235,
+      "sector_adjustment": -0.0067,
+      "signal_alignment": 0.0207,
+      "technical_total": 0.1058,
+      "trend_strength": 0.1142,
       "relative_strength": 0.036,
       "participation": 0.024,
-      "risk_control": -0.0678,
+      "risk_control": -0.0684,
       "block_weight_news": 0.179,
       "block_weight_macro": 0.0993,
       "block_weight_sector": 0.0816,
       "macro_dedup_penalty": 1.0,
       "sector_dedup_penalty": 0.65,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.5,
+      "news_sector_overlap": 0.3333,
       "macro_sector_overlap": 0.0,
-      "total": 0.2504
+      "total": 0.2704
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 22.8% and 20-day momentum is 16.4%.",
-      "Trend quality is supported by 30% positive sessions over the last 10 trading days and the price sitting 15.6% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 3.9%, downside volatility near 1.7%, and a recent max drawdown of 11.1%.",
-      "Volume confirmation is 81.3% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 19.8% versus SPY over 5 days and 15.2% versus the sector ETF.",
-      "News signal is bullish with score 0.87, confidence 0.81, and 0.8 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.87, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 4 articles across 3 sources, 0.8 effective weighted articles, average relevance 0.90, average source quality 0.88, confidence 0.81.",
+      "Price trend remains constructive: 5-day momentum is 20.7% and 20-day momentum is 13.3%.",
+      "Trend quality is supported by 30% positive sessions over the last 10 trading days and the price sitting 12.6% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 3.9%, downside volatility near 1.8%, and a recent max drawdown of 11.1%.",
+      "Volume confirmation is 99.8% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 15.9% versus SPY over 5 days and 14.7% versus the sector ETF.",
+      "News signal is bullish with score 0.94, confidence 0.92, and 1.7 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.94, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 5 articles across 3 sources, 1.7 effective weighted articles, average relevance 0.82, average source quality 0.88, confidence 0.92.",
+      "Broad market news leaned bearish for the Consumer Discretionary sector with score 0.39 and confidence 0.41.",
+      "Market commentary highlights doubts about the Fed's ability to deliver 2% inflation and bond yields remain elevated. Elevated yields raise discount rates and borrowing costs, tightening financial conditions and weighing on consumer demand and valuations for discretionary firms. Near-term transmission is through higher funding costs, reduced real incomes and lower equity risk appetite, making consumer discretionary relatively vulnerable over the next few trading days.",
+      "Sector overlay was trimmed by 35% because it overlaps with company or macro themes.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.250 with medium confidence."
+      "Price action and news are pointing in the same direction, which raises trust in the setup.",
+      "Overall model score is 0.270 with high confidence."
     ],
     "news_evidence": [
+      {
+        "title": "Jeff Bezos just filed to sell $4 billion in Amazon. The shares are falling",
+        "provider": "cnbc.com",
+        "url": "https://www.cnbc.com/2026/08/04/jeff-bezos-just-filed-to-sell-4-billion-in-amazon-the-shares-are-falling.html",
+        "published_at": "2026-08-04T13:12:03Z",
+        "relevance_score": 0.94,
+        "sentiment": 0.0,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Founder Jeff Bezos filing to sell ~$4B of shares is a direct, company-specific event likely to increase selling pressure and intra-day volatility. Market reaction (shares falling) indicates a material short-term impact, though Amazon's large market cap limits the longer-term fundamental effect."
+      },
       {
         "title": "Amazon.com Inc. filed 10-Q: 10-Q",
         "provider": "SEC EDGAR",
@@ -113,9 +131,9 @@
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.95,
+        "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Official SEC 10-Q for Amazon (report date 2026-06-30). Contains quarterly financials and disclosures that are highly material for short-term trading and valuation."
+        "llm_reason": "Official 10-Q filing is company-specific and contains detailed financial and risk information. However, absent indications of new unexpected disclosures in the provided text, it's primarily informational and likely already priced, giving moderate short-term relevance."
       },
       {
         "title": "Amazon.com Inc. filed 8-K: 8-K",
@@ -126,24 +144,24 @@
         "sentiment": 0.0,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
-        "materiality": 0.85,
-        "llm_confidence": 0.85,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Official SEC 8-K filing (2026-07-30). 8-Ks often disclose material events; content not provided here but the filing itself is likely to be a meaningful near-term catalyst or information source."
+        "llm_reason": "An 8‑K can denote a material event, but the content is not specified here. It's potentially important for AMZN, yet without details the short-term impact is uncertain—treated as moderately relevant but lower confidence."
       },
       {
-        "title": "Amazon's Secret Margin Story Isn't AWS Alone (NASDAQ:AMZN)",
-        "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4929510-amazon-secret-margin-story-isnt-aws-alone",
-        "published_at": "2026-08-03T15:03:53Z",
-        "relevance_score": 0.97,
-        "sentiment": 0.22,
-        "doc_type": "company_specific",
-        "company_relevance": 0.75,
-        "materiality": 0.65,
-        "llm_confidence": 0.7,
+        "title": "“Magnificent 7 Stocks Plunge Hundreds of Billions as AI Spending Concerns Roil Markets”",
+        "provider": "profitconfidential.com",
+        "url": "https://profitconfidential.com/magnificent-7-stocks-shed-hundreds-of-billions-amid-ai-spending-fears/",
+        "published_at": "2026-08-04T16:07:47Z",
+        "relevance_score": 0.56,
+        "sentiment": 0.0,
+        "doc_type": "sector_macro",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Company-focused analysis arguing margins are expanding beyond AWS (ads, subscriptions, AI demand). Opinion/research piece can affect sentiment in the near term but is not a primary new factual catalyst."
+        "llm_reason": "Article describes broad declines across major tech names tied to AI spending and geopolitics. This sector-level sentiment can pressure AMZN in the short term, but it's not specific to Amazon and is more market/sector driven."
       }
     ],
     "macro_evidence": [],
@@ -153,14 +171,13 @@
       "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
       "alerts": [
         "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
-        "Volatility expanded enough to weaken the setup.",
-        "The news layer is still thin, so conviction should stay measured."
+        "Volatility expanded enough to weaken the setup."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "risk",
-          "value": "22.8% 5D • 16.4% 20D",
+          "value": "20.7% 5D • 13.3% 20D",
           "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
         },
         {
@@ -171,9 +188,9 @@
         },
         {
           "label": "News",
-          "state": "watch",
-          "value": "0.87 sentiment • 4 articles",
-          "detail": "The news layer is still thin, so conviction should stay measured."
+          "state": "positive",
+          "value": "0.94 sentiment • 5 articles",
+          "detail": "Recent news flow is supportive and diversified enough to back the setup."
         },
         {
           "label": "Macro",
@@ -184,13 +201,13 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.130 score • +0.159 conf",
+          "value": "+0.150 score • +0.230 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector 0 trading days",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -215,14 +232,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-03",
+          "date": "2026-08-04",
           "status": "healthy",
-          "used": 8,
+          "used": 1,
           "limit": 25,
-          "remaining": 17,
+          "remaining": 24,
           "categories": {
-            "company_news": 5,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -235,14 +251,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-03",
+          "date": "2026-08-04",
           "status": "tracking_only",
-          "used": 17,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 14,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -256,14 +271,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-03",
+          "date": "2026-08-04",
           "status": "healthy",
-          "used": 59,
+          "used": 2,
           "limit": 100,
-          "remaining": 41,
+          "remaining": 98,
           "categories": {
-            "company_news": 56,
-            "global_news": 3
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -277,14 +292,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-08-03",
+          "date": "2026-08-04",
           "status": "tracking_only",
-          "used": 54,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 3,
-            "submissions": 51
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -297,13 +312,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-08-03",
+          "date": "2026-08-04",
           "status": "healthy",
-          "used": 64,
+          "used": 3,
           "limit": 800,
-          "remaining": 736,
+          "remaining": 797,
           "categories": {
-            "price": 64
+            "price": 3
           }
         }
       }

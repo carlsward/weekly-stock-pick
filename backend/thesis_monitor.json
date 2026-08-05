@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-04T17:30:00Z",
-  "data_as_of": "2026-08-04",
-  "expected_next_refresh_at": "2026-08-05T17:30:00Z",
-  "stale_after": "2026-08-06T05:30:00Z",
+  "generated_at": "2026-08-05T17:21:29Z",
+  "data_as_of": "2026-08-05",
+  "expected_next_refresh_at": "2026-08-06T17:21:29Z",
+  "stale_after": "2026-08-07T05:21:29Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W32",
@@ -24,144 +24,112 @@
     "company_name": "Amazon.com Inc.",
     "sector": "consumer_discretionary",
     "risk": "high",
-    "model_score": 0.2704,
-    "confidence_score": 0.78,
-    "confidence_label": "high",
-    "price_as_of": "2026-08-04",
-    "news_as_of": "2026-08-04",
+    "model_score": 0.1271,
+    "confidence_score": 0.57,
+    "confidence_label": "medium",
+    "price_as_of": "2026-08-05",
+    "news_as_of": "2026-08-05",
     "macro_as_of": null,
-    "sector_as_of": "2026-08-04",
-    "article_count": 5,
+    "sector_as_of": null,
+    "article_count": 2,
     "metrics": {
-      "momentum_5d": 0.2067,
-      "momentum_20d": 0.1325,
-      "daily_volatility": 0.0395,
-      "downside_volatility": 0.0176,
+      "momentum_5d": 0.1981,
+      "momentum_20d": 0.1147,
+      "daily_volatility": 0.0399,
+      "downside_volatility": 0.0188,
       "max_drawdown_20d": 0.111,
       "positive_day_ratio_10d": 0.3,
-      "price_vs_20d_average": 0.1256,
-      "volume_trend_5d": 0.9976,
-      "market_relative_5d": 0.1593,
-      "market_relative_20d": 0.0981,
-      "sector_relative_5d": 0.1469,
-      "sector_relative_20d": 0.1234,
-      "news_sentiment": 0.94,
-      "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.8756,
-      "news_confidence": 0.92,
+      "price_vs_20d_average": 0.0914,
+      "volume_trend_5d": 1.0869,
+      "market_relative_5d": 0.133,
+      "market_relative_20d": 0.0772,
+      "sector_relative_5d": 0.1291,
+      "sector_relative_20d": 0.0851,
+      "news_sentiment": 0.58,
+      "raw_news_sentiment": 0.2229,
+      "calibrated_news_sentiment": 0.1577,
+      "news_confidence": 0.78,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.39,
-      "sector_confidence": 0.41,
-      "effective_article_count": 1.7,
-      "source_count": 3,
-      "average_relevance": 0.82,
+      "sector_sentiment": 0.5,
+      "sector_confidence": 0.2,
+      "effective_article_count": 0.52,
+      "source_count": 2,
+      "average_relevance": 0.8,
       "technical_training_ic": 0.0019,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1742,
+      "momentum": 0.1688,
       "short_momentum": 0.066,
-      "medium_momentum": 0.0398,
+      "medium_momentum": 0.0344,
       "trend_quality": 0.0084,
       "volume_confirmation": 0.024,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0684,
-      "daily_volatility_penalty": -0.0355,
-      "downside_penalty": -0.019,
+      "volatility_penalty": -0.0701,
+      "daily_volatility_penalty": -0.0359,
+      "downside_penalty": -0.0203,
       "drawdown_penalty": -0.0139,
-      "news_adjustment": 0.1506,
+      "news_adjustment": 0.0252,
       "macro_adjustment": 0.0,
-      "sector_adjustment": -0.0067,
-      "signal_alignment": 0.0207,
-      "technical_total": 0.1058,
-      "trend_strength": 0.1142,
+      "sector_adjustment": 0.0,
+      "signal_alignment": 0.0032,
+      "technical_total": 0.0987,
+      "trend_strength": 0.1088,
       "relative_strength": 0.036,
       "participation": 0.024,
-      "risk_control": -0.0684,
+      "risk_control": -0.0701,
       "block_weight_news": 0.179,
       "block_weight_macro": 0.0993,
       "block_weight_sector": 0.0816,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 0.65,
+      "sector_dedup_penalty": 1.0,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.3333,
+      "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.2704
+      "total": 0.1271
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 20.7% and 20-day momentum is 13.3%.",
-      "Trend quality is supported by 30% positive sessions over the last 10 trading days and the price sitting 12.6% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 3.9%, downside volatility near 1.8%, and a recent max drawdown of 11.1%.",
-      "Volume confirmation is 99.8% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 15.9% versus SPY over 5 days and 14.7% versus the sector ETF.",
-      "News signal is bullish with score 0.94, confidence 0.92, and 1.7 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.94, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 5 articles across 3 sources, 1.7 effective weighted articles, average relevance 0.82, average source quality 0.88, confidence 0.92.",
-      "Broad market news leaned bearish for the Consumer Discretionary sector with score 0.39 and confidence 0.41.",
-      "Market commentary highlights doubts about the Fed's ability to deliver 2% inflation and bond yields remain elevated. Elevated yields raise discount rates and borrowing costs, tightening financial conditions and weighing on consumer demand and valuations for discretionary firms. Near-term transmission is through higher funding costs, reduced real incomes and lower equity risk appetite, making consumer discretionary relatively vulnerable over the next few trading days.",
-      "Sector overlay was trimmed by 35% because it overlaps with company or macro themes.",
+      "Price trend remains constructive: 5-day momentum is 19.8% and 20-day momentum is 11.5%.",
+      "Trend quality is supported by 30% positive sessions over the last 10 trading days and the price sitting 9.1% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 4.0%, downside volatility near 1.9%, and a recent max drawdown of 11.1%.",
+      "Volume confirmation is 108.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 13.3% versus SPY over 5 days and 12.9% versus the sector ETF.",
+      "News signal is neutral with score 0.58, confidence 0.78, and 0.5 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow neutral at 0.58, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.5 effective weighted articles, average relevance 0.80, average source quality 0.75, confidence 0.78.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Price action and news are pointing in the same direction, which raises trust in the setup.",
-      "Overall model score is 0.270 with high confidence."
+      "Overall model score is 0.127 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Jeff Bezos just filed to sell $4 billion in Amazon. The shares are falling",
-        "provider": "cnbc.com",
-        "url": "https://www.cnbc.com/2026/08/04/jeff-bezos-just-filed-to-sell-4-billion-in-amazon-the-shares-are-falling.html",
-        "published_at": "2026-08-04T13:12:03Z",
-        "relevance_score": 0.94,
-        "sentiment": 0.0,
+        "title": "Amazon’s AWS CEO Just Sent Shivers Down the Spines of AI Bears. Supply is Mostly ‘Spoken For’ Through 2028.",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/technology/ai/articles/amazon-aws-ceo-just-sent-121118385.html",
+        "published_at": "2026-08-05T12:11:18Z",
+        "relevance_score": 0.66,
+        "sentiment": 0.46,
         "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Founder Jeff Bezos filing to sell ~$4B of shares is a direct, company-specific event likely to increase selling pressure and intra-day volatility. Market reaction (shares falling) indicates a material short-term impact, though Amazon's large market cap limits the longer-term fundamental effect."
+        "company_relevance": 0.98,
+        "materiality": 0.85,
+        "llm_confidence": 0.85,
+        "llm_impact_score": 0.6,
+        "llm_reason": "AWS CEO stating capacity is 'spoken for' through 2028, combined with reported 37% growth and an already meaningful share-price rally, is highly material for AMZN near-term — implies sustained demand, upside to revenue/earnings and continued investor enthusiasm. Much of the move may be partially priced in, but momentum is likely to persist in the 1–10 day window."
       },
       {
-        "title": "Amazon.com Inc. filed 10-Q: 10-Q",
-        "provider": "SEC EDGAR",
-        "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm",
-        "published_at": "2026-07-30T22:11:13Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.0,
-        "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Official 10-Q filing is company-specific and contains detailed financial and risk information. However, absent indications of new unexpected disclosures in the provided text, it's primarily informational and likely already priced, giving moderate short-term relevance."
-      },
-      {
-        "title": "Amazon.com Inc. filed 8-K: 8-K",
-        "provider": "SEC EDGAR",
-        "url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260730.htm",
-        "published_at": "2026-07-30T20:06:23Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.0,
-        "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "An 8‑K can denote a material event, but the content is not specified here. It's potentially important for AMZN, yet without details the short-term impact is uncertain—treated as moderately relevant but lower confidence."
-      },
-      {
-        "title": "“Magnificent 7 Stocks Plunge Hundreds of Billions as AI Spending Concerns Roil Markets”",
+        "title": "Jeff Bezos Plans to Sell $4 Billion in Amazon Shares-Stock Takes a Hit",
         "provider": "profitconfidential.com",
-        "url": "https://profitconfidential.com/magnificent-7-stocks-shed-hundreds-of-billions-amid-ai-spending-fears/",
-        "published_at": "2026-08-04T16:07:47Z",
-        "relevance_score": 0.56,
-        "sentiment": 0.0,
-        "doc_type": "sector_macro",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Article describes broad declines across major tech names tied to AI spending and geopolitics. This sector-level sentiment can pressure AMZN in the short term, but it's not specific to Amazon and is more market/sector driven."
+        "url": "https://profitconfidential.com/jeff-bezos-just-filed-to-sell-4-billion-in-amazon-the-shares-are-falling/",
+        "published_at": "2026-08-04T23:07:45Z",
+        "relevance_score": 0.94,
+        "sentiment": 0.85,
+        "doc_type": "company_specific",
+        "company_relevance": 0.95,
+        "materiality": 0.6,
+        "llm_confidence": 0.7,
+        "llm_impact_score": -0.35,
+        "llm_reason": "Founder Jeff Bezos selling ~$4B of shares is a direct, company-specific event likely to add short-term supply and downward pressure on AMZN over the next few trading days. Market headline already notes a hit. However, insider sells are common for diversification and do not change fundamentals, so effect is moderate and likely transitory."
       }
     ],
     "macro_evidence": [],
@@ -171,26 +139,27 @@
       "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
       "alerts": [
         "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
-        "Volatility expanded enough to weaken the setup."
+        "Volatility expanded enough to weaken the setup.",
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "risk",
-          "value": "20.7% 5D • 13.3% 20D",
+          "value": "19.8% 5D • 11.5% 20D",
           "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "3.9% daily • 11.1% drawdown",
+          "value": "4.0% daily • 11.1% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
-          "state": "positive",
-          "value": "0.94 sentiment • 5 articles",
-          "detail": "Recent news flow is supportive and diversified enough to back the setup."
+          "state": "watch",
+          "value": "0.58 sentiment • 2 articles",
+          "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
@@ -200,14 +169,14 @@
         },
         {
           "label": "Margin",
-          "state": "positive",
-          "value": "+0.150 score • +0.230 conf",
-          "detail": "The pick cleared the release thresholds with room to spare."
+          "state": "risk",
+          "value": "+0.007 score • +0.021 conf",
+          "detail": "The pick only barely cleared the release bar."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector 0 trading days",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -220,25 +189,26 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
-      "GDELT global-news feed failed during this run."
+      "GDELT global-news feed failed during this run.",
+      "Alpha Vantage global-news fallback failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
-        "status": "healthy",
-        "used": 1,
+        "status": "degraded",
+        "used": 3,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 22,
         "categories": {
-          "global_news": 1
+          "global_news": 3
         },
         "daily": {
-          "date": "2026-08-04",
+          "date": "2026-08-05",
           "status": "healthy",
-          "used": 1,
+          "used": 3,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 22,
           "categories": {
-            "global_news": 1
+            "global_news": 3
           }
         }
       },
@@ -251,7 +221,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-04",
+          "date": "2026-08-05",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -271,7 +241,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-04",
+          "date": "2026-08-05",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -292,7 +262,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-08-04",
+          "date": "2026-08-05",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -312,7 +282,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-08-04",
+          "date": "2026-08-05",
           "status": "healthy",
           "used": 3,
           "limit": 800,

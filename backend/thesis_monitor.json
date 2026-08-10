@@ -1,18 +1,18 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-09T16:23:23Z",
-  "data_as_of": "2026-08-09",
-  "expected_next_refresh_at": "2026-08-10T16:23:23Z",
-  "stale_after": "2026-08-11T04:23:23Z",
+  "generated_at": "2026-08-10T12:44:43Z",
+  "data_as_of": "2026-08-10",
+  "expected_next_refresh_at": "2026-08-11T12:44:43Z",
+  "stale_after": "2026-08-12T00:44:43Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W32",
-    "week_label": "Aug 03 - 07, 2026",
-    "week_start": "2026-08-03",
-    "week_end": "2026-08-07"
+    "week_id": "2026-W33",
+    "week_label": "Aug 10 - 14, 2026",
+    "week_start": "2026-08-10",
+    "week_end": "2026-08-14"
   },
-  "source_dashboard_generated_at": "2026-08-03T14:28:42Z",
+  "source_dashboard_generated_at": "2026-08-10T12:37:07Z",
   "selection": {
     "status": "picked",
     "status_reason": "Live thesis monitor refreshed the active weekly pick.",
@@ -20,134 +20,133 @@
     "threshold_confidence": 0.55
   },
   "active_pick": {
-    "symbol": "AMZN",
-    "company_name": "Amazon.com Inc.",
-    "sector": "consumer_discretionary",
+    "symbol": "MSFT",
+    "company_name": "Microsoft Corporation",
+    "sector": "technology",
     "risk": "high",
-    "model_score": 0.1173,
-    "confidence_score": 0.6,
-    "confidence_label": "medium",
+    "model_score": 0.2069,
+    "confidence_score": 0.8,
+    "confidence_label": "high",
     "price_as_of": "2026-08-07",
-    "news_as_of": "2026-08-08",
+    "news_as_of": "2026-08-09",
     "macro_as_of": null,
-    "sector_as_of": "2026-08-09",
+    "sector_as_of": "2026-08-10",
     "article_count": 2,
     "metrics": {
-      "momentum_5d": 0.0107,
-      "momentum_20d": 0.1188,
-      "daily_volatility": 0.0397,
-      "downside_volatility": 0.0184,
-      "max_drawdown_20d": 0.111,
-      "positive_day_ratio_10d": 0.4,
-      "price_vs_20d_average": 0.091,
-      "volume_trend_5d": 0.1089,
-      "market_relative_5d": -0.0236,
-      "market_relative_20d": 0.0923,
-      "sector_relative_5d": -0.0211,
-      "sector_relative_20d": 0.0943,
-      "news_sentiment": 0.79,
+      "momentum_5d": 0.0759,
+      "momentum_20d": 0.2983,
+      "daily_volatility": 0.0376,
+      "downside_volatility": 0.0157,
+      "max_drawdown_20d": 0.0515,
+      "positive_day_ratio_10d": 0.8,
+      "price_vs_20d_average": 0.1797,
+      "volume_trend_5d": 0.117,
+      "market_relative_5d": 0.0394,
+      "market_relative_20d": 0.2676,
+      "sector_relative_5d": 0.0037,
+      "sector_relative_20d": 0.2832,
+      "news_sentiment": 0.8,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.5777,
-      "news_confidence": 0.73,
+      "calibrated_news_sentiment": 0.594,
+      "news_confidence": 0.74,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.82,
-      "sector_confidence": 0.55,
-      "effective_article_count": 0.14,
+      "sector_sentiment": 0.1,
+      "sector_confidence": 0.67,
+      "effective_article_count": 0.18,
       "source_count": 2,
-      "average_relevance": 0.59,
-      "technical_training_ic": 0.0019,
+      "average_relevance": 0.52,
+      "technical_training_ic": 0.0049,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0779,
-      "short_momentum": 0.0088,
-      "medium_momentum": 0.0356,
-      "trend_quality": 0.0132,
-      "volume_confirmation": 0.0044,
-      "market_relative_strength": 0.009,
-      "sector_relative_strength": 0.0069,
-      "volatility_penalty": -0.0694,
-      "daily_volatility_penalty": -0.0357,
-      "downside_penalty": -0.0198,
-      "drawdown_penalty": -0.0139,
-      "news_adjustment": 0.0884,
+      "momentum": 0.1897,
+      "short_momentum": 0.0626,
+      "medium_momentum": 0.054,
+      "trend_quality": 0.0324,
+      "volume_confirmation": 0.0047,
+      "market_relative_strength": 0.021,
+      "sector_relative_strength": 0.015,
+      "volatility_penalty": -0.0572,
+      "daily_volatility_penalty": -0.0338,
+      "downside_penalty": -0.0169,
+      "drawdown_penalty": -0.0064,
+      "news_adjustment": 0.0916,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0194,
-      "signal_alignment": 0.001,
-      "technical_total": 0.0085,
-      "trend_strength": 0.0576,
-      "relative_strength": 0.0159,
-      "participation": 0.0044,
-      "risk_control": -0.0694,
-      "block_weight_news": 0.179,
-      "block_weight_macro": 0.0993,
-      "block_weight_sector": 0.0816,
+      "sector_adjustment": -0.033,
+      "signal_alignment": 0.0158,
+      "technical_total": 0.1325,
+      "trend_strength": 0.149,
+      "relative_strength": 0.036,
+      "participation": 0.0047,
+      "risk_control": -0.0572,
+      "block_weight_news": 0.1781,
+      "block_weight_macro": 0.0986,
+      "block_weight_sector": 0.0833,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 0.55,
+      "sector_dedup_penalty": 0.65,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.75,
+      "news_sector_overlap": 0.4286,
       "macro_sector_overlap": 0.0,
-      "total": 0.1173
+      "total": 0.2069
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 1.1% and 20-day momentum is 11.9%.",
-      "Trend quality is supported by 40% positive sessions over the last 10 trading days and the price sitting 9.1% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 4.0%, downside volatility near 1.8%, and a recent max drawdown of 11.1%.",
-      "Volume confirmation is 10.9% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is -2.4% versus SPY over 5 days and -2.1% versus the sector ETF.",
-      "News signal is bullish with score 0.79, confidence 0.73, and 0.1 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.79, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 2 articles across 2 sources, 0.1 effective weighted articles, average relevance 0.59, average source quality 0.75, confidence 0.73.",
-      "Broad market news leaned bullish for the Consumer Discretionary sector with score 0.82 and confidence 0.55.",
-      "Wayfair reported above-trend revenue growth and said it is capturing share despite uneven demand and weak housing turnover. First-order: stronger-than-expected top-line supports the view that demand for home goods and online furniture is resilient, improving sector sentiment. Second-order: investors may reallocate into e-commerce and home-furnishings names, lifting short-term sector multiples. Effects are broad to the consumer discretionary segment rather than specific to tracked symbols.",
-      "Sector overlay was trimmed by 45% because it overlaps with company or macro themes.",
+      "Price trend remains constructive: 5-day momentum is 7.6% and 20-day momentum is 29.8%.",
+      "Trend quality is supported by 80% positive sessions over the last 10 trading days and the price sitting 18.0% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 3.8%, downside volatility near 1.6%, and a recent max drawdown of 5.1%.",
+      "Volume confirmation is 11.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 3.9% versus SPY over 5 days and 0.4% versus the sector ETF.",
+      "News signal is bullish with score 0.80, confidence 0.74, and 0.2 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.80, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.2 effective weighted articles, average relevance 0.52, average source quality 0.75, confidence 0.74.",
+      "Broad market news leaned bearish for the Technology sector with score 0.10 and confidence 0.67.",
+      "Geopolitical uncertainty lifted crude oil, which raises near-term fuel and input cost assumptions and inflation expectations. That combination tends to depress risk appetite and compress valuations on growth-sensitive sectors. Technology is likely to see modest short-term pressure from risk-off flows and potential demand/cost headwinds; no company-specific linkage in the article to justify symbol-level mapping.",
+      "Sector overlay was trimmed by 35% because it overlaps with company or macro themes.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.117 with medium confidence."
+      "Overall model score is 0.207 with high confidence."
     ],
     "news_evidence": [
       {
-        "title": "OpenAI’s new device will be hockey puck-sized and cost over $300",
-        "provider": "brandequity.economictimes.indiatimes.com",
-        "url": "https://brandequity.economictimes.indiatimes.com/news/digital/openais-new-device-will-be-hockey-puck-sized-and-cost-over-300/133054005",
-        "published_at": "2026-08-08T14:00:22Z",
-        "relevance_score": 0.52,
-        "sentiment": 0.75,
+        "title": "Sundar Pichai's Alphabet Has Grown Google Cloud Revenue 82% Year Over Year. Here's Why That Growth Rate Justifies the Company's Capex Bet.",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/technology/ai/articles/sundar-pichais-alphabet-grown-google-191400735.html",
+        "published_at": "2026-08-09T19:14:00Z",
+        "relevance_score": 0.59,
+        "sentiment": 0.59,
         "doc_type": "sector_macro",
         "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Product launch from OpenAI could influence the smart-speaker/assistant competitive landscape (Alexa/Echo), but the article is generic product news about price/size with no direct, immediate implications for Amazon’s operations or near-term revenue — therefore low short-term materiality."
+        "llm_reason": "Discusses Google Cloud's 82% growth and AI-driven cloud capex, referencing the competitive cloud landscape (Azure, AWS, Google). Relevant for sector/competitive positioning but not company-specific news for MSFT; likely only a modest influence on Azure sentiment and negligible direct impact on MSFT stock in the next 1–10 trading days."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
       "headline": "Support needs review",
-      "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
+      "summary": "Volatility expanded enough to weaken the setup.",
       "alerts": [
-        "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
         "Volatility expanded enough to weaken the setup.",
         "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "risk",
-          "value": "1.1% 5D • 11.9% 20D",
-          "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
+          "state": "positive",
+          "value": "7.6% 5D • 29.8% 20D",
+          "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "4.0% daily • 11.1% drawdown",
+          "value": "3.8% daily • 5.1% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.79 sentiment • 2 articles",
+          "value": "0.80 sentiment • 2 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -158,14 +157,14 @@
         },
         {
           "label": "Margin",
-          "state": "risk",
-          "value": "-0.003 score • +0.054 conf",
-          "detail": "This is the top ranked stock, but it is below the normal release bar."
+          "state": "positive",
+          "value": "+0.087 score • +0.246 conf",
+          "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector 0 trading days",
+          "value": "price 1 trading day • news 1 trading day • macro neutral • sector 0 trading days",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -183,100 +182,104 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 8,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 17,
         "categories": {
-          "global_news": 1
+          "company_news": 6,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-08-09",
+          "date": "2026-08-10",
           "status": "healthy",
-          "used": 1,
+          "used": 8,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 17,
           "categories": {
-            "global_news": 1
+            "company_news": 6,
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 20,
         "limit": null,
         "remaining": null,
         "categories": {
-          "global_news": 1
+          "company_news": 18,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-08-09",
+          "date": "2026-08-10",
           "status": "tracking_only",
-          "used": 1,
+          "used": 20,
           "limit": null,
           "remaining": null,
           "categories": {
-            "global_news": 1
+            "company_news": 18,
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 52,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 48,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 50,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-08-09",
+          "date": "2026-08-10",
           "status": "healthy",
-          "used": 2,
+          "used": 52,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 48,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 50,
+            "global_news": 2
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 52,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1,
-          "submissions": 1
+          "ticker_map": 2,
+          "submissions": 50
         },
         "daily": {
-          "date": "2026-08-09",
+          "date": "2026-08-10",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 3,
+        "used": 61,
         "limit": 800,
-        "remaining": 797,
+        "remaining": 739,
         "categories": {
-          "price": 3
+          "price": 61
         },
         "daily": {
-          "date": "2026-08-09",
+          "date": "2026-08-10",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

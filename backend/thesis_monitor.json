@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-11T16:48:21Z",
-  "data_as_of": "2026-08-11",
-  "expected_next_refresh_at": "2026-08-12T16:48:21Z",
-  "stale_after": "2026-08-13T04:48:21Z",
+  "generated_at": "2026-08-12T16:47:36Z",
+  "data_as_of": "2026-08-12",
+  "expected_next_refresh_at": "2026-08-13T16:47:36Z",
+  "stale_after": "2026-08-14T04:47:36Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W33",
@@ -24,62 +24,62 @@
     "company_name": "Microsoft Corporation",
     "sector": "technology",
     "risk": "high",
-    "model_score": 0.0607,
-    "confidence_score": 0.48,
-    "confidence_label": "low",
-    "price_as_of": "2026-08-11",
-    "news_as_of": null,
+    "model_score": -0.038,
+    "confidence_score": 0.61,
+    "confidence_label": "medium",
+    "price_as_of": "2026-08-12",
+    "news_as_of": "2026-08-12",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 0,
+    "article_count": 2,
     "metrics": {
-      "momentum_5d": 0.018,
-      "momentum_20d": 0.3033,
-      "daily_volatility": 0.0373,
-      "downside_volatility": 0.0149,
+      "momentum_5d": 0.0135,
+      "momentum_20d": 0.2488,
+      "daily_volatility": 0.0378,
+      "downside_volatility": 0.0153,
       "max_drawdown_20d": 0.0515,
       "positive_day_ratio_10d": 0.7,
-      "price_vs_20d_average": 0.1522,
-      "volume_trend_5d": -0.3903,
-      "market_relative_5d": 0.0179,
-      "market_relative_20d": 0.2703,
-      "sector_relative_5d": 0.0231,
-      "sector_relative_20d": 0.2868,
-      "news_sentiment": 0.5,
-      "raw_news_sentiment": 0.0,
-      "calibrated_news_sentiment": 0.0,
-      "news_confidence": 0.2,
+      "price_vs_20d_average": 0.1217,
+      "volume_trend_5d": -0.4354,
+      "market_relative_5d": 0.0097,
+      "market_relative_20d": 0.2199,
+      "sector_relative_5d": -0.0029,
+      "sector_relative_20d": 0.1999,
+      "news_sentiment": 0.21,
+      "raw_news_sentiment": -1.0,
+      "calibrated_news_sentiment": -0.5848,
+      "news_confidence": 0.7,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.0,
-      "source_count": 0,
-      "average_relevance": 0.0,
+      "effective_article_count": 0.58,
+      "source_count": 1,
+      "average_relevance": 0.77,
       "technical_training_ic": 0.0049,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1168,
-      "short_momentum": 0.0148,
+      "momentum": 0.1113,
+      "short_momentum": 0.0111,
       "medium_momentum": 0.054,
       "trend_quality": 0.0276,
-      "volume_confirmation": -0.0156,
+      "volume_confirmation": -0.0174,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0561,
-      "daily_volatility_penalty": -0.0336,
-      "downside_penalty": -0.0161,
+      "volatility_penalty": -0.0569,
+      "daily_volatility_penalty": -0.034,
+      "downside_penalty": -0.0165,
       "drawdown_penalty": -0.0064,
-      "news_adjustment": 0.0,
+      "news_adjustment": -0.0862,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0,
-      "technical_total": 0.0607,
-      "trend_strength": 0.0964,
+      "signal_alignment": -0.0061,
+      "technical_total": 0.0544,
+      "trend_strength": 0.0927,
       "relative_strength": 0.036,
-      "participation": -0.0156,
-      "risk_control": -0.0561,
+      "participation": -0.0174,
+      "risk_control": -0.0569,
       "block_weight_news": 0.1781,
       "block_weight_macro": 0.0986,
       "block_weight_sector": 0.0833,
@@ -88,20 +88,36 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0607
+      "total": -0.038
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 1.8% and 20-day momentum is 30.3%.",
-      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 15.2% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 3.7%, downside volatility near 1.5%, and a recent max drawdown of 5.1%.",
-      "Volume confirmation is -39.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 1.8% versus SPY over 5 days and 2.3% versus the sector ETF.",
-      "No recent relevant news passed the filter, so the news layer stayed neutral and contributed less confidence.",
-      "Recent MSFT company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral.",
+      "Price trend remains constructive: 5-day momentum is 1.4% and 20-day momentum is 24.9%.",
+      "Trend quality is supported by 70% positive sessions over the last 10 trading days and the price sitting 12.2% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 3.8%, downside volatility near 1.5%, and a recent max drawdown of 5.1%.",
+      "Volume confirmation is -43.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 1.0% versus SPY over 5 days and -0.3% versus the sector ETF.",
+      "News signal is bearish with score 0.21, confidence 0.70, and 0.6 weighted articles across 1 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bearish at 0.21, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 1 sources, 0.6 effective weighted articles, average relevance 0.77, average source quality 0.75, confidence 0.70.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.061 with low confidence."
+      "Overall model score is -0.038 with medium confidence."
     ],
-    "news_evidence": [],
+    "news_evidence": [
+      {
+        "title": "Microsoft Corporation (MSFT) vs. Meta Platforms, Inc. (META): Two Different Bets Behind Big Tech’s $1 Trillion Lease Bill",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/technology/articles/microsoft-corporation-msft-vs-meta-150020825.html",
+        "published_at": "2026-08-12T15:00:20Z",
+        "relevance_score": 1.0,
+        "sentiment": 0.44,
+        "doc_type": "company_specific",
+        "company_relevance": 0.8,
+        "materiality": 1.0,
+        "llm_confidence": 0.8,
+        "llm_impact_score": -1.0,
+        "llm_reason": "Directly concerns Microsoft’s disclosed pipeline of future lease commitments (~$329.1B) for AI data centers. This is material context for MSFT but appears to restate an already-reported Reuters item (Aug 4), so near-term market impact is likely limited; could be modestly negative for sentiment given size of obligations but not likely to move the stock materially in the next 1–10 trading days."
+      }
+    ],
     "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
@@ -109,27 +125,27 @@
       "summary": "Volatility expanded enough to weaken the setup.",
       "alerts": [
         "Volatility expanded enough to weaken the setup.",
-        "No recent company-specific articles passed the filters, so the thesis rests mostly on price action.",
+        "Recent news tone leaned negative with enough confidence to matter.",
         "This is the top ranked stock, but it is below the normal release bar."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "1.8% 5D • 30.3% 20D",
+          "value": "1.4% 5D • 24.9% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "3.7% daily • 5.1% drawdown",
+          "value": "3.8% daily • 5.1% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
-          "state": "watch",
-          "value": "0.50 sentiment • 0 articles",
-          "detail": "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
+          "state": "risk",
+          "value": "0.21 sentiment • 2 articles",
+          "detail": "Recent news tone leaned negative with enough confidence to matter."
         },
         {
           "label": "Macro",
@@ -140,13 +156,13 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.059 score • -0.068 conf",
+          "value": "-0.158 score • +0.059 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news no fresh signal • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -171,7 +187,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-11",
+          "date": "2026-08-12",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -190,7 +206,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-11",
+          "date": "2026-08-12",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -210,7 +226,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-11",
+          "date": "2026-08-12",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -231,7 +247,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-08-11",
+          "date": "2026-08-12",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -251,7 +267,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-08-11",
+          "date": "2026-08-12",
           "status": "healthy",
           "used": 3,
           "limit": 800,

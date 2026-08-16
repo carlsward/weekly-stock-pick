@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-15T16:13:54Z",
-  "data_as_of": "2026-08-15",
-  "expected_next_refresh_at": "2026-08-16T16:13:54Z",
-  "stale_after": "2026-08-17T04:13:54Z",
+  "generated_at": "2026-08-16T16:14:03Z",
+  "data_as_of": "2026-08-16",
+  "expected_next_refresh_at": "2026-08-17T16:14:03Z",
+  "stale_after": "2026-08-18T04:14:03Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W33",
@@ -24,14 +24,14 @@
     "company_name": "Microsoft Corporation",
     "sector": "technology",
     "risk": "high",
-    "model_score": -0.017,
-    "confidence_score": 0.59,
-    "confidence_label": "medium",
+    "model_score": 0.0346,
+    "confidence_score": 0.46,
+    "confidence_label": "low",
     "price_as_of": "2026-08-14",
-    "news_as_of": "2026-08-15",
+    "news_as_of": null,
     "macro_as_of": null,
-    "sector_as_of": "2026-08-15",
-    "article_count": 3,
+    "sector_as_of": "2026-08-16",
+    "article_count": 0,
     "metrics": {
       "momentum_5d": -0.0092,
       "momentum_20d": 0.2579,
@@ -45,17 +45,17 @@
       "market_relative_20d": 0.2044,
       "sector_relative_5d": -0.0198,
       "sector_relative_20d": 0.1625,
-      "news_sentiment": 0.31,
-      "raw_news_sentiment": -0.9457,
-      "calibrated_news_sentiment": -0.3719,
-      "news_confidence": 0.57,
+      "news_sentiment": 0.5,
+      "raw_news_sentiment": 0.0,
+      "calibrated_news_sentiment": 0.0,
+      "news_confidence": 0.2,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.6,
-      "sector_confidence": 0.4,
-      "effective_article_count": 0.11,
-      "source_count": 1,
-      "average_relevance": 0.61,
+      "sector_sentiment": 0.54,
+      "sector_confidence": 0.35,
+      "effective_article_count": 0.0,
+      "source_count": 0,
+      "average_relevance": 0.0,
       "technical_training_ic": 0.0049,
       "technical_training_rows": 2303
     },
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0337,
       "downside_penalty": -0.0157,
       "drawdown_penalty": -0.0064,
-      "news_adjustment": -0.0517,
+      "news_adjustment": 0.0,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0057,
-      "signal_alignment": -0.0021,
+      "sector_adjustment": 0.0035,
+      "signal_alignment": 0.0,
       "technical_total": 0.031,
       "trend_strength": 0.0692,
       "relative_strength": 0.0344,
@@ -84,11 +84,11 @@
       "block_weight_macro": 0.0986,
       "block_weight_sector": 0.0833,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 0.6,
+      "sector_dedup_penalty": 1.0,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.6667,
+      "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": -0.017
+      "total": 0.0346
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is -0.9% and 20-day momentum is 25.8%.",
@@ -96,31 +96,12 @@
       "Risk profile shows daily volatility around 3.7%, downside volatility near 1.5%, and a recent max drawdown of 5.1%.",
       "Volume confirmation is -41.9% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is -1.3% versus SPY over 5 days and -2.0% versus the sector ETF.",
-      "News signal is bearish with score 0.31, confidence 0.57, and 0.1 weighted articles across 1 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bearish at 0.31, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 1 sources, 0.1 effective weighted articles, average relevance 0.61, average source quality 0.75, confidence 0.57.",
-      "Broad market news leaned bullish for the Technology sector with score 0.60 and confidence 0.40.",
-      "Event type: index inclusion (S&P 500 add). Transmission channel: passive fund buying and index-tracking flows that create concentrated demand for the newly added stock, plus positive sentiment spillovers to related names/ETFs. Causal chain: S&P Dow Jones adds Reddit to the S&P 500 -> funds that track the index must buy shares around the inclusion date -> immediate demand-driven price appreciation for the added stock and incremental inflows into large-cap/index-linked ETFs -> modest short-term positive sentiment and ETF flows into the technology sector. Impact on tracked universe: benefits are sector-level (technology) due to trading flows and sentiment; no direct or specific impact on tracked symbol MSFT, so symbols lists are empty.",
-      "Sector overlay was trimmed by 40% because it overlaps with company or macro themes.",
+      "No recent relevant news passed the filter, so the news layer stayed neutral and contributed less confidence.",
+      "Recent MSFT company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is -0.017 with medium confidence."
+      "Overall model score is 0.035 with low confidence."
     ],
-    "news_evidence": [
-      {
-        "title": "The 5 Biggest Risks Americans Don’t Think About Behind the Data Center Boom",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/technology/articles/5-biggest-risks-americans-don-130000152.html",
-        "published_at": "2026-08-15T13:00:00Z",
-        "relevance_score": 0.57,
-        "sentiment": 0.54,
-        "doc_type": "sector_macro",
-        "company_relevance": 0.6,
-        "materiality": 1.0,
-        "llm_confidence": 0.75,
-        "llm_impact_score": -1.0,
-        "llm_reason": "Discusses data-center boom risks and explicitly names Microsoft as an anchor of the AI buildout. This is the most relevant piece: it highlights structural cost/regulatory/energy risks that could weigh on sector sentiment and potentially on MSFT, but effects are likely gradual rather than immediate over the next 1–10 trading days."
-      }
-    ],
+    "news_evidence": [],
     "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
@@ -129,7 +110,7 @@
       "alerts": [
         "Trend quality is still positive, but the tape is no longer decisive.",
         "Volatility expanded enough to weaken the setup.",
-        "Recent news tone leaned negative with enough confidence to matter."
+        "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
       ],
       "signals": [
         {
@@ -146,9 +127,9 @@
         },
         {
           "label": "News",
-          "state": "risk",
-          "value": "0.31 sentiment • 3 articles",
-          "detail": "Recent news tone leaned negative with enough confidence to matter."
+          "state": "watch",
+          "value": "0.50 sentiment • 0 articles",
+          "detail": "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
         },
         {
           "label": "Macro",
@@ -159,13 +140,13 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.137 score • +0.038 conf",
+          "value": "-0.085 score • -0.094 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector 0 trading days",
+          "value": "price 0 trading days • news no fresh signal • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -190,7 +171,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-15",
+          "date": "2026-08-16",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -209,7 +190,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-15",
+          "date": "2026-08-16",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -229,7 +210,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-15",
+          "date": "2026-08-16",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -250,7 +231,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-08-15",
+          "date": "2026-08-16",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -270,7 +251,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-08-15",
+          "date": "2026-08-16",
           "status": "healthy",
           "used": 3,
           "limit": 800,

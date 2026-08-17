@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-10T12:36:37Z",
-  "last_updated": "2026-08-10",
+  "generated_at": "2026-08-17T12:14:55Z",
+  "last_updated": "2026-08-17",
   "lookback_days": 3,
-  "article_count": 3,
-  "source_count": 3,
+  "article_count": 1,
+  "source_count": 1,
   "llm_model": "gpt-5-mini",
-  "summary": "Two articles report Indian indices marginally higher/flat as a crude oil price spike tied to geopolitical uncertainty keeps bulls sidelined — a short-horizon commodity shock that tends to benefit energy producers and weigh on discretionary and industrial demand/margins. A third item is a single-stock note on Assured Guaranty (non‑tracked) with limited short-term market relevance.",
+  "summary": "Rising crude prices amid West Asia geopolitical tensions are driving near-term downside in equities (illustrated by falls in Sensex/Nifty). Expect energy producers to benefit from higher oil realizations, while fuel- and input-cost-sensitive sectors (consumer discretionary, industrials) face margin and demand pressure over the next few trading days.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -22,136 +22,80 @@
     "consumer_discretionary": {
       "sector": "consumer_discretionary",
       "display_name": "Consumer Discretionary",
-      "score": 0.27,
-      "confidence": 0.55,
+      "score": 0.41,
+      "confidence": 0.41,
       "direction": "bearish",
-      "last_updated": "2026-08-10",
+      "last_updated": "2026-08-17",
       "reasons": [
-        "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks).",
-        "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
+        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
       ],
       "supporting_articles": [
         {
-          "title": "Indian Markets Marginally Higher Amid Crude Oil Spike, Geopolitical Uncertainty",
+          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
           "feed": "marketaux",
           "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/indian-stock-markets-edge-up-as-crude-oil-prices-surge-on-geopolitical-concerns/20260810.htm",
-          "published_at": "2026-08-10T11:51:16Z",
+          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
+          "published_at": "2026-08-17T11:33:49Z",
           "impact": "negative",
-          "weight": 0.243,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> higher input costs and inflation -> weaker consumer discretionary demand and tighter corporate margins; geopolitical risk also reduces risk appetite and equity market breadth",
+          "weight": 0.17,
+          "event_type": "geopolitical_tension",
+          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
           "affected_inputs": [
             "crude oil",
             "fuel costs",
-            "input inflation",
-            "risk appetite"
+            "transportation/logistics",
+            "input costs",
+            "consumer spending",
+            "inflation"
           ],
-          "horizon": "1-2w",
-          "reason": "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks)."
-        },
-        {
-          "title": "Benchmarks flatline for third day as crude keeps bulls at bay",
-          "feed": "marketaux",
-          "provider": "thehindubusinessline.com",
-          "url": "https://www.thehindubusinessline.com/markets/benchmarks-flatline-for-third-day-as-crude-keeps-bulls-at-bay/article71328131.ece",
-          "published_at": "2026-08-10T11:49:21Z",
-          "impact": "negative",
-          "weight": 0.233,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> pass-through to consumer prices and cost of goods -> demand moderation and margin pressure; risk-off sentiment caps equity upside",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "consumer prices",
-            "equity risk appetite"
-          ],
-          "horizon": "1w",
-          "reason": "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
+          "horizon": "1-3d",
+          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
         }
       ]
     },
     "consumer_staples": {
       "sector": "consumer_staples",
       "display_name": "Consumer Staples",
-      "score": 0.37,
-      "confidence": 0.48,
-      "direction": "bearish",
-      "last_updated": "2026-08-10",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks)."
+        "No strong recent sector catalyst was found for Consumer Staples."
       ],
-      "supporting_articles": [
-        {
-          "title": "Indian Markets Marginally Higher Amid Crude Oil Spike, Geopolitical Uncertainty",
-          "feed": "marketaux",
-          "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/indian-stock-markets-edge-up-as-crude-oil-prices-surge-on-geopolitical-concerns/20260810.htm",
-          "published_at": "2026-08-10T11:51:16Z",
-          "impact": "negative",
-          "weight": 0.243,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> higher input costs and inflation -> weaker consumer discretionary demand and tighter corporate margins; geopolitical risk also reduces risk appetite and equity market breadth",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "input inflation",
-            "risk appetite"
-          ],
-          "horizon": "1-2w",
-          "reason": "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks)."
-        }
-      ]
+      "supporting_articles": []
     },
     "energy": {
       "sector": "energy",
       "display_name": "Energy",
-      "score": 0.9,
-      "confidence": 0.73,
+      "score": 0.67,
+      "confidence": 0.45,
       "direction": "bullish",
-      "last_updated": "2026-08-10",
+      "last_updated": "2026-08-17",
       "reasons": [
-        "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks).",
-        "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
+        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
       ],
       "supporting_articles": [
         {
-          "title": "Indian Markets Marginally Higher Amid Crude Oil Spike, Geopolitical Uncertainty",
+          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
           "feed": "marketaux",
           "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/indian-stock-markets-edge-up-as-crude-oil-prices-surge-on-geopolitical-concerns/20260810.htm",
-          "published_at": "2026-08-10T11:51:16Z",
+          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
+          "published_at": "2026-08-17T11:33:49Z",
           "impact": "positive",
-          "weight": 0.729,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> higher input costs and inflation -> weaker consumer discretionary demand and tighter corporate margins; geopolitical risk also reduces risk appetite and equity market breadth",
+          "weight": 0.34,
+          "event_type": "geopolitical_tension",
+          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
           "affected_inputs": [
             "crude oil",
             "fuel costs",
-            "input inflation",
-            "risk appetite"
+            "transportation/logistics",
+            "input costs",
+            "consumer spending",
+            "inflation"
           ],
-          "horizon": "1-2w",
-          "reason": "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks)."
-        },
-        {
-          "title": "Benchmarks flatline for third day as crude keeps bulls at bay",
-          "feed": "marketaux",
-          "provider": "thehindubusinessline.com",
-          "url": "https://www.thehindubusinessline.com/markets/benchmarks-flatline-for-third-day-as-crude-keeps-bulls-at-bay/article71328131.ece",
-          "published_at": "2026-08-10T11:49:21Z",
-          "impact": "positive",
-          "weight": 0.465,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> pass-through to consumer prices and cost of goods -> demand moderation and margin pressure; risk-off sentiment caps equity upside",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "consumer prices",
-            "equity risk appetite"
-          ],
-          "horizon": "1w",
-          "reason": "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
+          "horizon": "1-3d",
+          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
         }
       ]
     },
@@ -182,52 +126,34 @@
     "industrials": {
       "sector": "industrials",
       "display_name": "Industrials",
-      "score": 0.27,
-      "confidence": 0.55,
+      "score": 0.41,
+      "confidence": 0.41,
       "direction": "bearish",
-      "last_updated": "2026-08-10",
+      "last_updated": "2026-08-17",
       "reasons": [
-        "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks).",
-        "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
+        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
       ],
       "supporting_articles": [
         {
-          "title": "Indian Markets Marginally Higher Amid Crude Oil Spike, Geopolitical Uncertainty",
+          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
           "feed": "marketaux",
           "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/indian-stock-markets-edge-up-as-crude-oil-prices-surge-on-geopolitical-concerns/20260810.htm",
-          "published_at": "2026-08-10T11:51:16Z",
+          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
+          "published_at": "2026-08-17T11:33:49Z",
           "impact": "negative",
-          "weight": 0.243,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> higher input costs and inflation -> weaker consumer discretionary demand and tighter corporate margins; geopolitical risk also reduces risk appetite and equity market breadth",
+          "weight": 0.17,
+          "event_type": "geopolitical_tension",
+          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
           "affected_inputs": [
             "crude oil",
             "fuel costs",
-            "input inflation",
-            "risk appetite"
+            "transportation/logistics",
+            "input costs",
+            "consumer spending",
+            "inflation"
           ],
-          "horizon": "1-2w",
-          "reason": "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks)."
-        },
-        {
-          "title": "Benchmarks flatline for third day as crude keeps bulls at bay",
-          "feed": "marketaux",
-          "provider": "thehindubusinessline.com",
-          "url": "https://www.thehindubusinessline.com/markets/benchmarks-flatline-for-third-day-as-crude-keeps-bulls-at-bay/article71328131.ece",
-          "published_at": "2026-08-10T11:49:21Z",
-          "impact": "negative",
-          "weight": 0.233,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> pass-through to consumer prices and cost of goods -> demand moderation and margin pressure; risk-off sentiment caps equity upside",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "consumer prices",
-            "equity risk appetite"
-          ],
-          "horizon": "1w",
-          "reason": "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
+          "horizon": "1-3d",
+          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
         }
       ]
     },
@@ -288,27 +214,71 @@
       "symbol": "AMZN",
       "company_name": "Amazon.com Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.45,
+      "confidence": 0.41,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-08-17",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Amazon.com Inc.."
+        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
+          "feed": "marketaux",
+          "provider": "rediff.com",
+          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
+          "published_at": "2026-08-17T11:33:49Z",
+          "impact": "negative",
+          "weight": 0.085,
+          "event_type": "geopolitical_tension",
+          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
+          "affected_inputs": [
+            "crude oil",
+            "fuel costs",
+            "transportation/logistics",
+            "input costs",
+            "consumer spending",
+            "inflation"
+          ],
+          "horizon": "1-3d",
+          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        }
+      ]
     },
     "TSLA": {
       "symbol": "TSLA",
       "company_name": "Tesla Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.45,
+      "confidence": 0.41,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-08-17",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Tesla Inc.."
+        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
+          "feed": "marketaux",
+          "provider": "rediff.com",
+          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
+          "published_at": "2026-08-17T11:33:49Z",
+          "impact": "negative",
+          "weight": 0.085,
+          "event_type": "geopolitical_tension",
+          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
+          "affected_inputs": [
+            "crude oil",
+            "fuel costs",
+            "transportation/logistics",
+            "input costs",
+            "consumer spending",
+            "inflation"
+          ],
+          "horizon": "1-3d",
+          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        }
+      ]
     },
     "META": {
       "symbol": "META",
@@ -444,14 +414,36 @@
       "symbol": "HD",
       "company_name": "The Home Depot Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.45,
+      "confidence": 0.41,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-08-17",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored The Home Depot Inc.."
+        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
+          "feed": "marketaux",
+          "provider": "rediff.com",
+          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
+          "published_at": "2026-08-17T11:33:49Z",
+          "impact": "negative",
+          "weight": 0.085,
+          "event_type": "geopolitical_tension",
+          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
+          "affected_inputs": [
+            "crude oil",
+            "fuel costs",
+            "transportation/logistics",
+            "input costs",
+            "consumer spending",
+            "inflation"
+          ],
+          "horizon": "1-3d",
+          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        }
+      ]
     },
     "BAC": {
       "symbol": "BAC",
@@ -470,52 +462,34 @@
       "symbol": "XOM",
       "company_name": "Exxon Mobil Corporation",
       "sector": "energy",
-      "score": 0.81,
-      "confidence": 0.64,
+      "score": 0.61,
+      "confidence": 0.44,
       "direction": "bullish",
-      "last_updated": "2026-08-10",
+      "last_updated": "2026-08-17",
       "reasons": [
-        "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks).",
-        "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
+        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
       ],
       "supporting_articles": [
         {
-          "title": "Indian Markets Marginally Higher Amid Crude Oil Spike, Geopolitical Uncertainty",
+          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
           "feed": "marketaux",
           "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/indian-stock-markets-edge-up-as-crude-oil-prices-surge-on-geopolitical-concerns/20260810.htm",
-          "published_at": "2026-08-10T11:51:16Z",
+          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
+          "published_at": "2026-08-17T11:33:49Z",
           "impact": "positive",
-          "weight": 0.364,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> higher input costs and inflation -> weaker consumer discretionary demand and tighter corporate margins; geopolitical risk also reduces risk appetite and equity market breadth",
+          "weight": 0.17,
+          "event_type": "geopolitical_tension",
+          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
           "affected_inputs": [
             "crude oil",
             "fuel costs",
-            "input inflation",
-            "risk appetite"
+            "transportation/logistics",
+            "input costs",
+            "consumer spending",
+            "inflation"
           ],
-          "horizon": "1-2w",
-          "reason": "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks)."
-        },
-        {
-          "title": "Benchmarks flatline for third day as crude keeps bulls at bay",
-          "feed": "marketaux",
-          "provider": "thehindubusinessline.com",
-          "url": "https://www.thehindubusinessline.com/markets/benchmarks-flatline-for-third-day-as-crude-keeps-bulls-at-bay/article71328131.ece",
-          "published_at": "2026-08-10T11:49:21Z",
-          "impact": "positive",
-          "weight": 0.233,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> pass-through to consumer prices and cost of goods -> demand moderation and margin pressure; risk-off sentiment caps equity upside",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "consumer prices",
-            "equity risk appetite"
-          ],
-          "horizon": "1w",
-          "reason": "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
+          "horizon": "1-3d",
+          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
         }
       ]
     },
@@ -744,52 +718,34 @@
       "symbol": "CVX",
       "company_name": "Chevron Corporation",
       "sector": "energy",
-      "score": 0.81,
-      "confidence": 0.64,
+      "score": 0.61,
+      "confidence": 0.44,
       "direction": "bullish",
-      "last_updated": "2026-08-10",
+      "last_updated": "2026-08-17",
       "reasons": [
-        "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks).",
-        "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
+        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
       ],
       "supporting_articles": [
         {
-          "title": "Indian Markets Marginally Higher Amid Crude Oil Spike, Geopolitical Uncertainty",
+          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
           "feed": "marketaux",
           "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/indian-stock-markets-edge-up-as-crude-oil-prices-surge-on-geopolitical-concerns/20260810.htm",
-          "published_at": "2026-08-10T11:51:16Z",
+          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
+          "published_at": "2026-08-17T11:33:49Z",
           "impact": "positive",
-          "weight": 0.364,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> higher input costs and inflation -> weaker consumer discretionary demand and tighter corporate margins; geopolitical risk also reduces risk appetite and equity market breadth",
+          "weight": 0.17,
+          "event_type": "geopolitical_tension",
+          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
           "affected_inputs": [
             "crude oil",
             "fuel costs",
-            "input inflation",
-            "risk appetite"
+            "transportation/logistics",
+            "input costs",
+            "consumer spending",
+            "inflation"
           ],
-          "horizon": "1-2w",
-          "reason": "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks)."
-        },
-        {
-          "title": "Benchmarks flatline for third day as crude keeps bulls at bay",
-          "feed": "marketaux",
-          "provider": "thehindubusinessline.com",
-          "url": "https://www.thehindubusinessline.com/markets/benchmarks-flatline-for-third-day-as-crude-keeps-bulls-at-bay/article71328131.ece",
-          "published_at": "2026-08-10T11:49:21Z",
-          "impact": "positive",
-          "weight": 0.233,
-          "event_type": "crude_price_spike_geopolitical",
-          "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> pass-through to consumer prices and cost of goods -> demand moderation and margin pressure; risk-off sentiment caps equity upside",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "consumer prices",
-            "equity risk appetite"
-          ],
-          "horizon": "1w",
-          "reason": "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
+          "horizon": "1-3d",
+          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
         }
       ]
     },
@@ -940,14 +896,36 @@
       "symbol": "LOW",
       "company_name": "Lowe's Companies Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.45,
+      "confidence": 0.41,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-08-17",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Lowe's Companies Inc.."
+        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
+          "feed": "marketaux",
+          "provider": "rediff.com",
+          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
+          "published_at": "2026-08-17T11:33:49Z",
+          "impact": "negative",
+          "weight": 0.085,
+          "event_type": "geopolitical_tension",
+          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
+          "affected_inputs": [
+            "crude oil",
+            "fuel costs",
+            "transportation/logistics",
+            "input costs",
+            "consumer spending",
+            "inflation"
+          ],
+          "horizon": "1-3d",
+          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        }
+      ]
     },
     "GE": {
       "symbol": "GE",
@@ -966,57 +944,25 @@
   "events": [
     {
       "article_id": "news_1",
-      "title": "Indian Markets Marginally Higher Amid Crude Oil Spike, Geopolitical Uncertainty",
+      "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
       "feed": "marketaux",
       "provider": "rediff.com",
-      "url": "https://www.rediff.com/business/report/indian-stock-markets-edge-up-as-crude-oil-prices-surge-on-geopolitical-concerns/20260810.htm",
-      "published_at": "2026-08-10T11:51:16Z",
-      "event_type": "crude_price_spike_geopolitical",
-      "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> higher input costs and inflation -> weaker consumer discretionary demand and tighter corporate margins; geopolitical risk also reduces risk appetite and equity market breadth",
+      "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
+      "published_at": "2026-08-17T11:33:49Z",
+      "event_type": "geopolitical_tension",
+      "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
       "affected_inputs": [
         "crude oil",
         "fuel costs",
-        "input inflation",
-        "risk appetite"
+        "transportation/logistics",
+        "input costs",
+        "consumer spending",
+        "inflation"
       ],
-      "horizon": "1-2w",
+      "horizon": "1-3d",
       "market_relevance": 1.0,
       "magnitude": 1.0,
-      "confidence": 1.0,
-      "beneficiary_sectors": [
-        "energy"
-      ],
-      "hurt_sectors": [
-        "consumer_discretionary",
-        "industrials",
-        "consumer_staples"
-      ],
-      "beneficiary_symbols": [
-        "XOM",
-        "CVX"
-      ],
-      "hurt_symbols": [],
-      "reason": "Geopolitical-driven crude spike raises oil prices -> first-order benefit to integrated oil producers (higher revenue/margins). Second-order effects: higher fuel and input costs accelerate inflation and trim discretionary spending and raise operating costs for industrial firms and consumer goods makers, compressing margins and pressure on equities. Geopolitical uncertainty also depresses risk appetite, muting market participation (explains flat/marginal moves in Indian benchmarks)."
-    },
-    {
-      "article_id": "news_2",
-      "title": "Benchmarks flatline for third day as crude keeps bulls at bay",
-      "feed": "marketaux",
-      "provider": "thehindubusinessline.com",
-      "url": "https://www.thehindubusinessline.com/markets/benchmarks-flatline-for-third-day-as-crude-keeps-bulls-at-bay/article71328131.ece",
-      "published_at": "2026-08-10T11:49:21Z",
-      "event_type": "crude_price_spike_geopolitical",
-      "transmission_channel": "commodity_price_shock -> higher crude/fuel prices -> pass-through to consumer prices and cost of goods -> demand moderation and margin pressure; risk-off sentiment caps equity upside",
-      "affected_inputs": [
-        "crude oil",
-        "fuel costs",
-        "consumer prices",
-        "equity risk appetite"
-      ],
-      "horizon": "1w",
-      "market_relevance": 1.0,
-      "magnitude": 1.0,
-      "confidence": 1.0,
+      "confidence": 0.75,
       "beneficiary_sectors": [
         "energy"
       ],
@@ -1028,31 +974,13 @@
         "XOM",
         "CVX"
       ],
-      "hurt_symbols": [],
-      "reason": "Rising crude keeps bullish momentum in check: energy producers benefit from higher commodity prices, while higher fuel and transport costs weigh on consumption and industrial activity in the near term. The market stalemate reflects risk-off positioning as oil-driven inflation concerns offset economic optimism."
-    },
-    {
-      "article_id": "news_3",
-      "title": "Assured Guaranty's Recent Selloff Provides Great Entry Price (NYSE:AGO)",
-      "feed": "marketaux",
-      "provider": "seekingalpha.com",
-      "url": "https://seekingalpha.com/article/4934031-assured-guaranty-recent-selloff-provides-great-entry-price",
-      "published_at": "2026-08-10T11:43:19Z",
-      "event_type": "company_specific_selloff_note",
-      "transmission_channel": "issuer-specific valuation/technical selloff and investor commentary -> potential idiosyncratic price opportunity for that insurer; minimal broader spillovers",
-      "affected_inputs": [
-        "single-stock sentiment",
-        "insurer valuation"
+      "hurt_symbols": [
+        "AMZN",
+        "TSLA",
+        "HD",
+        "LOW"
       ],
-      "horizon": "unclear",
-      "market_relevance": 1.0,
-      "magnitude": 1.0,
-      "confidence": 1.0,
-      "beneficiary_sectors": [],
-      "hurt_sectors": [],
-      "beneficiary_symbols": [],
-      "hurt_symbols": [],
-      "reason": "Article discusses Assured Guaranty (AGO) selloff and valuation case — this is a single non-tracked insurer note. It is unlikely to materially move tracked sectors or symbols over the next 1-15 trading days; impact is idiosyncratic and low relevance to the tracked universe."
+      "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
     }
   ],
   "data_quality": {
@@ -1072,7 +1000,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-10",
+          "date": "2026-08-17",
           "status": "healthy",
           "used": 7,
           "limit": 25,
@@ -1093,7 +1021,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-10",
+          "date": "2026-08-17",
           "status": "tracking_only",
           "used": 19,
           "limit": null,
@@ -1106,21 +1034,21 @@
       },
       "marketaux": {
         "status": "healthy",
-        "used": 50,
+        "used": 52,
         "limit": 100,
-        "remaining": 50,
+        "remaining": 48,
         "categories": {
-          "company_news": 49,
+          "company_news": 51,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-10",
+          "date": "2026-08-17",
           "status": "healthy",
-          "used": 50,
+          "used": 52,
           "limit": 100,
-          "remaining": 50,
+          "remaining": 48,
           "categories": {
-            "company_news": 49,
+            "company_news": 51,
             "global_news": 1
           }
         }
@@ -1135,7 +1063,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-08-10",
+          "date": "2026-08-17",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-20T16:23:25Z",
-  "data_as_of": "2026-08-20",
-  "expected_next_refresh_at": "2026-08-21T16:23:25Z",
-  "stale_after": "2026-08-22T04:23:25Z",
+  "generated_at": "2026-08-21T16:21:31Z",
+  "data_as_of": "2026-08-21",
+  "expected_next_refresh_at": "2026-08-22T16:21:31Z",
+  "stale_after": "2026-08-23T04:21:31Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W34",
@@ -24,129 +24,142 @@
     "company_name": "Exxon Mobil Corporation",
     "sector": "energy",
     "risk": "medium",
-    "model_score": 0.1046,
-    "confidence_score": 0.63,
+    "model_score": 0.1352,
+    "confidence_score": 0.74,
     "confidence_label": "medium",
-    "price_as_of": "2026-08-20",
-    "news_as_of": "2026-08-17",
+    "price_as_of": "2026-08-21",
+    "news_as_of": null,
     "macro_as_of": null,
-    "sector_as_of": "2026-08-20",
-    "article_count": 3,
+    "sector_as_of": null,
+    "article_count": 6,
     "metrics": {
-      "momentum_5d": 0.0581,
-      "momentum_20d": 0.0697,
-      "daily_volatility": 0.0155,
-      "downside_volatility": 0.0095,
+      "momentum_5d": 0.035,
+      "momentum_20d": 0.0559,
+      "daily_volatility": 0.0152,
+      "downside_volatility": 0.0091,
       "max_drawdown_20d": 0.034,
       "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0621,
-      "volume_trend_5d": -0.2164,
-      "market_relative_5d": 0.0747,
-      "market_relative_20d": 0.031,
-      "sector_relative_5d": 0.0055,
-      "sector_relative_20d": -0.0115,
-      "news_sentiment": 0.66,
-      "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.3167,
-      "news_confidence": 0.4,
+      "price_vs_20d_average": 0.0464,
+      "volume_trend_5d": -0.1587,
+      "market_relative_5d": 0.0487,
+      "market_relative_20d": 0.0182,
+      "sector_relative_5d": 0.0052,
+      "sector_relative_20d": -0.0125,
+      "news_sentiment": 0.81,
+      "raw_news_sentiment": 0.9057,
+      "calibrated_news_sentiment": 0.6241,
+      "news_confidence": 0.77,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
-      "sector_confidence": 0.39,
-      "effective_article_count": 0.24,
-      "source_count": 2,
-      "average_relevance": 0.62,
+      "sector_confidence": 0.2,
+      "effective_article_count": 0.52,
+      "source_count": 5,
+      "average_relevance": 0.59,
       "technical_training_ic": 0.006,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0922,
-      "short_momentum": 0.0479,
-      "medium_momentum": 0.0209,
-      "trend_quality": 0.0188,
-      "volume_confirmation": -0.0087,
-      "market_relative_strength": 0.0139,
-      "sector_relative_strength": -0.0006,
-      "volatility_penalty": -0.0285,
-      "daily_volatility_penalty": -0.0139,
-      "downside_penalty": -0.0103,
+      "momentum": 0.0627,
+      "short_momentum": 0.0289,
+      "medium_momentum": 0.0168,
+      "trend_quality": 0.0152,
+      "volume_confirmation": -0.0063,
+      "market_relative_strength": 0.0088,
+      "sector_relative_strength": -0.0007,
+      "volatility_penalty": -0.0278,
+      "daily_volatility_penalty": -0.0137,
+      "downside_penalty": -0.0098,
       "drawdown_penalty": -0.0043,
-      "news_adjustment": 0.0377,
+      "news_adjustment": 0.0959,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0031,
-      "technical_total": 0.0638,
-      "trend_strength": 0.0876,
-      "relative_strength": 0.0133,
-      "participation": -0.0087,
-      "risk_control": -0.0285,
+      "signal_alignment": 0.0044,
+      "technical_total": 0.0349,
+      "trend_strength": 0.0609,
+      "relative_strength": 0.0081,
+      "participation": -0.0063,
+      "risk_control": -0.0278,
       "block_weight_news": 0.1771,
       "block_weight_macro": 0.0979,
       "block_weight_sector": 0.085,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 0.65,
+      "sector_dedup_penalty": 1.0,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.5,
+      "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.1046
+      "total": 0.1352
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 5.8% and 20-day momentum is 7.0%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 6.2% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.5%, downside volatility near 1.0%, and a recent max drawdown of 3.4%.",
-      "Volume confirmation is -21.6% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 7.5% versus SPY over 5 days and 0.5% versus the sector ETF.",
-      "News signal is bullish with score 0.66, confidence 0.40, and 0.2 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.79, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 0.2 effective weighted articles, average relevance 0.62, average source quality 0.75, confidence 0.72.",
+      "Price trend remains constructive: 5-day momentum is 3.5% and 20-day momentum is 5.6%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 4.6% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.5%, downside volatility near 0.9%, and a recent max drawdown of 3.4%.",
+      "Volume confirmation is -15.9% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 4.9% versus SPY over 5 days and 0.5% versus the sector ETF.",
+      "News signal is bullish with score 0.81, confidence 0.77, and 0.5 weighted articles across 5 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.81, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 6 articles across 5 sources, 0.5 effective weighted articles, average relevance 0.59, average source quality 0.75, confidence 0.77.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.01).",
-      "Overall model score is 0.105 with medium confidence."
+      "Overall model score is 0.135 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Oil Profits Have More Than Doubled. Here’s What Trump Escalating the Iran War Could Mean for XOM and CVX",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/energy/articles/oil-profits-more-doubled-trump-162152091.html",
-        "published_at": "2026-08-17T16:21:52Z",
-        "relevance_score": 0.68,
-        "sentiment": 0.44,
-        "doc_type": "sector_macro",
+        "title": "Targa Resources Corp. announces 20-Year agreements with ExxonMobil",
+        "provider": "BIC Magazine",
+        "url": "https://www.bicmagazine.com/projects-expansions/midstream/targa-resources-corp-announces-20-year-agreements-with-exxon/",
+        "published_at": "None",
+        "relevance_score": 0.58,
+        "sentiment": 0.38,
+        "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Discusses escalation risk with Iran, Strait of Hormuz disruptions, and explicitly considers implications for XOM and CVX. Geopolitical-driven crude supply risk can move Exxon’s stock in the near term, but effects are uncertain and depend on the actual escalation and market reaction."
+        "llm_reason": "Announcement of 20-year integrated midstream agreements between Targa and ExxonMobil subsidiaries directly affects Exxon's Permian midstream arrangements and future volumes. Positive operational/strategic news but long-term in nature; moderate near-term impact."
       },
       {
-        "title": "Here’s What “Iran’s Secret Plan To Escalate The War” Means For Oil Stocks",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/energy/articles/iran-secret-plan-escalate-war-111218774.html",
-        "published_at": "2026-08-17T11:12:18Z",
-        "relevance_score": 0.65,
-        "sentiment": -0.6,
+        "title": "TotalEnergies stock holds firm as Q2 2026 earnings and oil market tensions support valuation",
+        "provider": "Ad-hoc-news.de",
+        "url": "https://www.ad-hoc-news.de/boerse/news/corporate-news/totalenergies-stock-holds-firm-as-q2-2026-earnings-and-oil-market-tensions/69978909",
+        "published_at": "None",
+        "relevance_score": 0.51,
+        "sentiment": 0.33,
         "doc_type": "sector_macro",
         "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Broad analysis of Iran escalation scenarios and implications for oil stocks including XOM; includes valuation commentary (model flags XOM as overvalued) but remains sector-level and speculative. Relevant for short-term sentiment but uncertain and likely already partially priced in."
+        "llm_reason": "TotalEnergies Q2 strength and oil market tensions are sector-level developments that can support oil prices and sector sentiment, indirectly relevant to Exxon but not new idiosyncratic information about XOM for the near term."
+      },
+      {
+        "title": "Conocophillips stock hits 52-week high at 135.87 USD By Investing.com",
+        "provider": "Investing.com South Africa",
+        "url": "https://za.investing.com/news/stock-market-news/conocophillips-stock-hits-52week-high-at-13587-usd-93CH-4438199",
+        "published_at": "None",
+        "relevance_score": 0.51,
+        "sentiment": 0.33,
+        "doc_type": "sector_macro",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "ConocoPhillips hitting a 52-week high is positive sector news and could modestly influence sentiment toward large integrated and E&P names, including Exxon, but it is not company-specific or likely to drive short-term XOM moves materially."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
-      "status": "risk",
-      "headline": "Support needs review",
+      "status": "watch",
+      "headline": "Support needs watching",
       "summary": "The news layer is still thin, so conviction should stay measured.",
       "alerts": [
         "The news layer is still thin, so conviction should stay measured.",
-        "The pick only barely cleared the release bar.",
-        "Freshness should be checked before acting: company news is 3 trading days old."
+        "The pick still qualified, but the margin of safety is not wide."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "positive",
-          "value": "5.8% 5D • 7.0% 20D",
+          "value": "3.5% 5D • 5.6% 20D",
           "detail": "Price action is still supporting the release thesis."
         },
         {
@@ -158,7 +171,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.66 sentiment • 3 articles",
+          "value": "0.81 sentiment • 6 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -169,15 +182,15 @@
         },
         {
           "label": "Margin",
-          "state": "risk",
-          "value": "+0.005 score • +0.081 conf",
-          "detail": "The pick only barely cleared the release bar."
+          "state": "watch",
+          "value": "+0.035 score • +0.190 conf",
+          "detail": "The pick still qualified, but the margin of safety is not wide."
         },
         {
           "label": "Freshness",
-          "state": "watch",
-          "value": "price 0 trading days • news 3 trading days • macro neutral • sector neutral",
-          "detail": "Freshness should be checked before acting: company news is 3 trading days old."
+          "state": "positive",
+          "value": "price 0 trading days • news no fresh signal • macro neutral • sector neutral",
+          "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
     }
@@ -191,64 +204,70 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
+      "Marketaux company news failed for at least one symbol and fallback feeds were used.",
+      "GDELT company news failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 2,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 23,
         "categories": {
+          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-20",
+          "date": "2026-08-21",
           "status": "healthy",
-          "used": 1,
+          "used": 2,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 23,
           "categories": {
+            "company_news": 1,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 2,
         "limit": null,
         "remaining": null,
-        "categories": {
-          "global_news": 1
-        },
-        "daily": {
-          "date": "2026-08-20",
-          "status": "tracking_only",
-          "used": 1,
-          "limit": null,
-          "remaining": null,
-          "categories": {
-            "global_news": 1
-          }
-        }
-      },
-      "marketaux": {
-        "status": "healthy",
-        "used": 2,
-        "limit": 100,
-        "remaining": 98,
         "categories": {
           "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-20",
-          "status": "healthy",
+          "date": "2026-08-21",
+          "status": "tracking_only",
           "used": 2,
-          "limit": 100,
-          "remaining": 98,
+          "limit": null,
+          "remaining": null,
           "categories": {
             "company_news": 1,
+            "global_news": 1
+          }
+        }
+      },
+      "marketaux": {
+        "status": "degraded",
+        "used": 4,
+        "limit": 100,
+        "remaining": 96,
+        "categories": {
+          "company_news": 3,
+          "global_news": 1
+        },
+        "daily": {
+          "date": "2026-08-21",
+          "status": "healthy",
+          "used": 4,
+          "limit": 100,
+          "remaining": 96,
+          "categories": {
+            "company_news": 3,
             "global_news": 1
           }
         }
@@ -263,7 +282,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-08-20",
+          "date": "2026-08-21",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -283,7 +302,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-08-20",
+          "date": "2026-08-21",
           "status": "healthy",
           "used": 3,
           "limit": 800,

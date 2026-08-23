@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-22T16:13:04Z",
+  "generated_at": "2026-08-23T16:14:12Z",
   "data_as_of": "2026-08-21",
-  "expected_next_refresh_at": "2026-08-23T16:13:04Z",
-  "stale_after": "2026-08-24T04:13:04Z",
+  "expected_next_refresh_at": "2026-08-24T16:14:12Z",
+  "stale_after": "2026-08-25T04:14:12Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W34",
@@ -24,8 +24,8 @@
     "company_name": "Exxon Mobil Corporation",
     "sector": "energy",
     "risk": "medium",
-    "model_score": 0.1133,
-    "confidence_score": 0.66,
+    "model_score": 0.0069,
+    "confidence_score": 0.57,
     "confidence_label": "medium",
     "price_as_of": "2026-08-21",
     "news_as_of": "2026-08-21",
@@ -45,17 +45,17 @@
       "market_relative_20d": 0.0153,
       "sector_relative_5d": 0.0033,
       "sector_relative_20d": -0.0144,
-      "news_sentiment": 0.76,
-      "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.5144,
-      "news_confidence": 0.63,
+      "news_sentiment": 0.38,
+      "raw_news_sentiment": -0.7152,
+      "calibrated_news_sentiment": -0.2371,
+      "news_confidence": 0.38,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.11,
+      "effective_article_count": 0.3,
       "source_count": 3,
-      "average_relevance": 0.72,
+      "average_relevance": 0.7,
       "technical_training_ic": 0.006,
       "technical_training_rows": 2303
     },
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0137,
       "downside_penalty": -0.01,
       "drawdown_penalty": -0.0043,
-      "news_adjustment": 0.0734,
+      "news_adjustment": -0.0282,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0035,
+      "signal_alignment": -0.0013,
       "technical_total": 0.0364,
       "trend_strength": 0.0559,
       "relative_strength": 0.0069,
@@ -88,7 +88,7 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.1133
+      "total": 0.0069
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is 3.1% and 20-day momentum is 5.2%.",
@@ -96,11 +96,11 @@
       "Risk profile shows daily volatility around 1.5%, downside volatility near 0.9%, and a recent max drawdown of 3.4%.",
       "Volume confirmation is 4.1% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is 4.6% versus SPY over 5 days and 0.3% versus the sector ETF.",
-      "News signal is bullish with score 0.76, confidence 0.63, and 0.1 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.76, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.1 effective weighted articles, average relevance 0.72, average source quality 0.75, confidence 0.63.",
+      "News signal is bearish with score 0.38, confidence 0.38, and 0.3 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bearish at 0.28, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.3 effective weighted articles, average relevance 0.70, average source quality 0.75, confidence 0.69.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.01).",
-      "Overall model score is 0.113 with medium confidence."
+      "Overall model score is 0.007 with medium confidence."
     ],
     "news_evidence": [
       {
@@ -111,25 +111,25 @@
         "relevance_score": 0.93,
         "sentiment": 0.55,
         "doc_type": "company_specific",
-        "company_relevance": 0.6,
-        "materiality": 0.4,
-        "llm_confidence": 0.6,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Article centers on ConocoPhillips but explicitly contrasts Cop’s results/management move with Exxon's profit 'falling short.' That comparison can influence short-term investor sentiment for XOM after earnings, but it appears to be commentary/relative framing rather than new operational or guidance information specific to Exxon, so impact is limited-to-moderate for the 1–10 day horizon."
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 0.7,
+        "llm_impact_score": -1.0,
+        "llm_reason": "Article directly compares peers and states Exxon's record profit 'falls short' — company-specific earnings/performance framing that can influence investor sentiment and near-term trading in XOM."
       },
       {
-        "title": "Oil Profits Have More Than Doubled. Here’s What Trump Escalating the Iran War Could Mean for XOM and CVX",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/energy/articles/oil-profits-more-doubled-trump-162152091.html",
-        "published_at": "2026-08-17T16:21:52Z",
-        "relevance_score": 0.68,
-        "sentiment": 0.44,
+        "title": "EIPI: Active Oil & Gas Strategy For Dividend-Income Investors (NYSEARCA:EIPI)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4938803-eipi-active-oil-and-gas-strategy-for-dividend-income-investors",
+        "published_at": "2026-08-20T15:35:53Z",
+        "relevance_score": 0.55,
+        "sentiment": 0.62,
         "doc_type": "sector_macro",
-        "company_relevance": 0.8,
-        "materiality": 0.7,
-        "llm_confidence": 0.7,
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 0.6,
         "llm_impact_score": 1.0,
-        "llm_reason": "Covers geopolitical escalation (Iran/Strait of Hormuz) and implications for Exxon and Chevron. Geopolitical disruptions that tighten supply can materially move oil prices and therefore materially affect major oil producers' near-term earnings and sentiment. High potential directional impact on XOM over the 1–10 day horizon, though outcomes are uncertain."
+        "llm_reason": "ETF/sector-level coverage of an energy-income product. Relevant for flows and investor interest in energy names, but not likely to produce a large, immediate company-specific move in XOM absent fund-specific news."
       }
     ],
     "macro_evidence": [],
@@ -139,7 +139,7 @@
       "summary": "The news layer is still thin, so conviction should stay measured.",
       "alerts": [
         "The news layer is still thin, so conviction should stay measured.",
-        "The pick only barely cleared the release bar."
+        "This is the top ranked stock, but it is below the normal release bar."
       ],
       "signals": [
         {
@@ -157,7 +157,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.76 sentiment • 3 articles",
+          "value": "0.38 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -169,8 +169,8 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "+0.013 score • +0.113 conf",
-          "detail": "The pick only barely cleared the release bar."
+          "value": "-0.093 score • +0.022 conf",
+          "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
@@ -202,7 +202,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-22",
+          "date": "2026-08-23",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -221,7 +221,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-22",
+          "date": "2026-08-23",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -241,7 +241,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-22",
+          "date": "2026-08-23",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -262,7 +262,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-08-22",
+          "date": "2026-08-23",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -282,7 +282,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-08-22",
+          "date": "2026-08-23",
           "status": "healthy",
           "used": 3,
           "limit": 800,

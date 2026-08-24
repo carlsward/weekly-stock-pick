@@ -1,164 +1,135 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-23T16:14:12Z",
+  "generated_at": "2026-08-24T12:24:08Z",
   "data_as_of": "2026-08-21",
-  "expected_next_refresh_at": "2026-08-24T16:14:12Z",
-  "stale_after": "2026-08-25T04:14:12Z",
+  "expected_next_refresh_at": "2026-08-25T12:24:08Z",
+  "stale_after": "2026-08-26T00:24:08Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W34",
-    "week_label": "Aug 17 - 21, 2026",
-    "week_start": "2026-08-17",
-    "week_end": "2026-08-21"
+    "week_id": "2026-W35",
+    "week_label": "Aug 24 - 28, 2026",
+    "week_start": "2026-08-24",
+    "week_end": "2026-08-28"
   },
-  "source_dashboard_generated_at": "2026-08-17T12:15:13Z",
+  "source_dashboard_generated_at": "2026-08-24T12:16:32Z",
   "selection": {
     "status": "picked",
     "status_reason": "Live thesis monitor refreshed the active weekly pick.",
-    "threshold_score": 0.1,
+    "threshold_score": 0.12,
     "threshold_confidence": 0.55
   },
   "active_pick": {
-    "symbol": "XOM",
-    "company_name": "Exxon Mobil Corporation",
-    "sector": "energy",
-    "risk": "medium",
-    "model_score": 0.0069,
-    "confidence_score": 0.57,
-    "confidence_label": "medium",
+    "symbol": "CRM",
+    "company_name": "Salesforce Inc.",
+    "sector": "technology",
+    "risk": "high",
+    "model_score": 0.106,
+    "confidence_score": 0.46,
+    "confidence_label": "low",
     "price_as_of": "2026-08-21",
-    "news_as_of": "2026-08-21",
+    "news_as_of": null,
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 3,
+    "article_count": 0,
     "metrics": {
-      "momentum_5d": 0.0313,
-      "momentum_20d": 0.0521,
-      "daily_volatility": 0.0153,
-      "downside_volatility": 0.0093,
-      "max_drawdown_20d": 0.034,
-      "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0428,
-      "volume_trend_5d": 0.0407,
-      "market_relative_5d": 0.0456,
-      "market_relative_20d": 0.0153,
-      "sector_relative_5d": 0.0033,
-      "sector_relative_20d": -0.0144,
-      "news_sentiment": 0.38,
-      "raw_news_sentiment": -0.7152,
-      "calibrated_news_sentiment": -0.2371,
-      "news_confidence": 0.38,
+      "momentum_5d": 0.0661,
+      "momentum_20d": 0.2781,
+      "daily_volatility": 0.0289,
+      "downside_volatility": 0.0254,
+      "max_drawdown_20d": 0.0516,
+      "positive_day_ratio_10d": 0.5,
+      "price_vs_20d_average": 0.0862,
+      "volume_trend_5d": 0.0741,
+      "market_relative_5d": 0.0808,
+      "market_relative_20d": 0.2334,
+      "sector_relative_5d": 0.105,
+      "sector_relative_20d": 0.2263,
+      "news_sentiment": 0.5,
+      "raw_news_sentiment": 0.0,
+      "calibrated_news_sentiment": 0.0,
+      "news_confidence": 0.2,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.3,
-      "source_count": 3,
-      "average_relevance": 0.7,
-      "technical_training_ic": 0.006,
+      "effective_article_count": 0.0,
+      "source_count": 0,
+      "average_relevance": 0.0,
+      "technical_training_ic": 0.0097,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0644,
-      "short_momentum": 0.0258,
-      "medium_momentum": 0.0156,
-      "trend_quality": 0.0144,
-      "volume_confirmation": 0.0016,
-      "market_relative_strength": 0.008,
-      "sector_relative_strength": -0.001,
-      "volatility_penalty": -0.028,
-      "daily_volatility_penalty": -0.0137,
-      "downside_penalty": -0.01,
-      "drawdown_penalty": -0.0043,
-      "news_adjustment": -0.0282,
+      "momentum": 0.1655,
+      "short_momentum": 0.0545,
+      "medium_momentum": 0.054,
+      "trend_quality": 0.018,
+      "volume_confirmation": 0.003,
+      "market_relative_strength": 0.021,
+      "sector_relative_strength": 0.015,
+      "volatility_penalty": -0.0595,
+      "daily_volatility_penalty": -0.026,
+      "downside_penalty": -0.027,
+      "drawdown_penalty": -0.0065,
+      "news_adjustment": 0.0,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": -0.0013,
-      "technical_total": 0.0364,
-      "trend_strength": 0.0559,
-      "relative_strength": 0.0069,
-      "participation": 0.0016,
-      "risk_control": -0.028,
-      "block_weight_news": 0.1771,
-      "block_weight_macro": 0.0979,
-      "block_weight_sector": 0.085,
+      "signal_alignment": 0.0,
+      "technical_total": 0.106,
+      "trend_strength": 0.1265,
+      "relative_strength": 0.036,
+      "participation": 0.003,
+      "risk_control": -0.0595,
+      "block_weight_news": 0.1761,
+      "block_weight_macro": 0.0972,
+      "block_weight_sector": 0.0867,
       "macro_dedup_penalty": 1.0,
       "sector_dedup_penalty": 1.0,
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0069
+      "total": 0.106
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 3.1% and 20-day momentum is 5.2%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 4.3% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.5%, downside volatility near 0.9%, and a recent max drawdown of 3.4%.",
-      "Volume confirmation is 4.1% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 4.6% versus SPY over 5 days and 0.3% versus the sector ETF.",
-      "News signal is bearish with score 0.38, confidence 0.38, and 0.3 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bearish at 0.28, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.3 effective weighted articles, average relevance 0.70, average source quality 0.75, confidence 0.69.",
+      "Price trend remains constructive: 5-day momentum is 6.6% and 20-day momentum is 27.8%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 8.6% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 2.9%, downside volatility near 2.5%, and a recent max drawdown of 5.2%.",
+      "Volume confirmation is 7.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 8.1% versus SPY over 5 days and 10.5% versus the sector ETF.",
+      "No recent relevant news passed the filter, so the news layer stayed neutral and contributed less confidence.",
+      "Recent CRM company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.01).",
-      "Overall model score is 0.007 with medium confidence."
+      "Overall model score is 0.106 with low confidence."
     ],
-    "news_evidence": [
-      {
-        "title": "ConocoPhillips (COP) Beats Earnings and Names New CEO While Exxon Mobil (XOM)’s Record Profit Falls Short",
-        "provider": "insidermonkey.com",
-        "url": "https://www.insidermonkey.com/blog/conocophillips-cop-beats-earnings-and-names-new-ceo-while-exxon-mobil-xoms-record-profit-falls-short-1809347/",
-        "published_at": "2026-08-21T19:34:28Z",
-        "relevance_score": 0.93,
-        "sentiment": 0.55,
-        "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 0.7,
-        "llm_impact_score": -1.0,
-        "llm_reason": "Article directly compares peers and states Exxon's record profit 'falls short' — company-specific earnings/performance framing that can influence investor sentiment and near-term trading in XOM."
-      },
-      {
-        "title": "EIPI: Active Oil & Gas Strategy For Dividend-Income Investors (NYSEARCA:EIPI)",
-        "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4938803-eipi-active-oil-and-gas-strategy-for-dividend-income-investors",
-        "published_at": "2026-08-20T15:35:53Z",
-        "relevance_score": 0.55,
-        "sentiment": 0.62,
-        "doc_type": "sector_macro",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 0.6,
-        "llm_impact_score": 1.0,
-        "llm_reason": "ETF/sector-level coverage of an energy-income product. Relevant for flows and investor interest in energy names, but not likely to produce a large, immediate company-specific move in XOM absent fund-specific news."
-      }
-    ],
+    "news_evidence": [],
     "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
       "headline": "Support needs review",
-      "summary": "The news layer is still thin, so conviction should stay measured.",
+      "summary": "Trend quality is still positive, but the tape is no longer decisive.",
       "alerts": [
-        "The news layer is still thin, so conviction should stay measured.",
-        "This is the top ranked stock, but it is below the normal release bar."
+        "Trend quality is still positive, but the tape is no longer decisive.",
+        "Volatility expanded enough to weaken the setup.",
+        "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "positive",
-          "value": "3.1% 5D • 5.2% 20D",
-          "detail": "Price action is still supporting the release thesis."
+          "state": "watch",
+          "value": "6.6% 5D • 27.8% 20D",
+          "detail": "Trend quality is still positive, but the tape is no longer decisive."
         },
         {
           "label": "Volatility",
-          "state": "positive",
-          "value": "1.5% daily • 3.4% drawdown",
-          "detail": "Volatility and drawdown remain controlled for this release."
+          "state": "risk",
+          "value": "2.9% daily • 5.2% drawdown",
+          "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.38 sentiment • 3 articles",
-          "detail": "The news layer is still thin, so conviction should stay measured."
+          "value": "0.50 sentiment • 0 articles",
+          "detail": "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
         },
         {
           "label": "Macro",
@@ -169,13 +140,13 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.093 score • +0.022 conf",
+          "value": "-0.014 score • -0.092 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 1 trading day • news no fresh signal • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -183,112 +154,115 @@
   },
   "data_quality": {
     "status": "degraded",
-    "degraded_reason": "risk_picks: news_scores: GDELT company news failed for at least one symbol.; Marketaux company news failed for at least one symbol and fallback feeds were used.; news_scores: GDELT company news failed for at least one symbol.; news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.; risk_picks: news_scores: GDELT company news failed for at least one symbol.; Marketaux company news failed for at least one symbol and fallback feeds were used.; risk_picks: news_scores: GDELT company news failed for at least one symbol.",
+    "degraded_reason": "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.; risk_picks: news_scores: GDELT company news failed for at least one symbol.; risk_picks: sector_scores: GDELT global-news feed failed during this run.",
     "reasons": [
-      "risk_picks: news_scores: GDELT company news failed for at least one symbol.; Marketaux company news failed for at least one symbol and fallback feeds were used.; news_scores: GDELT company news failed for at least one symbol.; news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.",
-      "risk_picks: news_scores: GDELT company news failed for at least one symbol.; Marketaux company news failed for at least one symbol and fallback feeds were used.",
+      "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
-      "risk_picks: news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
+      "GDELT company news failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 1,
+        "used": 8,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 17,
         "categories": {
-          "global_news": 1
+          "company_news": 6,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-08-23",
+          "date": "2026-08-24",
           "status": "healthy",
-          "used": 1,
+          "used": 8,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 17,
           "categories": {
-            "global_news": 1
+            "company_news": 6,
+            "global_news": 2
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 1,
+        "used": 13,
         "limit": null,
         "remaining": null,
         "categories": {
-          "global_news": 1
+          "company_news": 11,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-08-23",
+          "date": "2026-08-24",
           "status": "tracking_only",
-          "used": 1,
+          "used": 13,
           "limit": null,
           "remaining": null,
           "categories": {
-            "global_news": 1
+            "company_news": 11,
+            "global_news": 2
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 2,
+        "used": 55,
         "limit": 100,
-        "remaining": 98,
+        "remaining": 45,
         "categories": {
-          "company_news": 1,
-          "global_news": 1
+          "company_news": 53,
+          "global_news": 2
         },
         "daily": {
-          "date": "2026-08-23",
+          "date": "2026-08-24",
           "status": "healthy",
-          "used": 2,
+          "used": 55,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 45,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 53,
+            "global_news": 2
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 2,
+        "used": 52,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 1,
-          "submissions": 1
+          "ticker_map": 2,
+          "submissions": 50
         },
         "daily": {
-          "date": "2026-08-23",
+          "date": "2026-08-24",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 3,
+        "used": 61,
         "limit": 800,
-        "remaining": 797,
+        "remaining": 739,
         "categories": {
-          "price": 3
+          "price": 61
         },
         "daily": {
-          "date": "2026-08-23",
+          "date": "2026-08-24",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

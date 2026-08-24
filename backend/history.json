@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-17T12:15:13Z",
+  "generated_at": "2026-08-24T12:16:32Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -4225,8 +4225,8 @@
           }
         }
       ],
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null
+      "realized_5d_return": -0.0245,
+      "realized_5d_excess_return": -0.011
     },
     {
       "week_id": "2026-W34",
@@ -4247,6 +4247,20 @@
       "confidence_label": "high",
       "data_as_of": "2026-08-17",
       "model_version": "v3.4",
+      "diagnostics": {
+        "technical_total": 0.0445,
+        "news_adjustment": 0.1188,
+        "macro_adjustment": 0.009,
+        "sector_adjustment": 0.007,
+        "news_signal_input": 0.6142,
+        "macro_signal_input": 0.0664,
+        "sector_signal_input": 0.0612,
+        "technical_training_rows": 2303,
+        "technical_training_ic": 0.006,
+        "news_macro_overlap": 0.5714,
+        "news_sector_overlap": 0.5714,
+        "macro_sector_overlap": 1.0
+      },
       "top_candidates": [
         {
           "rank": 1,
@@ -4479,91 +4493,343 @@
           }
         }
       ],
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W35",
+      "week_start": "2026-08-24",
+      "week_end": "2026-08-28",
+      "week_label": "Aug 24 - 28, 2026",
+      "logged_at": "2026-08-24T12:16:32Z",
+      "status": "picked",
+      "status_reason": "CRM cleared the commercial release thresholds for this market week with a score of 0.261 and high confidence.",
+      "is_qualified": true,
+      "release_quality": "qualified",
+      "symbol": "CRM",
+      "company_name": "Salesforce Inc.",
+      "sector": "technology",
+      "risk": "high",
+      "model_score": 0.2614,
+      "confidence_score": 0.85,
+      "confidence_label": "high",
+      "data_as_of": "2026-08-24",
+      "model_version": "v3.4",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "CRM",
+          "company_name": "Salesforce Inc.",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.2614,
+          "confidence_score": 0.85,
+          "confidence_label": "high",
+          "price_as_of": "2026-08-21",
+          "news_as_of": null,
+          "article_count": 6,
+          "diagnostics": {
+            "technical_total": 0.106,
+            "news_adjustment": 0.1316,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0054,
+            "signal_alignment": 0.0184,
+            "news_signal_input": 0.704,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0468
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "ABT",
+          "company_name": "Abbott Laboratories",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.2133,
+          "confidence_score": 0.77,
+          "confidence_label": "high",
+          "price_as_of": "2026-08-21",
+          "news_as_of": "2026-08-23",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.106,
+            "news_adjustment": 0.0942,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0131,
+            "news_signal_input": 0.465,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "TSLA",
+          "company_name": "Tesla Inc.",
+          "sector": "consumer_discretionary",
+          "risk": "high",
+          "model_score": 0.2059,
+          "confidence_score": 0.72,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-21",
+          "news_as_of": "2026-08-23",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1126,
+            "news_adjustment": 0.0813,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.012,
+            "news_signal_input": 0.3808,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "MRK",
+          "company_name": "Merck & Co. Inc.",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": 0.2023,
+          "confidence_score": 0.69,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-21",
+          "news_as_of": "2026-08-21",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1596,
+            "news_adjustment": 0.0354,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0073,
+            "news_signal_input": 0.1135,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "LLY",
+          "company_name": "Eli Lilly and Company",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": 0.1838,
+          "confidence_score": 0.73,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-21",
+          "news_as_of": "2026-08-24",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0379,
+            "news_adjustment": 0.139,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.007,
+            "news_signal_input": 0.7476,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "XOM",
+          "company_name": "Exxon Mobil Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": 0.1418,
+          "confidence_score": 0.72,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-21",
+          "news_as_of": "2026-08-24",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0364,
+            "news_adjustment": 0.0954,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0054,
+            "signal_alignment": 0.0046,
+            "news_signal_input": 0.4608,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0468
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "CVX",
+          "company_name": "Chevron Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": 0.1311,
+          "confidence_score": 0.73,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-21",
+          "news_as_of": "2026-08-23",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0302,
+            "news_adjustment": 0.0918,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0054,
+            "signal_alignment": 0.0037,
+            "news_signal_input": 0.4402,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0468
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "ACN",
+          "company_name": "Accenture plc",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1271,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-21",
+          "news_as_of": "2026-08-21",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0787,
+            "news_adjustment": 0.039,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0054,
+            "signal_alignment": 0.004,
+            "news_signal_input": 0.1325,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0468
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "DHR",
+          "company_name": "Danaher Corporation",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1216,
+          "confidence_score": 0.47,
+          "confidence_label": "low",
+          "price_as_of": "2026-08-21",
+          "news_as_of": null,
+          "article_count": 0,
+          "diagnostics": {
+            "technical_total": 0.1216,
+            "news_adjustment": 0.0,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0,
+            "news_signal_input": 0.0,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "KO",
+          "company_name": "The Coca-Cola Company",
+          "sector": "consumer_staples",
+          "risk": "medium",
+          "model_score": 0.1215,
+          "confidence_score": 0.65,
+          "confidence_label": "medium",
+          "price_as_of": "2026-08-21",
+          "news_as_of": "2026-08-21",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0806,
+            "news_adjustment": 0.037,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0039,
+            "news_signal_input": 0.1211,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        }
+      ],
       "diagnostics": {
-        "technical_total": 0.0445,
-        "news_adjustment": 0.1188,
-        "macro_adjustment": 0.009,
-        "sector_adjustment": 0.007,
-        "news_signal_input": 0.6142,
-        "macro_signal_input": 0.0664,
-        "sector_signal_input": 0.0612,
+        "technical_total": 0.106,
+        "news_adjustment": 0.1316,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0054,
+        "news_signal_input": 0.704,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0468,
         "technical_training_rows": 2303,
-        "technical_training_ic": 0.006,
-        "news_macro_overlap": 0.5714,
-        "news_sector_overlap": 0.5714,
-        "macro_sector_overlap": 1.0
+        "technical_training_ic": 0.0097,
+        "news_macro_overlap": 0.3333,
+        "news_sector_overlap": 0.2857,
+        "macro_sector_overlap": 0.0
       }
     }
   ],
   "data_quality": {
     "status": "degraded",
-    "degraded_reason": "news_scores: GDELT company news failed for at least one symbol.; Marketaux company news failed for at least one symbol and fallback feeds were used.; news_scores: GDELT company news failed for at least one symbol.; news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.",
+    "degraded_reason": "news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
     "reasons": [
-      "news_scores: GDELT company news failed for at least one symbol.; Marketaux company news failed for at least one symbol and fallback feeds were used.",
       "news_scores: GDELT company news failed for at least one symbol.",
-      "news_scores: Marketaux company news failed for at least one symbol and fallback feeds were used.",
       "sector_scores: GDELT global-news feed failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 7,
+        "used": 6,
         "limit": 25,
-        "remaining": 18,
+        "remaining": 19,
         "categories": {
-          "company_news": 6,
+          "company_news": 5,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-17",
+          "date": "2026-08-24",
           "status": "healthy",
-          "used": 7,
+          "used": 6,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 19,
           "categories": {
-            "company_news": 6,
+            "company_news": 5,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 19,
+        "used": 11,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 18,
+          "company_news": 10,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-17",
+          "date": "2026-08-24",
           "status": "tracking_only",
-          "used": 19,
+          "used": 11,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 18,
+            "company_news": 10,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 52,
+        "used": 53,
         "limit": 100,
-        "remaining": 48,
+        "remaining": 47,
         "categories": {
-          "company_news": 51,
+          "company_news": 52,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-17",
+          "date": "2026-08-24",
           "status": "healthy",
-          "used": 52,
+          "used": 53,
           "limit": 100,
-          "remaining": 48,
+          "remaining": 47,
           "categories": {
-            "company_news": 51,
+            "company_news": 52,
             "global_news": 1
           }
         }
@@ -4578,7 +4844,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-08-17",
+          "date": "2026-08-24",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -4598,7 +4864,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-08-17",
+          "date": "2026-08-24",
           "status": "healthy",
           "used": 58,
           "limit": 800,

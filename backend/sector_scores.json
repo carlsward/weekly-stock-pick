@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-17T12:14:55Z",
-  "last_updated": "2026-08-17",
+  "generated_at": "2026-08-24T12:14:17Z",
+  "last_updated": "2026-08-24",
   "lookback_days": 3,
   "article_count": 1,
   "source_count": 1,
   "llm_model": "gpt-5-mini",
-  "summary": "Rising crude prices amid West Asia geopolitical tensions are driving near-term downside in equities (illustrated by falls in Sensex/Nifty). Expect energy producers to benefit from higher oil realizations, while fuel- and input-cost-sensitive sectors (consumer discretionary, industrials) face margin and demand pressure over the next few trading days.",
+  "summary": "Bloom Energy highlights modular, factory-built onsite power for AI data centers. This can ease data-center grid constraints and accelerate AI scale-up, boosting demand for onsite generation (energy equipment/industrial capex) and reinforcing demand for AI hardware and cloud providers over the short term.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -22,36 +22,14 @@
     "consumer_discretionary": {
       "sector": "consumer_discretionary",
       "display_name": "Consumer Discretionary",
-      "score": 0.41,
-      "confidence": 0.41,
-      "direction": "bearish",
-      "last_updated": "2026-08-17",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        "No strong recent sector catalyst was found for Consumer Discretionary."
       ],
-      "supporting_articles": [
-        {
-          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
-          "feed": "marketaux",
-          "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
-          "published_at": "2026-08-17T11:33:49Z",
-          "impact": "negative",
-          "weight": 0.17,
-          "event_type": "geopolitical_tension",
-          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "transportation/logistics",
-            "input costs",
-            "consumer spending",
-            "inflation"
-          ],
-          "horizon": "1-3d",
-          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
-        }
-      ]
+      "supporting_articles": []
     },
     "consumer_staples": {
       "sector": "consumer_staples",
@@ -68,34 +46,32 @@
     "energy": {
       "sector": "energy",
       "display_name": "Energy",
-      "score": 0.67,
+      "score": 0.58,
       "confidence": 0.45,
       "direction": "bullish",
-      "last_updated": "2026-08-17",
+      "last_updated": "2026-08-24",
       "reasons": [
-        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
       ],
       "supporting_articles": [
         {
-          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
+          "title": "Bloom Energy: Factory-Built Power Is Becoming AI's Fastest Route To Scale (NYSE:BE)",
           "feed": "marketaux",
-          "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
-          "published_at": "2026-08-17T11:33:49Z",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4939552-bloom-energy-factory-built-power-is-becoming-ais-fastest-route-to-scale",
+          "published_at": "2026-08-24T11:01:36Z",
           "impact": "positive",
-          "weight": 0.34,
-          "event_type": "geopolitical_tension",
-          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
+          "weight": 0.147,
+          "event_type": "company capability enabling AI infrastructure deployment",
+          "transmission_channel": "demand shift / infrastructure supply — modular onsite power reduces dependency on grid capacity, enabling faster AI data-center buildout and incremental capex for onsite generation equipment; second-order lift to AI hardware and hyperscaler cloud demand",
           "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "transportation/logistics",
-            "input costs",
-            "consumer spending",
-            "inflation"
+            "power supply for data centers",
+            "capex for onsite generation equipment",
+            "AI accelerator / GPU demand",
+            "data-center buildout speed"
           ],
-          "horizon": "1-3d",
-          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+          "horizon": "1-2w",
+          "reason": "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
         }
       ]
     },
@@ -126,48 +102,66 @@
     "industrials": {
       "sector": "industrials",
       "display_name": "Industrials",
-      "score": 0.41,
-      "confidence": 0.41,
-      "direction": "bearish",
-      "last_updated": "2026-08-17",
+      "score": 0.58,
+      "confidence": 0.45,
+      "direction": "bullish",
+      "last_updated": "2026-08-24",
       "reasons": [
-        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
       ],
       "supporting_articles": [
         {
-          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
+          "title": "Bloom Energy: Factory-Built Power Is Becoming AI's Fastest Route To Scale (NYSE:BE)",
           "feed": "marketaux",
-          "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
-          "published_at": "2026-08-17T11:33:49Z",
-          "impact": "negative",
-          "weight": 0.17,
-          "event_type": "geopolitical_tension",
-          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4939552-bloom-energy-factory-built-power-is-becoming-ais-fastest-route-to-scale",
+          "published_at": "2026-08-24T11:01:36Z",
+          "impact": "positive",
+          "weight": 0.147,
+          "event_type": "company capability enabling AI infrastructure deployment",
+          "transmission_channel": "demand shift / infrastructure supply — modular onsite power reduces dependency on grid capacity, enabling faster AI data-center buildout and incremental capex for onsite generation equipment; second-order lift to AI hardware and hyperscaler cloud demand",
           "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "transportation/logistics",
-            "input costs",
-            "consumer spending",
-            "inflation"
+            "power supply for data centers",
+            "capex for onsite generation equipment",
+            "AI accelerator / GPU demand",
+            "data-center buildout speed"
           ],
-          "horizon": "1-3d",
-          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+          "horizon": "1-2w",
+          "reason": "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
         }
       ]
     },
     "technology": {
       "sector": "technology",
       "display_name": "Technology",
-      "score": 0.5,
-      "confidence": 0.2,
-      "direction": "neutral",
-      "last_updated": null,
+      "score": 0.58,
+      "confidence": 0.45,
+      "direction": "bullish",
+      "last_updated": "2026-08-24",
       "reasons": [
-        "No strong recent sector catalyst was found for Technology."
+        "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Bloom Energy: Factory-Built Power Is Becoming AI's Fastest Route To Scale (NYSE:BE)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4939552-bloom-energy-factory-built-power-is-becoming-ais-fastest-route-to-scale",
+          "published_at": "2026-08-24T11:01:36Z",
+          "impact": "positive",
+          "weight": 0.147,
+          "event_type": "company capability enabling AI infrastructure deployment",
+          "transmission_channel": "demand shift / infrastructure supply — modular onsite power reduces dependency on grid capacity, enabling faster AI data-center buildout and incremental capex for onsite generation equipment; second-order lift to AI hardware and hyperscaler cloud demand",
+          "affected_inputs": [
+            "power supply for data centers",
+            "capex for onsite generation equipment",
+            "AI accelerator / GPU demand",
+            "data-center buildout speed"
+          ],
+          "horizon": "1-2w",
+          "reason": "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
+        }
+      ]
     }
   },
   "symbol_scores": {
@@ -214,71 +208,27 @@
       "symbol": "AMZN",
       "company_name": "Amazon.com Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.45,
-      "confidence": 0.41,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-08-17",
+      "last_updated": null,
       "reasons": [
-        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        "No strong recent world-news catalyst clearly favored Amazon.com Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
-          "feed": "marketaux",
-          "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
-          "published_at": "2026-08-17T11:33:49Z",
-          "impact": "negative",
-          "weight": 0.085,
-          "event_type": "geopolitical_tension",
-          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "transportation/logistics",
-            "input costs",
-            "consumer spending",
-            "inflation"
-          ],
-          "horizon": "1-3d",
-          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
-        }
-      ]
+      "supporting_articles": []
     },
     "TSLA": {
       "symbol": "TSLA",
       "company_name": "Tesla Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.45,
-      "confidence": 0.41,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-08-17",
+      "last_updated": null,
       "reasons": [
-        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        "No strong recent world-news catalyst clearly favored Tesla Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
-          "feed": "marketaux",
-          "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
-          "published_at": "2026-08-17T11:33:49Z",
-          "impact": "negative",
-          "weight": 0.085,
-          "event_type": "geopolitical_tension",
-          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "transportation/logistics",
-            "input costs",
-            "consumer spending",
-            "inflation"
-          ],
-          "horizon": "1-3d",
-          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
-        }
-      ]
+      "supporting_articles": []
     },
     "META": {
       "symbol": "META",
@@ -310,14 +260,34 @@
       "symbol": "NVDA",
       "company_name": "NVIDIA Corporation",
       "sector": "technology",
-      "score": 0.5,
-      "confidence": 0.2,
-      "direction": "neutral",
-      "last_updated": null,
+      "score": 0.75,
+      "confidence": 0.57,
+      "direction": "bullish",
+      "last_updated": "2026-08-24",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored NVIDIA Corporation."
+        "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "Bloom Energy: Factory-Built Power Is Becoming AI's Fastest Route To Scale (NYSE:BE)",
+          "feed": "marketaux",
+          "provider": "seekingalpha.com",
+          "url": "https://seekingalpha.com/article/4939552-bloom-energy-factory-built-power-is-becoming-ais-fastest-route-to-scale",
+          "published_at": "2026-08-24T11:01:36Z",
+          "impact": "positive",
+          "weight": 0.44,
+          "event_type": "company capability enabling AI infrastructure deployment",
+          "transmission_channel": "demand shift / infrastructure supply — modular onsite power reduces dependency on grid capacity, enabling faster AI data-center buildout and incremental capex for onsite generation equipment; second-order lift to AI hardware and hyperscaler cloud demand",
+          "affected_inputs": [
+            "power supply for data centers",
+            "capex for onsite generation equipment",
+            "AI accelerator / GPU demand",
+            "data-center buildout speed"
+          ],
+          "horizon": "1-2w",
+          "reason": "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
+        }
+      ]
     },
     "JPM": {
       "symbol": "JPM",
@@ -414,36 +384,14 @@
       "symbol": "HD",
       "company_name": "The Home Depot Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.45,
-      "confidence": 0.41,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-08-17",
+      "last_updated": null,
       "reasons": [
-        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        "No strong recent world-news catalyst clearly favored The Home Depot Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
-          "feed": "marketaux",
-          "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
-          "published_at": "2026-08-17T11:33:49Z",
-          "impact": "negative",
-          "weight": 0.085,
-          "event_type": "geopolitical_tension",
-          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "transportation/logistics",
-            "input costs",
-            "consumer spending",
-            "inflation"
-          ],
-          "horizon": "1-3d",
-          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
-        }
-      ]
+      "supporting_articles": []
     },
     "BAC": {
       "symbol": "BAC",
@@ -462,36 +410,14 @@
       "symbol": "XOM",
       "company_name": "Exxon Mobil Corporation",
       "sector": "energy",
-      "score": 0.61,
-      "confidence": 0.44,
-      "direction": "bullish",
-      "last_updated": "2026-08-17",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        "No strong recent world-news catalyst clearly favored Exxon Mobil Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
-          "feed": "marketaux",
-          "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
-          "published_at": "2026-08-17T11:33:49Z",
-          "impact": "positive",
-          "weight": 0.17,
-          "event_type": "geopolitical_tension",
-          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "transportation/logistics",
-            "input costs",
-            "consumer spending",
-            "inflation"
-          ],
-          "horizon": "1-3d",
-          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
-        }
-      ]
+      "supporting_articles": []
     },
     "PFE": {
       "symbol": "PFE",
@@ -718,36 +644,14 @@
       "symbol": "CVX",
       "company_name": "Chevron Corporation",
       "sector": "energy",
-      "score": 0.61,
-      "confidence": 0.44,
-      "direction": "bullish",
-      "last_updated": "2026-08-17",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        "No strong recent world-news catalyst clearly favored Chevron Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
-          "feed": "marketaux",
-          "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
-          "published_at": "2026-08-17T11:33:49Z",
-          "impact": "positive",
-          "weight": 0.17,
-          "event_type": "geopolitical_tension",
-          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "transportation/logistics",
-            "input costs",
-            "consumer spending",
-            "inflation"
-          ],
-          "horizon": "1-3d",
-          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
-        }
-      ]
+      "supporting_articles": []
     },
     "MCD": {
       "symbol": "MCD",
@@ -896,36 +800,14 @@
       "symbol": "LOW",
       "company_name": "Lowe's Companies Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.45,
-      "confidence": 0.41,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-08-17",
+      "last_updated": null,
       "reasons": [
-        "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+        "No strong recent world-news catalyst clearly favored Lowe's Companies Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
-          "feed": "marketaux",
-          "provider": "rediff.com",
-          "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
-          "published_at": "2026-08-17T11:33:49Z",
-          "impact": "negative",
-          "weight": 0.085,
-          "event_type": "geopolitical_tension",
-          "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
-          "affected_inputs": [
-            "crude oil",
-            "fuel costs",
-            "transportation/logistics",
-            "input costs",
-            "consumer spending",
-            "inflation"
-          ],
-          "horizon": "1-3d",
-          "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
-        }
-      ]
+      "supporting_articles": []
     },
     "GE": {
       "symbol": "GE",
@@ -943,44 +825,35 @@
   },
   "events": [
     {
-      "article_id": "news_1",
-      "title": "Sensex, Nifty Fall for 5th Day on Crude Price Surge, West Asia Crisis",
+      "article_id": "news_3",
+      "title": "Bloom Energy: Factory-Built Power Is Becoming AI's Fastest Route To Scale (NYSE:BE)",
       "feed": "marketaux",
-      "provider": "rediff.com",
-      "url": "https://www.rediff.com/business/report/nifty-sensex-decline-crude-oil-prices-geopolitical-tensions-impact-indian-markets/20260817.htm",
-      "published_at": "2026-08-17T11:33:49Z",
-      "event_type": "geopolitical_tension",
-      "transmission_channel": "Geopolitical risk -> perceived/actual oil supply disruption in West Asia -> crude price spike -> higher fuel costs and transportation/logistics expenses -> increased input costs and inflationary pressure -> weaker consumer discretionary demand and margin pressure for industrials; stronger revenues/profits for upstream energy producers.",
+      "provider": "seekingalpha.com",
+      "url": "https://seekingalpha.com/article/4939552-bloom-energy-factory-built-power-is-becoming-ais-fastest-route-to-scale",
+      "published_at": "2026-08-24T11:01:36Z",
+      "event_type": "company capability enabling AI infrastructure deployment",
+      "transmission_channel": "demand shift / infrastructure supply — modular onsite power reduces dependency on grid capacity, enabling faster AI data-center buildout and incremental capex for onsite generation equipment; second-order lift to AI hardware and hyperscaler cloud demand",
       "affected_inputs": [
-        "crude oil",
-        "fuel costs",
-        "transportation/logistics",
-        "input costs",
-        "consumer spending",
-        "inflation"
+        "power supply for data centers",
+        "capex for onsite generation equipment",
+        "AI accelerator / GPU demand",
+        "data-center buildout speed"
       ],
-      "horizon": "1-3d",
+      "horizon": "1-2w",
       "market_relevance": 1.0,
       "magnitude": 1.0,
-      "confidence": 0.75,
+      "confidence": 1.0,
       "beneficiary_sectors": [
-        "energy"
-      ],
-      "hurt_sectors": [
-        "consumer_discretionary",
+        "energy",
+        "technology",
         "industrials"
       ],
+      "hurt_sectors": [],
       "beneficiary_symbols": [
-        "XOM",
-        "CVX"
+        "NVDA"
       ],
-      "hurt_symbols": [
-        "AMZN",
-        "TSLA",
-        "HD",
-        "LOW"
-      ],
-      "reason": "Reports link Sensex/Nifty declines to a crude price surge driven by West Asia tensions. Higher crude acts as a supply-driven price shock that directly boosts upstream energy cash flows (benefitting major integrated producers XOM/CVX) while raising fuel and freight costs, squeezing margins and reducing discretionary consumer demand (negative for AMZN, TSLA, and big-box/DIY retailers HD, LOW) and increasing operating costs for industrial firms."
+      "hurt_symbols": [],
+      "reason": "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
     }
   ],
   "data_quality": {
@@ -992,63 +865,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 7,
+        "used": 6,
         "limit": 25,
-        "remaining": 18,
+        "remaining": 19,
         "categories": {
-          "company_news": 6,
+          "company_news": 5,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-17",
+          "date": "2026-08-24",
           "status": "healthy",
-          "used": 7,
+          "used": 6,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 19,
           "categories": {
-            "company_news": 6,
+            "company_news": 5,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 19,
+        "used": 11,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 18,
+          "company_news": 10,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-17",
+          "date": "2026-08-24",
           "status": "tracking_only",
-          "used": 19,
+          "used": 11,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 18,
+            "company_news": 10,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 52,
+        "used": 53,
         "limit": 100,
-        "remaining": 48,
+        "remaining": 47,
         "categories": {
-          "company_news": 51,
+          "company_news": 52,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-17",
+          "date": "2026-08-24",
           "status": "healthy",
-          "used": 52,
+          "used": 53,
           "limit": 100,
-          "remaining": 48,
+          "remaining": 47,
           "categories": {
-            "company_news": 51,
+            "company_news": 52,
             "global_news": 1
           }
         }
@@ -1063,7 +936,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-08-17",
+          "date": "2026-08-24",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

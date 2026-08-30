@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-29T19:01:19Z",
-  "data_as_of": "2026-08-29",
-  "expected_next_refresh_at": "2026-08-30T19:01:19Z",
-  "stale_after": "2026-08-31T07:01:19Z",
+  "generated_at": "2026-08-30T18:56:45Z",
+  "data_as_of": "2026-08-30",
+  "expected_next_refresh_at": "2026-08-31T18:56:45Z",
+  "stale_after": "2026-09-01T06:56:45Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W35",
@@ -24,38 +24,38 @@
     "company_name": "Salesforce Inc.",
     "sector": "technology",
     "risk": "high",
-    "model_score": 0.1961,
-    "confidence_score": 0.71,
+    "model_score": 0.2085,
+    "confidence_score": 0.73,
     "confidence_label": "medium",
     "price_as_of": "2026-08-28",
     "news_as_of": "2026-08-26",
     "macro_as_of": null,
-    "sector_as_of": "2026-08-29",
+    "sector_as_of": "2026-08-30",
     "article_count": 8,
     "metrics": {
-      "momentum_5d": 0.225,
-      "momentum_20d": 0.3925,
+      "momentum_5d": 0.2239,
+      "momentum_20d": 0.3912,
       "daily_volatility": 0.0529,
       "downside_volatility": 0.0186,
       "max_drawdown_20d": 0.0516,
       "positive_day_ratio_10d": 0.5,
-      "price_vs_20d_average": 0.2586,
-      "volume_trend_5d": 1.0564,
-      "market_relative_5d": 0.2192,
-      "market_relative_20d": 0.352,
-      "sector_relative_5d": 0.2094,
-      "sector_relative_20d": 0.315,
-      "news_sentiment": 0.7,
-      "raw_news_sentiment": 0.8988,
-      "calibrated_news_sentiment": 0.4106,
-      "news_confidence": 0.47,
+      "price_vs_20d_average": 0.2575,
+      "volume_trend_5d": 1.0568,
+      "market_relative_5d": 0.2181,
+      "market_relative_20d": 0.3508,
+      "sector_relative_5d": 0.2082,
+      "sector_relative_20d": 0.3137,
+      "news_sentiment": 0.69,
+      "raw_news_sentiment": 0.8984,
+      "calibrated_news_sentiment": 0.3835,
+      "news_confidence": 0.46,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.51,
-      "sector_confidence": 0.34,
-      "effective_article_count": 1.19,
+      "sector_sentiment": 0.76,
+      "sector_confidence": 0.49,
+      "effective_article_count": 0.92,
       "source_count": 4,
-      "average_relevance": 0.79,
+      "average_relevance": 0.76,
       "technical_training_ic": 0.0097,
       "technical_training_rows": 2303
     },
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.036,
       "downside_penalty": -0.0201,
       "drawdown_penalty": -0.0065,
-      "news_adjustment": 0.0509,
+      "news_adjustment": 0.0475,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0007,
-      "signal_alignment": 0.009,
+      "sector_adjustment": 0.0171,
+      "signal_alignment": 0.0084,
       "technical_total": 0.1354,
       "trend_strength": 0.138,
       "relative_strength": 0.036,
@@ -83,24 +83,27 @@
       "block_weight_news": 0.1761,
       "block_weight_macro": 0.0972,
       "block_weight_sector": 0.0867,
-      "macro_dedup_penalty": 0.8167,
-      "sector_dedup_penalty": 0.8,
-      "news_macro_overlap": 0.3333,
-      "news_sector_overlap": 0.3333,
-      "macro_sector_overlap": 0.0,
-      "total": 0.1961
+      "macro_dedup_penalty": 0.8625,
+      "sector_dedup_penalty": 0.6,
+      "news_macro_overlap": 0.25,
+      "news_sector_overlap": 0.6667,
+      "macro_sector_overlap": 0.1667,
+      "total": 0.2085
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 22.5% and 20-day momentum is 39.2%.",
-      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 25.9% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 22.4% and 20-day momentum is 39.1%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 25.8% relative to its 20-day average.",
       "Risk profile shows daily volatility around 5.3%, downside volatility near 1.9%, and a recent max drawdown of 5.2%.",
-      "Volume confirmation is 105.6% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 21.9% versus SPY over 5 days and 20.9% versus the sector ETF.",
-      "News signal is bullish with score 0.70, confidence 0.47, and 1.2 weighted articles across 4 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.87, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 8 articles across 4 sources, 1.2 effective weighted articles, average relevance 0.79, average source quality 0.86, confidence 0.86.",
+      "Volume confirmation is 105.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 21.8% versus SPY over 5 days and 20.8% versus the sector ETF.",
+      "News signal is bullish with score 0.69, confidence 0.46, and 0.9 weighted articles across 4 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.85, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 8 articles across 4 sources, 0.9 effective weighted articles, average relevance 0.76, average source quality 0.85, confidence 0.83.",
+      "Broad market news leaned bullish for the Technology sector with score 0.76 and confidence 0.49.",
+      "The article is a forward-looking opinion that frames Broadcom's Sept. 2 quarterly report as a potential trigger for a sharp move. If Broadcom posts upside revenue/guidance or better-than-expected bookings/pricing commentary, investors could re-rate Broadcom and parts of the semiconductor/technology group, lifting related tech suppliers and platform software vendors. Conversely, a disappointment could produce the opposite. Because the piece is speculative and centered on one company's imminent report, it creates a near-term (1–3 trading day) event risk/reward window for technology-sector positioning.",
+      "Sector overlay was trimmed by 40% because it overlaps with company or macro themes.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.01).",
-      "Overall model score is 0.196 with medium confidence."
+      "Overall model score is 0.208 with medium confidence."
     ],
     "news_evidence": [
       {
@@ -115,7 +118,7 @@
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Official Salesforce 10-Q for period ending 2026-07-31 — directly relevant company filing containing financial detail and disclosures that can move the stock; directional implications unclear without filing parsing."
+        "llm_reason": "Official 10-Q filing for Salesforce. Quarterly filings are materially relevant to short-term stock performance, but the headline provides no detail on results or surprises—so impact is likely meaningful if the filing contains unexpected items, otherwise limited."
       },
       {
         "title": "Salesforce Inc. filed 8-K: 8-K",
@@ -129,21 +132,21 @@
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "An 8-K was filed on 2026-08-26. 8-Ks can contain material events (e.g., earnings-related notices, leadership changes), but no content is provided here, so likely-to-be-important but uncertain in direction and magnitude."
+        "llm_reason": "Official 8-K filing. 8-Ks often report material developments (e.g., leadership changes, transactions, restatements). The summary lacks substance, so it is potentially impactful but direction and magnitude are unknown until content is reviewed."
       },
       {
-        "title": "ServiceNow Stock Climbs Thursday: What's Going On?",
-        "provider": "Benzinga",
-        "url": "https://www.benzinga.com/trading-ideas/movers/26/08/61463745/servicenow-stock-climbs-thursday-whats-going-on",
+        "title": "ServiceNow Inc Stock (NOW) Moved Up by 4.37% on Aug 28: Drivers Behind the Movement",
+        "provider": "TradingKey",
+        "url": "https://www.tradingkey.com/news/market-movers/262138961-market-movers-now-20260828",
         "published_at": "None",
-        "relevance_score": 0.66,
-        "sentiment": 0.73,
+        "relevance_score": 0.53,
+        "sentiment": 0.32,
         "doc_type": "sector_macro",
         "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Article attributes ServiceNow’s rally to Salesforce’s strong Q2, record sales and upgraded guidance. Reinforces positive sector/stock sentiment tied to CRM earnings; moderately relevant for short-term price momentum."
+        "llm_reason": "ServiceNow's strong move and AI-driven re-rating reflect sector dynamics in enterprise software. This is relevant for Salesforce via potential sector multiple movement or investor sentiment, but it's indirect and could be either mildly positive (sector lift) or mixed (competitive concerns)."
       }
     ],
     "macro_evidence": [],
@@ -153,13 +156,14 @@
       "summary": "Trend quality is still positive, but the tape is no longer decisive.",
       "alerts": [
         "Trend quality is still positive, but the tape is no longer decisive.",
-        "Volatility expanded enough to weaken the setup."
+        "Volatility expanded enough to weaken the setup.",
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "watch",
-          "value": "22.5% 5D • 39.2% 20D",
+          "value": "22.4% 5D • 39.1% 20D",
           "detail": "Trend quality is still positive, but the tape is no longer decisive."
         },
         {
@@ -170,9 +174,9 @@
         },
         {
           "label": "News",
-          "state": "positive",
-          "value": "0.70 sentiment • 8 articles",
-          "detail": "Recent news flow is supportive and diversified enough to back the setup."
+          "state": "watch",
+          "value": "0.69 sentiment • 8 articles",
+          "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
@@ -183,13 +187,13 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.076 score • +0.164 conf",
+          "value": "+0.088 score • +0.180 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 2 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 2 trading days • macro neutral • sector 0 trading days",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -216,14 +220,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-29",
+          "date": "2026-08-30",
           "status": "healthy",
-          "used": 4,
+          "used": 2,
           "limit": 25,
-          "remaining": 21,
+          "remaining": 23,
           "categories": {
-            "company_news": 2,
-            "global_news": 2
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -237,14 +241,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-29",
+          "date": "2026-08-30",
           "status": "tracking_only",
-          "used": 4,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 2,
-            "global_news": 2
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -258,14 +262,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-29",
+          "date": "2026-08-30",
           "status": "healthy",
-          "used": 4,
+          "used": 2,
           "limit": 100,
-          "remaining": 96,
+          "remaining": 98,
           "categories": {
-            "company_news": 2,
-            "global_news": 2
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -279,14 +283,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-08-29",
+          "date": "2026-08-30",
           "status": "tracking_only",
-          "used": 4,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 2,
-            "submissions": 2
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -299,13 +303,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-08-29",
+          "date": "2026-08-30",
           "status": "healthy",
-          "used": 6,
+          "used": 3,
           "limit": 800,
-          "remaining": 794,
+          "remaining": 797,
           "categories": {
-            "price": 6
+            "price": 3
           }
         }
       }

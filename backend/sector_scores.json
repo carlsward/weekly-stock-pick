@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-24T12:14:17Z",
-  "last_updated": "2026-08-24",
+  "generated_at": "2026-08-31T18:32:48Z",
+  "last_updated": "2026-08-31",
   "lookback_days": 3,
-  "article_count": 1,
+  "article_count": 2,
   "source_count": 1,
   "llm_model": "gpt-5-mini",
-  "summary": "Bloom Energy highlights modular, factory-built onsite power for AI data centers. This can ease data-center grid constraints and accelerate AI scale-up, boosting demand for onsite generation (energy equipment/industrial capex) and reinforcing demand for AI hardware and cloud providers over the short term.",
+  "summary": "Two short-horizon items: (1) Parliamentary scrutiny/compromise around UBS dividend raises regulatory and sentiment risk for banks — likely negative for financial sector sentiment over the next 1–15 trading days. (2) Release of GTA VI gameplay footage is a positive demand/engagement catalyst for the videogame/entertainment ecosystem, likely modestly supportive for consumer discretionary and related tech/hardware demand near-term.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -22,14 +22,34 @@
     "consumer_discretionary": {
       "sector": "consumer_discretionary",
       "display_name": "Consumer Discretionary",
-      "score": 0.5,
-      "confidence": 0.2,
+      "score": 0.54,
+      "confidence": 0.36,
       "direction": "neutral",
-      "last_updated": null,
+      "last_updated": "2026-08-31",
       "reasons": [
-        "No strong recent sector catalyst was found for Consumer Discretionary."
+        "The first official GTA VI gameplay footage is a marketing/product catalyst that lifts expectations for game engagement and sales. Near-term this favors consumer discretionary exposure to videogame spending (publishers, retailers, platforms) and can modestly boost demand expectations for PC/console hardware and GPUs (technology). The effect is sector-level and focused on demand/hype; no tracked company is uniquely implicated by the footage release, so I keep symbol lists empty."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "TTWO Looks 1.7% Undervalued on GF Value™ Amid Mixed Signals",
+          "feed": "marketaux",
+          "provider": "gurufocus.com",
+          "url": "https://www.gurufocus.com/news/9060444/ttwo-looks-17-undervalued-on-gf-value-amid-mixed-signals",
+          "published_at": "2026-08-31T18:25:32Z",
+          "impact": "positive",
+          "weight": 0.084,
+          "event_type": "Product / consumer demand catalyst (game content release / marketing)",
+          "transmission_channel": "Content release/hype -> increased consumer interest and pre-order/engagement expectations -> higher near-term demand for game-related spending and possible incremental PC/console hardware or GPU interest -> boost to game publishers, retailers/platforms, and hardware vendors",
+          "affected_inputs": [
+            "game sales / monetization",
+            "digital distribution platforms",
+            "console and PC hardware demand",
+            "consumer discretionary spending on entertainment"
+          ],
+          "horizon": "1-2w",
+          "reason": "The first official GTA VI gameplay footage is a marketing/product catalyst that lifts expectations for game engagement and sales. Near-term this favors consumer discretionary exposure to videogame spending (publishers, retailers, platforms) and can modestly boost demand expectations for PC/console hardware and GPUs (technology). The effect is sector-level and focused on demand/hype; no tracked company is uniquely implicated by the footage release, so I keep symbol lists empty."
+        }
+      ]
     },
     "consumer_staples": {
       "sector": "consumer_staples",
@@ -46,46 +66,46 @@
     "energy": {
       "sector": "energy",
       "display_name": "Energy",
-      "score": 0.58,
-      "confidence": 0.45,
-      "direction": "bullish",
-      "last_updated": "2026-08-24",
-      "reasons": [
-        "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
-      ],
-      "supporting_articles": [
-        {
-          "title": "Bloom Energy: Factory-Built Power Is Becoming AI's Fastest Route To Scale (NYSE:BE)",
-          "feed": "marketaux",
-          "provider": "seekingalpha.com",
-          "url": "https://seekingalpha.com/article/4939552-bloom-energy-factory-built-power-is-becoming-ais-fastest-route-to-scale",
-          "published_at": "2026-08-24T11:01:36Z",
-          "impact": "positive",
-          "weight": 0.147,
-          "event_type": "company capability enabling AI infrastructure deployment",
-          "transmission_channel": "demand shift / infrastructure supply — modular onsite power reduces dependency on grid capacity, enabling faster AI data-center buildout and incremental capex for onsite generation equipment; second-order lift to AI hardware and hyperscaler cloud demand",
-          "affected_inputs": [
-            "power supply for data centers",
-            "capex for onsite generation equipment",
-            "AI accelerator / GPU demand",
-            "data-center buildout speed"
-          ],
-          "horizon": "1-2w",
-          "reason": "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
-        }
-      ]
-    },
-    "financials": {
-      "sector": "financials",
-      "display_name": "Financials",
       "score": 0.5,
       "confidence": 0.2,
       "direction": "neutral",
       "last_updated": null,
       "reasons": [
-        "No strong recent sector catalyst was found for Financials."
+        "No strong recent sector catalyst was found for Energy."
       ],
       "supporting_articles": []
+    },
+    "financials": {
+      "sector": "financials",
+      "display_name": "Financials",
+      "score": 0.36,
+      "confidence": 0.41,
+      "direction": "bearish",
+      "last_updated": "2026-08-31",
+      "reasons": [
+        "The Swiss parliamentary committee's action and resulting scrutiny over UBS's dividend sustainability is a political/regulatory shock concentrated on a major global bank. Even though UBS itself is not a tracked symbol here, the transmission is through investor sentiment and regulatory risk for banks broadly: concerns about dividends, potential capital actions, or reputational/regulatory constraints can pressure valuations and raise perceived funding/credit risks. That typically spills over to other large banks and the financial sector in the short run (1–15 trading days) as investors mark down exposures and reprioritize risk. No single tracked company is directly named, so I map the effect to the financials sector rather than specific symbols."
+      ],
+      "supporting_articles": [
+        {
+          "title": "UBS Looks 41.6% Overvalued on GF Value™ as Dividend Sustainability Faces Scrutiny",
+          "feed": "marketaux",
+          "provider": "gurufocus.com",
+          "url": "https://www.gurufocus.com/news/9060446/ubs-looks-416-overvalued-on-gf-value-as-dividend-sustainability-faces-scrutiny",
+          "published_at": "2026-08-31T18:26:31Z",
+          "impact": "negative",
+          "weight": 0.282,
+          "event_type": "Regulatory / Political scrutiny of bank dividend",
+          "transmission_channel": "Political/regulatory action -> dividend uncertainty -> investor risk sentiment -> re-rating of bank valuations and potential funding/credit-cost concerns; possible contagion to other large banks via sentiment",
+          "affected_inputs": [
+            "dividend payouts",
+            "bank valuations",
+            "investor risk appetite",
+            "funding/credit spreads"
+          ],
+          "horizon": "1-2w",
+          "reason": "The Swiss parliamentary committee's action and resulting scrutiny over UBS's dividend sustainability is a political/regulatory shock concentrated on a major global bank. Even though UBS itself is not a tracked symbol here, the transmission is through investor sentiment and regulatory risk for banks broadly: concerns about dividends, potential capital actions, or reputational/regulatory constraints can pressure valuations and raise perceived funding/credit risks. That typically spills over to other large banks and the financial sector in the short run (1–15 trading days) as investors mark down exposures and reprioritize risk. No single tracked company is directly named, so I map the effect to the financials sector rather than specific symbols."
+        }
+      ]
     },
     "healthcare": {
       "sector": "healthcare",
@@ -102,64 +122,44 @@
     "industrials": {
       "sector": "industrials",
       "display_name": "Industrials",
-      "score": 0.58,
-      "confidence": 0.45,
-      "direction": "bullish",
-      "last_updated": "2026-08-24",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
+        "No strong recent sector catalyst was found for Industrials."
       ],
-      "supporting_articles": [
-        {
-          "title": "Bloom Energy: Factory-Built Power Is Becoming AI's Fastest Route To Scale (NYSE:BE)",
-          "feed": "marketaux",
-          "provider": "seekingalpha.com",
-          "url": "https://seekingalpha.com/article/4939552-bloom-energy-factory-built-power-is-becoming-ais-fastest-route-to-scale",
-          "published_at": "2026-08-24T11:01:36Z",
-          "impact": "positive",
-          "weight": 0.147,
-          "event_type": "company capability enabling AI infrastructure deployment",
-          "transmission_channel": "demand shift / infrastructure supply — modular onsite power reduces dependency on grid capacity, enabling faster AI data-center buildout and incremental capex for onsite generation equipment; second-order lift to AI hardware and hyperscaler cloud demand",
-          "affected_inputs": [
-            "power supply for data centers",
-            "capex for onsite generation equipment",
-            "AI accelerator / GPU demand",
-            "data-center buildout speed"
-          ],
-          "horizon": "1-2w",
-          "reason": "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
-        }
-      ]
+      "supporting_articles": []
     },
     "technology": {
       "sector": "technology",
       "display_name": "Technology",
-      "score": 0.58,
-      "confidence": 0.45,
-      "direction": "bullish",
-      "last_updated": "2026-08-24",
+      "score": 0.54,
+      "confidence": 0.36,
+      "direction": "neutral",
+      "last_updated": "2026-08-31",
       "reasons": [
-        "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
+        "The first official GTA VI gameplay footage is a marketing/product catalyst that lifts expectations for game engagement and sales. Near-term this favors consumer discretionary exposure to videogame spending (publishers, retailers, platforms) and can modestly boost demand expectations for PC/console hardware and GPUs (technology). The effect is sector-level and focused on demand/hype; no tracked company is uniquely implicated by the footage release, so I keep symbol lists empty."
       ],
       "supporting_articles": [
         {
-          "title": "Bloom Energy: Factory-Built Power Is Becoming AI's Fastest Route To Scale (NYSE:BE)",
+          "title": "TTWO Looks 1.7% Undervalued on GF Value™ Amid Mixed Signals",
           "feed": "marketaux",
-          "provider": "seekingalpha.com",
-          "url": "https://seekingalpha.com/article/4939552-bloom-energy-factory-built-power-is-becoming-ais-fastest-route-to-scale",
-          "published_at": "2026-08-24T11:01:36Z",
+          "provider": "gurufocus.com",
+          "url": "https://www.gurufocus.com/news/9060444/ttwo-looks-17-undervalued-on-gf-value-amid-mixed-signals",
+          "published_at": "2026-08-31T18:25:32Z",
           "impact": "positive",
-          "weight": 0.147,
-          "event_type": "company capability enabling AI infrastructure deployment",
-          "transmission_channel": "demand shift / infrastructure supply — modular onsite power reduces dependency on grid capacity, enabling faster AI data-center buildout and incremental capex for onsite generation equipment; second-order lift to AI hardware and hyperscaler cloud demand",
+          "weight": 0.084,
+          "event_type": "Product / consumer demand catalyst (game content release / marketing)",
+          "transmission_channel": "Content release/hype -> increased consumer interest and pre-order/engagement expectations -> higher near-term demand for game-related spending and possible incremental PC/console hardware or GPU interest -> boost to game publishers, retailers/platforms, and hardware vendors",
           "affected_inputs": [
-            "power supply for data centers",
-            "capex for onsite generation equipment",
-            "AI accelerator / GPU demand",
-            "data-center buildout speed"
+            "game sales / monetization",
+            "digital distribution platforms",
+            "console and PC hardware demand",
+            "consumer discretionary spending on entertainment"
           ],
           "horizon": "1-2w",
-          "reason": "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
+          "reason": "The first official GTA VI gameplay footage is a marketing/product catalyst that lifts expectations for game engagement and sales. Near-term this favors consumer discretionary exposure to videogame spending (publishers, retailers, platforms) and can modestly boost demand expectations for PC/console hardware and GPUs (technology). The effect is sector-level and focused on demand/hype; no tracked company is uniquely implicated by the footage release, so I keep symbol lists empty."
         }
       ]
     }
@@ -260,34 +260,14 @@
       "symbol": "NVDA",
       "company_name": "NVIDIA Corporation",
       "sector": "technology",
-      "score": 0.75,
-      "confidence": 0.57,
-      "direction": "bullish",
-      "last_updated": "2026-08-24",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
+        "No strong recent world-news catalyst clearly favored NVIDIA Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "Bloom Energy: Factory-Built Power Is Becoming AI's Fastest Route To Scale (NYSE:BE)",
-          "feed": "marketaux",
-          "provider": "seekingalpha.com",
-          "url": "https://seekingalpha.com/article/4939552-bloom-energy-factory-built-power-is-becoming-ais-fastest-route-to-scale",
-          "published_at": "2026-08-24T11:01:36Z",
-          "impact": "positive",
-          "weight": 0.44,
-          "event_type": "company capability enabling AI infrastructure deployment",
-          "transmission_channel": "demand shift / infrastructure supply — modular onsite power reduces dependency on grid capacity, enabling faster AI data-center buildout and incremental capex for onsite generation equipment; second-order lift to AI hardware and hyperscaler cloud demand",
-          "affected_inputs": [
-            "power supply for data centers",
-            "capex for onsite generation equipment",
-            "AI accelerator / GPU demand",
-            "data-center buildout speed"
-          ],
-          "horizon": "1-2w",
-          "reason": "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
-        }
-      ]
+      "supporting_articles": []
     },
     "JPM": {
       "symbol": "JPM",
@@ -825,35 +805,59 @@
   },
   "events": [
     {
-      "article_id": "news_3",
-      "title": "Bloom Energy: Factory-Built Power Is Becoming AI's Fastest Route To Scale (NYSE:BE)",
+      "article_id": "news_1",
+      "title": "UBS Looks 41.6% Overvalued on GF Value™ as Dividend Sustainability Faces Scrutiny",
       "feed": "marketaux",
-      "provider": "seekingalpha.com",
-      "url": "https://seekingalpha.com/article/4939552-bloom-energy-factory-built-power-is-becoming-ais-fastest-route-to-scale",
-      "published_at": "2026-08-24T11:01:36Z",
-      "event_type": "company capability enabling AI infrastructure deployment",
-      "transmission_channel": "demand shift / infrastructure supply — modular onsite power reduces dependency on grid capacity, enabling faster AI data-center buildout and incremental capex for onsite generation equipment; second-order lift to AI hardware and hyperscaler cloud demand",
+      "provider": "gurufocus.com",
+      "url": "https://www.gurufocus.com/news/9060446/ubs-looks-416-overvalued-on-gf-value-as-dividend-sustainability-faces-scrutiny",
+      "published_at": "2026-08-31T18:26:31Z",
+      "event_type": "Regulatory / Political scrutiny of bank dividend",
+      "transmission_channel": "Political/regulatory action -> dividend uncertainty -> investor risk sentiment -> re-rating of bank valuations and potential funding/credit-cost concerns; possible contagion to other large banks via sentiment",
       "affected_inputs": [
-        "power supply for data centers",
-        "capex for onsite generation equipment",
-        "AI accelerator / GPU demand",
-        "data-center buildout speed"
+        "dividend payouts",
+        "bank valuations",
+        "investor risk appetite",
+        "funding/credit spreads"
       ],
       "horizon": "1-2w",
       "market_relevance": 1.0,
       "magnitude": 1.0,
-      "confidence": 1.0,
+      "confidence": 0.6,
+      "beneficiary_sectors": [],
+      "hurt_sectors": [
+        "financials"
+      ],
+      "beneficiary_symbols": [],
+      "hurt_symbols": [],
+      "reason": "The Swiss parliamentary committee's action and resulting scrutiny over UBS's dividend sustainability is a political/regulatory shock concentrated on a major global bank. Even though UBS itself is not a tracked symbol here, the transmission is through investor sentiment and regulatory risk for banks broadly: concerns about dividends, potential capital actions, or reputational/regulatory constraints can pressure valuations and raise perceived funding/credit risks. That typically spills over to other large banks and the financial sector in the short run (1–15 trading days) as investors mark down exposures and reprioritize risk. No single tracked company is directly named, so I map the effect to the financials sector rather than specific symbols."
+    },
+    {
+      "article_id": "news_2",
+      "title": "TTWO Looks 1.7% Undervalued on GF Value™ Amid Mixed Signals",
+      "feed": "marketaux",
+      "provider": "gurufocus.com",
+      "url": "https://www.gurufocus.com/news/9060444/ttwo-looks-17-undervalued-on-gf-value-amid-mixed-signals",
+      "published_at": "2026-08-31T18:25:32Z",
+      "event_type": "Product / consumer demand catalyst (game content release / marketing)",
+      "transmission_channel": "Content release/hype -> increased consumer interest and pre-order/engagement expectations -> higher near-term demand for game-related spending and possible incremental PC/console hardware or GPU interest -> boost to game publishers, retailers/platforms, and hardware vendors",
+      "affected_inputs": [
+        "game sales / monetization",
+        "digital distribution platforms",
+        "console and PC hardware demand",
+        "consumer discretionary spending on entertainment"
+      ],
+      "horizon": "1-2w",
+      "market_relevance": 1.0,
+      "magnitude": 1.0,
+      "confidence": 0.6,
       "beneficiary_sectors": [
-        "energy",
-        "technology",
-        "industrials"
+        "consumer_discretionary",
+        "technology"
       ],
       "hurt_sectors": [],
-      "beneficiary_symbols": [
-        "NVDA"
-      ],
+      "beneficiary_symbols": [],
       "hurt_symbols": [],
-      "reason": "Bloom Energy's modular onsite generation can alleviate grid constraints for AI data centers (transmission: supply/infrastructure). First-order: increased capex for onsite power providers and equipment manufacturers (energy, industrials). Second-order: faster data-center deployment supports higher near-term demand for AI accelerators and cloud compute (benefiting AI hardware demand; NVDA as a tracked proxy). Impact is sector-broad and gradual; short-horizon market effects are moderate and somewhat uncertain."
+      "reason": "The first official GTA VI gameplay footage is a marketing/product catalyst that lifts expectations for game engagement and sales. Near-term this favors consumer discretionary exposure to videogame spending (publishers, retailers, platforms) and can modestly boost demand expectations for PC/console hardware and GPUs (technology). The effect is sector-level and focused on demand/hype; no tracked company is uniquely implicated by the footage release, so I keep symbol lists empty."
     }
   ],
   "data_quality": {
@@ -865,63 +869,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 6,
+        "used": 5,
         "limit": 25,
-        "remaining": 19,
+        "remaining": 20,
         "categories": {
-          "company_news": 5,
+          "company_news": 4,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-24",
+          "date": "2026-08-31",
           "status": "healthy",
-          "used": 6,
+          "used": 5,
           "limit": 25,
-          "remaining": 19,
+          "remaining": 20,
           "categories": {
-            "company_news": 5,
+            "company_news": 4,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 11,
+        "used": 9,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 10,
+          "company_news": 8,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-24",
+          "date": "2026-08-31",
           "status": "tracking_only",
-          "used": 11,
+          "used": 9,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 10,
+            "company_news": 8,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 53,
+        "used": 50,
         "limit": 100,
-        "remaining": 47,
+        "remaining": 50,
         "categories": {
-          "company_news": 52,
+          "company_news": 49,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-24",
+          "date": "2026-08-31",
           "status": "healthy",
-          "used": 53,
+          "used": 50,
           "limit": 100,
-          "remaining": 47,
+          "remaining": 50,
           "categories": {
-            "company_news": 52,
+            "company_news": 49,
             "global_news": 1
           }
         }
@@ -936,7 +940,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-08-24",
+          "date": "2026-08-31",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

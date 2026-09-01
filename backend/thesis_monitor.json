@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-31T21:13:46Z",
-  "data_as_of": "2026-08-31",
-  "expected_next_refresh_at": "2026-09-01T21:13:46Z",
-  "stale_after": "2026-09-02T09:13:46Z",
+  "generated_at": "2026-09-01T19:02:08Z",
+  "data_as_of": "2026-09-01",
+  "expected_next_refresh_at": "2026-09-02T19:02:08Z",
+  "stale_after": "2026-09-03T07:02:08Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W36",
@@ -24,62 +24,62 @@
     "company_name": "Tesla Inc.",
     "sector": "consumer_discretionary",
     "risk": "high",
-    "model_score": 0.2253,
-    "confidence_score": 0.73,
+    "model_score": 0.0875,
+    "confidence_score": 0.63,
     "confidence_label": "medium",
-    "price_as_of": "2026-08-31",
-    "news_as_of": "2026-08-31",
+    "price_as_of": "2026-09-01",
+    "news_as_of": "2026-09-01",
     "macro_as_of": null,
     "sector_as_of": null,
-    "article_count": 3,
+    "article_count": 2,
     "metrics": {
-      "momentum_5d": 0.0544,
-      "momentum_20d": 0.1423,
-      "daily_volatility": 0.0253,
-      "downside_volatility": 0.0181,
+      "momentum_5d": 0.0118,
+      "momentum_20d": 0.0826,
+      "daily_volatility": 0.0269,
+      "downside_volatility": 0.0207,
       "max_drawdown_20d": 0.047,
       "positive_day_ratio_10d": 0.5,
-      "price_vs_20d_average": 0.0786,
-      "volume_trend_5d": 0.3873,
-      "market_relative_5d": 0.0496,
-      "market_relative_20d": 0.1285,
-      "sector_relative_5d": 0.0697,
-      "sector_relative_20d": 0.1581,
-      "news_sentiment": 0.84,
-      "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.6761,
+      "price_vs_20d_average": 0.0348,
+      "volume_trend_5d": -0.0797,
+      "market_relative_5d": 0.0187,
+      "market_relative_20d": 0.0976,
+      "sector_relative_5d": 0.0426,
+      "sector_relative_20d": 0.1188,
+      "news_sentiment": 0.73,
+      "raw_news_sentiment": 0.687,
+      "calibrated_news_sentiment": 0.4538,
       "news_confidence": 0.74,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
       "sector_confidence": 0.2,
-      "effective_article_count": 0.86,
-      "source_count": 2,
-      "average_relevance": 0.8,
+      "effective_article_count": 0.67,
+      "source_count": 1,
+      "average_relevance": 0.85,
       "technical_training_ic": 0.0032,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1567,
-      "short_momentum": 0.0448,
-      "medium_momentum": 0.0427,
-      "trend_quality": 0.0177,
-      "volume_confirmation": 0.0155,
-      "market_relative_strength": 0.021,
+      "momentum": 0.0694,
+      "short_momentum": 0.0097,
+      "medium_momentum": 0.0248,
+      "trend_quality": 0.0078,
+      "volume_confirmation": -0.0032,
+      "market_relative_strength": 0.0153,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0481,
-      "daily_volatility_penalty": -0.0227,
-      "downside_penalty": -0.0195,
+      "volatility_penalty": -0.0525,
+      "daily_volatility_penalty": -0.0242,
+      "downside_penalty": -0.0224,
       "drawdown_penalty": -0.0059,
-      "news_adjustment": 0.102,
+      "news_adjustment": 0.069,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0147,
-      "technical_total": 0.1086,
-      "trend_strength": 0.1052,
-      "relative_strength": 0.036,
-      "participation": 0.0155,
-      "risk_control": -0.0481,
+      "signal_alignment": 0.0015,
+      "technical_total": 0.017,
+      "trend_strength": 0.0423,
+      "relative_strength": 0.0303,
+      "participation": -0.0032,
+      "risk_control": -0.0525,
       "block_weight_news": 0.1751,
       "block_weight_macro": 0.0965,
       "block_weight_sector": 0.0884,
@@ -88,48 +88,48 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.2253
+      "total": 0.0875
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 5.4% and 20-day momentum is 14.2%.",
-      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 7.9% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 2.5%, downside volatility near 1.8%, and a recent max drawdown of 4.7%.",
-      "Volume confirmation is 38.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 5.0% versus SPY over 5 days and 7.0% versus the sector ETF.",
-      "News signal is bullish with score 0.84, confidence 0.74, and 0.9 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.84, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 0.9 effective weighted articles, average relevance 0.80, average source quality 0.75, confidence 0.74.",
+      "Price trend remains constructive: 5-day momentum is 1.2% and 20-day momentum is 8.3%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 3.5% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 2.7%, downside volatility near 2.1%, and a recent max drawdown of 4.7%.",
+      "Volume confirmation is -8.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 1.9% versus SPY over 5 days and 4.3% versus the sector ETF.",
+      "News signal is bullish with score 0.73, confidence 0.74, and 0.7 weighted articles across 1 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.73, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 1 sources, 0.7 effective weighted articles, average relevance 0.85, average source quality 0.75, confidence 0.74.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is 0.225 with medium confidence."
+      "Overall model score is 0.088 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Tesla Expands Model 3 Offerings in Hong Kong and Macau (TSLA)",
+        "title": "TSLA Looks 6.9% Overvalued on GF Value™ as of September 2026",
         "provider": "gurufocus.com",
-        "url": "https://www.gurufocus.com/news/9060267/tesla-expands-model-3-offerings-in-hong-kong-and-macau-tsla",
-        "published_at": "2026-08-31T15:51:31Z",
-        "relevance_score": 0.98,
-        "sentiment": 0.5,
+        "url": "https://www.gurufocus.com/news/9062355/tsla-looks-69-overvalued-on-gf-value-as-of-september-2026",
+        "published_at": "2026-09-01T17:58:01Z",
+        "relevance_score": 0.85,
+        "sentiment": -0.27,
         "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 0.6,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Tesla announced a lower-priced Model 3 for Hong Kong and Macau — positive for regional demand and brand positioning but unlikely to move the stock materially in the next 1–10 trading days beyond modest sentiment/support."
+        "company_relevance": 0.95,
+        "materiality": 0.9,
+        "llm_confidence": 0.75,
+        "llm_impact_score": 0.75,
+        "llm_reason": "States confirmation that Tesla's FSD was active during a recent tragic accident in Batavia — highly material negative information with immediate implications for liability, regulator attention, and investor sentiment, likely to move the stock in the short term."
       },
       {
-        "title": "TSLA Looks 9.8% Overvalued on GF Value™ as Robotaxi Buzz Drives Shares",
+        "title": "TSLA Looks 6.9% Overvalued on GF Value™ as Self-Driving Push Gains Momentum",
         "provider": "gurufocus.com",
-        "url": "https://www.gurufocus.com/news/9060461/tsla-looks-98-overvalued-on-gf-value-as-robotaxi-buzz-drives-shares",
-        "published_at": "2026-08-31T18:56:44Z",
-        "relevance_score": 0.81,
-        "sentiment": 0.64,
+        "url": "https://www.gurufocus.com/news/9062393/tsla-looks-69-overvalued-on-gf-value-as-selfdriving-push-gains-momentum",
+        "published_at": "2026-09-01T18:00:16Z",
+        "relevance_score": 0.85,
+        "sentiment": 0.76,
         "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
+        "company_relevance": 0.9,
+        "materiality": 0.7,
         "llm_confidence": 0.7,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Reports of TSLA being ~9.8% overvalued alongside a noted 5% share surge tied to robotaxi excitement indicate event-driven momentum that is likely to influence price action in the near term (buy-side/sentiment-driven impact ahead of the robotaxi event)."
+        "llm_impact_score": 0.6,
+        "llm_reason": "Reports Tesla disclosed new safety data supporting its FSD technology in Europe ahead of potential EU regulatory action — a directly company-specific regulatory/development update that could materially influence near-term sentiment and regulatory outcomes."
       }
     ],
     "macro_evidence": [],
@@ -146,19 +146,19 @@
         {
           "label": "Momentum",
           "state": "watch",
-          "value": "5.4% 5D • 14.2% 20D",
+          "value": "1.2% 5D • 8.3% 20D",
           "detail": "Trend quality is still positive, but the tape is no longer decisive."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "2.5% daily • 4.7% drawdown",
+          "value": "2.7% daily • 4.7% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.84 sentiment • 3 articles",
+          "value": "0.73 sentiment • 2 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -169,9 +169,9 @@
         },
         {
           "label": "Margin",
-          "state": "positive",
-          "value": "+0.105 score • +0.180 conf",
-          "detail": "The pick cleared the release thresholds with room to spare."
+          "state": "risk",
+          "value": "-0.032 score • +0.081 conf",
+          "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
@@ -201,14 +201,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-01",
           "status": "healthy",
-          "used": 7,
+          "used": 5,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 20,
           "categories": {
-            "company_news": 4,
-            "global_news": 3
+            "company_news": 1,
+            "global_news": 4
           }
         }
       },
@@ -221,14 +221,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-01",
           "status": "tracking_only",
-          "used": 11,
+          "used": 5,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 8,
-            "global_news": 3
+            "company_news": 3,
+            "global_news": 2
           }
         }
       },
@@ -242,14 +242,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-01",
           "status": "healthy",
-          "used": 54,
+          "used": 52,
           "limit": 100,
-          "remaining": 46,
+          "remaining": 48,
           "categories": {
-            "company_news": 51,
-            "global_news": 3
+            "company_news": 50,
+            "global_news": 2
           }
         }
       },
@@ -263,14 +263,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-01",
           "status": "tracking_only",
-          "used": 54,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 3,
-            "submissions": 51
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
@@ -283,13 +283,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-01",
           "status": "healthy",
-          "used": 64,
+          "used": 61,
           "limit": 800,
-          "remaining": 736,
+          "remaining": 739,
           "categories": {
-            "price": 64
+            "price": 61
           }
         }
       }

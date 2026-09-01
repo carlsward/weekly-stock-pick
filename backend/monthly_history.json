@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4-monthly",
-  "generated_at": "2026-08-01T13:34:51Z",
+  "generated_at": "2026-09-01T16:29:04Z",
   "entries": [
     {
       "month_id": "2026-03",
@@ -744,6 +744,8 @@
       "confidence_label": null,
       "data_as_of": "2026-08-01",
       "model_version": "v3.4-monthly",
+      "realized_20d_return": null,
+      "realized_20d_excess_return": null,
       "top_candidates": [
         {
           "rank": 1,
@@ -947,34 +949,272 @@
         }
       ],
       "diagnostics": null
+    },
+    {
+      "month_id": "2026-09",
+      "month_start": "2026-09-01",
+      "month_end": "2026-09-30",
+      "rebalance_date": "2026-09-01",
+      "month_label": "September 2026",
+      "logged_at": "2026-09-01T16:29:04Z",
+      "status": "picked",
+      "status_reason": "MRK cleared the monthly release thresholds for Merck & Co. Inc. with a score of 0.214 and medium confidence.",
+      "symbol": "MRK",
+      "company_name": "Merck & Co. Inc.",
+      "sector": "healthcare",
+      "risk": "high",
+      "model_score": 0.2145,
+      "confidence_score": 0.65,
+      "confidence_label": "medium",
+      "data_as_of": "2026-09-01",
+      "model_version": "v3.4-monthly",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "MRK",
+          "company_name": "Merck & Co. Inc.",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": 0.2145,
+          "confidence_score": 0.65,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-01",
+          "news_as_of": "2026-09-01",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1967,
+            "news_adjustment": 0.0143,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0035
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "MDT",
+          "company_name": "Medtronic plc",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.2128,
+          "confidence_score": 0.79,
+          "confidence_label": "high",
+          "price_as_of": "2026-09-01",
+          "news_as_of": "2026-09-01",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.0856,
+            "news_adjustment": 0.1148,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0124
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "AMGN",
+          "company_name": "Amgen Inc.",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1994,
+          "confidence_score": 0.69,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-01",
+          "news_as_of": "2026-09-01",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1425,
+            "news_adjustment": 0.0482,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0087
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "CRM",
+          "company_name": "Salesforce Inc.",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1867,
+          "confidence_score": 0.63,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-01",
+          "news_as_of": "2026-08-26",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0866,
+            "news_adjustment": 0.0903,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0098
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "ADBE",
+          "company_name": "Adobe Inc.",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1413,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-01",
+          "news_as_of": "2026-09-01",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0458,
+            "news_adjustment": 0.0903,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0052
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "ABT",
+          "company_name": "Abbott Laboratories",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.14,
+          "confidence_score": 0.73,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-01",
+          "news_as_of": "2026-08-31",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.0256,
+            "news_adjustment": 0.1108,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0036
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "BMY",
+          "company_name": "Bristol-Myers Squibb Company",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.12,
+          "confidence_score": 0.68,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-01",
+          "news_as_of": "2026-08-30",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0419,
+            "news_adjustment": 0.0742,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0039
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "VZ",
+          "company_name": "Verizon Communications Inc.",
+          "sector": "communication_services",
+          "risk": "low",
+          "model_score": 0.1061,
+          "confidence_score": 0.62,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-01",
+          "news_as_of": "2026-08-31",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0333,
+            "news_adjustment": 0.0699,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0029
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "CVX",
+          "company_name": "Chevron Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": 0.1047,
+          "confidence_score": 0.6,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-01",
+          "news_as_of": "2026-09-01",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0684,
+            "news_adjustment": 0.0335,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0029
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "PFE",
+          "company_name": "Pfizer Inc.",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.0979,
+          "confidence_score": 0.58,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-01",
+          "news_as_of": "2026-08-31",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1192,
+            "news_adjustment": -0.0185,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0028
+          }
+        }
+      ],
+      "diagnostics": {
+        "technical_total": 0.1967,
+        "news_adjustment": 0.0143,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.0742,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 882,
+        "technical_training_ic": 0.0583,
+        "block_training_rows": 2,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      }
     }
   ],
   "data_quality": {
     "status": "degraded",
-    "degraded_reason": "news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
+    "degraded_reason": "news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.; Alpha Vantage global-news fallback failed during this run.; sector_scores: GDELT global-news feed failed during this run.",
     "reasons": [
       "news_scores: GDELT company news failed for at least one symbol.",
-      "sector_scores: GDELT global-news feed failed during this run."
+      "sector_scores: GDELT global-news feed failed during this run.; Alpha Vantage global-news fallback failed during this run.",
+      "sector_scores: GDELT global-news feed failed during this run.",
+      "sector_scores: Alpha Vantage global-news fallback failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 3,
+        "used": 4,
         "limit": 25,
-        "remaining": 22,
+        "remaining": 21,
         "categories": {
-          "company_news": 2,
-          "global_news": 1
+          "company_news": 1,
+          "global_news": 3
         },
         "daily": {
-          "date": "2026-08-01",
+          "date": "2026-09-01",
           "status": "healthy",
-          "used": 3,
+          "used": 4,
           "limit": 25,
-          "remaining": 22,
+          "remaining": 21,
           "categories": {
-            "company_news": 2,
-            "global_news": 1
+            "company_news": 1,
+            "global_news": 3
           }
         }
       },
@@ -988,7 +1228,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-01",
+          "date": "2026-09-01",
           "status": "tracking_only",
           "used": 4,
           "limit": null,
@@ -1009,7 +1249,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-01",
+          "date": "2026-09-01",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -1030,7 +1270,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-08-01",
+          "date": "2026-09-01",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -1050,7 +1290,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-08-01",
+          "date": "2026-09-01",
           "status": "healthy",
           "used": 58,
           "limit": 800,

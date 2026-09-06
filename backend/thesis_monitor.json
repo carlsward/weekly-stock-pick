@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-09-05T17:49:12Z",
-  "data_as_of": "2026-09-05",
-  "expected_next_refresh_at": "2026-09-06T17:49:12Z",
-  "stale_after": "2026-09-07T05:49:12Z",
+  "generated_at": "2026-09-06T17:54:36Z",
+  "data_as_of": "2026-09-06",
+  "expected_next_refresh_at": "2026-09-07T17:54:36Z",
+  "stale_after": "2026-09-08T05:54:36Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W36",
@@ -24,13 +24,13 @@
     "company_name": "Tesla Inc.",
     "sector": "consumer_discretionary",
     "risk": "high",
-    "model_score": -0.0642,
-    "confidence_score": 0.56,
+    "model_score": 0.1169,
+    "confidence_score": 0.66,
     "confidence_label": "medium",
     "price_as_of": "2026-09-04",
-    "news_as_of": "2026-09-05",
+    "news_as_of": "2026-09-06",
     "macro_as_of": null,
-    "sector_as_of": null,
+    "sector_as_of": "2026-09-06",
     "article_count": 3,
     "metrics": {
       "momentum_5d": 0.0153,
@@ -45,17 +45,17 @@
       "market_relative_20d": 0.0819,
       "sector_relative_5d": 0.0356,
       "sector_relative_20d": 0.124,
-      "news_sentiment": 0.2,
-      "raw_news_sentiment": -1.0,
-      "calibrated_news_sentiment": -0.5945,
+      "news_sentiment": 0.8,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.6054,
       "news_confidence": 0.71,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
+      "sector_sentiment": 0.47,
+      "sector_confidence": 0.35,
       "effective_article_count": 0.55,
       "source_count": 2,
-      "average_relevance": 0.63,
+      "average_relevance": 0.76,
       "technical_training_ic": 0.0032,
       "technical_training_rows": 2303
     },
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0281,
       "downside_penalty": -0.027,
       "drawdown_penalty": -0.0074,
-      "news_adjustment": -0.0883,
+      "news_adjustment": 0.0883,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0,
-      "signal_alignment": -0.0032,
+      "sector_adjustment": -0.0018,
+      "signal_alignment": 0.0032,
       "technical_total": 0.0273,
       "trend_strength": 0.0395,
       "relative_strength": 0.0276,
@@ -84,11 +84,11 @@
       "block_weight_macro": 0.0965,
       "block_weight_sector": 0.0884,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.65,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
+      "news_sector_overlap": 0.1667,
       "macro_sector_overlap": 0.0,
-      "total": -0.0642
+      "total": 0.1169
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is 1.5% and 20-day momentum is 7.8%.",
@@ -96,26 +96,40 @@
       "Risk profile shows daily volatility around 3.1%, downside volatility near 2.8%, and a recent max drawdown of 5.9%.",
       "Volume confirmation is 56.6% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is 1.4% versus SPY over 5 days and 3.6% versus the sector ETF.",
-      "News signal is bearish with score 0.20, confidence 0.71, and 0.6 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bearish at 0.20, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 0.5 effective weighted articles, average relevance 0.63, average source quality 0.79, confidence 0.71.",
+      "News signal is bullish with score 0.80, confidence 0.71, and 0.6 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.80, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.5 effective weighted articles, average relevance 0.76, average source quality 0.75, confidence 0.71.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.00).",
-      "Overall model score is -0.064 with medium confidence."
+      "Overall model score is 0.117 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Investigation Launched on Tesla's Cybercab (TSLA)",
+        "title": "Tesla Expands Robotaxi Services with 24/7 Availability",
         "provider": "gurufocus.com",
-        "url": "https://www.gurufocus.com/news/9069438/investigation-launched-on-teslas-cybercab-tsla",
-        "published_at": "2026-09-05T15:51:30Z",
-        "relevance_score": 0.75,
-        "sentiment": 0.32,
+        "url": "https://www.gurufocus.com/news/9069494/tesla-expands-robotaxi-services-with-247-availability",
+        "published_at": "2026-09-06T07:11:42Z",
+        "relevance_score": 0.82,
+        "sentiment": 0.57,
         "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
+        "company_relevance": 0.95,
+        "materiality": 0.7,
         "llm_confidence": 0.85,
-        "llm_impact_score": -1.0,
-        "llm_reason": "NHTSA has opened an investigation into Tesla's Cybercab — a direct regulatory/safety action targeting a Tesla product. This is likely to have immediate reputational, regulatory, and potentially operational implications (e.g., inspection, restrictions, media scrutiny) that could weigh on the stock over the next 1-10 trading days."
+        "llm_impact_score": 1.0,
+        "llm_reason": "Direct announcement that Tesla's Robotaxi service will operate 24/7. Operational expansion could meaningfully increase utilization and service revenue and should be considered a material, near-term positive catalyst for Tesla shares."
+      },
+      {
+        "title": "Elon Musk Says Cybercab Is Gold to Reflect 'Golden Era' of Mobility as Tesla Launches Robotaxi With Starlink",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/technology/articles/elon-musk-says-cybercab-gold-213015412.html",
+        "published_at": "2026-09-05T21:30:15Z",
+        "relevance_score": 0.97,
+        "sentiment": -0.08,
+        "doc_type": "company_specific",
+        "company_relevance": 0.9,
+        "materiality": 0.6,
+        "llm_confidence": 0.8,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Coverage of Cybercab launch with Starlink integration and Musk's remarks about a 'golden era' of mobility. Product launch and promotional comments are positive for sentiment and services growth, though somewhat promotional and overlap with the Robotaxi expansion news."
       }
     ],
     "macro_evidence": [],
@@ -126,7 +140,7 @@
       "alerts": [
         "Trend quality is still positive, but the tape is no longer decisive.",
         "Volatility expanded enough to weaken the setup.",
-        "Recent news tone leaned negative with enough confidence to matter."
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
@@ -143,9 +157,9 @@
         },
         {
           "label": "News",
-          "state": "risk",
-          "value": "0.20 sentiment • 3 articles",
-          "detail": "Recent news tone leaned negative with enough confidence to matter."
+          "state": "watch",
+          "value": "0.80 sentiment • 3 articles",
+          "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
@@ -156,7 +170,7 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.184 score • +0.013 conf",
+          "value": "-0.003 score • +0.107 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
@@ -187,7 +201,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-05",
+          "date": "2026-09-06",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -206,7 +220,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-05",
+          "date": "2026-09-06",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -226,7 +240,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-05",
+          "date": "2026-09-06",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -247,7 +261,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-09-05",
+          "date": "2026-09-06",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -267,7 +281,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-09-05",
+          "date": "2026-09-06",
           "status": "healthy",
           "used": 3,
           "limit": 800,

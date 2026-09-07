@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-31T18:33:11Z",
+  "generated_at": "2026-09-07T16:58:32Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -4761,8 +4761,8 @@
           }
         }
       ],
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null
+      "realized_5d_return": 0.0126,
+      "realized_5d_excess_return": 0.0115
     },
     {
       "week_id": "2026-W36",
@@ -4783,6 +4783,20 @@
       "confidence_label": "medium",
       "data_as_of": "2026-08-31",
       "model_version": "v3.4",
+      "diagnostics": {
+        "technical_total": 0.0772,
+        "news_adjustment": 0.1077,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0024,
+        "news_signal_input": 0.546,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0184,
+        "technical_training_rows": 2303,
+        "technical_training_ic": 0.0032,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.6,
+        "macro_sector_overlap": 0.0
+      },
       "top_candidates": [
         {
           "rank": 1,
@@ -5015,18 +5029,272 @@
           }
         }
       ],
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W37",
+      "week_start": "2026-09-07",
+      "week_end": "2026-09-11",
+      "week_label": "Sep 07 - 11, 2026",
+      "logged_at": "2026-09-07T16:58:32Z",
+      "status": "picked",
+      "status_reason": "ORCL cleared the commercial release thresholds for this market week with a score of 0.209 and medium confidence.",
+      "is_qualified": true,
+      "release_quality": "qualified",
+      "symbol": "ORCL",
+      "company_name": "Oracle Corporation",
+      "sector": "technology",
+      "risk": "high",
+      "model_score": 0.209,
+      "confidence_score": 0.75,
+      "confidence_label": "medium",
+      "data_as_of": "2026-09-07",
+      "model_version": "v3.4",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "ORCL",
+          "company_name": "Oracle Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.209,
+          "confidence_score": 0.75,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-04",
+          "news_as_of": "2026-09-07",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0517,
+            "news_adjustment": 0.1514,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": -0.0042,
+            "signal_alignment": 0.0101,
+            "news_signal_input": 0.8096,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": -0.0382
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "PFE",
+          "company_name": "Pfizer Inc.",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1832,
+          "confidence_score": 0.74,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-04",
+          "news_as_of": "2026-09-07",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.023,
+            "news_adjustment": 0.1567,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": -0.0011,
+            "signal_alignment": 0.0047,
+            "news_signal_input": 0.846,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": -0.0095
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "CVX",
+          "company_name": "Chevron Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": 0.1771,
+          "confidence_score": 0.71,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-04",
+          "news_as_of": "2026-09-06",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0672,
+            "news_adjustment": 0.0963,
+            "macro_adjustment": 0.0024,
+            "sector_adjustment": 0.0029,
+            "signal_alignment": 0.0083,
+            "news_signal_input": 0.465,
+            "macro_signal_input": 0.0168,
+            "sector_signal_input": 0.0256
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "JNJ",
+          "company_name": "Johnson & Johnson",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1617,
+          "confidence_score": 0.75,
+          "confidence_label": "high",
+          "price_as_of": "2026-09-04",
+          "news_as_of": "2026-09-07",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0401,
+            "news_adjustment": 0.1168,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": -0.0011,
+            "signal_alignment": 0.006,
+            "news_signal_input": 0.5904,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": -0.0096
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "TSLA",
+          "company_name": "Tesla Inc.",
+          "sector": "consumer_discretionary",
+          "risk": "high",
+          "model_score": 0.1339,
+          "confidence_score": 0.71,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-04",
+          "news_as_of": "2026-09-07",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0273,
+            "news_adjustment": 0.1089,
+            "macro_adjustment": -0.0032,
+            "sector_adjustment": -0.0029,
+            "signal_alignment": 0.0038,
+            "news_signal_input": 0.544,
+            "macro_signal_input": -0.0224,
+            "sector_signal_input": -0.0256
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "MDT",
+          "company_name": "Medtronic plc",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.1201,
+          "confidence_score": 0.67,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-04",
+          "news_as_of": "2026-09-04",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.075,
+            "news_adjustment": 0.0422,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": -0.0011,
+            "signal_alignment": 0.004,
+            "news_signal_input": 0.1561,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": -0.0095
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "NVDA",
+          "company_name": "NVIDIA Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1169,
+          "confidence_score": 0.69,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-04",
+          "news_as_of": "2026-09-07",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.0369,
+            "news_adjustment": 0.0825,
+            "macro_adjustment": -0.0032,
+            "sector_adjustment": -0.0032,
+            "signal_alignment": 0.0039,
+            "news_signal_input": 0.3752,
+            "macro_signal_input": -0.0224,
+            "sector_signal_input": -0.0286
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "XOM",
+          "company_name": "Exxon Mobil Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": 0.1144,
+          "confidence_score": 0.71,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-04",
+          "news_as_of": null,
+          "article_count": 5,
+          "diagnostics": {
+            "technical_total": -0.0169,
+            "news_adjustment": 0.1288,
+            "macro_adjustment": 0.0024,
+            "sector_adjustment": 0.0029,
+            "signal_alignment": -0.0028,
+            "news_signal_input": 0.663,
+            "macro_signal_input": 0.0168,
+            "sector_signal_input": 0.0256
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "CRM",
+          "company_name": "Salesforce Inc.",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1117,
+          "confidence_score": 0.7,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-04",
+          "news_as_of": "2026-09-04",
+          "article_count": 7,
+          "diagnostics": {
+            "technical_total": 0.0571,
+            "news_adjustment": 0.0548,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": -0.0042,
+            "signal_alignment": 0.004,
+            "news_signal_input": 0.2029,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": -0.0382
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "MRK",
+          "company_name": "Merck & Co. Inc.",
+          "sector": "healthcare",
+          "risk": "high",
+          "model_score": 0.0803,
+          "confidence_score": 0.55,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-04",
+          "news_as_of": "2026-09-04",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0362,
+            "news_adjustment": 0.0433,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": -0.0011,
+            "signal_alignment": 0.002,
+            "news_signal_input": 0.1491,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": -0.0096
+          }
+        }
+      ],
       "diagnostics": {
-        "technical_total": 0.0772,
-        "news_adjustment": 0.1077,
+        "technical_total": 0.0517,
+        "news_adjustment": 0.1514,
         "macro_adjustment": 0.0,
-        "sector_adjustment": 0.0024,
-        "news_signal_input": 0.546,
+        "sector_adjustment": -0.0042,
+        "news_signal_input": 0.8096,
         "macro_signal_input": 0.0,
-        "sector_signal_input": 0.0184,
+        "sector_signal_input": -0.0382,
         "technical_training_rows": 2303,
-        "technical_training_ic": 0.0032,
+        "technical_training_ic": 0.005,
         "news_macro_overlap": 0.0,
-        "news_sector_overlap": 0.6,
+        "news_sector_overlap": 0.2222,
         "macro_sector_overlap": 0.0
       }
     }
@@ -5049,7 +5317,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-07",
           "status": "healthy",
           "used": 5,
           "limit": 25,
@@ -5062,21 +5330,21 @@
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 9,
+        "used": 13,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 8,
+          "company_news": 12,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-07",
           "status": "tracking_only",
-          "used": 9,
+          "used": 13,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 8,
+            "company_news": 12,
             "global_news": 1
           }
         }
@@ -5091,7 +5359,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-07",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -5112,7 +5380,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-07",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -5132,7 +5400,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-07",
           "status": "healthy",
           "used": 58,
           "limit": 800,

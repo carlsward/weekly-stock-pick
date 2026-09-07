@@ -1,16 +1,16 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-08-31T18:42:52Z",
-  "data_as_of": "2026-08-21",
-  "expected_next_refresh_at": "2026-09-07T12:00:00Z",
-  "stale_after": "2026-09-08T00:00:00Z",
+  "generated_at": "2026-09-07T17:07:43Z",
+  "data_as_of": "2026-08-28",
+  "expected_next_refresh_at": "2026-09-14T12:00:00Z",
+  "stale_after": "2026-09-15T00:00:00Z",
   "market_context": {
     "timezone": "America/New_York",
-    "week_id": "2026-W36",
-    "week_label": "Aug 31 - Sep 04, 2026",
-    "week_start": "2026-08-31",
-    "week_end": "2026-09-04"
+    "week_id": "2026-W37",
+    "week_label": "Sep 07 - 11, 2026",
+    "week_start": "2026-09-07",
+    "week_end": "2026-09-11"
   },
   "selection_thresholds": {
     "overall_score": 0.1,
@@ -22,93 +22,93 @@
     "minimum_confidence": 0.55
   },
   "summary": {
-    "total_weeks": 26,
-    "total_picks": 22,
+    "total_weeks": 27,
+    "total_picks": 23,
     "no_pick_weeks": 4,
-    "closed_picks": 20,
+    "closed_picks": 21,
     "open_picks": 2,
-    "win_rate": 0.45,
-    "beat_spy_rate": 0.3,
-    "beat_sector_rate": 0.25,
-    "average_5d_return": -0.0164,
-    "median_5d_return": -0.0054,
-    "average_5d_excess_return": -0.0222,
-    "average_5d_sector_excess_return": -0.0262,
-    "compounded_5d_return": -0.2982
+    "win_rate": 0.4762,
+    "beat_spy_rate": 0.3333,
+    "beat_sector_rate": 0.2857,
+    "average_5d_return": -0.015,
+    "median_5d_return": -0.0008,
+    "average_5d_excess_return": -0.0206,
+    "average_5d_sector_excess_return": -0.0247,
+    "compounded_5d_return": -0.2893
   },
   "signal_block_report": {
     "status": "ok",
     "scope": "picked_entries_only",
-    "sample_count": 17,
-    "technical_only_ic": -0.1088,
-    "full_model_ic": -0.2205,
-    "block_adjustment_ic": -0.1877,
-    "ic_improvement_vs_technical": -0.1117,
-    "average_block_adjustment": 0.1049,
-    "average_news_signal_input": 0.5202,
-    "average_macro_signal_input": 0.0039,
-    "average_sector_signal_input": 0.0019,
+    "sample_count": 18,
+    "technical_only_ic": -0.1023,
+    "full_model_ic": -0.1772,
+    "block_adjustment_ic": -0.1355,
+    "ic_improvement_vs_technical": -0.0748,
+    "average_block_adjustment": 0.1067,
+    "average_news_signal_input": 0.5304,
+    "average_macro_signal_input": 0.0037,
+    "average_sector_signal_input": 0.0044,
     "summary": "On closed picked weeks, block adjustments are currently hurting the realized excess-return fit versus technical-only conviction."
   },
   "candidate_ranking_report": {
     "status": "ok",
     "scope": "stored_weekly_top_candidates",
-    "sample_count": 160,
+    "sample_count": 170,
     "rank_buckets": {
       "1": {
-        "sample_count": 16,
-        "average_5d_excess_return": -0.0244,
-        "beat_spy_rate": 0.25
+        "sample_count": 17,
+        "average_5d_excess_return": -0.0222,
+        "beat_spy_rate": 0.2941
       },
       "2": {
-        "sample_count": 16,
-        "average_5d_excess_return": -0.0038,
-        "beat_spy_rate": 0.4375
+        "sample_count": 17,
+        "average_5d_excess_return": -0.0058,
+        "beat_spy_rate": 0.4118
       },
       "3": {
-        "sample_count": 16,
-        "average_5d_excess_return": -0.0152,
-        "beat_spy_rate": 0.25
+        "sample_count": 17,
+        "average_5d_excess_return": -0.0135,
+        "beat_spy_rate": 0.2941
       },
       "4": {
-        "sample_count": 16,
-        "average_5d_excess_return": 0.0074,
-        "beat_spy_rate": 0.5
+        "sample_count": 17,
+        "average_5d_excess_return": 0.0076,
+        "beat_spy_rate": 0.5294
       },
       "5": {
-        "sample_count": 16,
-        "average_5d_excess_return": -0.0023,
-        "beat_spy_rate": 0.4375
+        "sample_count": 17,
+        "average_5d_excess_return": -0.0035,
+        "beat_spy_rate": 0.4118
       },
       "6": {
-        "sample_count": 16,
-        "average_5d_excess_return": -0.0099,
-        "beat_spy_rate": 0.375
+        "sample_count": 17,
+        "average_5d_excess_return": -0.0084,
+        "beat_spy_rate": 0.4118
       },
       "7": {
-        "sample_count": 16,
-        "average_5d_excess_return": -0.0053,
-        "beat_spy_rate": 0.4375
+        "sample_count": 17,
+        "average_5d_excess_return": -0.0031,
+        "beat_spy_rate": 0.4706
       },
       "8": {
-        "sample_count": 16,
-        "average_5d_excess_return": -0.0087,
-        "beat_spy_rate": 0.375
+        "sample_count": 17,
+        "average_5d_excess_return": -0.0092,
+        "beat_spy_rate": 0.3529
       },
       "9": {
-        "sample_count": 16,
-        "average_5d_excess_return": 0.0085,
-        "beat_spy_rate": 0.625
+        "sample_count": 17,
+        "average_5d_excess_return": 0.0056,
+        "beat_spy_rate": 0.5882
       },
       "10": {
-        "sample_count": 16,
-        "average_5d_excess_return": -0.0124,
-        "beat_spy_rate": 0.375
+        "sample_count": 17,
+        "average_5d_excess_return": -0.0127,
+        "beat_spy_rate": 0.3529
       }
     },
-    "top_3_average_5d_excess_return": -0.0145,
-    "top_3_beat_spy_rate": 0.3125,
-    "top_10_average_5d_excess_return": -0.0066,
+    "top_3_average_5d_excess_return": -0.0138,
+    "top_3_beat_spy_rate": 0.3333,
+    "top_10_average_5d_excess_return": -0.0065,
     "summary": "Stored weekly top-candidate rankings now have enough closed samples to monitor rank quality."
   },
   "no_pick_report": {
@@ -135,14 +135,36 @@
       "average_5d_excess_return": -0.0122
     },
     "high": {
-      "pick_count": 12,
-      "closed_pick_count": 10,
-      "win_rate": 0.4,
-      "average_5d_return": -0.0242,
-      "average_5d_excess_return": -0.0322
+      "pick_count": 13,
+      "closed_pick_count": 11,
+      "win_rate": 0.4545,
+      "average_5d_return": -0.0209,
+      "average_5d_excess_return": -0.0282
     }
   },
   "entries": [
+    {
+      "week_id": "2026-W37",
+      "week_start": "2026-09-07",
+      "week_end": "2026-09-11",
+      "week_label": "Sep 07 - 11, 2026",
+      "logged_at": "2026-09-07T16:58:32Z",
+      "status": "picked",
+      "status_reason": "ORCL cleared the commercial release thresholds for this market week with a score of 0.209 and medium confidence.",
+      "symbol": "ORCL",
+      "company_name": "Oracle Corporation",
+      "sector": "technology",
+      "risk": "high",
+      "model_score": 0.209,
+      "confidence_score": 0.75,
+      "confidence_label": "medium",
+      "data_as_of": "2026-09-07",
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null,
+      "realized_5d_sector_return": null,
+      "realized_5d_sector_excess_return": null,
+      "outcome": "open"
+    },
     {
       "week_id": "2026-W36",
       "week_start": "2026-08-31",
@@ -181,11 +203,11 @@
       "confidence_score": 0.85,
       "confidence_label": "high",
       "data_as_of": "2026-08-24",
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null,
-      "realized_5d_sector_return": null,
-      "realized_5d_sector_excess_return": null,
-      "outcome": "open"
+      "realized_5d_return": 0.0126,
+      "realized_5d_excess_return": 0.0115,
+      "realized_5d_sector_return": 0.0126,
+      "realized_5d_sector_excess_return": 0.004,
+      "outcome": "win"
     },
     {
       "week_id": "2026-W34",
@@ -735,7 +757,7 @@
           "global_news": 2
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-07",
           "status": "healthy",
           "used": 6,
           "limit": 25,
@@ -748,21 +770,21 @@
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 10,
+        "used": 14,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 8,
+          "company_news": 12,
           "global_news": 2
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-07",
           "status": "tracking_only",
-          "used": 10,
+          "used": 14,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 8,
+            "company_news": 12,
             "global_news": 2
           }
         }
@@ -777,7 +799,7 @@
           "global_news": 2
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-07",
           "status": "healthy",
           "used": 52,
           "limit": 100,
@@ -798,7 +820,7 @@
           "submissions": 50
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-07",
           "status": "tracking_only",
           "used": 52,
           "limit": null,
@@ -818,7 +840,7 @@
           "price": 61
         },
         "daily": {
-          "date": "2026-08-31",
+          "date": "2026-09-07",
           "status": "healthy",
           "used": 61,
           "limit": 800,

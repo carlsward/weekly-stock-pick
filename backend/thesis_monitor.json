@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-09-07T17:06:16Z",
+  "generated_at": "2026-09-07T19:30:06Z",
   "data_as_of": "2026-09-07",
-  "expected_next_refresh_at": "2026-09-08T17:06:16Z",
-  "stale_after": "2026-09-09T05:06:16Z",
+  "expected_next_refresh_at": "2026-09-08T19:30:06Z",
+  "stale_after": "2026-09-09T07:30:06Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W37",
@@ -24,14 +24,14 @@
     "company_name": "Oracle Corporation",
     "sector": "technology",
     "risk": "high",
-    "model_score": 0.1717,
-    "confidence_score": 0.7,
+    "model_score": 0.1492,
+    "confidence_score": 0.66,
     "confidence_label": "medium",
     "price_as_of": "2026-09-04",
     "news_as_of": "2026-09-07",
     "macro_as_of": null,
     "sector_as_of": "2026-09-07",
-    "article_count": 2,
+    "article_count": 3,
     "metrics": {
       "momentum_5d": 0.0526,
       "momentum_20d": 0.08,
@@ -45,17 +45,17 @@
       "market_relative_20d": 0.0843,
       "sector_relative_5d": 0.0436,
       "sector_relative_20d": 0.084,
-      "news_sentiment": 0.86,
+      "news_sentiment": 0.8,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.7254,
-      "news_confidence": 0.82,
+      "calibrated_news_sentiment": 0.5912,
+      "news_confidence": 0.71,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.42,
-      "sector_confidence": 0.38,
-      "effective_article_count": 0.57,
+      "sector_sentiment": 0.51,
+      "sector_confidence": 0.34,
+      "effective_article_count": 0.3,
       "source_count": 2,
-      "average_relevance": 0.82,
+      "average_relevance": 0.63,
       "technical_training_ic": 0.005,
       "technical_training_rows": 2303
     },
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0279,
       "downside_penalty": -0.027,
       "drawdown_penalty": -0.0119,
-      "news_adjustment": 0.1168,
+      "news_adjustment": 0.0908,
       "macro_adjustment": 0.0,
-      "sector_adjustment": -0.0046,
-      "signal_alignment": 0.0078,
+      "sector_adjustment": 0.0007,
+      "signal_alignment": 0.006,
       "technical_total": 0.0517,
       "trend_strength": 0.088,
       "relative_strength": 0.0298,
@@ -84,11 +84,11 @@
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 0.65,
+      "sector_dedup_penalty": 0.8,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.25,
+      "news_sector_overlap": 0.3333,
       "macro_sector_overlap": 0.0,
-      "total": 0.1717
+      "total": 0.1492
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is 5.3% and 20-day momentum is 8.0%.",
@@ -96,29 +96,26 @@
       "Risk profile shows daily volatility around 3.1%, downside volatility near 3.0%, and a recent max drawdown of 9.5%.",
       "Volume confirmation is 1.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is 5.1% versus SPY over 5 days and 4.4% versus the sector ETF.",
-      "News signal is bullish with score 0.86, confidence 0.82, and 0.6 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.86, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 2 articles across 2 sources, 0.6 effective weighted articles, average relevance 0.82, average source quality 0.75, confidence 0.82.",
-      "Broad market news leaned bearish for the Technology sector with score 0.42 and confidence 0.38.",
-      "A sudden oil price jump combined with a stronger-than-expected jobs print raises near-term inflation and keeps Fed policy tighter for longer. That pathway (higher yields, valuation compression) is a first-order negative for growth/technology equities over the next several sessions. The story also raises near-term volatility ahead of the CPI release, increasing the likelihood of short-term risk-off flows. No company-specific information ties this item to ORCL, so impacts are mapped to the technology sector only.",
-      "Sector overlay was trimmed by 35% because it overlaps with company or macro themes.",
+      "News signal is bullish with score 0.80, confidence 0.71, and 0.3 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.80, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.3 effective weighted articles, average relevance 0.63, average source quality 0.75, confidence 0.71.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.01).",
-      "Overall model score is 0.172 with medium confidence."
+      "Overall model score is 0.149 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Oracle Is Putting HPE Juniper Gear Into Its AI Data Centers. Is HPE Finally Getting Paid for the GPU Networking Bottleneck?",
-        "provider": "insidermonkey.com",
-        "url": "https://www.insidermonkey.com/blog/oracle-is-putting-hpe-juniper-gear-into-its-ai-data-centers-is-hpe-finally-getting-paid-for-the-gpu-networking-bottleneck-1827855/",
-        "published_at": "2026-09-07T08:33:09Z",
-        "relevance_score": 0.83,
-        "sentiment": 0.23,
+        "title": "BofA stays bullish on a cloud titan that is down 25%",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/bofa-stays-bullish-cloud-titan-163300973.html",
+        "published_at": "2026-09-07T16:33:00Z",
+        "relevance_score": 0.61,
+        "sentiment": 0.24,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
+        "materiality": 0.8,
+        "llm_confidence": 0.85,
         "llm_impact_score": 1.0,
-        "llm_reason": "Reports a multi-year collaboration to deploy HPE/Juniper networking gear in Oracle Cloud Infrastructure data centers. This is direct company operational news that could modestly support Oracle’s AI/OCI capabilities and investor sentiment, but is incremental and unlikely to drastically change near-term fundamentals within 1–10 trading days."
+        "llm_reason": "Bank of America maintaining a high price target is directly relevant and can move near-term trading; the article also calls out credit-market concerns (a large cash drain and divergent credit signals), which is materially relevant to short-term risk and valuation for Oracle."
       }
     ],
     "macro_evidence": [],
@@ -128,7 +125,8 @@
       "summary": "Volatility expanded enough to weaken the setup.",
       "alerts": [
         "Volatility expanded enough to weaken the setup.",
-        "The news layer is still thin, so conviction should stay measured."
+        "The news layer is still thin, so conviction should stay measured.",
+        "The pick still qualified, but the margin of safety is not wide."
       ],
       "signals": [
         {
@@ -146,7 +144,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.86 sentiment • 2 articles",
+          "value": "0.80 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -157,14 +155,14 @@
         },
         {
           "label": "Margin",
-          "state": "positive",
-          "value": "+0.052 score • +0.146 conf",
-          "detail": "The pick cleared the release thresholds with room to spare."
+          "state": "watch",
+          "value": "+0.029 score • +0.114 conf",
+          "detail": "The pick still qualified, but the margin of safety is not wide."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 1 trading day • news 0 trading days • macro neutral • sector 0 trading days",
+          "value": "price 1 trading day • news 0 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -182,104 +180,102 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 6,
+        "used": 1,
         "limit": 25,
-        "remaining": 19,
+        "remaining": 24,
         "categories": {
-          "company_news": 4,
-          "global_news": 2
+          "global_news": 1
         },
         "daily": {
           "date": "2026-09-07",
           "status": "healthy",
-          "used": 6,
+          "used": 7,
           "limit": 25,
-          "remaining": 19,
+          "remaining": 18,
           "categories": {
             "company_news": 4,
-            "global_news": 2
+            "global_news": 3
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 14,
+        "used": 1,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 12,
-          "global_news": 2
+          "global_news": 1
         },
         "daily": {
           "date": "2026-09-07",
           "status": "tracking_only",
-          "used": 14,
+          "used": 15,
           "limit": null,
           "remaining": null,
           "categories": {
             "company_news": 12,
-            "global_news": 2
+            "global_news": 3
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 52,
+        "used": 2,
         "limit": 100,
-        "remaining": 48,
+        "remaining": 98,
         "categories": {
-          "company_news": 50,
-          "global_news": 2
+          "company_news": 1,
+          "global_news": 1
         },
         "daily": {
           "date": "2026-09-07",
           "status": "healthy",
-          "used": 52,
+          "used": 54,
           "limit": 100,
-          "remaining": 48,
+          "remaining": 46,
           "categories": {
-            "company_news": 50,
-            "global_news": 2
+            "company_news": 51,
+            "global_news": 3
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 52,
+        "used": 2,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 2,
-          "submissions": 50
+          "ticker_map": 1,
+          "submissions": 1
         },
         "daily": {
           "date": "2026-09-07",
           "status": "tracking_only",
-          "used": 52,
+          "used": 54,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 2,
-            "submissions": 50
+            "ticker_map": 3,
+            "submissions": 51
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 61,
+        "used": 3,
         "limit": 800,
-        "remaining": 739,
+        "remaining": 797,
         "categories": {
-          "price": 61
+          "price": 3
         },
         "daily": {
           "date": "2026-09-07",
           "status": "healthy",
-          "used": 61,
+          "used": 64,
           "limit": 800,
-          "remaining": 739,
+          "remaining": 736,
           "categories": {
-            "price": 61
+            "price": 64
           }
         }
       }

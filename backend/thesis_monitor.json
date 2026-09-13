@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-09-12T17:59:20Z",
-  "data_as_of": "2026-09-12",
-  "expected_next_refresh_at": "2026-09-13T17:59:20Z",
-  "stale_after": "2026-09-14T05:59:20Z",
+  "generated_at": "2026-09-13T18:26:15Z",
+  "data_as_of": "2026-09-13",
+  "expected_next_refresh_at": "2026-09-14T18:26:15Z",
+  "stale_after": "2026-09-15T06:26:15Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W37",
@@ -24,13 +24,13 @@
     "company_name": "Oracle Corporation",
     "sector": "technology",
     "risk": "high",
-    "model_score": 0.0596,
-    "confidence_score": 0.68,
+    "model_score": 0.0524,
+    "confidence_score": 0.67,
     "confidence_label": "medium",
     "price_as_of": "2026-09-11",
-    "news_as_of": "2026-09-12",
+    "news_as_of": "2026-09-13",
     "macro_as_of": null,
-    "sector_as_of": null,
+    "sector_as_of": "2026-09-13",
     "article_count": 5,
     "metrics": {
       "momentum_5d": -0.0244,
@@ -45,17 +45,17 @@
       "market_relative_20d": -0.0209,
       "sector_relative_5d": -0.0332,
       "sector_relative_20d": -0.0221,
-      "news_sentiment": 0.97,
+      "news_sentiment": 0.95,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.9472,
-      "news_confidence": 0.95,
+      "calibrated_news_sentiment": 0.8984,
+      "news_confidence": 0.93,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 2.46,
-      "source_count": 4,
-      "average_relevance": 0.93,
+      "sector_sentiment": 0.51,
+      "sector_confidence": 0.36,
+      "effective_article_count": 1.87,
+      "source_count": 3,
+      "average_relevance": 0.88,
       "technical_training_ic": 0.005,
       "technical_training_rows": 2303
     },
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0269,
       "downside_penalty": -0.027,
       "drawdown_penalty": -0.0119,
-      "news_adjustment": 0.1645,
+      "news_adjustment": 0.1558,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0,
-      "signal_alignment": -0.0184,
+      "sector_adjustment": 0.0006,
+      "signal_alignment": -0.0174,
       "technical_total": -0.0865,
       "trend_strength": -0.035,
       "relative_strength": -0.0097,
@@ -84,11 +84,11 @@
       "block_weight_macro": 0.1,
       "block_weight_sector": 0.08,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.65,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
+      "news_sector_overlap": 0.25,
       "macro_sector_overlap": 0.0,
-      "total": 0.0596
+      "total": 0.0524
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is -2.4% and 20-day momentum is -3.8%.",
@@ -96,13 +96,27 @@
       "Risk profile shows daily volatility around 3.0%, downside volatility near 3.0%, and a recent max drawdown of 9.5%.",
       "Volume confirmation is 123.8% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is -1.3% versus SPY over 5 days and -3.3% versus the sector ETF.",
-      "News signal is bullish with score 0.97, confidence 0.95, and 2.5 weighted articles across 4 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.97, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 5 articles across 4 sources, 2.5 effective weighted articles, average relevance 0.93, average source quality 0.85, confidence 0.95.",
+      "News signal is bullish with score 0.95, confidence 0.93, and 1.9 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.95, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 5 articles across 3 sources, 1.9 effective weighted articles, average relevance 0.88, average source quality 0.85, confidence 0.93.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC 0.01).",
-      "Overall model score is 0.060 with medium confidence."
+      "Overall model score is 0.052 with medium confidence."
     ],
     "news_evidence": [
+      {
+        "title": "On Second Thought, Never Mind: Here’s Why ORCL’s Larry Ellison Just Canceled $7.5 Billion Stock Sale",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/second-thought-never-mind-why-145340407.html",
+        "published_at": "2026-09-13T14:53:40Z",
+        "relevance_score": 0.73,
+        "sentiment": 0.18,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Reports Larry Ellison canceled a planned $7.5B sale of ORCL shares. This is a company-specific insider action that reduces near-term selling pressure and signals insider confidence — likely to influence short-term sentiment and trading."
+      },
       {
         "title": "Oracle Corporation filed 10-Q: 10-Q",
         "provider": "SEC EDGAR",
@@ -115,35 +129,21 @@
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Official 10-Q is a primary company filing containing quarterly financials and disclosures; likely to influence near-term trading as investors parse results, but content not provided here so likely moderate immediate impact."
+        "llm_reason": "Official SEC 10-Q filing (report date 2026-08-31). 10-Q contains quarterly results, risk disclosures and other details that can materially affect near-term price action; treated as high relevance until contents reviewed."
       },
       {
-        "title": "Oracle Just Added $30 Billion in AI Contracts. Nvidia Investors Should Read the Fine Print",
-        "provider": "insidermonkey.com",
-        "url": "https://www.insidermonkey.com/blog/oracle-just-added-30-billion-in-ai-contracts-nvidia-investors-should-read-the-fine-print-1836520/",
-        "published_at": "2026-09-12T11:15:50Z",
-        "relevance_score": 0.98,
-        "sentiment": 0.31,
-        "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Reports Oracle added $30B of AI contracts — a large, company-specific revenue signal that can drive sentiment and repricing; source and contract economics caveat reduce confidence slightly."
-      },
-      {
-        "title": "Jim Cramer on Oracle: $664B Backlog Signals Major Shift in Company’s Growth Trajectory",
+        "title": "Morgan Stanley revamps Oracle stock price target",
         "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-oracle-664b-backlog-151328938.html",
-        "published_at": "2026-09-12T15:13:28Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-revamps-oracle-stock-210300125.html",
+        "published_at": "2026-09-12T21:03:00Z",
         "relevance_score": 0.83,
-        "sentiment": 0.5,
+        "sentiment": 0.45,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "High-visibility commentary (Jim Cramer) on a $664B backlog and strong cloud growth can materially move short-term sentiment; notes on capital costs and insider selling introduce caution."
+        "llm_reason": "Morgan Stanley changed its price target on ORCL. Analyst revisions can affect sentiment and flows but typically have limited immediate impact unless the revision is large or echoed by peers."
       },
       {
         "title": "Oracle Corporation filed 8-K: 8-K",
@@ -157,7 +157,7 @@
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Official 8-K filing indicates a disclosure event; potentially material for short-term trading depending on content, but impact here is uncertain without details."
+        "llm_reason": "SEC 8-K filed 2026-09-10. 8-Ks can report material events; without the substance of the filing, assign moderate relevance — potentially market-moving if it contains new material disclosures, otherwise limited."
       }
     ],
     "macro_evidence": [],
@@ -186,7 +186,7 @@
         {
           "label": "News",
           "state": "positive",
-          "value": "0.97 sentiment • 5 articles",
+          "value": "0.95 sentiment • 5 articles",
           "detail": "Recent news flow is supportive and diversified enough to back the setup."
         },
         {
@@ -198,7 +198,7 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.060 score • +0.130 conf",
+          "value": "-0.068 score • +0.116 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
@@ -229,7 +229,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-12",
+          "date": "2026-09-13",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -248,7 +248,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-12",
+          "date": "2026-09-13",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -268,7 +268,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-12",
+          "date": "2026-09-13",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -289,7 +289,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-09-12",
+          "date": "2026-09-13",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -309,7 +309,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-09-12",
+          "date": "2026-09-13",
           "status": "healthy",
           "used": 3,
           "limit": 800,

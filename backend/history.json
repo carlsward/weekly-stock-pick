@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-09-07T16:58:32Z",
+  "generated_at": "2026-09-14T17:29:13Z",
   "entries": [
     {
       "week_id": "2025-W47",
@@ -5029,8 +5029,8 @@
           }
         }
       ],
-      "realized_5d_return": null,
-      "realized_5d_excess_return": null
+      "realized_5d_return": 0.0249,
+      "realized_5d_excess_return": 0.0354
     },
     {
       "week_id": "2026-W37",
@@ -5051,6 +5051,20 @@
       "confidence_label": "medium",
       "data_as_of": "2026-09-07",
       "model_version": "v3.4",
+      "diagnostics": {
+        "technical_total": 0.0517,
+        "news_adjustment": 0.1514,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": -0.0042,
+        "news_signal_input": 0.8096,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": -0.0382,
+        "technical_training_rows": 2303,
+        "technical_training_ic": 0.005,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.2222,
+        "macro_sector_overlap": 0.0
+      },
       "top_candidates": [
         {
           "rank": 1,
@@ -5283,18 +5297,272 @@
           }
         }
       ],
+      "realized_5d_return": null,
+      "realized_5d_excess_return": null
+    },
+    {
+      "week_id": "2026-W38",
+      "week_start": "2026-09-14",
+      "week_end": "2026-09-18",
+      "week_label": "Sep 14 - 18, 2026",
+      "logged_at": "2026-09-14T17:29:13Z",
+      "status": "picked",
+      "status_reason": "AAPL cleared the commercial release thresholds for this market week with a score of 0.232 and high confidence.",
+      "is_qualified": true,
+      "release_quality": "qualified",
+      "symbol": "AAPL",
+      "company_name": "Apple Inc.",
+      "sector": "technology",
+      "risk": "medium",
+      "model_score": 0.2318,
+      "confidence_score": 0.77,
+      "confidence_label": "high",
+      "data_as_of": "2026-09-14",
+      "model_version": "v3.4",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "AAPL",
+          "company_name": "Apple Inc.",
+          "sector": "technology",
+          "risk": "medium",
+          "model_score": 0.2318,
+          "confidence_score": 0.77,
+          "confidence_label": "high",
+          "price_as_of": "2026-09-14",
+          "news_as_of": "2026-09-14",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0873,
+            "news_adjustment": 0.1293,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0152,
+            "news_signal_input": 0.704,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "META",
+          "company_name": "Meta Platforms Inc.",
+          "sector": "communication_services",
+          "risk": "high",
+          "model_score": 0.1798,
+          "confidence_score": 0.72,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-14",
+          "news_as_of": "2026-09-14",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1157,
+            "news_adjustment": 0.0554,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0086,
+            "news_signal_input": 0.288,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "QCOM",
+          "company_name": "QUALCOMM Incorporated",
+          "sector": "technology",
+          "risk": "medium",
+          "model_score": 0.1497,
+          "confidence_score": 0.65,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-14",
+          "news_as_of": "2026-09-11",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.1138,
+            "news_adjustment": 0.0312,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0047,
+            "news_signal_input": 0.1118,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "XOM",
+          "company_name": "Exxon Mobil Corporation",
+          "sector": "energy",
+          "risk": "medium",
+          "model_score": 0.1215,
+          "confidence_score": 0.73,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-14",
+          "news_as_of": null,
+          "article_count": 6,
+          "diagnostics": {
+            "technical_total": 0.0214,
+            "news_adjustment": 0.0974,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0028,
+            "news_signal_input": 0.4992,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "CRM",
+          "company_name": "Salesforce Inc.",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.12,
+          "confidence_score": 0.68,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-14",
+          "news_as_of": null,
+          "article_count": 6,
+          "diagnostics": {
+            "technical_total": 0.0234,
+            "news_adjustment": 0.0937,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0029,
+            "news_signal_input": 0.4774,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "TSLA",
+          "company_name": "Tesla Inc.",
+          "sector": "consumer_discretionary",
+          "risk": "high",
+          "model_score": 0.1065,
+          "confidence_score": 0.67,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-14",
+          "news_as_of": "2026-09-14",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0017,
+            "news_adjustment": 0.1085,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0003,
+            "news_signal_input": 0.567,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "MSFT",
+          "company_name": "Microsoft Corporation",
+          "sector": "technology",
+          "risk": "medium",
+          "model_score": 0.1038,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-14",
+          "news_as_of": "2026-09-14",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": -0.0106,
+            "news_adjustment": 0.1161,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0017,
+            "news_signal_input": 0.6142,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "VZ",
+          "company_name": "Verizon Communications Inc.",
+          "sector": "communication_services",
+          "risk": "low",
+          "model_score": 0.0882,
+          "confidence_score": 0.64,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-14",
+          "news_as_of": "2026-09-11",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.0394,
+            "news_adjustment": 0.0463,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0024,
+            "news_signal_input": 0.1715,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "T",
+          "company_name": "AT&T Inc.",
+          "sector": "communication_services",
+          "risk": "medium",
+          "model_score": 0.0832,
+          "confidence_score": 0.6,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-14",
+          "news_as_of": "2026-09-10",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.0435,
+            "news_adjustment": 0.0376,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0022,
+            "news_signal_input": 0.1252,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "KO",
+          "company_name": "The Coca-Cola Company",
+          "sector": "consumer_staples",
+          "risk": "low",
+          "model_score": 0.0753,
+          "confidence_score": 0.65,
+          "confidence_label": "medium",
+          "price_as_of": "2026-09-14",
+          "news_as_of": "2026-09-13",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.006,
+            "news_adjustment": 0.082,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0007,
+            "news_signal_input": 0.4032,
+            "macro_signal_input": 0.0,
+            "sector_signal_input": 0.0
+          }
+        }
+      ],
       "diagnostics": {
-        "technical_total": 0.0517,
-        "news_adjustment": 0.1514,
+        "technical_total": 0.0873,
+        "news_adjustment": 0.1293,
         "macro_adjustment": 0.0,
-        "sector_adjustment": -0.0042,
-        "news_signal_input": 0.8096,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.704,
         "macro_signal_input": 0.0,
-        "sector_signal_input": -0.0382,
+        "sector_signal_input": 0.0,
         "technical_training_rows": 2303,
-        "technical_training_ic": 0.005,
+        "technical_training_ic": -0.0001,
         "news_macro_overlap": 0.0,
-        "news_sector_overlap": 0.2222,
+        "news_sector_overlap": 0.0,
         "macro_sector_overlap": 0.0
       }
     }
@@ -5309,63 +5577,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 5,
+        "used": 7,
         "limit": 25,
-        "remaining": 20,
+        "remaining": 18,
         "categories": {
-          "company_news": 4,
+          "company_news": 6,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-07",
+          "date": "2026-09-14",
           "status": "healthy",
-          "used": 5,
+          "used": 7,
           "limit": 25,
-          "remaining": 20,
+          "remaining": 18,
           "categories": {
-            "company_news": 4,
+            "company_news": 6,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 13,
+        "used": 12,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 12,
+          "company_news": 11,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-07",
+          "date": "2026-09-14",
           "status": "tracking_only",
-          "used": 13,
+          "used": 12,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 12,
+            "company_news": 11,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 50,
+        "used": 53,
         "limit": 100,
-        "remaining": 50,
+        "remaining": 47,
         "categories": {
-          "company_news": 49,
+          "company_news": 52,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-07",
+          "date": "2026-09-14",
           "status": "healthy",
-          "used": 50,
+          "used": 53,
           "limit": 100,
-          "remaining": 50,
+          "remaining": 47,
           "categories": {
-            "company_news": 49,
+            "company_news": 52,
             "global_news": 1
           }
         }
@@ -5380,7 +5648,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-09-07",
+          "date": "2026-09-14",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -5400,7 +5668,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-09-07",
+          "date": "2026-09-14",
           "status": "healthy",
           "used": 58,
           "limit": 800,

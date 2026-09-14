@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-07T16:58:03Z",
-  "last_updated": "2026-09-07",
+  "generated_at": "2026-09-14T17:28:54Z",
+  "last_updated": "2026-09-14",
   "lookback_days": 3,
-  "article_count": 3,
-  "source_count": 3,
+  "article_count": 1,
+  "source_count": 1,
   "llm_model": "gpt-5-mini",
-  "summary": "Three items: (1) an oil spike plus a hot jobs print is driving near-term upside for energy and rate-sensitive financials while pressuring growth/tech and consumer discretionary; (2) a Phase 3 failure at Novartis is a company-specific pharma hit with limited broader short-term market impact; (3) banks backing a stablecoin is a positive structural signal for financials and technology/payments infrastructure but is a low near-term catalyst.",
+  "summary": "Baazeem Trading Co. signed a one‑year SAR 4M distribution contract with Gulf Catering Food Factory in Saudi Arabia. This is a small, company‑level commercial contract with limited short‑term market implications beyond marginal revenue and distribution benefits for the firm; it is unlikely to move tracked sectors or symbols over the next 1–15 trading days.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -22,35 +22,14 @@
     "consumer_discretionary": {
       "sector": "consumer_discretionary",
       "display_name": "Consumer Discretionary",
-      "score": 0.42,
-      "confidence": 0.4,
-      "direction": "bearish",
-      "last_updated": "2026-09-07",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent sector catalyst was found for Consumer Discretionary."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "negative",
-          "weight": 0.15,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "consumer_staples": {
       "sector": "consumer_staples",
@@ -67,118 +46,38 @@
     "energy": {
       "sector": "energy",
       "display_name": "Energy",
-      "score": 0.58,
-      "confidence": 0.4,
-      "direction": "bullish",
-      "last_updated": "2026-09-07",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent sector catalyst was found for Energy."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "positive",
-          "weight": 0.15,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "financials": {
       "sector": "financials",
       "display_name": "Financials",
-      "score": 0.58,
-      "confidence": 0.42,
-      "direction": "bullish",
-      "last_updated": "2026-09-07",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve.",
-        "News that a consortium of banks is backing a stablecoin signals accelerating TradFi adoption of blockchain payment rails. Near-term this is a positive structural signal for banks and firms that provide payments/clearing and related technology, which could support sentiment in financials and select technology infrastructure providers. The piece is a medium/low short-horizon catalyst because adoption and revenue recognition are multi-stage and subject to regulatory and operational execution risk."
+        "No strong recent sector catalyst was found for Financials."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "positive",
-          "weight": 0.15,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        },
-        {
-          "title": "Stablecoins, Crypto Dominate Digital Assets Thoughts of the Week",
-          "feed": "marketaux",
-          "provider": "crowdfundinsider.com",
-          "url": "https://www.crowdfundinsider.com/2026/09/306236-stablecoins-crypto-dominate-digital-assets-thoughts-of-the-week/",
-          "published_at": "2026-09-07T16:07:43Z",
-          "impact": "positive",
-          "weight": 0.008,
-          "event_type": "financial infrastructure / crypto adoption",
-          "transmission_channel": "institutional adoption of stablecoins -> increased use of blockchain rails by TradFi -> demand shift to payments/clearing/tech infrastructure providers",
-          "affected_inputs": [
-            "payment rails and settlement infrastructure",
-            "bank product offerings",
-            "regulatory and operational integration of crypto assets"
-          ],
-          "horizon": "1-2w",
-          "reason": "News that a consortium of banks is backing a stablecoin signals accelerating TradFi adoption of blockchain payment rails. Near-term this is a positive structural signal for banks and firms that provide payments/clearing and related technology, which could support sentiment in financials and select technology infrastructure providers. The piece is a medium/low short-horizon catalyst because adoption and revenue recognition are multi-stage and subject to regulatory and operational execution risk."
-        }
-      ]
+      "supporting_articles": []
     },
     "healthcare": {
       "sector": "healthcare",
       "display_name": "Healthcare",
-      "score": 0.48,
-      "confidence": 0.37,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Novartis' Phase 3 pelacarsen miss is a direct negative for that company’s cardiovascular drug prospects and cash-flow expectations. Because the company (NVS) is not a tracked symbol here, the short-term market impact is primarily a hit to healthcare/biotech sentiment and to peers with read-throughs in the same therapeutic area; the event is narrow and unlikely to move broader markets materially over the next several trading days."
+        "No strong recent sector catalyst was found for Healthcare."
       ],
-      "supporting_articles": [
-        {
-          "title": "NVS Looks 22.5% Overvalued on GF Value™ as Dividend Sustainability Faces Mixed Signals",
-          "feed": "marketaux",
-          "provider": "gurufocus.com",
-          "url": "https://www.gurufocus.com/news/9069727/nvs-looks-225-overvalued-on-gf-value-as-dividend-sustainability-faces-mixed-signals",
-          "published_at": "2026-09-07T16:25:38Z",
-          "impact": "negative",
-          "weight": 0.036,
-          "event_type": "company clinical trial failure",
-          "transmission_channel": "clinical development shock -> revenue/prospect hit for sponsor -> sector sentiment and near-term re-pricing of pharma risk",
-          "affected_inputs": [
-            "clinical trial results",
-            "pharma R&D pipeline valuation",
-            "investor sentiment in healthcare/pharma"
-          ],
-          "horizon": "1-2w",
-          "reason": "Novartis' Phase 3 pelacarsen miss is a direct negative for that company’s cardiovascular drug prospects and cash-flow expectations. Because the company (NVS) is not a tracked symbol here, the short-term market impact is primarily a hit to healthcare/biotech sentiment and to peers with read-throughs in the same therapeutic area; the event is narrow and unlikely to move broader markets materially over the next several trading days."
-        }
-      ]
+      "supporting_articles": []
     },
     "industrials": {
       "sector": "industrials",
@@ -195,54 +94,14 @@
     "technology": {
       "sector": "technology",
       "display_name": "Technology",
-      "score": 0.43,
-      "confidence": 0.42,
-      "direction": "bearish",
-      "last_updated": "2026-09-07",
+      "score": 0.5,
+      "confidence": 0.2,
+      "direction": "neutral",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve.",
-        "News that a consortium of banks is backing a stablecoin signals accelerating TradFi adoption of blockchain payment rails. Near-term this is a positive structural signal for banks and firms that provide payments/clearing and related technology, which could support sentiment in financials and select technology infrastructure providers. The piece is a medium/low short-horizon catalyst because adoption and revenue recognition are multi-stage and subject to regulatory and operational execution risk."
+        "No strong recent sector catalyst was found for Technology."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "negative",
-          "weight": 0.15,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        },
-        {
-          "title": "Stablecoins, Crypto Dominate Digital Assets Thoughts of the Week",
-          "feed": "marketaux",
-          "provider": "crowdfundinsider.com",
-          "url": "https://www.crowdfundinsider.com/2026/09/306236-stablecoins-crypto-dominate-digital-assets-thoughts-of-the-week/",
-          "published_at": "2026-09-07T16:07:43Z",
-          "impact": "positive",
-          "weight": 0.008,
-          "event_type": "financial infrastructure / crypto adoption",
-          "transmission_channel": "institutional adoption of stablecoins -> increased use of blockchain rails by TradFi -> demand shift to payments/clearing/tech infrastructure providers",
-          "affected_inputs": [
-            "payment rails and settlement infrastructure",
-            "bank product offerings",
-            "regulatory and operational integration of crypto assets"
-          ],
-          "horizon": "1-2w",
-          "reason": "News that a consortium of banks is backing a stablecoin signals accelerating TradFi adoption of blockchain payment rails. Near-term this is a positive structural signal for banks and firms that provide payments/clearing and related technology, which could support sentiment in financials and select technology infrastructure providers. The piece is a medium/low short-horizon catalyst because adoption and revenue recognition are multi-stage and subject to regulatory and operational execution risk."
-        }
-      ]
+      "supporting_articles": []
     }
   },
   "symbol_scores": {
@@ -250,69 +109,27 @@
       "symbol": "AAPL",
       "company_name": "Apple Inc.",
       "sector": "technology",
-      "score": 0.46,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored Apple Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "negative",
-          "weight": 0.06,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "MSFT": {
       "symbol": "MSFT",
       "company_name": "Microsoft Corporation",
       "sector": "technology",
-      "score": 0.46,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored Microsoft Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "negative",
-          "weight": 0.06,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "GOOGL": {
       "symbol": "GOOGL",
@@ -331,69 +148,27 @@
       "symbol": "AMZN",
       "company_name": "Amazon.com Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.46,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored Amazon.com Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "negative",
-          "weight": 0.06,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "TSLA": {
       "symbol": "TSLA",
       "company_name": "Tesla Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.46,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored Tesla Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "negative",
-          "weight": 0.06,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "META": {
       "symbol": "META",
@@ -425,69 +200,27 @@
       "symbol": "NVDA",
       "company_name": "NVIDIA Corporation",
       "sector": "technology",
-      "score": 0.46,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored NVIDIA Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "negative",
-          "weight": 0.06,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "JPM": {
       "symbol": "JPM",
       "company_name": "JPMorgan Chase & Co.",
       "sector": "financials",
-      "score": 0.53,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored JPMorgan Chase & Co.."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "positive",
-          "weight": 0.05,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "JNJ": {
       "symbol": "JNJ",
@@ -506,35 +239,14 @@
       "symbol": "V",
       "company_name": "Visa Inc.",
       "sector": "financials",
-      "score": 0.53,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored Visa Inc.."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "positive",
-          "weight": 0.05,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "WMT": {
       "symbol": "WMT",
@@ -566,35 +278,14 @@
       "symbol": "MA",
       "company_name": "Mastercard Incorporated",
       "sector": "financials",
-      "score": 0.53,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored Mastercard Incorporated."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "positive",
-          "weight": 0.05,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "DIS": {
       "symbol": "DIS",
@@ -626,69 +317,27 @@
       "symbol": "BAC",
       "company_name": "Bank of America Corporation",
       "sector": "financials",
-      "score": 0.53,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored Bank of America Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "positive",
-          "weight": 0.05,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "XOM": {
       "symbol": "XOM",
       "company_name": "Exxon Mobil Corporation",
       "sector": "energy",
-      "score": 0.53,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored Exxon Mobil Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "positive",
-          "weight": 0.05,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "PFE": {
       "symbol": "PFE",
@@ -915,35 +564,14 @@
       "symbol": "CVX",
       "company_name": "Chevron Corporation",
       "sector": "energy",
-      "score": 0.53,
-      "confidence": 0.4,
+      "score": 0.5,
+      "confidence": 0.2,
       "direction": "neutral",
-      "last_updated": "2026-09-07",
+      "last_updated": null,
       "reasons": [
-        "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
+        "No strong recent world-news catalyst clearly favored Chevron Corporation."
       ],
-      "supporting_articles": [
-        {
-          "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-          "feed": "marketaux",
-          "provider": "upsidetrader.com",
-          "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-          "published_at": "2026-09-07T16:17:33Z",
-          "impact": "positive",
-          "weight": 0.05,
-          "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-          "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-          "affected_inputs": [
-            "oil prices",
-            "consumer fuel costs",
-            "interest rate expectations",
-            "equity risk premia",
-            "economic growth sentiment"
-          ],
-          "horizon": "1-2w",
-          "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-        }
-      ]
+      "supporting_articles": []
     },
     "MCD": {
       "symbol": "MCD",
@@ -1117,102 +745,29 @@
   },
   "events": [
     {
-      "article_id": "news_2",
-      "title": "Markets Mixed After Oil Spike and Hot Jobs Report — CPI Next",
-      "feed": "marketaux",
-      "provider": "upsidetrader.com",
-      "url": "https://www.upsidetrader.com/2026/09/07/markets-mixed-after-oil-spike-and-hot-jobs-report-cpi-next/",
-      "published_at": "2026-09-07T16:17:33Z",
-      "event_type": "macroeconomic + geopolitical (oil spike + hot jobs report)",
-      "transmission_channel": "commodity supply shock -> higher fuel costs; labor/data -> Fed tightening expectations -> higher rates and yield curve repricing; risk re-pricing -> growth multiple compression",
-      "affected_inputs": [
-        "oil prices",
-        "consumer fuel costs",
-        "interest rate expectations",
-        "equity risk premia",
-        "economic growth sentiment"
-      ],
-      "horizon": "1-2w",
-      "market_relevance": 0.85,
-      "magnitude": 0.7,
-      "confidence": 0.75,
-      "beneficiary_sectors": [
-        "energy",
-        "financials"
-      ],
-      "hurt_sectors": [
-        "technology",
-        "consumer_discretionary"
-      ],
-      "beneficiary_symbols": [
-        "XOM",
-        "CVX",
-        "JPM",
-        "BAC",
-        "V",
-        "MA"
-      ],
-      "hurt_symbols": [
-        "NVDA",
-        "AAPL",
-        "MSFT",
-        "AMZN",
-        "TSLA"
-      ],
-      "reason": "Sharp oil upside is a direct supply/price shock for crude, improving near-term revenue/margins for integrated and upstream energy names (XOM, CVX) and pressuring fuel-sensitive consumers and transport-exposed firms. A hot jobs print tightens Fed expectations, pushing rates higher and benefiting banks/payment firms via wider net interest margins (JPM, BAC, V, MA) while compressing multiples on growth/tech and weighing on consumer discretionary demand and high-valuation cyclicals (NVDA, AAPL, MSFT, AMZN, TSLA). Combined effects likely play out over the next few trading sessions to a couple of weeks as data and Fed commentary evolve."
-    },
-    {
       "article_id": "news_1",
-      "title": "NVS Looks 22.5% Overvalued on GF Value™ as Dividend Sustainability Faces Mixed Signals",
+      "title": "Baazeem inks SAR 4M contract with GCFF",
       "feed": "marketaux",
-      "provider": "gurufocus.com",
-      "url": "https://www.gurufocus.com/news/9069727/nvs-looks-225-overvalued-on-gf-value-as-dividend-sustainability-faces-mixed-signals",
-      "published_at": "2026-09-07T16:25:38Z",
-      "event_type": "company clinical trial failure",
-      "transmission_channel": "clinical development shock -> revenue/prospect hit for sponsor -> sector sentiment and near-term re-pricing of pharma risk",
+      "provider": "argaam.com",
+      "url": "https://www.argaam.com/en/article/articledetail/id/1936294",
+      "published_at": "2026-09-14T17:21:00Z",
+      "event_type": "company_contract",
+      "transmission_channel": "distribution/logistics -> revenue (small demand/revenue shock); limited local market share uplift",
       "affected_inputs": [
-        "clinical trial results",
-        "pharma R&D pipeline valuation",
-        "investor sentiment in healthcare/pharma"
+        "revenue",
+        "domestic_distribution",
+        "sales_volume",
+        "logistics"
       ],
-      "horizon": "1-2w",
-      "market_relevance": 0.25,
-      "magnitude": 0.35,
-      "confidence": 0.7,
+      "horizon": "unclear",
+      "market_relevance": 0.05,
+      "magnitude": 0.01,
+      "confidence": 0.3,
       "beneficiary_sectors": [],
-      "hurt_sectors": [
-        "healthcare"
-      ],
-      "beneficiary_symbols": [],
-      "hurt_symbols": [],
-      "reason": "Novartis' Phase 3 pelacarsen miss is a direct negative for that company’s cardiovascular drug prospects and cash-flow expectations. Because the company (NVS) is not a tracked symbol here, the short-term market impact is primarily a hit to healthcare/biotech sentiment and to peers with read-throughs in the same therapeutic area; the event is narrow and unlikely to move broader markets materially over the next several trading days."
-    },
-    {
-      "article_id": "news_3",
-      "title": "Stablecoins, Crypto Dominate Digital Assets Thoughts of the Week",
-      "feed": "marketaux",
-      "provider": "crowdfundinsider.com",
-      "url": "https://www.crowdfundinsider.com/2026/09/306236-stablecoins-crypto-dominate-digital-assets-thoughts-of-the-week/",
-      "published_at": "2026-09-07T16:07:43Z",
-      "event_type": "financial infrastructure / crypto adoption",
-      "transmission_channel": "institutional adoption of stablecoins -> increased use of blockchain rails by TradFi -> demand shift to payments/clearing/tech infrastructure providers",
-      "affected_inputs": [
-        "payment rails and settlement infrastructure",
-        "bank product offerings",
-        "regulatory and operational integration of crypto assets"
-      ],
-      "horizon": "1-2w",
-      "market_relevance": 0.35,
-      "magnitude": 0.25,
-      "confidence": 0.5,
-      "beneficiary_sectors": [
-        "financials",
-        "technology"
-      ],
       "hurt_sectors": [],
       "beneficiary_symbols": [],
       "hurt_symbols": [],
-      "reason": "News that a consortium of banks is backing a stablecoin signals accelerating TradFi adoption of blockchain payment rails. Near-term this is a positive structural signal for banks and firms that provide payments/clearing and related technology, which could support sentiment in financials and select technology infrastructure providers. The piece is a medium/low short-horizon catalyst because adoption and revenue recognition are multi-stage and subject to regulatory and operational execution risk."
+      "reason": "A SAR 4M one‑year distribution deal is a small, company‑specific commercial win that should marginally increase Baazeem's near‑term revenue and bolster its local distribution footprint. The impact is highly localized and too small to materially affect the tracked broad sectors or listed symbols over the next 1–15 trading days, so no beneficiaries or losers among the allowed sectors/symbols are identified."
     }
   ],
   "data_quality": {
@@ -1224,63 +779,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 5,
+        "used": 7,
         "limit": 25,
-        "remaining": 20,
+        "remaining": 18,
         "categories": {
-          "company_news": 4,
+          "company_news": 6,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-07",
+          "date": "2026-09-14",
           "status": "healthy",
-          "used": 5,
+          "used": 7,
           "limit": 25,
-          "remaining": 20,
+          "remaining": 18,
           "categories": {
-            "company_news": 4,
+            "company_news": 6,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 13,
+        "used": 12,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 12,
+          "company_news": 11,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-07",
+          "date": "2026-09-14",
           "status": "tracking_only",
-          "used": 13,
+          "used": 12,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 12,
+            "company_news": 11,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 50,
+        "used": 53,
         "limit": 100,
-        "remaining": 50,
+        "remaining": 47,
         "categories": {
-          "company_news": 49,
+          "company_news": 52,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-07",
+          "date": "2026-09-14",
           "status": "healthy",
-          "used": 50,
+          "used": 53,
           "limit": 100,
-          "remaining": 50,
+          "remaining": 47,
           "categories": {
-            "company_news": 49,
+            "company_news": 52,
             "global_news": 1
           }
         }
@@ -1295,7 +850,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-09-07",
+          "date": "2026-09-14",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

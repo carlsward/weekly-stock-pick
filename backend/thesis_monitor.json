@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-09-14T20:04:26Z",
-  "data_as_of": "2026-09-14",
-  "expected_next_refresh_at": "2026-09-15T20:04:26Z",
-  "stale_after": "2026-09-16T08:04:26Z",
+  "generated_at": "2026-09-15T19:22:43Z",
+  "data_as_of": "2026-09-15",
+  "expected_next_refresh_at": "2026-09-16T19:22:43Z",
+  "stale_after": "2026-09-17T07:22:43Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W38",
@@ -24,112 +24,112 @@
     "company_name": "Apple Inc.",
     "sector": "technology",
     "risk": "medium",
-    "model_score": 0.1071,
-    "confidence_score": 0.64,
+    "model_score": 0.0714,
+    "confidence_score": 0.66,
     "confidence_label": "medium",
-    "price_as_of": "2026-09-14",
-    "news_as_of": "2026-09-14",
+    "price_as_of": "2026-09-15",
+    "news_as_of": "2026-09-15",
     "macro_as_of": null,
-    "sector_as_of": null,
+    "sector_as_of": "2026-09-15",
     "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.0407,
-      "momentum_20d": 0.0885,
-      "daily_volatility": 0.0147,
-      "downside_volatility": 0.0116,
+      "momentum_5d": 0.0439,
+      "momentum_20d": 0.0802,
+      "daily_volatility": 0.0149,
+      "downside_volatility": 0.0119,
       "max_drawdown_20d": 0.0392,
       "positive_day_ratio_10d": 0.5,
-      "price_vs_20d_average": 0.0472,
-      "volume_trend_5d": 0.1151,
-      "market_relative_5d": 0.0536,
-      "market_relative_20d": 0.1108,
-      "sector_relative_5d": 0.0578,
-      "sector_relative_20d": 0.1225,
-      "news_sentiment": 0.58,
-      "raw_news_sentiment": 0.2571,
-      "calibrated_news_sentiment": 0.1669,
-      "news_confidence": 0.74,
+      "price_vs_20d_average": 0.0341,
+      "volume_trend_5d": 0.1358,
+      "market_relative_5d": 0.056,
+      "market_relative_20d": 0.1023,
+      "sector_relative_5d": 0.0676,
+      "sector_relative_20d": 0.1192,
+      "news_sentiment": 0.48,
+      "raw_news_sentiment": -0.0437,
+      "calibrated_news_sentiment": -0.0371,
+      "news_confidence": 0.9,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
       "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 0.63,
-      "source_count": 2,
-      "average_relevance": 0.84,
+      "sector_confidence": 0.29,
+      "effective_article_count": 1.29,
+      "source_count": 3,
+      "average_relevance": 0.88,
       "technical_training_ic": -0.0001,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1114,
-      "short_momentum": 0.0336,
-      "medium_momentum": 0.0265,
-      "trend_quality": 0.0106,
-      "volume_confirmation": 0.0046,
-      "market_relative_strength": 0.021,
+      "momentum": 0.1091,
+      "short_momentum": 0.0362,
+      "medium_momentum": 0.0241,
+      "trend_quality": 0.0077,
+      "volume_confirmation": 0.0054,
+      "market_relative_strength": 0.0208,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0306,
-      "daily_volatility_penalty": -0.0132,
-      "downside_penalty": -0.0125,
+      "volatility_penalty": -0.0312,
+      "daily_volatility_penalty": -0.0134,
+      "downside_penalty": -0.0129,
       "drawdown_penalty": -0.0049,
-      "news_adjustment": 0.0237,
+      "news_adjustment": -0.0065,
       "macro_adjustment": 0.0,
       "sector_adjustment": 0.0,
-      "signal_alignment": 0.0026,
-      "technical_total": 0.0808,
-      "trend_strength": 0.0708,
-      "relative_strength": 0.036,
-      "participation": 0.0046,
-      "risk_control": -0.0306,
+      "signal_alignment": 0.0,
+      "technical_total": 0.0779,
+      "trend_strength": 0.0679,
+      "relative_strength": 0.0358,
+      "participation": 0.0054,
+      "risk_control": -0.0312,
       "block_weight_news": 0.173,
       "block_weight_macro": 0.095,
       "block_weight_sector": 0.0919,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.55,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
+      "news_sector_overlap": 0.75,
       "macro_sector_overlap": 0.0,
-      "total": 0.1071
+      "total": 0.0714
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 4.1% and 20-day momentum is 8.8%.",
-      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 4.7% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 4.4% and 20-day momentum is 8.0%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 3.4% relative to its 20-day average.",
       "Risk profile shows daily volatility around 1.5%, downside volatility near 1.2%, and a recent max drawdown of 3.9%.",
-      "Volume confirmation is 11.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 5.4% versus SPY over 5 days and 5.8% versus the sector ETF.",
-      "News signal is neutral with score 0.58, confidence 0.74, and 0.6 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow neutral at 0.58, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 0.6 effective weighted articles, average relevance 0.84, average source quality 0.80, confidence 0.74.",
+      "Volume confirmation is 13.6% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 5.6% versus SPY over 5 days and 6.8% versus the sector ETF.",
+      "News signal is mixed with score 0.48, confidence 0.90, and 1.3 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow mixed at 0.48, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.3 effective weighted articles, average relevance 0.88, average source quality 0.75, confidence 0.90.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.00).",
-      "Overall model score is 0.107 with medium confidence."
+      "Overall model score is 0.071 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Apple releases test of redesigned Siri AI before iPhone 18 hits stores this week",
-        "provider": "cnbc.com",
-        "url": "https://www.cnbc.com/2026/09/14/apple-releases-ios-27-redesigned-siri-ai.html",
-        "published_at": "2026-09-14T19:05:40Z",
-        "relevance_score": 0.96,
-        "sentiment": 0.17,
+        "title": "Apple: The iPhone Duo Holds The Key To China's Recovery (NASDAQ:AAPL)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4946605-apple-the-iphone-duo-holds-the-key-to-china-recovery",
+        "published_at": "2026-09-15T17:51:49Z",
+        "relevance_score": 0.99,
+        "sentiment": 0.07,
         "doc_type": "company_specific",
-        "company_relevance": 0.95,
-        "materiality": 0.7,
-        "llm_confidence": 0.85,
-        "llm_impact_score": 0.45,
-        "llm_reason": "Direct Apple announcement: redesigned Siri AI being released just as iPhone 18 reaches stores is a near-term product/PR catalyst that could modestly boost demand/optimism."
+        "company_relevance": 0.9,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Discusses Apple's new $2,000 foldable iPhone product and its potential role in China demand. Product/market commentary is directly about Apple and could influence near-term sentiment around demand, but the launch already occurred and the piece is partly speculative, so likely only modest short-term market impact."
       },
       {
-        "title": "AAPL Looks 17.2% Overvalued on GF Value™ as Insider Selling Persists",
-        "provider": "gurufocus.com",
-        "url": "https://www.gurufocus.com/news/9079853/aapl-looks-172-overvalued-on-gf-value-as-insider-selling-persists",
-        "published_at": "2026-09-14T18:50:49Z",
-        "relevance_score": 0.89,
-        "sentiment": 0.66,
+        "title": "Apple under scrutiny: India's consumer protection body steps up probe over iOS 18 related complaints",
+        "provider": "economictimes.indiatimes.com",
+        "url": "https://economictimes.indiatimes.com/industry/cons-products/electronics/apple-under-scrutiny-indias-consumer-protection-body-steps-up-probe-over-ios-18-related-complaints/articleshow/134269200.cms",
+        "published_at": "2026-09-15T16:47:54Z",
+        "relevance_score": 0.82,
+        "sentiment": -0.27,
         "doc_type": "company_specific",
-        "company_relevance": 0.75,
-        "materiality": 0.35,
-        "llm_confidence": 0.6,
-        "llm_impact_score": -0.2,
-        "llm_reason": "Valuation/insider-selling analysis is company-specific and negative for sentiment, but such pieces are often noisy and less likely to materially change fundamentals in the next 1–10 trading days."
+        "company_relevance": 0.9,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": -1.0,
+        "llm_reason": "Reports that India's consumer protection authority has opened a probe into iOS 18 complaints and that class-action pressure is building. Regulatory scrutiny and potential enforcement or remedial requirements in a large market like India are directly relevant and raise short-term downside risk to sentiment and operations, making this the most material near-term negative item."
       }
     ],
     "macro_evidence": [],
@@ -140,13 +140,13 @@
       "alerts": [
         "Trend quality is still positive, but the tape is no longer decisive.",
         "Risk is still manageable, but volatility widened versus a clean setup.",
-        "The news layer is still thin, so conviction should stay measured."
+        "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "watch",
-          "value": "4.1% 5D • 8.8% 20D",
+          "value": "4.4% 5D • 8.0% 20D",
           "detail": "Trend quality is still positive, but the tape is no longer decisive."
         },
         {
@@ -158,8 +158,8 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.58 sentiment • 3 articles",
-          "detail": "The news layer is still thin, so conviction should stay measured."
+          "value": "0.48 sentiment • 3 articles",
+          "detail": "News flow is mostly neutral, so the thesis needs technical confirmation to stay intact."
         },
         {
           "label": "Macro",
@@ -170,8 +170,8 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "+0.007 score • +0.092 conf",
-          "detail": "The pick only barely cleared the release bar."
+          "value": "-0.029 score • +0.107 conf",
+          "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
@@ -201,14 +201,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-14",
+          "date": "2026-09-15",
           "status": "healthy",
-          "used": 9,
+          "used": 1,
           "limit": 25,
-          "remaining": 16,
+          "remaining": 24,
           "categories": {
-            "company_news": 6,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -221,14 +220,13 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-14",
+          "date": "2026-09-15",
           "status": "tracking_only",
-          "used": 14,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 11,
-            "global_news": 3
+            "global_news": 1
           }
         }
       },
@@ -242,14 +240,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-14",
+          "date": "2026-09-15",
           "status": "healthy",
-          "used": 57,
+          "used": 2,
           "limit": 100,
-          "remaining": 43,
+          "remaining": 98,
           "categories": {
-            "company_news": 54,
-            "global_news": 3
+            "company_news": 1,
+            "global_news": 1
           }
         }
       },
@@ -263,14 +261,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-09-14",
+          "date": "2026-09-15",
           "status": "tracking_only",
-          "used": 54,
+          "used": 2,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 3,
-            "submissions": 51
+            "ticker_map": 1,
+            "submissions": 1
           }
         }
       },
@@ -283,13 +281,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-09-14",
+          "date": "2026-09-15",
           "status": "healthy",
-          "used": 64,
+          "used": 3,
           "limit": 800,
-          "remaining": 736,
+          "remaining": 797,
           "categories": {
-            "price": 64
+            "price": 3
           }
         }
       }

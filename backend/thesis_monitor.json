@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-09-16T19:13:48Z",
-  "data_as_of": "2026-09-16",
-  "expected_next_refresh_at": "2026-09-17T19:13:48Z",
-  "stale_after": "2026-09-18T07:13:48Z",
+  "generated_at": "2026-09-17T19:26:33Z",
+  "data_as_of": "2026-09-17",
+  "expected_next_refresh_at": "2026-09-18T19:26:33Z",
+  "stale_after": "2026-09-19T07:26:33Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W38",
@@ -24,62 +24,62 @@
     "company_name": "Apple Inc.",
     "sector": "technology",
     "risk": "medium",
-    "model_score": 0.0673,
-    "confidence_score": 0.43,
-    "confidence_label": "low",
-    "price_as_of": "2026-09-16",
-    "news_as_of": null,
+    "model_score": 0.1645,
+    "confidence_score": 0.73,
+    "confidence_label": "medium",
+    "price_as_of": "2026-09-17",
+    "news_as_of": "2026-09-17",
     "macro_as_of": null,
-    "sector_as_of": "2026-09-16",
-    "article_count": 0,
+    "sector_as_of": null,
+    "article_count": 2,
     "metrics": {
-      "momentum_5d": 0.0491,
-      "momentum_20d": 0.067,
-      "daily_volatility": 0.0146,
-      "downside_volatility": 0.0111,
+      "momentum_5d": 0.0315,
+      "momentum_20d": 0.0632,
+      "daily_volatility": 0.0141,
+      "downside_volatility": 0.0117,
       "max_drawdown_20d": 0.0392,
-      "positive_day_ratio_10d": 0.4,
-      "price_vs_20d_average": 0.0328,
-      "volume_trend_5d": -0.0535,
-      "market_relative_5d": 0.0646,
-      "market_relative_20d": 0.09,
-      "sector_relative_5d": 0.0775,
-      "sector_relative_20d": 0.0829,
-      "news_sentiment": 0.5,
-      "raw_news_sentiment": 0.0,
-      "calibrated_news_sentiment": 0.0,
-      "news_confidence": 0.2,
+      "positive_day_ratio_10d": 0.6,
+      "price_vs_20d_average": 0.0481,
+      "volume_trend_5d": -0.2451,
+      "market_relative_5d": 0.0251,
+      "market_relative_20d": 0.0722,
+      "sector_relative_5d": 0.0157,
+      "sector_relative_20d": 0.038,
+      "news_sentiment": 0.88,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.7596,
+      "news_confidence": 0.84,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.51,
-      "sector_confidence": 0.35,
-      "effective_article_count": 0.0,
-      "source_count": 0,
-      "average_relevance": 0.0,
+      "sector_sentiment": 0.5,
+      "sector_confidence": 0.2,
+      "effective_article_count": 0.75,
+      "source_count": 2,
+      "average_relevance": 0.91,
       "technical_training_ic": -0.0001,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0963,
-      "short_momentum": 0.0405,
-      "medium_momentum": 0.0201,
-      "trend_quality": 0.0026,
-      "volume_confirmation": -0.0021,
-      "market_relative_strength": 0.0203,
-      "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.03,
-      "daily_volatility_penalty": -0.0131,
-      "downside_penalty": -0.012,
+      "momentum": 0.0686,
+      "short_momentum": 0.026,
+      "medium_momentum": 0.019,
+      "trend_quality": 0.0156,
+      "volume_confirmation": -0.0098,
+      "market_relative_strength": 0.0128,
+      "sector_relative_strength": 0.005,
+      "volatility_penalty": -0.0302,
+      "daily_volatility_penalty": -0.0127,
+      "downside_penalty": -0.0126,
       "drawdown_penalty": -0.0049,
-      "news_adjustment": 0.0,
+      "news_adjustment": 0.1199,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.001,
-      "signal_alignment": 0.0,
-      "technical_total": 0.0663,
-      "trend_strength": 0.0632,
-      "relative_strength": 0.0353,
-      "participation": -0.0021,
-      "risk_control": -0.03,
+      "sector_adjustment": 0.0,
+      "signal_alignment": 0.0062,
+      "technical_total": 0.0383,
+      "trend_strength": 0.0606,
+      "relative_strength": 0.0178,
+      "participation": -0.0098,
+      "risk_control": -0.0302,
       "block_weight_news": 0.173,
       "block_weight_macro": 0.095,
       "block_weight_sector": 0.0919,
@@ -88,48 +88,63 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.0673
+      "total": 0.1645
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 4.9% and 20-day momentum is 6.7%.",
-      "Trend quality is supported by 40% positive sessions over the last 10 trading days and the price sitting 3.3% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 1.5%, downside volatility near 1.1%, and a recent max drawdown of 3.9%.",
-      "Volume confirmation is -5.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 6.5% versus SPY over 5 days and 7.8% versus the sector ETF.",
-      "No recent relevant news passed the filter, so the news layer stayed neutral and contributed less confidence.",
-      "Recent AAPL company-news coverage was mostly broad market roundups or weakly direct mentions, so the company-news contribution was forced back to neutral.",
+      "Price trend remains constructive: 5-day momentum is 3.2% and 20-day momentum is 6.3%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 4.8% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 1.4%, downside volatility near 1.2%, and a recent max drawdown of 3.9%.",
+      "Volume confirmation is -24.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 2.5% versus SPY over 5 days and 1.6% versus the sector ETF.",
+      "News signal is bullish with score 0.88, confidence 0.84, and 0.8 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.88, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.7 effective weighted articles, average relevance 0.91, average source quality 0.75, confidence 0.84.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.00).",
-      "Overall model score is 0.067 with low confidence."
+      "Overall model score is 0.164 with medium confidence."
     ],
-    "news_evidence": [],
+    "news_evidence": [
+      {
+        "title": "Apple (AAPL) Faces a $2.7 Billion UK Lawsuit over its App Tracking Rules",
+        "provider": "finance.yahoo.com",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-faces-2-7-164412973.html",
+        "published_at": "2026-09-17T16:44:12Z",
+        "relevance_score": 0.98,
+        "sentiment": -0.14,
+        "doc_type": "company_specific",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Large (£2bn/$2.7bn) lawsuit filed in the UK specifically against Apple’s App Tracking Transparency rules. This is company-specific legal and regulatory risk that can pressure sentiment, invite further scrutiny, and has clear potential financial exposure — likely to move the stock in the next 1–10 trading days."
+      }
+    ],
     "macro_evidence": [],
     "thesis_monitor": {
-      "status": "risk",
-      "headline": "Support needs review",
-      "summary": "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
+      "status": "watch",
+      "headline": "Support needs watching",
+      "summary": "Risk is still manageable, but volatility widened versus a clean setup.",
       "alerts": [
-        "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
         "Risk is still manageable, but volatility widened versus a clean setup.",
-        "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "risk",
-          "value": "4.9% 5D • 6.7% 20D",
-          "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
+          "state": "positive",
+          "value": "3.2% 5D • 6.3% 20D",
+          "detail": "Price action is still supporting the release thesis."
         },
         {
           "label": "Volatility",
           "state": "watch",
-          "value": "1.5% daily • 3.9% drawdown",
+          "value": "1.4% daily • 3.9% drawdown",
           "detail": "Risk is still manageable, but volatility widened versus a clean setup."
         },
         {
           "label": "News",
           "state": "watch",
-          "value": "0.50 sentiment • 0 articles",
-          "detail": "No recent company-specific articles passed the filters, so the thesis rests mostly on price action."
+          "value": "0.88 sentiment • 2 articles",
+          "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
@@ -139,14 +154,14 @@
         },
         {
           "label": "Margin",
-          "state": "risk",
-          "value": "-0.033 score • -0.117 conf",
-          "detail": "This is the top ranked stock, but it is below the normal release bar."
+          "state": "positive",
+          "value": "+0.064 score • +0.176 conf",
+          "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news no fresh signal • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -159,7 +174,6 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
-      "GDELT company news failed for at least one symbol.",
       "GDELT global-news feed failed during this run."
     ],
     "provider_status": {
@@ -172,7 +186,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-16",
+          "date": "2026-09-17",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -184,21 +198,19 @@
       },
       "gdelt": {
         "status": "degraded",
-        "used": 2,
+        "used": 1,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 1,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-16",
+          "date": "2026-09-17",
           "status": "tracking_only",
-          "used": 2,
+          "used": 1,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 1,
             "global_news": 1
           }
         }
@@ -213,7 +225,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-16",
+          "date": "2026-09-17",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -234,7 +246,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-09-16",
+          "date": "2026-09-17",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -254,7 +266,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-09-16",
+          "date": "2026-09-17",
           "status": "healthy",
           "used": 3,
           "limit": 800,

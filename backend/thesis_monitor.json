@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-09-19T18:18:25Z",
-  "data_as_of": "2026-09-19",
-  "expected_next_refresh_at": "2026-09-20T18:18:25Z",
-  "stale_after": "2026-09-21T06:18:25Z",
+  "generated_at": "2026-09-20T18:23:36Z",
+  "data_as_of": "2026-09-20",
+  "expected_next_refresh_at": "2026-09-21T18:23:36Z",
+  "stale_after": "2026-09-22T06:23:36Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W38",
@@ -24,14 +24,14 @@
     "company_name": "Apple Inc.",
     "sector": "technology",
     "risk": "medium",
-    "model_score": 0.1633,
-    "confidence_score": 0.72,
+    "model_score": -0.0226,
+    "confidence_score": 0.57,
     "confidence_label": "medium",
     "price_as_of": "2026-09-18",
-    "news_as_of": "2026-09-19",
+    "news_as_of": "2026-09-20",
     "macro_as_of": null,
-    "sector_as_of": "2026-09-19",
-    "article_count": 2,
+    "sector_as_of": "2026-09-20",
+    "article_count": 3,
     "metrics": {
       "momentum_5d": 0.0116,
       "momentum_20d": 0.0798,
@@ -45,17 +45,17 @@
       "market_relative_20d": 0.0811,
       "sector_relative_5d": 0.0013,
       "sector_relative_20d": 0.0427,
-      "news_sentiment": 0.89,
-      "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.7896,
-      "news_confidence": 0.86,
+      "news_sentiment": 0.31,
+      "raw_news_sentiment": -0.8145,
+      "calibrated_news_sentiment": -0.3773,
+      "news_confidence": 0.59,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.47,
-      "sector_confidence": 0.41,
-      "effective_article_count": 0.73,
-      "source_count": 2,
-      "average_relevance": 0.65,
+      "sector_sentiment": 0.44,
+      "sector_confidence": 0.43,
+      "effective_article_count": 0.09,
+      "source_count": 3,
+      "average_relevance": 0.74,
       "technical_training_ic": -0.0001,
       "technical_training_rows": 2303
     },
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0121,
       "downside_penalty": -0.011,
       "drawdown_penalty": -0.0049,
-      "news_adjustment": 0.1246,
+      "news_adjustment": -0.0509,
       "macro_adjustment": 0.0,
-      "sector_adjustment": -0.0021,
-      "signal_alignment": 0.0058,
+      "sector_adjustment": -0.0042,
+      "signal_alignment": -0.0024,
       "technical_total": 0.0349,
       "trend_strength": 0.0429,
       "relative_strength": 0.0167,
@@ -88,7 +88,7 @@
       "news_macro_overlap": 0.0,
       "news_sector_overlap": 0.1429,
       "macro_sector_overlap": 0.0,
-      "total": 0.1633
+      "total": -0.0226
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is 1.2% and 20-day momentum is 8.0%.",
@@ -96,50 +96,40 @@
       "Risk profile shows daily volatility around 1.3%, downside volatility near 1.0%, and a recent max drawdown of 3.9%.",
       "Volume confirmation is 8.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is 1.5% versus SPY over 5 days and 0.1% versus the sector ETF.",
-      "News signal is bullish with score 0.89, confidence 0.86, and 0.7 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.89, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 2 articles across 2 sources, 0.7 effective weighted articles, average relevance 0.65, average source quality 0.75, confidence 0.86.",
+      "News signal is bearish with score 0.31, confidence 0.59, and 0.1 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bearish at 0.31, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.1 effective weighted articles, average relevance 0.74, average source quality 0.75, confidence 0.59.",
+      "Broad market news leaned neutral for the Technology sector with score 0.44 and confidence 0.43.",
+      "Fed official (Kashkari) emphasizing persistent inflation raises odds of further tightening or slower rate cuts. That transmission raises discount rates and reduces present value of future growth, directly pressuring rate-sensitive technology sector equities over the coming days to weeks. Expect increased volatility and potential multiple compression for growth names.",
+      "Sector overlay was trimmed by 35% because it overlaps with company or macro themes.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.00).",
-      "Overall model score is 0.163 with medium confidence."
+      "Overall model score is -0.023 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "John Ternus's First iPhone Launch Prompted a Bank of America Price Target Cut. Is Apple Stock a Buy?",
-        "provider": "finance.yahoo.com",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/john-ternuss-first-iphone-launch-125000640.html",
-        "published_at": "2026-09-19T12:50:00Z",
-        "relevance_score": 0.82,
-        "sentiment": -0.14,
+        "title": "AAPL Looks 17.3% Overvalued on GF Value™ as Insider Selling Persists",
+        "provider": "gurufocus.com",
+        "url": "https://www.gurufocus.com/news/9089254/aapl-looks-173-overvalued-on-gf-value-as-insider-selling-persists",
+        "published_at": "2026-09-20T16:25:40Z",
+        "relevance_score": 0.9,
+        "sentiment": 0.57,
         "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Directly about Apple: analyst price-target cut tied to a reported memory/processor supply crunch coming out of the iPhone 18 Pro/Pro Max debut under new CEO John Ternus. This is likely to influence near-term sentiment and trading (analyst revisions and investor reaction to supply/feature concerns), so it's materially relevant for the next 1–10 trading days."
-      },
-      {
-        "title": "Coinbase Asks CFTC for 24/5 US Single-Stock Perpetuals",
-        "provider": "financefeeds.com",
-        "url": "https://financefeeds.com/coinbase-files-with-cftc-to-launch-single-stock-perpetual-futures-in-us/",
-        "published_at": "2026-09-19T14:07:21Z",
-        "relevance_score": 0.47,
-        "sentiment": 0.35,
-        "doc_type": "sector_macro",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 1.0,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Coinbase seeking to list 24/5 single-stock perpetuals is market-structure/crypto-derivatives news that could, if approved, affect liquidity and trading patterns across US equities. However, it is indirect to Apple and unlikely to affect AAPL price materially within the next 1–10 trading days absent immediate regulatory action or a specific AAPL-related launch by Coinbase."
+        "company_relevance": 0.6,
+        "materiality": 0.35,
+        "llm_confidence": 0.6,
+        "llm_impact_score": -1.0,
+        "llm_reason": "Directly about AAPL valuation and insider selling; company-specific but largely commentary/valuation rehash. Could modestly hurt near-term sentiment but unlikely to trigger major price moves absent new hard facts."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
-      "status": "watch",
-      "headline": "Support needs watching",
+      "status": "risk",
+      "headline": "Support needs review",
       "summary": "Trend quality is still positive, but the tape is no longer decisive.",
       "alerts": [
         "Trend quality is still positive, but the tape is no longer decisive.",
-        "The news layer is still thin, so conviction should stay measured."
+        "Recent news tone leaned negative with enough confidence to matter.",
+        "This is the top ranked stock, but it is below the normal release bar."
       ],
       "signals": [
         {
@@ -156,9 +146,9 @@
         },
         {
           "label": "News",
-          "state": "watch",
-          "value": "0.89 sentiment • 2 articles",
-          "detail": "The news layer is still thin, so conviction should stay measured."
+          "state": "risk",
+          "value": "0.31 sentiment • 3 articles",
+          "detail": "Recent news tone leaned negative with enough confidence to matter."
         },
         {
           "label": "Macro",
@@ -168,14 +158,14 @@
         },
         {
           "label": "Margin",
-          "state": "positive",
-          "value": "+0.063 score • +0.166 conf",
-          "detail": "The pick cleared the release thresholds with room to spare."
+          "state": "risk",
+          "value": "-0.123 score • +0.022 conf",
+          "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector 0 trading days",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -200,7 +190,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-19",
+          "date": "2026-09-20",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -219,7 +209,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-19",
+          "date": "2026-09-20",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -239,7 +229,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-19",
+          "date": "2026-09-20",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -260,7 +250,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-09-19",
+          "date": "2026-09-20",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -280,7 +270,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-09-19",
+          "date": "2026-09-20",
           "status": "healthy",
           "used": 3,
           "limit": 800,

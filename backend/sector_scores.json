@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-14T17:28:54Z",
-  "last_updated": "2026-09-14",
+  "generated_at": "2026-09-21T17:30:28Z",
+  "last_updated": "2026-09-21",
   "lookback_days": 3,
-  "article_count": 1,
+  "article_count": 2,
   "source_count": 1,
   "llm_model": "gpt-5-mini",
-  "summary": "Baazeem Trading Co. signed a one‑year SAR 4M distribution contract with Gulf Catering Food Factory in Saudi Arabia. This is a small, company‑level commercial contract with limited short‑term market implications beyond marginal revenue and distribution benefits for the firm; it is unlikely to move tracked sectors or symbols over the next 1–15 trading days.",
+  "summary": "Two short-horizon items: (1) Archer-Daniels-Midland (ADM) announced entry into voluntary carbon dioxide removal via carbon capture while facing mixed signals on dividend sustainability—company-specific ESG/capex and cash-flow considerations with limited near-term market spillover. (2) A GuruFocus valuation note flags AMZN as modestly overvalued amid rising geopolitical/AI tensions after public comments—could weigh on investor sentiment for Amazon and related tech/cloud exposure over the next week.",
   "sector_scores": {
     "communication_services": {
       "sector": "communication_services",
@@ -22,14 +22,34 @@
     "consumer_discretionary": {
       "sector": "consumer_discretionary",
       "display_name": "Consumer Discretionary",
-      "score": 0.5,
-      "confidence": 0.2,
-      "direction": "neutral",
-      "last_updated": null,
+      "score": 0.41,
+      "confidence": 0.46,
+      "direction": "bearish",
+      "last_updated": "2026-09-21",
       "reasons": [
-        "No strong recent sector catalyst was found for Consumer Discretionary."
+        "The note highlights AMZN as modestly overvalued while referencing heightened geopolitical and AI-related commentary (public comments from political leadership). Transmission: increased geopolitical/tech-policy scrutiny and investor concern can trigger short-term sentiment-driven selling (valuation repricing) and raise the perceived regulatory risk for AI/cloud-exposed firms (reducing near-term demand expectations). Primary short-horizon loser is AMZN (direct company-focused valuation and sentiment hit); broader pressure may extend to tech and consumer-discretionary peers exposed to AI/cloud revenue in the near term, though effects beyond AMZN are uncertain and dependent on follow-up news or policy moves."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "AMZN Looks 2.9% Overvalued on GF Value™ as Market Prices in Strong Future Growth",
+          "feed": "marketaux",
+          "provider": "gurufocus.com",
+          "url": "https://www.gurufocus.com/news/9090226/amzn-looks-29-overvalued-on-gf-value-as-market-prices-in-strong-future-growth",
+          "published_at": "2026-09-21T17:25:28Z",
+          "impact": "negative",
+          "weight": 0.166,
+          "event_type": "valuation repricing amid geopolitical / AI commentary",
+          "transmission_channel": "geopolitics; regulation; investment_sentiment; demand_shift_for_cloud_and_AI_services",
+          "affected_inputs": [
+            "regulation",
+            "investment_sentiment",
+            "valuation",
+            "demand_for_cloud_and_ai_services"
+          ],
+          "horizon": "1w",
+          "reason": "The note highlights AMZN as modestly overvalued while referencing heightened geopolitical and AI-related commentary (public comments from political leadership). Transmission: increased geopolitical/tech-policy scrutiny and investor concern can trigger short-term sentiment-driven selling (valuation repricing) and raise the perceived regulatory risk for AI/cloud-exposed firms (reducing near-term demand expectations). Primary short-horizon loser is AMZN (direct company-focused valuation and sentiment hit); broader pressure may extend to tech and consumer-discretionary peers exposed to AI/cloud revenue in the near term, though effects beyond AMZN are uncertain and dependent on follow-up news or policy moves."
+        }
+      ]
     },
     "consumer_staples": {
       "sector": "consumer_staples",
@@ -94,14 +114,34 @@
     "technology": {
       "sector": "technology",
       "display_name": "Technology",
-      "score": 0.5,
-      "confidence": 0.2,
-      "direction": "neutral",
-      "last_updated": null,
+      "score": 0.41,
+      "confidence": 0.46,
+      "direction": "bearish",
+      "last_updated": "2026-09-21",
       "reasons": [
-        "No strong recent sector catalyst was found for Technology."
+        "The note highlights AMZN as modestly overvalued while referencing heightened geopolitical and AI-related commentary (public comments from political leadership). Transmission: increased geopolitical/tech-policy scrutiny and investor concern can trigger short-term sentiment-driven selling (valuation repricing) and raise the perceived regulatory risk for AI/cloud-exposed firms (reducing near-term demand expectations). Primary short-horizon loser is AMZN (direct company-focused valuation and sentiment hit); broader pressure may extend to tech and consumer-discretionary peers exposed to AI/cloud revenue in the near term, though effects beyond AMZN are uncertain and dependent on follow-up news or policy moves."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "AMZN Looks 2.9% Overvalued on GF Value™ as Market Prices in Strong Future Growth",
+          "feed": "marketaux",
+          "provider": "gurufocus.com",
+          "url": "https://www.gurufocus.com/news/9090226/amzn-looks-29-overvalued-on-gf-value-as-market-prices-in-strong-future-growth",
+          "published_at": "2026-09-21T17:25:28Z",
+          "impact": "negative",
+          "weight": 0.166,
+          "event_type": "valuation repricing amid geopolitical / AI commentary",
+          "transmission_channel": "geopolitics; regulation; investment_sentiment; demand_shift_for_cloud_and_AI_services",
+          "affected_inputs": [
+            "regulation",
+            "investment_sentiment",
+            "valuation",
+            "demand_for_cloud_and_ai_services"
+          ],
+          "horizon": "1w",
+          "reason": "The note highlights AMZN as modestly overvalued while referencing heightened geopolitical and AI-related commentary (public comments from political leadership). Transmission: increased geopolitical/tech-policy scrutiny and investor concern can trigger short-term sentiment-driven selling (valuation repricing) and raise the perceived regulatory risk for AI/cloud-exposed firms (reducing near-term demand expectations). Primary short-horizon loser is AMZN (direct company-focused valuation and sentiment hit); broader pressure may extend to tech and consumer-discretionary peers exposed to AI/cloud revenue in the near term, though effects beyond AMZN are uncertain and dependent on follow-up news or policy moves."
+        }
+      ]
     }
   },
   "symbol_scores": {
@@ -148,14 +188,34 @@
       "symbol": "AMZN",
       "company_name": "Amazon.com Inc.",
       "sector": "consumer_discretionary",
-      "score": 0.5,
-      "confidence": 0.2,
-      "direction": "neutral",
-      "last_updated": null,
+      "score": 0.3,
+      "confidence": 0.54,
+      "direction": "bearish",
+      "last_updated": "2026-09-21",
       "reasons": [
-        "No strong recent world-news catalyst clearly favored Amazon.com Inc.."
+        "The note highlights AMZN as modestly overvalued while referencing heightened geopolitical and AI-related commentary (public comments from political leadership). Transmission: increased geopolitical/tech-policy scrutiny and investor concern can trigger short-term sentiment-driven selling (valuation repricing) and raise the perceived regulatory risk for AI/cloud-exposed firms (reducing near-term demand expectations). Primary short-horizon loser is AMZN (direct company-focused valuation and sentiment hit); broader pressure may extend to tech and consumer-discretionary peers exposed to AI/cloud revenue in the near term, though effects beyond AMZN are uncertain and dependent on follow-up news or policy moves."
       ],
-      "supporting_articles": []
+      "supporting_articles": [
+        {
+          "title": "AMZN Looks 2.9% Overvalued on GF Value™ as Market Prices in Strong Future Growth",
+          "feed": "marketaux",
+          "provider": "gurufocus.com",
+          "url": "https://www.gurufocus.com/news/9090226/amzn-looks-29-overvalued-on-gf-value-as-market-prices-in-strong-future-growth",
+          "published_at": "2026-09-21T17:25:28Z",
+          "impact": "negative",
+          "weight": 0.331,
+          "event_type": "valuation repricing amid geopolitical / AI commentary",
+          "transmission_channel": "geopolitics; regulation; investment_sentiment; demand_shift_for_cloud_and_AI_services",
+          "affected_inputs": [
+            "regulation",
+            "investment_sentiment",
+            "valuation",
+            "demand_for_cloud_and_ai_services"
+          ],
+          "horizon": "1w",
+          "reason": "The note highlights AMZN as modestly overvalued while referencing heightened geopolitical and AI-related commentary (public comments from political leadership). Transmission: increased geopolitical/tech-policy scrutiny and investor concern can trigger short-term sentiment-driven selling (valuation repricing) and raise the perceived regulatory risk for AI/cloud-exposed firms (reducing near-term demand expectations). Primary short-horizon loser is AMZN (direct company-focused valuation and sentiment hit); broader pressure may extend to tech and consumer-discretionary peers exposed to AI/cloud revenue in the near term, though effects beyond AMZN are uncertain and dependent on follow-up news or policy moves."
+        }
+      ]
     },
     "TSLA": {
       "symbol": "TSLA",
@@ -746,28 +806,58 @@
   "events": [
     {
       "article_id": "news_1",
-      "title": "Baazeem inks SAR 4M contract with GCFF",
+      "title": "ADM Looks 37.9% Overvalued on GF Value™ as Dividend Sustainability Faces Mixed Signals",
       "feed": "marketaux",
-      "provider": "argaam.com",
-      "url": "https://www.argaam.com/en/article/articledetail/id/1936294",
-      "published_at": "2026-09-14T17:21:00Z",
-      "event_type": "company_contract",
-      "transmission_channel": "distribution/logistics -> revenue (small demand/revenue shock); limited local market share uplift",
+      "provider": "gurufocus.com",
+      "url": "https://www.gurufocus.com/news/9090227/adm-looks-379-overvalued-on-gf-value-as-dividend-sustainability-faces-mixed-signals",
+      "published_at": "2026-09-21T17:26:04Z",
+      "event_type": "corporate ESG initiative & dividend sustainability concerns",
+      "transmission_channel": "capex; regulation; investment_sentiment",
       "affected_inputs": [
-        "revenue",
-        "domestic_distribution",
-        "sales_volume",
-        "logistics"
+        "capex",
+        "regulation",
+        "dividend/earnings",
+        "investor_sentiment"
       ],
-      "horizon": "unclear",
-      "market_relevance": 0.05,
-      "magnitude": 0.01,
-      "confidence": 0.3,
+      "horizon": "1-2w",
+      "market_relevance": 1.0,
+      "magnitude": 1.0,
+      "confidence": 1.0,
       "beneficiary_sectors": [],
       "hurt_sectors": [],
       "beneficiary_symbols": [],
       "hurt_symbols": [],
-      "reason": "A SAR 4M one‑year distribution deal is a small, company‑specific commercial win that should marginally increase Baazeem's near‑term revenue and bolster its local distribution footprint. The impact is highly localized and too small to materially affect the tracked broad sectors or listed symbols over the next 1–15 trading days, so no beneficiaries or losers among the allowed sectors/symbols are identified."
+      "reason": "ADM's move into voluntary carbon dioxide removal implies future capex and potential partnerships with carbon-capture technology and services providers (first-order: demand for industrial/engineering services). Mixed signals on dividend sustainability raise company-specific cash-flow and sentiment concerns that can pressure ADM shares in the near term (first-order: investor sentiment/valuation). Effects are primarily idiosyncratic to ADM and the nascent carbon-removal market; limited, uncertain spillover to tracked sectors/symbols within the 1–15 trading-day window."
+    },
+    {
+      "article_id": "news_2",
+      "title": "AMZN Looks 2.9% Overvalued on GF Value™ as Market Prices in Strong Future Growth",
+      "feed": "marketaux",
+      "provider": "gurufocus.com",
+      "url": "https://www.gurufocus.com/news/9090226/amzn-looks-29-overvalued-on-gf-value-as-market-prices-in-strong-future-growth",
+      "published_at": "2026-09-21T17:25:28Z",
+      "event_type": "valuation repricing amid geopolitical / AI commentary",
+      "transmission_channel": "geopolitics; regulation; investment_sentiment; demand_shift_for_cloud_and_AI_services",
+      "affected_inputs": [
+        "regulation",
+        "investment_sentiment",
+        "valuation",
+        "demand_for_cloud_and_ai_services"
+      ],
+      "horizon": "1w",
+      "market_relevance": 1.0,
+      "magnitude": 1.0,
+      "confidence": 1.0,
+      "beneficiary_sectors": [],
+      "hurt_sectors": [
+        "consumer_discretionary",
+        "technology"
+      ],
+      "beneficiary_symbols": [],
+      "hurt_symbols": [
+        "AMZN"
+      ],
+      "reason": "The note highlights AMZN as modestly overvalued while referencing heightened geopolitical and AI-related commentary (public comments from political leadership). Transmission: increased geopolitical/tech-policy scrutiny and investor concern can trigger short-term sentiment-driven selling (valuation repricing) and raise the perceived regulatory risk for AI/cloud-exposed firms (reducing near-term demand expectations). Primary short-horizon loser is AMZN (direct company-focused valuation and sentiment hit); broader pressure may extend to tech and consumer-discretionary peers exposed to AI/cloud revenue in the near term, though effects beyond AMZN are uncertain and dependent on follow-up news or policy moves."
     }
   ],
   "data_quality": {
@@ -779,63 +869,63 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 7,
+        "used": 6,
         "limit": 25,
-        "remaining": 18,
+        "remaining": 19,
         "categories": {
-          "company_news": 6,
+          "company_news": 5,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-14",
+          "date": "2026-09-21",
           "status": "healthy",
-          "used": 7,
+          "used": 6,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 19,
           "categories": {
-            "company_news": 6,
+            "company_news": 5,
             "global_news": 1
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 12,
+        "used": 14,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 11,
+          "company_news": 13,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-14",
+          "date": "2026-09-21",
           "status": "tracking_only",
-          "used": 12,
+          "used": 14,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 11,
+            "company_news": 13,
             "global_news": 1
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 53,
+        "used": 50,
         "limit": 100,
-        "remaining": 47,
+        "remaining": 50,
         "categories": {
-          "company_news": 52,
+          "company_news": 49,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-14",
+          "date": "2026-09-21",
           "status": "healthy",
-          "used": 53,
+          "used": 50,
           "limit": 100,
-          "remaining": 47,
+          "remaining": 50,
           "categories": {
-            "company_news": 52,
+            "company_news": 49,
             "global_news": 1
           }
         }
@@ -850,7 +940,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-09-14",
+          "date": "2026-09-21",
           "status": "tracking_only",
           "used": 50,
           "limit": null,

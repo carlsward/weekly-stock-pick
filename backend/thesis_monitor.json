@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-09-25T19:43:30Z",
+  "generated_at": "2026-09-26T18:52:48Z",
   "data_as_of": "2026-09-25",
-  "expected_next_refresh_at": "2026-09-26T19:43:30Z",
-  "stale_after": "2026-09-27T07:43:30Z",
+  "expected_next_refresh_at": "2026-09-27T18:52:48Z",
+  "stale_after": "2026-09-28T06:52:48Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W39",
@@ -24,101 +24,98 @@
     "company_name": "Intel Corporation",
     "sector": "technology",
     "risk": "high",
-    "model_score": 0.1858,
-    "confidence_score": 0.66,
+    "model_score": 0.2135,
+    "confidence_score": 0.69,
     "confidence_label": "medium",
     "price_as_of": "2026-09-25",
     "news_as_of": "2026-09-25",
     "macro_as_of": null,
-    "sector_as_of": "2026-09-25",
+    "sector_as_of": null,
     "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.1359,
-      "momentum_20d": 0.3396,
-      "daily_volatility": 0.0441,
-      "downside_volatility": 0.032,
+      "momentum_5d": 0.1326,
+      "momentum_20d": 0.3356,
+      "daily_volatility": 0.0443,
+      "downside_volatility": 0.0323,
       "max_drawdown_20d": 0.0857,
       "positive_day_ratio_10d": 0.5,
-      "price_vs_20d_average": 0.1798,
-      "volume_trend_5d": 0.0056,
-      "market_relative_5d": 0.1219,
-      "market_relative_20d": 0.3393,
-      "sector_relative_5d": 0.0972,
-      "sector_relative_20d": 0.2871,
-      "news_sentiment": 0.76,
+      "price_vs_20d_average": 0.1766,
+      "volume_trend_5d": 0.1956,
+      "market_relative_5d": 0.1184,
+      "market_relative_20d": 0.3352,
+      "sector_relative_5d": 0.0941,
+      "sector_relative_20d": 0.2835,
+      "news_sentiment": 0.81,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.5221,
-      "news_confidence": 0.65,
+      "calibrated_news_sentiment": 0.6154,
+      "news_confidence": 0.75,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.55,
-      "sector_confidence": 0.36,
-      "effective_article_count": 0.19,
-      "source_count": 3,
-      "average_relevance": 0.9,
+      "sector_sentiment": 0.5,
+      "sector_confidence": 0.2,
+      "effective_article_count": 0.47,
+      "source_count": 2,
+      "average_relevance": 0.78,
       "technical_training_ic": -0.0073,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1742,
+      "momentum": 0.1818,
       "short_momentum": 0.066,
       "medium_momentum": 0.054,
       "trend_quality": 0.018,
-      "volume_confirmation": 0.0002,
+      "volume_confirmation": 0.0078,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
       "volatility_penalty": -0.0737,
       "daily_volatility_penalty": -0.036,
       "downside_penalty": -0.027,
       "drawdown_penalty": -0.0107,
-      "news_adjustment": 0.0722,
+      "news_adjustment": 0.092,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0033,
-      "signal_alignment": 0.0098,
-      "technical_total": 0.1005,
+      "sector_adjustment": 0.0,
+      "signal_alignment": 0.0134,
+      "technical_total": 0.1081,
       "trend_strength": 0.138,
       "relative_strength": 0.036,
-      "participation": 0.0002,
+      "participation": 0.0078,
       "risk_control": -0.0737,
       "block_weight_news": 0.172,
       "block_weight_macro": 0.0943,
       "block_weight_sector": 0.0937,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 0.65,
+      "sector_dedup_penalty": 1.0,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.3333,
+      "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.1858
+      "total": 0.2135
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 13.6% and 20-day momentum is 34.0%.",
-      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 18.0% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 13.3% and 20-day momentum is 33.6%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 17.7% relative to its 20-day average.",
       "Risk profile shows daily volatility around 4.4%, downside volatility near 3.2%, and a recent max drawdown of 8.6%.",
-      "Volume confirmation is 0.6% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 12.2% versus SPY over 5 days and 9.7% versus the sector ETF.",
-      "News signal is bullish with score 0.76, confidence 0.65, and 0.2 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.76, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.2 effective weighted articles, average relevance 0.90, average source quality 0.77, confidence 0.65.",
-      "Broad market news leaned neutral for the Technology sector with score 0.55 and confidence 0.36.",
-      "Xi and Trump discussions signaled a calmer phase in US-China relations with continued talks on tariffs and trade. Reduced trade friction and a lower geopolitical risk premium can ease semiconductor supply-chain concerns and tariff-related cost risks—supportive for the technology sector in the short run via improved sentiment, lower probability of disruptive export controls, and potentially smoother component flows. Effects are sector-level and not uniquely tied to the tracked symbol (INTC), so no single-company call is assigned.",
-      "Sector overlay was trimmed by 35% because it overlaps with company or macro themes.",
+      "Volume confirmation is 19.6% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is 11.8% versus SPY over 5 days and 9.4% versus the sector ETF.",
+      "News signal is bullish with score 0.81, confidence 0.75, and 0.5 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.81, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.5 effective weighted articles, average relevance 0.78, average source quality 0.77, confidence 0.75.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.01).",
-      "Overall model score is 0.186 with medium confidence."
+      "Overall model score is 0.214 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "The Robotics Advantage Is Now About The Ecosystem",
-        "provider": "forbes.com",
-        "url": "https://www.forbes.com/councils/forbestechcouncil/2026/09/24/the-robotics-advantage-is-now-about-the-ecosystem/",
-        "published_at": "2026-09-24T12:30:00Z",
-        "relevance_score": 0.7,
-        "sentiment": -0.74,
-        "doc_type": "sector_macro",
+        "title": "iShares PHLX SOX Semiconductor (SOXX) Sells Intel and AMD on Sept. 23",
+        "provider": "gurufocus.com",
+        "url": "https://www.gurufocus.com/news/9097863/ishares-phlx-sox-semiconductor-soxx-sells-intel-and-amd-on-sept-23",
+        "published_at": "2026-09-25T21:46:24Z",
+        "relevance_score": 0.76,
+        "sentiment": 0.68,
+        "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.7,
+        "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Forbes piece discusses the robotics ecosystem and quotes an Intel executive. This is sector/contextual commentary relevant to Intel's strategy but contains no near-term material developments tied to INTC's short-term performance."
+        "llm_reason": "SOXX reported a $1.72B net outflow and sold positions including Intel on Sept. 23. Large sector ETF sales that explicitly include INTC are directly relevant and can create near-term downward pressure as index/sector flows force liquidations; impact is meaningful for the 1–10 day horizon but magnitude depends on Intel's weight and other offsetting flows."
       },
       {
         "title": "Intel Corporation (INTC) Is a Trending Stock: Facts to Know Before Betting on It",
@@ -130,9 +127,9 @@
         "doc_type": "opinion_or_listicle",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.7,
+        "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Zacks trending-stock write-up is a retail-oriented, summary-style piece with no new material disclosures (earnings, guidance, M&A, product launches). Could modestly affect short-term retail interest/flow but unlikely to materially move INTC on a 1–10 day horizon."
+        "llm_reason": "Zacks trending/‘facts to know’ piece appears to be a retail-oriented overview/opinion article with no new material company news (earnings, guidance, M&A, product, or regulatory developments). May affect retail interest modestly but unlikely to move INTC materially over the next 1–10 trading days."
       }
     ],
     "macro_evidence": [],
@@ -149,7 +146,7 @@
         {
           "label": "Momentum",
           "state": "watch",
-          "value": "13.6% 5D • 34.0% 20D",
+          "value": "13.3% 5D • 33.6% 20D",
           "detail": "Trend quality is still positive, but the tape is no longer decisive."
         },
         {
@@ -161,7 +158,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.76 sentiment • 3 articles",
+          "value": "0.81 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -173,13 +170,13 @@
         {
           "label": "Margin",
           "state": "positive",
-          "value": "+0.066 score • +0.107 conf",
+          "value": "+0.094 score • +0.136 conf",
           "detail": "The pick cleared the release thresholds with room to spare."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector 0 trading days",
+          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -204,7 +201,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-25",
+          "date": "2026-09-26",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -223,7 +220,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-25",
+          "date": "2026-09-26",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -243,7 +240,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-25",
+          "date": "2026-09-26",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -264,7 +261,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-09-25",
+          "date": "2026-09-26",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -284,7 +281,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-09-25",
+          "date": "2026-09-26",
           "status": "healthy",
           "used": 3,
           "limit": 800,

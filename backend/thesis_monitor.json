@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-09-28T19:07:52Z",
+  "generated_at": "2026-09-28T21:28:42Z",
   "data_as_of": "2026-09-28",
-  "expected_next_refresh_at": "2026-09-29T19:07:52Z",
-  "stale_after": "2026-09-30T07:07:52Z",
+  "expected_next_refresh_at": "2026-09-29T21:28:42Z",
+  "stale_after": "2026-09-30T09:28:42Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W40",
@@ -24,115 +24,135 @@
     "company_name": "Meta Platforms Inc.",
     "sector": "communication_services",
     "risk": "high",
-    "model_score": 0.1405,
+    "model_score": 0.1367,
     "confidence_score": 0.7,
     "confidence_label": "medium",
     "price_as_of": "2026-09-28",
     "news_as_of": "2026-09-28",
-    "macro_as_of": null,
-    "sector_as_of": null,
+    "macro_as_of": "2026-09-28",
+    "sector_as_of": "2026-09-28",
     "article_count": 3,
     "metrics": {
-      "momentum_5d": -0.0287,
-      "momentum_20d": 0.2456,
-      "daily_volatility": 0.0341,
-      "downside_volatility": 0.0234,
-      "max_drawdown_20d": 0.0741,
+      "momentum_5d": -0.0346,
+      "momentum_20d": 0.2381,
+      "daily_volatility": 0.0345,
+      "downside_volatility": 0.025,
+      "max_drawdown_20d": 0.0797,
       "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0779,
-      "volume_trend_5d": 0.1191,
-      "market_relative_5d": -0.0197,
-      "market_relative_20d": 0.2504,
-      "sector_relative_5d": 0.0018,
-      "sector_relative_20d": 0.265,
-      "news_sentiment": 0.86,
+      "price_vs_20d_average": 0.0717,
+      "volume_trend_5d": 0.3666,
+      "market_relative_5d": -0.0246,
+      "market_relative_20d": 0.2441,
+      "sector_relative_5d": -0.0036,
+      "sector_relative_20d": 0.2582,
+      "news_sentiment": 0.84,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.7294,
-      "news_confidence": 0.78,
-      "macro_sentiment": 0.5,
-      "macro_confidence": 0.2,
-      "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 1.12,
+      "calibrated_news_sentiment": 0.6804,
+      "news_confidence": 0.75,
+      "macro_sentiment": 0.53,
+      "macro_confidence": 0.38,
+      "sector_sentiment": 0.53,
+      "sector_confidence": 0.36,
+      "effective_article_count": 0.88,
       "source_count": 2,
-      "average_relevance": 0.86,
+      "average_relevance": 0.91,
       "technical_training_ic": -0.0101,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0934,
-      "short_momentum": -0.0237,
+      "momentum": 0.0971,
+      "short_momentum": -0.0285,
       "medium_momentum": 0.054,
-      "trend_quality": 0.0223,
-      "volume_confirmation": 0.0048,
+      "trend_quality": 0.0209,
+      "volume_confirmation": 0.0147,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
-      "volatility_penalty": -0.0652,
-      "daily_volatility_penalty": -0.0306,
-      "downside_penalty": -0.0253,
-      "drawdown_penalty": -0.0093,
-      "news_adjustment": 0.1082,
-      "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0,
-      "signal_alignment": 0.0041,
-      "technical_total": 0.0282,
-      "trend_strength": 0.0526,
+      "volatility_penalty": -0.068,
+      "daily_volatility_penalty": -0.0311,
+      "downside_penalty": -0.027,
+      "drawdown_penalty": -0.01,
+      "news_adjustment": 0.1003,
+      "macro_adjustment": 0.0022,
+      "sector_adjustment": 0.0012,
+      "signal_alignment": 0.004,
+      "technical_total": 0.0291,
+      "trend_strength": 0.0464,
       "relative_strength": 0.036,
-      "participation": 0.0048,
-      "risk_control": -0.0652,
+      "participation": 0.0147,
+      "risk_control": -0.068,
       "block_weight_news": 0.1709,
       "block_weight_macro": 0.0935,
       "block_weight_sector": 0.0955,
-      "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
-      "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
-      "macro_sector_overlap": 0.0,
-      "total": 0.1405
+      "macro_dedup_penalty": 0.7,
+      "sector_dedup_penalty": 0.4,
+      "news_macro_overlap": 0.1667,
+      "news_sector_overlap": 0.1667,
+      "macro_sector_overlap": 1.0,
+      "total": 0.1367
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is -2.9% and 20-day momentum is 24.6%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 7.8% relative to its 20-day average.",
-      "Risk profile shows daily volatility around 3.4%, downside volatility near 2.3%, and a recent max drawdown of 7.4%.",
-      "Volume confirmation is 11.9% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is -2.0% versus SPY over 5 days and 0.2% versus the sector ETF.",
-      "News signal is bullish with score 0.86, confidence 0.78, and 1.1 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.86, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 1.1 effective weighted articles, average relevance 0.86, average source quality 0.79, confidence 0.78.",
+      "Price trend remains constructive: 5-day momentum is -3.5% and 20-day momentum is 23.8%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 7.2% relative to its 20-day average.",
+      "Risk profile shows daily volatility around 3.5%, downside volatility near 2.5%, and a recent max drawdown of 8.0%.",
+      "Volume confirmation is 36.7% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is -2.5% versus SPY over 5 days and -0.4% versus the sector ETF.",
+      "News signal is bullish with score 0.84, confidence 0.75, and 0.9 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.84, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 2 sources, 0.9 effective weighted articles, average relevance 0.91, average source quality 0.80, confidence 0.75.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.01).",
-      "Overall model score is 0.140 with medium confidence."
+      "Overall model score is 0.137 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Meta Platforms Launches Meta Enterprise Platform, Pressures SaaS Stocks Including META",
-        "provider": "gurufocus.com",
-        "url": "https://www.gurufocus.com/news/9100028/meta-platforms-launches-meta-enterprise-platform-pressures-saas-stocks-including-meta",
-        "published_at": "2026-09-28T15:55:29Z",
+        "title": "Meta Platforms: Muse Could Become The Next Metaverse (NASDAQ:META)",
+        "provider": "seekingalpha.com",
+        "url": "https://seekingalpha.com/article/4950357-meta-platforms-muse-could-become-the-next-metaverse",
+        "published_at": "2026-09-28T19:14:36Z",
         "relevance_score": 1.0,
-        "sentiment": 0.15,
+        "sentiment": 0.22,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.75,
+        "llm_confidence": 0.7,
         "llm_impact_score": 1.0,
-        "llm_reason": "Direct Meta product announcement (Meta Enterprise Platform). Duplicate/summary-style coverage reduces incremental new information; could be modestly positive for Meta’s enterprise/AI narrative but market reaction may be muted or mixed given broader tech dynamics and possible concerns about competition or execution."
+        "llm_reason": "Seeking Alpha issues a Sell-focused write-up centered on Meta's Muse app and AI rally risks. This is direct company commentary on a recent product release and rating change; it is company-specific and could modestly affect sentiment short-term, though it's an opinion piece and market reaction will depend on wider investor reception and any corroborating data."
       },
       {
-        "title": "Meta Platforms (META) Launches Meta Enterprise Platform to Expand AI Solutions for Businesses",
-        "provider": "gurufocus.com",
-        "url": "https://www.gurufocus.com/news/9099955/meta-platforms-meta-launches-meta-enterprise-platform-to-expand-ai-solutions-for-businesses",
-        "published_at": "2026-09-28T15:00:59Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.25,
-        "doc_type": "company_specific",
+        "title": "Zuckerberg, Amodei among tech executives set to meet Trump Tuesday",
+        "provider": "cnbc.com",
+        "url": "https://www.cnbc.com/2026/09/28/trump-ai-tech-lunch.html",
+        "published_at": "2026-09-28T20:00:45Z",
+        "relevance_score": 0.86,
+        "sentiment": 0.0,
+        "doc_type": "sector_macro",
         "company_relevance": 1.0,
         "materiality": 1.0,
-        "llm_confidence": 0.75,
+        "llm_confidence": 0.8,
         "llm_impact_score": 1.0,
-        "llm_reason": "Same Meta Enterprise Platform launch reported again; content emphasizes expansion of AI solutions for businesses. This is company-specific and potentially beneficial to revenue/strategic positioning; near-term price impact likely moderate as investors assess commercial prospects and margins."
+        "llm_reason": "CNBC reports Zuckerberg will attend a high-profile meeting on AI safety with policymakers and other tech CEOs. This is sector-level/regulatory news that affects Meta's operating/regulatory environment and could influence sentiment or volatility, but the immediate directional impact is uncertain until any policy outcomes or concrete statements emerge."
       }
     ],
-    "macro_evidence": [],
+    "macro_evidence": [
+      {
+        "title": "AMD acquiring Fei-Fei Li's World Labs AI firm in deal worth $8.2 billion",
+        "feed": "marketaux",
+        "provider": "cnbc.com",
+        "url": "https://www.cnbc.com/2026/09/28/amd-fei-fei-li-world-labs.html",
+        "published_at": "2026-09-28T20:21:56Z",
+        "impact": "positive",
+        "weight": 0.05,
+        "event_type": "acquisition / M&A",
+        "transmission_channel": "AI compute supply competition → pricing / availability of AI accelerators; capex and input-costs for large AI service providers",
+        "affected_inputs": [
+          "AI accelerator supply (GPU/AI chips)",
+          "pricing power of AI chip vendors",
+          "capex requirements for hyperscalers and large AI services",
+          "competitive landscape for AI infrastructure"
+        ],
+        "horizon": "1w",
+        "reason": "AMD's $8.2B acquisition of World Labs strengthens AMD's AI stack and signals more supply-side competition in AI accelerators. Near-term (days-to-weeks) this can be read as a potential easing of pricing pressure or improved supply/alternatives to dominant suppliers, which reduces infrastructure cost risk for large AI-driven communication-services firms. First-order: increased competition could moderate AI-chip pricing or expand supply. Second-order: lower or more predictable AI compute costs reduce capex/operating-pressure for large AI consumers (e.g., Meta), modestly supporting their margin/cost outlook in the next week. Impact is modest because execution and real supply effects take longer; market reaction would be driven by sentiment about AI supply competition."
+      }
+    ],
     "thesis_monitor": {
       "status": "risk",
       "headline": "Support needs review",
@@ -140,37 +160,37 @@
       "alerts": [
         "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
         "Volatility expanded enough to weaken the setup.",
-        "The pick still qualified, but the margin of safety is not wide."
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
           "label": "Momentum",
           "state": "risk",
-          "value": "-2.9% 5D • 24.6% 20D",
+          "value": "-3.5% 5D • 23.8% 20D",
           "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
         },
         {
           "label": "Volatility",
           "state": "risk",
-          "value": "3.4% daily • 7.4% drawdown",
+          "value": "3.5% daily • 8.0% drawdown",
           "detail": "Volatility expanded enough to weaken the setup."
         },
         {
           "label": "News",
-          "state": "positive",
-          "value": "0.86 sentiment • 3 articles",
-          "detail": "Recent news flow is supportive and diversified enough to back the setup."
+          "state": "watch",
+          "value": "0.84 sentiment • 3 articles",
+          "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
           "state": "positive",
-          "value": "0.50 overlay • 0.20 conf",
+          "value": "0.53 overlay • 0.38 conf",
           "detail": "No strong world-news headwind is currently working against the setup."
         },
         {
           "label": "Margin",
           "state": "watch",
-          "value": "+0.020 score • +0.152 conf",
+          "value": "+0.017 score • +0.153 conf",
           "detail": "The pick still qualified, but the margin of safety is not wide."
         },
         {
@@ -194,104 +214,102 @@
     "provider_status": {
       "alpha_vantage": {
         "status": "healthy",
-        "used": 7,
+        "used": 1,
         "limit": 25,
-        "remaining": 18,
+        "remaining": 24,
         "categories": {
-          "company_news": 5,
-          "global_news": 2
+          "global_news": 1
         },
         "daily": {
           "date": "2026-09-28",
           "status": "healthy",
-          "used": 7,
+          "used": 8,
           "limit": 25,
-          "remaining": 18,
+          "remaining": 17,
           "categories": {
             "company_news": 5,
-            "global_news": 2
+            "global_news": 3
           }
         }
       },
       "gdelt": {
         "status": "degraded",
-        "used": 10,
+        "used": 1,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 8,
-          "global_news": 2
+          "global_news": 1
         },
         "daily": {
           "date": "2026-09-28",
           "status": "tracking_only",
-          "used": 10,
+          "used": 11,
           "limit": null,
           "remaining": null,
           "categories": {
             "company_news": 8,
-            "global_news": 2
+            "global_news": 3
           }
         }
       },
       "marketaux": {
         "status": "healthy",
-        "used": 52,
+        "used": 2,
         "limit": 100,
-        "remaining": 48,
+        "remaining": 98,
         "categories": {
-          "company_news": 50,
-          "global_news": 2
+          "company_news": 1,
+          "global_news": 1
         },
         "daily": {
           "date": "2026-09-28",
           "status": "healthy",
-          "used": 52,
+          "used": 54,
           "limit": 100,
-          "remaining": 48,
+          "remaining": 46,
           "categories": {
-            "company_news": 50,
-            "global_news": 2
+            "company_news": 51,
+            "global_news": 3
           }
         }
       },
       "sec_edgar": {
         "status": "tracking_only",
-        "used": 52,
+        "used": 2,
         "limit": null,
         "remaining": null,
         "categories": {
-          "ticker_map": 2,
-          "submissions": 50
+          "ticker_map": 1,
+          "submissions": 1
         },
         "daily": {
           "date": "2026-09-28",
           "status": "tracking_only",
-          "used": 52,
+          "used": 54,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 2,
-            "submissions": 50
+            "ticker_map": 3,
+            "submissions": 51
           }
         }
       },
       "twelvedata": {
         "status": "healthy",
-        "used": 61,
+        "used": 3,
         "limit": 800,
-        "remaining": 739,
+        "remaining": 797,
         "categories": {
-          "price": 61
+          "price": 3
         },
         "daily": {
           "date": "2026-09-28",
           "status": "healthy",
-          "used": 61,
+          "used": 64,
           "limit": 800,
-          "remaining": 739,
+          "remaining": 736,
           "categories": {
-            "price": 61
+            "price": 64
           }
         }
       }

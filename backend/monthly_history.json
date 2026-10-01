@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "model_version": "v3.4-monthly",
-  "generated_at": "2026-09-01T16:29:04Z",
+  "generated_at": "2026-10-01T18:19:06Z",
   "entries": [
     {
       "month_id": "2026-03",
@@ -968,6 +968,8 @@
       "confidence_label": "medium",
       "data_as_of": "2026-09-01",
       "model_version": "v3.4-monthly",
+      "realized_20d_return": -0.0304,
+      "realized_20d_excess_return": -0.0314,
       "top_candidates": [
         {
           "rank": 1,
@@ -1185,6 +1187,242 @@
         "news_sector_overlap": 0.0,
         "macro_sector_overlap": 0.0
       }
+    },
+    {
+      "month_id": "2026-10",
+      "month_start": "2026-10-01",
+      "month_end": "2026-10-31",
+      "rebalance_date": "2026-10-01",
+      "month_label": "October 2026",
+      "logged_at": "2026-10-01T18:19:06Z",
+      "status": "picked",
+      "status_reason": "ACN cleared the monthly release thresholds for Accenture plc with a score of 0.320 and high confidence.",
+      "symbol": "ACN",
+      "company_name": "Accenture plc",
+      "sector": "technology",
+      "risk": "high",
+      "model_score": 0.3198,
+      "confidence_score": 0.81,
+      "confidence_label": "high",
+      "data_as_of": "2026-10-01",
+      "model_version": "v3.4-monthly",
+      "top_candidates": [
+        {
+          "rank": 1,
+          "symbol": "ACN",
+          "company_name": "Accenture plc",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.3198,
+          "confidence_score": 0.81,
+          "confidence_label": "high",
+          "price_as_of": "2026-10-01",
+          "news_as_of": "2026-10-01",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": 0.1742,
+            "news_adjustment": 0.1194,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0262
+          }
+        },
+        {
+          "rank": 2,
+          "symbol": "META",
+          "company_name": "Meta Platforms Inc.",
+          "sector": "communication_services",
+          "risk": "high",
+          "model_score": 0.2663,
+          "confidence_score": 0.7,
+          "confidence_label": "medium",
+          "price_as_of": "2026-10-01",
+          "news_as_of": "2026-10-01",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1587,
+            "news_adjustment": 0.0897,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0179
+          }
+        },
+        {
+          "rank": 3,
+          "symbol": "INTC",
+          "company_name": "Intel Corporation",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.2254,
+          "confidence_score": 0.69,
+          "confidence_label": "medium",
+          "price_as_of": "2026-10-01",
+          "news_as_of": "2026-10-01",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.1045,
+            "news_adjustment": 0.1068,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0141
+          }
+        },
+        {
+          "rank": 4,
+          "symbol": "MSFT",
+          "company_name": "Microsoft Corporation",
+          "sector": "technology",
+          "risk": "medium",
+          "model_score": 0.1591,
+          "confidence_score": 0.69,
+          "confidence_label": "medium",
+          "price_as_of": "2026-10-01",
+          "news_as_of": "2026-10-01",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": 0.0588,
+            "news_adjustment": 0.0934,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0069
+          }
+        },
+        {
+          "rank": 5,
+          "symbol": "QCOM",
+          "company_name": "QUALCOMM Incorporated",
+          "sector": "technology",
+          "risk": "high",
+          "model_score": 0.1154,
+          "confidence_score": 0.57,
+          "confidence_label": "medium",
+          "price_as_of": "2026-10-01",
+          "news_as_of": "2026-09-29",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": 0.045,
+            "news_adjustment": 0.0666,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": 0.0038
+          }
+        },
+        {
+          "rank": 6,
+          "symbol": "DHR",
+          "company_name": "Danaher Corporation",
+          "sector": "healthcare",
+          "risk": "medium",
+          "model_score": 0.0541,
+          "confidence_score": 0.58,
+          "confidence_label": "medium",
+          "price_as_of": "2026-10-01",
+          "news_as_of": "2026-10-01",
+          "article_count": 3,
+          "diagnostics": {
+            "technical_total": -0.0227,
+            "news_adjustment": 0.079,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0023
+          }
+        },
+        {
+          "rank": 7,
+          "symbol": "PFE",
+          "company_name": "Pfizer Inc.",
+          "sector": "healthcare",
+          "risk": "low",
+          "model_score": 0.0433,
+          "confidence_score": 0.6,
+          "confidence_label": "medium",
+          "price_as_of": "2026-10-01",
+          "news_as_of": "2026-10-01",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": -0.0376,
+            "news_adjustment": 0.0849,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.004
+          }
+        },
+        {
+          "rank": 8,
+          "symbol": "NVDA",
+          "company_name": "NVIDIA Corporation",
+          "sector": "technology",
+          "risk": "medium",
+          "model_score": 0.0403,
+          "confidence_score": 0.58,
+          "confidence_label": "medium",
+          "price_as_of": "2026-10-01",
+          "news_as_of": "2026-10-01",
+          "article_count": 2,
+          "diagnostics": {
+            "technical_total": -0.0222,
+            "news_adjustment": 0.0643,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0018
+          }
+        },
+        {
+          "rank": 9,
+          "symbol": "TXN",
+          "company_name": "Texas Instruments Incorporated",
+          "sector": "technology",
+          "risk": "medium",
+          "model_score": 0.0294,
+          "confidence_score": 0.55,
+          "confidence_label": "low",
+          "price_as_of": "2026-10-01",
+          "news_as_of": "2026-09-22",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": -0.0063,
+            "news_adjustment": 0.0359,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0003
+          }
+        },
+        {
+          "rank": 10,
+          "symbol": "COST",
+          "company_name": "Costco Wholesale Corporation",
+          "sector": "consumer_staples",
+          "risk": "medium",
+          "model_score": 0.0217,
+          "confidence_score": 0.62,
+          "confidence_label": "medium",
+          "price_as_of": "2026-10-01",
+          "news_as_of": "2026-09-29",
+          "article_count": 4,
+          "diagnostics": {
+            "technical_total": -0.0592,
+            "news_adjustment": 0.0874,
+            "macro_adjustment": 0.0,
+            "sector_adjustment": 0.0,
+            "signal_alignment": -0.0065
+          }
+        }
+      ],
+      "diagnostics": {
+        "technical_total": 0.1742,
+        "news_adjustment": 0.1194,
+        "macro_adjustment": 0.0,
+        "sector_adjustment": 0.0,
+        "news_signal_input": 0.819,
+        "macro_signal_input": 0.0,
+        "sector_signal_input": 0.0,
+        "technical_training_rows": 882,
+        "technical_training_ic": 0.065,
+        "block_training_rows": 2,
+        "news_macro_overlap": 0.0,
+        "news_sector_overlap": 0.0,
+        "macro_sector_overlap": 0.0
+      }
     }
   ],
   "data_quality": {
@@ -1207,7 +1445,7 @@
           "global_news": 3
         },
         "daily": {
-          "date": "2026-09-01",
+          "date": "2026-10-01",
           "status": "healthy",
           "used": 4,
           "limit": 25,
@@ -1220,21 +1458,21 @@
       },
       "gdelt": {
         "status": "tracking_only",
-        "used": 4,
+        "used": 5,
         "limit": null,
         "remaining": null,
         "categories": {
-          "company_news": 3,
+          "company_news": 4,
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-01",
+          "date": "2026-10-01",
           "status": "tracking_only",
-          "used": 4,
+          "used": 5,
           "limit": null,
           "remaining": null,
           "categories": {
-            "company_news": 3,
+            "company_news": 4,
             "global_news": 1
           }
         }
@@ -1249,7 +1487,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-01",
+          "date": "2026-10-01",
           "status": "healthy",
           "used": 50,
           "limit": 100,
@@ -1270,7 +1508,7 @@
           "submissions": 49
         },
         "daily": {
-          "date": "2026-09-01",
+          "date": "2026-10-01",
           "status": "tracking_only",
           "used": 50,
           "limit": null,
@@ -1290,7 +1528,7 @@
           "price": 58
         },
         "daily": {
-          "date": "2026-09-01",
+          "date": "2026-10-01",
           "status": "healthy",
           "used": 58,
           "limit": 800,

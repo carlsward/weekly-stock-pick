@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-09-30T20:25:05Z",
-  "data_as_of": "2026-09-30",
-  "expected_next_refresh_at": "2026-10-01T20:25:05Z",
-  "stale_after": "2026-10-02T08:25:05Z",
+  "generated_at": "2026-10-01T20:42:05Z",
+  "data_as_of": "2026-10-01",
+  "expected_next_refresh_at": "2026-10-02T20:42:05Z",
+  "stale_after": "2026-10-03T08:42:05Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W40",
@@ -24,98 +24,112 @@
     "company_name": "Meta Platforms Inc.",
     "sector": "communication_services",
     "risk": "high",
-    "model_score": 0.0346,
-    "confidence_score": 0.55,
+    "model_score": 0.0611,
+    "confidence_score": 0.6,
     "confidence_label": "medium",
-    "price_as_of": "2026-09-30",
-    "news_as_of": "2026-09-30",
+    "price_as_of": "2026-10-01",
+    "news_as_of": "2026-10-01",
     "macro_as_of": null,
-    "sector_as_of": null,
-    "article_count": 3,
+    "sector_as_of": "2026-10-01",
+    "article_count": 2,
     "metrics": {
-      "momentum_5d": -0.0254,
-      "momentum_20d": 0.2536,
-      "daily_volatility": 0.0352,
+      "momentum_5d": -0.0667,
+      "momentum_20d": 0.2241,
+      "daily_volatility": 0.0351,
       "downside_volatility": 0.0257,
       "max_drawdown_20d": 0.0797,
       "positive_day_ratio_10d": 0.5,
-      "price_vs_20d_average": 0.0612,
-      "volume_trend_5d": -0.0417,
-      "market_relative_5d": -0.0184,
-      "market_relative_20d": 0.2526,
-      "sector_relative_5d": -0.0113,
-      "sector_relative_20d": 0.2527,
-      "news_sentiment": 0.58,
-      "raw_news_sentiment": 0.3249,
-      "calibrated_news_sentiment": 0.1658,
-      "news_confidence": 0.62,
+      "price_vs_20d_average": 0.0517,
+      "volume_trend_5d": -0.215,
+      "market_relative_5d": -0.0629,
+      "market_relative_20d": 0.2259,
+      "sector_relative_5d": -0.0325,
+      "sector_relative_20d": 0.2515,
+      "news_sentiment": 0.81,
+      "raw_news_sentiment": 1.0,
+      "calibrated_news_sentiment": 0.6264,
+      "news_confidence": 0.76,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 0.19,
-      "source_count": 3,
-      "average_relevance": 0.85,
+      "sector_sentiment": 0.54,
+      "sector_confidence": 0.34,
+      "effective_article_count": 0.31,
+      "source_count": 2,
+      "average_relevance": 0.82,
       "technical_training_ic": -0.0101,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.0812,
-      "short_momentum": -0.0209,
+      "momentum": 0.038,
+      "short_momentum": -0.0551,
       "medium_momentum": 0.054,
-      "trend_quality": 0.0138,
-      "volume_confirmation": -0.0017,
+      "trend_quality": 0.0116,
+      "volume_confirmation": -0.0086,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
       "volatility_penalty": -0.0686,
       "daily_volatility_penalty": -0.0316,
       "downside_penalty": -0.027,
       "drawdown_penalty": -0.01,
-      "news_adjustment": 0.0216,
+      "news_adjustment": 0.092,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0,
-      "signal_alignment": 0.0004,
-      "technical_total": 0.0126,
-      "trend_strength": 0.0469,
+      "sector_adjustment": 0.0035,
+      "signal_alignment": -0.0038,
+      "technical_total": -0.0306,
+      "trend_strength": 0.0106,
       "relative_strength": 0.036,
-      "participation": -0.0017,
+      "participation": -0.0086,
       "risk_control": -0.0686,
       "block_weight_news": 0.1709,
       "block_weight_macro": 0.0935,
       "block_weight_sector": 0.0955,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
+      "sector_dedup_penalty": 0.88,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
+      "news_sector_overlap": 0.2,
       "macro_sector_overlap": 0.0,
-      "total": 0.0346
+      "total": 0.0611
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is -2.5% and 20-day momentum is 25.4%.",
-      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 6.1% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is -6.7% and 20-day momentum is 22.4%.",
+      "Trend quality is supported by 50% positive sessions over the last 10 trading days and the price sitting 5.2% relative to its 20-day average.",
       "Risk profile shows daily volatility around 3.5%, downside volatility near 2.6%, and a recent max drawdown of 8.0%.",
-      "Volume confirmation is -4.2% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is -1.8% versus SPY over 5 days and -1.1% versus the sector ETF.",
-      "News signal is neutral with score 0.58, confidence 0.62, and 0.2 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow neutral at 0.58, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.2 effective weighted articles, average relevance 0.85, average source quality 0.79, confidence 0.62.",
+      "Volume confirmation is -21.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is -6.3% versus SPY over 5 days and -3.3% versus the sector ETF.",
+      "News signal is bullish with score 0.81, confidence 0.76, and 0.3 weighted articles across 2 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.81, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 2 articles across 2 sources, 0.3 effective weighted articles, average relevance 0.82, average source quality 0.75, confidence 0.76.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.01).",
-      "Overall model score is 0.035 with medium confidence."
+      "Overall model score is 0.061 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Meta: From Hated To Loved, The Story Did Not Change (NASDAQ:META)",
+        "title": "BofA Highlights AI Disruption Risks for Consumer Software; META Positioned for Enterprise Growth",
+        "provider": "gurufocus.com",
+        "url": "https://www.gurufocus.com/news/9106136/bofa-highlights-ai-disruption-risks-for-consumer-software-meta-positioned-for-enterprise-growth",
+        "published_at": "2026-10-01T17:58:42Z",
+        "relevance_score": 0.67,
+        "sentiment": 0.0,
+        "doc_type": "sector_macro",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Summary of a Bank of America analyst note on agentic AI disruption and Meta’s Muse positioning. This is sector-level analysis that references Meta specifically; analyst commentary can affect short-term sentiment if it includes updates to estimates/ratings (none shown in the republished excerpt). Moderate potential to influence trading in the short window, but not clearly material absent disclosed rating or model changes."
+      },
+      {
+        "title": "Meta Is Undervalued With Muse As A Catalyst (NASDAQ:META)",
         "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4951085-meta-from-hated-to-loved-the-story-did-not-change",
-        "published_at": "2026-09-30T16:44:22Z",
+        "url": "https://seekingalpha.com/article/4951308-meta-is-undervalued-with-muse-as-a-catalyst",
+        "published_at": "2026-10-01T12:08:46Z",
         "relevance_score": 0.97,
-        "sentiment": 0.4,
-        "doc_type": "company_specific",
-        "company_relevance": 0.85,
-        "materiality": 0.5,
-        "llm_confidence": 0.6,
-        "llm_impact_score": 0.35,
-        "llm_reason": "Company-focused analysis on Meta's new AI launches (Muse) and monetization clarity. Although it's an editorial, the content is directly about product/monetization developments that can influence short-term sentiment and trading."
+        "sentiment": -0.39,
+        "doc_type": "opinion_or_listicle",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Seeking Alpha promotional/idea piece arguing Meta is undervalued with Muse as a catalyst. It's a long-term investment thesis and repackages positive arguments rather than breaking news or new estimates, so low likelihood of causing a meaningful price move over the next 1–10 trading days beyond modest retail sentiment influence."
       }
     ],
     "macro_evidence": [],
@@ -132,7 +146,7 @@
         {
           "label": "Momentum",
           "state": "risk",
-          "value": "-2.5% 5D • 25.4% 20D",
+          "value": "-6.7% 5D • 22.4% 20D",
           "detail": "Short-term momentum rolled over and the trend is no longer confirming the thesis."
         },
         {
@@ -144,7 +158,7 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.58 sentiment • 3 articles",
+          "value": "0.81 sentiment • 2 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
@@ -156,7 +170,7 @@
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.085 score • +0.005 conf",
+          "value": "-0.059 score • +0.053 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
@@ -187,13 +201,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-30",
+          "date": "2026-10-01",
           "status": "healthy",
-          "used": 1,
+          "used": 5,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 20,
           "categories": {
-            "global_news": 1
+            "company_news": 1,
+            "global_news": 4
           }
         }
       },
@@ -206,13 +221,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-30",
+          "date": "2026-10-01",
           "status": "tracking_only",
-          "used": 1,
+          "used": 6,
           "limit": null,
           "remaining": null,
           "categories": {
-            "global_news": 1
+            "company_news": 4,
+            "global_news": 2
           }
         }
       },
@@ -226,14 +242,14 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-09-30",
+          "date": "2026-10-01",
           "status": "healthy",
-          "used": 2,
+          "used": 52,
           "limit": 100,
-          "remaining": 98,
+          "remaining": 48,
           "categories": {
-            "company_news": 1,
-            "global_news": 1
+            "company_news": 50,
+            "global_news": 2
           }
         }
       },
@@ -247,14 +263,14 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-09-30",
+          "date": "2026-10-01",
           "status": "tracking_only",
-          "used": 2,
+          "used": 52,
           "limit": null,
           "remaining": null,
           "categories": {
-            "ticker_map": 1,
-            "submissions": 1
+            "ticker_map": 2,
+            "submissions": 50
           }
         }
       },
@@ -267,13 +283,13 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-09-30",
+          "date": "2026-10-01",
           "status": "healthy",
-          "used": 3,
+          "used": 61,
           "limit": 800,
-          "remaining": 797,
+          "remaining": 739,
           "categories": {
-            "price": 3
+            "price": 61
           }
         }
       }

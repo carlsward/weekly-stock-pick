@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-10-02T20:15:07Z",
-  "data_as_of": "2026-10-02",
-  "expected_next_refresh_at": "2026-10-03T20:15:07Z",
-  "stale_after": "2026-10-04T08:15:07Z",
+  "generated_at": "2026-10-03T18:54:21Z",
+  "data_as_of": "2026-10-03",
+  "expected_next_refresh_at": "2026-10-04T18:54:21Z",
+  "stale_after": "2026-10-05T06:54:21Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W40",
@@ -24,129 +24,121 @@
     "company_name": "Meta Platforms Inc.",
     "sector": "communication_services",
     "risk": "high",
-    "model_score": 0.1289,
-    "confidence_score": 0.71,
+    "model_score": 0.0549,
+    "confidence_score": 0.63,
     "confidence_label": "medium",
     "price_as_of": "2026-10-02",
     "news_as_of": "2026-10-02",
-    "macro_as_of": null,
-    "sector_as_of": null,
+    "macro_as_of": "2026-10-03",
+    "sector_as_of": "2026-10-03",
     "article_count": 3,
     "metrics": {
       "momentum_5d": -0.0314,
-      "momentum_20d": 0.1923,
+      "momentum_20d": 0.1922,
       "daily_volatility": 0.0349,
       "downside_volatility": 0.0257,
       "max_drawdown_20d": 0.0797,
       "positive_day_ratio_10d": 0.6,
       "price_vs_20d_average": 0.0462,
-      "volume_trend_5d": -0.3344,
+      "volume_trend_5d": -0.2349,
       "market_relative_5d": -0.0292,
       "market_relative_20d": 0.1977,
-      "sector_relative_5d": -0.0081,
-      "sector_relative_20d": 0.2254,
-      "news_sentiment": 0.92,
-      "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.8315,
-      "news_confidence": 0.85,
-      "macro_sentiment": 0.5,
-      "macro_confidence": 0.2,
-      "sector_sentiment": 0.5,
-      "sector_confidence": 0.2,
-      "effective_article_count": 1.52,
-      "source_count": 2,
-      "average_relevance": 0.93,
+      "sector_relative_5d": -0.0082,
+      "sector_relative_20d": 0.2253,
+      "news_sentiment": 0.67,
+      "raw_news_sentiment": 0.5454,
+      "calibrated_news_sentiment": 0.3338,
+      "news_confidence": 0.72,
+      "macro_sentiment": 0.54,
+      "macro_confidence": 0.35,
+      "sector_sentiment": 0.53,
+      "sector_confidence": 0.33,
+      "effective_article_count": 0.31,
+      "source_count": 3,
+      "average_relevance": 0.69,
       "technical_training_ic": -0.0101,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.066,
+      "momentum": 0.0699,
       "short_momentum": -0.0259,
       "medium_momentum": 0.054,
       "trend_quality": 0.0152,
-      "volume_confirmation": -0.0134,
+      "volume_confirmation": -0.0094,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
       "volatility_penalty": -0.0683,
       "daily_volatility_penalty": -0.0314,
       "downside_penalty": -0.027,
       "drawdown_penalty": -0.01,
-      "news_adjustment": 0.1317,
-      "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0,
-      "signal_alignment": -0.0004,
-      "technical_total": -0.0024,
+      "news_adjustment": 0.0492,
+      "macro_adjustment": 0.0029,
+      "sector_adjustment": 0.0012,
+      "signal_alignment": 0.0001,
+      "technical_total": 0.0016,
       "trend_strength": 0.0433,
       "relative_strength": 0.036,
-      "participation": -0.0134,
+      "participation": -0.0094,
       "risk_control": -0.0683,
       "block_weight_news": 0.1709,
       "block_weight_macro": 0.0935,
       "block_weight_sector": 0.0955,
-      "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 1.0,
-      "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.0,
-      "macro_sector_overlap": 0.0,
-      "total": 0.1289
+      "macro_dedup_penalty": 0.7,
+      "sector_dedup_penalty": 0.4,
+      "news_macro_overlap": 0.3333,
+      "news_sector_overlap": 0.3333,
+      "macro_sector_overlap": 1.0,
+      "total": 0.0549
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is -3.1% and 20-day momentum is 19.2%.",
       "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 4.6% relative to its 20-day average.",
       "Risk profile shows daily volatility around 3.5%, downside volatility near 2.6%, and a recent max drawdown of 8.0%.",
-      "Volume confirmation is -33.4% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Volume confirmation is -23.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is -2.9% versus SPY over 5 days and -0.8% versus the sector ETF.",
-      "News signal is bullish with score 0.92, confidence 0.85, and 1.5 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.92, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 1.5 effective weighted articles, average relevance 0.93, average source quality 0.75, confidence 0.85.",
+      "News signal is bullish with score 0.67, confidence 0.72, and 0.3 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.67, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.3 effective weighted articles, average relevance 0.69, average source quality 0.75, confidence 0.72.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.01).",
-      "Overall model score is 0.129 with medium confidence."
+      "Overall model score is 0.055 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Meta Platforms' New AI App Muse Tops App Store Downloads, META Stock Shows 14.8% Undervaluation",
-        "provider": "gurufocus.com",
-        "url": "https://www.gurufocus.com/news/9107712/meta-platforms-new-ai-app-muse-tops-app-store-downloads-meta-stock-shows-148-undervaluation",
-        "published_at": "2026-10-02T15:58:35Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.06,
-        "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 0.8,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Reports Muse is rapidly #1 in App Store downloads and claims a 14.8% undervaluation. Positive user-adoption news is directly relevant to Meta’s growth narrative and can boost short-term sentiment/retail flows, though provider is a secondary source and valuation claim is an analyst overlay rather than company disclosure."
-      },
-      {
-        "title": "Meta's Muse Is the No. 1 App--but Wall Street Has a Big Question",
-        "provider": "gurufocus.com",
-        "url": "https://www.gurufocus.com/news/9107753/metas-muse-is-the-no-1-appbut-wall-street-has-a-big-question",
-        "published_at": "2026-10-02T17:15:49Z",
-        "relevance_score": 0.92,
-        "sentiment": 0.71,
-        "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 0.75,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Also highlights Muse reaching #1 but flags Wall Street questions (likely around monetization, costs, and sustainability). Confirms strong adoption but raises concerns that limit how bullish this winsome metric is for short-term fundamentals; useful corroborative company-specific context."
-      },
-      {
-        "title": "Meta: Muse Is Priced In, And That Is The Problem (NASDAQ:META)",
+        "title": "Meta: Muse Is Nice, But Not Enough (NASDAQ:META)",
         "provider": "seekingalpha.com",
-        "url": "https://seekingalpha.com/article/4951667-meta-muse-is-priced-in-and-that-is-the-problem",
-        "published_at": "2026-10-02T18:51:51Z",
-        "relevance_score": 0.86,
-        "sentiment": -0.4,
+        "url": "https://seekingalpha.com/article/4951685-meta-muse-is-nice-but-not-enough",
+        "published_at": "2026-10-02T20:55:17Z",
+        "relevance_score": 0.97,
+        "sentiment": 0.42,
         "doc_type": "company_specific",
-        "company_relevance": 1.0,
-        "materiality": 1.0,
-        "llm_confidence": 0.7,
-        "llm_impact_score": 1.0,
-        "llm_reason": "Analyst/opinion piece arguing Muse’s upside is largely priced in and that higher capex will pressure earnings. This is directly relevant and could dampen near-term upside; however it is interpretive (rating/opinion) rather than a primary news event, so impact is moderate but noteworthy."
+        "company_relevance": 0.9,
+        "materiality": 0.7,
+        "llm_confidence": 0.85,
+        "llm_impact_score": 0.6,
+        "llm_reason": "Direct, company-specific analysis of Meta calling out higher AI capex and legal risks that could pressure FY26 FCF and investor sentiment. That is material to Meta’s near-term fundamentals and could influence stock performance/sentiment over the next 1–10 trading days."
       }
     ],
-    "macro_evidence": [],
+    "macro_evidence": [
+      {
+        "title": "Anthropic said to target mega-IPO before thanksgiving holiday",
+        "feed": "marketaux",
+        "provider": "thehindubusinessline.com",
+        "url": "https://www.thehindubusinessline.com/markets/anthropic-said-to-target-mega-ipo-before-thanksgiving-holiday/article71541622.ece",
+        "published_at": "2026-10-03T16:42:35Z",
+        "impact": "positive",
+        "weight": 0.059,
+        "event_type": "IPO / equity issuance",
+        "transmission_channel": "demand_shift / investor_sentiment / capital_flows / competitive landscape",
+        "affected_inputs": [
+          "investor_sentiment",
+          "capital_allocation",
+          "AI hype/attention",
+          "competition for AI talent and customers"
+        ],
+        "horizon": "1-2w",
+        "reason": "A prospective Anthropic mega-IPO (reported mid-November target) is likely to refocus investor attention and capital on AI-related assets in the near term. That can boost sentiment and demand for large, AI-exposed communication services firms, supporting short-term risk appetite and multiple expansion for names like Meta. Secondary effects: increased visibility for AI could spur short-term incremental flows into big tech; downside risk from longer-term competition for AI talent/customers is more structural and less likely to be the dominant market reaction over the next 1–15 trading days."
+      }
+    ],
     "thesis_monitor": {
       "status": "risk",
       "headline": "Support needs review",
@@ -154,7 +146,7 @@
       "alerts": [
         "Short-term momentum rolled over and the trend is no longer confirming the thesis.",
         "Volatility expanded enough to weaken the setup.",
-        "The pick only barely cleared the release bar."
+        "The news layer is still thin, so conviction should stay measured."
       ],
       "signals": [
         {
@@ -171,21 +163,21 @@
         },
         {
           "label": "News",
-          "state": "positive",
-          "value": "0.92 sentiment • 3 articles",
-          "detail": "Recent news flow is supportive and diversified enough to back the setup."
+          "state": "watch",
+          "value": "0.67 sentiment • 3 articles",
+          "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
           "state": "positive",
-          "value": "0.50 overlay • 0.20 conf",
+          "value": "0.54 overlay • 0.35 conf",
           "detail": "No strong world-news headwind is currently working against the setup."
         },
         {
           "label": "Margin",
           "state": "risk",
-          "value": "+0.009 score • +0.164 conf",
-          "detail": "The pick only barely cleared the release bar."
+          "value": "-0.065 score • +0.076 conf",
+          "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
@@ -215,7 +207,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-10-02",
+          "date": "2026-10-03",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -234,7 +226,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-10-02",
+          "date": "2026-10-03",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -254,7 +246,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-10-02",
+          "date": "2026-10-03",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -275,7 +267,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-10-02",
+          "date": "2026-10-03",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -295,7 +287,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-10-02",
+          "date": "2026-10-03",
           "status": "healthy",
           "used": 3,
           "limit": 800,

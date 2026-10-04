@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-10-03T18:54:21Z",
-  "data_as_of": "2026-10-03",
-  "expected_next_refresh_at": "2026-10-04T18:54:21Z",
-  "stale_after": "2026-10-05T06:54:21Z",
+  "generated_at": "2026-10-04T18:53:59Z",
+  "data_as_of": "2026-10-04",
+  "expected_next_refresh_at": "2026-10-05T18:53:59Z",
+  "stale_after": "2026-10-06T06:53:59Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W40",
@@ -24,13 +24,13 @@
     "company_name": "Meta Platforms Inc.",
     "sector": "communication_services",
     "risk": "high",
-    "model_score": 0.0549,
-    "confidence_score": 0.63,
-    "confidence_label": "medium",
+    "model_score": -0.0197,
+    "confidence_score": 0.54,
+    "confidence_label": "low",
     "price_as_of": "2026-10-02",
     "news_as_of": "2026-10-02",
-    "macro_as_of": "2026-10-03",
-    "sector_as_of": "2026-10-03",
+    "macro_as_of": "2026-10-04",
+    "sector_as_of": "2026-10-04",
     "article_count": 3,
     "metrics": {
       "momentum_5d": -0.0314,
@@ -45,15 +45,15 @@
       "market_relative_20d": 0.1977,
       "sector_relative_5d": -0.0082,
       "sector_relative_20d": 0.2253,
-      "news_sentiment": 0.67,
-      "raw_news_sentiment": 0.5454,
-      "calibrated_news_sentiment": 0.3338,
-      "news_confidence": 0.72,
-      "macro_sentiment": 0.54,
-      "macro_confidence": 0.35,
-      "sector_sentiment": 0.53,
-      "sector_confidence": 0.33,
-      "effective_article_count": 0.31,
+      "news_sentiment": 0.45,
+      "raw_news_sentiment": -0.3263,
+      "calibrated_news_sentiment": -0.0973,
+      "news_confidence": 0.36,
+      "macro_sentiment": 0.41,
+      "macro_confidence": 0.41,
+      "sector_sentiment": 0.42,
+      "sector_confidence": 0.38,
+      "effective_article_count": 0.16,
       "source_count": 3,
       "average_relevance": 0.69,
       "technical_training_ic": -0.0101,
@@ -71,10 +71,10 @@
       "daily_volatility_penalty": -0.0314,
       "downside_penalty": -0.027,
       "drawdown_penalty": -0.01,
-      "news_adjustment": 0.0492,
-      "macro_adjustment": 0.0029,
-      "sector_adjustment": 0.0012,
-      "signal_alignment": 0.0001,
+      "news_adjustment": -0.011,
+      "macro_adjustment": -0.0069,
+      "sector_adjustment": -0.0034,
+      "signal_alignment": 0.0,
       "technical_total": 0.0016,
       "trend_strength": 0.0433,
       "relative_strength": 0.036,
@@ -85,10 +85,10 @@
       "block_weight_sector": 0.0955,
       "macro_dedup_penalty": 0.7,
       "sector_dedup_penalty": 0.4,
-      "news_macro_overlap": 0.3333,
-      "news_sector_overlap": 0.3333,
+      "news_macro_overlap": 0.2857,
+      "news_sector_overlap": 0.2857,
       "macro_sector_overlap": 1.0,
-      "total": 0.0549
+      "total": -0.0197
     },
     "reasons": [
       "Price trend remains constructive: 5-day momentum is -3.1% and 20-day momentum is 19.2%.",
@@ -96,11 +96,17 @@
       "Risk profile shows daily volatility around 3.5%, downside volatility near 2.6%, and a recent max drawdown of 8.0%.",
       "Volume confirmation is -23.5% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
       "Relative strength is -2.9% versus SPY over 5 days and -0.8% versus the sector ETF.",
-      "News signal is bullish with score 0.67, confidence 0.72, and 0.3 weighted articles across 3 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.67, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 3 sources, 0.3 effective weighted articles, average relevance 0.69, average source quality 0.75, confidence 0.72.",
+      "News signal is neutral with score 0.45, confidence 0.36, and 0.2 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow neutral at 0.41, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 0.2 effective weighted articles, average relevance 0.69, average source quality 0.75, confidence 0.66.",
+      "Broad world news leaned bearish for Meta Platforms Inc. with score 0.41 and confidence 0.41.",
+      "Rising oil prices and geopolitical risk cited in the article increase inflationary pressure in India, prompting calls for RBI rate hikes. Higher rates raise discount rates and can reduce ad spending and consumer demand in the near term, putting pressure on advertising-dependent communication services firms. Meta has significant revenue exposure to India; near-term ad-revenue and valuation pressure is the primary transmission channel.",
+      "Macro impact was trimmed by 30% because it overlaps with company-news themes.",
+      "Broad market news leaned bearish for the Communication Services sector with score 0.42 and confidence 0.38.",
+      "Rising oil prices and geopolitical risk cited in the article increase inflationary pressure in India, prompting calls for RBI rate hikes. Higher rates raise discount rates and can reduce ad spending and consumer demand in the near term, putting pressure on advertising-dependent communication services firms. Meta has significant revenue exposure to India; near-term ad-revenue and valuation pressure is the primary transmission channel.",
+      "Sector overlay was trimmed by 60% because it overlaps with company or macro themes.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.01).",
-      "Overall model score is 0.055 with medium confidence."
+      "Overall model score is -0.020 with low confidence."
     ],
     "news_evidence": [
       {
@@ -112,31 +118,33 @@
         "sentiment": 0.42,
         "doc_type": "company_specific",
         "company_relevance": 0.9,
-        "materiality": 0.7,
-        "llm_confidence": 0.85,
-        "llm_impact_score": 0.6,
-        "llm_reason": "Direct, company-specific analysis of Meta calling out higher AI capex and legal risks that could pressure FY26 FCF and investor sentiment. That is material to Meta’s near-term fundamentals and could influence stock performance/sentiment over the next 1–10 trading days."
+        "materiality": 0.6,
+        "llm_confidence": 0.7,
+        "llm_impact_score": -0.35,
+        "llm_reason": "Company-focused Seeking Alpha piece flags increased AI capex and legal risks that could pressure FY26 free cash flow — directly relevant to Meta’s fundamentals and near-term sentiment, though it is an opinion/update rather than breaking primary news."
       }
     ],
     "macro_evidence": [
       {
-        "title": "Anthropic said to target mega-IPO before thanksgiving holiday",
+        "title": "RBI MPC must raise rates as inflation and external risks rise",
         "feed": "marketaux",
-        "provider": "thehindubusinessline.com",
-        "url": "https://www.thehindubusinessline.com/markets/anthropic-said-to-target-mega-ipo-before-thanksgiving-holiday/article71541622.ece",
-        "published_at": "2026-10-03T16:42:35Z",
-        "impact": "positive",
-        "weight": 0.059,
-        "event_type": "IPO / equity issuance",
-        "transmission_channel": "demand_shift / investor_sentiment / capital_flows / competitive landscape",
+        "provider": "economictimes.indiatimes.com",
+        "url": "https://economictimes.indiatimes.com/opinion/et-commentary/rbi-mpc-must-raise-rates-as-inflation-and-external-risks-rise/articleshow/134678738.cms",
+        "published_at": "2026-10-04T17:37:38Z",
+        "impact": "negative",
+        "weight": 0.148,
+        "event_type": "Monetary policy / interest rate expectations",
+        "transmission_channel": "Higher policy rates -> higher borrowing costs and discount rates; pass-through to inflation and FX -> weaker consumer/ad demand and valuation compression for growth/advertising-dependent firms",
         "affected_inputs": [
-          "investor_sentiment",
-          "capital_allocation",
-          "AI hype/attention",
-          "competition for AI talent and customers"
+          "interest rates",
+          "inflation",
+          "oil prices",
+          "FX",
+          "consumer demand",
+          "equity valuations"
         ],
         "horizon": "1-2w",
-        "reason": "A prospective Anthropic mega-IPO (reported mid-November target) is likely to refocus investor attention and capital on AI-related assets in the near term. That can boost sentiment and demand for large, AI-exposed communication services firms, supporting short-term risk appetite and multiple expansion for names like Meta. Secondary effects: increased visibility for AI could spur short-term incremental flows into big tech; downside risk from longer-term competition for AI talent/customers is more structural and less likely to be the dominant market reaction over the next 1–15 trading days."
+        "reason": "Rising oil prices and geopolitical risk cited in the article increase inflationary pressure in India, prompting calls for RBI rate hikes. Higher rates raise discount rates and can reduce ad spending and consumer demand in the near term, putting pressure on advertising-dependent communication services firms. Meta has significant revenue exposure to India; near-term ad-revenue and valuation pressure is the primary transmission channel."
       }
     ],
     "thesis_monitor": {
@@ -164,25 +172,25 @@
         {
           "label": "News",
           "state": "watch",
-          "value": "0.67 sentiment • 3 articles",
+          "value": "0.45 sentiment • 3 articles",
           "detail": "The news layer is still thin, so conviction should stay measured."
         },
         {
           "label": "Macro",
-          "state": "positive",
-          "value": "0.54 overlay • 0.35 conf",
-          "detail": "No strong world-news headwind is currently working against the setup."
+          "state": "watch",
+          "value": "0.41 overlay • 0.41 conf",
+          "detail": "The global overlay is present, but not yet decisive."
         },
         {
           "label": "Margin",
           "state": "risk",
-          "value": "-0.065 score • +0.076 conf",
+          "value": "-0.140 score • -0.005 conf",
           "detail": "This is the top ranked stock, but it is below the normal release bar."
         },
         {
           "label": "Freshness",
           "state": "positive",
-          "value": "price 0 trading days • news 0 trading days • macro neutral • sector neutral",
+          "value": "price 0 trading days • news 0 trading days • macro 0 trading days • sector 0 trading days",
           "detail": "Price, company-news, and active overlay timestamps are recent enough for a live monitoring read."
         }
       ]
@@ -207,7 +215,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-10-03",
+          "date": "2026-10-04",
           "status": "healthy",
           "used": 1,
           "limit": 25,
@@ -226,7 +234,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-10-03",
+          "date": "2026-10-04",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -246,7 +254,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-10-03",
+          "date": "2026-10-04",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -267,7 +275,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-10-03",
+          "date": "2026-10-04",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -287,7 +295,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-10-03",
+          "date": "2026-10-04",
           "status": "healthy",
           "used": 3,
           "limit": 800,

@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "model_version": "v3.4",
-  "generated_at": "2026-10-05T22:15:52Z",
-  "data_as_of": "2026-10-05",
-  "expected_next_refresh_at": "2026-10-06T22:15:52Z",
-  "stale_after": "2026-10-07T10:15:52Z",
+  "generated_at": "2026-10-06T20:40:55Z",
+  "data_as_of": "2026-10-06",
+  "expected_next_refresh_at": "2026-10-07T20:40:55Z",
+  "stale_after": "2026-10-08T08:40:55Z",
   "market_context": {
     "timezone": "America/New_York",
     "week_id": "2026-W40",
@@ -24,128 +24,144 @@
     "company_name": "Meta Platforms Inc.",
     "sector": "communication_services",
     "risk": "high",
-    "model_score": 0.2027,
-    "confidence_score": 0.77,
-    "confidence_label": "high",
-    "price_as_of": "2026-10-05",
-    "news_as_of": "2026-10-05",
+    "model_score": 0.1523,
+    "confidence_score": 0.72,
+    "confidence_label": "medium",
+    "price_as_of": "2026-10-06",
+    "news_as_of": "2026-10-06",
     "macro_as_of": null,
-    "sector_as_of": "2026-10-05",
+    "sector_as_of": null,
     "article_count": 3,
     "metrics": {
-      "momentum_5d": 0.0367,
-      "momentum_20d": 0.2029,
+      "momentum_5d": 0.0005,
+      "momentum_20d": 0.2049,
       "daily_volatility": 0.0349,
-      "downside_volatility": 0.0257,
+      "downside_volatility": 0.0256,
       "max_drawdown_20d": 0.0797,
       "positive_day_ratio_10d": 0.6,
-      "price_vs_20d_average": 0.0566,
-      "volume_trend_5d": -0.36,
-      "market_relative_5d": 0.0244,
-      "market_relative_20d": 0.1957,
-      "sector_relative_5d": 0.0327,
-      "sector_relative_20d": 0.2074,
-      "news_sentiment": 0.92,
+      "price_vs_20d_average": 0.0434,
+      "volume_trend_5d": -0.4786,
+      "market_relative_5d": -0.0186,
+      "market_relative_20d": 0.1845,
+      "sector_relative_5d": -0.0011,
+      "sector_relative_20d": 0.2035,
+      "news_sentiment": 0.91,
       "raw_news_sentiment": 1.0,
-      "calibrated_news_sentiment": 0.8476,
-      "news_confidence": 0.9,
+      "calibrated_news_sentiment": 0.8252,
+      "news_confidence": 0.89,
       "macro_sentiment": 0.5,
       "macro_confidence": 0.2,
-      "sector_sentiment": 0.53,
-      "sector_confidence": 0.35,
-      "effective_article_count": 1.51,
-      "source_count": 2,
-      "average_relevance": 0.96,
+      "sector_sentiment": 0.5,
+      "sector_confidence": 0.2,
+      "effective_article_count": 1.03,
+      "source_count": 3,
+      "average_relevance": 0.65,
       "technical_training_ic": -0.0101,
       "technical_training_rows": 2303
     },
     "score_breakdown": {
-      "momentum": 0.1234,
-      "short_momentum": 0.0303,
+      "momentum": 0.0859,
+      "short_momentum": 0.0004,
       "medium_momentum": 0.054,
-      "trend_quality": 0.0175,
-      "volume_confirmation": -0.0144,
+      "trend_quality": 0.0146,
+      "volume_confirmation": -0.0191,
       "market_relative_strength": 0.021,
       "sector_relative_strength": 0.015,
       "volatility_penalty": -0.0684,
       "daily_volatility_penalty": -0.0314,
       "downside_penalty": -0.027,
       "drawdown_penalty": -0.01,
-      "news_adjustment": 0.1357,
+      "news_adjustment": 0.1317,
       "macro_adjustment": 0.0,
-      "sector_adjustment": 0.0018,
-      "signal_alignment": 0.0102,
-      "technical_total": 0.055,
-      "trend_strength": 0.1018,
+      "sector_adjustment": 0.0,
+      "signal_alignment": 0.0031,
+      "technical_total": 0.0175,
+      "trend_strength": 0.069,
       "relative_strength": 0.036,
-      "participation": -0.0144,
+      "participation": -0.0191,
       "risk_control": -0.0684,
       "block_weight_news": 0.1709,
       "block_weight_macro": 0.0935,
       "block_weight_sector": 0.0955,
       "macro_dedup_penalty": 1.0,
-      "sector_dedup_penalty": 0.6,
+      "sector_dedup_penalty": 1.0,
       "news_macro_overlap": 0.0,
-      "news_sector_overlap": 0.6667,
+      "news_sector_overlap": 0.0,
       "macro_sector_overlap": 0.0,
-      "total": 0.2027
+      "total": 0.1523
     },
     "reasons": [
-      "Price trend remains constructive: 5-day momentum is 3.7% and 20-day momentum is 20.3%.",
-      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 5.7% relative to its 20-day average.",
+      "Price trend remains constructive: 5-day momentum is 0.1% and 20-day momentum is 20.5%.",
+      "Trend quality is supported by 60% positive sessions over the last 10 trading days and the price sitting 4.3% relative to its 20-day average.",
       "Risk profile shows daily volatility around 3.5%, downside volatility near 2.6%, and a recent max drawdown of 8.0%.",
-      "Volume confirmation is -36.0% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
-      "Relative strength is 2.4% versus SPY over 5 days and 3.3% versus the sector ETF.",
-      "News signal is bullish with score 0.92, confidence 0.90, and 1.5 weighted articles across 2 sources.",
-      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.92, after adjusting for relevance, recency, source quality, and story concentration.",
-      "Evidence quality: 3 articles across 2 sources, 1.5 effective weighted articles, average relevance 0.96, average source quality 0.75, confidence 0.90.",
+      "Volume confirmation is -47.9% versus the trailing baseline, which helps separate steady breakouts from thin momentum.",
+      "Relative strength is -1.9% versus SPY over 5 days and -0.1% versus the sector ETF.",
+      "News signal is bullish with score 0.91, confidence 0.89, and 1.0 weighted articles across 3 sources.",
+      "GPT-5 article classification and company-news provider coverage rated the news flow bullish at 0.91, after adjusting for relevance, recency, source quality, and story concentration.",
+      "Evidence quality: 3 articles across 3 sources, 1.0 effective weighted articles, average relevance 0.65, average source quality 0.79, confidence 0.89.",
       "Technical weights were calibrated on 2303 historical symbol-weeks against 5-day excess return (IC -0.01).",
-      "Overall model score is 0.203 with high confidence."
+      "Overall model score is 0.152 with medium confidence."
     ],
     "news_evidence": [
       {
-        "title": "Meta Platforms Cuts Anthropic AI Usage Amid $105M Spend, Shifts Toward In-House AI (META)",
+        "title": "META Maintained by Wells Fargo -- Price Target Raised to $1000",
         "provider": "gurufocus.com",
-        "url": "https://www.gurufocus.com/news/9110016/meta-platforms-cuts-anthropic-ai-usage-amid-105m-spend-shifts-toward-inhouse-ai-meta",
-        "published_at": "2026-10-05T20:56:01Z",
-        "relevance_score": 1.0,
-        "sentiment": 0.29,
+        "url": "https://www.gurufocus.com/news/9111551/meta-maintained-by-wells-fargo-price-target-raised-to-1000",
+        "published_at": "2026-10-06T15:05:08Z",
+        "relevance_score": 0.92,
+        "sentiment": 0.19,
         "doc_type": "company_specific",
         "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Reports Meta is significantly reducing use of Anthropic's Claude Code and shifting to in-house AI after a reported $105M spend. This is directly company-specific and could affect near-term guidance, partner spend, and investor sentiment; direction is ambiguous (cost savings vs. transition risk), so likely a modest market reaction within 1-10 days."
+        "llm_reason": "Article is explicitly about Meta (Wells Fargo price-target update), so directly relevant. However the snippet references older dated content and looks potentially stale or republished; therefore it has limited immediate materiality for 1–10 day horizon."
       },
       {
-        "title": "Meta (META) Joins TikTok and X in Challenging UK Ofcom's Data Demands",
-        "provider": "gurufocus.com",
-        "url": "https://www.gurufocus.com/news/9109959/meta-meta-joins-tiktok-and-x-in-challenging-uk-ofcoms-data-demands",
-        "published_at": "2026-10-05T19:25:20Z",
-        "relevance_score": 0.94,
-        "sentiment": 0.18,
-        "doc_type": "company_specific",
+        "title": "Tech and AI Sectors Lead Market Gains as Earnings Season Approaches",
+        "provider": "thestockmarketwatch.com",
+        "url": "https://www2.stockmarketwatch.com/stock-market-news/tech-and-ai-sectors-lead-market-gains-as-earnings-season-approaches/72657/",
+        "published_at": "2026-10-06T14:07:12Z",
+        "relevance_score": 0.56,
+        "sentiment": 0.83,
+        "doc_type": "sector_macro",
         "company_relevance": 1.0,
         "materiality": 1.0,
         "llm_confidence": 1.0,
         "llm_impact_score": 1.0,
-        "llm_reason": "Meta joining TikTok and X to challenge Ofcom data demands is a company-level regulatory/legal development. Could raise regulatory uncertainty and potential costs in the UK/Europe; likely a modest negative catalyst in the short term but not immediately material to revenues absent fines or enforcement actions."
+        "llm_reason": "Broad tech/AI sector rally coverage that will likely affect sentiment for large growth names including Meta, but it's a general market/sector piece (not Meta-specific) so short-term impact on META is modest."
+      },
+      {
+        "title": "Nvidia nears $6 trillion market value on growth outlook and record buyback",
+        "provider": "thehindubusinessline.com",
+        "url": "https://www.thehindubusinessline.com/info-tech/nvidia-nears-6-trillion-market-value-on-growth-outlook-and-record-buyback/article71550752.ece",
+        "published_at": "2026-10-06T13:04:20Z",
+        "relevance_score": 0.48,
+        "sentiment": -0.13,
+        "doc_type": "sector_macro",
+        "company_relevance": 1.0,
+        "materiality": 1.0,
+        "llm_confidence": 1.0,
+        "llm_impact_score": 1.0,
+        "llm_reason": "Nvidia’s blockbuster performance and buyback signal AI/semiconductor-led rotation, which can indirectly lift Meta via sector sentiment and AI multiple expansion. The article is company-specific to NVDA, so relevance to META is indirect but meaningful for short-term sentiment."
       }
     ],
     "macro_evidence": [],
     "thesis_monitor": {
       "status": "risk",
       "headline": "Support needs review",
-      "summary": "Volatility expanded enough to weaken the setup.",
+      "summary": "Trend quality is still positive, but the tape is no longer decisive.",
       "alerts": [
-        "Volatility expanded enough to weaken the setup."
+        "Trend quality is still positive, but the tape is no longer decisive.",
+        "Volatility expanded enough to weaken the setup.",
+        "The pick still qualified, but the margin of safety is not wide."
       ],
       "signals": [
         {
           "label": "Momentum",
-          "state": "positive",
-          "value": "3.7% 5D • 20.3% 20D",
-          "detail": "Price action is still supporting the release thesis."
+          "state": "watch",
+          "value": "0.1% 5D • 20.5% 20D",
+          "detail": "Trend quality is still positive, but the tape is no longer decisive."
         },
         {
           "label": "Volatility",
@@ -156,7 +172,7 @@
         {
           "label": "News",
           "state": "positive",
-          "value": "0.92 sentiment • 3 articles",
+          "value": "0.91 sentiment • 3 articles",
           "detail": "Recent news flow is supportive and diversified enough to back the setup."
         },
         {
@@ -167,9 +183,9 @@
         },
         {
           "label": "Margin",
-          "state": "positive",
-          "value": "+0.083 score • +0.218 conf",
-          "detail": "The pick cleared the release thresholds with room to spare."
+          "state": "watch",
+          "value": "+0.032 score • +0.169 conf",
+          "detail": "The pick still qualified, but the margin of safety is not wide."
         },
         {
           "label": "Freshness",
@@ -187,25 +203,26 @@
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.; sector_scores: GDELT global-news feed failed during this run.",
       "risk_picks: news_scores: GDELT company news failed for at least one symbol.",
       "risk_picks: sector_scores: GDELT global-news feed failed during this run.",
-      "GDELT global-news feed failed during this run."
+      "GDELT global-news feed failed during this run.",
+      "Alpha Vantage global-news fallback failed during this run."
     ],
     "provider_status": {
       "alpha_vantage": {
-        "status": "healthy",
-        "used": 1,
+        "status": "degraded",
+        "used": 3,
         "limit": 25,
-        "remaining": 24,
+        "remaining": 22,
         "categories": {
-          "global_news": 1
+          "global_news": 3
         },
         "daily": {
-          "date": "2026-10-05",
+          "date": "2026-10-06",
           "status": "healthy",
-          "used": 1,
+          "used": 3,
           "limit": 25,
-          "remaining": 24,
+          "remaining": 22,
           "categories": {
-            "global_news": 1
+            "global_news": 3
           }
         }
       },
@@ -218,7 +235,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-10-05",
+          "date": "2026-10-06",
           "status": "tracking_only",
           "used": 1,
           "limit": null,
@@ -238,7 +255,7 @@
           "global_news": 1
         },
         "daily": {
-          "date": "2026-10-05",
+          "date": "2026-10-06",
           "status": "healthy",
           "used": 2,
           "limit": 100,
@@ -259,7 +276,7 @@
           "submissions": 1
         },
         "daily": {
-          "date": "2026-10-05",
+          "date": "2026-10-06",
           "status": "tracking_only",
           "used": 2,
           "limit": null,
@@ -279,7 +296,7 @@
           "price": 3
         },
         "daily": {
-          "date": "2026-10-05",
+          "date": "2026-10-06",
           "status": "healthy",
           "used": 3,
           "limit": 800,
